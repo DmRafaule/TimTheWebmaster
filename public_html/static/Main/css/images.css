@@ -1,9 +1,0 @@
-.image{
-	width: 300px;
-}
-
-.image_block{
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: center;
-}

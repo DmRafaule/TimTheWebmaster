@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-da4fk(86vwdw7^kre!viz_3n2)80i7jon^-50=@8+18-@45f@5
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['timthewebmaster.com', 'www.timthewebmaster.com']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 
 
 # Application definition
@@ -65,7 +65,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            os.path.join(BASE_DIR, 'public/media/'),
+            os.path.join(BASE_DIR, 'media/'),
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -88,12 +88,8 @@ WSGI_APPLICATION = 'MyBlog.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'timachuduk_blog',
-        'USER': 'timachuduk_blog',
-        'PASSWORD': 'az34AY0',
-        'HOST': 'localhost',
-        'PORT': '3306',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 
@@ -134,7 +130,7 @@ CSRF_USE_SESSIONS = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'public/static')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
@@ -142,15 +138,10 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'public/static')
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'public/media')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
 LANGUAGES = [
         ("ru", _("Русский")),
         ("en", _("Английский")),
 ]
-
-# For sitemaps support
-SITE_ID = 1
-# For automatic redirect from http to https
-SECURE_SSL_REDIRECT = True
