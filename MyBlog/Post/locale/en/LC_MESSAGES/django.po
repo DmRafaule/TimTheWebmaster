@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-08 07:59+0000\n"
+"POT-Creation-Date: 2023-10-09 17:55+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -23,7 +23,7 @@ msgid "Статьи Тимы, Вебмастера"
 msgstr "Articles of Tim the Webmaster"
 
 #: Post/templates/Post/article_list.html:11
-msgid "Стартьи"
+msgid "Статьи"
 msgstr "Articles"
 
 #: Post/templates/Post/article_list.html:12
@@ -174,3 +174,6 @@ msgstr "Projects"
 #: Post/templates/Post/proj_list.html:12
 msgid "Главные потребители времени"
 msgstr "Main time and life spenders"
+
+#~ msgid "Стартьи"
+#~ msgstr "Articles"
