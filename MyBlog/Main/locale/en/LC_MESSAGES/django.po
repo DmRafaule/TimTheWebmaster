@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-08 09:55+0000\n"
+"POT-Creation-Date: 2023-10-09 17:55+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -506,7 +506,7 @@ msgid "имя"
 msgstr "name"
 
 #: Main/templates/Main/contacts.html:75 Main/templates/Main/contacts.html:82
-#: Main/views.py:75 Main/views.py:76
+#: Main/views.py:92 Main/views.py:93
 msgid "обязательно"
 msgstr "required"
 
@@ -1609,46 +1609,46 @@ msgstr ""
 "Development and writing of SEO/LSI texts with the provided layout for layout "
 "designer"
 
-#: Main/views.py:86
+#: Main/views.py:103
 msgid "✖ не могу отправить сообщение"
 msgstr "✖ can’t send a message"
 
-#: Main/views.py:89
+#: Main/views.py:106
 msgid "⚠ поле пользователя не заполнено"
 msgstr "⚠ user field is empty"
 
-#: Main/views.py:92
+#: Main/views.py:109
 msgid "⚠ поле почты не заполнено"
 msgstr "⚠ email field is empty"
 
-#: Main/views.py:96
+#: Main/views.py:113
 msgid "⚠ введённое имя слишком короткое"
 msgstr "⚠ username too short"
 
-#: Main/views.py:100
+#: Main/views.py:117
 msgid "⚠ введённое имя слишком длинное"
 msgstr "⚠ username too long"
 
-#: Main/views.py:104
+#: Main/views.py:121
 msgid "⚠ введённый адрес почты некорректен"
 msgstr "⚠ email aders is invalid"
 
-#: Main/views.py:107
+#: Main/views.py:124
 msgid "✔ вы успешно отправили сообщение"
 msgstr "✔ you have successfully sent a message"
 
-#: Main/views.py:108 Main/views.py:109
+#: Main/views.py:125 Main/views.py:126
 msgid "✔ Хорошо"
 msgstr "✔ Ok"
 
-#: Main/views.py:116
+#: Main/views.py:133
 msgid "Ты, скользкий тип"
 msgstr "You, sneaky bastard"
 
-#: Main/views.py:117
+#: Main/views.py:134
 msgid "Даже не пытайся"
 msgstr "Don't even try"
 
-#: Main/views.py:118
+#: Main/views.py:135
 msgid "Или попытайся, всёравно"
 msgstr "Or try, don't care"
