@@ -1,0 +1,25 @@
+{% extends 'Main/base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block head %}
+<meta name="robots" content="noindex">
+<meta name="description" content="{% trans "Страница в разработке" %}">
+<title>{% trans "Тим вебмастер. Страница в разработке" %}</title>
+{% endblock %}
+
+{% block navigation_head %}
+<div class="name"><b>{{post.name}}</b></div>
+<p class="quote">{{post.short_description|truncatewords:10}}</p>
+{% endblock navigation_head %}
+
+
+{% block content %}
+	<div class="page_not_found">
+		{% trans "Страница в разработке" %}
+	</div>
+{% endblock %}
+
+
+{% block styles %}
+{% endblock %}

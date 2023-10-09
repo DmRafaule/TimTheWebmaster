@@ -1,0 +1,25 @@
+.content_body__tabs{
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: row-reverse;
+	justify-content: space-between;
+	align-items: center;
+}
+.content_body__tabs_buttons{
+	display: flex;
+	flex-direction: column;
+	justify-content: start;
+	align-items: end;
+}
+.content_body__tabs_body{
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: center;
+	flex: 0 1 50%;
+}
+.content_body__tab{
+	color: white;
+	margin-bottom: 10px;
+
+}

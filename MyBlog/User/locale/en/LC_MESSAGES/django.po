@@ -1,0 +1,217 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-10-08 07:39+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: User/templates/User/login.html:8
+msgid "Страница входа в акаунт"
+msgstr "Login page into account"
+
+#: User/templates/User/login.html:10
+msgid "Страница входа"
+msgstr "Login page"
+
+#: User/templates/User/login.html:14 User/templates/User/login.html:45
+msgid "Вход"
+msgstr "Login"
+
+#: User/templates/User/login.html:15
+msgid "Попробуй стать частью ..."
+msgstr "Try to be a part of ..."
+
+#: User/templates/User/login.html:28 User/templates/User/signup.html:27
+msgid "имя"
+msgstr "name"
+
+#: User/templates/User/login.html:30 User/templates/User/login.html:36
+#: User/templates/User/signup.html:29 User/templates/User/signup.html:36
+#: User/templates/User/signup.html:43 User/templates/User/signup.html:50
+#: User/views.py:44 User/views.py:45 User/views.py:83 User/views.py:84
+#: User/views.py:85 User/views.py:86
+msgid "обязательно"
+msgstr "required"
+
+#: User/templates/User/login.html:34 User/templates/User/signup.html:41
+msgid "пароль"
+msgstr "password"
+
+#: User/templates/User/login.html:49 User/templates/User/signup.html:13
+#: User/templates/User/signup.html:63
+msgid "Регистрация"
+msgstr "Registration"
+
+#: User/templates/User/profile.html:7 User/templates/User/profile.html:11
+msgid "Профиль"
+msgstr "Profile"
+
+#: User/templates/User/profile.html:12
+msgid "Профиль пользователя "
+msgstr "User profile"
+
+#: User/templates/User/profile.html:43
+msgid "Имя: "
+msgstr "Name: "
+
+#: User/templates/User/profile.html:47
+msgid "Почта: "
+msgstr "Email: "
+
+#: User/templates/User/profile.html:51
+msgid "О пользователе"
+msgstr "About user"
+
+#: User/templates/User/profile.html:61
+msgid "Коментарии"
+msgstr "Comments"
+
+#: User/templates/User/signup.html:7
+msgid "Страница регистрации на сайте Тим Вебмастер"
+msgstr "Registration page on site Tim the Webmaster"
+
+#: User/templates/User/signup.html:9
+msgid "Регистрация на сайте Тим Вебмастер"
+msgstr "Registration on site Tim the Webmaster"
+
+#: User/templates/User/signup.html:14
+msgid "В процессе нетворкинга"
+msgstr "In proccess of networking"
+
+#: User/templates/User/signup.html:30
+msgid "от 3 до 25 букв"
+msgstr "from 3 to 25 letters"
+
+#: User/templates/User/signup.html:34
+msgid "почта"
+msgstr "email"
+
+#: User/templates/User/signup.html:37
+msgid "корректный адрес почты"
+msgstr "correct email address"
+
+#: User/templates/User/signup.html:44
+msgid "от 6 букв"
+msgstr "at least 6 letters"
+
+#: User/templates/User/signup.html:48
+msgid "повтори пароль"
+msgstr "retype password"
+
+#: User/templates/User/signup.html:51
+msgid "должен совпадать с паролем"
+msgstr "must match with password"
+
+#: User/templates/User/signup.html:54
+msgid "Раскажи немного о себе"
+msgstr "Tell me a little about yourself"
+
+#: User/templates/User/signup.html:58
+msgid "Выбери себе аватар."
+msgstr "Choose the avatar."
+
+#: User/templates/User/signup.html:59
+msgid "выбрать файл"
+msgstr "Select file"
+
+#: User/views.py:51
+msgid "✖ не могу войти"
+msgstr "✖ can't login"
+
+#: User/views.py:54
+msgid "⚠ пользователь пуст"
+msgstr "⚠ username field is empty"
+
+#: User/views.py:57
+msgid "⚠ пароль пуст"
+msgstr "⚠ password field is empty"
+
+#: User/views.py:67
+msgid "✔ Вы успешно вошли, перенаправление ... "
+msgstr "✔ You have successfully logged in, redirecting ..."
+
+#: User/views.py:68 User/views.py:69 User/views.py:145 User/views.py:146
+#: User/views.py:147 User/views.py:148
+msgid "✔ Хорошо"
+msgstr "✔ Ok"
+
+#: User/views.py:71
+msgid "⚠ Неправильный пароль"
+msgstr "⚠ Wrong password"
+
+#: User/views.py:74
+msgid "⚠ Такого пользователя не существует"
+msgstr "⚠ This user does not exist"
+
+#: User/views.py:103
+msgid "✖ не могу зарегестрировать нового пользователя"
+msgstr "✖ I can't register a new user"
+
+#: User/views.py:106
+msgid "⚠ поле пользователя не заполнено"
+msgstr "⚠ user field is empty"
+
+#: User/views.py:109
+msgid "⚠ поле почты не заполнено"
+msgstr "⚠ email field is empty"
+
+#: User/views.py:112
+msgid "⚠ поле пароля не заполнено"
+msgstr "⚠ password field is empty"
+
+#: User/views.py:116
+msgid "⚠ пользователь с таким именем уже существует"
+msgstr "⚠ user with this name already exist"
+
+#: User/views.py:120
+msgid "⚠ такая почта уже используется"
+msgstr "⚠ This email is already in use"
+
+#: User/views.py:124
+msgid "⚠ введённое имя слишком короткое"
+msgstr "⚠ username is too short"
+
+#: User/views.py:128
+msgid "⚠ введённое имя слишком длинное"
+msgstr "⚠ username is too long"
+
+#: User/views.py:132
+msgid "⚠ введённый пароль слишком короткий"
+msgstr "⚠ password is too short"
+
+#: User/views.py:136 User/views.py:137
+msgid "⚠ пароль не совпадает"
+msgstr "⚠ password does not match"
+
+#: User/views.py:141
+msgid "⚠ неправильный формат адреса почты"
+msgstr "⚠ incorrect email address format"
+
+#: User/views.py:144
+msgid "✔ вы успешно зарегестрировались, перенаправление"
+msgstr "✔ you have successfully registered, redirecting"
+
+#: User/views.py:155
+msgid "Ты, скользкий тип"
+msgstr "You, sneaky bastard"
+
+#: User/views.py:156
+msgid "Даже не пытайся"
+msgstr "Don't even try"
+
+#: User/views.py:157
+msgid "Или попытайся, всёравно"
+msgstr "Or try, don't care"

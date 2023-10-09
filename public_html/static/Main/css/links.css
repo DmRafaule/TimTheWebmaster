@@ -1,0 +1,35 @@
+.ref > a{
+	color: #84a8e3;	
+	transition: padding 0.3s;
+	border-bottom: 2px solid #84a8e3; 
+}
+.ref > a:hover{
+	padding-left:10px;
+	padding-right:10px;
+}
+
+.refs_long{
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	width: 100%;
+	align-items: start;
+	justify-content: center;
+}
+.ref_long{
+	flex: 0 0 35%;
+	width: 100%;
+	margin-top: 50px;
+	display: flex;
+	align-items: center;
+	flex-direction: row;
+}
+.ref_long_name{
+	padding: 10px;
+}
+.ref_long_button{
+	display: flex;
+	flex: 1 0 auto;
+	padding: 10px;
+	justify-content: end;
+}

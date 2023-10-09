@@ -1,0 +1,176 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-10-08 07:59+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: Post/templates/Post/article_list.html:7
+msgid "Статьи Тимы, Вебмастера"
+msgstr "Articles of Tim the Webmaster"
+
+#: Post/templates/Post/article_list.html:11
+msgid "Стартьи"
+msgstr "Articles"
+
+#: Post/templates/Post/article_list.html:12
+msgid "О том, что интересно"
+msgstr "About what's interesting"
+
+#: Post/templates/Post/articles_preview.html:12
+#: Post/templates/Post/news_preview.html:13
+msgid "Опубликованно:"
+msgstr "Published:"
+
+#: Post/templates/Post/articles_preview.html:15
+msgid "Обновлено:"
+msgstr "Updated"
+
+#: Post/templates/Post/articles_preview.html:19
+#: Post/templates/Post/projects_preview.html:18
+msgid "Просмотры:"
+msgstr "Views:"
+
+#: Post/templates/Post/articles_preview.html:22
+#: Post/templates/Post/projects_preview.html:21
+msgid "Нравится:"
+msgstr "Likes:"
+
+#: Post/templates/Post/articles_preview.html:25
+#: Post/templates/Post/projects_preview.html:24
+msgid "Поделилось:"
+msgstr "Shared:"
+
+#: Post/templates/Post/articles_preview.html:31
+#: Post/templates/Post/projects_preview.html:30
+msgid "Тэги:"
+msgstr "Tags:"
+
+#: Post/templates/Post/articles_preview.html:43
+#: Post/templates/Post/projects_preview.html:42
+msgid "Описание:"
+msgstr "Description:"
+
+#: Post/templates/Post/articles_preview.html:48
+#: Post/templates/Post/case_preview.html:18
+#: Post/templates/Post/case_preview.html:42
+#: Post/templates/Post/case_preview.html:66
+#: Post/templates/Post/news_preview.html:21
+#: Post/templates/Post/projects_preview.html:47
+msgid "Ещё"
+msgstr "More"
+
+#: Post/templates/Post/base_post.html:24
+msgid "облако коментария с плюсиком"
+msgstr "comment cloud with a plus"
+
+#: Post/templates/Post/base_post.html:28
+msgid "сердце"
+msgstr "heart"
+
+#: Post/templates/Post/base_post.html:32
+msgid "3 соединённые точки"
+msgstr "3 connected dots"
+
+#: Post/templates/Post/base_post.html:39
+msgid "vk иконка"
+msgstr "vk icon"
+
+#: Post/templates/Post/base_post.html:44
+msgid "reddit иконка"
+msgstr "reddit icon"
+
+#: Post/templates/Post/base_post.html:49
+msgid "twitter иконка"
+msgstr "twitter icon"
+
+#: Post/templates/Post/base_post.html:54
+msgid "telegram иконка"
+msgstr "telegram icon"
+
+#: Post/templates/Post/base_post.html:61
+msgid "Коментарии"
+msgstr "Comments"
+
+#: Post/templates/Post/base_post.html:73 Post/templates/Post/comments.html:11
+msgid "Аватар пользователя"
+msgstr "User avatar"
+
+#: Post/templates/Post/base_post.html:75 Post/templates/Post/comment.html:11
+#: Post/templates/Post/comments.html:13
+msgid "Аватар по умолчанию"
+msgstr "Default avatar"
+
+#: Post/templates/Post/base_post.html:85
+msgid "Ваше сообщение"
+msgstr "Your message"
+
+#: Post/templates/Post/base_post.html:91
+msgid "Отправить"
+msgstr "Send"
+
+#: Post/templates/Post/case_list.html:7
+msgid "Кейсы, Тимы Вебмастера"
+msgstr "Cases of Tim the Webmaster"
+
+#: Post/templates/Post/case_list.html:11
+msgid "Кейсы"
+msgstr "Cases"
+
+#: Post/templates/Post/case_list.html:12
+msgid "Примеры работ и кейсы"
+msgstr "Exmaples of jobs and cases"
+
+#: Post/templates/Post/case_preview.html:23
+#: Post/templates/Post/case_preview.html:47
+msgid "опубликованно:"
+msgstr "published:"
+
+#: Post/templates/Post/case_preview.html:71
+msgid "опубликованно: "
+msgstr "published: "
+
+#: Post/templates/Post/comment.html:9
+msgid "Аватарка пользователя"
+msgstr "User avatar"
+
+#: Post/templates/Post/comment.html:29 Post/templates/Post/comments.html:31
+msgid "Удалить"
+msgstr "Remove"
+
+#: Post/templates/Post/news_list.html:7
+msgid "Новости Тимы, Вебмастера"
+msgstr "News of Tim the Webmaster"
+
+#: Post/templates/Post/news_list.html:11
+msgid "Новости"
+msgstr "News"
+
+#: Post/templates/Post/news_list.html:12
+msgid "Новости по интересам и сферам ответственности"
+msgstr "News by interests and areas of responsibility"
+
+#: Post/templates/Post/proj_list.html:7
+msgid "Проекты Тимы, Вебмастера"
+msgstr "Projects of Tim the Webmaster"
+
+#: Post/templates/Post/proj_list.html:11
+msgid "Проекты"
+msgstr "Projects"
+
+#: Post/templates/Post/proj_list.html:12
+msgid "Главные потребители времени"
+msgstr "Main time and life spenders"

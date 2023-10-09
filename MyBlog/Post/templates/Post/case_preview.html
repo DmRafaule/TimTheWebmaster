@@ -1,0 +1,73 @@
+{% load i18n %}
+
+<div class="case_header">
+	<div class="case_tosite post_title">
+		<a href="{{ case_curr.get_absolute_url }}">{{ case_curr.name }}</a>
+	</div>
+</div>
+<div class="case_tags">
+	{% for tag in case_curr.tags.all %}
+	<div class="case_tags__el">
+		{{tag}}
+	</div>
+	{% endfor %}
+</div>
+<div class="case_description">
+	{{ case_curr.short_description|truncatewords:50 }}
+	<div class="case_site case_tosite" >
+		<a href="{{ case_curr.get_absolute_url }}"><b>{% trans "Ещё" %}</b></a>
+	</div>
+</div>
+<div class="case_footer">
+	<div class="case_site case_tosite" >
+		<b>{% trans "опубликованно:" %} </b>{{ case_curr.timeCreated }}
+	</div>
+</div>
+###Mark
+<div class="case_header">
+	<div class="case_tosite post_title">
+		{{ case_next.name }}
+	</div>
+</div>
+<div class="case_tags">
+	{% for tag in case_next.tags.all %}
+	<div class="case_tags__el">
+		{{tag}}
+	</div>
+	{% endfor %}
+</div>
+<div class="case_description">
+	{{ case_next.short_description|truncatewords:50 }}
+	<div class="case_site case_tosite" >
+		<b>{% trans "Ещё" %}</b>
+	</div>
+</div>
+<div class="case_footer">
+	<div class="case_site case_tosite" >
+		<b>{% trans "опубликованно:" %} </b>{{ case_next.timeCreated }}
+	</div>
+</div>
+###Mark
+<div class="case_header">
+	<div class="case_tosite post_title">
+		{{ case_prev.name }}
+	</div>
+</div>
+<div class="case_tags">
+	{% for tag in case_prev.tags.all %}
+	<div class="case_tags__el">
+		{{tag}}
+	</div>
+	{% endfor %}
+</div>
+<div class="case_description">
+	{{ case_prev.short_description|truncatewords:50 }}
+	<div class="case_site case_tosite" >
+		<b>{% trans "Ещё" %}</b>
+	</div>
+</div>
+<div class="case_footer">
+	<div class="case_site case_tosite" >
+		<b>{% trans "опубликованно: " %}</b>{{ case_prev.timeCreated }}
+	</div>
+</div>

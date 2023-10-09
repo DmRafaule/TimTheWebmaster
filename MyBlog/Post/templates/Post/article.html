@@ -1,0 +1,39 @@
+{% extends 'Post/base_post.html' %}
+{% load static%}
+
+{% block head_post %}
+	<meta name="description" content="">
+	<title></title>
+	{# schema #}
+	<script type="application/ld+json">
+	{
+	  "@context": "https://schema.org",
+	  "@type": "BlogPosting",
+	  "mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "https://{{domain_name}}{{ post.get_absolute_url }}"
+	  },
+	  "headline": "{{ post.name }}",
+	  "description": "{{ post.short_description }}",
+	  "image": "https://{{domain_name}}{{media_root}}{{ post.preview }}",  
+	  "author": {
+		"@type": "Person",
+		"name": "Tima Chuduk",
+		"url": "https://{{domain_name}}{% url 'home' %}"
+	  },  
+	  "publisher": {
+		"@type": "Organization",
+		"name": "",
+		"logo": {
+		  "@type": "ImageObject",
+		  "url": "https://{{domain_name}}/favicon.ico"
+		}
+	  },
+	  "datePublished": "{{ post.timeCreated }}",
+	  "dateModified": "{{ post.timeUpdated }}"
+	}
+	</script>
+{% endblock %}
+
+{% block content_post %}
+{% endblock %}

@@ -1,0 +1,23 @@
+
+
+.page{
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: row;
+	align-items: start;
+}
+
+
+.post_proj{
+	margin-top: 15px;
+	background-position: center center;
+	min-width: 300px;
+	justify-items: start;
+}
+.post_proj > img{
+}
+
+.post_proj > .post_content{ 
+	border-left: 0px solid black;
+}
+

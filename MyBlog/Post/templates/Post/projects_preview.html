@@ -1,0 +1,55 @@
+{% load static %}
+{% load i18n %}
+
+{% for a in posts %}
+
+<div class="post_proj" style="background-image: url('{{media_root}}{{a.preview}}');
+						max-width: 500px;
+	background-size: contain;
+	background-repeat: no-repeat;
+						background-position: center center;">
+	<div class="post_content">
+		<div class="post_topost post_title">
+			<a href="{{ a.get_absolute_url }}">{{a.name}}</a>
+		</div>
+		<div class="post_timing">
+			<div class="post_insights">
+				<div class="post_insights__el">
+					<div class="post_el--description"><b>{% trans "Просмотры:" %}</b></div> {{a.viewed}}
+				</div>
+				<div class="post_insights__el">
+					<div class="post_el--description"><b>{% trans "Нравится:" %}</b></div> {{a.likes}}
+				</div>
+				<div class="post_insights__el">
+					<div class="post_el--description"><b>{% trans "Поделилось:"%}</b></div> {{a.shares}}
+				</div>
+			</div>
+		</div>
+		<div class="post_flairs">
+			<div class="post_title__subtitle">
+				<b>{% trans "Тэги:" %}</b>
+			</div>
+			<div class="flair_container">
+				{% for tag in a.tags.all %}
+				<div class="flair_el">
+					{{tag}}
+				</div>
+				{% endfor %}
+			</div>
+		</div>
+		<div class="post_description">
+			<div class="post_title__subtitle">
+				<b>{% trans "Описание:" %}</b>
+			</div>
+			<div class="post_description__description">
+				{{a.short_description}} 	
+				<span class="post_topost"><br>
+					<a href="{{ a.get_absolute_url }}">{% trans "Ещё" %}</a>
+					
+				</span>
+			</div>
+		</div>
+	</div>
+</div>
+
+{% endfor %}

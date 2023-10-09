@@ -1,0 +1,71 @@
+.interface{
+    display: flex;
+    flex-direction: column;
+}
+.switcher{
+	padding:5px;
+    border-radius: 100%;
+}
+.switcher img{
+    max-width: 32px;
+    min-width: 32px;
+}
+.lang_selected{
+	outline: 4px solid #84a8e3;
+	border-radius: 50%;
+	margin: 0 10px 0 10px;
+}
+.profile_interface{
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	margin: 5px;
+}
+
+.avatar{
+	outline: 2px solid black;
+}
+
+.avatar img{
+	max-width: 50px;
+}
+
+.main__body{
+    flex: 1;
+    margin: 10px;
+    display: flex;
+    flex-direction: row;
+}
+
+.main__body__wall{
+    flex: 1;
+    flex-direction: column;
+}
+
+.main{
+    display: flex;
+    flex-direction: column;
+}
+
+@media screen and (max-width: 900px){
+.switcher img{
+    max-width: 64px;
+    min-width: 64px;
+}
+.main__body{
+    margin: 0px;
+}
+}
+
+.paragraph{
+	padding: 5px;
+	margin-bottom: 35px;
+}
+
+.page_not_found{
+	display: flex;
+	width: 100%;
+	height: 100%;
+	align-items: center;
+	justify-content: center;
+}

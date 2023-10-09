@@ -1,0 +1,65 @@
+{% extends 'Main/base.html' %}
+{% load static%}
+
+{% block head %}
+<link rel="canonical" href="https://{{domain_name}}{{ post.get_absolute_url }}" />
+	{% block head_post %}
+	{% endblock %}
+	{# schema #}
+	<script type="application/ld+json">
+	{
+	  "@context": "https://schema.org",
+	  "@type": "BlogPosting",
+	  "mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "https://{{domain_name}}{{ post.get_absolute_url }}"
+	  },
+	  "headline": "{{ post.name }}",
+	  "description": "{{ post.short_description }}",
+	  "image": "https://{{domain_name}}{{media_root}}{{ post.preview }}",  
+	  "author": {
+		"@type": "Person",
+		"name": "Tima Chuduk",
+		"url": "https://{{domain_name}}{% url 'home' %}"
+	  },  
+	  "publisher": {
+		"@type": "Organization",
+		"name": "",
+		"logo": {
+		  "@type": "ImageObject",
+		  "url": "https://{{domain_name}}/favicon.ico"
+		}
+	  },
+	  "datePublished": "{{ post.timeCreated }}",
+	  "dateModified": "{{ post.timeUpdated }}"
+	}
+	</script>
+{% endblock %}
+
+{% block navigation_head %}
+	<div class="name"><b>{{ post.name }}</b></div>
+	<p class="quote">{{ post.short_description|truncatewords:6 }}</p>
+{% endblock navigation_head %}
+
+
+
+{% block content %}
+	{% block content_post %}
+	{% endblock %}
+{% endblock %}
+
+
+{% block styles %}
+    <link type="text/css" rel="stylesheet" href="{% static 'User/css/user.css' %}"/>
+{% endblock %}
+
+{% block scripts %}
+    <!-- Loading jQuery For AJAX behaviour --> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- This is for knowing where to look for an images 
+		 And csrf tokkent -->
+    {% csrf_token %}
+    <script>
+        const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+    </script>
+{% endblock %}

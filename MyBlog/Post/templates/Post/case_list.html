@@ -1,0 +1,60 @@
+{% extends 'Main/base.html' %}
+{% load i18n %}
+{% load static%}
+
+{% block head %}
+	<meta name="robots" content="noindex">
+	<title>{% trans "Кейсы, Тимы Вебмастера" %}</title>
+{% endblock %}
+
+{% block navigation_head %}
+	<div class="name"><b>{% trans "Кейсы" %}</b></div>
+	<p class="quote">{% trans "Примеры работ и кейсы" %}</p>
+{% endblock navigation_head %}
+
+
+
+{% block content %}
+	<div class="page_case">
+		<div id="page_portfolios" class="page_portfolios">
+			<div id="prev_case" class="pager__triangle_left">
+			</div>
+			<div id="invs_case__container--left" class="invs_case__container--left case__container"></div>
+			<div id="prev_case__container" class="prev_case__container case__container"></div>
+			<div id="curr_case__container" class="curr_case__container case__container"></div>
+			<div id="next_case__container" class="next_case__container case__container"></div>
+			<div id="invs_case__container--right" class="invs_case__container--right case__container"></div>
+			<div id="next_case" class="pager__triangle_right">
+			</div>
+		</div>
+		<div class="pager_buttons__container">
+			<div class="dots--separator">
+				<div class="dot">
+				</div>
+				<div class="dot">
+				</div>
+				<div class="dot">
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}
+
+
+{% block styles %}
+    <link type="text/css" rel="stylesheet" href="{% static 'Post/css/pager.css' %}"/>
+    <link type="text/css" rel="stylesheet" href="{% static 'Post/css/list.css' %}"/>
+{% endblock %}
+
+{% block scripts %}
+    <!-- Loading jQuery For AJAX behaviour --> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- This is for knowing where to look for an images 
+		 And csrf tokkent -->
+    {% csrf_token %}
+    <script>
+        const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+    </script>
+    <script src="{% static 'Post/js/pager.js' %}"></script>
+    <script src="{% static 'Post/js/add_case.js' %}"></script>
+{% endblock %}

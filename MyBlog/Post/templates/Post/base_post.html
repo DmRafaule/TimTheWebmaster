@@ -1,0 +1,121 @@
+{% extends 'Main/base.html' %}
+{% load i18n %}
+{% load static %}
+
+{% block head %}
+	<link rel="canonical" href="https://{{domain_name}}{{ post.get_absolute_url }}" />
+	{% block head_post %}
+	{% endblock %}
+	</script>
+{% endblock %}
+
+{% block navigation_head %}
+	<div class="name"><b>{{ post.name }}</b></div>
+	<p class="quote">{{ post.short_description|truncatewords:6 }}</p>
+{% endblock navigation_head %}
+
+
+
+{% block content %}
+	{% block content_post %}
+	{% endblock %}
+	<div id="interactions" class="interactions" >
+		<div id="interactions_add__button" class="comment_button">
+			<img class="icon icon_interactable" src="{% static 'User/img/comment.png' %}" alt="{% trans "облако коментария с плюсиком" %}">
+			{{comments_number}}
+		</div>
+		<div id="interactions_like__button" class="comment_button">
+			<img class="icon icon_interactable" src="{% static 'User/img/like.png' %}" alt="{% trans "сердце" %}">
+			{{ post.likes }}
+		</div>
+		<div id="interactions_share__button" class="comment_button">
+			<img class="icon icon_interactable" src="{% static 'User/img/share.png' %}" alt="{% trans "3 соединённые точки" %}">
+			{{ post.shares }}
+		</div>
+	</div>
+	<div id="shares_options" class="active">
+		<a target="_blank" href="http://vk.com/share.php?url={{ post.get_absolute_url }}&title={{ post.name }}&description={{ post.short_description }}">
+			<div class="comment_button share_button">
+				<img class="icon icon_interactable" src="{% static 'User/img/vk.png' %}" alt="{% trans "vk иконка" %}">
+			</div>
+		</a>
+		<a target="_blank"  href="https://www.reddit.com/submit?url={{ post.get_absolute_url }}&title={{ post.name }}">
+			<div class="comment_button share_button">
+				<img class="icon icon_interactable" src="{% static 'User/img/reddit.png' %}" alt="{% trans "reddit иконка" %}">
+			</div>
+		</a>
+		<a target="_blank"  href="https://twitter.com/intent/tweet?url={{ post.get_absolute_url }}&text={{ post.short_description }}">
+			<div class="comment_button share_button">
+				<img class="icon icon_interactable" src="{% static 'User/img/twitter.png' %}" alt="{% trans "twitter иконка" %}">
+			</div>
+		</a>
+		<a target="_blank"  href="https://telegram.me/share/url?url={{ post.get_absolute_url }}&text={{ post.short_description }}">
+			<div class="comment_button share_button">
+				<img class="icon icon_interactable" src="{% static 'User/img/telegram.png' %}" alt="{% trans "telegram иконка" %}">
+			</div>
+		</a>
+	</div>
+	<div class="comments">  
+		<div class="comments_header">
+			<div class="comments_header__name">
+				<div class="nav_ref">{% trans "Коментарии" %}</div>			
+			</div>
+			<div class="comments_header__add_comment">
+			</div>
+		</div>
+		<div id="comments_body" class="comments_body">
+			{% if request.session.is_auth %}
+			{# Form for submiting new comment #}
+			<div id="comment_add" class="comments_el active">
+				<div class="comments_el__meta_el comments_el__commentAdd">
+					<div class="comments_el__user_avatar">
+						{% if user.avatar|length > 0 %}
+						<img class="icon icon_avatar" src='{{media_root}}{{ user.avatar }}' alt="{% trans "Аватар пользователя" %}">
+						{% else %}
+						<img class="icon icon_avatar" src="{% static 'User/img/default_avatar.png' %}" alt="{% trans "Аватар по умолчанию" %}">
+						{% endif %}
+					</div>
+					<div class="comments_el__user_name">
+						{{user}}
+					</div>
+				</div>
+				{% csrf_token %}
+				<div class="form">
+					<form enctype="multipart/form-data" class="form_form" id="toSignup" action="send_new_user" method="get">
+						<textarea class="form_el__about" placeholder="{% trans "Ваше сообщение" %}" name="about" rows=4  id="about"></textarea>
+					</form> 
+				</div>
+				<div id="comment_add__buttonSend" class="">
+					<div id="page_add__case" class="page_add__case">
+						<div id="plus_description" class="case_tosite  plus_description_addComment comment_button">
+							{% trans "Отправить" %}
+						</div>
+					</div>
+				</div>
+			</div>
+			{% endif %}
+			{# Place which gonna be filled by comments#}
+			<div id="scroll-sentinel"></div>
+		</div>
+	</div>
+{% endblock %}
+
+
+{% block styles %}
+    <link type="text/css" rel="stylesheet" href="{% static 'User/css/comment.css' %}"/>
+    <link type="text/css" rel="stylesheet" href="{% static 'User/css/user.css' %}"/>
+    <link type="text/css" rel="stylesheet" href="{% static 'User/css/forms.css' %}"/>
+{% endblock %}
+
+{% block scripts %}
+    <!-- Loading jQuery For AJAX behaviour --> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- This is for knowing where to look for an images 
+		 And csrf tokkent -->
+    {% csrf_token %}
+    <script>
+        const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+		const post_slug = "{{post.slug}}"
+    </script>
+    <script src="{% static 'Post/js/add_comment.js' %}"></script>
+{% endblock %}

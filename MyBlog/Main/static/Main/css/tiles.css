@@ -1,0 +1,44 @@
+.content_body__tiles{
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: center;
+}
+.content_body__tile{
+	border: 2px solid white;
+}
+.content_body__tile:hover{
+	cursor: pointer;
+}
+
+.content_body__tile_head{
+	padding: 5px;
+	color: white;
+	background-color: black; 
+	text-align: center;
+	position: relative;
+}
+.content_body__tile_head > h3{
+
+	top: 30px;
+	position: sticky;
+}
+.content_body__tiles_hidden{
+	display: flex;
+	flex-wrap: wrap;
+
+}
+
+.content_body__tile_body{
+	display: none;
+	flex-direction: column;
+}
+.tile_choosen > .content_body__tile_body{
+	display: flex;
+	flex-wrap: wrap;
+	background-color: white; 
+	padding: 20px 0 20px 0;
+}
+
+

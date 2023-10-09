@@ -1,0 +1,73 @@
+{% extends 'Main/base.html' %}
+{% load i18n %}
+{% load static %}
+
+
+{% block head %}
+	<meta name="robots" content="noindex">
+	<title>{% trans "Страница входа" %}</title>
+{% endblock %}
+
+{% block navigation_head %}
+<div class="name"><b>{% trans "Вход" %}</b></div>
+<p class="quote">{% trans "Попробуй стать частью ..." %}</p>
+{% endblock navigation_head %}
+
+
+
+{% block content %}
+<div class="page">
+<div class="main_wrapper">
+	<div id="common-error" class="hint-container hint-required hint-common_error"></div>
+    {% csrf_token %}
+	<div class="form">
+		<form  class="form_form form_login" id="toLogin" action="send_new_user" method="get">
+			<div>
+				<input class="form_el" placeholder="{% trans "имя" %}" type="text" name="username" autocomplete="off" id="username"><br><br>
+				<div class="hint-container">
+					<p id="username-error" class="hint-required">{% trans "обязательно" %}</p>
+				</div>
+			</div>
+			<div>
+				<input class="form_el" placeholder="{% trans "пароль" %}" type="password" name="password" autocomplete="off" id="password"><br><br>
+				<div class="hint-container">
+					<p id="password-error" class="hint-required">{% trans "обязательно" %}</p>
+				</div>
+			</div>
+		</form> 
+	</div>
+	<div class="capcha">
+	</div>
+	<div class="buttons">
+		<div id="login" class="button button-middle">
+			<a>{% trans "Вход" %}</a>
+		</div>
+		<div class="button button-middle">
+			<a href="{% url 'signup' %}">
+			{% trans "Регистрация" %}
+			</a>
+		</div>
+	</div>
+
+</div>
+</div>
+{% endblock %}
+
+
+
+{% block styles %}
+    <link type="text/css" rel="stylesheet" href="{% static 'User/css/forms.css' %}"/>
+    <link type="text/css" rel="stylesheet" href="{% static 'User/css/buttons.css' %}"/>
+    <link type="text/css" rel="stylesheet" href="{% static 'User/css/user.css' %}"/>
+{% endblock %}
+{% block scripts %}
+    <!-- Loading jQuery For AJAX behaviour --> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- This is for knowing where to look for an images 
+		 And csrf tokkent -->
+    {% csrf_token %}
+    <script>
+        const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+    </script>
+    <script src="{% static 'User/js/login.js' %}"></script>
+{% endblock %}

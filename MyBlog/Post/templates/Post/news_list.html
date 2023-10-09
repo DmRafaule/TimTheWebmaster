@@ -1,0 +1,38 @@
+{% extends 'Main/base.html' %}
+{% load static%}
+{% load i18n %}
+
+{% block head %}
+	<meta name="robots" content="noindex">
+	<title>{% trans "Новости Тимы, Вебмастера" %}</title>
+{% endblock %}
+
+{% block navigation_head %}
+	<div class="name"><b>{% trans "Новости" %}</b></div>
+	<p class="quote">{% trans "Новости по интересам и сферам ответственности" %}</p>
+{% endblock navigation_head %}
+
+{% block scripts %}
+    <!-- Loading jQuery For AJAX behaviour --> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- This is for knowing where to look for an images 
+		 And csrf tokkent -->
+    {% csrf_token %}
+    <script>
+        const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+		const category_name = "News"
+    </script>
+    <script src="{% static 'Post/js/infinity_scroll.js' %}"></script>
+{% endblock %}
+
+{% block styles %}
+    <link type="text/css" rel="stylesheet" href="{% static 'Post/css/list.css' %}"/>
+    <link type="text/css" rel="stylesheet" href="{% static 'Post/css/news.css' %}"/>
+{% endblock %}
+
+{% block content %}
+	<div class="page">
+		{# Place to be filled by infinity_scroll script#}
+	</div>
+	<div id="scroll-sentinel"></div>
+{% endblock %}

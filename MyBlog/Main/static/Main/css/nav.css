@@ -1,0 +1,94 @@
+
+.main__body__nav{
+    flex: 1;
+    display: flex;
+    max-width: 25%;
+    border-left: 2px solid black;
+}
+.nav_container{
+    position: fixed;
+	height:100%;
+	max-width: 100%;
+	padding: 10px 0 10px 10px;
+    display: flex;
+    flex-direction: column;
+	overflow: scroll;
+}
+.nav_head{
+	display:flex;
+    flex-direction: column;
+	flex: 0 0 auto;
+	margin-bottom: 60px;
+    padding: 10px;
+}
+.nav_head .name{
+    font-size: 40px;
+    margin-bottom: 10px;
+}
+.hide img{
+    max-width: 32px;
+    min-width: 32px;
+}
+.nav_box{
+	display:flex;
+	flex: 1 0 auto;
+    flex-direction: column;
+    min-width: 30%;
+    padding: 10px;
+    font-size: 40px;
+}
+.nav_interface{
+    margin: 10px;
+	display:flex;
+	flex: 0 0 auto;
+	flex-wrap: wrap;
+	justify-content:space-between;
+}
+.nav_el__spacer{
+	width: 20px;
+	height: 20px;
+}
+.nav_el{
+    padding: 5px 0px 5px 0px;
+	display: flex;
+	align-items: center;
+}
+.icon{
+	margin:0 5px 0 5px;
+	width: 32px;
+	height: 32px;
+}
+.icon_interactable{
+	border-radius: 50%;
+	margin: 5px;
+}
+.icon_interactable:hover{
+	background-color: #84a8e3;
+}
+
+.icon_interactable:active{
+	background-color: #84a8e3;
+}
+.icon_avatar{
+	outline: 4px solid black;
+	border-radius: 50%;
+}
+.nav_ref{
+    color:black;
+    border-bottom: 1px solid black;
+}
+.nav_el:hover{
+    animation-name: "hoverd";
+    animation-timing-function: linear;
+    animation-duration: 100ms;
+    animation-fill-mode: forwards;
+}
+@keyframes hoverd {
+   0% {font-size: 100%;} 
+   100% {font-size: 120%;} 
+}
+@media screen and (max-width: 900px){
+	.main__body__nav{
+		border-left: 0px solid black;
+	}
+}

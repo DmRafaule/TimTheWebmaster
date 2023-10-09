@@ -1,0 +1,252 @@
+{% load static%}
+{% load i18n %}
+
+<!DOCTYPE html>
+{% get_current_language as LANGUAGE_CODE %}
+<html lang="{{LANGUAGE_CODE}}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="https://{{domain_name}}/favicon.ico" type="image/x-icon">
+	{% block head %}
+	{% endblock %}
+    <link type="text/css" rel="stylesheet" href="{% static 'Main/css/base.css' %}"/>
+    <link type="text/css" rel="stylesheet" href="{% static 'Main/css/buttons.css' %}"/>
+    <link type="text/css" rel="stylesheet" href="{% static 'Main/css/blocks.css' %}"/>
+    <link type="text/css" rel="stylesheet" href="{% static 'Main/css/links.css' %}"/>
+    <link type="text/css" rel="stylesheet" href="{% static 'Main/css/logo.css' %}"/>
+	{% block styles %}
+	{% endblock %}
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Raleway:wght@700;800&family=Rubik:wght@400;700&display=swap"> 
+
+	<!-- Google tag (gtag.js) -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-9ND0H16BPP"></script>
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+
+	  gtag('config', 'G-9ND0H16BPP');
+	</script>
+	<!-- Yandex.Metrika counter -->
+	<script type="text/javascript" >
+		   (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+			      m[i].l=1*new Date();
+			      for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+			      k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+   (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+   ym(95199635, "init", {
+	           clickmap:true,
+	           trackLinks:true,
+	           accurateTrackBounce:true,
+	           webvisor:true
+	      });
+	</script>
+	<noscript><div><img src="https://mc.yandex.ru/watch/95199635" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+	<!-- /Yandex.Metrika counter -->
+
+</head>
+<body>
+    <div class="wrapper">
+        <main class="main">
+            <div class="main__body" id="main__body">
+                <div class="main__body__wall" id="main__body__wall">
+                    <!--Here you should paste (posts, articles, projects, about, contacts, busket, home )-->
+					<div id="content_header" class="content_header">
+						<a class="logo" href="{% url 'home' %}">
+							<img class="icon icon_interactable buttons__outline--white" src="{% static 'Main/img/logo.png' %}">
+						</a>
+						<div class="buttons-contacts">
+							{% if not request.session.is_auth %}
+								{% url 'login' as tested_url %}
+								{% if request.get_full_path != tested_url %}
+								<div >
+									<a href="{{ tested_url }}" id="login_ref"><img class="icon icon_interactable buttons__outline--white" src="{% static 'Main/img/login.png' %}" alt="{% trans "Открывающаяся дверь" %}"></a>
+								</div>
+								{% endif %}
+							{% else %}
+								{% url 'profile' user.slug  as tested_url %}
+								{% if request.get_full_path != tested_url %}
+								<div >
+									<a href="{{ tested_url }}" id="profile_ref">
+									{% if user.avatar|length > 0 %}
+									<img class="icon icon_avatar icon_interactable buttons__outline--white" src='{{media_root}}{{ user.avatar }}' alt="{% trans "Твой аватар" %}">
+									{% else %}
+										<img class="icon icon_avatar icon_interactable buttons__outline--white" src="{% static 'User/img/default_avatar.png' %}" alt="{% trans "Аватар по умолчанию" %}">
+									{% endif %}
+									</a>
+								</div>
+								{% endif %}
+								<div>
+									<a href="{% url 'logout' %}" id="logout_ref" ><img class="icon icon_interactable buttons__outline--white" src="{% static 'Main/img/logout.png' %}" alt="{% trans "Стрелка из дверей" %}"></a>
+								</div>
+							{% endif %}
+							<div id="menu_button" class="button button-top-right">
+								<p>{% trans "Меню" %}</p>
+							</div>
+
+						</div>
+					</div>
+                    {% block content %}
+                    {% endblock %}
+					<div class="content_footer">
+						<div>
+							<a target="_blank" rel="contact" rev="{% trans "Контактная страница Тимы"%}" href="https://t.me/DmitryChedr" ><img class="icon buttons__outline--white icon_interactable" src="{% static 'Main/img/telegram.png' %}"></a>	
+							<a target="_blank" rel="contact" rev="{% trans "Контактная страница Тимы"%}" href="https://mail.google.com/mail/?view=cm&source=mailto&to=ChedrDen@gmail.com" ><img class="icon buttons__outline--white icon_interactable" src="{% static 'Main/img/email.png' %}" alt="{% trans "email иконка"%}"></a>	
+						</div>
+						<div class="column in_middle">
+							<a class="logo  buttons__outline--white" href="{% url 'home' %}">
+								<img class="icon" src="{% static 'Main/img/logo.png' %}">
+							</a>
+							<div class="copywrite">
+								Copywrite @ {% now "Y"%} TimaTheWebmaster
+							</div>
+						</div>
+						<div class="column in_middle">
+							<div class="ref padder">
+								<a href="{% url 'about' %}">{% trans "Об авторе" %}</a>
+							</div>
+							<div class="ref padder">
+								<a href="{% url 'contacts' %}">{% trans "Контакты автора" %}</a>
+							</div>
+							<div class="ref padder">
+								<a href="/sitemap.xml">{% trans "Карта сайта" %}</a>
+							</div>
+							{% block footer_links %}
+							{% endblock %}
+						</div>
+					</div>
+                </div>
+                <div class="main__body__nav" id="main__body__nav">
+                    <div class="nav_container">
+                        <div class="nav_head">
+							{% block navigation_head %}
+							{% endblock navigation_head %}
+                        </div>
+                        <div class="nav_box">
+							{% if not request.session.is_auth %}
+								{% url 'login' as tested_url %}
+								{% if request.get_full_path != tested_url %}
+								<div class="nav_el">
+									<img class="icon" src="{% static 'Main/img/login.png' %}" alt="{% trans "Открывающаяся дверь" %}">
+									<a href="{{ tested_url }}" id="login_ref" class="nav_ref">{% trans 'Вход' %}</a>
+								</div>
+								{% endif %}
+							{% else %}
+								{% url 'profile' user.slug  as tested_url %}
+								{% if request.get_full_path != tested_url %}
+								<div class="nav_el">
+									{% if user.avatar|length > 0 %}
+									<img class="icon icon_avatar" src='{{media_root}}{{ user.avatar }}' alt="{% trans "Твой аватар" %}">
+									{% else %}
+										<img class="icon icon_avatar" src="{% static 'User/img/default_avatar.png' %}" alt="{% trans "Аватар по умолчанию" %}">
+									{% endif %}
+									<a href="{{ tested_url }}" id="profile_ref" class="nav_ref">{% trans "Профиль" %}</a>
+								</div>
+								{% endif %}
+								<div class="nav_el">
+									<img class="icon" src="{% static 'Main/img/logout.png' %}" alt="{% trans "Стрелка из дверей" %}">
+									<a href="{% url 'logout' %}" id="logout_ref" class="nav_ref" >{% trans "Выход" %}</a>
+								</div>
+							{% endif %}
+							{% url 'home' as tested_url %}
+							{% if request.get_full_path != tested_url %}
+								<div class="nav_el">
+									<img id="home_ref" class="icon" src="{% static 'Main/img/home.png' %}" alt="{% trans "Домик" %}">
+									<a href="{{ tested_url }}" class="nav_ref">{% trans "Домашняя" %}</a>
+								</div>
+							{% endif %}
+							{% url 'proj_list' as tested_url %}
+							{% if request.get_full_path != tested_url %}
+							<div class="nav_el">
+								<img class="icon" src="{% static 'Main/img/project.png' %}" alt="{% trans "Чертежи и линейки" %}">
+								<a href="{{ tested_url }}" id="projects_ref" class="nav_ref" >{% trans "Проекты" %}</a>
+							</div>
+							{% endif %}
+							{% url 'article_list' as tested_url %}
+							{% if request.get_full_path != tested_url %}
+							<div class="nav_el">
+								<img class="icon" src="{% static 'Main/img/articles.png' %}" alt="{% trans "Листок и ручка" %}">
+								<a href="{{ tested_url }}" id="articles_ref" class="nav_ref" >{% trans "Статьи" %}</a>
+							</div>
+							{% endif %}
+							{% url 'news_list' as tested_url %}
+							{% if request.get_full_path != tested_url %}
+							<div class="nav_el">
+								<img class="icon" src="{% static 'Main/img/newspaper.png' %}" alt="{% trans "Газетные вырезки" %}">
+								<a href="{{ tested_url }}" id="news_ref" class="nav_ref" >{% trans "Новости" %}</a>
+							</div>
+							{% endif %}
+							{% url 'case_list' as tested_url %}
+							{% if request.get_full_path != tested_url %}
+							<div class="nav_el">
+								<img class="icon" src="{% static 'Main/img/briefcase.png' %}" alt="{% trans "Чемодан" %}">
+								<a href="{{ tested_url }}" id="cases_ref" class="nav_ref">{% trans "Кейсы" %}</a>
+							</div>
+							{% endif %}
+							{% url 'services' as tested_url %}
+							{% if request.get_full_path != tested_url %}
+								<div class="nav_el">
+									<img class="icon" src="{% static 'Main/img/service.png' %}" alt="{% trans "Шестерня" %}">
+									<a href="{{ tested_url }}" class="nav_ref">{% trans "Услуги" %}</a>
+								</div>
+							{% endif %}
+							{% url 'about' as tested_url %}
+							{% if request.get_full_path != tested_url %}
+							<div class="nav_el">
+								<img class="icon" src="{% static 'Main/img/info.png' %}" alt="{% trans "Буква i" %}">
+								<a href="{{ tested_url }}" id="about_ref" class="nav_ref" >{% trans "Об Авторе" %}</a>
+							</div>
+							{% endif %}
+							{% url 'contacts' as tested_url %}
+							{% if request.get_full_path != tested_url %}
+							<div class="nav_el">
+								<img class="icon" src="{% static 'Main/img/contacts.png' %}" alt="{% trans "Контактный блокнот" %}">
+								<a href="{{ tested_url }}" id="contacts_ref" class="nav_ref" >{% trans "Контакты" %}</a>
+							</div>
+							{% endif %}
+                        </div>
+						<div class="nav_interface" id="interface">
+							<div class="lang_switcher switcher" id="lang_switcher">
+								{% get_current_language as LANGUAGE_CODE %}
+								{% get_available_languages as LANGUAGES %}
+								{% get_language_info_list for LANGUAGES as languages %}
+								{% for language in languages %}
+									<a href="/{{language.code}}{{request.get_full_path|cut:"ru/"|cut:"en/"}}" >
+										{% if language.code != LANGUAGE_CODE %}
+										<img class="" src="{% static 'Main/img/' %}{{language.name|lower}}.png" id="lang_switcher_image" alt="{{language.name}} {% trans "флаг" %}">
+										{% else %}
+										<img src="{% static 'Main/img/' %}{{language.name|lower}}.png" id="lang_switcher_image" class="lang_selected" alt="{{language.name}} {% trans "флаг" %}">
+										{% endif %}
+									</a>
+								{% endfor %}
+							</div>
+							<div id="back_button" class="button button-middle">
+								<p>{% trans "Назад" %}</p>
+							</div>
+						</div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <!-- This is for knowing where to look for an images-->
+    <script>
+        var PATH = "{% static .%}"
+		{% get_current_language as LANGUAGE_CODE %}
+        {% get_available_languages as LANGUAGES %}
+        {% get_language_info_list for LANGUAGES as languages %}
+        {% for language in languages %}
+            {% if language.code == LANGUAGE_CODE %}
+				const language_code = "{{ language.code }}" 	
+			{% endif %}
+        {% endfor %}
+    </script>
+    <script src="{% static 'Main/js/sticky.js' %}"></script>
+    <script src="{% static 'Main/js/base.js' %}"></script>
+	{% block scripts %}
+	{% endblock %}
+</body>
+</html>

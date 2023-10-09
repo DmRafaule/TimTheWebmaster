@@ -1,0 +1,86 @@
+{% extends 'Main/base.html' %}
+{% load static%}
+{% load i18n%}
+
+{% block head %}
+	<meta name="robots" content="noindex">
+	<title>{% trans "Регистрация на сайте Тим Вебмастер" %}</title>
+{% endblock %}
+
+{% block navigation_head %}
+<div class="name"><b>{% trans "Регистрация" %}</b></div>
+<p class="quote">{% trans "В процессе нетворкинга" %}</p>
+{% endblock navigation_head %}
+
+
+
+{% block content %}
+<div class="page">
+<div class="main_wrapper">
+	<div id="common-error" class="hint-container hint-required hint-common_error"></div>
+    {% csrf_token %}
+	<div class="form">
+		<form enctype="multipart/form-data" class="form_form" id="toSignup" action="send_new_user" method="get">
+			<div>
+				<input class="form_el" placeholder="{% trans "имя" %}" type="text" name="username" id="username">
+				<div class="hint-container">
+					<p id="username-error" class="hint-required">{% trans "обязательно" %}</p>
+					<p class="hint-error">{% trans "от 3 до 25 букв" %}</p>
+				</div>
+			</div>
+			<div>
+				<input class="form_el" placeholder="{% trans "почта" %}" type="email" name="email" id="email">
+				<div class="hint-container">
+					<p id="email-error" class="hint-required">{% trans "обязательно" %}</p>
+					<p class="hint-error">{% trans "корректный адрес почты" %}</p>
+				</div>
+			</div>
+			<div>
+				<input class="form_el" placeholder="{% trans "пароль" %}" type="password" name="password" id="password">
+				<div class="hint-container">
+					<p id="password-error" class="hint-required">{% trans "обязательно" %}</p>
+					<p class="hint-error">{% trans "от 6 букв" %}</p>
+				</div>
+			</div>
+			<div>
+				<input class="form_el" placeholder="{% trans "повтори пароль" %}" type="password" name="repeated_password"  id="repeated_password">
+				<div class="hint-container">
+					<p id="repassword-error" class="hint-required">{% trans "обязательно" %}</p>
+					<p class="hint-error">{% trans "должен совпадать с паролем" %}</p>
+				</div>
+			</div>
+			<textarea class="form_el__about" placeholder="{% trans "Раскажи немного о себе" %}" name="about" rows=4  id="about"></textarea>
+		</form> 
+	</div>
+	<div class="sel_file">
+		<label for="texta">{% trans "Выбери себе аватар." %}</label>
+		<input class="form_el__file" placeholder="{% trans "выбрать файл" %}" type="file" name="file" id="file">
+	</div>
+	<div class="buttons">
+		<div id="signup" class="button button-middle">
+			<a>{% trans "Регистрация" %}</a>
+		</div>
+	</div>
+
+</div>
+</div>
+{% endblock %}
+
+
+
+{% block styles %}
+    <link type="text/css" rel="stylesheet" href="{% static 'User/css/user.css' %}"/>
+    <link type="text/css" rel="stylesheet" href="{% static 'User/css/forms.css' %}"/>
+    <link type="text/css" rel="stylesheet" href="{% static 'User/css/buttons.css' %}"/>
+{% endblock %}
+{% block scripts %}
+    <!-- Loading jQuery For AJAX behaviour --> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- This is for knowing where to look for an images 
+		 And csrf tokkent -->
+    {% csrf_token %}
+    <script>
+        const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+    </script>
+    <script src="{% static 'User/js/signup.js' %}"></script>
+{% endblock %}
