@@ -9,18 +9,19 @@
 .content_body{
 	margin: 15% 0 15% 0;
 	text-align: justify;
-	font-size: 18px;
+	font-size: 28px;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	max-width: 1000px;
+	align-self: center;
 }
 
 .content_body__body{
-	margin-top: 15%;
 	width: 100%;
 }
 .content_body__block{
-	margin-top: 30%;
+	margin-top: 10%;
 }
 .content_footer{
 	display: flex;
@@ -76,6 +77,6 @@
 		justify-content: space-between;
 	}
 	.content_body{
-		font-size: 14px;
+		font-size: 18px;
 	}
 }
