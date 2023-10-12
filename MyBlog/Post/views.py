@@ -71,8 +71,8 @@ def case(request, post_slug):
     case = get_object_or_404(Post, slug=post_slug)
     media_root = settings.MEDIA_URL
     domain_name = settings.ALLOWED_HOSTS[0]
-    downloadables = Downloadable.objects.filter(type=article)
-    images = Image.objects.filter(type=article)
+    downloadables = Downloadable.objects.filter(type=case)
+    images = Image.objects.filter(type=case)
     context = {
         'post': case,
         'user': User.objects.filter(name=request.session.get('username','Guest')).first(),
@@ -122,8 +122,8 @@ def news(request, post_slug):
     news.save()
     media_root = settings.MEDIA_URL
     domain_name = settings.ALLOWED_HOSTS[0]
-    downloadables = Downloadable.objects.filter(type=article)
-    images = Image.objects.filter(type=article)
+    downloadables = Downloadable.objects.filter(type=news)
+    images = Image.objects.filter(type=news)
     context = {
         'post': news,
         'user': User.objects.filter(name=request.session.get('username', 'Guest')).first(),
@@ -148,8 +148,8 @@ def proj(request, post_slug):
     proj.save()
     media_root = settings.MEDIA_URL
     domain_name = settings.ALLOWED_HOSTS[0]
-    downloadables = Downloadable.objects.filter(type=article)
-    images = Image.objects.filter(type=article)
+    downloadables = Downloadable.objects.filter(type=proj)
+    images = Image.objects.filter(type=proj)
     context = {
         'post': proj,
         'user': User.objects.filter(name=request.session.get('username', 'Guest')).first(),
