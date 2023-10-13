@@ -1,0 +1,12 @@
+User-agent: *
+
+Disallow: /admin/*
+Disallow: /en/login/
+Disallow: /ru/login/
+Disallow: /en/signup/
+Disallow: /ru/signup/
+Disallow: /en/profile/*
+Disallow: /ru/profile/*
+
+Host: https://timthewebmaster.com
+Sitemap: https://timthewebmaster.com/sitemap.xml
