@@ -1,5 +1,6 @@
 .news_header{
 	display: flex;
+	flex-wrap: wrap;
 	align-items: end;
 }
 
