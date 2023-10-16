@@ -60,4 +60,6 @@ class Message(models.Model):
 # Remove all loaded files before deleting on database
 @receiver(pre_delete, sender=User)
 def cleanupUser(sender, instance, **kwargs):
-    shutil.rmtree(os.path.join(MEDIA_ROOT, f"{instance.type}/{instance.slug}"))
+    folder = os.path.join(MEDIA_ROOT, f"{instance.type}/{instance.slug}")
+    if os.path.exists(folder):
+        shutil.rmtree(folder)
