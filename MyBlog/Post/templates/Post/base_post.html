@@ -107,6 +107,8 @@
     <link type="text/css" rel="stylesheet" href="{% static 'User/css/forms.css' %}"/>
     <link type="text/css" rel="stylesheet" href="{% static 'Main/css/titles.css' %}"/>
     <link type="text/css" rel="stylesheet" href="{% static 'Main/css/text.css' %}"/>
+	{% block styles_post %}
+	{% endblock %}
 {% endblock %}
 
 {% block scripts %}
@@ -120,4 +122,6 @@
 		const post_slug = "{{post.slug}}"
     </script>
     <script src="{% static 'Post/js/add_comment.js' %}"></script>
+	{% block scripts_post %}
+	{% endblock %}
 {% endblock %}

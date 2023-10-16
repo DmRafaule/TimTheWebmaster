@@ -1,0 +1,10 @@
+.content_body__codeblock{
+	position: relative;
+	border: 2px solid grey;	
+	margin: 10px;
+	overflow: scroll;
+	height: 600px;
+}
+.content_body__codeblock_inner{
+	position: absolute;
+}

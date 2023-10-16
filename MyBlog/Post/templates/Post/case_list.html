@@ -14,7 +14,7 @@
 
 
 
-{% block content %}
+{# It is not flexable for now
 	<div class="page_case">
 		<div id="page_portfolios" class="page_portfolios">
 			<div id="prev_case" class="pager__triangle_left">
@@ -38,12 +38,18 @@
 			</div>
 		</div>
 	</div>
+#}
+{% block content %}
+	<div class="page">
+		{# Place to be filled by infinity_scroll script#}
+	</div>
+	<div id="scroll-sentinel"></div>
 {% endblock %}
 
 
 {% block styles %}
-    <link type="text/css" rel="stylesheet" href="{% static 'Post/css/pager.css' %}"/>
     <link type="text/css" rel="stylesheet" href="{% static 'Post/css/list.css' %}"/>
+    <link type="text/css" rel="stylesheet" href="{% static 'Post/css/news.css' %}"/>
 {% endblock %}
 
 {% block scripts %}
@@ -54,7 +60,9 @@
     {% csrf_token %}
     <script>
         const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+		const category_name = "Cases"
     </script>
-    <script src="{% static 'Post/js/pager.js' %}"></script>
-    <script src="{% static 'Post/js/add_case.js' %}"></script>
+    <script src="{% static 'Post/js/infinity_scroll.js' %}"></script>
 {% endblock %}
+
+<script src="{% static 'Post/js/pager.js' %}"></script>
