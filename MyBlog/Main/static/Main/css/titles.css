@@ -27,7 +27,7 @@
 .content_body__title{
 	font-weight: bold;
 	text-align: center;
-	max-width: 100%;
+	word-wrap: break-word;
 	margin-top: 50px;
 	padding-right: 10px;
 	margin-bottom: 10px;
@@ -72,10 +72,10 @@
 	}
 
 	.content_body__title > h2{
-		font-size: 24px;
+		font-size: 28px;
 	}
 
 	.content_body__title > h3{
-		font-size: 16px;
+		font-size: 24px;
 	}
 }

@@ -50,7 +50,14 @@
 
 
 {% block styles %}
+    <link type="text/css" rel="stylesheet" href="{% static 'User/css/comment.css' %}"/>
     <link type="text/css" rel="stylesheet" href="{% static 'User/css/user.css' %}"/>
+    <link type="text/css" rel="stylesheet" href="{% static 'User/css/forms.css' %}"/>
+    <link type="text/css" rel="stylesheet" href="{% static 'Main/css/titles.css' %}"/>
+    <link type="text/css" rel="stylesheet" href="{% static 'Main/css/text.css' %}"/>
+    <link type="text/css" rel="stylesheet" href="{% static 'Main/css/lists.css' %}"/>
+	{% block styles_post %}
+	{% endblock %}
 {% endblock %}
 
 {% block scripts %}
@@ -62,4 +69,6 @@
     <script>
         const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
     </script>
+	{% block scripts_post %}
+	{% endblock %}
 {% endblock %}
