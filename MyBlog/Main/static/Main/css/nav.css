@@ -3,13 +3,14 @@
     flex: 1;
     display: flex;
     max-width: 25%;
-    border-left: 2px solid black;
+    border-left: 8px solid black;
 }
 .nav_container{
     position: fixed;
 	height:100%;
 	max-width: 100%;
-	padding: 10px 0 10px 10px;
+	padding-left: 10px;
+	padding-right: 10px;
     display: flex;
     flex-direction: column;
 	overflow: scroll;
@@ -18,11 +19,9 @@
 	display:flex;
     flex-direction: column;
 	flex: 0 0 auto;
-	margin-bottom: 60px;
-    padding: 10px;
 }
 .nav_head .name{
-    font-size: 40px;
+    font-size : clamp(1.5rem, 3vw, 3rem);
     margin-bottom: 10px;
 }
 .hide img{
@@ -33,12 +32,12 @@
 	display:flex;
 	flex: 1 0 auto;
     flex-direction: column;
+	justify-content: center;
     min-width: 30%;
-    padding: 10px;
-    font-size: 40px;
+    font-size : clamp(1.5rem, 2vw, 3rem);
 }
 .nav_interface{
-    margin: 10px;
+	margin-bottom: 10px;
 	display:flex;
 	flex: 0 0 auto;
 	flex-wrap: wrap;
@@ -52,26 +51,6 @@
     padding: 5px 0px 5px 0px;
 	display: flex;
 	align-items: center;
-}
-.icon{
-	margin:0 5px 0 5px;
-	width: 32px;
-	height: 32px;
-}
-.icon_interactable{
-	border-radius: 50%;
-	margin: 5px;
-}
-.icon_interactable:hover{
-	background-color: #84a8e3;
-}
-
-.icon_interactable:active{
-	background-color: #84a8e3;
-}
-.icon_avatar{
-	outline: 4px solid black;
-	border-radius: 50%;
 }
 .nav_ref{
     color:black;
@@ -91,4 +70,35 @@
 	.main__body__nav{
 		border-left: 0px solid black;
 	}
+}
+
+.hamburger-lines {
+  display: block;
+  height: 26px;
+  width: 32px;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.hamburger-lines .line {
+  display: block;
+  height: 6px;
+  width: 100%;
+  background: #fff;
+}
+
+.line1 {
+  transform-origin: 0% 0%;
+  transition: transform 0.4s ease-in-out;
+}
+
+.line2 {
+  transition: transform 0.2s ease-in-out;
+}
+
+.line3 {
+  transform-origin: 0% 100%;
+  transition: transform 0.4s ease-in-out;
 }

@@ -1,4 +1,4 @@
-const number = 3
+const number = 5
 var offset = 0
 
 function LoadPosts(){

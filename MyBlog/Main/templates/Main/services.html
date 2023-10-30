@@ -37,7 +37,27 @@
 					програмирования python. Поэтому выбирая в качестве основы сайта django, вы будете уверены, что 
 					всегда сможете найти специалистов для поддержки ваших онлайн проектов. Будь они вебсайтами или 
 					вебприложениям.
+					<br>
+					Итак, можно заказать:
 					{% endblocktrans %}
+					<div class="list_simple padder">
+						<div class="list_simple_el">
+							<div class="list_simple_el__sign">◼️</div>
+							<div class="list_simple_el__text">{% trans "Создание новых сайтов" %}</div>
+						</div>
+						<div class="list_simple_el">
+							<div class="list_simple_el__sign">◼️</div>
+							<div class="list_simple_el__text">{% trans "Поддержка уже существующих" %}</div>
+						</div>
+						<div class="list_simple_el">
+							<div class="list_simple_el__sign">◼️</div>
+							<div class="list_simple_el__text">{% trans "Обновление и улучшение сайтов" %}</div>
+						</div>
+						<div class="list_simple_el">
+							<div class="list_simple_el__sign">◼️</div>
+							<div class="list_simple_el__text">{% trans "Подключение и настройка сервисов почты, шифрования, баз данных" %}</div>
+						</div>
+					</div>
 				</div>
 				<div class="content_body__text">
 					{% blocktrans %}
@@ -116,18 +136,18 @@
 					{% endblocktrans %}
 				</div>
 				<div class="content_body__text">
-					<div class="list_simple">
+					<div class="list_simple padder">
 						<div class="list_simple_el">
 							<div class="list_simple_el__sign">◼️</div>
-							<div class="list_simple_el__text">{% trans "Напишет <b>скрипты</b> для автоматизации работ, с интеграцией  в <i>цифровые таблицы</i> и <i>базами данных</i> на python" %}</div>
+							<div class="list_simple_el__text">{% trans "Автоматизаторы" %}</div>
 						</div>
 						<div class="list_simple_el">
 							<div class="list_simple_el__sign">◼️</div>
-							<div class="list_simple_el__text">{% trans "Скрипты на сервера и на сайты" %}</div>
+							<div class="list_simple_el__text">{% trans "Решение спецефических задач. Инструментные" %}</div>
 						</div>
 						<div class="list_simple_el">
 							<div class="list_simple_el__sign">◼️</div>
-							<div class="list_simple_el__text">{% trans "Домашние скрипты, так сказать, для домашних нужд" %}</div>
+							<div class="list_simple_el__text">{% trans "Для игр, и программ ( встроенные, они же плагины, они же модули )" %}</div>
 						</div>
 					</div>
 				</div>
@@ -154,8 +174,27 @@
 				</div>
 				<div class="content_body__text">
 					{% blocktrans %}
+					Создам парсеры на:
+					{% endblocktrans %}
+					<div class="list_simple padder">
+						<div class="list_simple_el">
+							<div class="list_simple_el__sign">◼️</div>
+							<div class="list_simple_el__text">{% trans "Парсеры на компъютер" %}</div>
+						</div>
+						<div class="list_simple_el">
+							<div class="list_simple_el__sign">◼️</div>
+							<div class="list_simple_el__text">{% trans "Парсеры на сайт" %}</div>
+						</div>
+						<div class="list_simple_el">
+							<div class="list_simple_el__sign">◼️</div>
+							<div class="list_simple_el__text">{% trans "Парсеры на мобильный телефон" %}</div>
+						</div>
+					</div>
+				<div class="content_body__text">
+					{% blocktrans %}
 					Создам <b>парсер</b> для сбора больших объёмов данных 	с интересующих для вас ресурсов, будь то <i>криптобиржи</i> 	или <i>сайты знакомств</i>
 					{% endblocktrans %}
+				</div>
 				</div>
 				<div class="content_body__text">
 					{% blocktrans %}
@@ -184,14 +223,26 @@
 					{% blocktrans %}
 					Что можно сделать:
 					{% endblocktrans %}
-					<div class="list_simple">
+					<div class="list_simple padder">
 						<div class="list_simple_el">
 							<div class="list_simple_el__sign">◼️</div>
-							<div class="list_simple_el__text">{% trans "Создание телеграм бота" %}</div>
+							<div class="list_simple_el__text">{% trans "Боты-инструменты" %}</div>
 						</div>
 						<div class="list_simple_el">
 							<div class="list_simple_el__sign">◼️</div>
-							<div class="list_simple_el__text">{% trans "Интеграция ботов на сайт. Связка <b>телеграм - сайт</b>" %}</div>
+							<div class="list_simple_el__text">{% trans "Боты-каталоги" %}</div>
+						</div>
+						<div class="list_simple_el">
+							<div class="list_simple_el__sign">◼️</div>
+							<div class="list_simple_el__text">{% trans "Боты-напоминалки/менеджеры" %}</div>
+						</div>
+						<div class="list_simple_el">
+							<div class="list_simple_el__sign">◼️</div>
+							<div class="list_simple_el__text">{% trans "Боты контент-менеджеры" %}</div>
+						</div>
+						<div class="list_simple_el">
+							<div class="list_simple_el__sign">◼️</div>
+							<div class="list_simple_el__text">{% trans "Чат-боты" %}</div>
 						</div>
 					</div>
 				</div>
@@ -260,4 +311,6 @@
 {% endblock %}
 
 {% block scripts %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="{% static 'Post/js/table_of_content.js' %}"></script>
 {% endblock %}

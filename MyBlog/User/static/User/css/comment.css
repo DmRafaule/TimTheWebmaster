@@ -9,7 +9,7 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	font-size: 40px;
+    font-size : clamp(1.5rem, 2vw, 3rem);
 }
 .comments_el{
 	margin-top: 30px;

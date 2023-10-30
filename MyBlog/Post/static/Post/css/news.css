@@ -4,10 +4,6 @@
 	align-items: end;
 }
 
-.without_borders{
-	border-width: 0px;
-}
-
 .page{
 	align-items: start;
 }

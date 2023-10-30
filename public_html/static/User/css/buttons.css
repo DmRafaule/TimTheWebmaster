@@ -28,7 +28,6 @@
 	border-bottom-left-radius: 20px;
 }
 .button-middle{
-	border-radius: 20px;
 }
 
 .buttons{
@@ -40,3 +39,4 @@
 	align-items:center;
     justify-content:space-around;
 }
+

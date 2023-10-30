@@ -3,3 +3,7 @@
 	padding: 15px;
 }
 
+.big_text{
+    font-size : clamp(0.8rem, 2vw, 3rem);
+}
+

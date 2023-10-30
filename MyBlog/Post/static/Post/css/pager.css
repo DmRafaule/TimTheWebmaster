@@ -155,16 +155,6 @@
 	align-items: center;
 }
 
-.dots--separator{
-	margin:10px;
-	display: flex;
-	align-items: center;
-}
-.dot{
-	margin: 5px;
-	border-radius: 50%;
-	border: 3px solid grey;
-}
 
 .pager__triangle_right {
 	position: relative;

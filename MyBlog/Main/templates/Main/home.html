@@ -14,516 +14,66 @@
 {% endblock %}
 
 {% block content %}
-	<div class="content_body">
-		<div class="content_body__main_title">
-			<h1>{% trans "Тим, он же Вебмастер" %}</h1>
-			<div class="content_body__quote ">
-				{% trans '"А ещё он пишет парсеры, телеграм ботов, скрипты, разрабатывает сайты и конечно занимается копирайтингом."' %}
+<div class="container_els">
+	<div class="mid_el">
+		<div class="left_el">
+			<div class="marger  left_top_el">
+				<div class="column is_relative ">
+					<div class="row content_body__title  content_body__title--super_clean in_middle">
+						<h2 class="in_middle flex_el_2 padder">{% trans "Недавние статьи" %}</h2>
+						<div id="scroll_buttons" class="row no_wrap">
+							<div id="next_button" class="button next_button">
+								<div class="icon_text icon_text--shadow white">&#10095;</div>
+							</div>
+						</div>
+					</div>
+					<div id="article_to_upload" class="post_to_upload" data-category="Articles" data-forwho="home" >
+					</div>
+				</div>
+			</div>
+			<div class="marger left_bott_el">
+				<div class="column on_start is_relative">
+					<div class="row content_body__title content_body__title--super_clean">
+						<h2 class="in_middle flex_el_2 padder">{% trans "Недавние кейсы"%}</h2>
+						<div id="scroll_buttons" class="row no_wrap">
+							<div id="next_button" class="button next_button">
+								<div class="icon_text icon_text--shadow white">&#10095;</div>
+							</div>
+						</div>
+					</div>
+					<div id="case_to_upload" class="post_to_upload" data-category="Cases" data-forwho="home" >
+					</div>
+					<div></div>
+				</div>
 			</div>
 		</div>
-		<div class="content_body__body">
-			<div class="content_body__block">
-				<div class="content_body__title ">
-					<h2>{% trans "Что есть на сайте, его разделы." %}</h2>
-				</div>
-				<div class="refs_long">
-					<div class="ref_long">
-						<img class="icon" src="{% static 'Main/img/briefcase.png' %}" alt="{% trans "Чемодан" %}">
-						<div class="ref_long_name">
-							{% trans "Примеры оказаных <b>услуг</b> и <b>работ</b> Тимона ( или просто его <b>кейсы</b>). Раздел, где Тим показывает и рассказывает ход и результат выполненой услуги/работы." %}
-						</div>
-						<div class="ref_long_button ref">
-							<a href="{% url 'case_list'%}">{% trans "К кейсам ➨" %}</a>
-						</div>
+		<div class="marger border right_el">
+			<div class="column full_height in_middle-farapart">
+				<div>
+					<div class="row content_body__title content_body__title--super_clean">
+						<h2 class="in_middle flex_el_2 marger">{% trans "Новости" %}</h2>
 					</div>
-					<div class="ref_long">
-						<img class="icon" src="{% static 'Main/img/newspaper.png' %}" alt="{% trans "Вырезка из новостей" %}">
-						<div class="ref_long_name">
-							{% trans "<b>Новости</b>. Здесь можно найти новости о Тиме, свежие новости связаные со сферами его деятельности и просто объявления." %}
-						</div>
-						<div class="ref_long_button ref">
-							<a href="{% url 'news_list'%}">{% trans "К новостям ➨" %}</a>
-						</div>
-					</div>
-					<div class="ref_long">
-						<img class="icon" src="{% static 'Main/img/articles.png' %}" alt="{% trans "Страница с ручкой" %}">
-						<div class="ref_long_name">
-							{% blocktrans %}
-							<b>Статьи</b>. А тут можно ознакомиться с иследованиям, опытом и прочей полезной информацией для <b>вебмастеров</b>, <b>бэкенд разработчиков</b>, 
-							<b>копирайтеров</b>, <b>lua разработчиков</b>, <b>python разработчиков</b> на соответствующие темы.
-							{% endblocktrans %}
-						</div>
-						<div class="ref_long_button ref">
-							<a href="{% url 'article_list'%}">{% trans "К статьям ➨" %}</a>
-						</div>
-					</div>
-					<div class="ref_long">
-						<img class="icon" src="{% static 'Main/img/project.png' %}" alt="{% trans "Чертёж и линейка" %}">
-						<div class="ref_long_name">
-							{% blocktrans %}
-							<b>Проекты</b>. В этом разделе собраны мои проекты. Грубо говоря это большие кейсы или как я их называю, лучшие убийцы времени.
-							{% endblocktrans %}
-						</div>
-						<div class="ref_long_button ref">
-							<a href="{% url 'proj_list'%}">{% trans "К проектам ➨" %}</a>
-						</div>
-					</div>
-					<div class="ref_long">
-						<img class="icon" src="{% static 'Main/img/login.png' %}" alt="{% trans "Стрелка в дверь" %}">
-						<div class="ref_long_name">
-							{% blocktrans %}
-							<b>Регистрация</b>, зарегистрировшись ты сможешь коментировать и получать уведомления в личном кабинет. 
-							{% endblocktrans %}
-						</div>
-						<div class="ref_long_button ref">
-							<a href="{% url 'login'%}">{% trans "Войти ➨" %}</a>
-						</div>
+					<div class="news_to_upload">
 					</div>
 				</div>
-			</div>
-			<div class="content_body__block">
-				<div class="content_body__title ">
-					<h2>{% trans "О чём любит писать Тимон, темы которые он затрагивает" %}</h2>
-				</div>
-					<div class="content_body__toggler">
-						<div class="content_body__title content_body__toggler_header">
-							<div class="content_body__toggler_header--sign">▶</div><h3>{% trans "Системное администрирование, хостинг" %}</h3>
-						</div>
-						<div class="content_body__toggler_body hidden">
-							<div class="content_body__text">
-							{% blocktrans %}
-							Тим использует Arch кстати. Не совсем уверен что эта шутка популярна или известна 
-							в русском сегменте интернета, но Тим всё равно её оставит, потому что он использует 
-							Arch Linux, и он люблю линукс. 
-							{% endblocktrans %}
-							</div>
-							<div class="content_body__text">
-							{% blocktrans %}
-							Это была подводка про то, что большая часть серверов это linux или unix машин
-							и знание того как ими управлять и как их настраивать, очень важно для вебмастера
-							вроде Тимы. И если дорогие читатели понимают что такое Unixporn или поняли 
-							шутку про Arch, то вы там где надо :)
-							{% endblocktrans %}
-							</div>
-							<div class="content_body__text">
-							{% blocktrans %}
-							В этом сегменте я буду рассказывать про системное администрирование linux, его настройку, советы,
-							 предупреждения и просто делиться впечатлениями. Так же, этот раздел про настройку хостинга и размещение сайтов на хостинге. Покажу и расскажу про 
-							моё рабочее окружение, как я его сделал, что использую и как справляюсь
-							без Windows.
-							{% endblocktrans %}
-							</div>
-							<div class="content_body__text">
-							</div>
-						</div>
-					</div>
-					<div class="content_body__toggler">
-						<div class="content_body__title content_body__toggler_header">
-							<div class="content_body__toggler_header--sign">▶</div><h3>{% trans "Бэкенд разработка сайтов на Django и python" %}</h3>
-						</div>
-						<div class="content_body__toggler_body hidden">
-							<div class="content_body__text">
-							{% blocktrans %}
-								Верным и надёжным инструментом в создании серверной части сайта был и 
-								есть Django. Тиме очень нравится писать сайты на Django, хотя бы потому что сайты 
-								на Django - это модульные сайты. И написав однажды Django приложение 
-								( а именно так называется модуль сайта в Django), ты можешь использовать его
-								 вновь, но уже на другом сайте.
-							{% endblocktrans %}
-							</div>
-							<div class="content_body__text">
-							{% blocktrans %}
-								Создавая сайты на Django я буду уверен в том что:
-							{% endblocktrans %}
-								<div class="list_simple">
-									<div class="list_simple_el">
-										<div class="list_simple_el__sign">◼️</div>
-										<div class="list_simple_el__text">{% trans "Получится мультиязычный сайт" %}</div>
-									</div>
-									<div class="list_simple_el">
-										<div class="list_simple_el__sign">◼️</div>
-										<div class="list_simple_el__text">{% trans "Легко поддерживаемый сайт" %}</div>
-									</div>
-									<div class="list_simple_el">
-										<div class="list_simple_el__sign">◼️</div>
-										<div class="list_simple_el__text">{% trans "Легко администрируемый сайт" %}</div>
-									</div>
-									<div class="list_simple_el">
-										<div class="list_simple_el__sign">◼️</div>
-										<div class="list_simple_el__text">{% trans "Изменить и улучшить любой аспект сайта будет просто" %}</div>
-									</div>
-									<div class="list_simple_el">
-										<div class="list_simple_el__sign">◼️</div>
-										<div class="list_simple_el__text">{% trans "Продвигать сайт на django не составит труда." %}</div>
-									</div>
-								</div>
-							</div>
-							<div class="content_body__text">
-							</div>
-						</div>
-					</div>
-					<div class="content_body__toggler">
-						<div class="content_body__title content_body__toggler_header">
-							<div class="content_body__toggler_header--sign">▶</div><h3>{% trans "Фронтэнд и вёрстка сайтов, c использованием jQuery и JS" %}</h3>
-						</div>
-						<div class="content_body__toggler_body hidden">
-							<div class="content_body__text">
-							{% blocktrans %}
-								Хоть Тим и не позиционирую себя как фронтендер, но очень часто приходится верстать
-								страницы и думать о том как бы сделать их хотя бы нормально выглядящими.
-								Единственный фреймворк который Тим хорошо освоил это <b>jQuery</b>, и то только для того чтобы 
-								не утомлять своих гостей и читателей бесконечными перезагрузками страниц. 
-								Тим хотел добиться максимальной динамичности сайта с помощью ajax запросов.
-							{% endblocktrans %}
-							</div>
-							<div class="content_body__text">
-							{% blocktrans %}
-								Конечно, рано или поздно я опущусь в бездну <b>JS Фреймворков</b>, ведь это как минимум 
-								интересно, но пока мне хватает простого и стильного дизайна. Ничего лишнего, только суть.
-							{% endblocktrans %}
-							</div>
-						</div>
-					</div>
-					<div class="content_body__toggler">
-						<div class="content_body__title content_body__toggler_header">
-							<div class="content_body__toggler_header--sign">▶</div><h3>{% trans "Копирайтинг и связанное с ним продвижение контента" %}</h3>
-						</div>
-						<div class="content_body__toggler_body hidden">
-							<div class="content_body__text">
-							{% blocktrans %}
-								Копирайтинг, наверное самая важная часть трудов в интернете. 
-								Ведь, если ты не интересно пишешь и не можешь донести свои мысли, 
-								в чём смысл тогда? Ну не в картинках и и красивой анимации так точно, хотя
-								их важность отрицать тоже нельзя.
-							{% endblocktrans %}
-							</div>
-							<div class="content_body__text">
-							{% blocktrans %}
-								В плане предоставляемых услуг копирайтинга входит:
-							{% endblocktrans %}
-								<div class="list_simple">
-									<div class="list_simple_el">
-										<div class="list_simple_el__sign">◼️</div>
-										<div class="list_simple_el__text">{% trans "Написание посадочных страниц для сайтов" %}</div>
-									</div>
-									<div class="list_simple_el">
-										<div class="list_simple_el__sign">◼️</div>
-										<div class="list_simple_el__text">{% trans "Написание рекламных объявлений в Яндекс.Директ и в Google Ads" %}</div>
-									</div>
-									<div class="list_simple_el">
-										<div class="list_simple_el__sign">◼️</div>
-										<div class="list_simple_el__text">{% trans "Написание новостей и пресс-релизов" %}</div>
-									</div>
-									<div class="list_simple_el">
-										<div class="list_simple_el__sign">◼️</div>
-										<div class="list_simple_el__text">{% trans "Написание объявлений для онлайн досок" %}</div>
-									</div>
-									<div class="list_simple_el">
-										<div class="list_simple_el__sign">◼️</div>
-										<div class="list_simple_el__text">{% trans "Написание постов для соцсетей" %}</div>
-									</div>
-									<div class="list_simple_el">
-										<div class="list_simple_el__sign">◼️</div>
-										<div class="list_simple_el__text">{% trans "Написание SEO/LSI текстов" %}</div>
-									</div>
-								</div>
-							</div>
-							<div class="content_body__text">
-							{% blocktrans %}
-								Это те направления которые я освоил и у меня есть опыт работы.
-							{% endblocktrans %}
-							</div>
-						</div>
-					</div>
-					<div class="content_body__toggler">
-						<div class="content_body__title content_body__toggler_header">
-							<div class="content_body__toggler_header--sign">▶</div><h3>{% trans "Геймдев и игровые движки" %}</h3>
-						</div>
-						<div class="content_body__toggler_body hidden">
-							<div class="content_body__text">
-							{% blocktrans %}
-								Скажу сразу, я давно уже забросил это неблагодарное дело. Но у меня есть куча 
-								историй связанных с этой темой, да и пара мыслей тоже, так и чешется рассказать. Кто знает, может когда-нибудь
-								попробую снова.
-								{% endblocktrans %}
-							</div>
-							<div class="content_body__text">
-							{% blocktrans %}
-								Я делал игры, как используя библиотеки на С++ (<b>SFML</b>, <b>SDL2</b>, <b>Urho3D</b>, <b>Cocos2dx</b>),
-								так и игровые движки ( Unity, Godot )
-								Чёрт, да я даже написал свой движок на С++ и OpenGL. ( Это один из моих проектов, про который 
-								я расскажу подробнее )
-								{% endblocktrans %}
-							</div>
-						</div>
-					</div>
-					<div class="content_body__toggler">
-						<div class="content_body__title content_body__toggler_header">
-							<div class="content_body__toggler_header--sign">▶</div><h3>{% trans "Разработка GUI приложение на десктоп и мобильные телефоны на фреймворках tkinter, kivy и godot" %}</h3>
-						</div>
-						<div class="content_body__toggler_body hidden">
-							<div class="content_body__text">
-							{% blocktrans %}
-								В отличие от игр я до сих пор делаю десктопные программы ( с GUI и TUI ). В основном
-								я их пишу с чисто прикладной целью, просто чтобы облегчить мне жизнь. 
-								{% endblocktrans %}
-							</div>
-							<div class="content_body__text">
-							{% blocktrans %}
-								Для десктопов на Windows, Linux, MacOS Тима использует tkinter ибо он тот ещё
-								python разработчик.
-								{% endblocktrans %}
-							</div>
-							<div class="content_body__text">
-							{% blocktrans %}
-								Для мобильных устройств на Android Тима использует kivy.
-								{% endblocktrans %}
-							</div>
-							<div class="content_body__text">
-							{% blocktrans %}
-								Так же, для более быстрой разработки GUI приложений можно делать их в Godot (игровой движок).
-								Вы скажете: "Он же для игр!". А Тим ответит: "Ну и что?". У него есть графический интерфейс разработки, что 
-								делает его в 100 раз более доступным для заказчиков, ведь им просто можно открыть редактор и дотянуть или
-								перетянуть графику, если им не понраву старая. Это гораздо проще чем рыться в чьём-то коде.
-
-								Плюс, такие приложение уже по дефолту кросплатформенные.
-								{% endblocktrans %}
-							</div>
-						</div>
-					</div>
-					<div class="content_body__toggler">
-						<div class="content_body__title content_body__toggler_header">
-							<div class="content_body__toggler_header--sign">▶</div><h3>{% trans "Скриптинг и автоматизация задач" %}</h3>
-						</div>
-						<div class="content_body__toggler_body hidden">
-							<div class="content_body__text">
-							{% blocktrans %}
-								Для любого системного администратора, или человека которому нужно выполнить
-								работу с большим количеством повторяющихся задач, написание скриптов первостепенный навык. 
-								Тима пишет bash скрипты и скрипты на python. Хорошо освоил js скриптинг. Может также писать скрипты на lua ( но маловероятно что кто-то вообще знает об этом языке, но просто знайте ). И они сэкономили не один десяток часов его работы.
-								{% endblocktrans %}
-							</div>
-						</div>
-					</div>
-					<div class="content_body__toggler">
-						<div class="content_body__title content_body__toggler_header">
-							<div class="content_body__toggler_header--sign">▶</div><h3>{% trans "Телеграм боты и чат боты" %}</h3>
-						</div>
-						<div class="content_body__toggler_body hidden">
-							<div class="content_body__text">
-							{% blocktrans %}
-								Ботов для telegram, изначально создавались им из любопытства, Тиме было интересно
-								для чего их можно применить, кроме того как управлять группой в telegram. Как 
-								оказалось ботов можно легко и просто встроить в сайт и тем самым сделать такую 
-								сообщающуюся систему из сайта/telegram-группа. Или создать парсер новостей об 
-								оружии ( например ), потом добавляешь парсер к скрипту который автоматизирует
-								 процесс запуска парсера ежедневно и подсоединяешь к нему telegram-бота
-								 и ты получаешь группу с автоматическим обновлением контента. В своей практике 
-								Тима использует aiogram и pyTelegramBotAPI
-								{% endblocktrans %}
-							</div>
-						</div>
-					</div>
-					<div class="content_body__toggler">
-						<div class="content_body__title content_body__toggler_header">
-							<div class="content_body__toggler_header--sign">▶</div><h3>{% trans "Парсеры сайтов" %}</h3>
-						</div>
-						<div class="content_body__toggler_body hidden">
-							<div class="content_body__text">
-							{% blocktrans %}
-								Парсинг ( теже скрипты) только их цель собрать/отфильтровать информацию в большом
-								объёме с сайта и предоставить в удобоваримом виде для человека. Будь то csv или xml файл.
-								Тимон использую при парсинге <b>beatufulsoup</b> ( и <b>selenium</b> при необходимости рендерить страницу). 
-								Хотя идеальный парсер это тот который использует API 
-								сайтов и получает информацию напрямую с сайта. Это сделать гораздо проще и быстрее чем передвигаться по 
-								DOM структуре.
-								{% endblocktrans %}
-							</div>
-							<div class="content_body__text">
-							{% blocktrans %}
-								Парсеры пишуться либо на JS либо на Python. Предпочтительней python ибо они более гибки в настройках и
-								использовании. У меня есть целая колекция бесплатных парсеров, которые можно скачать и поиграть с ними.
-								{% endblocktrans %}
-							</div>
-						</div>
-					</div>
-			</div>
-			<div class="content_body__block">
-				<div class="content_body__title ">
-					<h2>{% trans "Актуальный контент" %}</h2>
-				</div>
-				<div class="content_body__tiles">
-					<div id="tile1" class="content_body__tile tile_choosen">
-						<div class="content_body__tile_head">
-							<h3>{% trans "Самые свежие комментарии" %} </h3>
-						</div>
-						<div class="content_body__tile_body">
-							{% for com in comments %}
-							<div class="comments_el">
-								<div class="comments_el__meta">
-									<div class="comments_el__meta_el comments_el__user">
-										<div class="comments_el__user_avatar">
-											{% if com.user.avatar|length > 0 %}
-											<img class="icon icon_avatar" src='{{media_root}}{{ com.user.avatar }}' alt="{% trans "Твоя иконка" %}">
-											{% else %}
-											<img class="icon icon_avatar" src="{% static 'User/img/default_avatar.png' %}" alt="{% trans "Иконка по умолчанию" %}">
-											{% endif %}
-										</div>
-										<div class="comments_el__user_name">
-											{{com.user}}
-										</div>
-									</div>
-									<div class="comments_el__meta_el">
-										{{com.timeCreated}}
-									</div>
-								</div>
-								<div class="comments_el__content">
-									{{com.content}}
-								</div>
-							</div>
-							{% endfor %}
-						</div>
-					</div>
-					<div id="tile2" class="content_body__tile">
-						<div class="content_body__tile_head">
-							<h3> {% trans "Новые кейсы"%} </h3>
-						</div>
-						<div class="content_body__tile_body">
-							{% for case in cases %}
-							<div id="curr_case__container" class="curr_case__container case__container">
-								<div class="case_header">
-									<div class="case_tosite post_title">
-										<a href="{{ case.get_absolute_url }}">{{ case.name }}</a>
-									</div>
-								</div>
-								<div class="case_tags">
-									{% for tag in case.tags.all %}
-									<div class="case_tags__el">
-										{{tag}}
-									</div>
-									{% endfor %}
-								</div>
-								<div class="case_description">
-									{{ case.short_description|truncatewords:50 }}
-									<div class="case_site case_tosite" >
-										<a href="{{ case.get_absolute_url }}"><b>{% trans "Ещё" %}</b></a>
-									</div>
-								</div>
-								<div class="case_footer">
-									<div class="case_site case_tosite" >
-										<b>{% trans "Опубликованно:" %} </b>{{ case.timeCreated }}
-									</div>
-								</div>
-							</div>
-							{% endfor %}
-						</div>
-					</div>
-					<div id="tile3" class="content_body__tile">
-						<div class="content_body__tile_head">
-							<h3> {% trans "Новые посты" %} </h3>
-						</div>
-						<div class="content_body__tile_body">
-						{% for a in articles %}
-						<div class="post">
-							<div class="post_content">
-								<div class="post_topost post_title">
-									<a href="{{ a.get_absolute_url }}">{{a.name}}</a>
-								</div>
-								<div class="post_timing">
-									<div class="post_created post_timing__el">
-										<div class="post_el--description"><b>{% trans "Опубликованно:" %}</b></div><div>{{a.timeCreated|date:"d.m.Y"}}</div>
-									</div>
-									<div class="post_updated post_timing__el">
-										<div  class="post_el--description"><b>{% trans "Обновленно:" %}</b></div> {{a.timeUpdated|date:"d.m.Y"}}
-									</div>
-									<div class="post_insights">
-										<div class="post_insights__el">
-											<div class="post_el--description"><b>{% trans "Просмотров:"%}</b></div> {{a.viewed}}
-										</div>
-										<div class="post_insights__el">
-											<div class="post_el--description"><b>{% trans "Нравится:"%}</b></div> {{a.likes}}
-										</div>
-										<div class="post_insights__el">
-											<div class="post_el--description"><b>{% trans "Поделилось:" %}</b></div> {{a.shares}}
-										</div>
-									</div>
-								</div>
-								<div class="post_flairs">
-									<div class="post_title__subtitle">
-										<b>{% trans "Теги:"%}</b>
-									</div>
-									<div class="flair_container">
-										{% for tag in a.tags.all %}
-										<div class="flair_el">
-											{{tag}}
-										</div>
-										{% endfor %}
-									</div>
-								</div>
-								<div class="post_description">
-									<div class="post_title__subtitle">
-										<b>{% trans "Описание:"%}</b>
-									</div>
-									<div class="post_description__description">
-										{{a.short_description}} 	
-										<span class="post_topost">
-											<a href="{{ a.get_absolute_url }}">{% trans "Ещё"%}</a>
-										</span>
-									</div>
-								</div>
-							</div>
-						</div>
-
-						{% endfor %}
-						</div>
-					</div>
-					<div id="tile4" class="content_body__tile">
-						<div class="content_body__tile_head">
-							<h3> {% trans "Недавние новости"%} </h3>
-						</div>
-						<div class="content_body__tile_body">
-						{% for a in news %}
-						<div class="post">
-							<div class="post_content">
-								<div class="news_header">
-									<div class="post_topost post_title">
-										<a href="{{ a.get_absolute_url }}">{{a.name}}</a>
-									</div>
-									<div class="post_timing">
-										<div class="post_created post_timing__el">
-											<div class="post_el--description"><b>{% trans "Опубликованно:" %}</b></div><div>{{a.timeCreated|date:"d.m.Y"}}</div>
-										</div>
-									</div>
-								</div>
-								<div class="post_description">
-									<div class="post_description__description without_borders">
-										{{a.short_description}} 	
-										<span class="post_topost">
-											<a href="{{ a.get_absolute_url }}">{% trans "Ещё" %}</a>
-										</span>
-									</div>
-								</div>
-							</div>
-						</div>
-
-						{% endfor %}
-						</div>
-					</div>
+				<div id="more_news" class="button in_middle">
+					<p>
+					{% trans 'Ещё' %}
+					</p>
 				</div>
 			</div>
 		</div>
 	</div>
+</div>
 {% endblock %}
 
 {% block styles %}
     <link type="text/css" rel="stylesheet" href="{% static 'Main/css/titles.css' %}"/>
     <link type="text/css" rel="stylesheet" href="{% static 'Main/css/text.css' %}"/>
-    <link type="text/css" rel="stylesheet" href="{% static 'Main/css/toggler.css' %}"/>
-    <link type="text/css" rel="stylesheet" href="{% static 'Main/css/tiles.css' %}"/>
     <link type="text/css" rel="stylesheet" href="{% static 'Main/css/lists.css' %}"/>
     <link type="text/css" rel="stylesheet" href="{% static 'User/css/comment.css' %}"/>
     <link type="text/css" rel="stylesheet" href="{% static 'Post/css/list.css' %}"/>
-    <link type="text/css" rel="stylesheet" href="{% static 'Post/css/pager.css' %}"/>
+    <link type="text/css" rel="stylesheet" href="{% static 'Post/css/news.css' %}"/>
 {% endblock %}
 
 {% block scripts %}
@@ -535,6 +85,5 @@
     <script>
         const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
     </script>
-    <script src="{% static 'Main/js/toggler.js' %}"></script>
-    <script src="{% static 'Main/js/tiles.js' %}"></script>
+    <script src="{% static 'Main/js/home_button.js' %}"></script>
 {% endblock %}

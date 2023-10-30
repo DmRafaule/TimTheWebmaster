@@ -16,7 +16,10 @@
 
 {% block content %}
 <div class="page">
-<div class="main_wrapper">
+<div class="main_wrapper full_height column">
+	<div class="content_body__title content_body__title--simple">
+		<h2>{% trans 'Форма регистрации' %}</h2>
+	</div>
 	<div id="common-error" class="hint-container hint-required hint-common_error"></div>
     {% csrf_token %}
 	<div class="form">
@@ -57,7 +60,7 @@
 		<input class="form_el__file" placeholder="{% trans "выбрать файл" %}" type="file" name="file" id="file">
 	</div>
 	<div class="buttons">
-		<div id="signup" class="button button-middle">
+		<div id="signup" class="button ">
 			<a>{% trans "Регистрация" %}</a>
 		</div>
 	</div>

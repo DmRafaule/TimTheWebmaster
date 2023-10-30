@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-08 09:55+0000\n"
+"POT-Creation-Date: 2023-10-29 17:09+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -50,7 +50,7 @@ msgstr ""
 "About webmaster Tim Chuduk. His history, interests and services "
 "providedwebsite development, telegram bots, scripts, parsers and copywriting"
 
-#: Main/templates/Main/about.html:12 Main/templates/Main/base.html:173
+#: Main/templates/Main/about.html:12 Main/templates/Main/base.html:184
 msgid "Об Авторе"
 msgstr "About author"
 
@@ -335,135 +335,123 @@ msgstr ""
 "A young guy with a half-box haircut, blue eyes and a little elongatedface. "
 "Brunette"
 
-#: Main/templates/Main/about.html:156
-msgid "P.S. О стиле повествования"
-msgstr "P.S. About the storytelling style"
-
-#: Main/templates/Main/about.html:159
-msgid ""
-"Выбранный мною стиль изложения, художественный приём, а не психическое "
-"расстройство личности ;)"
-msgstr ""
-"The style of presentation I have chosen is an artistic device, not a mental "
-"onepersonality disorder ;)"
-
-#: Main/templates/Main/base.html:39 Main/templates/Main/base.html:106
+#: Main/templates/Main/base.html:67 Main/templates/Main/base.html:133
 msgid "Открывающаяся дверь"
 msgstr "Opening door"
 
-#: Main/templates/Main/base.html:48 Main/templates/Main/base.html:115
+#: Main/templates/Main/base.html:74 Main/templates/Main/base.html:140
 msgid "Твой аватар"
 msgstr "Your avatar"
 
-#: Main/templates/Main/base.html:50 Main/templates/Main/base.html:117
+#: Main/templates/Main/base.html:76 Main/templates/Main/base.html:142
 msgid "Аватар по умолчанию"
 msgstr "Avatar by default"
 
-#: Main/templates/Main/base.html:56 Main/templates/Main/base.html:123
+#: Main/templates/Main/base.html:81 Main/templates/Main/base.html:147
 msgid "Стрелка из дверей"
 msgstr "Arrow from the door"
 
-#: Main/templates/Main/base.html:60
-msgid "Меню"
-msgstr "Menu"
-
-#: Main/templates/Main/base.html:69 Main/templates/Main/base.html:70
+#: Main/templates/Main/base.html:97 Main/templates/Main/base.html:98
 msgid "Контактная страница Тимы"
 msgstr "Contacts page of Tim"
 
-#: Main/templates/Main/base.html:70
+#: Main/templates/Main/base.html:98
 msgid "email иконка"
 msgstr "email icon"
 
-#: Main/templates/Main/base.html:82
+#: Main/templates/Main/base.html:110
 msgid "Об авторе"
 msgstr "About author"
 
-#: Main/templates/Main/base.html:85
+#: Main/templates/Main/base.html:113
 msgid "Контакты автора"
 msgstr "Contacts of author"
 
-#: Main/templates/Main/base.html:88
+#: Main/templates/Main/base.html:116
 msgid "Карта сайта"
 msgstr "Sitemap"
 
-#: Main/templates/Main/base.html:107
+#: Main/templates/Main/base.html:134
 msgid "Вход"
 msgstr "Login"
 
-#: Main/templates/Main/base.html:119
+#: Main/templates/Main/base.html:144
 msgid "Профиль"
 msgstr "Profile"
 
-#: Main/templates/Main/base.html:124
+#: Main/templates/Main/base.html:148
 msgid "Выход"
 msgstr "Logout"
 
-#: Main/templates/Main/base.html:130
+#: Main/templates/Main/base.html:153
 msgid "Домик"
 msgstr "House"
 
-#: Main/templates/Main/base.html:131 Main/templates/Main/home.html:6
+#: Main/templates/Main/base.html:154 Main/templates/Main/home.html:6
 msgid "Домашняя"
 msgstr "Home"
 
-#: Main/templates/Main/base.html:137
+#: Main/templates/Main/base.html:158
 msgid "Чертежи и линейки"
 msgstr "Blueprints and rulers"
 
-#: Main/templates/Main/base.html:138
+#: Main/templates/Main/base.html:159
 msgid "Проекты"
 msgstr "Projects"
 
-#: Main/templates/Main/base.html:144
+#: Main/templates/Main/base.html:163
 msgid "Листок и ручка"
 msgstr "Piece of paper and pen"
 
-#: Main/templates/Main/base.html:145
+#: Main/templates/Main/base.html:164
 msgid "Статьи"
 msgstr "Articles"
 
-#: Main/templates/Main/base.html:151
+#: Main/templates/Main/base.html:168
 msgid "Газетные вырезки"
 msgstr "Newspaper parts"
 
-#: Main/templates/Main/base.html:152
+#: Main/templates/Main/base.html:169 Main/templates/Main/home.html:54
 msgid "Новости"
 msgstr "News"
 
-#: Main/templates/Main/base.html:158 Main/templates/Main/home.html:31
+#: Main/templates/Main/base.html:173
 msgid "Чемодан"
 msgstr "Case"
 
-#: Main/templates/Main/base.html:159
+#: Main/templates/Main/base.html:174
 msgid "Кейсы"
 msgstr "Cases"
 
-#: Main/templates/Main/base.html:165
+#: Main/templates/Main/base.html:178
 msgid "Шестерня"
 msgstr "Gear"
 
-#: Main/templates/Main/base.html:166 Main/templates/Main/services.html:12
+#: Main/templates/Main/base.html:179 Main/templates/Main/services.html:12
 msgid "Услуги"
 msgstr "Services"
 
-#: Main/templates/Main/base.html:172
+#: Main/templates/Main/base.html:183
 msgid "Буква i"
 msgstr "Letter i"
 
-#: Main/templates/Main/base.html:179
+#: Main/templates/Main/base.html:188
 msgid "Контактный блокнот"
 msgstr "Contacts notebook"
 
-#: Main/templates/Main/base.html:180 Main/templates/Main/contacts.html:12
+#: Main/templates/Main/base.html:189 Main/templates/Main/contacts.html:12
 msgid "Контакты"
 msgstr "Contacts"
 
-#: Main/templates/Main/base.html:192 Main/templates/Main/base.html:194
-msgid "флаг"
-msgstr "flag"
+#: Main/templates/Main/base.html:195
+msgid "Русский флаг"
+msgstr "Russian flag"
 
-#: Main/templates/Main/base.html:200
+#: Main/templates/Main/base.html:198
+msgid "Американский флаг"
+msgstr "UK flag"
+
+#: Main/templates/Main/base.html:202
 msgid "Назад"
 msgstr "Back"
 
@@ -506,7 +494,7 @@ msgid "имя"
 msgstr "name"
 
 #: Main/templates/Main/contacts.html:75 Main/templates/Main/contacts.html:82
-#: Main/views.py:75 Main/views.py:76
+#: Main/views.py:84 Main/views.py:85
 msgid "обязательно"
 msgstr "required"
 
@@ -546,668 +534,17 @@ msgstr ""
 msgid "Тим, вебмастер"
 msgstr "Tim the Webmaster"
 
-#: Main/templates/Main/home.html:19
-msgid "Тим, он же Вебмастер"
-msgstr "Tim, aka Webmaster"
+#: Main/templates/Main/home.html:23
+msgid "Недавние статьи"
+msgstr "Recent articles"
 
-#: Main/templates/Main/home.html:21
-msgid ""
-"\"А ещё он пишет парсеры, телеграм ботов, скрипты, разрабатывает сайты и "
-"конечно занимается копирайтингом.\""
-msgstr ""
-"\"And he also writes parsers, telegram bots, scripts, develops websites and "
-"of course he does copywriting.\""
-
-#: Main/templates/Main/home.html:27
-msgid "Что есть на сайте, его разделы."
-msgstr "What is on the site, its sections."
-
-#: Main/templates/Main/home.html:33
-msgid ""
-"Примеры оказаных <b>услуг</b> и <b>работ</b> Тимона ( или просто его "
-"<b>кейсы</b>). Раздел, где Тим показывает и рассказывает ход и результат "
-"выполненой услуги/работы."
-msgstr ""
-"Examples of rendered <b>services</b> and <b>work</b> by Timon (or simply his "
-"<b>cases</b>). The section where Tim shows and tells the process and the "
-"resultservice/work performed."
-
-#: Main/templates/Main/home.html:36
-msgid "К кейсам ➨"
-msgstr "To cases ➨"
-
-#: Main/templates/Main/home.html:40
-msgid "Вырезка из новостей"
-msgstr "Newspaper part"
-
-#: Main/templates/Main/home.html:42
-msgid ""
-"<b>Новости</b>. Здесь можно найти новости о Тиме, свежие новости связаные со "
-"сферами его деятельности и просто объявления."
-msgstr ""
-"<b>News</b>. Here you can find news about Tim, the latest news related to "
-"areas of his activity and just announcements."
-
-#: Main/templates/Main/home.html:45
-msgid "К новостям ➨"
-msgstr "To news ➨"
-
-#: Main/templates/Main/home.html:49
-msgid "Страница с ручкой"
-msgstr "Page wit a pen"
-
-#: Main/templates/Main/home.html:51
-msgid ""
-"\n"
-"\t\t\t\t\t\t\t<b>Статьи</b>. А тут можно ознакомиться с иследованиям, опытом "
-"и прочей полезной информацией для <b>вебмастеров</b>, <b>бэкенд "
-"разработчиков</b>, \n"
-"\t\t\t\t\t\t\t<b>копирайтеров</b>, <b>lua разработчиков</b>, <b>python "
-"разработчиков</b> на соответствующие темы.\n"
-"\t\t\t\t\t\t\t"
-msgstr ""
-"\n"
-"\t\t\t\t\t\t\t<b>Articles</b>. And here you can get acquainted with the "
-"research and experience and other useful information for <b>webmasters</b>, "
-"<b>backend developers</b>,\n"
-"\t\t\t\t\t\t\t<b>copywriters</b>, <b>lua developers</b>, <b>python "
-"developers</b>on relevant topics.\n"
-"\t\t\t\t\t\t\t"
-
-#: Main/templates/Main/home.html:57
-msgid "К статьям ➨"
-msgstr "To articles ➨"
+#: Main/templates/Main/home.html:37
+msgid "Недавние кейсы"
+msgstr "Recent cases"
 
 #: Main/templates/Main/home.html:61
-msgid "Чертёж и линейка"
-msgstr "Blueprints and ruler"
-
-#: Main/templates/Main/home.html:63
-msgid ""
-"\n"
-"\t\t\t\t\t\t\t<b>Проекты</b>. В этом разделе собраны мои проекты. Грубо "
-"говоря это большие кейсы или как я их называю, лучшие убийцы времени.\n"
-"\t\t\t\t\t\t\t"
-msgstr ""
-"\n"
-"\t\t\t\t\t\t\t<b>Projects</b>. This section contains my projects. Rough "
-"speaking these are big cases or as I call them, the best time killers.\n"
-"\t\t\t\t\t\t\t"
-
-#: Main/templates/Main/home.html:68
-msgid "К проектам ➨"
-msgstr "To projects ➨"
-
-#: Main/templates/Main/home.html:72
-msgid "Стрелка в дверь"
-msgstr "Arrow that points to door"
-
-#: Main/templates/Main/home.html:74
-msgid ""
-"\n"
-"\t\t\t\t\t\t\t<b>Регистрация</b>, зарегистрировшись ты сможешь коментировать "
-"и получать уведомления в личном кабинет. \n"
-"\t\t\t\t\t\t\t"
-msgstr ""
-"\n"
-"\t\t\t\t\t\t\t<b>Registration</b>, by registering you will be able to "
-"commentand receive notifications in your personal account.\n"
-"\t\t\t\t\t\t\t"
-
-#: Main/templates/Main/home.html:79
-msgid "Войти ➨"
-msgstr "Login ➨"
-
-#: Main/templates/Main/home.html:86
-msgid "О чём любит писать Тимон, темы которые он затрагивает"
-msgstr "What Timon likes to write about, the topics he touches on"
-
-#: Main/templates/Main/home.html:90
-msgid "Системное администрирование, хостинг"
-msgstr "System administration, hosting"
-
-#: Main/templates/Main/home.html:94
-msgid ""
-"\n"
-"\t\t\t\t\t\t\tТим использует Arch кстати. Не совсем уверен что эта шутка "
-"популярна или известна \n"
-"\t\t\t\t\t\t\tв русском сегменте интернета, но Тим всё равно её оставит, "
-"потому что он использует \n"
-"\t\t\t\t\t\t\tArch Linux, и он люблю линукс. \n"
-"\t\t\t\t\t\t\t"
-msgstr ""
-"\n"
-"\t\t\t\t\t\t\tTim uses Arch by the way. Not entirely sure if this is a "
-"jokepopular or famous\n"
-"\t\t\t\t\t\t\tin the Russian segment of the Internet, but Tim will still "
-"leave her,because it uses \n"
-"\t\t\t\t\t\t\tArch Linux, and he loves Linux.\n"
-"\t\t\t\t\t\t\t"
-
-#: Main/templates/Main/home.html:101
-msgid ""
-"\n"
-"\t\t\t\t\t\t\tЭто была подводка про то, что большая часть серверов это linux "
-"или unix машин\n"
-"\t\t\t\t\t\t\tи знание того как ими управлять и как их настраивать, очень "
-"важно для вебмастера\n"
-"\t\t\t\t\t\t\tвроде Тимы. И если дорогие читатели понимают что такое "
-"Unixporn или поняли \n"
-"\t\t\t\t\t\t\tшутку про Arch, то вы там где надо :)\n"
-"\t\t\t\t\t\t\t"
-msgstr ""
-"\n"
-"\t\t\t\t\t\t\tThis was a tip about the fact that most of the servers are "
-"Linuxor unix machines\n"
-"\t\t\t\t\t\t\tand knowing how to operate them and how to configure them is "
-"veryimportant for webmaster\n"
-"\t\t\t\t\t\t\tlike Tima. And if dear readers understand what it isUnixporn "
-"or understood\n"
-"\t\t\t\t\t\t\ta joke about Arch, then you are in the right place :)\n"
-"\t\t\t\t\t\t\t"
-
-#: Main/templates/Main/home.html:109
-msgid ""
-"\n"
-"\t\t\t\t\t\t\tВ этом сегменте я буду рассказывать про системное "
-"администрирование linux, его настройку, советы,\n"
-"\t\t\t\t\t\t\t предупреждения и просто делиться впечатлениями. Так же, этот "
-"раздел про настройку хостинга и размещение сайтов на хостинге. Покажу и "
-"расскажу про \n"
-"\t\t\t\t\t\t\tмоё рабочее окружение, как я его сделал, что использую и как "
-"справляюсь\n"
-"\t\t\t\t\t\t\tбез Windows.\n"
-"\t\t\t\t\t\t\t"
-msgstr ""
-"\n"
-"\t\t\t\t\t\t\tIn this segment I will talk about the systemlinux "
-"administration, its configuration, tips,\n"
-"\t\t\t\t\t\t\t warnings and just share your impressions. Also, this section "
-"about setting up hosting and placing websites on hosting. I'll show you and "
-"I'll tell you about \n"
-"\t\t\t\t\t\t\tmy work environment, how I made it, what I use and howI'm "
-"coping\n"
-"\t\t\t\t\t\t\twithout Windows.\n"
-"\t\t\t\t\t\t\t"
-
-#: Main/templates/Main/home.html:122
-msgid "Бэкенд разработка сайтов на Django и python"
-msgstr "Backend website development using Django and python"
-
-#: Main/templates/Main/home.html:126
-msgid ""
-"\n"
-"\t\t\t\t\t\t\t\tВерным и надёжным инструментом в создании серверной части "
-"сайта был и \n"
-"\t\t\t\t\t\t\t\tесть Django. Тиме очень нравится писать сайты на Django, "
-"хотя бы потому что сайты \n"
-"\t\t\t\t\t\t\t\tна Django - это модульные сайты. И написав однажды Django "
-"приложение \n"
-"\t\t\t\t\t\t\t\t( а именно так называется модуль сайта в Django), ты можешь "
-"использовать его\n"
-"\t\t\t\t\t\t\t\t вновь, но уже на другом сайте.\n"
-"\t\t\t\t\t\t\t"
-msgstr ""
-"\n"
-"\t\t\t\t\t\t\t\tA true and reliable tool in creating a server partthere was "
-"a site and \n"
-"\t\t\t\t\t\t\t\tthere is Django. Tim really likes writing websites in Django,"
-"at least because the sites\n"
-"\t\t\t\t\t\t\t\ton Django are modular sites. And having once written Django "
-"application\n"
-"\t\t\t\t\t\t\t\t(this is what the site module is called in Django), you can "
-"use it\n"
-"\t\t\t\t\t\t\t\t again, but on a different site.\n"
-"\t\t\t\t\t\t\t"
-
-#: Main/templates/Main/home.html:135
-msgid ""
-"\n"
-"\t\t\t\t\t\t\t\tСоздавая сайты на Django я буду уверен в том что:\n"
-"\t\t\t\t\t\t\t"
-msgstr ""
-"\n"
-"\t\t\t\t\t\t\t\t When creating sites on Django, I will be sure that:\n"
-"\t\t\t\t\t\t\t"
-
-#: Main/templates/Main/home.html:141
-msgid "Получится мультиязычный сайт"
-msgstr "Get a multilingual website"
-
-#: Main/templates/Main/home.html:145
-msgid "Легко поддерживаемый сайт"
-msgstr "Easy to maintain site"
-
-#: Main/templates/Main/home.html:149
-msgid "Легко администрируемый сайт"
-msgstr "Easy to administer site"
-
-#: Main/templates/Main/home.html:153
-msgid "Изменить и улучшить любой аспект сайта будет просто"
-msgstr "It will be easy to change and improve any aspect of the site"
-
-#: Main/templates/Main/home.html:157
-msgid "Продвигать сайт на django не составит труда."
-msgstr "Promoting a website using Django is not difficult."
-
-#: Main/templates/Main/home.html:167
-msgid "Фронтэнд и вёрстка сайтов, c использованием jQuery и JS"
-msgstr "Frontend and website layout using jQuery and JS"
-
-#: Main/templates/Main/home.html:171
-msgid ""
-"\n"
-"\t\t\t\t\t\t\t\tХоть Тим и не позиционирую себя как фронтендер, но очень "
-"часто приходится верстать\n"
-"\t\t\t\t\t\t\t\tстраницы и думать о том как бы сделать их хотя бы нормально "
-"выглядящими.\n"
-"\t\t\t\t\t\t\t\tЕдинственный фреймворк который Тим хорошо освоил это "
-"<b>jQuery</b>, и то только для того чтобы \n"
-"\t\t\t\t\t\t\t\tне утомлять своих гостей и читателей бесконечными "
-"перезагрузками страниц. \n"
-"\t\t\t\t\t\t\t\tТим хотел добиться максимальной динамичности сайта с помощью "
-"ajax запросов.\n"
-"\t\t\t\t\t\t\t"
-msgstr ""
-"\n"
-"\t\t\t\t\t\t\t\tAlthough Tim does not position himself as a front-end "
-"developer, I am very I often have to typeset\n"
-"\t\t\t\t\t\t\t\tpages and think about how to make them at least "
-"normallooking.\n"
-"\t\t\t\t\t\t\t\tThe only framework that Tim has mastered well is "
-"this<b>jQuery</b>, and then only to \n"
-"\t\t\t\t\t\t\t\tdon't bore your guests and readers with endless page "
-"reloads.\n"
-"\t\t\t\t\t\t\t\tTim wanted to make the site as dynamic as possible with ajax "
-"requests.\n"
-"\t\t\t\t\t\t\t"
-
-#: Main/templates/Main/home.html:180
-msgid ""
-"\n"
-"\t\t\t\t\t\t\t\tКонечно, рано или поздно я опущусь в бездну <b>JS "
-"Фреймворков</b>, ведь это как минимум \n"
-"\t\t\t\t\t\t\t\tинтересно, но пока мне хватает простого и стильного дизайна. "
-"Ничего лишнего, только суть.\n"
-"\t\t\t\t\t\t\t"
-msgstr ""
-"\n"
-"\t\t\t\t\t\t\t\tOf course, sooner or later I will fall into the abyss of "
-"<b>JS Frameworks</b>, because this is at least \n"
-"\t\t\t\t\t\t\t\tinteresting, but for now a simple and stylish design is "
-"enough for me.Nothing extra, just the essence.\n"
-"\t\t\t\t\t\t\t"
-
-#: Main/templates/Main/home.html:189
-msgid "Копирайтинг и связанное с ним продвижение контента"
-msgstr "Copywriting and related content promotion"
-
-#: Main/templates/Main/home.html:193
-msgid ""
-"\n"
-"\t\t\t\t\t\t\t\tКопирайтинг, наверное самая важная часть трудов в "
-"интернете. \n"
-"\t\t\t\t\t\t\t\tВедь, если ты не интересно пишешь и не можешь донести свои "
-"мысли, \n"
-"\t\t\t\t\t\t\t\tв чём смысл тогда? Ну не в картинках и и красивой анимации "
-"так точно, хотя\n"
-"\t\t\t\t\t\t\t\tих важность отрицать тоже нельзя.\n"
-"\t\t\t\t\t\t\t"
-msgstr ""
-"\n"
-"\t\t\t\t\t\t\t\tCopywriting is probably the most important part of the work "
-"in Internet.\n"
-"\t\t\t\t\t\t\t\tAfter all, if you don't write interestingly and can't convey "
-"your thoughts,\n"
-"\t\t\t\t\t\t\t\twhat's the point then? Well, not in pictures and beautiful "
-"animationThat's right, though\n"
-"\t\t\t\t\t\t\t\ttheir importance cannot be denied either.\n"
-"\t\t\t\t\t\t\t"
-
-#: Main/templates/Main/home.html:201
-msgid ""
-"\n"
-"\t\t\t\t\t\t\t\tВ плане предоставляемых услуг копирайтинга входит:\n"
-"\t\t\t\t\t\t\t"
-msgstr ""
-"\n"
-"\t\t\t\t\t\t\t\tThe copywriting services provided include:\n"
-"\t\t\t\t\t\t\t"
-
-#: Main/templates/Main/home.html:207
-msgid "Написание посадочных страниц для сайтов"
-msgstr "Writing landing pages for websites"
-
-#: Main/templates/Main/home.html:211
-msgid "Написание рекламных объявлений в Яндекс.Директ и в Google Ads"
-msgstr "Writing advertisements in Yandex.Direct and Google Ads"
-
-#: Main/templates/Main/home.html:215 Main/templates/Main/services.html:233
-msgid "Написание новостей и пресс-релизов"
-msgstr "Writing news and press releases"
-
-#: Main/templates/Main/home.html:219 Main/templates/Main/services.html:237
-msgid "Написание объявлений для онлайн досок"
-msgstr "Writing advertisements for online boards"
-
-#: Main/templates/Main/home.html:223
-msgid "Написание постов для соцсетей"
-msgstr "Writing posts for social networks"
-
-#: Main/templates/Main/home.html:227
-msgid "Написание SEO/LSI текстов"
-msgstr "Writing SEO/LSI texts"
-
-#: Main/templates/Main/home.html:232
-msgid ""
-"\n"
-"\t\t\t\t\t\t\t\tЭто те направления которые я освоил и у меня есть опыт "
-"работы.\n"
-"\t\t\t\t\t\t\t"
-msgstr ""
-"\n"
-"\t\t\t\t\t\t\t\tThese are the areas that I have mastered and have "
-"experiencework.\n"
-"\t\t\t\t\t\t\t"
-
-#: Main/templates/Main/home.html:240
-msgid "Геймдев и игровые движки"
-msgstr "Gamedev and game engines"
-
-#: Main/templates/Main/home.html:244
-msgid ""
-"\n"
-"\t\t\t\t\t\t\t\tСкажу сразу, я давно уже забросил это неблагодарное дело. Но "
-"у меня есть куча \n"
-"\t\t\t\t\t\t\t\tисторий связанных с этой темой, да и пара мыслей тоже, так и "
-"чешется рассказать. Кто знает, может когда-нибудь\n"
-"\t\t\t\t\t\t\t\tпопробую снова.\n"
-"\t\t\t\t\t\t\t\t"
-msgstr ""
-"\n"
-"\t\t\t\t\t\t\t\tI’ll say right away that I abandoned this thankless task a "
-"long time ago. But I have a bunch of \n"
-"\t\t\t\t\t\t\t\tstories related to this topic, and a couple of thoughts too, "
-"andI'm itching to tell. Who knows, maybe someday\n"
-"\t\t\t\t\t\t\t\tI'll try again.\n"
-"\t\t\t\t\t\t\t\t"
-
-#: Main/templates/Main/home.html:251
-msgid ""
-"\n"
-"\t\t\t\t\t\t\t\tЯ делал игры, как используя библиотеки на С++ (<b>SFML</b>, "
-"<b>SDL2</b>, <b>Urho3D</b>, <b>Cocos2dx</b>),\n"
-"\t\t\t\t\t\t\t\tтак и игровые движки ( Unity, Godot )\n"
-"\t\t\t\t\t\t\t\tЧёрт, да я даже написал свой движок на С++ и OpenGL. ( Это "
-"один из моих проектов, про который \n"
-"\t\t\t\t\t\t\t\tя расскажу подробнее )\n"
-"\t\t\t\t\t\t\t\t"
-msgstr ""
-"\n"
-"\t\t\t\t\t\t\t\tI made games using C++ libraries (<b>SFML</b>,<b>SDL2</b>, "
-"<b>Urho3D</b>, <b>Cocos2dx</b>),\n"
-"\t\t\t\t\t\t\t\tSo are game engines (Unity, Godot)\n"
-"\t\t\t\t\t\t\t\tHell, I even wrote my own engine in C++ and OpenGL. (This is "
-"one of my projects, about which \n"
-"\t\t\t\t\t\t\t\tI'll tell you more in detail)\n"
-"\t\t\t\t\t\t\t\t"
-
-#: Main/templates/Main/home.html:262
-msgid ""
-"Разработка GUI приложение на десктоп и мобильные телефоны на фреймворках "
-"tkinter, kivy и godot"
-msgstr ""
-"Development of GUI applications for desktop and mobile phones using "
-"frameworkstkinter, kivy and godot"
-
-#: Main/templates/Main/home.html:266
-msgid ""
-"\n"
-"\t\t\t\t\t\t\t\tВ отличие от игр я до сих пор делаю десктопные программы ( с "
-"GUI и TUI ). В основном\n"
-"\t\t\t\t\t\t\t\tя их пишу с чисто прикладной целью, просто чтобы облегчить "
-"мне жизнь. \n"
-"\t\t\t\t\t\t\t\t"
-msgstr ""
-"\n"
-"\t\t\t\t\t\t\t\tUnlike games, I still make desktop programs (with GUI and "
-"TUI). Mostly\n"
-"\t\t\t\t\t\t\t\tI write them for a purely practical purpose, just to make it "
-"easierlife for me.\n"
-"\t\t\t\t\t\t\t\t"
-
-#: Main/templates/Main/home.html:272
-msgid ""
-"\n"
-"\t\t\t\t\t\t\t\tДля десктопов на Windows, Linux, MacOS Тима использует "
-"tkinter ибо он тот ещё\n"
-"\t\t\t\t\t\t\t\tpython разработчик.\n"
-"\t\t\t\t\t\t\t\t"
-msgstr ""
-"\n"
-"\t\t\t\t\t\t\t\tFor desktops on Windows, Linux, MacOS Tim uses tkinter "
-"because he's the one\n"
-"\t\t\t\t\t\t\t\tpython developer.\n"
-"\t\t\t\t\t\t\t\t"
-
-#: Main/templates/Main/home.html:278
-msgid ""
-"\n"
-"\t\t\t\t\t\t\t\tДля мобильных устройств на Android Тима использует kivy.\n"
-"\t\t\t\t\t\t\t\t"
-msgstr ""
-"\n"
-"\t\t\t\t\t\t\t\tTim uses kivy for Android mobile devices.\n"
-"\t\t\t\t\t\t\t\t"
-
-#: Main/templates/Main/home.html:283
-msgid ""
-"\n"
-"\t\t\t\t\t\t\t\tТак же, для более быстрой разработки GUI приложений можно "
-"делать их в Godot (игровой движок).\n"
-"\t\t\t\t\t\t\t\tВы скажете: \"Он же для игр!\". А Тим ответит: \"Ну и что?"
-"\". У него есть графический интерфейс разработки, что \n"
-"\t\t\t\t\t\t\t\tделает его в 100 раз более доступным для заказчиков, ведь им "
-"просто можно открыть редактор и дотянуть или\n"
-"\t\t\t\t\t\t\t\tперетянуть графику, если им не понраву старая. Это гораздо "
-"проще чем рыться в чьём-то коде.\n"
-"\n"
-"\t\t\t\t\t\t\t\tПлюс, такие приложение уже по дефолту кросплатформенные.\n"
-"\t\t\t\t\t\t\t\t"
-msgstr ""
-"\n"
-"\t\t\t\t\t\t\t\tAlso, for faster development of GUI applications you can "
-"make them in Godot (game engine).\n"
-"\t\t\t\t\t\t\t\tYou will say: \"It's for games!\" And Tim will answer: \"So "
-"what?''\".It has a GUI development interface that\n"
-"\t\t\t\t\t\t\t\tmakes it 100 times more accessible to customers, because "
-"they you can just open the editor and drag or\n"
-"\t\t\t\t\t\t\t\tdrag the graphics if they don't like the old one. This is "
-"much easier than rummaging through someone's code.\n"
-"\n"
-"\t\t\t\t\t\t\t\tPlus, such applications are already cross-platform by "
-"default.\n"
-"\t\t\t\t\t\t\t\t"
-
-#: Main/templates/Main/home.html:296
-msgid "Скриптинг и автоматизация задач"
-msgstr "Scripting and automatization"
-
-#: Main/templates/Main/home.html:300
-msgid ""
-"\n"
-"\t\t\t\t\t\t\t\tДля любого системного администратора, или человека которому "
-"нужно выполнить\n"
-"\t\t\t\t\t\t\t\tработу с большим количеством повторяющихся задач, написание "
-"скриптов первостепенный навык. \n"
-"\t\t\t\t\t\t\t\tТима пишет bash скрипты и скрипты на python. Хорошо освоил "
-"js скриптинг. Может также писать скрипты на lua ( но маловероятно что кто-то "
-"вообще знает об этом языке, но просто знайте ). И они сэкономили не один "
-"десяток часов его работы.\n"
-"\t\t\t\t\t\t\t\t"
-msgstr ""
-"\n"
-"\t\t\t\t\t\t\t\tFor any system administrator, or person who needs to be "
-"done\n"
-"\t\t\t\t\t\t\t\twork with a large number of repetitive tasks, writing "
-"scripting is a primary skill.\n"
-"\t\t\t\t\t\t\t\tTima writes bash scripts and scripts in python. Mastered it "
-"welljs scripting. Can also write scripts in lua (but it is unlikely that "
-"anyone doesn't know about this language at all, but just know). And they "
-"saved more than oneten hours of his work.\n"
-"\t\t\t\t\t\t\t\t"
-
-#: Main/templates/Main/home.html:310
-msgid "Телеграм боты и чат боты"
-msgstr "Telegram bots and chat bots"
-
-#: Main/templates/Main/home.html:314
-msgid ""
-"\n"
-"\t\t\t\t\t\t\t\tБотов для telegram, изначально создавались им из "
-"любопытства, Тиме было интересно\n"
-"\t\t\t\t\t\t\t\tдля чего их можно применить, кроме того как управлять "
-"группой в telegram. Как \n"
-"\t\t\t\t\t\t\t\tоказалось ботов можно легко и просто встроить в сайт и тем "
-"самым сделать такую \n"
-"\t\t\t\t\t\t\t\tсообщающуюся систему из сайта/telegram-группа. Или создать "
-"парсер новостей об \n"
-"\t\t\t\t\t\t\t\tоружии ( например ), потом добавляешь парсер к скрипту "
-"который автоматизирует\n"
-"\t\t\t\t\t\t\t\t процесс запуска парсера ежедневно и подсоединяешь к нему "
-"telegram-бота\n"
-"\t\t\t\t\t\t\t\t и ты получаешь группу с автоматическим обновлением "
-"контента. В своей практике \n"
-"\t\t\t\t\t\t\t\tТима использует aiogram и pyTelegramBotAPI\n"
-"\t\t\t\t\t\t\t\t"
-msgstr ""
-"\n"
-"\t\t\t\t\t\t\t\tBots for telegram, originally created by him from out of "
-"curiosity, Tima was interested\n"
-"\t\t\t\t\t\t\t\twhat can they be used for, besides how to managegroup on "
-"telegram. How \n"
-"\t\t\t\t\t\t\t\tit turned out that bots can be easily and simply integrated "
-"into a website and thememake one yourself \n"
-"\t\t\t\t\t\t\t\tcommunicating system from the site/telegram group. Or create "
-"news parser about \n"
-"\t\t\t\t\t\t\t\tweapons (for example), then you add a parser to the "
-"scriptwhich automates\n"
-"\t\t\t\t\t\t\t\t the process of running the parser daily and connecting to "
-"ittelegram bot\n"
-"\t\t\t\t\t\t\t\t and you get a group with automatic updatescontent. In my "
-"practice\n"
-"\t\t\t\t\t\t\t\tTima uses aiogram and pyTelegramBotAPI\n"
-"\t\t\t\t\t\t\t\t"
-
-#: Main/templates/Main/home.html:329
-msgid "Парсеры сайтов"
-msgstr "Website parsers"
-
-#: Main/templates/Main/home.html:333
-msgid ""
-"\n"
-"\t\t\t\t\t\t\t\tПарсинг ( теже скрипты) только их цель собрать/отфильтровать "
-"информацию в большом\n"
-"\t\t\t\t\t\t\t\tобъёме с сайта и предоставить в удобоваримом виде для "
-"человека. Будь то csv или xml файл.\n"
-"\t\t\t\t\t\t\t\tТимон использую при парсинге <b>beatufulsoup</b> ( и "
-"<b>selenium</b> при необходимости рендерить страницу). \n"
-"\t\t\t\t\t\t\t\tХотя идеальный парсер это тот который использует API \n"
-"\t\t\t\t\t\t\t\tсайтов и получает информацию напрямую с сайта. Это сделать "
-"гораздо проще и быстрее чем передвигаться по \n"
-"\t\t\t\t\t\t\t\tDOM структуре.\n"
-"\t\t\t\t\t\t\t\t"
-msgstr ""
-"\n"
-"\t\t\t\t\t\t\t\tParsing (also scripts) is only to collect/filter "
-"theminformation in big\n"
-"\t\t\t\t\t\t\t\tfrom the site and provide it in a digestible form for "
-"person. Be it a csv or xml file.\n"
-"\t\t\t\t\t\t\t\tI use Timon when parsing <b>beatufulsoup</b> ( and "
-"<b>selenium</b> render the page if necessary).\n"
-"\t\t\t\t\t\t\t\tAlthough the ideal parser is the one that uses the API \n"
-"\t\t\t\t\t\t\t\tsites and receives information directly from the site. Do "
-"this much easier and faster than moving around \n"
-"\t\t\t\t\t\t\t\tDOM structure.\n"
-"\t\t\t\t\t\t\t\t"
-
-#: Main/templates/Main/home.html:343
-msgid ""
-"\n"
-"\t\t\t\t\t\t\t\tПарсеры пишуться либо на JS либо на Python. Предпочтительней "
-"python ибо они более гибки в настройках и\n"
-"\t\t\t\t\t\t\t\tиспользовании. У меня есть целая колекция бесплатных "
-"парсеров, которые можно скачать и поиграть с ними.\n"
-"\t\t\t\t\t\t\t\t"
-msgstr ""
-"\n"
-"\t\t\t\t\t\t\t\tParsers are written either in JS or Python. Preferably "
-"python because they are more flexible in settings and\n"
-"\t\t\t\t\t\t\t\tuse. I have a whole collection of free onesparsers that you "
-"can download and play with.\n"
-"\t\t\t\t\t\t\t\t"
-
-#: Main/templates/Main/home.html:353
-msgid "Актуальный контент"
-msgstr "Current content"
-
-#: Main/templates/Main/home.html:358
-msgid "Самые свежие комментарии"
-msgstr "Latest comments"
-
-#: Main/templates/Main/home.html:367
-msgid "Твоя иконка"
-msgstr "Your icon"
-
-#: Main/templates/Main/home.html:369
-msgid "Иконка по умолчанию"
-msgstr "Icon by default"
-
-#: Main/templates/Main/home.html:389
-msgid "Новые кейсы"
-msgstr "New cases"
-
-#: Main/templates/Main/home.html:409 Main/templates/Main/home.html:470
-#: Main/templates/Main/home.html:502
 msgid "Ещё"
 msgstr "More"
-
-#: Main/templates/Main/home.html:414 Main/templates/Main/home.html:434
-#: Main/templates/Main/home.html:494
-msgid "Опубликованно:"
-msgstr "Published:"
-
-#: Main/templates/Main/home.html:423
-msgid "Новые посты"
-msgstr "Latest posts"
-
-#: Main/templates/Main/home.html:437
-msgid "Обновленно:"
-msgstr "Updated:"
-
-#: Main/templates/Main/home.html:441
-msgid "Просмотров:"
-msgstr "Views:"
-
-#: Main/templates/Main/home.html:444
-msgid "Нравится:"
-msgstr "Likes:"
-
-#: Main/templates/Main/home.html:447
-msgid "Поделилось:"
-msgstr "Shared:"
-
-#: Main/templates/Main/home.html:453
-msgid "Теги:"
-msgstr "Tags:"
-
-#: Main/templates/Main/home.html:465
-msgid "Описание:"
-msgstr "Description"
-
-#: Main/templates/Main/home.html:482
-msgid "Недавние новости"
-msgstr "Recent news"
 
 #: Main/templates/Main/services.html:6
 msgid ""
@@ -1262,6 +599,8 @@ msgid ""
 "\t\t\t\t\tвсегда сможете найти специалистов для поддержки ваших онлайн "
 "проектов. Будь они вебсайтами или \n"
 "\t\t\t\t\tвебприложениям.\n"
+"\t\t\t\t\t<br>\n"
+"\t\t\t\t\tИтак, можно заказать:\n"
 "\t\t\t\t\t"
 msgstr ""
 "\n"
@@ -1272,9 +611,27 @@ msgstr ""
 "\t\t\t\t\tyou can always find specialists to support your online "
 "businessprojects. Whether they are websites or \n"
 "\t\t\t\t\tweb applications.\n"
+"\t\t\t\t\t<br>\n"
+"\t\t\t\t\tSo, you can order:\n"
 "\t\t\t\t\t"
 
-#: Main/templates/Main/services.html:43
+#: Main/templates/Main/services.html:46
+msgid "Создание новых сайтов"
+msgstr "Developing new websites"
+
+#: Main/templates/Main/services.html:50
+msgid "Поддержка уже существующих"
+msgstr "Supporting already existing"
+
+#: Main/templates/Main/services.html:54
+msgid "Обновление и улучшение сайтов"
+msgstr "Updating and improving websites"
+
+#: Main/templates/Main/services.html:58
+msgid "Подключение и настройка сервисов почты, шифрования, баз данных"
+msgstr "Connecting and setting up mail services, encryption, databases"
+
+#: Main/templates/Main/services.html:63
 msgid ""
 "\n"
 "\t\t\t\t\tЗаказывая эту услугу вы можете быть уверены, что ваш сайт будет:\n"
@@ -1284,19 +641,19 @@ msgstr ""
 "\t\t\t\t\tBy ordering this service you can be sure that your site will:\n"
 "\t\t\t\t\t"
 
-#: Main/templates/Main/services.html:49
+#: Main/templates/Main/services.html:69
 msgid "Мультиязычным"
 msgstr "Multilingual"
 
-#: Main/templates/Main/services.html:53
+#: Main/templates/Main/services.html:73
 msgid "Динамическим( с использованием <i>ajax</i> технологий )"
 msgstr "Dynamic (using <i>ajax</i> technologies)"
 
-#: Main/templates/Main/services.html:57
+#: Main/templates/Main/services.html:77
 msgid "А главное легко поддерживаемым"
 msgstr "And most importantly, easy to maintain"
 
-#: Main/templates/Main/services.html:62
+#: Main/templates/Main/services.html:82
 msgid ""
 "\n"
 "\t\t\t\t\tВ качестве бонуса, можно помочь с развёртыванием вашего\n"
@@ -1308,11 +665,11 @@ msgstr ""
 "\t\t\t\t\tsite on <i>hosting</i> with a domain name linked to it.\n"
 "\t\t\t\t\t"
 
-#: Main/templates/Main/services.html:70
+#: Main/templates/Main/services.html:90
 msgid "SEO оптимизация и продвижение сайтов"
 msgstr "SEO optimization and website promotion"
 
-#: Main/templates/Main/services.html:73
+#: Main/templates/Main/services.html:93
 msgid ""
 "\n"
 "\t\t\t\t\tТима не занимается seo продвижением, прям целых сайтов, ибо это "
@@ -1330,7 +687,7 @@ msgstr ""
 "\t\t\t\t\tand remove some of the responsibilities from you.\n"
 "\t\t\t\t\t"
 
-#: Main/templates/Main/services.html:80
+#: Main/templates/Main/services.html:100
 msgid ""
 "\n"
 "\t\t\t\t\tЕсли вы продвигаете сайт, то Тима сможет вам облегчить работу в "
@@ -1342,15 +699,15 @@ msgstr ""
 "easierthe following directions:\n"
 "\t\t\t\t\t"
 
-#: Main/templates/Main/services.html:86
+#: Main/templates/Main/services.html:106
 msgid "Линкбилдинг"
 msgstr "Link building"
 
-#: Main/templates/Main/services.html:90
+#: Main/templates/Main/services.html:110
 msgid "Гостевые посты на сайтах(моих)"
 msgstr "Guest posts on websites (mine)"
 
-#: Main/templates/Main/services.html:94
+#: Main/templates/Main/services.html:114
 msgid ""
 "Внутренняя оптимизация. Так как я разработчик, могу предложить доработку "
 "сайта под сео нужды</div>"
@@ -1358,11 +715,11 @@ msgstr ""
 "Internal optimization. Since I am a developer, I can suggest "
 "improvementssite for SEO needs</div>"
 
-#: Main/templates/Main/services.html:101
+#: Main/templates/Main/services.html:121
 msgid "Написание скриптов"
 msgstr "Writing scripts"
 
-#: Main/templates/Main/services.html:104
+#: Main/templates/Main/services.html:124
 msgid ""
 "\n"
 "\t\t\t\t\tОбласти применения скриптов ограничиваются только фантазией "
@@ -1380,7 +737,7 @@ msgstr ""
 "\t\t\t\t\tdepends on the service ordered.\n"
 "\t\t\t\t\t"
 
-#: Main/templates/Main/services.html:111
+#: Main/templates/Main/services.html:131
 msgid ""
 "\n"
 "\t\t\t\t\tТим не хочет предлагать написать на N-языке программирования ибо, "
@@ -1402,27 +759,25 @@ msgstr ""
 "\t\t\t\t\tstrange choice, but still possible.\n"
 "\t\t\t\t\t"
 
-#: Main/templates/Main/services.html:122
-msgid ""
-"Напишет <b>скрипты</b> для автоматизации работ, с интеграцией  в <i>цифровые "
-"таблицы</i> и <i>базами данных</i> на python"
+#: Main/templates/Main/services.html:142
+msgid "Автоматизаторы"
+msgstr "Automators"
+
+#: Main/templates/Main/services.html:146
+msgid "Решение спецефических задач. Инструментные"
+msgstr "Instruments that are solving specific problems"
+
+#: Main/templates/Main/services.html:150
+msgid "Для игр, и программ ( встроенные, они же плагины, они же модули )"
 msgstr ""
-"Will write <b>scripts</b> to automate work, with integration into "
-"<i>digitaltables</i> and <i>databases</i> in python"
+"For games and programs (built-in, they are also plugins, they are also "
+"modules)"
 
-#: Main/templates/Main/services.html:126
-msgid "Скрипты на сервера и на сайты"
-msgstr "Scripts for servers and websites"
-
-#: Main/templates/Main/services.html:130
-msgid "Домашние скрипты, так сказать, для домашних нужд"
-msgstr "Home scripts, so to speak, for home needs"
-
-#: Main/templates/Main/services.html:138
+#: Main/templates/Main/services.html:158
 msgid "Написание парсеров сайтов на сайты"
 msgstr "Writing website parsers for websites"
 
-#: Main/templates/Main/services.html:141
+#: Main/templates/Main/services.html:161
 msgid ""
 "\n"
 "\t\t\t\t\tСкажем сразу, не существует универсального парсера, для всех "
@@ -1439,7 +794,7 @@ msgstr ""
 "\t\t\t\t\tBad parser, tries to be everything at once.\n"
 "\t\t\t\t\t"
 
-#: Main/templates/Main/services.html:148
+#: Main/templates/Main/services.html:168
 msgid ""
 "\n"
 "\t\t\t\t\tМожно считать парсер как картой в колоде. И в зависимости от игры "
@@ -1461,7 +816,29 @@ msgstr ""
 "\t\t\t\t\ta collection of parsers for different tasks and needs.\n"
 "\t\t\t\t\t"
 
-#: Main/templates/Main/services.html:156
+#: Main/templates/Main/services.html:176
+msgid ""
+"\n"
+"\t\t\t\t\tСоздам парсеры на:\n"
+"\t\t\t\t\t"
+msgstr ""
+"\n"
+"\t\t\t\t\tI will create a parsers on such platforms as:\n"
+"\t\t\t\t\t"
+
+#: Main/templates/Main/services.html:182
+msgid "Парсеры на компъютер"
+msgstr "Parsers on computer"
+
+#: Main/templates/Main/services.html:186
+msgid "Парсеры на сайт"
+msgstr "Parsers for a computer"
+
+#: Main/templates/Main/services.html:190
+msgid "Парсеры на мобильный телефон"
+msgstr "Parsers for a mobile phones"
+
+#: Main/templates/Main/services.html:194
 msgid ""
 "\n"
 "\t\t\t\t\tСоздам <b>парсер</b> для сбора больших объёмов данных \tс "
@@ -1475,7 +852,7 @@ msgstr ""
 "<i>sitesdating</i>\n"
 "\t\t\t\t\t"
 
-#: Main/templates/Main/services.html:161
+#: Main/templates/Main/services.html:200
 #, python-format
 msgid ""
 "\n"
@@ -1488,11 +865,11 @@ msgstr ""
 "approximately <b>80%%</b> of all solved problems.\n"
 "\t\t\t\t\t"
 
-#: Main/templates/Main/services.html:168
+#: Main/templates/Main/services.html:207
 msgid "Создание телеграм ботов на заказ"
 msgstr "Creation of telegram bots to order"
 
-#: Main/templates/Main/services.html:171
+#: Main/templates/Main/services.html:210
 msgid ""
 "\n"
 "\t\t\t\t\tБоты очень популярны. И это факт. Каждому нужен бот, будь то "
@@ -1510,7 +887,7 @@ msgstr ""
 "\t\t\t\t\tI never dreamed of it.\n"
 "\t\t\t\t\t"
 
-#: Main/templates/Main/services.html:178
+#: Main/templates/Main/services.html:217
 msgid ""
 "\n"
 "\t\t\t\t\tВ своей работе Тим использует <i>aiogram</i> или "
@@ -1525,7 +902,7 @@ msgstr ""
 "perform.\n"
 "\t\t\t\t\t"
 
-#: Main/templates/Main/services.html:184
+#: Main/templates/Main/services.html:223
 msgid ""
 "\n"
 "\t\t\t\t\tЧто можно сделать:\n"
@@ -1535,19 +912,31 @@ msgstr ""
 "\t\t\t\t\tWhat can be done:\n"
 "\t\t\t\t\t"
 
-#: Main/templates/Main/services.html:190
-msgid "Создание телеграм бота"
-msgstr "Creating a telegram bot"
+#: Main/templates/Main/services.html:229
+msgid "Боты-инструменты"
+msgstr "Tool bots"
 
-#: Main/templates/Main/services.html:194
-msgid "Интеграция ботов на сайт. Связка <b>телеграм - сайт</b>"
-msgstr "Integration of bots into the site. Link <b>telegram - website</b>"
+#: Main/templates/Main/services.html:233
+msgid "Боты-каталоги"
+msgstr "Catalog bots"
 
-#: Main/templates/Main/services.html:201
+#: Main/templates/Main/services.html:237
+msgid "Боты-напоминалки/менеджеры"
+msgstr "Reminder/manager bots"
+
+#: Main/templates/Main/services.html:241
+msgid "Боты контент-менеджеры"
+msgstr "Content manager bots"
+
+#: Main/templates/Main/services.html:245
+msgid "Чат-боты"
+msgstr "Chat bots"
+
+#: Main/templates/Main/services.html:252
 msgid "Услуги копирайтинга"
 msgstr "Copywriting services"
 
-#: Main/templates/Main/services.html:204
+#: Main/templates/Main/services.html:255
 msgid ""
 "\n"
 "\t\t\t\t\tТимон думает, что все мои посетители согласны с тем что наполнение "
@@ -1571,7 +960,7 @@ msgstr ""
 "for what you write, then no one willwill not read.\n"
 "\t\t\t\t\t"
 
-#: Main/templates/Main/services.html:212
+#: Main/templates/Main/services.html:263
 msgid ""
 "\n"
 "\t\t\t\t\tПоэтому копирайту нужно уделять много времени и писать так, чтобы "
@@ -1585,23 +974,31 @@ msgstr ""
 "\t\t\t\t\tread accordingly. So here's what exactly you can order:\n"
 "\t\t\t\t\t"
 
-#: Main/templates/Main/services.html:221
+#: Main/templates/Main/services.html:272
 msgid "Создание посадочной страницы и макет к ней"
 msgstr "Creating a landing page and its layout"
 
-#: Main/templates/Main/services.html:225
+#: Main/templates/Main/services.html:276
 msgid "Составление рекламного объявления для Яндекс Директ и Google Ads"
 msgstr "Drawing up an advertisement for Yandex Direct and Google Ads"
 
-#: Main/templates/Main/services.html:229
+#: Main/templates/Main/services.html:280
 msgid "Составление коммерческих предложений ( холодных и горячих)"
 msgstr "Preparation of commercial offers (cold and hot)"
 
-#: Main/templates/Main/services.html:241
+#: Main/templates/Main/services.html:284
+msgid "Написание новостей и пресс-релизов"
+msgstr "Writing news and press releases"
+
+#: Main/templates/Main/services.html:288
+msgid "Написание объявлений для онлайн досок"
+msgstr "Writing advertisements for online boards"
+
+#: Main/templates/Main/services.html:292
 msgid "Разработка и публикация постов для соц сетей"
 msgstr "Development and publication of posts for social networks"
 
-#: Main/templates/Main/services.html:245
+#: Main/templates/Main/services.html:296
 msgid ""
 "Разработка и написание SEO/LSI текстов с предоставляемым\tмакетом для "
 "верстальщика"
@@ -1609,46 +1006,102 @@ msgstr ""
 "Development and writing of SEO/LSI texts with the provided layout for layout "
 "designer"
 
-#: Main/views.py:86
+#: Main/views.py:95
 msgid "✖ не могу отправить сообщение"
 msgstr "✖ can’t send a message"
 
-#: Main/views.py:89
+#: Main/views.py:98
 msgid "⚠ поле пользователя не заполнено"
 msgstr "⚠ user field is empty"
 
-#: Main/views.py:92
+#: Main/views.py:101
 msgid "⚠ поле почты не заполнено"
 msgstr "⚠ email field is empty"
 
-#: Main/views.py:96
+#: Main/views.py:105
 msgid "⚠ введённое имя слишком короткое"
 msgstr "⚠ username too short"
 
-#: Main/views.py:100
+#: Main/views.py:109
 msgid "⚠ введённое имя слишком длинное"
 msgstr "⚠ username too long"
 
-#: Main/views.py:104
+#: Main/views.py:113
 msgid "⚠ введённый адрес почты некорректен"
 msgstr "⚠ email aders is invalid"
 
-#: Main/views.py:107
+#: Main/views.py:116
 msgid "✔ вы успешно отправили сообщение"
 msgstr "✔ you have successfully sent a message"
 
-#: Main/views.py:108 Main/views.py:109
+#: Main/views.py:117 Main/views.py:118
 msgid "✔ Хорошо"
 msgstr "✔ Ok"
 
-#: Main/views.py:116
+#: Main/views.py:125
 msgid "Ты, скользкий тип"
 msgstr "You, sneaky bastard"
 
-#: Main/views.py:117
+#: Main/views.py:126
 msgid "Даже не пытайся"
 msgstr "Don't even try"
 
-#: Main/views.py:118
+#: Main/views.py:127
 msgid "Или попытайся, всёравно"
 msgstr "Or try, don't care"
+
+#~ msgid "P.S. О стиле повествования"
+#~ msgstr "P.S. About the storytelling style"
+
+#~ msgid ""
+#~ "Выбранный мною стиль изложения, художественный приём, а не психическое "
+#~ "расстройство личности ;)"
+#~ msgstr ""
+#~ "The style of presentation I have chosen is an artistic device, not a "
+#~ "mental onepersonality disorder ;)"
+
+#~ msgid "Копирайтинг"
+#~ msgstr "Copywriting"
+
+#~ msgid "Бэкенд"
+#~ msgstr "Backend"
+
+#~ msgid "Поисковая оптимизация"
+#~ msgstr "SEO"
+
+#~ msgid "Строительство ссылок"
+#~ msgstr "Linkbuilding"
+
+#~ msgid "Гостевой постинг"
+#~ msgstr "Guest posting"
+
+#~ msgid "Внутреняя оптимизация"
+#~ msgstr "Technical optimization"
+
+#~ msgid "Парсеры"
+#~ msgstr "Website parsers"
+
+#~ msgid "Телеграм боты"
+#~ msgstr "Telegram bots"
+
+#~ msgid "Скрипты"
+#~ msgstr "Scripts"
+
+#~ msgid ""
+#~ "Напишет <b>скрипты</b> для автоматизации работ, с интеграцией  в "
+#~ "<i>цифровые таблицы</i> и <i>базами данных</i> на python"
+#~ msgstr ""
+#~ "Will write <b>scripts</b> to automate work, with integration into "
+#~ "<i>digitaltables</i> and <i>databases</i> in python"
+
+#~ msgid "Скрипты на сервера и на сайты"
+#~ msgstr "Scripts for servers and websites"
+
+#~ msgid "Домашние скрипты, так сказать, для домашних нужд"
+#~ msgstr "Home scripts, so to speak, for home needs"
+
+#~ msgid "Создание телеграм бота"
+#~ msgstr "Creating a telegram bot"
+
+#~ msgid "Интеграция ботов на сайт. Связка <b>телеграм - сайт</b>"
+#~ msgstr "Integration of bots into the site. Link <b>telegram - website</b>"

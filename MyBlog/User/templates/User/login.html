@@ -17,19 +17,22 @@
 
 {% block content %}
 <div class="page">
-<div class="main_wrapper">
+<div class=" main_wrapper full_height column">
+	<div class="content_body__title content_body__title--simple">
+		<h2>{% trans 'Форма входа' %}</h2>
+	</div>
 	<div id="common-error" class="hint-container hint-required hint-common_error"></div>
     {% csrf_token %}
 	<div class="form">
 		<form  class="form_form form_login" id="toLogin" action="send_new_user" method="get">
 			<div>
-				<input class="form_el" placeholder="{% trans "имя" %}" type="text" name="username" autocomplete="off" id="username"><br><br>
+				<input class="form_el" placeholder="{% trans "имя" %}" type="text" name="username" autocomplete="off" id="username">
 				<div class="hint-container">
 					<p id="username-error" class="hint-required">{% trans "обязательно" %}</p>
 				</div>
 			</div>
 			<div>
-				<input class="form_el" placeholder="{% trans "пароль" %}" type="password" name="password" autocomplete="off" id="password"><br><br>
+				<input class="form_el" placeholder="{% trans "пароль" %}" type="password" name="password" autocomplete="off" id="password">
 				<div class="hint-container">
 					<p id="password-error" class="hint-required">{% trans "обязательно" %}</p>
 				</div>
@@ -38,11 +41,12 @@
 	</div>
 	<div class="capcha">
 	</div>
-	<div class="buttons">
-		<div id="login" class="button button-middle">
+	<br><br>
+	<div class="column marger">
+		<div id="login" class="button marger">
 			<a>{% trans "Вход" %}</a>
 		</div>
-		<div class="button button-middle">
+		<div class="button marger">
 			<a href="{% url 'signup' %}">
 			{% trans "Регистрация" %}
 			</a>

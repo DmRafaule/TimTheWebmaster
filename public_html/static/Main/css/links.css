@@ -3,9 +3,20 @@
 	transition: padding 0.3s;
 	border-bottom: 2px solid #84a8e3; 
 }
+
+.ref > a:after{
+	content: '	➚';
+	font-size: 120%;	
+}
+
 .ref > a:hover{
 	padding-left:10px;
 	padding-right:10px;
+}
+
+.ref_simple > a{
+	color: #84a8e3;	
+	border-bottom: 2px solid #84a8e3; 
 }
 
 .refs_long{
@@ -32,4 +43,34 @@
 	flex: 1 0 auto;
 	padding: 10px;
 	justify-content: end;
+}
+
+.ref_downloadables > a{
+	color: #6d9454;	
+	transition: padding 0.3s;
+	border-bottom: 2px solid #6d9454; 
+}
+.ref_downloadables > a:after{
+	writing-mode: vertical-rl;
+	text-orientation: mixed;
+	content: '	➲';
+	font-size: 120%;
+}
+.ref_downloadables > a:hover{
+	padding-left:10px;
+	padding-right:10px;
+}
+
+.ref_internal > a{
+	color: #d4755f;	
+	transition: padding 0.3s;
+	border-bottom: 2px solid #d4755f; 
+}
+.ref_internal > a:after{
+	content: '	§';
+	font-size: 120%;
+}
+.ref_internal > a:hover{
+	padding-left:10px;
+	padding-right:10px;
 }
