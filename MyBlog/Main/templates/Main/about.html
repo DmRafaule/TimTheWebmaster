@@ -147,16 +147,8 @@
 				</div>
 				<div class="content_body__toggler_body hidden">
 					<div class="image_block">
-						<img class="image" src="{% static 'Main/img/me.png' %}" alt="{% trans "Молодой парень, со стрижкой полубокс, с голубыми глазами и немного вытянутым лицом. Брюнет" %} ">
+						<img class="image image_width_sized" src="{% static 'Main/img/me.png' %}" alt="{% trans "Молодой парень, со стрижкой полубокс, с голубыми глазами и немного вытянутым лицом. Брюнет" %} ">
 					</div>
-				</div>
-			</div>
-			<div class="content_body__block">
-				<div class="content_body__title ">
-					<h2>{% trans "P.S. О стиле повествования"%}</h2>
-				</div>
-				<div class="content_body__text">
-					{% trans "Выбранный мною стиль изложения, художественный приём, а не психическое расстройство личности ;)"%}
 				</div>
 			</div>
 		</div>
@@ -182,4 +174,5 @@
         const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
     </script>
     <script src="{% static 'Main/js/toggler.js' %}"></script>
+    <script src="{% static 'Post/js/table_of_content.js' %}"></script>
 {% endblock %}

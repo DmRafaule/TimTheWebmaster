@@ -6,25 +6,33 @@ from User.models import User, Comment
 from django.urls import reverse
 from MyBlog import settings
 from Main.models import Downloadable, Image
-import re
+import re, json
 
 
 def load_post_preview(request):
     media_root = settings.MEDIA_URL
     number = request.GET.get('number', 1)
     offset = request.GET.get('offset', 1)
+    forWho = request.GET.get('forWho', '')
+    if forWho != '':
+        forWho = '-' + forWho
     category = request.GET.get('category', 'Articles')
     # Take published, in one category, newest first and just slice of available posts
     loadedArticles = Post.objects.filter(type=category, isPublished=True).order_by('-timeCreated')[(int(offset)):(int(number)) + (int(offset))]
-    offset = offset + number
+    offset = int(offset) + int(number)
+    length = Post.objects.filter(type=category, isPublished=True).count()
     category = category.lower()
+    is_end = False
+    if (length <= int(offset) or length == 0):
+        is_end = True
     context = {
         'posts': loadedArticles,
         'user': User.objects.filter(name=request.session.get('username','Guest')).first(),
         'media_root': media_root,
-        'comments': Comment.objects.all()
+        'comments': Comment.objects.all(),
+        'is_end': is_end
     }
-    return render(request, f'Post/{category}_preview.html', context=context)
+    return render(request, f'Post/{category}_preview{forWho}.html', context=context)
 
 
 def article_list(request):
@@ -315,3 +323,11 @@ def share_post(request):
         'shares': post.shares,
     }
     return JsonResponse(data)
+
+
+def load_table_of_content(request):
+    titles = json.loads(request.GET.get("titles"))
+    context = {
+        'titles': titles,
+    }
+    return render(request, "Post/table_of_content.html", context=context)

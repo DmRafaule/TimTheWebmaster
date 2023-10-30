@@ -7,7 +7,6 @@
 	justify-content: center;
 	align-items: center;
 	text-align: center;
-	min-height: 60vh;
 }
 
 .content_body__main_title--horizontal{ 
@@ -19,6 +18,7 @@
 
 .content_body__main_title--horizontal > h1{ 
 	margin: 25px;
+
 }
 
 .content_body__main_title--horizontal > img{ 
@@ -27,28 +27,35 @@
 .content_body__title{
 	font-weight: bold;
 	text-align: center;
-	word-wrap: break-word;
 	margin-top: 50px;
-	padding-right: 10px;
+	padding: 10px;
 	margin-bottom: 10px;
 	border-top: 2px solid black;
 	color: white;
 	background-color: black;
+	word-wrap: break-word;
+	overflow-wrap: break-word;
+}
+.content_body__title--clean{
+	margin-top: 0px;
+}
+.content_body__title--super_clean{
+	margin: 0px;
 }
 .content_body__title > h2, .content_body__title > h3 {
 	display: flex;
 	justify-content: center;
 }
 .content_body__main_title > h1{
-	font-size: 40px;
+    font-size : clamp(1.5rem, 3vw, 3rem);
 }
 
 .content_body__title > h2{
-	font-size: 32px;
+    font-size : clamp(1.0rem, 2vw, 3rem);
 }
 
 .content_body__title > h3{
-	font-size: 24px;
+    font-size : clamp(0.8rem, 2vw, 3rem);
 }
 .content_body__quote{
 	display: flex;
@@ -62,20 +69,4 @@
 	border: 0px;
 	color: black;
 	background-color: white;
-}
-
-@media screen and (max-width: 900px){
-	.content_body__title{
-	}
-	.content_body__main_title > h1{
-		font-size: 32px;
-	}
-
-	.content_body__title > h2{
-		font-size: 28px;
-	}
-
-	.content_body__title > h3{
-		font-size: 24px;
-	}
 }

@@ -17,11 +17,13 @@ def user_directory_path_forImageAndDownloadabel(instance, filename):
 class Image(models.Model):
     type = models.ForeignKey(Post, on_delete=models.CASCADE)  # Which category this have to be put in
     file = models.ImageField(upload_to=user_directory_path_forImageAndDownloadabel, blank=False)
+    text = models.CharField(max_length=250, blank=True)
 
 
 class Downloadable(models.Model):
     type = models.ForeignKey(Post, on_delete=models.CASCADE)  # Which category this have to be put in
     file = models.FileField(upload_to=user_directory_path_forImageAndDownloadabel, blank=False)
+    text = models.CharField(max_length=250, blank=True)
 
 
 

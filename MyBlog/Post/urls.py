@@ -19,4 +19,5 @@ urlpatterns = [
     path('load_comments_by_user/', load_comments_by_user), 
     path('like_post/', like_post),
     path('share_post/', share_post),
+    path('load_table_of_content/', load_table_of_content),
 ]

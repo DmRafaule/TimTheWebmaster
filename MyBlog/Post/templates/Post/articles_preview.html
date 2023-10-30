@@ -3,50 +3,40 @@
 
 {% for a in posts %}
 <div class="post">
-	<div class="post_content">
-		<div class="post_topost post_title">
-			<a href="{{ a.get_absolute_url }}">{{a.name}}</a>
+	<div class="column">
+		<div class="row on_start is_relative">
+			{% if a.preview %}
+			<div class="row image_width_sized post_left_el marger">
+				<a href="{{a.get_absolute_url}}"><img src="{{media_root}}{{a.preview}}" alt="{% trans "Превью статьи" %}" class=" image_border"></a>
+			</div>
+			{% endif %}
+			<div class="column post_right_el">
+				<div class="post_topost post_title">
+					<a href="{{ a.get_absolute_url }}">{{a.name}}</a>
+				</div>
+				<div class="post_timing">
+					<div class="post_created post_timing__el">
+						<div class="post_el--description"><b>{% trans "Опубликованно:" %}</b></div><div>{{a.timeCreated|date:"d.m.Y"}}</div>
+					</div>
+				</div>
+				<div class="post_timing">
+					<div class="post_insights">
+						<div class="post_insights__el">
+							<div class="post_el--description"><b>{% trans "Просмотры:"%}</b></div> {{a.viewed}}
+						</div>
+						<div class="post_insights__el">
+							<div class="post_el--description"><b>{% trans "Нравится:"%}</b></div> {{a.likes}}
+						</div>
+						<div class="post_insights__el">
+							<div class="post_el--description"><b>{% trans "Поделилось:" %}</b></div> {{a.shares}}
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
 		<div class="post_timing">
-			<div class="post_created post_timing__el">
-				<div class="post_el--description"><b>{% trans "Опубликованно:" %}</b></div><div>{{a.timeCreated|date:"d.m.Y"}}</div>
-			</div>
-			<div class="post_updated post_timing__el">
-				<div  class="post_el--description"><b>{% trans "Обновлено:" %}</b></div> {{a.timeUpdated|date:"d.m.Y"}}
-			</div>
-			<div class="post_insights">
-				<div class="post_insights__el">
-					<div class="post_el--description"><b>{% trans "Просмотры:"%}</b></div> {{a.viewed}}
-				</div>
-				<div class="post_insights__el">
-					<div class="post_el--description"><b>{% trans "Нравится:"%}</b></div> {{a.likes}}
-				</div>
-				<div class="post_insights__el">
-					<div class="post_el--description"><b>{% trans "Поделилось:" %}</b></div> {{a.shares}}
-				</div>
-			</div>
-		</div>
-		<div class="post_flairs">
-			<div class="post_title__subtitle">
-				<b>{% trans "Тэги:"%}</b>
-			</div>
-			<div class="flair_container">
-				{% for tag in a.tags.all %}
-				<div class="flair_el">
-					{{tag}}
-				</div>
-				{% endfor %}
-			</div>
-		</div>
-		<div class="post_description">
-			<div class="post_title__subtitle">
-				<b>{% trans "Описание:"%}</b>
-			</div>
 			<div class="post_description__description">
 				{{a.short_description}} 	
-				<span class="post_topost">
-					<a href="{{ a.get_absolute_url }}">{% trans "Ещё"%}</a>
-				</span>
 			</div>
 		</div>
 	</div>

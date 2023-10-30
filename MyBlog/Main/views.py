@@ -24,28 +24,20 @@ def home(request):
     user = User.objects.filter(name=request.session.get('username','Guest')).first() 
     media_root = settings.MEDIA_URL
     domain_name = settings.ALLOWED_HOSTS[0]
-    # 3 newest comments
-    new_comments = list()
-    comments = Comment.objects.all()
-    if (len(comments) > 3):
-        comment = comments.latest('timeCreated')
-        for i in range(0, 3):
-            new_comments.append(comment)
-            comments = comments.exclude(id=comment.id)
-            comment = comments.latest('timeCreated')
-
-    new_cases = getLatest(2, "Cases")
-    new_articles = getLatest(2, "Articles")
-    new_news = getLatest(2, "News")
+    # latest article
+    article = Post.objects.filter(type='Articles', isPublished=True).latest('timeCreated')
+    # latest case
+    case = Post.objects.filter(type='Cases', isPublished=True).latest('timeCreated')
+    # 3 newest news
+    news = getLatest(3, "News")
 
     context = {
         'user': user,
-        'comments': new_comments,
-        'cases': new_cases,
-        'articles': new_articles,
-        'news': new_news,
         'media_root': media_root,
         'domain_name': domain_name,
+        'case': case,
+        'article': article,
+        'news': news,
     }
     return render(request, 'Main/home.html', context=context)
 

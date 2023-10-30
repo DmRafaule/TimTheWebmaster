@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-09 17:55+0000\n"
+"POT-Creation-Date: 2023-10-23 09:23+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,7 +22,7 @@ msgstr ""
 msgid "Страница входа"
 msgstr "Login page"
 
-#: User/templates/User/login.html:12 User/templates/User/login.html:43
+#: User/templates/User/login.html:12 User/templates/User/login.html:47
 msgid "Вход"
 msgstr "Login"
 
@@ -30,24 +30,28 @@ msgstr "Login"
 msgid "Попробуй стать частью ..."
 msgstr "Try to be a part of ..."
 
-#: User/templates/User/login.html:26 User/templates/User/signup.html:25
+#: User/templates/User/login.html:22
+msgid "Форма входа"
+msgstr "Login form"
+
+#: User/templates/User/login.html:29 User/templates/User/signup.html:28
 msgid "имя"
 msgstr "name"
 
-#: User/templates/User/login.html:28 User/templates/User/login.html:34
-#: User/templates/User/signup.html:27 User/templates/User/signup.html:34
-#: User/templates/User/signup.html:41 User/templates/User/signup.html:48
+#: User/templates/User/login.html:31 User/templates/User/login.html:37
+#: User/templates/User/signup.html:30 User/templates/User/signup.html:37
+#: User/templates/User/signup.html:44 User/templates/User/signup.html:51
 #: User/views.py:47 User/views.py:48 User/views.py:86 User/views.py:87
 #: User/views.py:88 User/views.py:89
 msgid "обязательно"
 msgstr "required"
 
-#: User/templates/User/login.html:32 User/templates/User/signup.html:39
+#: User/templates/User/login.html:35 User/templates/User/signup.html:42
 msgid "пароль"
 msgstr "password"
 
-#: User/templates/User/login.html:47 User/templates/User/signup.html:11
-#: User/templates/User/signup.html:61
+#: User/templates/User/login.html:51 User/templates/User/signup.html:11
+#: User/templates/User/signup.html:64
 msgid "Регистрация"
 msgstr "Registration"
 
@@ -83,39 +87,43 @@ msgstr "Registration on site Tim the Webmaster"
 msgid "В процессе нетворкинга"
 msgstr "In proccess of networking"
 
-#: User/templates/User/signup.html:28
+#: User/templates/User/signup.html:21
+msgid "Форма регистрации"
+msgstr "Registration form"
+
+#: User/templates/User/signup.html:31
 msgid "от 3 до 25 букв"
 msgstr "from 3 to 25 letters"
 
-#: User/templates/User/signup.html:32
+#: User/templates/User/signup.html:35
 msgid "почта"
 msgstr "email"
 
-#: User/templates/User/signup.html:35
+#: User/templates/User/signup.html:38
 msgid "корректный адрес почты"
 msgstr "correct email address"
 
-#: User/templates/User/signup.html:42
+#: User/templates/User/signup.html:45
 msgid "от 6 букв"
 msgstr "at least 6 letters"
 
-#: User/templates/User/signup.html:46
+#: User/templates/User/signup.html:49
 msgid "повтори пароль"
 msgstr "retype password"
 
-#: User/templates/User/signup.html:49
+#: User/templates/User/signup.html:52
 msgid "должен совпадать с паролем"
 msgstr "must match with password"
 
-#: User/templates/User/signup.html:52
+#: User/templates/User/signup.html:55
 msgid "Раскажи немного о себе"
 msgstr "Tell me a little about yourself"
 
-#: User/templates/User/signup.html:56
+#: User/templates/User/signup.html:59
 msgid "Выбери себе аватар."
 msgstr "Choose the avatar."
 
-#: User/templates/User/signup.html:57
+#: User/templates/User/signup.html:60
 msgid "выбрать файл"
 msgstr "Select file"
 
@@ -207,9 +215,3 @@ msgstr "Don't even try"
 #: User/views.py:160
 msgid "Или попытайся, всёравно"
 msgstr "Or try, don't care"
-
-#~ msgid "Страница входа в акаунт"
-#~ msgstr "Login page into account"
-
-#~ msgid "Страница регистрации на сайте Тим Вебмастер"
-#~ msgstr "Registration page on site Tim the Webmaster"

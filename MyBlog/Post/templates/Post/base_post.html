@@ -6,7 +6,6 @@
 	<link rel="canonical" href="https://{{domain_name}}{{ post.get_absolute_url }}" />
 	{% block head_post %}
 	{% endblock %}
-	</script>
 {% endblock %}
 
 {% block navigation_head %}
@@ -20,38 +19,38 @@
 	{% block content_post %}
 	{% endblock %}
 	<div id="interactions" class="interactions" >
-		<div id="interactions_add__button" class="comment_button">
-			<img class="icon icon_interactable" src="{% static 'User/img/comment.png' %}" alt="{% trans "облако коментария с плюсиком" %}">
+		<div id="interactions_add__button" class="comment_button next_button">
+			<img class="icon basic_button" src="{% static 'User/img/comment.png' %}" alt="{% trans "облако коментария с плюсиком" %}">
 			{{comments_number}}
 		</div>
-		<div id="interactions_like__button" class="comment_button">
-			<img class="icon icon_interactable" src="{% static 'User/img/like.png' %}" alt="{% trans "сердце" %}">
+		<div id="interactions_like__button" class="comment_button next_button">
+			<img class="icon basic_button" src="{% static 'User/img/like.png' %}" alt="{% trans "сердце" %}">
 			{{ post.likes }}
 		</div>
-		<div id="interactions_share__button" class="comment_button">
-			<img class="icon icon_interactable" src="{% static 'User/img/share.png' %}" alt="{% trans "3 соединённые точки" %}">
+		<div id="interactions_share__button" class="comment_button next_button">
+			<img class="icon basic_button" src="{% static 'User/img/share.png' %}" alt="{% trans "3 соединённые точки" %}">
 			{{ post.shares }}
 		</div>
 	</div>
 	<div id="shares_options" class="active">
 		<a target="_blank" href="http://vk.com/share.php?url={{ post.get_absolute_url }}&title={{ post.name }}&description={{ post.short_description }}">
-			<div class="comment_button share_button">
-				<img class="icon icon_interactable" src="{% static 'User/img/vk.png' %}" alt="{% trans "vk иконка" %}">
+			<div class="comment_button share_button next_button">
+				<img class="icon icon_interactable  basic_button" src="{% static 'User/img/vk.png' %}" alt="{% trans "vk иконка" %}">
 			</div>
 		</a>
 		<a target="_blank"  href="https://www.reddit.com/submit?url={{ post.get_absolute_url }}&title={{ post.name }}">
-			<div class="comment_button share_button">
-				<img class="icon icon_interactable" src="{% static 'User/img/reddit.png' %}" alt="{% trans "reddit иконка" %}">
+			<div class="comment_button share_button next_button">
+				<img class="icon icon_interactable basic_button" src="{% static 'User/img/reddit.png' %}" alt="{% trans "reddit иконка" %}">
 			</div>
 		</a>
 		<a target="_blank"  href="https://twitter.com/intent/tweet?url={{ post.get_absolute_url }}&text={{ post.short_description }}">
-			<div class="comment_button share_button">
-				<img class="icon icon_interactable" src="{% static 'User/img/twitter.png' %}" alt="{% trans "twitter иконка" %}">
+			<div class="comment_button share_button next_button">
+				<img class="icon icon_interactable basic_button" src="{% static 'User/img/twitter.png' %}" alt="{% trans "twitter иконка" %}">
 			</div>
 		</a>
 		<a target="_blank"  href="https://telegram.me/share/url?url={{ post.get_absolute_url }}&text={{ post.short_description }}">
-			<div class="comment_button share_button">
-				<img class="icon icon_interactable" src="{% static 'User/img/telegram.png' %}" alt="{% trans "telegram иконка" %}">
+			<div class="comment_button share_button next_button">
+				<img class="icon icon_interactable basic_button" src="{% static 'User/img/telegram.png' %}" alt="{% trans "telegram иконка" %}">
 			</div>
 		</a>
 	</div>
@@ -59,6 +58,9 @@
 		<div class="comments_header">
 			<div class="comments_header__name">
 				<div class="nav_ref">{% trans "Коментарии" %}</div>			
+				<div class="comments_header__other">
+				({{comments_number}})
+				</div>
 			</div>
 			<div class="comments_header__add_comment">
 			</div>
@@ -87,7 +89,7 @@
 				</div>
 				<div id="comment_add__buttonSend" class="">
 					<div id="page_add__case" class="page_add__case">
-						<div id="plus_description" class="case_tosite  plus_description_addComment comment_button">
+						<div id="plus_description" class="case_tosite  plus_description_addComment comment_button next_button">
 							{% trans "Отправить" %}
 						</div>
 					</div>
@@ -95,6 +97,7 @@
 			</div>
 			{% endif %}
 			{# Place which gonna be filled by comments#}
+
 			<div id="scroll-sentinel"></div>
 		</div>
 	</div>
@@ -107,6 +110,7 @@
     <link type="text/css" rel="stylesheet" href="{% static 'User/css/forms.css' %}"/>
     <link type="text/css" rel="stylesheet" href="{% static 'Main/css/titles.css' %}"/>
     <link type="text/css" rel="stylesheet" href="{% static 'Main/css/text.css' %}"/>
+    <link type="text/css" rel="stylesheet" href="{% static 'Main/css/lists.css' %}"/>
 	{% block styles_post %}
 	{% endblock %}
 {% endblock %}
@@ -121,7 +125,8 @@
         const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
 		const post_slug = "{{post.slug}}"
     </script>
-    <script src="{% static 'Post/js/add_comment.js' %}"></script>
+    <script src="{% static 'Post/js/comments.js' %}"></script>
+    <script src="{% static 'Main/js/button.js' %}"></script>
 	{% block scripts_post %}
 	{% endblock %}
 {% endblock %}

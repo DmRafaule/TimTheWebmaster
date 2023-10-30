@@ -145,3 +145,4 @@ LANGUAGES = [
         ("ru", _("Русский")),
         ("en", _("Английский")),
 ]
+MODELTRANSLATION_DEFAULT_LANGUAGE = "ru"
