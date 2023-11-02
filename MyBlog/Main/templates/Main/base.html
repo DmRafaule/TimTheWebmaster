@@ -7,7 +7,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<<<<<<< HEAD
 	<link rel="icon" href="{% static 'Main/img/favicon.ico' %}" type="image/x-icon">
+=======
+	<link rel="icon" href="{% static 'Main/img/favicon.svg' %}" type="image/svg+xml">
+>>>>>>> cfd953b (Changed favicon)
 	{% block head %}
 	{% endblock %}
     <link type="text/css" rel="stylesheet" href="{% static 'Main/css/base.css' %}"/>
@@ -54,7 +58,7 @@
                     <!--Here you should paste (posts, articles, projects, about, contacts, busket, home )-->
 					<div id="content_header" class="content_header padder">
 						<a class="logo" href="{% url 'home' %}">
-							<img class="icon icon_interactable buttons__outline--white" src="{% static 'Main/img/logo.png' %}">
+							<img class="icon icon_interactable buttons__outline--white" src="{% static 'Main/img/favicon.svg' %}">
 						</a>
 						<div class="buttons-contacts">
 							{% block header %}
