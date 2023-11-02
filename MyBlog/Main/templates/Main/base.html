@@ -96,53 +96,53 @@
 							<a target="_blank" rel="contact" rev="{% trans "Контактная страница Тимы"%}" href="https://mail.google.com/mail/?view=cm&source=mailto&to=ChedrDen@gmail.com" ><img class="icon buttons__outline--white icon_interactable" src="{% static 'Main/img/email.png' %}" alt="{% trans "email иконка"%}"></a>	
 						</div>
 						<div class="column in_middle">
-							<a class="logo  buttons__outline--white" href="{% url 'home' %}">
-								<img class="icon" src="{% static 'Main/img/logo.png' %}">
-							</a>
-							<div class="copywrite">
-								Copywrite @ {% now "Y"%} TimaTheWebmaster
-							</div>
-						</div>
-						<div class="column in_middle">
-							<div class="ref padder">
-								<a href="{% url 'about' %}">{% trans "Об авторе" %}</a>
-							</div>
-							<div class="ref padder">
-								<a href="{% url 'contacts' %}">{% trans "Контакты автора" %}</a>
-							</div>
-							<div class="ref padder">
-								<a href="/sitemap.xml">{% trans "Карта сайта" %}</a>
-							</div>
-							{% block footer_links %}
-							{% endblock %}
+						<a class="logo " href="{% url 'home' %}">
+							<img class="icon  icon_interactable buttons__outline--white" src="{% static 'Main/img/favicon.svg' %}">
+						</a>
+						<div class="copywrite">
+							Copywrite @ {% now "Y"%} TimaTheWebmaster
 						</div>
 					</div>
-                </div>
-                <div class="main__body__nav" id="main__body__nav">
-                    <div class="nav_container">
-                        <div class="nav_head">
-							{% block navigation_head %}
-							{% endblock navigation_head %}
-                        </div>
-                        <div class="nav_box">
-							{% if not request.session.is_auth %}
-								{% url 'login' as tested_url %}
-								<div class="nav_el">
-									<img class="icon" src="{% static 'Main/img/login.png' %}" alt="{% trans "Открывающаяся дверь" %}">
-									<a href="{{ tested_url }}" id="login_ref" class="nav_ref">{% trans 'Вход' %}</a>
-								</div>
-							{% else %}
-								{% url 'profile' user.slug  as tested_url %}
-								<div class="nav_el">
-									{% if user.avatar|length > 0 %}
-									<img class="icon icon_avatar" src='{{media_root}}{{ user.avatar }}' alt="{% trans "Твой аватар" %}">
-									{% else %}
-										<img class="icon icon_avatar" src="{% static 'User/img/default_avatar.png' %}" alt="{% trans "Аватар по умолчанию" %}">
-									{% endif %}
-									<a href="{{ tested_url }}" id="profile_ref" class="nav_ref">{% trans "Профиль" %}</a>
-								</div>
-								<div class="nav_el">
-									<img class="icon" src="{% static 'Main/img/logout.png' %}" alt="{% trans "Стрелка из дверей" %}">
+					<div class="column in_middle">
+						<div class="ref padder">
+							<a href="{% url 'about' %}">{% trans "Об авторе" %}</a>
+						</div>
+						<div class="ref padder">
+							<a href="{% url 'contacts' %}">{% trans "Контакты автора" %}</a>
+						</div>
+						<div class="ref padder">
+							<a href="/sitemap.xml">{% trans "Карта сайта" %}</a>
+						</div>
+						{% block footer_links %}
+						{% endblock %}
+					</div>
+				</div>
+			</div>
+			<div class="main__body__nav" id="main__body__nav">
+				<div class="nav_container">
+					<div class="nav_head">
+						{% block navigation_head %}
+						{% endblock navigation_head %}
+					</div>
+					<div class="nav_box">
+						{% if not request.session.is_auth %}
+							{% url 'login' as tested_url %}
+							<div class="nav_el">
+								<img class="icon" src="{% static 'Main/img/login.png' %}" alt="{% trans "Открывающаяся дверь" %}">
+								<a href="{{ tested_url }}" id="login_ref" class="nav_ref">{% trans 'Вход' %}</a>
+							</div>
+						{% else %}
+							{% url 'profile' user.slug  as tested_url %}
+							<div class="nav_el">
+								{% if user.avatar|length > 0 %}
+								<img class="icon icon_avatar" src='{{media_root}}{{ user.avatar }}' alt="{% trans "Твой аватар" %}">
+								{% else %}
+									<img class="icon icon_avatar" src="{% static 'User/img/default_avatar.png' %}" alt="{% trans "Аватар по умолчанию" %}">
+								{% endif %}
+								<a href="{{ tested_url }}" id="profile_ref" class="nav_ref">{% trans "Профиль" %}</a>
+							</div>
+							<div class="nav_el">
+								<img class="icon" src="{% static 'Main/img/logout.png' %}" alt="{% trans "Стрелка из дверей" %}">
 									<a href="{% url 'logout' %}" id="logout_ref" class="nav_ref" >{% trans "Выход" %}</a>
 								</div>
 							{% endif %}
