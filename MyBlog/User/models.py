@@ -32,16 +32,6 @@ class User(models.Model):
         super(User, self).save(*args, **kwargs)
 
 
-# Messages that displayed under Projects, Articles, News
-class Comment(models.Model):
-    content = models.TextField(blank=False)
-    type = models.ForeignKey(Post, on_delete=models.CASCADE)  # Which category this have to be put in
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    tags = models.ManyToManyField(Tag, blank=True)
-    timeCreated = models.DateTimeField(auto_now_add=True)
-    timeUpdated = models.DateTimeField(auto_now=True)
-
-
 # This is my ansver to Messages from guests and users
 class Response(models.Model):
     content = models.TextField(blank=False)

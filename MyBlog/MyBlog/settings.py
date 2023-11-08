@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'Main.apps.MainConfig',
     'Post.apps.PostConfig',
     'User.apps.UserConfig',
+    'Comment.apps.CommentConfig',
 ]
 
 MIDDLEWARE = [

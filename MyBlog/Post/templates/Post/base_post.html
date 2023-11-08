@@ -19,10 +19,6 @@
 	{% block content_post %}
 	{% endblock %}
 	<div id="interactions" class="interactions" >
-		<div id="interactions_add__button" class="comment_button next_button">
-			<img class="icon basic_button" src="{% static 'User/img/comment.png' %}" alt="{% trans "облако коментария с плюсиком" %}">
-			{{comments_number}}
-		</div>
 		<div id="interactions_like__button" class="comment_button next_button">
 			<img class="icon basic_button" src="{% static 'User/img/like.png' %}" alt="{% trans "сердце" %}">
 			{{ post.likes }}
@@ -54,7 +50,7 @@
 			</div>
 		</a>
 	</div>
-	<div class="comments">  
+	<div class="comments ">  
 		<div class="comments_header">
 			<div class="comments_header__name">
 				<div class="nav_ref">{% trans "Коментарии" %}</div>			
@@ -65,19 +61,18 @@
 			<div class="comments_header__add_comment">
 			</div>
 		</div>
-		<div id="comments_body" class="comments_body">
-			{% if request.session.is_auth %}
+		<div id="comments_body" class="comments_body ">
 			{# Form for submiting new comment #}
-			<div id="comment_add" class="comments_el active">
+			<div id="comment_add" class="comments_el">
 				<div class="comments_el__meta_el comments_el__commentAdd">
 					<div class="comments_el__user_avatar">
 						{% if user.avatar|length > 0 %}
-						<img class="icon icon_avatar" src='{{media_root}}{{ user.avatar }}' alt="{% trans "Аватар пользователя" %}">
+						<img class="icon icon_avatar" src='{{media_root}}{{ user.avatar }}' alt="{% trans "Аватар пользователя" %}" id="comments_el__user_avatar_commentAdd">
 						{% else %}
-						<img class="icon icon_avatar" src="{% static 'User/img/default_avatar.png' %}" alt="{% trans "Аватар по умолчанию" %}">
+						<img class="icon icon_avatar" src="{% static 'User/img/default_avatar.png' %}" alt="{% trans "Аватар по умолчанию" %}" id="comments_el__user_avatar_commentAdd">
 						{% endif %}
 					</div>
-					<div class="comments_el__user_name">
+					<div id="comments_el__user_name_commentAdd" class="comments_el__user_name">
 						{{user}}
 					</div>
 				</div>
@@ -87,15 +82,49 @@
 						<textarea class="form_el__about" placeholder="{% trans "Ваше сообщение" %}" name="about" rows=4  id="about"></textarea>
 					</form> 
 				</div>
-				<div id="comment_add__buttonSend" class="">
+				{% if not request.session.is_auth %}
+				<div id="comment_add__buttonSendGuesting" class="active">
 					<div id="page_add__case" class="page_add__case">
-						<div id="plus_description" class="case_tosite  plus_description_addComment comment_button next_button">
-							{% trans "Отправить" %}
+						<div id="plus_description" class="case_tosite authorized_addComment full_height comment_button next_button">
+							{% trans "Оставить комментарий" %}
 						</div>
 					</div>
 				</div>
+				<div id="comment_add__buttonShowLoginOptions">
+					<div id="page_add__case" class="page_add__case">
+						<div id="plus_description" class="case_tosite authorized_addComment full_height comment_button next_button">
+							<div id="loginableSocialNets_text" class="">
+								{% trans "Оставить комментарий" %}
+							</div>
+							<div id="loginableSocialNets" class="row active in_middle">
+								<div id="parsingForm" class="row in_middle">
+									<div class="parsingForm_text"></div>
+									<div class="parsingForm_textarea">
+										{% csrf_token %}
+										<div class="form">
+											<form enctype="multipart/form-data" class="form_form row" id="toVerifyViaSocNet"  action="prepare_user" method="get">
+												<textarea class="form_el__about" placeholder="{% trans "Твоё имя" %}" name="username" rows=1  id="userID"></textarea>
+											</form> 
+										</div>
+									</div>
+								</div>
+								<div id="parsingFormSubmit" class=" next_button in_middle padder basic_button">
+									✔
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				{% else %}
+				<div id="comment_add__buttonSendAuthorized">
+					<div id="page_add__case" class="page_add__case">
+						<div id="plus_description" class="case_tosite authorized_addComment full_height comment_button next_button">
+							{% trans "Оставить комментарий" %}
+						</div>
+					</div>
+				</div>
+				{% endif %}
 			</div>
-			{% endif %}
 			{# Place which gonna be filled by comments#}
 
 			<div id="scroll-sentinel"></div>
@@ -125,7 +154,7 @@
         const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
 		const post_slug = "{{post.slug}}"
     </script>
-    <script src="{% static 'Post/js/comments.js' %}"></script>
+    <script src="{% static 'Comment/js/comments.js' %}"></script>
     <script src="{% static 'Main/js/button.js' %}"></script>
 	{% block scripts_post %}
 	{% endblock %}

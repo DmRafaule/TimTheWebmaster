@@ -1,23 +1,14 @@
 const number = 5
 let offset = 0
+var default_avatar_path = ''
 
-function playButtonPushed(){
-}
-
-
-function showAddCommentForm(){
-	$("#comment_add").toggleClass('active')
-	$(".plus_description_addComment").on('click', playButtonPushed)
-}
 
 function removeComment(toRemove){
-	var post = post_slug
 	var comment_id = $(toRemove).attr("commentid")
 	$.ajax({
 		type: "POST",
 		url: "/" + language_code + "/remove_comment/",
 		data: {
-			'post': post,
 			'comment_id': comment_id,
 		},
 		headers: {'X-CSRFToken': csrftoken},
@@ -29,21 +20,25 @@ function removeComment(toRemove){
 	})
 }
 
-function sendComment(){
+function sendComment(path){
 	var post = post_slug
 	var about = $("#about").val()	
+	var username = $("#comments_el__user_name_commentAdd").text()
+
 	$.ajax({
 		type: "POST",
-		url: "/" + language_code + "/load_comment/",
+		url: "/" + language_code + "/" + path + "/",
 		data: {
 			'post': post,
 			'about': about,
+			'username': username,
 		},
 		headers: {'X-CSRFToken': csrftoken},
 		mode: 'same-origin', // Do not send CSRF token to another domain.
 		success: function(result){
 			$(result).insertAfter("#comment_add")
-			$(".comment_remove__button").on('click', function() {
+			$(".comment_remove__button").off()
+			$(".comment_remove__button").one('click', function() {
 				removeComment(this)
 			})	
 		},
@@ -64,7 +59,8 @@ function loadComments(){
 		mode: 'same-origin', // Do not send CSRF token to another domain.
 		success: function(result){
 			$(result).insertBefore("#scroll-sentinel")
-			$(".comment_remove__button").on('click', function() {
+			$(".comment_remove__button").off()
+			$(".comment_remove__button").one('click', function() {
 				removeComment(this)
 			})	
 			offset = offset + number
@@ -107,7 +103,33 @@ function showShareForm(){
 }
 
 
+function prepareForCommenting(){
+	var username = $("#userID").val()	
+	$.ajax({
+		type: "GET",
+		url: "/" + language_code + "/prepare_user/",
+		data: {
+			'username': username 
+		},
+		headers: {'X-CSRFToken': csrftoken},
+		mode: 'same-origin', // Do not send CSRF token to another domain.
+		success: function(result){
+			$("#about").attr('readonly',!result.isValid)
+			$("#comments_el__user_name_commentAdd").text(result.username)
+			$("#comment_add__buttonShowLoginOptions").toggleClass("active")
+			$("#comment_add__buttonSendGuesting").toggleClass("active")
+		},
+	})
+}
+
+function showCommentSubmitForm(){
+	$("#loginableSocialNets").toggleClass("active")
+	$("#parsingFormSubmit").one("click", prepareForCommenting)
+}
+
+
 $(document).ready(function(){
+	default_avatar_path = $("#comments_el__user_avatar_commentAdd").attr('src')
 	const observer = new IntersectionObserver((entries, observer) => {
 	  // Loop through the entries
 	  for (const entry of entries) {
@@ -121,8 +143,13 @@ $(document).ready(function(){
 	const scrollSentinel = document.querySelector("#scroll-sentinel");
 	observer.observe(scrollSentinel);
 
-	$("#interactions_add__button").on('click', showAddCommentForm)
 	$("#interactions_share__button").on('click', showShareForm)
 	$("#interactions_like__button").on('click', likePost)
-	$("#comment_add__buttonSend").on('click', sendComment)	
+	$("#comment_add__buttonSendGuesting").on('click', function(){
+		sendComment("send_comment_guesting")
+	})	
+	$("#comment_add__buttonSendAuthorized").on('click', function(){
+		sendComment("send_comment_authorized")
+	})	
+	$("#loginableSocialNets_text").on('click', showCommentSubmitForm)	
 })
