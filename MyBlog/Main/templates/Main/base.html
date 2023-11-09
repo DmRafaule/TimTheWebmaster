@@ -121,8 +121,7 @@
 			<div class="main__body__nav" id="main__body__nav">
 				<div class="nav_container">
 					<div class="nav_head">
-						{% block navigation_head %}
-						{% endblock navigation_head %}
+						<div class="name"><b>{% trans "Тим зе Вебмастер" %}</b></div>
 					</div>
 					<div class="nav_box">
 						{% if not request.session.is_auth %}

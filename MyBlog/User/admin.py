@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Comment, User, Response, Message
+from .models import User, Response, Message
 
 
 class UserAdmin(admin.ModelAdmin):
@@ -7,13 +7,6 @@ class UserAdmin(admin.ModelAdmin):
     list_filter = ('name', 'email')
     search_fields = ('name', 'tags', 'email')
     prepopulated_fields = {'slug': ("name",)}
-
-
-class CommentAdmin(admin.ModelAdmin):
-    list_display = ('user', 'type', 'timeCreated')
-    list_display_links = ('user',)
-    list_filter = ('user', 'type')
-    search_fields = ('name', 'type')
 
 
 class ResponseAdmin(admin.ModelAdmin):
@@ -32,6 +25,5 @@ class MessageAdmin(admin.ModelAdmin):
 
 
 admin.site.register(User, UserAdmin)
-admin.site.register(Comment, CommentAdmin)
 admin.site.register(Response, ResponseAdmin)
 admin.site.register(Message, MessageAdmin)

@@ -28,6 +28,7 @@ urlpatterns += i18n_patterns(
     path('', include('Main.urls')),
     path('', include('Post.urls')),
     path('', include('User.urls')),
+    path('', include('Comment.urls')),
 )
 
 handler404 = "Main.views.page_not_found"

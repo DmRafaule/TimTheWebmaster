@@ -6,7 +6,8 @@ from django.urls import reverse
 import re
 from MyBlog import settings
 from django.utils.translation import gettext as _
-from .models import User, Comment
+from .models import User
+from Comment.models import Comment
 
 
 def profile(request, user_slug):

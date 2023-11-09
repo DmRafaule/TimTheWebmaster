@@ -1,6 +1,6 @@
 from django.http import JsonResponse
 from django.shortcuts import render
-from User.models import User, Message, Comment
+from User.models import User, Message
 from Post.models import Post
 import re
 from MyBlog import settings

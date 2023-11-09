@@ -2,11 +2,11 @@ from django.shortcuts import render, get_object_or_404
 from django.utils.translation import activate, get_language
 from django.http import HttpResponse, JsonResponse, HttpResponseRedirect
 from Post.models import Post
-from User.models import User, Comment
-from django.urls import reverse
+from User.models import User
+from Comment.models import Comment
 from MyBlog import settings
 from Main.models import Downloadable, Image
-import re, json
+import json
 
 
 def load_post_preview(request):
@@ -233,68 +233,6 @@ def load_case(request):
         "case_prev": case_prev,
     }
     return render(request, 'Post/case_preview.html', context=context)
-
-
-def load_comment(request):
-    media_root = settings.MEDIA_URL
-    if request.method == 'POST':
-        user = User.objects.filter(name=request.session.get('username', 'guest')).get()
-        type = Post.objects.filter(slug=request.POST['post']).get()
-        content = request.POST['about']
-        comment = Comment(user=user, type=type, content=content)
-        comment.save()
-    context = {
-        'com': comment,
-        'user': user,
-        'media_root': media_root,
-    }
-    return render(request, "Post/comment.html", context=context)
-
-
-def remove_comment(request):
-    if request.method == 'POST':
-        comment_id = request.POST['comment_id']
-        comment = Comment.objects.filter(id=comment_id).get()
-        comment.delete()
-
-    return render(request, "Post/comment.html")
-
-
-def load_comments(request):
-    media_root = settings.MEDIA_URL
-    if request.method == 'POST':
-        try:
-            user = User.objects.filter(name=request.session.get('username', 'guest')).get()
-        except:
-            user = None
-        number = request.POST.get('number', 5)
-        offset = request.POST.get('offset', 0)
-        type = Post.objects.filter(slug=request.POST['post']).get()
-        comments = Comment.objects.filter(type=type).order_by('-timeCreated')[(int(offset)):(int(number)) + (int(offset))]
-
-    context = {
-        'comments': comments,
-        'user': user,
-        'media_root': media_root,
-    }
-    return render(request, "Post/comments.html", context=context)
-
-
-def load_comments_by_user(request):
-    media_root = settings.MEDIA_URL
-    if request.method == 'POST':
-        user = User.objects.filter(name=request.session.get('username')).get()
-        number = request.POST.get('number', 5)
-        offset = request.POST.get('offset', 0)
-        comments = Comment.objects.filter(user=user).order_by('-timeCreated')[(int(offset)):(int(number)) + (int(offset))]
-
-    context = {
-        'comments': comments,
-        'user': user,
-        'media_root': media_root,
-    }
-
-    return render(request, "Post/comments.html", context=context)
 
 
 # Basicaly one browser one like for one article
