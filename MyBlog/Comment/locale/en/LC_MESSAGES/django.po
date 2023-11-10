@@ -18,10 +18,20 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: MyBlog/settings.py:146
-msgid "Русский"
-msgstr "Russian"
+#: Comment/templates/Comment/comment.html:10
+#: Comment/templates/Comment/comments.html:12
+#: Comment/templates/Comment/comments.html:18
+msgid "Аватарка пользователя"
+msgstr "User avatar"
 
-#: MyBlog/settings.py:147
-msgid "Английский"
-msgstr "English"
+#: Comment/templates/Comment/comment.html:12
+#: Comment/templates/Comment/comment.html:15
+#: Comment/templates/Comment/comments.html:14
+#: Comment/templates/Comment/comments.html:20
+msgid "Аватар по умолчанию"
+msgstr "Avatar by default"
+
+#: Comment/templates/Comment/comment.html:37
+#: Comment/templates/Comment/comments.html:43
+msgid "Удалить"
+msgstr "Remove"

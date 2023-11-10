@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-29 17:09+0000\n"
+"POT-Creation-Date: 2023-11-10 13:37+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -50,7 +50,7 @@ msgstr ""
 "About webmaster Tim Chuduk. His history, interests and services "
 "providedwebsite development, telegram bots, scripts, parsers and copywriting"
 
-#: Main/templates/Main/about.html:12 Main/templates/Main/base.html:184
+#: Main/templates/Main/about.html:12 Main/templates/Main/base.html:181
 msgid "Об Авторе"
 msgstr "About author"
 
@@ -335,123 +335,127 @@ msgstr ""
 "A young guy with a half-box haircut, blue eyes and a little elongatedface. "
 "Brunette"
 
-#: Main/templates/Main/base.html:67 Main/templates/Main/base.html:133
+#: Main/templates/Main/base.html:65 Main/templates/Main/base.html:130
 msgid "Открывающаяся дверь"
 msgstr "Opening door"
 
-#: Main/templates/Main/base.html:74 Main/templates/Main/base.html:140
+#: Main/templates/Main/base.html:72 Main/templates/Main/base.html:137
 msgid "Твой аватар"
 msgstr "Your avatar"
 
-#: Main/templates/Main/base.html:76 Main/templates/Main/base.html:142
+#: Main/templates/Main/base.html:74 Main/templates/Main/base.html:139
 msgid "Аватар по умолчанию"
 msgstr "Avatar by default"
 
-#: Main/templates/Main/base.html:81 Main/templates/Main/base.html:147
+#: Main/templates/Main/base.html:79 Main/templates/Main/base.html:144
 msgid "Стрелка из дверей"
 msgstr "Arrow from the door"
 
-#: Main/templates/Main/base.html:97 Main/templates/Main/base.html:98
+#: Main/templates/Main/base.html:95 Main/templates/Main/base.html:96
 msgid "Контактная страница Тимы"
 msgstr "Contacts page of Tim"
 
-#: Main/templates/Main/base.html:98
+#: Main/templates/Main/base.html:96
 msgid "email иконка"
 msgstr "email icon"
 
-#: Main/templates/Main/base.html:110
+#: Main/templates/Main/base.html:108
 msgid "Об авторе"
 msgstr "About author"
 
-#: Main/templates/Main/base.html:113
+#: Main/templates/Main/base.html:111
 msgid "Контакты автора"
 msgstr "Contacts of author"
 
-#: Main/templates/Main/base.html:116
+#: Main/templates/Main/base.html:114
 msgid "Карта сайта"
 msgstr "Sitemap"
 
-#: Main/templates/Main/base.html:134
+#: Main/templates/Main/base.html:124
+msgid "Тим зе Вебмастер"
+msgstr "Tim the Webmaster"
+
+#: Main/templates/Main/base.html:131
 msgid "Вход"
 msgstr "Login"
 
-#: Main/templates/Main/base.html:144
+#: Main/templates/Main/base.html:141
 msgid "Профиль"
 msgstr "Profile"
 
-#: Main/templates/Main/base.html:148
+#: Main/templates/Main/base.html:145
 msgid "Выход"
 msgstr "Logout"
 
-#: Main/templates/Main/base.html:153
+#: Main/templates/Main/base.html:150
 msgid "Домик"
 msgstr "House"
 
-#: Main/templates/Main/base.html:154 Main/templates/Main/home.html:6
+#: Main/templates/Main/base.html:151 Main/templates/Main/home.html:6
 msgid "Домашняя"
 msgstr "Home"
 
-#: Main/templates/Main/base.html:158
+#: Main/templates/Main/base.html:155
 msgid "Чертежи и линейки"
 msgstr "Blueprints and rulers"
 
-#: Main/templates/Main/base.html:159
+#: Main/templates/Main/base.html:156
 msgid "Проекты"
 msgstr "Projects"
 
-#: Main/templates/Main/base.html:163
+#: Main/templates/Main/base.html:160
 msgid "Листок и ручка"
 msgstr "Piece of paper and pen"
 
-#: Main/templates/Main/base.html:164
+#: Main/templates/Main/base.html:161
 msgid "Статьи"
 msgstr "Articles"
 
-#: Main/templates/Main/base.html:168
+#: Main/templates/Main/base.html:165
 msgid "Газетные вырезки"
 msgstr "Newspaper parts"
 
-#: Main/templates/Main/base.html:169 Main/templates/Main/home.html:54
+#: Main/templates/Main/base.html:166 Main/templates/Main/home.html:54
 msgid "Новости"
 msgstr "News"
 
-#: Main/templates/Main/base.html:173
+#: Main/templates/Main/base.html:170
 msgid "Чемодан"
 msgstr "Case"
 
-#: Main/templates/Main/base.html:174
+#: Main/templates/Main/base.html:171
 msgid "Кейсы"
 msgstr "Cases"
 
-#: Main/templates/Main/base.html:178
+#: Main/templates/Main/base.html:175
 msgid "Шестерня"
 msgstr "Gear"
 
-#: Main/templates/Main/base.html:179 Main/templates/Main/services.html:12
+#: Main/templates/Main/base.html:176 Main/templates/Main/services.html:12
 msgid "Услуги"
 msgstr "Services"
 
-#: Main/templates/Main/base.html:183
+#: Main/templates/Main/base.html:180
 msgid "Буква i"
 msgstr "Letter i"
 
-#: Main/templates/Main/base.html:188
+#: Main/templates/Main/base.html:185
 msgid "Контактный блокнот"
 msgstr "Contacts notebook"
 
-#: Main/templates/Main/base.html:189 Main/templates/Main/contacts.html:12
+#: Main/templates/Main/base.html:186 Main/templates/Main/contacts.html:12
 msgid "Контакты"
 msgstr "Contacts"
 
-#: Main/templates/Main/base.html:195
+#: Main/templates/Main/base.html:192
 msgid "Русский флаг"
 msgstr "Russian flag"
 
-#: Main/templates/Main/base.html:198
+#: Main/templates/Main/base.html:195
 msgid "Американский флаг"
 msgstr "UK flag"
 
-#: Main/templates/Main/base.html:202
+#: Main/templates/Main/base.html:199
 msgid "Назад"
 msgstr "Back"
 
@@ -1049,59 +1053,3 @@ msgstr "Don't even try"
 #: Main/views.py:127
 msgid "Или попытайся, всёравно"
 msgstr "Or try, don't care"
-
-#~ msgid "P.S. О стиле повествования"
-#~ msgstr "P.S. About the storytelling style"
-
-#~ msgid ""
-#~ "Выбранный мною стиль изложения, художественный приём, а не психическое "
-#~ "расстройство личности ;)"
-#~ msgstr ""
-#~ "The style of presentation I have chosen is an artistic device, not a "
-#~ "mental onepersonality disorder ;)"
-
-#~ msgid "Копирайтинг"
-#~ msgstr "Copywriting"
-
-#~ msgid "Бэкенд"
-#~ msgstr "Backend"
-
-#~ msgid "Поисковая оптимизация"
-#~ msgstr "SEO"
-
-#~ msgid "Строительство ссылок"
-#~ msgstr "Linkbuilding"
-
-#~ msgid "Гостевой постинг"
-#~ msgstr "Guest posting"
-
-#~ msgid "Внутреняя оптимизация"
-#~ msgstr "Technical optimization"
-
-#~ msgid "Парсеры"
-#~ msgstr "Website parsers"
-
-#~ msgid "Телеграм боты"
-#~ msgstr "Telegram bots"
-
-#~ msgid "Скрипты"
-#~ msgstr "Scripts"
-
-#~ msgid ""
-#~ "Напишет <b>скрипты</b> для автоматизации работ, с интеграцией  в "
-#~ "<i>цифровые таблицы</i> и <i>базами данных</i> на python"
-#~ msgstr ""
-#~ "Will write <b>scripts</b> to automate work, with integration into "
-#~ "<i>digitaltables</i> and <i>databases</i> in python"
-
-#~ msgid "Скрипты на сервера и на сайты"
-#~ msgstr "Scripts for servers and websites"
-
-#~ msgid "Домашние скрипты, так сказать, для домашних нужд"
-#~ msgstr "Home scripts, so to speak, for home needs"
-
-#~ msgid "Создание телеграм бота"
-#~ msgstr "Creating a telegram bot"
-
-#~ msgid "Интеграция ботов на сайт. Связка <b>телеграм - сайт</b>"
-#~ msgstr "Integration of bots into the site. Link <b>telegram - website</b>"
