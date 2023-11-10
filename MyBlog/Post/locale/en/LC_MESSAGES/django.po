@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-29 17:09+0000\n"
+"POT-Creation-Date: 2023-11-10 13:37+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -76,54 +76,54 @@ msgstr "Likes:"
 msgid "Поделилось:"
 msgstr "Shared:"
 
-#: Post/templates/Post/base_post.html:24
-msgid "облако коментария с плюсиком"
-msgstr "comment cloud with a plus"
-
-#: Post/templates/Post/base_post.html:28
+#: Post/templates/Post/base_post.html:23
 msgid "сердце"
 msgstr "heart"
 
-#: Post/templates/Post/base_post.html:32
+#: Post/templates/Post/base_post.html:27
 msgid "3 соединённые точки"
 msgstr "3 connected dots"
 
-#: Post/templates/Post/base_post.html:39
+#: Post/templates/Post/base_post.html:34
 msgid "vk иконка"
 msgstr "vk icon"
 
-#: Post/templates/Post/base_post.html:44
+#: Post/templates/Post/base_post.html:39
 msgid "reddit иконка"
 msgstr "reddit icon"
 
-#: Post/templates/Post/base_post.html:49
+#: Post/templates/Post/base_post.html:44
 msgid "twitter иконка"
 msgstr "twitter icon"
 
-#: Post/templates/Post/base_post.html:54
+#: Post/templates/Post/base_post.html:49
 msgid "telegram иконка"
 msgstr "telegram icon"
 
-#: Post/templates/Post/base_post.html:61
+#: Post/templates/Post/base_post.html:56
 msgid "Коментарии"
 msgstr "Comments"
 
-#: Post/templates/Post/base_post.html:76 Post/templates/Post/comments.html:11
+#: Post/templates/Post/base_post.html:70
 msgid "Аватар пользователя"
 msgstr "User avatar"
 
-#: Post/templates/Post/base_post.html:78 Post/templates/Post/comment.html:11
-#: Post/templates/Post/comments.html:13
+#: Post/templates/Post/base_post.html:72
 msgid "Аватар по умолчанию"
 msgstr "Default avatar"
 
-#: Post/templates/Post/base_post.html:88
+#: Post/templates/Post/base_post.html:82
 msgid "Ваше сообщение"
 msgstr "Your message"
 
-#: Post/templates/Post/base_post.html:94
-msgid "Отправить"
-msgstr "Send"
+#: Post/templates/Post/base_post.html:89 Post/templates/Post/base_post.html:97
+#: Post/templates/Post/base_post.html:122
+msgid "Оставить комментарий"
+msgstr "Leave a comment"
+
+#: Post/templates/Post/base_post.html:106
+msgid "Твоё имя"
+msgstr "Your name"
 
 #: Post/templates/Post/case_list.html:7
 msgid "Кейсы, Тимы Вебмастера"
@@ -145,14 +145,6 @@ msgstr "published:"
 #: Post/templates/Post/case_preview.html:71
 msgid "опубликованно: "
 msgstr "published: "
-
-#: Post/templates/Post/comment.html:9
-msgid "Аватарка пользователя"
-msgstr "User avatar"
-
-#: Post/templates/Post/comment.html:29 Post/templates/Post/comments.html:31
-msgid "Удалить"
-msgstr "Remove"
 
 #: Post/templates/Post/news_list.html:7
 msgid "Новости Тимы, Вебмастера"

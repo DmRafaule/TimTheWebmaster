@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-23 09:23+0000\n"
+"POT-Creation-Date: 2023-11-10 13:37+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -41,8 +41,8 @@ msgstr "name"
 #: User/templates/User/login.html:31 User/templates/User/login.html:37
 #: User/templates/User/signup.html:30 User/templates/User/signup.html:37
 #: User/templates/User/signup.html:44 User/templates/User/signup.html:51
-#: User/views.py:47 User/views.py:48 User/views.py:86 User/views.py:87
-#: User/views.py:88 User/views.py:89
+#: User/views.py:48 User/views.py:49 User/views.py:87 User/views.py:88
+#: User/views.py:89 User/views.py:90
 msgid "обязательно"
 msgstr "required"
 
@@ -127,91 +127,91 @@ msgstr "Choose the avatar."
 msgid "выбрать файл"
 msgstr "Select file"
 
-#: User/views.py:54
+#: User/views.py:55
 msgid "✖ не могу войти"
 msgstr "✖ can't login"
 
-#: User/views.py:57
+#: User/views.py:58
 msgid "⚠ пользователь пуст"
 msgstr "⚠ username field is empty"
 
-#: User/views.py:60
+#: User/views.py:61
 msgid "⚠ пароль пуст"
 msgstr "⚠ password field is empty"
 
-#: User/views.py:70
+#: User/views.py:71
 msgid "✔ Вы успешно вошли, перенаправление ... "
 msgstr "✔ You have successfully logged in, redirecting ..."
 
-#: User/views.py:71 User/views.py:72 User/views.py:148 User/views.py:149
-#: User/views.py:150 User/views.py:151
+#: User/views.py:72 User/views.py:73 User/views.py:149 User/views.py:150
+#: User/views.py:151 User/views.py:152
 msgid "✔ Хорошо"
 msgstr "✔ Ok"
 
-#: User/views.py:74
+#: User/views.py:75
 msgid "⚠ Неправильный пароль"
 msgstr "⚠ Wrong password"
 
-#: User/views.py:77
+#: User/views.py:78
 msgid "⚠ Такого пользователя не существует"
 msgstr "⚠ This user does not exist"
 
-#: User/views.py:106
+#: User/views.py:107
 msgid "✖ не могу зарегестрировать нового пользователя"
 msgstr "✖ I can't register a new user"
 
-#: User/views.py:109
+#: User/views.py:110
 msgid "⚠ поле пользователя не заполнено"
 msgstr "⚠ user field is empty"
 
-#: User/views.py:112
+#: User/views.py:113
 msgid "⚠ поле почты не заполнено"
 msgstr "⚠ email field is empty"
 
-#: User/views.py:115
+#: User/views.py:116
 msgid "⚠ поле пароля не заполнено"
 msgstr "⚠ password field is empty"
 
-#: User/views.py:119
+#: User/views.py:120
 msgid "⚠ пользователь с таким именем уже существует"
 msgstr "⚠ user with this name already exist"
 
-#: User/views.py:123
+#: User/views.py:124
 msgid "⚠ такая почта уже используется"
 msgstr "⚠ This email is already in use"
 
-#: User/views.py:127
+#: User/views.py:128
 msgid "⚠ введённое имя слишком короткое"
 msgstr "⚠ username is too short"
 
-#: User/views.py:131
+#: User/views.py:132
 msgid "⚠ введённое имя слишком длинное"
 msgstr "⚠ username is too long"
 
-#: User/views.py:135
+#: User/views.py:136
 msgid "⚠ введённый пароль слишком короткий"
 msgstr "⚠ password is too short"
 
-#: User/views.py:139 User/views.py:140
+#: User/views.py:140 User/views.py:141
 msgid "⚠ пароль не совпадает"
 msgstr "⚠ password does not match"
 
-#: User/views.py:144
+#: User/views.py:145
 msgid "⚠ неправильный формат адреса почты"
 msgstr "⚠ incorrect email address format"
 
-#: User/views.py:147
+#: User/views.py:148
 msgid "✔ вы успешно зарегестрировались, перенаправление"
 msgstr "✔ you have successfully registered, redirecting"
 
-#: User/views.py:158
+#: User/views.py:159
 msgid "Ты, скользкий тип"
 msgstr "You, sneaky bastard"
 
-#: User/views.py:159
+#: User/views.py:160
 msgid "Даже не пытайся"
 msgstr "Don't even try"
 
-#: User/views.py:160
+#: User/views.py:161
 msgid "Или попытайся, всёравно"
 msgstr "Or try, don't care"
