@@ -17,6 +17,10 @@
 	height: auto;
 }
 
+.image_width_sized_min{
+	min-width: 300px;
+	height: auto;
+}
 .image_width_sized{
 	max-width: 300px;
 	height: auto;
@@ -48,6 +52,12 @@
 	animation-duration: 1.5s;
 	animation-direction: reverse;
 	animation-fill-mode: forwards;
+}
+
+.small_icon{
+	margin:0 5px 0 5px;
+	width: 16px;
+	height:16px;
 }
 
 .icon{

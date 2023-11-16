@@ -10,6 +10,8 @@ function toggleBody(){
 		sign.innerHTML = "▶"
 	}
 	body.classList.toggle('hidden')
+	if (typeof adjustCodeBlocks === "function")
+		adjustCodeBlocks()
 }
 
 togglers.forEach( (toggler) =>{
