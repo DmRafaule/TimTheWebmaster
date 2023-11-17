@@ -75,101 +75,26 @@ def case_list(request):
     return render(request, 'Post/case_list.html', context=context)
 
 
-def case(request, post_slug):
-    case = get_object_or_404(Post, slug=post_slug)
+def post(request, post_slug):
+    post = get_object_or_404(Post, slug=post_slug)
+    post.viewed = post.viewed + 1
+    post.save()
     media_root = settings.MEDIA_URL
     domain_name = settings.ALLOWED_HOSTS[0]
-    downloadables = Downloadable.objects.filter(type=case)
-    images = Image.objects.filter(type=case)
+    downloadables = Downloadable.objects.filter(type=post)
+    images = Image.objects.filter(type=post)
     context = {
-        'post': case,
+        'post': post,
         'user': User.objects.filter(name=request.session.get('username','Guest')).first(),
-        'media_root': media_root,
-        'domain_name': domain_name,
-        'downloadables': downloadables,
-        'images': images,
-    }
-
-    try:
-        template = case.template.path
-    except:
-        template = 'Main/InProccess.html'
-
-    return render(request, template, context=context)
-
-
-def article(request, post_slug):
-    article = get_object_or_404(Post, slug=post_slug)
-    article.viewed = article.viewed + 1
-    article.save()
-    media_root = settings.MEDIA_URL
-    domain_name = settings.ALLOWED_HOSTS[0]
-    downloadables = Downloadable.objects.filter(type=article)
-    images = Image.objects.filter(type=article)
-    context = {
-        'post': article,
-        'user': User.objects.filter(name=request.session.get('username','Guest')).first(),
-        'comments': Comment.objects.filter(type=article).order_by('-timeCreated'),
-        'comments_number': Comment.objects.filter(type=article).count(),
+        'comments': Comment.objects.filter(type=post).order_by('-timeCreated'),
+        'comments_number': Comment.objects.filter(type=post).count(),
         'media_root': media_root,
         'domain_name': domain_name,
         'downloadables': downloadables,
         'images': images,
     }
     try:
-        template = article.template.path
-    except:
-        template = 'Main/InProccess.html'
-
-    return render(request, template, context=context)
-
-
-def news(request, post_slug):
-    news = get_object_or_404(Post, slug=post_slug)
-    news.viewed = news.viewed + 1
-    news.save()
-    media_root = settings.MEDIA_URL
-    domain_name = settings.ALLOWED_HOSTS[0]
-    downloadables = Downloadable.objects.filter(type=news)
-    images = Image.objects.filter(type=news)
-    context = {
-        'post': news,
-        'user': User.objects.filter(name=request.session.get('username', 'Guest')).first(),
-        'comments': Comment.objects.filter(type=news).order_by('-timeCreated'),
-        'comments_number': Comment.objects.filter(type=news).count(),
-        'media_root': media_root,
-        'domain_name': domain_name,
-        'downloadables': downloadables,
-        'images': images,
-    }
-    try:
-        template = news.template.path
-    except:
-        template = 'Main/InProccess.html'
-
-    return render(request, template, context=context)
-
-
-def proj(request, post_slug):
-    proj = get_object_or_404(Post, slug=post_slug)
-    proj.viewed = proj.viewed + 1
-    proj.save()
-    media_root = settings.MEDIA_URL
-    domain_name = settings.ALLOWED_HOSTS[0]
-    downloadables = Downloadable.objects.filter(type=proj)
-    images = Image.objects.filter(type=proj)
-    context = {
-        'post': proj,
-        'user': User.objects.filter(name=request.session.get('username', 'Guest')).first(),
-        'comments': Comment.objects.filter(type=proj).order_by('-timeCreated'),
-        'comments_number': Comment.objects.filter(type=proj).count(),
-        'media_root': media_root,
-        'domain_name': domain_name,
-        'downloadables': downloadables,
-        'images': images,
-    }
-    try:
-        template = proj.template.path
+        template = post.template.path
     except:
         template = 'Main/InProccess.html'
 
