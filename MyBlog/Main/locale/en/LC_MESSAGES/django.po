@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-11-10 13:37+0000\n"
+"POT-Creation-Date: 2023-11-17 05:46+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -50,7 +50,11 @@ msgstr ""
 "About webmaster Tim Chuduk. His history, interests and services "
 "providedwebsite development, telegram bots, scripts, parsers and copywriting"
 
-#: Main/templates/Main/about.html:12 Main/templates/Main/base.html:181
+#: Main/templates/Main/about.html:8
+msgid "Тим, Вебмастер. Всё об авторе и его деятельности."
+msgstr "Tim the Webmaster and his contacts"
+
+#: Main/templates/Main/about.html:12 Main/templates/Main/base.html:182
 msgid "Об Авторе"
 msgstr "About author"
 
@@ -335,127 +339,127 @@ msgstr ""
 "A young guy with a half-box haircut, blue eyes and a little elongatedface. "
 "Brunette"
 
-#: Main/templates/Main/base.html:65 Main/templates/Main/base.html:130
+#: Main/templates/Main/base.html:66 Main/templates/Main/base.html:131
 msgid "Открывающаяся дверь"
 msgstr "Opening door"
 
-#: Main/templates/Main/base.html:72 Main/templates/Main/base.html:137
+#: Main/templates/Main/base.html:73 Main/templates/Main/base.html:138
 msgid "Твой аватар"
 msgstr "Your avatar"
 
-#: Main/templates/Main/base.html:74 Main/templates/Main/base.html:139
+#: Main/templates/Main/base.html:75 Main/templates/Main/base.html:140
 msgid "Аватар по умолчанию"
 msgstr "Avatar by default"
 
-#: Main/templates/Main/base.html:79 Main/templates/Main/base.html:144
+#: Main/templates/Main/base.html:80 Main/templates/Main/base.html:145
 msgid "Стрелка из дверей"
 msgstr "Arrow from the door"
 
-#: Main/templates/Main/base.html:95 Main/templates/Main/base.html:96
+#: Main/templates/Main/base.html:96 Main/templates/Main/base.html:97
 msgid "Контактная страница Тимы"
 msgstr "Contacts page of Tim"
 
-#: Main/templates/Main/base.html:96
+#: Main/templates/Main/base.html:97
 msgid "email иконка"
 msgstr "email icon"
 
-#: Main/templates/Main/base.html:108
+#: Main/templates/Main/base.html:109
 msgid "Об авторе"
 msgstr "About author"
 
-#: Main/templates/Main/base.html:111
+#: Main/templates/Main/base.html:112
 msgid "Контакты автора"
 msgstr "Contacts of author"
 
-#: Main/templates/Main/base.html:114
+#: Main/templates/Main/base.html:115
 msgid "Карта сайта"
 msgstr "Sitemap"
 
-#: Main/templates/Main/base.html:124
+#: Main/templates/Main/base.html:125
 msgid "Тим зе Вебмастер"
 msgstr "Tim the Webmaster"
 
-#: Main/templates/Main/base.html:131
+#: Main/templates/Main/base.html:132
 msgid "Вход"
 msgstr "Login"
 
-#: Main/templates/Main/base.html:141
+#: Main/templates/Main/base.html:142
 msgid "Профиль"
 msgstr "Profile"
 
-#: Main/templates/Main/base.html:145
+#: Main/templates/Main/base.html:146
 msgid "Выход"
 msgstr "Logout"
 
-#: Main/templates/Main/base.html:150
+#: Main/templates/Main/base.html:151
 msgid "Домик"
 msgstr "House"
 
-#: Main/templates/Main/base.html:151 Main/templates/Main/home.html:6
+#: Main/templates/Main/base.html:152 Main/templates/Main/home.html:6
 msgid "Домашняя"
 msgstr "Home"
 
-#: Main/templates/Main/base.html:155
+#: Main/templates/Main/base.html:156
 msgid "Чертежи и линейки"
 msgstr "Blueprints and rulers"
 
-#: Main/templates/Main/base.html:156
+#: Main/templates/Main/base.html:157
 msgid "Проекты"
 msgstr "Projects"
 
-#: Main/templates/Main/base.html:160
+#: Main/templates/Main/base.html:161
 msgid "Листок и ручка"
 msgstr "Piece of paper and pen"
 
-#: Main/templates/Main/base.html:161
+#: Main/templates/Main/base.html:162
 msgid "Статьи"
 msgstr "Articles"
 
-#: Main/templates/Main/base.html:165
+#: Main/templates/Main/base.html:166
 msgid "Газетные вырезки"
 msgstr "Newspaper parts"
 
-#: Main/templates/Main/base.html:166 Main/templates/Main/home.html:54
+#: Main/templates/Main/base.html:167 Main/templates/Main/home.html:54
 msgid "Новости"
 msgstr "News"
 
-#: Main/templates/Main/base.html:170
+#: Main/templates/Main/base.html:171
 msgid "Чемодан"
 msgstr "Case"
 
-#: Main/templates/Main/base.html:171
+#: Main/templates/Main/base.html:172
 msgid "Кейсы"
 msgstr "Cases"
 
-#: Main/templates/Main/base.html:175
+#: Main/templates/Main/base.html:176
 msgid "Шестерня"
 msgstr "Gear"
 
-#: Main/templates/Main/base.html:176 Main/templates/Main/services.html:12
+#: Main/templates/Main/base.html:177 Main/templates/Main/services.html:12
 msgid "Услуги"
 msgstr "Services"
 
-#: Main/templates/Main/base.html:180
+#: Main/templates/Main/base.html:181
 msgid "Буква i"
 msgstr "Letter i"
 
-#: Main/templates/Main/base.html:185
+#: Main/templates/Main/base.html:186
 msgid "Контактный блокнот"
 msgstr "Contacts notebook"
 
-#: Main/templates/Main/base.html:186 Main/templates/Main/contacts.html:12
+#: Main/templates/Main/base.html:187 Main/templates/Main/contacts.html:12
 msgid "Контакты"
 msgstr "Contacts"
 
-#: Main/templates/Main/base.html:192
+#: Main/templates/Main/base.html:193
 msgid "Русский флаг"
 msgstr "Russian flag"
 
-#: Main/templates/Main/base.html:195
+#: Main/templates/Main/base.html:196
 msgid "Американский флаг"
 msgstr "UK flag"
 
-#: Main/templates/Main/base.html:199
+#: Main/templates/Main/base.html:200
 msgid "Назад"
 msgstr "Back"
 
