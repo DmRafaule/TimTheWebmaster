@@ -52,7 +52,7 @@ msgstr ""
 
 #: Main/templates/Main/about.html:8
 msgid "Тим, Вебмастер. Всё об авторе и его деятельности."
-msgstr "Tim the Webmaster and his contacts"
+msgstr "Tim the Webmaster. All about him and his passion."
 
 #: Main/templates/Main/about.html:12 Main/templates/Main/base.html:182
 msgid "Об Авторе"
