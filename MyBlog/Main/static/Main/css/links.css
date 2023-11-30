@@ -51,10 +51,8 @@
 	border-bottom: 2px solid #6d9454; 
 }
 .ref_downloadables > a:after{
-	writing-mode: vertical-rl;
-	text-orientation: mixed;
-	content: '	➲';
-	font-size: 120%;
+	content: '⇣';
+	font-size: 150%;
 }
 .ref_downloadables > a:hover{
 	padding-left:10px;
