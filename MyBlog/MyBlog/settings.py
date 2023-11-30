@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'Post.apps.PostConfig',
     'User.apps.UserConfig',
     'Comment.apps.CommentConfig'
+    'ImageThief.apps.ImagethiefConfig',
 ]
 
 MIDDLEWARE = [
@@ -130,6 +131,7 @@ USE_I18N = True
 USE_TZ = True
 
 CSRF_USE_SESSIONS = True
+SESSION_SAVE_EVERY_REQUEST = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/

@@ -29,6 +29,7 @@ urlpatterns += i18n_patterns(
     path('', include('Post.urls')),
     path('', include('User.urls')),
     path('', include('Comment.urls')),
+    path('tools/', include('ImageThief.urls')),
 )
 
 handler404 = "Main.views.page_not_found"

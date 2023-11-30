@@ -36,6 +36,15 @@
 	word-wrap: break-word;
 	overflow-wrap: break-word;
 }
+.content_body__title-fieldset{
+	font-weight: bold;
+	text-align: center;
+	padding: 10px;
+	color: white;
+	background-color: black;
+	word-wrap: break-word;
+	overflow-wrap: break-word;
+}
 .content_body__title--clean{
 	margin-top: 0px;
 }
@@ -46,15 +55,27 @@
 	display: flex;
 	justify-content: center;
 }
+.content_body__title-fieldset > h2, .content_body__title-fieldset > h3 {
+	display: flex;
+	justify-content: center;
+}
 .content_body__main_title > h1{
     font-size : clamp(1.5rem, 3vw, 3rem);
 }
 
 .content_body__title > h2{
-    font-size : clamp(1.0rem, 2vw, 3rem);
+    font-size : clamp(1.0rem, 3vw, 3rem);
 }
 
 .content_body__title > h3{
+    font-size : clamp(0.8rem, 2vw, 3rem);
+}
+
+.content_body__title-fieldset > h2{
+    font-size : clamp(1.0rem, 2vw, 3rem);
+}
+
+.content_body__title-fieldset > h3{
     font-size : clamp(0.8rem, 2vw, 3rem);
 }
 .content_body__quote{

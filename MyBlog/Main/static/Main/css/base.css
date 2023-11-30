@@ -12,6 +12,14 @@ a {
   text-decoration: none;
 }
 
+
+
+fieldset {
+	border: 1px solid black;
+	padding: 10px;
+	border-radius: 15px;
+}
+
 html, body {
   font-family: "Rubik";
   font-size: 20px;
