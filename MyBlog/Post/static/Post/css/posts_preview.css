@@ -1,0 +1,14 @@
+.post_preview{
+	margin-top: var(--post_preview_margin-top);
+}
+.post_preview_header{
+}
+.post_preview_image{
+	border: 2px solid black;
+	flex: 0 0 25%;
+}
+.post_preview_meta{
+	flex: 1 1 60%;
+}
+.post_preview_body{
+}

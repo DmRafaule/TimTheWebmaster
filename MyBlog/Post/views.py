@@ -9,6 +9,19 @@ from Main.models import Downloadable, Image
 import json
 
 
+def getLatest(number, type):
+    new_cases = list()
+    cases = Post.objects.filter(type=type, isPublished=True)
+    if (len(cases) > number):
+        case = cases.latest('timeUpdated')
+        for i in range(0, number):
+            new_cases.append(case)
+            cases = cases.exclude(id=case.id)
+            case = cases.latest('timeUpdated')
+
+    return new_cases
+
+
 def load_post_preview(request):
     media_root = settings.MEDIA_URL
     number = request.GET.get('number', 1)
@@ -27,9 +40,8 @@ def load_post_preview(request):
         is_end = True
     context = {
         'posts': loadedArticles,
-        'user': User.objects.filter(name=request.session.get('username','Guest')).first(),
+        'user': User.objects.filter(name=request.session.get('username', 'Guest')).first(),
         'media_root': media_root,
-        'comments': Comment.objects.all(),
         'is_end': is_end
     }
     return render(request, f'Post/{category}_preview{forWho}.html', context=context)
@@ -37,7 +49,11 @@ def load_post_preview(request):
 
 def article_list(request):
     media_root = settings.MEDIA_URL
+    popular_posts = getLatest(1, "Articles")
+    popular_posts += getLatest(1, "Cases")
+    popular_posts += getLatest(1, "News")
     context = {
+        'popular_posts': popular_posts,
         'articles': Post.objects.filter(type="Articles"),
         'media_root': media_root,
         'user': User.objects.filter(name=request.session.get('username', 'Guest')).first(),
@@ -47,7 +63,11 @@ def article_list(request):
 
 def news_list(request):
     media_root = settings.MEDIA_URL
+    popular_posts = getLatest(1, "Articles")
+    popular_posts += getLatest(1, "Cases")
+    popular_posts += getLatest(1, "News")
     context = {
+        'popular_posts': popular_posts,
         'news': Post.objects.filter(type="News"),
         'media_root': media_root,
         'user': User.objects.filter(name=request.session.get('username','Guest')).first(),
@@ -57,7 +77,11 @@ def news_list(request):
 
 def proj_list(request):
     media_root = settings.MEDIA_URL
+    popular_posts = getLatest(1, "Articles")
+    popular_posts += getLatest(1, "Cases")
+    popular_posts += getLatest(1, "News")
     context = {
+        'popular_posts': popular_posts,
         'projects': Post.objects.filter(type="Projects"),
         'media_root': media_root,
         'user': User.objects.filter(name=request.session.get('username','Guest')).first(),
@@ -67,7 +91,11 @@ def proj_list(request):
 
 def case_list(request):
     media_root = settings.MEDIA_URL
+    popular_posts = getLatest(1, "Articles")
+    popular_posts += getLatest(1, "Cases")
+    popular_posts += getLatest(1, "News")
     context = {
+        'popular_posts': popular_posts,
         'cases': Post.objects.filter(type="Cases"),
         'media_root': media_root,
         'user': User.objects.filter(name=request.session.get('username','Guest')).first(),
@@ -83,7 +111,11 @@ def post(request, post_slug):
     domain_name = settings.ALLOWED_HOSTS[0]
     downloadables = Downloadable.objects.filter(type=post)
     images = Image.objects.filter(type=post)
+    popular_posts = getLatest(1, "Articles")
+    popular_posts += getLatest(1, "Cases")
+    popular_posts += getLatest(1, "News")
     context = {
+        'popular_posts': popular_posts,
         'post': post,
         'user': User.objects.filter(name=request.session.get('username','Guest')).first(),
         'comments': Comment.objects.filter(type=post).order_by('-timeCreated'),
@@ -186,11 +218,3 @@ def share_post(request):
         'shares': post.shares,
     }
     return JsonResponse(data)
-
-
-def load_table_of_content(request):
-    titles = json.loads(request.GET.get("titles"))
-    context = {
-        'titles': titles,
-    }
-    return render(request, "Post/table_of_content.html", context=context)

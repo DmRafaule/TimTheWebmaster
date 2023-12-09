@@ -7,13 +7,6 @@
 	<title>{% trans "Кейсы, Тимы Вебмастера" %}</title>
 {% endblock %}
 
-{% block navigation_head %}
-	<div class="name"><b>{% trans "Кейсы" %}</b></div>
-	<p class="quote">{% trans "Примеры работ и кейсы" %}</p>
-{% endblock navigation_head %}
-
-
-
 {# It is not flexable for now
 	<div class="page_case">
 		<div id="page_portfolios" class="page_portfolios">
@@ -40,23 +33,30 @@
 	</div>
 #}
 {% block content %}
-	<div class="page">
+	<div class="limiter in_middle in_middle-self no_wrap padder">
+		<h1 class="paragraph" >{% trans "Кейсы" %}</h1>
+		<hr>
+		<div id="page">
 		{# Place to be filled by infinity_scroll script#}
+		</div>
+		<div id="scroll-sentinel"></div>
 	</div>
-	<div id="scroll-sentinel"></div>
 {% endblock %}
 
+{% block footer_links %}
+	{% for ref in popular_posts %}
+		<li class="ref"><a href="{{ref.get_absolute_url}}">{{ref|truncatechars:15}}</a></li>
+	{% endfor %}
+{% endblock %}
 
 {% block styles %}
-    <link type="text/css" rel="stylesheet" href="{% static 'Post/css/list.css' %}"/>
-    <link type="text/css" rel="stylesheet" href="{% static 'Post/css/news.css' %}"/>
+    <link type="text/css" rel="stylesheet" href="{% static 'blocks.css' %}"/>
+    <link type="text/css" rel="stylesheet" href="{% static 'images.css' %}"/>
+    <link type="text/css" rel="stylesheet" href="{% static 'Post/css/posts_preview.css' %}"/>
 {% endblock %}
 
 {% block scripts %}
-    <!-- Loading jQuery For AJAX behaviour --> 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <!-- This is for knowing where to look for an images 
-		 And csrf tokkent -->
     {% csrf_token %}
     <script>
         const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;

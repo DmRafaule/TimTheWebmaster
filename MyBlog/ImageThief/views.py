@@ -18,7 +18,7 @@ from .Utils.utils import toDomainURL, initDataFile
 import ImageThief.config as C
 
 
-TRY_LIMIT = 10
+TRY_LIMIT = 1000
 TIME_BERFORE_CLEANUP = 3600
 
 

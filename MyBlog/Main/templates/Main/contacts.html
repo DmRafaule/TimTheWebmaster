@@ -3,114 +3,87 @@
 {% load static%}
 
 {% block head %}
-<meta name="description" content="{% trans "Тим, Вебмастер. Его контактные данные, ссылки на соцсети, почта и форма обратной связи" %}">
-	<link rel="canonical" href="https://timthewebmaster.com{%url 'contacts'%}" />
 	<title>{% trans "Тим, Вебмастер и его контакты" %}</title>
+	<meta name="description" content="{% trans "Тим, Вебмастер. Его контактные данные, ссылки на соцсети, почта и форма обратной связи" %}">
+	<link rel="canonical" href="https://{{domain_name}}{%url 'contacts'%}" />
 {% endblock %}
-
-{% block navigation_head %}
-<div class="name"><b>{% trans "Контакты" %}</b></div>
-<p class="quote">{% trans "Как связаться с Тимой" %}</p>
-{% endblock navigation_head %}
-
-
 
 {% block content %}
-	<div class="content_body">
-		<div class="content_body__main_title">
-			<h1>{% trans "Контакты и обратная связь" %}</h1>
+<div class="limiter in_middle in_middle-self no_wrap padder">
+	<h1 class="title">{% trans "Тим Вебмастер, его контакты и обратная связь" %}</h1>
+	<div class="row in_middle-even">
+		<div>
+			<h2 class="paragraph">{% trans "Я в социальных сетях" %}</h2>
+			<ul class="list_without_sign">
+				<li class="ref">
+					<img class="icon" src="{% static 'instagram.svg' %}" alt="{% trans "instagram иконка" %}">
+					<a target="_blank" rel="contact" rev="{% trans "контактная страница Тимы, Вебмастера"%}" href="https://www.instagram.com/timachedr/" >Instagram</a>
+				</li>
+				<li class="ref">
+					<img class="icon" src="{% static 'vk.svg' %}" alt="{% trans "vk иконка" %}">
+					<a target="_blank" rel="contact" rev="{% trans "контактная страница Тимы, Вебмастера"%}" href="https://vk.com/timachuduk" >VK</a>
+				</li>
+				<li class="ref">
+					<img class="icon" src="{% static 'telegram.svg' %}" alt="{% trans "telegram иконка" %}">
+					<a target="_blank" rel="contact" rev="{% trans "контактная страница Тимы, Вебмастера"%}" href="https://t.me/DmitryChedr" >Telegram</a>
+				</li>
+				<li class="ref">
+					<img class="icon" src="{% static 'twitter.svg' %}" alt="{% trans "twitter иконка" %}">
+					<a target="_blank" rel="contact" rev="{% trans "контактная страница Тимы, Вебмастера"%}" href="https://twitter.com/TimaChedr" >Twitter</a>
+				</li>
+				<li class="ref">
+					<img class="icon" src="{% static 'email.svg' %}" alt="{% trans "email иконка" %}">
+					<a target="_blank" rel="contact" rev="{% trans "контактная страница Тимы, Вебмастера"%}" href="https://mail.google.com/mail/?view=cm&source=mailto&to=ChedrDen@gmail.com" >Email</a>
+				</li>
+			</ul>
 		</div>
-		<div class="content_body__body row in_middle-even">
-			<div class="content_body__block">
-				<div class="content_body__title content_body__title--simple">
-					<h2>{% trans "Я в социальных сетях" %}</h2>
+		<div>
+			<h2 class="paragraph">{% trans "Форма для обратной связи"%}</h2>
+			{% csrf_token %}
+			<form id="toSignup">
+				<div>
+					<p id="username-error" class="hint-required"></p>
+					<input placeholder="{% trans "* имя" %}" type="text" name="username" id="username">
 				</div>
-				<div class="content_body__text">
-					<div class="list_simple">
-						<div class="list_simple_el">
-							<img class="icon" src="{% static 'Main/img/instagram.png' %}">
-							<div class="list_simple_el__text ref">
-								<a target="_blank" rel="contact" rev="{% trans "контактная страница Тимы, Вебмастера"%}" href="https://www.instagram.com/timachedr/" >Instagram</a>
-							</div>
-						</div>
-						<div class="list_simple_el">
-							<img class="icon" src="{% static 'Main/img/vk.png' %}">
-							<div class="list_simple_el__text ref">
-								<a target="_blank" rel="contact" rev="{% trans "контактная страница Тимы, Вебмастера"%}" href="https://vk.com/timachuduk" >VK</a>
-							</div>
-						</div>
-						<div class="list_simple_el">
-							<img class="icon" src="{% static 'Main/img/telegram.png' %}">
-							<div class="list_simple_el__text ref">
-								<a target="_blank" rel="contact" rev="{% trans "контактная страница Тимы, Вебмастера"%}" href="https://t.me/DmitryChedr" >Telegram</a>
-							</div>
-						</div>
-						<div class="list_simple_el">
-							<img class="icon" src="{% static 'Main/img/twitter.png' %}">
-							<div class="list_simple_el__text ref">
-								<a target="_blank" rel="contact" rev="{% trans "контактная страница Тимы, Вебмастера"%}" href="https://twitter.com/TimaChedr" >Twitter</a>
-							</div>
-						</div>
-						<div class="list_simple_el">
-							<img class="icon" src="{% static 'Main/img/email.png' %}">
-							<div class="list_simple_el__text ref">
-								<a target="_blank" rel="contact" rev="{% trans "контактная страница Тимы, Вебмастера"%}" href="https://mail.google.com/mail/?view=cm&source=mailto&to=ChedrDen@gmail.com" >Email</a>
-							</div>
-						</div>
-					</div>
+				<div>
+					<p id="email-error" class="hint-required"></p>
+					<input placeholder="{% trans "* почта" %}" type="email" name="email" id="email">
 				</div>
-			</div>
-			<div class="content_body__block">
-				<div class="content_body__title content_body__title--simple">
-					<h2>{% trans "Форма для обратной связи"%}</h2>
+				<div>
+					<textarea placeholder="{% trans "Сообщение" %}" name="about" id="about"></textarea>
 				</div>
-				<div class="content_body__text">
-					<div id="common-error" class="hint-container hint-required hint-common_error"></div>
-					{% csrf_token %}
-					<div class="form">
-						<form enctype="multipart/form-data" class="form_form" id="toSignup" action="send_new_user" method="get">
-							<div>
-								<input class="form_el" placeholder="{% trans "имя" %}" type="text" name="username" id="username">
-								<div class="hint-container">
-									<p id="username-error" class="hint-required">{% trans "обязательно" %}</p>
-									<p class="hint-error">{% trans "от 3 до 25 букв" %}</p>
-								</div>
-							</div>
-							<div>
-								<input class="form_el" placeholder="{% trans "почта" %}" type="email" name="email" id="email">
-								<div class="hint-container">
-									<p id="email-error" class="hint-required">{% trans "обязательно" %}</p>
-									<p class="hint-error">{% trans "корректный адрес почты" %}</p>
-								</div>
-							</div>
-							<textarea class="form_el__about" placeholder="{% trans "Сообщение" %}" name="about" rows=4  id="about"></textarea>
-						</form> 
-					</div>
-					<div class="buttons">
-						<div id="send_button" class="button">
-							<a>{% trans "Отправить" %}</a>
-						</div>
-					</div>
+				<div class="rules">
+					<ul class="list_without_sign">
+						<li>{% trans "Поля отмеченые * обязательны к заполнению" %}</li>
+						<li>{% trans "Имя должно состоять от 3 до 25 букв" %}</li>
+						<li>{% trans "Email должен быть настоящим" %}</li>
+					</ul>
 				</div>
-			</div>
+				<div id="common-error" class="hint-required"></div>
+				<div id="send_button" class="button squered_button action_button">
+					{% trans "Отправить" %}
+				</div>
+			</form> 
 		</div>
 	</div>
-
+</div>
 {% endblock %}
 
+{% block footer_links %}
+	{% for ref in popular_posts %}
+		<li class="ref"><a href="{{ref.get_absolute_url}}">{{ref|truncatechars:15}}</a></li>
+	{% endfor %}
+{% endblock %}
 
 {% block styles %}
-	<link type="text/css" rel="stylesheet" href="{% static 'Main/css/titles.css' %}"/>
-	<link type="text/css" rel="stylesheet" href="{% static 'Main/css/lists.css' %}"/>
-	<link type="text/css" rel="stylesheet" href="{% static 'Main/css/forms.css' %}"/>
+	<link type="text/css" rel="stylesheet" href="{% static 'blocks.css' %}"/>
+	<link type="text/css" rel="stylesheet" href="{% static 'lists.css' %}"/>
+	<link type="text/css" rel="stylesheet" href="{% static 'forms.css' %}"/>
 {% endblock %}
 
 
 {% block scripts %}
-    <!-- Loading jQuery For AJAX behaviour --> 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <!-- This is for knowing where to look for an images 
-		 And csrf tokkent -->
     {% csrf_token %}
     <script>
         const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;

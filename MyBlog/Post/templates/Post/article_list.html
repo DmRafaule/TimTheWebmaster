@@ -7,17 +7,31 @@
 	<title>{% trans "Статьи Тимы, Вебмастера" %}</title>
 {% endblock %}
 
-{% block navigation_head %}
-	<div class="name"><b>{% trans 'Статьи' %}</b></div>
-	<p class="quote">{% trans 'О том, что интересно' %} </p>
-{% endblock navigation_head %}
+{% block content %}
+	<div class="limiter in_middle in_middle-self no_wrap padder">
+		<h1 class="paragraph" >{% trans "Статьи" %}</h1>
+		<hr>
+		<div id="page">
+		{# Place to be filled by infinity_scroll script#}
+		</div>
+		<div id="scroll-sentinel"></div>
+	</div>
+{% endblock %}
 
+{% block footer_links %}
+	{% for ref in popular_posts %}
+		<li class="ref"><a href="{{ref.get_absolute_url}}">{{ref|truncatechars:15}}</a></li>
+	{% endfor %}
+{% endblock %}
+
+{% block styles %}
+    <link type="text/css" rel="stylesheet" href="{% static 'blocks.css' %}"/>
+    <link type="text/css" rel="stylesheet" href="{% static 'images.css' %}"/>
+    <link type="text/css" rel="stylesheet" href="{% static 'Post/css/posts_preview.css' %}"/>
+{% endblock %}
 
 {% block scripts %}
-    <!-- Loading jQuery For AJAX behaviour --> 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <!-- This is for knowing where to look for an images 
-		 And csrf tokkent -->
     {% csrf_token %}
     <script>
         const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
@@ -26,15 +40,5 @@
     <script src="{% static 'Post/js/infinity_scroll.js' %}"></script>
 {% endblock %}
 
-{% block styles %}
-    <link type="text/css" rel="stylesheet" href="{% static 'Post/css/list.css' %}"/>
-{% endblock %}
-
-{% block content %}
-	<div class="page">
-		{# Place to be filled by infinity_scroll script#}
-	</div>
-	<div id="scroll-sentinel"></div>
-{% endblock %}
 
 

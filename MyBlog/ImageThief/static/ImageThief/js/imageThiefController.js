@@ -19,7 +19,7 @@ function StartImageThief(url, mode){
 			// Disable mode selection
 			$('input[name=mod]').attr("disabled",false);
 			// Change background color of Modes block
-			$("#modes_block").css("background-color", "black")
+			$("#modes_block").css("color", "black")
 			$("#imagethief-results-images").attr("href", result.imgs_path)
 			$("#imagethief_text_inButton").text(result.btn)
 			$("#current_try").text(result.try)
@@ -36,7 +36,7 @@ function StartImageThief(url, mode){
 			// Disable mode selection
 			$('input[name=mod]').attr("disabled",false);
 			// Change background color of Modes block
-			$("#modes_block").css("background-color", "black")
+			$("#modes_block").css("color", "black")
 			// Show status field of tool
 			$("#container_imagethief-status").hide()
 			$("#container_imagethief-results").hide()
@@ -70,7 +70,7 @@ function InitImageThief(){
 			// Disable mode selection
 			$('input[name=mod]').attr("disabled",true);
 			// Change background color of Modes block
-			$("#modes_block").css("background-color", "grey")
+			$("#modes_block").css("color", "grey")
 			// Show status field of tool
 			$("#container_imagethief-status").show()
 			$("#container_imagethief-results").hide()
@@ -103,7 +103,7 @@ function StopImageThief(){
 			// Disable mode selection
 			$('input[name=mod]').attr("disabled",false);
 			// Change background color of Modes block
-			$("#modes_block").css("background-color", "black")
+			$("#modes_block").css("color", "black")
 			// Hide status field of tool
 			$("#container_imagethief-status").hide()
 			$("#container_imagethief-results").hide()

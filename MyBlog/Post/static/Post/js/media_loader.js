@@ -1,7 +1,7 @@
 
 $(document).ready(function(){
-	const imageBlocks = document.querySelectorAll(".content_body__image");
-	imageBlocks.forEach( (image) => {
+	const images = document.querySelectorAll(".dynamic_image");
+	images.forEach( (image) => {
 		var options = {
 			  threshold: 0.01,
 			};
@@ -10,10 +10,7 @@ $(document).ready(function(){
 		  for (const entry of entries) {
 			// Check if the entry is intersecting the viewport
 			if (entry.isIntersecting) {
-				imgs = image.querySelectorAll('img')
-				imgs.forEach( (img) => {
-					img.setAttribute('src',$(img).data('src'))
-				})
+				image.setAttribute('src',$(image).data('src'))
 			}
 		  }
 		}, options);

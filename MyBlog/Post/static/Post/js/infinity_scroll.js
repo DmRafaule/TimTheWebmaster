@@ -2,7 +2,6 @@ const number = 5
 var offset = 0
 
 function LoadPosts(){
-	const container = document.querySelector(".page");
 	$.ajax({
 		type: "GET",
 		url: "/" + language_code + "/load_post_preview/",
@@ -13,7 +12,7 @@ function LoadPosts(){
 		},
 		mode: 'same-origin', // Do not send CSRF token to another domain.
 		success: function(result) {
-			var page = $('.page');
+			var page = $('#page');
 			// Insert 'answer' from server into site code
 			page.append(result)
 			offset = offset + number

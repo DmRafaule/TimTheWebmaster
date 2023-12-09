@@ -1,0 +1,25 @@
+.list{
+	margin-top: var(--list_margin-top);
+}
+.list > li{
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	column-gap: var(--list_unordered_element_gap);
+	margin-top: var(--min_pm);
+	margin-left: var(--mid_pm);
+}
+.list > li::before{
+	content: var(--list_unordered_element_sign);
+	font-size: var(--list_sign_size);
+}
+.list_without_sign{
+	
+}
+.list_without_sign > li{
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	column-gap: var(--list_unordered_element_gap);
+	margin-top: var(--min_pm);
+}

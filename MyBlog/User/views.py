@@ -8,12 +8,30 @@ from MyBlog import settings
 from django.utils.translation import gettext as _
 from .models import User
 from Comment.models import Comment
+from Post.models import Post
+
+
+def getLatest(number, type):
+    new_cases = list()
+    cases = Post.objects.filter(type=type, isPublished=True)
+    if (len(cases) > number):
+        case = cases.latest('timeUpdated')
+        for i in range(0, number):
+            new_cases.append(case)
+            cases = cases.exclude(id=case.id)
+            case = cases.latest('timeUpdated')
+
+    return new_cases
 
 
 def profile(request, user_slug):
     user = User.objects.filter(name=user_slug).first()
+    popular_posts = getLatest(1, "Articles")
+    popular_posts += getLatest(1, "Cases")
+    popular_posts += getLatest(1, "News")
     media_root = settings.MEDIA_URL
     context = {
+        'popular_posts': popular_posts,
         'user': user,
         'media_root': media_root,
         'comments': Comment.objects.filter(user=user),
@@ -26,9 +44,15 @@ def profile(request, user_slug):
 
 
 def login(request):
+    popular_posts = getLatest(1, "Articles")
+    popular_posts += getLatest(1, "Cases")
+    popular_posts += getLatest(1, "News")
+    media_root = settings.MEDIA_URL
     user = User.objects.filter(name=request.session.get("username","guest")).first()
     context = {
+        'popular_posts': popular_posts,
         'user': user,
+        'media_root': media_root,
     }
     return render(request, 'User/login.html', context=context)
 
@@ -39,14 +63,24 @@ def logout(request):
 
 
 def signup(request):
-    return render(request, 'User/signup.html')
+    popular_posts = getLatest(1, "Articles")
+    popular_posts += getLatest(1, "Cases")
+    popular_posts += getLatest(1, "News")
+    media_root = settings.MEDIA_URL
+    user = User.objects.filter(name=request.session.get("username","guest")).first()
+    context = {
+        'popular_posts': popular_posts,
+        'user': user,
+        'media_root': media_root,
+    }
+    return render(request, 'User/signup.html', context=context)
 
 
 def login_verify(request):
     message = {
         'common': '',
-        'username': _('обязательно'),
-        'password': _('обязательно'),
+        'username': '',
+        'password': '',
     }
     status = 200
     if request.method == 'POST':
@@ -84,10 +118,10 @@ def login_verify(request):
 def signup_verify(request):
     message = {
         'common': '',
-        'username': _('обязательно'),
-        'email': _('обязательно'),
-        'password': _('обязательно'),
-        'repassword': _('обязательно'),
+        'username': '',
+        'email': '',
+        'password': '',
+        'repassword': '',
     }
     status = 200
     if request.method == 'POST':

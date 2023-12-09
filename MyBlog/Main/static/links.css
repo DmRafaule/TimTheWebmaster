@@ -1,0 +1,41 @@
+.ref > a{
+	color: var(--link_color);	
+	transition: 0.3s;
+	border-bottom: 1px solid var(--link_color); 
+}
+
+.ref > a:after{
+	content: var(--link_sign);
+	font-size: 120%;	
+}
+
+.ref > a:hover{
+	color: var(--link-hover_color);	
+}
+
+
+.ref_downloadables > a{
+	color: var(--link-downloadable_color);	
+	transition: padding 0.3s;
+	border-bottom: 1px solid var(--link-downloadable_color); 
+}
+.ref_downloadables > a:after{
+	content: var(--link-downloadable_sign);
+	font-size: 120%;
+}
+.ref_downloadables > a:hover{
+	color: var(--link-hover-downloadable_color);	
+}
+
+.ref_internal > a{
+	color: var(--link-internal_color);	
+	transition: padding 0.3s;
+	border-bottom: 1px solid var(--link-internal_color); 
+}
+.ref_internal > a:after{
+	content: var(--link-internal_sign);
+	font-size: 120%;
+}
+.ref_internal > a:hover{
+	color: var(--link-hover-internal_color);	
+}

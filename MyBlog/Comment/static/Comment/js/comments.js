@@ -23,7 +23,7 @@ function removeComment(toRemove){
 function sendComment(path){
 	var post = post_slug
 	var about = $("#about").val()	
-	var username = $("#comments_el__user_name_commentAdd").text()
+	var username = $("#toUsername").text()
 
 	$.ajax({
 		type: "POST",
@@ -36,9 +36,9 @@ function sendComment(path){
 		headers: {'X-CSRFToken': csrftoken},
 		mode: 'same-origin', // Do not send CSRF token to another domain.
 		success: function(result){
-			$(result).insertAfter("#comment_add")
-			$(".comment_remove__button").off()
-			$(".comment_remove__button").one('click', function() {
+			$(result).insertAfter("#toComment")
+			$(".remove_action_button").off()
+			$(".remove_action_button").one('click', function() {
 				removeComment(this)
 			})	
 		},
@@ -59,8 +59,8 @@ function loadComments(){
 		mode: 'same-origin', // Do not send CSRF token to another domain.
 		success: function(result){
 			$(result).insertBefore("#scroll-sentinel")
-			$(".comment_remove__button").off()
-			$(".comment_remove__button").one('click', function() {
+			$(".remove_action_button").off()
+			$(".remove_action_button").one('click', function() {
 				removeComment(this)
 			})	
 			offset = offset + number
@@ -97,8 +97,15 @@ function sharePost(){
 }
 
 function showShareForm(){
-	$("#shares_options").toggleClass("active")
-	$("#shares_options").toggleClass("shares_options")
+	share_options = document.getElementById("share_options")
+	if (share_options.classList.contains("active_share_options")){
+		share_options.style.height = 0
+	}
+	else{
+		share_options.style.height = share_options.firstElementChild.clientHeight + "px"
+	}
+	share_options.classList.toggle("active_share_options")
+	$(".share_button").off()
 	$(".share_button").on('click', sharePost)
 }
 
@@ -115,21 +122,21 @@ function prepareForCommenting(){
 		mode: 'same-origin', // Do not send CSRF token to another domain.
 		success: function(result){
 			$("#about").attr('readonly',!result.isValid)
-			$("#comments_el__user_name_commentAdd").text(result.username)
-			$("#comment_add__buttonShowLoginOptions").toggleClass("active")
-			$("#comment_add__buttonSendGuesting").toggleClass("active")
+			$("#toUsername").text(result.username)
+			$("#toSendVerify-guesting").toggleClass("active")
+			$("#onSend-guesting").toggleClass("active")
 		},
 	})
 }
 
 function showCommentSubmitForm(){
-	$("#loginableSocialNets").toggleClass("active")
-	$("#parsingFormSubmit").one("click", prepareForCommenting)
+	$("#toNewUsername").toggleClass("active")
+	$("#onNewUsername").one("click", prepareForCommenting)
 }
 
 
 $(document).ready(function(){
-	default_avatar_path = $("#comments_el__user_avatar_commentAdd").attr('src')
+	default_avatar_path = $("#toAvatar").attr('src')
 	const observer = new IntersectionObserver((entries, observer) => {
 	  // Loop through the entries
 	  for (const entry of entries) {
@@ -143,13 +150,13 @@ $(document).ready(function(){
 	const scrollSentinel = document.querySelector("#scroll-sentinel");
 	observer.observe(scrollSentinel);
 
-	$("#interactions_share__button").on('click', showShareForm)
-	$("#interactions_like__button").on('click', likePost)
-	$("#comment_add__buttonSendGuesting").on('click', function(){
+	$("#onShare").on('click', showShareForm)
+	$("#onLike").on('click', likePost)
+	$("#onSend-guesting").on('click', function(){
 		sendComment("send_comment_guesting")
 	})	
-	$("#comment_add__buttonSendAuthorized").on('click', function(){
+	$("#onSend-authorized").on('click', function(){
 		sendComment("send_comment_authorized")
 	})	
-	$("#loginableSocialNets_text").on('click', showCommentSubmitForm)	
+	$("#onSendVerify-guesting").on('click', showCommentSubmitForm)	
 })

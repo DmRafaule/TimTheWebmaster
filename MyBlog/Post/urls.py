@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import post, load_post_preview, article_list, news_list, proj_list, case_list, load_case, like_post, share_post, load_table_of_content
+from .views import post, load_post_preview, article_list, news_list, proj_list, case_list, load_case, like_post, share_post
 
 
 urlpatterns = [
@@ -15,5 +15,4 @@ urlpatterns = [
     path('load_case/', load_case, name='load_case'),
     path('like_post/', like_post),
     path('share_post/', share_post),
-    path('load_table_of_content/', load_table_of_content),
 ]

@@ -7,80 +7,69 @@
 	<title>{% trans "Регистрация на сайте Тим Вебмастер" %}</title>
 {% endblock %}
 
-{% block navigation_head %}
-<div class="name"><b>{% trans "Регистрация" %}</b></div>
-<p class="quote">{% trans "В процессе нетворкинга" %}</p>
-{% endblock navigation_head %}
-
-
-
 {% block content %}
-<div class="page">
-<div class="main_wrapper full_height column">
-	<div class="content_body__title content_body__title--simple">
-		<h2>{% trans 'Форма регистрации' %}</h2>
+<div class="login_page limiter column in_middle in_middle-self no_wrap padder">
+	<div class="paragraph in_middle">
+		<h1>{% trans "Форма регистрации" %}</h1>
 	</div>
-	<div id="common-error" class="hint-container hint-required hint-common_error"></div>
     {% csrf_token %}
-	<div class="form">
-		<form enctype="multipart/form-data" class="form_form" id="toSignup" action="send_new_user" method="get">
-			<div>
-				<input class="form_el" placeholder="{% trans "имя" %}" type="text" name="username" id="username">
-				<div class="hint-container">
-					<p id="username-error" class="hint-required">{% trans "обязательно" %}</p>
-					<p class="hint-error">{% trans "от 3 до 25 букв" %}</p>
-				</div>
-			</div>
-			<div>
-				<input class="form_el" placeholder="{% trans "почта" %}" type="email" name="email" id="email">
-				<div class="hint-container">
-					<p id="email-error" class="hint-required">{% trans "обязательно" %}</p>
-					<p class="hint-error">{% trans "корректный адрес почты" %}</p>
-				</div>
-			</div>
-			<div>
-				<input class="form_el" placeholder="{% trans "пароль" %}" type="password" name="password" id="password">
-				<div class="hint-container">
-					<p id="password-error" class="hint-required">{% trans "обязательно" %}</p>
-					<p class="hint-error">{% trans "от 6 букв" %}</p>
-				</div>
-			</div>
-			<div>
-				<input class="form_el" placeholder="{% trans "повтори пароль" %}" type="password" name="repeated_password"  id="repeated_password">
-				<div class="hint-container">
-					<p id="repassword-error" class="hint-required">{% trans "обязательно" %}</p>
-					<p class="hint-error">{% trans "должен совпадать с паролем" %}</p>
-				</div>
-			</div>
-			<textarea class="form_el__about" placeholder="{% trans "Раскажи немного о себе" %}" name="about" rows=4  id="about"></textarea>
-		</form> 
-	</div>
-	<div class="sel_file">
-		<label for="texta">{% trans "Выбери себе аватар." %}</label>
-		<input class="form_el__file" placeholder="{% trans "выбрать файл" %}" type="file" name="file" id="file">
-	</div>
-	<div class="buttons">
-		<div id="signup" class="button ">
-			<a>{% trans "Регистрация" %}</a>
+	<form id="toSignup" class="full_width">
+		<div>
+			<p id="username-error" class="hint-required"></p>
+			<input placeholder="{% trans "* Имя" %}" type="text" name="username" id="username">
 		</div>
-	</div>
-
-</div>
+		<div>
+			<p id="email-error" class="hint-required"></p>
+			<input placeholder="{% trans "* Почта" %}" type="email" name="email" id="email">
+		</div>
+		<div>
+			<p id="password-error" class="hint-required"></p>
+			<input placeholder="{% trans "* Пароль" %}" type="password" name="password" id="password">
+		</div>
+		<div>
+			<p id="repassword-error" class="hint-required"></p>
+			<input placeholder="{% trans "* Повтори пароль" %}" type="password" name="repeated_password"  id="repeated_password">
+		</div>
+		<div>
+			<textarea placeholder="{% trans "Раскажи немного о себе" %}" name="about" id="about"></textarea>
+		</div>
+		<div>
+			<input placeholder="{% trans "Выбрать файл" %}" type="file" name="file" id="file">
+		</div>
+		<div class="rules">
+			<ul class="list_without_sign">
+				<li>{% trans "Поля отмеченые * обязательны к заполнению" %}</li>
+				<li>{% trans "Имя должно состоять от 3 до 25 букв" %}</li>
+				<li>{% trans "Имя должно быть уникальным" %}</li>
+				<li>{% trans "Пароль должен быть больше 6 знаков" %}</li>
+				<li>{% trans "Пароли должны совпадать" %}</li>
+				<li>{% trans "Почта должна быть действительной" %}</li>
+			</ul>
+		</div>
+		<div id="common-error" class="hint-required"></div>
+		<div id="signup" class="button squered_button action_button">
+			{% trans "Регистрация" %}
+		</div>
+	</form> 
 </div>
 {% endblock %}
 
 
+{% block footer_links %}
+	{% for ref in popular_posts %}
+		<li class="ref"><a href="{{ref.get_absolute_url}}">{{ref|truncatechars:15}}</a></li>
+	{% endfor %}
+{% endblock %}
 
 {% block styles %}
+	<link type="text/css" rel="stylesheet" href="{% static 'blocks.css' %}"/>
+	<link type="text/css" rel="stylesheet" href="{% static 'lists.css' %}"/>
+	<link type="text/css" rel="stylesheet" href="{% static 'forms.css' %}"/>
     <link type="text/css" rel="stylesheet" href="{% static 'User/css/user.css' %}"/>
-    <link type="text/css" rel="stylesheet" href="{% static 'User/css/forms.css' %}"/>
-    <link type="text/css" rel="stylesheet" href="{% static 'User/css/buttons.css' %}"/>
 {% endblock %}
+
 {% block scripts %}
-    <!-- Loading jQuery For AJAX behaviour --> 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <!-- This is for knowing where to look for an images 
-		 And csrf tokkent -->
     {% csrf_token %}
     <script>
         const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;

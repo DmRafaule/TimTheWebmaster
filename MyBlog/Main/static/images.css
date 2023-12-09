@@ -1,0 +1,19 @@
+.placeholder{
+	background-image: url('placeholder.svg');
+	background-size: cover;
+	min-width: 300px;
+	max-width: 600px;
+	width: 100%
+}
+.placeholder_no_limit{
+	background-image: url('placeholder.svg');
+	background-size: cover;
+}
+
+.image {
+	width: 100%;
+	height: auto;
+}
+.image-min_sized {
+	min-width: 300px;
+}

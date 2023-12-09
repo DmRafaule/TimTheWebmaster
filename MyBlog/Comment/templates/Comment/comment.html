@@ -1,42 +1,40 @@
 {% load static %}
 {% load i18n%}
 
-<div class="comments_el">
-	<div class="comments_el__meta">
-		<div class="comments_el__meta_el comments_el__user">
-			<div class="comments_el__user_avatar">
-				{% if not com.anonymous_user_id|length > 0%}
-					{% if com.user.avatar|length > 0 %}
-					<img class="icon icon_avatar" src='{{media_root}}{{ com.user.avatar }}' alt="{% trans "Аватарка пользователя" %}">
-					{% else %}
-					<img class="icon icon_avatar" src="{% static 'User/img/default_avatar.png' %}" alt="{% trans "Аватар по умолчанию" %}">
-					{% endif %}
-				{% else%}
-					<img class="icon icon_avatar" src="{% static 'User/img/default_avatar.png' %}" alt="{% trans "Аватар по умолчанию" %}">
+<div class="column mid_row_gap">
+	<div class="column min_gap">
+		<div class="row mid_col_gap">
+			{% if not com.anonymous_user_id|length > 0%}
+				{% if com.user.avatar|length > 0 %}
+				<img class="icon icon_avatar" src='{{media_root}}{{ com.user.avatar }}' alt="{% trans "Аватарка пользователя" %}">
+				{% else %}
+				<img class="icon icon_avatar" src="{% static 'User/img/default_avatar.svg' %}" alt="{% trans "Аватар по умолчанию" %}">
 				{% endif %}
-			</div>
-			<div class="comments_el__user_name">
+			{% else%}
+				{% if com.anonymous_user_avatar|length > 0 %}
+				<img class="icon icon_avatar" src='{{com.anonymous_user_avatar}}' alt="{% trans "Аватарка пользователя" %}">
+				{% else %}
+				<img class="icon icon_avatar" src="{% static 'User/img/default_avatar.svg' %}" alt="{% trans "Аватар по умолчанию" %}">
+				{% endif %}
+			{% endif %}
+			<b class=" in_middle-self">
 				{% if not com.anonymous_user_id|length > 0%}
 					{{com.user}}
 				{% else %}
 					{{com.anonymous_user_name}}
 				{% endif %}
-			</div>
+			</b>
 		</div>
-		<div class="comments_el__meta_el">
+		<div class="quote">
 			{{com.timeCreated}}
 		</div>
 	</div>
-	<div class="comments_el__content">
+	<div>
 		{{com.content}}
 	</div>
 	{% if user.slug == com.user.slug and request.session.is_auth %}
-	<div id="comment_remove__button" class="comment_remove__button comment_button" commentid="{{com.id}}" >
-		<div id="page_add__case" class="page_add__case">
-			<div id="plus_description" class="case_tosite  plus_description_addComment">
-				{% trans "Удалить" %}
-			</div>
-		</div>
+	<div class="button remove_action_button squered_button" commentid="{{com.id}}" >
+		{% trans "Удалить" %}
 	</div>
 	{% endif %}
 </div>

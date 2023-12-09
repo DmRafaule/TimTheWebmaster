@@ -9,15 +9,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	{% block head %}
 	{% endblock %}
-	<link rel="icon" href="{% static 'Main/img/favicon.svg' %}" type="image/svg+xml">
-	<link rel="icon" href="{{domain_name}}/favicon.ico" type="image/x-icon">
-    <link type="text/css" rel="stylesheet" href="{% static 'Main/css/base.css' %}"/>
-    <link type="text/css" rel="stylesheet" href="{% static 'Main/css/buttons.css' %}"/>
-    <link type="text/css" rel="stylesheet" href="{% static 'Main/css/blocks.css' %}"/>
-    <link type="text/css" rel="stylesheet" href="{% static 'Main/css/links.css' %}"/>
-    <link type="text/css" rel="stylesheet" href="{% static 'Main/css/logo.css' %}"/>
-    <link type="text/css" rel="stylesheet" href="{% static 'Main/css/images.css' %}"/>
-    <link type="text/css" rel="stylesheet" href="{% static 'Main/css/titles.css' %}"/>
+	<link rel="icon" href="{% static 'favicon.svg' %}" type="image/svg+xml">
+    <link type="text/css" rel="stylesheet" href="{% static 'config.css' %}"/>
+    <link type="text/css" rel="stylesheet" href="{% static 'zero.css' %}"/>
+    <link type="text/css" rel="stylesheet" href="{% static 'text.css' %}"/>
+    <link type="text/css" rel="stylesheet" href="{% static 'layout.css' %}"/>
+    <link type="text/css" rel="stylesheet" href="{% static 'buttons.css' %}"/>
+    <link type="text/css" rel="stylesheet" href="{% static 'dynamic.css' %}"/>
+    <link type="text/css" rel="stylesheet" href="{% static 'icons.css' %}"/>
+    <link type="text/css" rel="stylesheet" href="{% static 'links.css' %}"/>
+    <link type="text/css" rel="stylesheet" href="{% static 'sticky.css' %}"/>
+    <link type="text/css" rel="stylesheet" href="{% static 'menu_items.css' %}"/>
 	{% block styles %}
 	{% endblock %}
 	<!-- Google tag (gtag.js) -->
@@ -31,180 +33,140 @@
 	</script>
 	<!-- Yandex.Metrika counter -->
 	<script type="text/javascript" >
-		   (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-			      m[i].l=1*new Date();
-			      for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
-			      k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
-   (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+		(function (d, w, c) {
+			(w[c] = w[c] || []).push(function() {
+				try {
+					w.yaCounter95199635 = new Ya.Metrika({
+						id:95199635,
+						clickmap:true,
+						trackLinks:true,
+						accurateTrackBounce:true
+					});
+				} catch(e) { }
+			});
 
-   ym(95199635, "init", {
-	           clickmap:true,
-	           trackLinks:true,
-	           accurateTrackBounce:true,
-	           webvisor:true
-	      });
+			var n = d.getElementsByTagName("script")[0],
+				x = "https://mc.yandex.ru/metrika/watch.js",
+				s = d.createElement("script"),
+				f = function () { n.parentNode.insertBefore(s, n); };
+			for (var i = 0; i < document.scripts.length; i++) {
+				if (document.scripts[i].src === x) { return; }
+			}
+			s.type = "text/javascript";
+			s.async = true;
+			s.src = x;
+
+			if (w.opera == "[object Opera]") {
+				d.addEventListener("DOMContentLoaded", f, false);
+			} else { f(); }
+		})(document, window, "yandex_metrika_callbacks");
 	</script>
 	<noscript><div><img src="https://mc.yandex.ru/watch/95199635" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 	<!-- /Yandex.Metrika counter -->
 </head>
-<body>
-    <div class="wrapper">
-        <main class="main">
-            <div class="main__body" id="main__body">
-                <div class="main__body__wall" id="main__body__wall">
-                    <!--Here you should paste (posts, articles, projects, about, contacts, busket, home )-->
-					<div id="content_header" class="content_header padder">
-						<a class="logo" href="{% url 'home' %}">
-							<img class="icon icon_interactable buttons__outline--white" src="{% static 'Main/img/favicon.svg' %}">
-						</a>
-						<div class="buttons-contacts">
-							{% block header %}
-							{% endblock %}
-							{% if not request.session.is_auth %}
-								{% url 'login' as tested_url %}
-								<div >
-									<a href="{{ tested_url }}" id="login_ref"><img class="icon icon_interactable buttons__outline--white" src="{% static 'Main/img/login.png' %}" alt="{% trans "Открывающаяся дверь" %}"></a>
-								</div>
-							{% else %}
-								{% url 'profile' user.slug  as tested_url %}
-								<div >
-									<a href="{{ tested_url }}" id="profile_ref">
-									{% if user.avatar|length > 0 %}
-									<img class="icon icon_avatar icon_interactable buttons__outline--white" src='{{media_root}}{{ user.avatar }}' alt="{% trans "Твой аватар" %}">
-									{% else %}
-										<img class="icon icon_avatar icon_interactable buttons__outline--white" src="{% static 'User/img/default_avatar.png' %}" alt="{% trans "Аватар по умолчанию" %}">
-									{% endif %}
-									</a>
-								</div>
-								<div>
-									<a href="{% url 'logout' %}" id="logout_ref" ><img class="icon icon_interactable buttons__outline--white" src="{% static 'Main/img/logout.png' %}" alt="{% trans "Стрелка из дверей" %}"></a>
-								</div>
-							{% endif %}
-							<div id="menu_button" class="button button-top-right active">
-								<div class="hamburger-lines">
-									<span class="line line1"></span>
-									<span class="line line2"></span>
-									<span class="line line3"></span>
-								</div>  
-							</div>
-						</div>
-					</div>
-                    {% block content %}
-                    {% endblock %}
-					<div class="content_footer">
-						<div>
-							<a target="_blank" rel="contact" rev="{% trans "Контактная страница Тимы"%}" href="https://t.me/DmitryChedr" ><img class="icon buttons__outline--white icon_interactable" src="{% static 'Main/img/telegram.png' %}"></a>	
-							<a target="_blank" rel="contact" rev="{% trans "Контактная страница Тимы"%}" href="https://mail.google.com/mail/?view=cm&source=mailto&to=ChedrDen@gmail.com" ><img class="icon buttons__outline--white icon_interactable" src="{% static 'Main/img/email.png' %}" alt="{% trans "email иконка"%}"></a>	
-						</div>
-						<div class="column in_middle">
-						<a class="logo " href="{% url 'home' %}">
-							<img class="icon  icon_interactable buttons__outline--white" src="{% static 'Main/img/favicon.svg' %}">
-						</a>
-						<div class="copywrite">
-							Copywrite @ {% now "Y"%} TimaTheWebmaster
-						</div>
-					</div>
-					<div class="column in_middle">
-						<div class="ref padder">
-							<a href="{% url 'about' %}">{% trans "Об авторе" %}</a>
-						</div>
-						<div class="ref padder">
-							<a href="{% url 'contacts' %}">{% trans "Контакты автора" %}</a>
-						</div>
-						<div class="ref padder">
-							<a href="/sitemap.xml">{% trans "Карта сайта" %}</a>
-						</div>
-						{% block footer_links %}
-						{% endblock %}
-					</div>
-				</div>
+<body class="wrapper">
+	<header id="header" class="sticky">
+		<div id="menu_button" class="button squered_button">
+			<img class="icon" src="{% static 'menu.svg' %}" alt="{% trans '3 горизонтальные линии, бургер' %}">
+		</div>
+		<div class="expander">
+		</div>
+		{% if request.session.is_auth %}
+			{% url 'profile' user.slug  as tested_url %}
+			<div  class="button rounded_button">
+				<a href="{{ tested_url }}" id="profile_ref">
+				{% if user.avatar|length > 0 %}
+				<img class="icon icon_avatar" src='{{media_root}}{{ user.avatar }}' alt="{% trans "Твой аватар" %}">
+				{% else %}
+					<img class="icon icon_avatar" src="{% static 'User/img/default_avatar.svg' %}" alt="{% trans "Аватар по умолчанию" %}">
+				{% endif %}
+				</a>
 			</div>
-			<div class="main__body__nav" id="main__body__nav">
-				<div class="nav_container">
-					<div class="nav_head">
-						<div class="name"><b>{% trans "Тим зе Вебмастер" %}</b></div>
+		{% endif %}
+		<div class="button rounded_button">
+			<a class="logo" href="{% url 'home' %}">
+				<img class="icon" src="{% static 'favicon.svg' %}" alt="{% trans 'Главная иконка сайта' %}">
+			</a>
+		</div>
+	</header>
+	<main id="main">
+		<nav id="nav">
+			<ul>
+				<li class="nav_menu_item"><a class=" text_button" href="{% url 'home'%}">{% trans "Домашняя" %}</a></li>
+				<li class="nav_menu_item"><a class=" text_button" href="{% url 'about'%}">{% trans "Об авторе" %}</a></li>
+				<li class="nav_menu_item"><a class=" text_button" href="{% url 'contacts'%}">{% trans "Контакты" %}</a></li>
+				<li class="nav_menu_item"><a class=" text_button" href="{% url 'services'%}">{% trans "Услуги" %}</a></li>
+				<li class="nav_menu_item">
+					<div class="text_button toggle_button">
+						{% trans "Контент" %}
+						<img class="icon" src="{% static 'chevron.svg' %}"  alt="{% trans 'Шеврон' %}">
 					</div>
-					<div class="nav_box">
-						{% if not request.session.is_auth %}
-							{% url 'login' as tested_url %}
-							<div class="nav_el">
-								<img class="icon" src="{% static 'Main/img/login.png' %}" alt="{% trans "Открывающаяся дверь" %}">
-								<a href="{{ tested_url }}" id="login_ref" class="nav_ref">{% trans 'Вход' %}</a>
-							</div>
-						{% else %}
-							{% url 'profile' user.slug  as tested_url %}
-							<div class="nav_el">
-								{% if user.avatar|length > 0 %}
-								<img class="icon icon_avatar" src='{{media_root}}{{ user.avatar }}' alt="{% trans "Твой аватар" %}">
-								{% else %}
-									<img class="icon icon_avatar" src="{% static 'User/img/default_avatar.png' %}" alt="{% trans "Аватар по умолчанию" %}">
-								{% endif %}
-								<a href="{{ tested_url }}" id="profile_ref" class="nav_ref">{% trans "Профиль" %}</a>
-							</div>
-							<div class="nav_el">
-								<img class="icon" src="{% static 'Main/img/logout.png' %}" alt="{% trans "Стрелка из дверей" %}">
-									<a href="{% url 'logout' %}" id="logout_ref" class="nav_ref" >{% trans "Выход" %}</a>
-								</div>
-							{% endif %}
-							{% url 'home' as tested_url %}
-								<div class="nav_el">
-									<img id="home_ref" class="icon" src="{% static 'Main/img/home.png' %}" alt="{% trans "Домик" %}">
-									<a href="{{ tested_url }}" class="nav_ref">{% trans "Домашняя" %}</a>
-								</div>
-							{% url 'proj_list' as tested_url %}
-							<div class="nav_el">
-								<img class="icon" src="{% static 'Main/img/project.png' %}" alt="{% trans "Чертежи и линейки" %}">
-								<a href="{{ tested_url }}" id="projects_ref" class="nav_ref" >{% trans "Проекты" %}</a>
-							</div>
-							{% url 'article_list' as tested_url %}
-							<div class="nav_el">
-								<img class="icon" src="{% static 'Main/img/articles.png' %}" alt="{% trans "Листок и ручка" %}">
-								<a href="{{ tested_url }}" id="articles_ref" class="nav_ref" >{% trans "Статьи" %}</a>
-							</div>
-							{% url 'news_list' as tested_url %}
-							<div class="nav_el">
-								<img class="icon" src="{% static 'Main/img/newspaper.png' %}" alt="{% trans "Газетные вырезки" %}">
-								<a href="{{ tested_url }}" id="news_ref" class="nav_ref" >{% trans "Новости" %}</a>
-							</div>
-							{% url 'case_list' as tested_url %}
-							<div class="nav_el">
-								<img class="icon" src="{% static 'Main/img/briefcase.png' %}" alt="{% trans "Чемодан" %}">
-								<a href="{{ tested_url }}" id="cases_ref" class="nav_ref">{% trans "Кейсы" %}</a>
-							</div>
-							{% url 'services' as tested_url %}
-								<div class="nav_el">
-									<img class="icon" src="{% static 'Main/img/service.png' %}" alt="{% trans "Шестерня" %}">
-									<a href="{{ tested_url }}" class="nav_ref">{% trans "Услуги" %}</a>
-								</div>
-							{% url 'about' as tested_url %}
-							<div class="nav_el">
-								<img class="icon" src="{% static 'Main/img/info.png' %}" alt="{% trans "Буква i" %}">
-								<a href="{{ tested_url }}" id="about_ref" class="nav_ref" >{% trans "Об Авторе" %}</a>
-							</div>
-							{% url 'contacts' as tested_url %}
-							<div class="nav_el">
-								<img class="icon" src="{% static 'Main/img/contacts.png' %}" alt="{% trans "Контактный блокнот" %}">
-								<a href="{{ tested_url }}" id="contacts_ref" class="nav_ref" >{% trans "Контакты" %}</a>
-							</div>
-                        </div>
-						<div class="nav_interface" id="interface">
-							<div class="lang_switcher switcher" id="lang_switcher">
-								<a href="/ru{{request.get_full_path|cut:"ru/"|cut:"en/"}}" >
-									<img id="ru" src="{% static 'Main/img/russian.png' %}" class="lang_switcher_image" alt="{% trans "Русский флаг" %}">
-								</a>
-								<a href="/en{{request.get_full_path|cut:"ru/"|cut:"en/"}}" >
-									<img id="en" src="{% static 'Main/img/english.png' %}" class="lang_switcher_image" alt="{% trans "Американский флаг" %}">
-								</a>
-							</div>
-							<div id="back_button" class="button button-middle">
-								<p>{% trans "Назад" %}</p>
-							</div>
-						</div>
-                    </div>
-                </div>
-            </div>
-        </main>
-    </div>
+					<div class="toggle_button_body">
+						<ul>
+							<li class="nav_menu_item"><a class=" text_button" href="{% url 'article_list'%}">{% trans "Статьи" %}</a></li>
+							<li class="nav_menu_item"><a class=" text_button" href="{% url 'case_list'%}">{% trans "Кейсы" %}</a></li>
+							<li class="nav_menu_item"><a class=" text_button" href="{% url 'news_list'%}">{% trans "Новости" %}</a></li>
+						</ul>
+					</div>
+				</li>
+				<li class="nav_menu_item">
+					<div class="text_button toggle_button">
+						{% trans "Язык" %}
+						<img class="icon" src="{% static 'chevron.svg' %}" alt="{% trans 'Шеврон' %}" >
+					</div>
+					<div class="toggle_button_body">
+						<ul>
+							<li class="nav_menu_item"><a class=" text_button" href="/ru{{ request.get_full_path|cut:"ru/"|cut:"en/" }}">{% trans "Русский" %}</a></li>
+							<li class="nav_menu_item"><a class=" text_button" href="/en{{ request.get_full_path|cut:"ru/"|cut:"en/" }}">{% trans "Английский" %}</a></li>
+						</ul>
+					</div>
+				</li>
+			</ul>
+		</nav>
+		<!--Here you should paste (posts, articles, projects, about, contacts, busket, home )-->
+		{% block content %}
+		{% endblock %}
+	</main>
+	<footer>
+		<div class="footer_links">
+			<div class="other_links">
+				<div class="footer_links_title">
+					<b>{% trans "Другие ссылки" %}</b>
+				</div>
+				<ul>
+					<li class="ref"><a href="/sitemap.xml">{% trans "Карта сайта" %}</a></li>
+					<li class="ref"><a href="{% url 'login' %}">{% trans "Войти" %}</a></li>
+					<li class="ref"><a href="{% url 'signup' %}">{% trans "Зарегистрироваться" %}</a></li>
+					<li class="ref"><a href="{% url 'about' %}">{% trans "Об авторе" %}</a></li>
+					<li class="ref"><a href="{% url 'contacts' %}">{% trans "Контакты" %}</a></li>
+				</ul>
+			</div>
+			<div class="popular_links">
+				<div class="footer_links_title">
+					<b>{% trans "Популярные ссылки" %}</b>
+				</div>
+				<ul>
+				{% block footer_links %}
+				{% endblock %}
+				</ul>
+			</div>
+			<div class="social_links">
+				<div class="footer_links_title">
+					<b>{% trans "Социальные сети" %}</b>
+				</div>
+				<ul>
+					<li><a target="_blank" rel="contact" rev="{% trans "Контактная страница Тимы"%}" href="https://t.me/DmitryChedr" ><img class="icon button rounded_button" src="{% static 'telegram.svg' %}" alt="{% trans "telegram иконка" %}"></a></li>
+					<li><a target="_blank" rel="contact" rev="{% trans "Контактная страница Тимы"%}" href="https://mail.google.com/mail/?view=cm&source=mailto&to=ChedrDen@gmail.com" ><img class="icon button rounded_button" src="{% static 'email.svg' %}" alt="{% trans "email иконка"%}"></a></li>
+					<li><a target="_blank" rel="contact" rev="{% trans "Контактная страница Тимы"%}" href="https://vk.com/timachuduk" ><img class="icon button rounded_button" src="{% static 'vk.svg' %}" alt="{% trans "vk иконка"%}"></a></li>
+					<li><a target="_blank" rel="contact" rev="{% trans "Контактная страница Тимы"%}" href="https://www.instagram.com/timachedr/" ><img class="icon button rounded_button" src="{% static 'instagram.svg' %}" alt="{% trans "instagram иконка"%}"></a></li>
+					<li><a target="_blank" rel="contact" rev="{% trans "Контактная страница Тимы"%}" href="https://twitter.com/TimaChedr" ><img class="icon button rounded_button" src="{% static 'twitter.svg' %}" alt="{% trans "twitter иконка"%}"></a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="footer_copywrite">
+			Copywrite @ {% now "Y"%} Tim the Webmaster
+		</div>
+	</footer>
     <!-- This is for knowing where to look for an images-->
     <script>
         var PATH = "{% static .%}"
@@ -217,8 +179,9 @@
 			{% endif %}
         {% endfor %}
     </script>
-    <script src="{% static 'Main/js/sticky.js' %}"></script>
-    <script src="{% static 'Main/js/base.js' %}"></script>
+    <script src="{% static 'sticky.js' %}"></script>
+    <script src="{% static 'toggle_nav.js' %}"></script>
+    <script src="{% static 'toggle_button.js' %}"></script>
 	{% block scripts %}
 	{% endblock %}
 </body>

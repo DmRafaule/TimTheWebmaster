@@ -3,176 +3,135 @@
 {% load i18n %}
 
 {% block head %}
-<meta name="description" content="{% trans "О вебмастере Тиме Чудуке. Его истории, интересах и оказываемых услугах разработки сайтов, тг ботов, скриптов, парсеров и копирайта" %}">
-<link rel="canonical" href="https://{{domain_name}}{%url 'about'%}" />
-<title>{% trans "Тим, Вебмастер. Всё об авторе и его деятельности." %}</title>
+	<title>{% trans "Тим, Вебмастер. Всё об авторе и его деятельности." %}</title>
+	<meta name="description" content="{% trans "О вебмастере Тиме Чудуке. Его истории, интересах и оказываемых услугах разработки сайтов, тг ботов, скриптов, парсеров и копирайта" %}">
+	<link rel="canonical" href="https://{{domain_name}}{%url 'about'%}" />
 {% endblock %}
 
-{% block navigation_head %}
-<div class="name"><b>{% trans "Об Авторе" %}</b></div>
-<p class="quote">{% trans "Кто он, и почему от тот кто есть" %}</p>
-{% endblock navigation_head %}
-
-
 {% block content %}
-	<div class="content_body">
-		<div class="content_body__main_title content_body__main_title--horizontal">
-			<h1>{% trans "О Тиме и о том чем он занимается" %}</h1>
-		</div>
-		<div class="content_body__body">
-			<div class="content_body__block">
-				<div class="content_body__title ">
-					<h2>{% trans "Вступление или то как Тим воспринимает себя"%}</h2>
-				</div>
-				<div class="content_body__text">
-					{% blocktrans %}
-					Как ты думаешь, что определяет человека человеком? Профессия, должность,
-может статус и вещи которыми человек себя окружает ? Я считаю что человека 
-определяет то, чем он занимается.
-					{% endblocktrans %}
-				</div>
-				<div class="content_body__text">
-					{% blocktrans %}
-					Самое подходящее слово, которое способно примерно на 50% определить 
-					Тиму это <b>Вебмастер</b>. Так или иначе большую часть своего времени 
-					он проводит в интернете. Начиная от обычного сёрфа, заканчивая 
-					разработкой собственных сайтов.
-					{% endblocktrans %}
-				</div>
-			</div>
-			<div class="content_body__block">
-				<div class="content_body__title ">
-					<h2>{% trans "Моя история" %}</h2>
-				</div>
-				<div class="content_body__text">
-					{% blocktrans %}
-					Начну наверное с того что до определённой поры моей жизни я вообще
+<div class="limiter in_middle in_middle-self no_wrap padder">
+	<h1 class="title">{% trans "О Тиме и о том чем он занимается" %}</h1>
+	<h2 class="paragraph">{% trans "Вступление или то как Тим воспринимает себя"%}</h2>
+	<div class="text">
+		{% blocktrans %}
+		Как ты думаешь, что определяет человека человеком? Профессия, должность,
+		может статус и вещи которыми человек себя окружает ? Я считаю что человека 
+		определяет то, чем он занимается.
+		{% endblocktrans %}
+	</div>
+	<div class="text">
+		{% blocktrans %}
+		Самое подходящее слово, которое способно примерно на 50% определить 
+		Тиму это <b>Вебмастер</b>. Так или иначе большую часть своего времени 
+		он проводит в интернете. Начиная от обычного сёрфа, заканчивая 
+		разработкой собственных сайтов.
+		{% endblocktrans %}
+	</div>
+	<h2 class="paragraph">{% trans "Моя история" %}</h2>
+	<div class="text">
+		{% blocktrans %}
+		Начну наверное с того что до определённой поры моей жизни я вообще
 не интересовался ни копирайтингом, ни вёрсткой, ни тем более бэкендом.
 Единственное, что меня тогда интересовало это игры , сериалы , фильмы 
 ... да, я был ещё тем эскапистом.
-					{% endblocktrans %}
-				</div>
-				<div class="content_body__text">
-					{% blocktrans %}
-					Но после 20, когда я демобилизовался, жизнь заиграла новыми красками,
+		{% endblocktrans %}
+	</div>
+	<div class="text">
+		{% blocktrans %}
+		Но после 20, когда я демобилизовался, жизнь заиграла новыми красками,
 так сказать. Начали появляться проблемы денежного характера, да и проблемы
 с самоидентификацией тоже. Кто я? Зачем я? Почему я?
-					{% endblocktrans %}
-				</div>
-				<div class="content_body__text">
-					{% blocktrans %}
-					Звучит немного сумбурно, но, пожалуйста, потерпите это переходное 
-предложение и я опишу, то где я работал и кем я тогда себя видел
-					{% endblocktrans %}
-				</div>
-				<div class="content_body__text">
-					{% blocktrans %}
-					Так вот, после армии я занялся копирайтингом, но не настоящим, а биржевым
-( я работал на биржах фриланса ). Платили мало, требовали много.
-					{% endblocktrans %}
-				</div>
-				<div class="content_body__text">
-					{% blocktrans %}
-					После я попробовал себя во фронтенде, мне это тоже не сильно понравилось, 
-слишком муторно и не понятно на тот момент.
-					{% endblocktrans %}
-				</div>
-				<div class="content_body__text">
-					{% blocktrans %}
-					Но потом я нашёл своё призвание, как я тогда думал. Я про разработку игр и 
-геймдев. Признаться честно, я наверное не самый умный разработчик, 
-ибо почему-то решил что создавать игры с нуля ( без движка ) это хорошая идея. 
-Нет. Я очень много времени потратил на изучение технологий и библиотек, 
-которые никто в чистом виде не использует. В конце-то концов, я перешёл на 
-игровые движки Godot , а потом и Unity . и сделал пару игр. Одну даже 
-опубликовал. И разочаровался, конечно же.
-					{% endblocktrans %}
-				</div>
-				<div class="content_body__text">
-					{% blocktrans %}
-					Так как я пришёл к тому, что называю себя <b>вебмастером</b> ? Когда я делал игры, 
-я конечно же думал о продвижении и рекламе. Изучал основы сайтостроения,
-маркетинга, и интернет продвижения. И в процессе я понял, что мне нравится 
-делать сайты, мне нравится писать статьи для людей и получать фидбэк.
-					{% endblocktrans %}
-				</div>
-				<div class="content_body__text">
-					{% blocktrans %}
-					Таким вот образом я перестал быть геймдевелопером и стал вебмастером, 
-со своими сайтами и идеями для статей.
-					{% endblocktrans %}
-				</div>
-			</div>
-			<div class="content_body__block">
-				<div class="content_body__title ">
-					<h2>{% trans "Видение будущего" %}</h2>
-				</div>
-				<div class="content_body__text">
-					{% blocktrans %}
-					Очень сложно говорить о будущем, если ты не можешь сказать, что тебя ждёт 
-завтра. Но я могу определённо сказать, кем бы я хотел себя видеть в будущем.
-					{% endblocktrans %}
-				</div>
-				<div class="content_body__text">
-					{% blocktrans %}
-					Я вижу себя частью маленькой компании, связанной с разработкой и 
-продвижением сайтов, как своих, так и чужих. Нас, наверное, человек 5-10. 
-И у нас есть свой офис, где-нибудь в Минске.
-					{% endblocktrans %}
-				</div>
-				<div class="content_body__text">
-					{% blocktrans %}
-					У меня уже есть идей 3, о том какие сайты нужно сделать, но пока это всего 
-лишь идеи, мечты и желания. А реальность такова, что ты сидишь и читаешь 
-страницу обо мне и решаешь, стою ли я твоего внимания или нет.
-					{% endblocktrans %}
-				</div>
-				<div class="content_body__text">
-					{% blocktrans %}
-					Я всего лишь надеюсь, что смогу помочь чем смогу, будь то полезная 
-информация или непосредственные заказы моих услуг. Которые можно заказать 
-заполнив форму обратной связи или непосредственно написать мне в 
-социальных сетях.
-					{% endblocktrans %}
-				</div>
-				<div class="content_body__text">
-					{% trans "Ах, да, забыл представиться, меня зовут Дмитрий Чудук, мне "%} {% now "y" %} {% trans "года."%} 
-					{% trans "Живу в Минске."%}
-				</div>
-			</div>
-			<div class="content_body__toggler">
-				<div class="content_body__title content_body__toggler_header">
-					<div class="content_body__toggler_header--sign">▶</div>
-					<h2>{% trans "Всем тем кому интересно как я выгляжу" %}</h2>
-				</div>
-				<div class="content_body__toggler_body hidden">
-					<div class="image_block">
-						<img class="image image_width_sized" src="{% static 'Main/img/me.png' %}" alt="{% trans "Молодой парень, со стрижкой полубокс, с голубыми глазами и немного вытянутым лицом. Брюнет" %} ">
-					</div>
-				</div>
-			</div>
-		</div>
+		{% endblocktrans %}
 	</div>
+	<div class="text">
+		{% blocktrans %}
+		Звучит немного сумбурно, но, пожалуйста, потерпите это переходное 
+предложение и я опишу, то где я работал и кем я тогда себя видел
+		{% endblocktrans %}
+	</div>
+	<div class="text">
+		{% blocktrans %}
+		Так вот, после армии я занялся копирайтингом, но не настоящим, а биржевым
+( я работал на биржах фриланса ). Платили мало, требовали много.
+		{% endblocktrans %}
+	</div>
+	<div class="text">
+		{% blocktrans %}
+		После я попробовал себя во фронтенде, мне это тоже не сильно понравилось, 
+слишком муторно и не понятно на тот момент.
+		{% endblocktrans %}
+	</div>
+	<div class="text">
+		{% blocktrans %}
+		Но потом я нашёл своё призвание, как я тогда думал. Я про разработку игр и 
+		геймдев. Признаться честно, я наверное не самый умный разработчик, 
+		ибо почему-то решил что создавать игры с нуля ( без движка ) это хорошая идея. 
+		Нет. Я очень много времени потратил на изучение технологий и библиотек, 
+		которые никто в чистом виде не использует. В конце-то концов, я перешёл на 
+		игровые движки Godot , а потом и Unity . и сделал пару игр. Одну даже 
+		опубликовал. И разочаровался, конечно же.
+		{% endblocktrans %}
+	</div>
+	<div class="text">
+		{% blocktrans %}
+		Так как я пришёл к тому, что называю себя <b>вебмастером</b> ? Когда я делал игры, 
+		я конечно же думал о продвижении и рекламе. Изучал основы сайтостроения,
+		маркетинга, и интернет продвижения. И в процессе я понял, что мне нравится 
+		делать сайты, мне нравится писать статьи для людей и получать фидбэк.
+		{% endblocktrans %}
+	</div>
+	<div class="text">
+		{% blocktrans %}
+		Таким вот образом я перестал быть геймдевелопером и стал вебмастером, 
+		со своими сайтами и идеями для статей.
+		{% endblocktrans %}
+	</div>
+	<h2 class="paragraph">{% trans "Видение будущего" %}</h2>
+	<div class="text">
+		{% blocktrans %}
+		Очень сложно говорить о будущем, если ты не можешь сказать, что тебя ждёт 
+		завтра. Но я могу определённо сказать, кем бы я хотел себя видеть в будущем.
+		{% endblocktrans %}
+	</div>
+	<div class="text">
+		{% blocktrans %}
+		Я вижу себя частью маленькой компании, связанной с разработкой и 
+		продвижением сайтов, как своих, так и чужих. Нас, наверное, человек 5-10. 
+		И у нас есть свой офис, где-нибудь в Минске.
+		{% endblocktrans %}
+	</div>
+	<div class="text">
+		{% blocktrans %}
+		У меня уже есть идей 3, о том какие сайты нужно сделать, но пока это всего 
+		лишь идеи, мечты и желания. А реальность такова, что ты сидишь и читаешь 
+		страницу обо мне и решаешь, стою ли я твоего внимания или нет.
+		{% endblocktrans %}
+	</div>
+	<div class="text">
+		{% blocktrans %}
+		Я всего лишь надеюсь, что смогу помочь чем смогу, будь то полезная 
+		информация или непосредственные заказы моих услуг. Которые можно заказать 
+		заполнив форму обратной связи или непосредственно написать мне в 
+		социальных сетях.
+		{% endblocktrans %}
+	</div>
+	<div class="text">
+		{% trans "Ах, да, забыл представиться, меня зовут Дмитрий Чудук, мне "%} {% now "y" %} {% trans "года."%} 
+		{% trans "Живу в Минске."%}
+	</div>
+</div>
 {% endblock %}
 
 
+{% block footer_links %}
+	{% for ref in popular_posts %}
+		<li class="ref"><a href="{{ref.get_absolute_url}}">{{ref|truncatechars:15}}</a></li>
+	{% endfor %}
+{% endblock %}
+
 {% block styles %}
-    <link type="text/css" rel="stylesheet" href="{% static 'Main/css/images.css' %}"/>
-    <link type="text/css" rel="stylesheet" href="{% static 'Main/css/titles.css' %}"/>
-    <link type="text/css" rel="stylesheet" href="{% static 'Main/css/text.css' %}"/>
-    <link type="text/css" rel="stylesheet" href="{% static 'Main/css/toggler.css' %}"/>
-    <link type="text/css" rel="stylesheet" href="{% static 'Main/css/lists.css' %}"/>
+    <link type="text/css" rel="stylesheet" href="{% static 'blocks.css' %}"/>
 {% endblock %}
 
 {% block scripts %}
-    <!-- Loading jQuery For AJAX behaviour --> 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <!-- This is for knowing where to look for an images 
-		 And csrf tokkent -->
-    {% csrf_token %}
-    <script>
-        const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
-    </script>
-    <script src="{% static 'Main/js/toggler.js' %}"></script>
-    <script src="{% static 'Post/js/table_of_content.js' %}"></script>
 {% endblock %}

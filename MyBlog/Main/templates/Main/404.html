@@ -8,15 +8,9 @@
 <title>{% trans "Тим вебмастер. Страница не найдена" %}</title>
 {% endblock %}
 
-{% block navigation_head %}
-<div class="name"><b>404</b></div>
-<p class="quote">{% trans "Неправильный URL" %}</p>
-{% endblock navigation_head %}
-
-
 {% block content %}
-	<div class="page_not_found">
-		{% trans "Страница не найдена" %}
+	<div class="title">
+		<h1>{% trans "Страница не найдена" %}</h1>
 	</div>
 {% endblock %}
 

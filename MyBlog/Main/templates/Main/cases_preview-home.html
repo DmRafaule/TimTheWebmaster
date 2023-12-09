@@ -1,0 +1,24 @@
+{% load static %}
+{% load i18n %}
+
+{% for a in posts %}
+<div class="column min_row_gap">
+	<div class="column min_row_gap">
+		<h3>
+			<a id="home_case_link" href="{{ a.get_absolute_url }}">{{ a.name }}</a>
+		</h3>
+		<div class="row min_col_gap">
+			<div class=""><b>{% trans "Опубликованно:" %}</b></div>
+			<div>{{a.timeCreated|date:"d.m.Y"}}</div>
+		</div>
+	</div>
+	<div class="post_description">
+		<div class="post_description__description without_borders">
+			{{a.short_description}}
+		</div>
+	</div>
+</div>
+{% endfor %}
+{% if is_end %}
+<div class="end_list"></div>
+{% endif %}

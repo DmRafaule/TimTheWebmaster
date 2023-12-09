@@ -3,6 +3,7 @@ from django.shortcuts import render
 from User.models import User, Message
 from Post.models import Post
 import re
+import json
 from MyBlog import settings
 from django.utils.translation import gettext as _
 
@@ -29,7 +30,10 @@ def home(request):
     # latest case
     case = Post.objects.filter(type='Cases', isPublished=True).latest('timeCreated')
     # 3 newest news
-    news = getLatest(3, "News")
+    news = getLatest(1, "News")
+    popular_posts = getLatest(1, "Articles")
+    popular_posts += getLatest(1, "Cases")
+    popular_posts += news
 
     context = {
         'user': user,
@@ -38,6 +42,7 @@ def home(request):
         'case': case,
         'article': article,
         'news': news,
+        'popular_posts': popular_posts,
     }
     return render(request, 'Main/home.html', context=context)
 
@@ -46,10 +51,15 @@ def about(request):
     user = User.objects.filter(name=request.session.get('username','Guest')).first() 
     media_root = settings.MEDIA_URL
     domain_name = settings.ALLOWED_HOSTS[0]
+    news = getLatest(1, "News")
+    popular_posts = getLatest(1, "Articles")
+    popular_posts += getLatest(1, "Cases")
+    popular_posts += news
     context = {
         'user': user,
         'media_root': media_root,
         'domain_name': domain_name,
+        'popular_posts': popular_posts,
     }
     return render(request, 'Main/about.html', context=context)
 
@@ -58,10 +68,15 @@ def contacts(request):
     user = User.objects.filter(name=request.session.get('username','Guest')).first() 
     media_root = settings.MEDIA_URL
     domain_name = settings.ALLOWED_HOSTS[0]
+    news = getLatest(1, "News")
+    popular_posts = getLatest(1, "Articles")
+    popular_posts += getLatest(1, "Cases")
+    popular_posts += news
     context = {
         'user': user,
         'media_root': media_root,
         'domain_name': domain_name,
+        'popular_posts': popular_posts,
     }
     return render(request, 'Main/contacts.html', context=context)
 
@@ -70,10 +85,15 @@ def services(request):
     user = User.objects.filter(name=request.session.get('username','Guest')).first() 
     media_root = settings.MEDIA_URL
     domain_name = settings.ALLOWED_HOSTS[0]
+    news = getLatest(1, "News")
+    popular_posts = getLatest(1, "Articles")
+    popular_posts += getLatest(1, "Cases")
+    popular_posts += news
     context = {
         'user': user,
         'media_root': media_root,
         'domain_name': domain_name,
+        'popular_posts': popular_posts,
     }
     return render(request, 'Main/services.html', context=context)
 
@@ -81,8 +101,8 @@ def services(request):
 def load_message(request):
     message = {
         'common': '',
-        'username': _('обязательно'),
-        'email': _('обязательно'),
+        'username': _(''),
+        'email': _(''),
     }
     status = 200
     if request.method == 'POST':
@@ -129,4 +149,48 @@ def load_message(request):
 
 
 def page_not_found(request, exception):
-    return render(request, 'Main/404.html', status=404)
+    user = User.objects.filter(name=request.session.get('username','Guest')).first() 
+    media_root = settings.MEDIA_URL
+    popular_posts = getLatest(1, "Articles")
+    popular_posts += getLatest(1, "Cases")
+    popular_posts += getLatest(1, "News")
+    context = {
+        'user': user,
+        'media_root': media_root,
+        'popular_posts': popular_posts,
+    }
+
+    return render(request, 'Main/404.html', context=context, status=404)
+
+
+def load_table_of_content(request):
+    titles = json.loads(request.GET.get("titles"))
+    context = {
+        'titles': titles,
+    }
+    return render(request, "Main/table_of_content.html", context=context)
+
+
+def load_post_preview(request):
+    media_root = settings.MEDIA_URL
+    number = request.GET.get('number', 1)
+    offset = request.GET.get('offset', 1)
+    forWho = request.GET.get('forWho', '')
+    if forWho != '':
+        forWho = '-' + forWho
+    category = request.GET.get('category', 'Articles')
+    # Take published, in one category, newest first and just slice of available posts
+    loadedArticles = Post.objects.filter(type=category, isPublished=True).order_by('-timeCreated')[(int(offset)):(int(number)) + (int(offset))]
+    offset = int(offset) + int(number)
+    length = Post.objects.filter(type=category, isPublished=True).count()
+    category = category.lower()
+    is_end = False
+    if (length <= int(offset) or length == 0):
+        is_end = True
+    context = {
+        'posts': loadedArticles,
+        'user': User.objects.filter(name=request.session.get('username','Guest')).first(),
+        'media_root': media_root,
+        'is_end': is_end
+    }
+    return render(request, f'Main/{category}_preview{forWho}.html', context=context)

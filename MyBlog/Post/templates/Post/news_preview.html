@@ -2,43 +2,42 @@
 {% load i18n %}
 
 {% for a in posts %}
-<div class="post">
-	<div class="column on_start">
-		<div class="row on_start is_relative">
-			{% if a.preview %}
-			<div class="row image_width_sized post_left_el marger">
-				<a href="{{a.get_absolute_url}}"><img src="{{media_root}}{{a.preview}}" alt="{% trans "Превью статьи" %}" class="image_border"></a>
+<div class="post_preview column min_row_gap">
+	<div class=" post_preview_header row min_col_gap">
+		{% if a.preview %}
+		<div class="post_preview_image marger-10">
+			<a href="{{a.get_absolute_url}}">
+				<img width="300px" src="{{media_root}}{{a.preview}}" alt="{% trans "Превью статьи" %}">
+			</a>
+		</div>
+		{% endif %}
+		<div class="post_preview_meta column min_row_gap">
+			<h2><a href="{{ a.get_absolute_url }}">{{a.name}}</a></h2>
+			<div class="row min_col_gap">
+				<div><b>{% trans "Опубликованно:" %}</b></div>
+				<div>{{a.timeCreated|date:"d.m.Y"}}</div>
 			</div>
-			{% endif %}
-			<div class="column post_right_el">
-				<div class="post_topost post_title">
-					<a href="{{ a.get_absolute_url }}">{{a.name}}</a>
+			<div class="row min_col_gap">
+				<div class="row min_col_gap">
+					<div><b>{% trans "Просмотры:"%}</b></div> 
+					<div>{{a.viewed}}</div>
 				</div>
-				<div class="post_timing">
-					<div class="post_created post_timing__el">
-						<div class="post_el--description"><b>{% trans "Опубликованно:" %}</b></div><div>{{a.timeCreated|date:"d.m.Y"}}</div>
-					</div>
+				<div class="row min_col_gap">
+					<div><b>{% trans "Нравится:"%}</b></div> 
+					<div>{{a.likes}}</div>
 				</div>
-				<div class="post_timing">
-					<div class="post_insights">
-						<div class="post_insights__el">
-							<div class="post_el--description"><b>{% trans "Просмотры:"%}</b></div> {{a.viewed}}
-						</div>
-						<div class="post_insights__el">
-							<div class="post_el--description"><b>{% trans "Нравится:"%}</b></div> {{a.likes}}
-						</div>
-						<div class="post_insights__el">
-							<div class="post_el--description"><b>{% trans "Поделилось:" %}</b></div> {{a.shares}}
-						</div>
-					</div>
+				<div class="row min_col_gap">
+					<div ><b>{% trans "Поделилось:" %}</b></div> 
+					<div>{{a.shares}}</div>
 				</div>
 			</div>
 		</div>
-		<div class="post_timing">
-			<div class="post_description__description">
-				{{a.short_description}} 	
-			</div>
-		</div>
+	</div>
+	<div class="post_preview_body">
+		{{a.short_description}} 	
+	</div>
+	<div class="button link_button squered_button">
+		<a href="{{a.get_absolute_url}}">{% trans 'Читать'%}</a>
 	</div>
 </div>
 {% endfor %}
