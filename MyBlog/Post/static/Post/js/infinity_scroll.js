@@ -40,6 +40,7 @@ function buildThresholdList() {
 
 
 $(document).ready( function(){
+	LoadPosts()
 	const observer = new IntersectionObserver((entries, observer) => {
 	  // Loop through the entries
 	  for (const entry of entries) {

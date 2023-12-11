@@ -67,7 +67,7 @@
 <body class="wrapper">
 	<header id="header" class="sticky">
 		<div id="menu_button" class="button squered_button">
-			<img class="icon" src="{% static 'menu.svg' %}" alt="{% trans '3 горизонтальные линии, бургер' %}">
+			<img width="32" height="32" class="icon dynamic_image squered_button" src="{% static 'placeholder.svg' %}" data-src="{% static 'menu.svg' %}" alt="{% trans '3 горизонтальные линии, бургер' %}">
 		</div>
 		<div class="expander">
 		</div>
@@ -76,16 +76,16 @@
 			<div  class="button rounded_button">
 				<a href="{{ tested_url }}" id="profile_ref">
 				{% if user.avatar|length > 0 %}
-				<img class="icon icon_avatar" src='{{media_root}}{{ user.avatar }}' alt="{% trans "Твой аватар" %}">
+				<img class="icon icon_avatar dynamic_image" width="32" height="32" src="{% static 'placeholder.svg' %}" data-src='{{media_root}}{{ user.avatar }}' alt="{% trans "Твой аватар" %}">
 				{% else %}
-					<img class="icon icon_avatar" src="{% static 'User/img/default_avatar.svg' %}" alt="{% trans "Аватар по умолчанию" %}">
+					<img class="icon icon_avatar dynamic_image" width="32" height="32" src="{% static 'placeholder.svg' %}" data-src="{% static 'User/img/default_avatar.svg' %}" alt="{% trans "Аватар по умолчанию" %}">
 				{% endif %}
 				</a>
 			</div>
 		{% endif %}
 		<div class="button rounded_button">
 			<a class="logo" href="{% url 'home' %}">
-				<img class="icon" src="{% static 'favicon.svg' %}" alt="{% trans 'Главная иконка сайта' %}">
+				<img class="icon dynamic_image rounded_button" width="32" height="32" src="{% static 'placeholder.svg' %}" data-src="{% static 'favicon.svg' %}" alt="{% trans 'Главная иконка сайта' %}">
 			</a>
 		</div>
 	</header>
@@ -99,7 +99,7 @@
 				<li class="nav_menu_item">
 					<div class="text_button toggle_button">
 						{% trans "Контент" %}
-						<img class="icon" src="{% static 'chevron.svg' %}"  alt="{% trans 'Шеврон' %}">
+						<img class="icon dynamic_image" width="32" height="32" src="{% static 'placeholder.svg' %}" data-src="{% static 'chevron.svg' %}"  alt="{% trans 'Шеврон' %}">
 					</div>
 					<div class="toggle_button_body">
 						<ul>
@@ -112,7 +112,7 @@
 				<li class="nav_menu_item">
 					<div class="text_button toggle_button">
 						{% trans "Язык" %}
-						<img class="icon" src="{% static 'chevron.svg' %}" alt="{% trans 'Шеврон' %}" >
+						<img class="icon dynamic_image" width="32" height="32" src="{% static 'placeholder.svg' %}" data-src="{% static 'chevron.svg' %}" alt="{% trans 'Шеврон' %}" >
 					</div>
 					<div class="toggle_button_body">
 						<ul>
@@ -155,11 +155,11 @@
 					<b>{% trans "Социальные сети" %}</b>
 				</div>
 				<ul>
-					<li><a target="_blank" rel="contact" rev="{% trans "Контактная страница Тимы"%}" href="https://t.me/DmitryChedr" ><img class="icon button rounded_button" src="{% static 'telegram.svg' %}" alt="{% trans "telegram иконка" %}"></a></li>
-					<li><a target="_blank" rel="contact" rev="{% trans "Контактная страница Тимы"%}" href="https://mail.google.com/mail/?view=cm&source=mailto&to=ChedrDen@gmail.com" ><img class="icon button rounded_button" src="{% static 'email.svg' %}" alt="{% trans "email иконка"%}"></a></li>
-					<li><a target="_blank" rel="contact" rev="{% trans "Контактная страница Тимы"%}" href="https://vk.com/timachuduk" ><img class="icon button rounded_button" src="{% static 'vk.svg' %}" alt="{% trans "vk иконка"%}"></a></li>
-					<li><a target="_blank" rel="contact" rev="{% trans "Контактная страница Тимы"%}" href="https://www.instagram.com/timachedr/" ><img class="icon button rounded_button" src="{% static 'instagram.svg' %}" alt="{% trans "instagram иконка"%}"></a></li>
-					<li><a target="_blank" rel="contact" rev="{% trans "Контактная страница Тимы"%}" href="https://twitter.com/TimaChedr" ><img class="icon button rounded_button" src="{% static 'twitter.svg' %}" alt="{% trans "twitter иконка"%}"></a></li>
+					<li><a target="_blank" rel="contact" rev="{% trans "Контактная страница Тимы"%}" href="https://t.me/DmitryChedr" ><img width="32" height="32" class="icon button rounded_button dynamic_image" src="{% static 'placeholder.svg' %}" data-src="{% static 'telegram.svg' %}" alt="{% trans "telegram иконка" %}"></a></li>
+					<li><a target="_blank" rel="contact" rev="{% trans "Контактная страница Тимы"%}" href="https://mail.google.com/mail/?view=cm&source=mailto&to=ChedrDen@gmail.com" ><img width="32" height="32" class="icon button rounded_button dynamic_image" src="{% static 'placeholder.svg' %}" data-src="{% static 'email.svg' %}" alt="{% trans "email иконка"%}"></a></li>
+				<li><a target="_blank" rel="contact" rev="{% trans "Контактная страница Тимы"%}" href="https://vk.com/timachuduk" ><img width="32" height="32" class="icon button rounded_button dynamic_image" src="{% static 'placeholder.svg' %}" data-src="{% static 'vk.svg' %}" alt="{% trans "vk иконка"%}"></a></li>
+				<li><a target="_blank" rel="contact" rev="{% trans "Контактная страница Тимы"%}" href="https://www.instagram.com/timachedr/" ><img width="32" height="32" class="icon button rounded_button dynamic_image" src="{% static 'placeholder.svg' %}" data-src="{% static 'instagram.svg' %}" alt="{% trans "instagram иконка"%}"></a></li>
+					<li><a target="_blank" rel="contact" rev="{% trans "Контактная страница Тимы"%}" href="https://twitter.com/TimaChedr" ><img width="32" height="32" class="icon button rounded_button dynamic_image" src="{% static 'placeholder.svg' %}" data-src="{% static 'twitter.svg' %}" alt="{% trans "twitter иконка"%}"></a></li>
 				</ul>
 			</div>
 		</div>
@@ -182,6 +182,7 @@
     <script src="{% static 'sticky.js' %}"></script>
     <script src="{% static 'toggle_nav.js' %}"></script>
     <script src="{% static 'toggle_button.js' %}"></script>
+    <script src="{% static 'media_loader.js' %}"></script>
 	{% block scripts %}
 	{% endblock %}
 </body>

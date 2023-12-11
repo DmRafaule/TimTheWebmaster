@@ -6,43 +6,65 @@
 	<link rel="canonical" href="https://{{domain_name}}{{ post.get_absolute_url }}" />
 	{% block head_post %}
 	{% endblock %}
+    <script type="application/ld+json">
+    {
+		"@context": "https://schema.org",
+		"@type": "Article",
+		"headline": "{{post.name}}",
+		{% if post.preview %}
+		"image": [
+			"https://{{domain_name}}{{media_root}}{{post.preview}}"
+		],
+		{% endif %}
+		"datePublished": "{{post.timeCreated}}+03:00",
+		"dateModified": "{{post.timeUpdated}}+03:00",
+		"author": [{
+			"@type": "Person",
+			"name": "{% trans 'Тима Чудук' %}",
+			"url": "https://{{domain_name}}{% url 'about' %}"
+		}]
+    }
+    </script>
 {% endblock %}
 
 
 {% block content %}
-<div class="limiter in_middle in_middle-self no_wrap padder">
+<div class="limiter in_middle in_middle-self no_wrap padder toObserve">
+	{% if post.preview %}
+	<img class="image dynamic_image" src="{% static 'placeholder.svg' %}" data-src="{{media_root}}{{post.preview}}" alt="{{post.name}}">
+	{% endif %}
 	{% block content_post %}
 	{% endblock %}
 	<hr>
 	<div class="row in_middle" >
 		<div id="onLike">
-			<img class="icon button rounded_button" src="{% static 'Post/img/like.svg' %}" alt="{% trans "сердце" %}">
+			<img class="icon button rounded_button dynamic_image" width="32" height="32" src="{% static 'placeholder.svg' %}" data-src="{% static 'Post/img/like.svg' %}" alt="{% trans "сердце" %}">
 			{{ post.likes }}
 		</div>
 		<div id="onShare">
-			<img  class="icon button rounded_button" src="{% static 'Post/img/share.svg' %}" alt="{% trans "3 соединённые точки" %}">
+			<img  class="icon button rounded_button dynamic_image" width="32" height="32" src="{% static 'placeholder.svg' %}" data-src="{% static 'Post/img/share.svg' %}" alt="{% trans "3 соединённые точки" %}">
 			{{ post.shares }}
 		</div>
 	</div>
 	<div id="share_options" class="row share_options">
 		<a target="_blank" href="http://vk.com/share.php?url={{ post.get_absolute_url }}&title={{ post.name }}&description={{ post.short_description }}">
 			<div class="share_button">
-				<img class="icon button rounded_button" src="{% static 'Post/img/vk.svg' %}" alt="{% trans "vk иконка" %}">
+				<img class="icon button rounded_button dynamic_image" width="32" height="32" src="{% static 'placeholder.svg' %}" data-src="{% static 'Post/img/vk.svg' %}" alt="{% trans "vk иконка" %}">
 			</div>
 		</a>
 		<a target="_blank"  href="https://www.reddit.com/submit?url={{ post.get_absolute_url }}&title={{ post.name }}">
 			<div class="share_button">
-				<img class="icon button rounded_button" src="{% static 'Post/img/reddit.svg' %}" alt="{% trans "reddit иконка" %}">
+				<img class="icon button rounded_button dynamic_image" width="32" height="32" src="{% static 'placeholder.svg' %}" data-src="{% static 'Post/img/reddit.svg' %}" alt="{% trans "reddit иконка" %}">
 			</div>
 		</a>
 		<a target="_blank"  href="https://twitter.com/intent/tweet?url={{ post.get_absolute_url }}&text={{ post.short_description }}">
 			<div class="share_button">
-				<img class="icon button rounded_button" src="{% static 'Post/img/twitter.svg' %}" alt="{% trans "twitter иконка" %}">
+				<img class="icon button rounded_button dynamic_image" width="32" height="32" src="{% static 'placeholder.svg' %}" data-src="{% static 'Post/img/twitter.svg' %}" alt="{% trans "twitter иконка" %}">
 			</div>
 		</a>
 		<a target="_blank"  href="https://telegram.me/share/url?url={{ post.get_absolute_url }}&text={{ post.short_description }}">
 			<div class="share_button">
-				<img class="icon button rounded_button" src="{% static 'Post/img/telegram.svg' %}" alt="{% trans "telegram иконка" %}">
+				<img class="icon button rounded_button dynamic_image" width="32" height="32" src="{% static 'placeholder.svg' %}" data-src="{% static 'Post/img/telegram.svg' %}" alt="{% trans "telegram иконка" %}">
 			</div>
 		</a>
 	</div>
@@ -53,15 +75,15 @@
 			({{comments_number}})
 			</div>
 		</div>
-		<div class="column max_row_gap">
+		<div class="column max_row_gap toObserve">
 			{# Form for submiting new comment #}
 			<div id="toComment" class="column min_row_gap">
 				<div class="row mid_col_gap">
 					<div class="">
 						{% if user.avatar|length > 0 %}
-						<img class="icon icon_avatar" src='{{media_root}}{{ user.avatar }}' alt="{% trans "Аватар пользователя" %}" id="toAvatar">
+						<img class="icon icon_avatar dynamic_image" width="32" height="32" src="{% static 'placeholder.svg' %}" data-src='{{media_root}}{{ user.avatar }}' alt="{% trans "Аватар пользователя" %}" id="toAvatar">
 						{% else %}
-						<img class="icon icon_avatar" src="{% static 'Post/img/default_avatar.svg' %}" alt="{% trans "Аватар по умолчанию" %}" id="toAvatar">
+						<img class="icon icon_avatar dynamic_image" width="32" height="32" src="{% static 'placeholder.svg' %}" data-src="{% static 'Post/img/default_avatar.svg' %}" alt="{% trans "Аватар по умолчанию" %}" id="toAvatar">
 						{% endif %}
 					</div>
 					<b id="toUsername" >
@@ -95,6 +117,7 @@
 					{% trans "Оставить комментарий" %}
 				</div>
 				{% endif %}
+				<div id="common-error" class="hint-required"></div>
 			</div>
 			{# Place which gonna be filled by comments#}
 			<div id="scroll-sentinel"></div>

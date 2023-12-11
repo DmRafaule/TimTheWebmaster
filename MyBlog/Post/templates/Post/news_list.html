@@ -11,7 +11,7 @@
 	<div class="limiter in_middle in_middle-self no_wrap padder">
 		<h1 class="paragraph" >{% trans "Новости" %}</h1>
 		<hr>
-		<div id="page">
+		<div id="page" class="page toObserve">
 		{# Place to be filled by infinity_scroll script#}
 		</div>
 		<div id="scroll-sentinel"></div>
@@ -27,6 +27,7 @@
 {% block styles %}
     <link type="text/css" rel="stylesheet" href="{% static 'blocks.css' %}"/>
     <link type="text/css" rel="stylesheet" href="{% static 'images.css' %}"/>
+    <link type="text/css" rel="stylesheet" href="{% static 'Post/css/post.css' %}"/>
     <link type="text/css" rel="stylesheet" href="{% static 'Post/css/posts_preview.css' %}"/>
 {% endblock %}
 

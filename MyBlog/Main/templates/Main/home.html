@@ -11,7 +11,7 @@
 
 {% block content %}
 <div class="limiter in_middle in_middle-self no_wrap padder">
-	<div class="title column in_middle">
+	<div class="home_title column in_middle">
 		<h1>{% trans "Тим Вебмастер" %}</h1>
 		<p class="quote">{% trans "Вебмастер и в некотором роде художник" %}</p>
 	</div>
@@ -20,17 +20,7 @@
 			<div class="column max_row_gap">
 				<h2>{% trans "Статьи" %}</h2>
 				<hr>
-				<div id="article_to_upload" class="post_to_upload" data-category="Articles" data-forwho="home" >
-					<div class="post">
-						<div class="column">
-							<img class="placeholder_no_limit marger_min" width="200px" height="30px" alt="{% trans 'Серый квадрат' %}">
-							<div class="row" >
-								<img class="placeholder_no_limit marger_min" width="150px" height="30px" alt="{% trans 'Серый квадрат' %}">
-								<img class="placeholder_no_limit marger_min" width="250px" height="30px" alt="{% trans 'Серый квадрат' %}">
-							</div>
-						</div>
-						<img class="placeholder marger_min" height="150px" alt="{% trans 'Серый квадрат' %}">
-					</div>
+				<div id="article_to_upload" class="post_to_upload toObserve" data-category="Articles" data-forwho="home" >
 				</div>
 				<div class="row home_buttons">
 					<div id="next_article" class="button  action_button squered_button">
@@ -44,17 +34,7 @@
 			<div class="column max_row_gap">
 				<h2>{% trans "Кейсы" %}</h2>
 				<hr>
-				<div id="case_to_upload" class="post_to_upload" data-category="Cases" data-forwho="home" >
-					<div class="post">
-						<div class="column">
-							<img class="placeholder_no_limit marger_min" width="200px" height="30px" alt="{% trans 'Серый квадрат' %}">
-							<div class="row" >
-								<img class="placeholder_no_limit marger_min" width="150px" height="30px" alt="{% trans 'Серый квадрат' %}">
-								<img class="placeholder_no_limit marger_min" width="250px" height="30px" alt="{% trans 'Серый квадрат' %}">
-							</div>
-						</div>
-						<img class="placeholder marger_min" height="150px" alt="{% trans 'Серый квадрат' %}">
-					</div>
+				<div id="case_to_upload" class="post_to_upload toObserve" data-category="Cases" data-forwho="home" >
 				</div>
 				<div class="row home_buttons">
 					<div id="next_case" class="button action_button squered_button">
@@ -69,7 +49,7 @@
 		<div class="column home_news max_row_gap">
 			<h2>{% trans "Новости" %}</h2>
 			<hr>
-			<div class="column news_to_upload max_row_gap">
+			<div class="column news_to_upload max_row_gap toObserve">
 			</div>
 			<div class="row home_buttons">
 				<div id="more_news" class="button action_button squered_button">
@@ -94,10 +74,7 @@
 {% endblock %}
 
 {% block scripts %}
-    <!-- Loading jQuery For AJAX behaviour --> 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <!-- This is for knowing where to look for an images 
-		 And csrf tokkent -->
     {% csrf_token %}
     <script>
         const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;

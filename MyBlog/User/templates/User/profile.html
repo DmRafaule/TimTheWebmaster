@@ -12,9 +12,9 @@
 	<div class="column max_row_gap">
 		<div>
 			{% if user.avatar|length > 0 %}
-			<img class="avatar" src="{{media_root}}{{ user.avatar }}" alt="{% trans "Аватар пользователя"%}">
+			<img class="avatar" width="128" height="128" src="{{media_root}}{{ user.avatar }}" alt="{% trans "Аватар пользователя"%}">
 			{% else %}
-			<img class="avatar" src="{% static 'User/img/default_avatar.svg' %}" alt="{% trans "Аватар пользователя"%}">
+			<img class="avatar" width="128" height="128" src="{% static 'User/img/default_avatar.svg' %}" alt="{% trans "Аватар пользователя"%}">
 			{% endif %}
 		</div>
 		<div>
@@ -35,7 +35,7 @@
 					({{comments_number}})
 					</div>
 				</div>
-				<div class="column mid_row_gap">
+				<div class="column mid_row_gap toObserve">
 					{# Place which gonna be filled by comments#}
 					<div id="scroll-sentinel"></div>
 				</div>

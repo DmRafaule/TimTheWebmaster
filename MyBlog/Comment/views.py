@@ -14,7 +14,6 @@ COMMENT_DIFF_TIMER = 60
 def send_comment_guesting(request):
     global COMMENT_DIFF_TIMER
     last_comment_time = request.session['time_since_last_comment'] = request.session.get('time_since_last_comment', time.time())
-    print(COMMENT_DIFF_TIMER)
     if COMMENT_DIFF_TIMER >= TRESHOLD:
         last_comment_time = request.session['time_since_last_comment'] = time.time()
         COMMENT_DIFF_TIMER = int(time.time() - last_comment_time)
@@ -42,19 +41,27 @@ def send_comment_guesting(request):
 
 
 def send_comment_authorized(request):
-    media_root = settings.MEDIA_URL
-    if request.method == 'POST':
-        user = User.objects.filter(name=request.session.get('username')).get()
-        type = Post.objects.filter(slug=request.POST['post']).get()
-        content = request.POST['about']
-        comment = Comment(user=user, type=type, content=content)
-        comment.save()
-    context = {
-        'com': comment,
-        'user': user,
-        'media_root': media_root,
-    }
-    return render(request, "Comment/comment.html", context=context)
+    global COMMENT_DIFF_TIMER
+    last_comment_time = request.session['time_since_last_comment'] = request.session.get('time_since_last_comment', time.time())
+    if COMMENT_DIFF_TIMER >= TRESHOLD:
+        last_comment_time = request.session['time_since_last_comment'] = time.time()
+        COMMENT_DIFF_TIMER = int(time.time() - last_comment_time)
+        media_root = settings.MEDIA_URL
+        if request.method == 'POST':
+            user = User.objects.filter(name=request.session.get('username')).get()
+            type = Post.objects.filter(slug=request.POST['post']).get()
+            content = request.POST['about']
+            comment = Comment(user=user, type=type, content=content)
+            comment.save()
+        context = {
+            'com': comment,
+            'user': user,
+            'media_root': media_root,
+        }
+        return render(request, "Comment/comment.html", context=context)
+    else:
+        COMMENT_DIFF_TIMER = int(time.time() - last_comment_time)
+        return JsonResponse({"message": _("Нельзя спамить сообщениями!")}, status=403)
 
 
 def prepare_user(request):

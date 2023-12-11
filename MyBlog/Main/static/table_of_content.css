@@ -46,6 +46,7 @@
 	color: var(--link-internal_color);
 	transition: padding 0.3s;
 	border-bottom: 1px solid var(--link-internal_color);
+	cursor: pointer;
 }
 .table_of_content_text:hover {
   color: var(--link-hover_color);
@@ -65,9 +66,6 @@
 	padding: 8px;
 	z-index: 1;
 }
-.icon{
-	width: 32px;
-	height: 32px;
-	transition: 0.2s;
-}
 
+h2{
+}

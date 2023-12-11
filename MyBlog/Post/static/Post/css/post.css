@@ -11,3 +11,6 @@
 .active{
 	display: none;
 }
+.page{
+	min-height: 100svh;
+}

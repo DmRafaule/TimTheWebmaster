@@ -7,7 +7,7 @@
 		{% for el in titles %}
 		<li class="table_of_content_element {{el.padding}}">
 			<p class="table_of_content_sign">{{el.tag_name}}</p>
-			<a class="table_of_content_text" href="{{el.ref}}">{{el.text}}</a>
+			<p class="table_of_content_text" href="{{el.ref}}">{{el.text}}</p>
 		</li>
 		{% endfor %}
 	</ul>
@@ -15,6 +15,6 @@
 
 <a href="#">
 	<div class="up_button button">
-		<img class="icon" src="{% static 'up_arrow.svg' %}" alt="{% trans 'Стрелка на верх' %}">
+		<img width="32" height="32" class="icon dynamic_image" src="{% static 'placeholder.svg' %}" data-src="{% static 'up_arrow.svg' %}" alt="{% trans 'Стрелка на верх' %}">
 	</div>
 </a>

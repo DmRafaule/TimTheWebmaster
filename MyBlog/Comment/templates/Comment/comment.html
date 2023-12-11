@@ -6,15 +6,15 @@
 		<div class="row mid_col_gap">
 			{% if not com.anonymous_user_id|length > 0%}
 				{% if com.user.avatar|length > 0 %}
-				<img class="icon icon_avatar" src='{{media_root}}{{ com.user.avatar }}' alt="{% trans "Аватарка пользователя" %}">
+				<img class="icon icon_avatar dynamic_image" width="32" height="32" src="{% static 'placeholder.svg' %}" data-src='{{media_root}}{{ com.user.avatar }}' alt="{% trans "Аватарка пользователя" %}">
 				{% else %}
-				<img class="icon icon_avatar" src="{% static 'User/img/default_avatar.svg' %}" alt="{% trans "Аватар по умолчанию" %}">
+				<img class="icon icon_avatar dynamic_image" width="32" height="32" src="{% static 'placeholder.svg' %}" data-src="{% static 'User/img/default_avatar.svg' %}" alt="{% trans "Аватар по умолчанию" %}">
 				{% endif %}
 			{% else%}
 				{% if com.anonymous_user_avatar|length > 0 %}
-				<img class="icon icon_avatar" src='{{com.anonymous_user_avatar}}' alt="{% trans "Аватарка пользователя" %}">
+				<img class="icon icon_avatar dynamic_image" width="32" height="32" src="{% static 'placeholder.svg' %}" data-src='{{com.anonymous_user_avatar}}' alt="{% trans "Аватарка пользователя" %}">
 				{% else %}
-				<img class="icon icon_avatar" src="{% static 'User/img/default_avatar.svg' %}" alt="{% trans "Аватар по умолчанию" %}">
+				<img class="icon icon_avatar dynamic_image" width="32" height="32" src="{% static 'placeholder.svg' %}" data-src="{% static 'User/img/default_avatar.svg' %}" alt="{% trans "Аватар по умолчанию" %}">
 				{% endif %}
 			{% endif %}
 			<b class=" in_middle-self">

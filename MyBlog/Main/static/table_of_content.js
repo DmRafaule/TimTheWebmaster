@@ -5,7 +5,8 @@ $(document).ready( function(){
 	headers.each( function(index){
 		let text = $(this).text()
 		let ref  = '#ref-'+text
-		ref = ref.replace(/\s+/g, '-').toLowerCase();
+		// Save only alphnumeric chracters and # everything else replace with -
+		ref = ref.replace(/[^#a-zA-Z0-9а-яА-Я]/g, '-').toLowerCase();
 		let tag_name  = this.nodeName.toLowerCase()
 		let padding = "padder-5"
 		if( tag_name  == 'h2')
@@ -37,11 +38,25 @@ $(document).ready( function(){
 					pushUpButton(this)
 				}) 
 			})
+			var anch_links = document.querySelectorAll('.table_of_content_text')
+			anch_links.forEach( (link) => {
+				link.addEventListener('click',function(){
+					var target = $(link).attr('href')
+					var offset = 100
+					jumpTo(target, offset)
+				}) 
+			})
+
 		},
 	})
 })
 
 
+function jumpTo( target, offset ){
+	var offsetObj = $(target).offset()
+	offsetObj.top -= offset
+	window.scrollTo(offsetObj)
+}
 
 function pushUpButton(el){
 	el.classList.add('icon_button_pressed')

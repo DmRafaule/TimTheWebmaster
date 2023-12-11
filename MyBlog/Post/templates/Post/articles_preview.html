@@ -8,7 +8,7 @@
 		{% if a.preview %}
 		<div class="post_preview_image marger-10">
 			<a href="{{a.get_absolute_url}}">
-				<img width="300px" src="{{media_root}}{{a.preview}}" alt="{% trans "Превью статьи" %}">
+				<img class="dynamic_image" width="300" height="200" src="{% static 'placeholder.svg' %}" data-src="{{media_root}}{{a.preview}}" alt="{% trans "Превью статьи" %}">
 			</a>
 		</div>
 		{% endif %}

@@ -1,6 +1,6 @@
 .icon{
-	width: 32px;
-	height: 32px;
+	width: var(--icon_size);
+	height: var(--icon_size);
 	transition: 0.2s;
 }
 .icon_text{

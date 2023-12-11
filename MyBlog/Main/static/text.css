@@ -15,6 +15,13 @@
 }
 .title{
 	text-align: center;
+	margin-top: 5svh;
+	margin-bottom: 45svh;
+	word-wrap: break-word;
+}
+
+.title_in_middle{
+	text-align: center;
 	margin-top: 45svh;
 	margin-bottom: 45svh;
 	word-wrap: break-word;

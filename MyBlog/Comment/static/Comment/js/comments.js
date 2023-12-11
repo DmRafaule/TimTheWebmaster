@@ -38,10 +38,15 @@ function sendComment(path){
 		success: function(result){
 			$(result).insertAfter("#toComment")
 			$(".remove_action_button").off()
+			$("#common-error").text('')	
 			$(".remove_action_button").one('click', function() {
 				removeComment(this)
 			})	
 		},
+		error: function(jqXHR, textStatus, errorThrown){
+			$(".hint-required").css("color","red")
+			$("#common-error").text(jqXHR.responseJSON.message)	
+		}
 	})
 }
 

@@ -1,4 +1,3 @@
-
 $(document).ready(function(){
 	const images = document.querySelectorAll(".dynamic_image");
 	images.forEach( (image) => {
@@ -17,3 +16,4 @@ $(document).ready(function(){
 		image_observer.observe(image);
 	})
 })
+
