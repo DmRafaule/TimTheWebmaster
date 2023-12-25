@@ -1,0 +1,11 @@
+.canvas{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100svw;
+	height: 100svh;
+}
+
+.glslCanvas{
+	border: 2px dashed black;
+}

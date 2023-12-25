@@ -1,24 +1,17 @@
-from django.shortcuts import render, redirect
-from django.http import HttpResponse, JsonResponse, HttpResponseRedirect
+from django.shortcuts import render
+from django.http import JsonResponse, HttpResponseRedirect
 from django.template.defaultfilters import slugify
-from django.templatetags.static import static
-from django.urls import reverse
+from django.core.cache import cache
 import re
-from MyBlog import settings
 from django.utils.translation import gettext as _
 from .models import User
-from Comment.models import Comment
+from Main.utils import initDefaults
 
 
 def profile(request, user_slug):
     user = User.objects.filter(name=user_slug).first()
-    media_root = settings.MEDIA_URL
-    context = {
-        'user': user,
-        'media_root': media_root,
-        'comments': Comment.objects.filter(user=user),
-        'comments_number': Comment.objects.filter(user=user).count()
-    }
+    context = initDefaults(request)
+    context.update({'user': user})
     if (request.session["username"] == user_slug):
         return render(request, 'User/profile.html', context=context)
     else:
@@ -26,27 +19,26 @@ def profile(request, user_slug):
 
 
 def login(request):
-    user = User.objects.filter(name=request.session.get("username","guest")).first()
-    context = {
-        'user': user,
-    }
+    context = initDefaults(request)
     return render(request, 'User/login.html', context=context)
 
 
 def logout(request):
     request.session.flush()
+    cache.clear()
     return HttpResponseRedirect(f"/{request.LANGUAGE_CODE}/login")
 
 
 def signup(request):
-    return render(request, 'User/signup.html')
+    context = initDefaults(request)
+    return render(request, 'User/signup.html', context=context)
 
 
 def login_verify(request):
     message = {
         'common': '',
-        'username': _('обязательно'),
-        'password': _('обязательно'),
+        'username': '',
+        'password': '',
     }
     status = 200
     if request.method == 'POST':
@@ -84,10 +76,10 @@ def login_verify(request):
 def signup_verify(request):
     message = {
         'common': '',
-        'username': _('обязательно'),
-        'email': _('обязательно'),
-        'password': _('обязательно'),
-        'repassword': _('обязательно'),
+        'username': '',
+        'email': '',
+        'password': '',
+        'repassword': '',
     }
     status = 200
     if request.method == 'POST':

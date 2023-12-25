@@ -1,0 +1,13 @@
+.active_more_home_button{
+	display: none;
+}
+.active_nav{
+	width: 300px;
+}
+.active_toggle_button{
+}
+.active_toggle_button_image{
+	transform: rotateZ(90deg);
+}
+.active_share_options{
+}

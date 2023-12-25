@@ -1,0 +1,15 @@
+
+.title{
+	text-align: left;
+	margin-top: 45svh;
+	margin-bottom: 5svh;
+	word-wrap: break-word;
+}
+.answer{
+	margin-bottom: 45svh
+}
+
+.related{
+	flex: 1 0 40%;
+	width: 100%;
+}

@@ -1,32 +1,66 @@
-from .models import *
+from User.models import User
+from MyBlog.settings import MEDIA_URL, ALLOWED_HOSTS
+import Post.models as Post_M
 
 
-menu = [
-    {'name': 'About', 'url_name': 'about','visible': True},
-    {'name': 'Contacts', 'url_name': 'contacts','visible': True},
-]
+def get_latest_post(number: int, category_queryset: Post_M.Category):
+    new_posts = list()
+    posts = category_queryset.objects.filter(isPublished=True)
+    if (len(posts) > number):
+        post = posts.latest('timeUpdated')
+        for i in range(0, number):
+            new_posts.append(post)
+            posts = posts.exclude(id=post.id)
+            post = posts.latest('timeUpdated')
 
-# create and fill a list with data that needed for menu
-def getCategoriesMenu(toHide=None):
-    ext_menu = []
-    # get all available objects from database
-    cat = Category.objects.all() 
-    for c in cat:
-        # which category will be hidden
-        isVisible = True
-        if c.slug == toHide:
-            isVisible = False
-        # append to list
-        ext_menu.append({
-            'name': c.name, 'url_name': c.slug,'visible': isVisible
-        })
-    return ext_menu
-    
-# define wich is gonna be visible
-def getCommonMenu(toHide=None):
-    for m in menu:
-        isVisible = True
-        if m['url_name'] == toHide:
-            isVisible = False
-        m['visible'] = isVisible
-    return menu
+    return new_posts
+
+
+# Filtering out all empty categories
+def getNotEmptyCategories(categories):
+    categories_result = []
+    for category in categories:
+        if Post_M.Post.objects.filter(category=category, isPublished=True):
+            categories_result.append(category)
+    return categories_result
+
+
+# Create queryset with special categories
+def getSpecialTopLevelCategories(categories):
+    categories_result = []
+    selected_special = ("tools", "services")
+    for selected in selected_special:
+        categories_result.append(categories.get(slug=selected))
+        categories = categories.exclude(slug=selected)
+    return getNotEmptyCategories(categories_result)
+
+
+# Get only those categories that represent content part of my website
+def getNotSpecialLowLevelCategories(categories):
+    selected_special = ("tools", "services")
+    for selected in selected_special:
+        categories = categories.exclude(slug=selected)
+    return categories
+
+
+def initDefaults(request):
+    user = User.objects.filter(name=request.session.get('username','Guest')).first() 
+    categories = Post_M.Category.objects.all()
+    categories_special = getSpecialTopLevelCategories(categories)
+    categories = getNotSpecialLowLevelCategories(categories)
+    categories_content = getNotEmptyCategories(categories)
+    # Categories(categories_special) that gonna appear in first level of menu
+    # All other (categories) gonna be in second lever under content menu
+    domain_name = ALLOWED_HOSTS[0]
+    popular_posts = get_latest_post(1, Post_M.Article)
+    popular_posts += get_latest_post(1, Post_M.Case)
+    popular_posts += get_latest_post(1, Post_M.News)
+
+    context = {
+        'user': user,
+        'categories': categories_content,
+        'categories_special': categories_special,
+        'domain_name': domain_name,
+        'popular_posts': popular_posts,
+    }
+    return context

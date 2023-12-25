@@ -1,9 +1,17 @@
-.news_header{
-	display: flex;
-	flex-wrap: wrap;
-	align-items: end;
+.title{
+	text-align: left;
+	margin-top: 5svh;
+	margin-bottom: 5svh;
+	word-wrap: break-word;
+	padding-left: var(--max_pm);
 }
 
-.page{
-	align-items: start;
+.first_sentence{
+	font-size: calc(var(--size-main_font) + 2px);
+	padding-right: var(--min_pm);
+	display: inline;
 }
+.lead{
+	display: inline;
+}
+

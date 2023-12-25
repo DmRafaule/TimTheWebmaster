@@ -11,7 +11,7 @@ from MyBlog.settings import MEDIA_ROOT
 def user_directory_path_forImageAndDownloadabel(instance, filename):
     # type, which folder to use / projects / articles / news / portfolios
     # slug, which one of the above project/ article / new or portfolio
-    return "{0}/{1}/{2}".format(instance.type.type, instance.type.slug, filename)
+    return "{0}/{1}/{2}".format(instance.type.category.slug, instance.type.slug, filename)
 
 
 class Image(models.Model):
@@ -26,12 +26,11 @@ class Downloadable(models.Model):
     text = models.CharField(max_length=250, blank=True)
 
 
-
 class StaticSitemap(Sitemap):
     i18n = True
 
     def items(self):
-        return ["about", "contacts", "home", "image_thief"]
+        return ["about", "contacts", "home"]
 
     def location(self, item):
         return reverse(item)

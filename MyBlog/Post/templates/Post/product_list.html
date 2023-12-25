@@ -1,0 +1,26 @@
+{% extends 'Post/base_post_list.html' %}
+{% load static%}
+{% load i18n %}
+
+{% block content_list %}
+	<div class="row">
+		<div class="row el-expandable" >
+		</div>
+	<div id="toViews" data-view="list" data-who="{{category.slug}}" class="row mid_col_gap" >
+			<img id="onListView" width="32" height="32" class="icon dynamic_image bordered_button button squered_button selected_view" src="{% static 'placeholder.svg'%}" data-src="{% static 'Post/img/list_view.svg' %}"  alt="{% trans 'Значок показа ввиде списка' %}">
+			<img id="onGridView" width="32" height="32" class="icon dynamic_image bordered_button button squered_button" src="{% static 'placeholder.svg'%}" data-src="{% static 'Post/img/grid_view.svg' %}" alt="{% trans 'Значок показа ввиде плиток' %}">
+		</div>
+	</div>
+
+	<div id="page" class="page toObserve">
+	{# Place to be filled by infinity_scroll script#}
+	</div>
+	<div id="scroll-sentinel"></div>
+{% endblock %}
+
+{% block styles_list %}
+{% endblock %}
+
+{% block scripts_list %}
+    <script src="{% static 'Post/js/more.js' %}"></script>
+{% endblock %}

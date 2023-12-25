@@ -1,0 +1,24 @@
+{% load static %}
+{% load i18n %}
+
+{% for a in posts %}
+
+<div class="post_preview column min_row_gap">
+	<div class=" post_preview_header row min_col_gap">
+		<div class="post_preview_meta col min_row_gap">
+			<h2><a class="text_button" href="{{ a.get_absolute_url }}">{{a.headline}}</a></h2>
+			<div class="row min_col_gap el-half in_middle-self">
+				<div><b>{% trans "Опубликованно:" %}</b></div>
+				<div>{{a.timeCreated|date:"d.m.Y"}}</div>
+			</div>
+		</div>
+	</div>
+	<span class="post_preview_body">
+		<b>{% trans "Описание:" %}</b>	{{a.description}} 	
+	</span>
+	<div class="button link_button squered_button">
+		<a href="{{a.get_absolute_url}}">{% trans 'Читать'%}</a>
+	</div>
+</div>
+
+{% endfor %}

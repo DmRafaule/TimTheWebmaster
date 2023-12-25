@@ -1,19 +1,21 @@
 const number = 5
 var offset = 0
 
-function LoadPosts(){
-	const container = document.querySelector(".page");
+function LoadPosts(isRecent = true, mode = 'basic', forWho = ''){
 	$.ajax({
 		type: "GET",
-		url: "/" + language_code + "/load_post_preview/",
+		url: "load_post_preview/",
 		data: {
 			'number': number,
 			'offset': offset,
 			'category': category_name,
+			'is_recent': isRecent,
+			'mode': mode,
+			'for_who': '',
 		},
 		mode: 'same-origin', // Do not send CSRF token to another domain.
 		success: function(result) {
-			var page = $('.page');
+			var page = $('#page');
 			// Insert 'answer' from server into site code
 			page.append(result)
 			offset = offset + number
@@ -23,31 +25,23 @@ function LoadPosts(){
 	})
 }
 
-
-
-
-function buildThresholdList() {
-  let thresholds = [];
-  let numSteps = 20;
-
-  for (let i = 1.0; i <= numSteps; i++) {
-    let ratio = i / numSteps;
-    thresholds.push(ratio);
-  }
-
-  thresholds.push(0);
-  return thresholds;
-}
-
-
 $(document).ready( function(){
+	var viewsContainer = $("#toViews")
+	var mode = viewsContainer.data('view')
+	var forWho = viewsContainer.data('who')
+	var isRecent = $("#onSort").data('sort')
+	LoadPosts(isRecent, mode, forWho)
 	const observer = new IntersectionObserver((entries, observer) => {
 	  // Loop through the entries
 	  for (const entry of entries) {
 		// Check if the entry is intersecting the viewport
 		if (entry.isIntersecting) {
 			// Load more content
-			LoadPosts()
+			var viewsContainer = $("#toViews")
+			var mode = viewsContainer.data('view')
+			var forWho = viewsContainer.data('who')
+			var isRecent = $("#onSort").data('sort')
+			LoadPosts(isRecent, mode, forWho)
 		}
 	  }
 	});

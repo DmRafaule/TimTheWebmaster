@@ -1,0 +1,34 @@
+.quote{
+	font-family: var(--family-acent_font);
+	font-weight: var(--weight-acent_font);
+	font-size: var(--size-acent_font);
+	font-style: italic;
+}
+.text{
+	margin-top: var(--text_block_margin-top);
+	text-align: justify;
+}
+.paragraph{
+	margin-top: var(--paragraph_margin-top);
+	margin-bottom: var(--paragraph_margin-bottom);
+	word-wrap: break-word;
+}
+.title{
+	text-align: center;
+	margin-top: 5svh;
+	margin-bottom: 45svh;
+	word-wrap: break-word;
+}
+
+.title_in_middle{
+	text-align: center;
+	margin-top: 45svh;
+	margin-bottom: 45svh;
+	word-wrap: break-word;
+}
+.top_anotation{
+	font-family: var(--family-acent_font);
+}
+.to_upper_case{
+	text-transform: uppercase;
+}

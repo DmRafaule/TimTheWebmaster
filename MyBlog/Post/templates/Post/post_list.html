@@ -1,0 +1,28 @@
+{% extends 'Post/base_post_list.html' %}
+{% load static%}
+{% load i18n %}
+
+{% block content_list %}
+	<div class="row">
+		<div class="row el-expandable" >
+			<img id="onSort" data-sort="true" width="32" height="32" class="icon dynamic_image bordered_button button squered_button" src="{% static 'placeholder.svg'%}" data-src="{% static 'Post/img/sort.svg' %}" alt="{% trans 'Значок сортировки' %}">
+		</div>
+		<div id="toViews" data-view="simple" class="row mid_col_gap" >
+			<img id="onBasicView" width="32" height="32" class="icon dynamic_image bordered_button button squered_button" src="{% static 'placeholder.svg'%}" data-src="{% static 'Post/img/basic_view.svg' %}" alt="{% trans 'Значок базового представления' %}">
+			<img id="onSimpleView" width="32" height="32" class="icon dynamic_image bordered_button button squered_button selected_view" src="{% static 'placeholder.svg'%}" data-src="{% static 'Post/img/simple_view.svg' %}" alt="{% trans 'Значок упрощённого представления' %}">
+			<img id="onMinimalView" width="32" height="32" class="icon dynamic_image bordered_button button squered_button" src="{% static 'placeholder.svg'%}" data-src="{% static 'Post/img/minimal_view.svg' %}" alt="{% trans 'Значок минимального представления' %}">
+			<img id="onRawView" width="32" height="32" class="icon dynamic_image bordered_button button squered_button" src="{% static 'placeholder.svg'%}" data-src="{% static 'Post/img/raw_view.svg' %}" alt="{% trans 'Значок сырого(только ссылок) представления' %}">
+		</div>
+	</div>
+
+	<div id="page" class="page toObserve">
+	{# Place to be filled by infinity_scroll script#}
+	</div>
+	<div id="scroll-sentinel"></div>
+{% endblock %}
+
+{% block styles_list %}
+{% endblock %}
+
+{% block scripts_list %}
+{% endblock %}

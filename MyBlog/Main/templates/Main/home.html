@@ -2,64 +2,42 @@
 {% load i18n %}
 {% load static%}
 
-{% block navigation_head %}
-<div class="name"><b>{% trans "Домашняя" %}</b></div>
-<p class="quote">{% trans "Всё то, что важно" %}</p>
-{% endblock navigation_head %}
 
 {% block head %}
+	<title>{% trans "Тим, вебмастер" %}</title>
 	<meta name="description" content="{% trans "Вебмастер Тим, он занимается разработкой сайтов на django, написанием тг ботов, скриптов и парсеров, а также выполняет заказы по копирайту"%}">
 	<link rel="canonical" href="https://{{domain_name}}{%url 'home'%}" />
-	<title>{% trans "Тим, вебмастер" %}</title>
 {% endblock %}
 
 {% block content %}
-<div class="container_els">
-	<div class="mid_el">
-		<div class="left_el">
-			<div class="marger  left_top_el">
-				<div class="column is_relative ">
-					<div class="row content_body__title  content_body__title--super_clean in_middle">
-						<h2 class="in_middle flex_el_2 padder">{% trans "Недавние статьи" %}</h2>
-						<div id="scroll_buttons" class="row no_wrap">
-							<div id="next_button" class="button next_button">
-								<div class="icon_text icon_text--shadow white">&#10095;</div>
-							</div>
-						</div>
-					</div>
-					<div id="article_to_upload" class="post_to_upload" data-category="Articles" data-forwho="home" >
-					</div>
+<div class="limiter in_middle in_middle-self no_wrap padder">
+	<div class="home_title column in_middle">
+		<h1>{% trans "Тим Вебмастер" %}</h1>
+		<p class="quote">{% trans "Вебмастер и в некотором роде художник" %}</p>
+	</div>
+	<div class="row in_middle-even home_art_cas_news">
+		<div class="column home_art_cas">
+			<div class="column max_row_gap">
+				<h2><a class="text_button" href="{% url 'articles-list' %}">{% trans "Статьи" %}</a></h2>
+				<hr>
+				<div id="article_to_upload" class="post_to_upload toObserve" data-category="articles" data-forwho="home" data-offset="0" >
 				</div>
 			</div>
-			<div class="marger left_bott_el">
-				<div class="column on_start is_relative">
-					<div class="row content_body__title content_body__title--super_clean">
-						<h2 class="in_middle flex_el_2 padder">{% trans "Недавние кейсы"%}</h2>
-						<div id="scroll_buttons" class="row no_wrap">
-							<div id="next_button" class="button next_button">
-								<div class="icon_text icon_text--shadow white">&#10095;</div>
-							</div>
-						</div>
-					</div>
-					<div id="case_to_upload" class="post_to_upload" data-category="Cases" data-forwho="home" >
-					</div>
-					<div></div>
+			<div class="column max_row_gap">
+				<h2><a class="text_button" href="{% url 'cases-list' %}">{% trans "Кейсы" %}</a></h2>
+				<hr>
+				<div id="case_to_upload" class="post_to_upload toObserve" data-category="cases" data-forwho="home" data-offset="0" >
 				</div>
 			</div>
 		</div>
-		<div class="marger border right_el">
-			<div class="column full_height in_middle-farapart">
-				<div>
-					<div class="row content_body__title content_body__title--super_clean">
-						<h2 class="in_middle flex_el_2 marger">{% trans "Новости" %}</h2>
-					</div>
-					<div class="news_to_upload">
-					</div>
-				</div>
-				<div id="more_news" class="button in_middle">
-					<p>
-					{% trans 'Ещё' %}
-					</p>
+		<div class="column home_news max_row_gap">
+			<h2><a class="text_button" href="{% url 'news-list' %}">{% trans "Новости" %}</a></h2>
+			<hr>
+			<div class="column news_to_upload max_row_gap toObserve">
+			</div>
+			<div class="row home_buttons">
+				<div id="more_news" class="button action_button squered_button">
+					{% trans 'Ещё'%}
 				</div>
 			</div>
 		</div>
@@ -67,23 +45,23 @@
 </div>
 {% endblock %}
 
+{% block footer_links %}
+	{% for ref in popular_posts %}
+		<li class="ref"><a href="{{ref.get_absolute_url}}">{{ref|truncatechars:15}}</a></li>
+	{% endfor %}
+{% endblock %}
+
 {% block styles %}
-    <link type="text/css" rel="stylesheet" href="{% static 'Main/css/titles.css' %}"/>
-    <link type="text/css" rel="stylesheet" href="{% static 'Main/css/text.css' %}"/>
-    <link type="text/css" rel="stylesheet" href="{% static 'Main/css/lists.css' %}"/>
-    <link type="text/css" rel="stylesheet" href="{% static 'User/css/comment.css' %}"/>
-    <link type="text/css" rel="stylesheet" href="{% static 'Post/css/list.css' %}"/>
-    <link type="text/css" rel="stylesheet" href="{% static 'Post/css/news.css' %}"/>
+    <link type="text/css" rel="stylesheet" href="{% static 'blocks.css' %}"/>
+    <link type="text/css" rel="stylesheet" href="{% static 'images.css' %}"/>
+    <link type="text/css" rel="stylesheet" href="{% static 'Main/css/home.css' %}"/>
 {% endblock %}
 
 {% block scripts %}
-    <!-- Loading jQuery For AJAX behaviour --> 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <!-- This is for knowing where to look for an images 
-		 And csrf tokkent -->
     {% csrf_token %}
     <script>
         const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
     </script>
-    <script src="{% static 'Main/js/home_button.js' %}"></script>
+    <script src="{% static 'Main/js/home.js' %}"></script>
 {% endblock %}

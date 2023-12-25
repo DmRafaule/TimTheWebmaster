@@ -1,0 +1,43 @@
+{% load static %}
+{% load i18n %}
+{% load markdown%}
+
+{% for a in posts %}
+<div class="column min_row_gap">
+	{% if a.preview %}
+	<div class="marger-10">
+		<a id="home_article_link" href="{{a.get_absolute_url}}">
+			<img width="300" height="180" class="image dynamic_image button bordered_button" src="{% static 'placeholder.svg'%}" data-src="{% get_media_prefix %}{{a.preview}}" alt="{% trans "Превью статьи" %}">
+		</a>
+	</div>
+	{% endif %}
+	<div class="column min_row_gap">
+		<h3><a class="text_button" href="{{ a.get_absolute_url }}">{{a.title}}</a></h3>
+		<div class="row min_col_gap">
+			<div class="post_el--description"><b>{% trans "Опубликованно:" %}</b></div>
+			<div>{{a.timeCreated|date:"d.m.Y"}}</div>
+		</div>
+	</div>
+	<div class="post_description column min_row_gap">
+	{% if a.client_name %}
+		<span class="post_preview_body">
+			<b>{% trans "Клиент:" %}</b>	{{a.client_name}} 	
+		</span>
+	{% endif %}
+		<span class="post_description__description">
+			<b>{% trans "Описание:	" %}</b> {{a.description|truncatewords:50}} 	
+		</span>
+	</div>
+	<div class="row home_buttons">
+		<div id="next_article" class="next_post button  action_button squered_button">
+			{% trans 'Ещё'%}
+		</div>
+		<div id="read_article" class="button link_button squered_button">
+			<a href="{{a.get_absolute_url}}">{% trans 'Читать'%}</a>
+		</div>
+	</div>
+</div>
+{% endfor %}
+{% if is_end %}
+<div class="end_list"></div>
+{% endif %}

@@ -1,0 +1,22 @@
+.share_options{
+	display: flex;
+	flex-direction: row;
+	column-gap: var(--mid_pm);
+	margin-top: var(--max_pm);
+	justify-content: center;
+	height: 0;
+	transition: 0.2s;
+	overflow: hidden;
+}
+.active{
+	display: none;
+}
+.page{
+	min-height: 100svh;
+}
+.selected_view{
+	background-color: var(--acent_color);
+}
+.rotate_X{
+	transform: rotateX(180deg);
+}

@@ -7,63 +7,35 @@
 	<title>{% trans "Профиль" %}</title>
 {% endblock %}
 
-{% block navigation_head %}
-	<div class="name"><b>{% trans "Профиль"  %}</b></div>
-	<p class="quote">{% trans "Профиль пользователя " %} <b>{{ user.name }}</b></p>
-{% endblock navigation_head %}
-
-
-
 {% block content %}
-
-<div class="page">
-	<div class="main_wrapper">
-		<div class="top_container">
-			<div class="avatar_container">
-				<div class="profile_interface">
-				{# Checks if avatar is loaded#}
-					<div class="avatar profile_el" id="avatar" style="
-						{% if user.avatar|length > 0 %}
-						background-image: url('{{media_root}}{{ user.avatar }}');
-						{% else %}
-						background-image: url('{% static 'User/img/default_avatar.png' %}');
-						{% endif %}
-						width: 100px;
-						height: 100px;
-						background-size: cover;
-						background-position: center center;
-						border-radius: 50%;">
-					</div>
-				</div>
-			</div>
-			<div class="space-filler"></div>
+<div class="profile_page limiter in_middle in_middle-self no_wrap padder">
+	<div class="column max_row_gap">
+		<div>
+			{% if user.avatar|length > 0 %}
+			<img class="avatar" width="128" height="128" src="{% get_media_prefix %}{{ user.avatar }}" alt="{% trans "Аватар пользователя"%}">
+			{% else %}
+			<img class="avatar" width="128" height="128" src="{% static 'User/img/default_avatar.svg' %}" alt="{% trans "Аватар пользователя"%}">
+			{% endif %}
 		</div>
-		<div class="middle_container">
-			<div class="container_title">
-				<b>{% trans "Имя: " %}</b>
-			</div>
-			<div class="profile_el about_container">{{user.name}}</div>
-			<div class="container_title">
-				<b>{% trans "Почта: " %}</b>
-			</div>
-			<div class="profile_el about_container ">{{user.email}}</div>
-			<div class="container_title">
-				{% trans "О пользователе" %}
-			</div>
-			<div class="about_container">
-				{{user.about}}
-			</div>
-			<div class="space-filler"></div>
+		<div>
+			<h2>{% trans "Имя: " %}</h2>
+			<div>{{user.name}}</div>
+			<h2>{% trans "Почта: " %}</h2>
+			<div>{{user.email}}</div>
+			{% if user.about|length > 0%}
+			<h2>{% trans "О пользователе" %}</h2>
+			<div>{{user.about}}</div>
+			{% endif %}
 		</div>
-		<div class="bottom_container">
-			<div class="comments">  
-				<div class="comments_header">
-					<div class="container_title">{% trans "Коментарии" %}</div>			
-					<div class="comments_header__other">
+		<div>
+			<div class="column max_row_gap">  
+				<div class="row">
+					<h2>{% trans "Коментарии" %}</h2>			
+					<div class="top_anotation">
 					({{comments_number}})
 					</div>
 				</div>
-				<div class="comments_body">
+				<div class="column mid_row_gap toObserve">
 					{# Place which gonna be filled by comments#}
 					<div id="scroll-sentinel"></div>
 				</div>
@@ -73,20 +45,23 @@
 </div>
 {% endblock %}
 
+{% block footer_links %}
+	{% for ref in popular_posts %}
+		<li class="ref"><a href="{{ref.get_absolute_url}}">{{ref|truncatechars:15}}</a></li>
+	{% endfor %}
+{% endblock %}
 
 
 {% block styles %}
+    <link type="text/css" rel="stylesheet" href="{% static 'blocks.css' %}"/>
     <link type="text/css" rel="stylesheet" href="{% static 'User/css/profile.css' %}"/>
-    <link type="text/css" rel="stylesheet" href="{% static 'User/css/comment.css' %}"/>
 {% endblock %}
+
 {% block scripts %}
-    <!-- Loading jQuery For AJAX behaviour --> 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <!-- This is for knowing where to look for an images 
-		 And csrf tokkent -->
     {% csrf_token %}
     <script>
         const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
     </script>
-    <script src="{% static 'User/js/add_comment.js' %}"></script>
+    <script src="{% static 'User/js/profile.js' %}"></script>
 {% endblock %}

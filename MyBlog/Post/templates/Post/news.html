@@ -1,39 +1,62 @@
 {% extends 'Post/base_post.html' %}
-{% load static%}
+{% load i18n %}
+{% load static %}
+{% load markdown %}
 
 {% block head_post %}
-	<meta name="description" content="">
-	<title></title>
-	{# schema #}
-	<script type="application/ld+json">
-	{
-	  "@context": "https://schema.org",
-	  "@type": "NewsArticle",
-	  "mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "https://{{domain_name}}{{ post.get_absolute_url }}"
-	  },
-	  "headline": "{{ post.name }}",
-	  "description": "{{ post.short_description }}",
-	  "image": "https://{{domain_name}}{{media_root}}{{ post.preview }}",  
-	  "author": {
-		"@type": "Person",
-		"name": "Tima Chuduk",
-		"url": "https://{{domain_name}}{% url 'home' %}"
-	  },  
-	  "publisher": {
-		"@type": "Organization",
-		"name": "",
-		"logo": {
-		  "@type": "ImageObject",
-		  "url": "https://{{domain_name}}/favicon.ico"
-		}
-	  },
-	  "datePublished": "{{ post.timeCreated }}",
-	  "dateModified": "{{ post.timeUpdated }}"
-	}
-	</script>
+	<title>{{post.headline}} | {% trans "Тим Вебмастер" %}</title>
+	<meta name="description" content="{{post.description}}">
+    <script type="application/ld+json">
+    {
+		"@context": "https://schema.org",
+		"@type": "Article",
+		"headline": "{{post.headline}}",
+		{% if post.preview %}
+		"image": [
+			"https://{{domain_name}}{% get_media_prefix %}{{post.preview}}"
+		],
+		{% endif %}
+		"datePublished": "{{post.timeCreated}}+03:00",
+		"dateModified": "{{post.timeUpdated}}+03:00",
+		"author": [{
+			"@type": "Person",
+			"name": "{% trans 'Тима Чудук' %}",
+			"url": "https://{{domain_name}}{% url 'about' %}"
+		}]
+    }
+    </script>
+{% endblock %}
+
+
+{% block content_post-before %}
 {% endblock %}
 
 {% block content_post %}
+	{% if post.preview %}
+		<img class="image preview dynamic_image" src="{% static 'placeholder.svg' %}" data-src="{% get_media_prefix %}{{post.preview}}" alt="{{post.headline}}">
+	{% endif %}
+	<h1 class="title" >{{post.headline}}</h1>
+	<span class="text entry">
+		 
+	</span>
+	<div class="text">
+		<span class="first_sentence">{{post.first_sentence}}</span>
+		<span class="lead">{{post.lead}}</span>
+	</div>
+	{{post.body|markdown|safe}}
+	<div class="text">
+		{{post.ending|markdown|safe}}
+	</div>
+
+{% endblock %}
+
+{% block content_post-after %}
+{% endblock %}
+
+{% block styles_post %}
+    <link type="text/css" rel="stylesheet" href="{% static 'images.css' %}"/>
+    <link type="text/css" rel="stylesheet" href="{% static 'Post/css/news.css' %}"/>
+{% endblock %}
+
+{% block scripts_post %}
 {% endblock %}

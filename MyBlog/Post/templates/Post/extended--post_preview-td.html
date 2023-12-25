@@ -1,0 +1,14 @@
+{% load static %}
+{% load i18n %}
+{% load markdown %}
+
+{% for a in posts %}
+
+<div class="post_preview">
+	<h2><a class="text_button" href="{{ a.get_absolute_url }}">{{a.termin}}</a></h2>
+	<div class="answer">
+		{{a.definition|markdown|safe}}
+	</div>
+</div>
+
+{% endfor %}

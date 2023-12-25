@@ -1,88 +1,26 @@
 from django.http import JsonResponse
 from django.shortcuts import render
-from User.models import User, Message
-from Post.models import Post
+import Main.utils as U
+import User.models as User_M
 import re
-from MyBlog import settings
+import json
 from django.utils.translation import gettext as _
+from django.views.generic import TemplateView
 
 
-def getLatest(number, type):
-    new_cases = list()
-    cases = Post.objects.filter(type=type, isPublished=True)
-    if (len(cases) > number):
-        case = cases.latest('timeUpdated')
-        for i in range(0, number):
-            new_cases.append(case)
-            cases = cases.exclude(id=case.id)
-            case = cases.latest('timeUpdated')
+class MainView(TemplateView):
 
-    return new_cases
-
-
-def home(request):
-    user = User.objects.filter(name=request.session.get('username','Guest')).first() 
-    media_root = settings.MEDIA_URL
-    domain_name = settings.ALLOWED_HOSTS[0]
-    # latest article
-    article = Post.objects.filter(type='Articles', isPublished=True).latest('timeCreated')
-    # latest case
-    case = Post.objects.filter(type='Cases', isPublished=True).latest('timeCreated')
-    # 3 newest news
-    news = getLatest(3, "News")
-
-    context = {
-        'user': user,
-        'media_root': media_root,
-        'domain_name': domain_name,
-        'case': case,
-        'article': article,
-        'news': news,
-    }
-    return render(request, 'Main/home.html', context=context)
-
-
-def about(request):
-    user = User.objects.filter(name=request.session.get('username','Guest')).first() 
-    media_root = settings.MEDIA_URL
-    domain_name = settings.ALLOWED_HOSTS[0]
-    context = {
-        'user': user,
-        'media_root': media_root,
-        'domain_name': domain_name,
-    }
-    return render(request, 'Main/about.html', context=context)
-
-
-def contacts(request):
-    user = User.objects.filter(name=request.session.get('username','Guest')).first() 
-    media_root = settings.MEDIA_URL
-    domain_name = settings.ALLOWED_HOSTS[0]
-    context = {
-        'user': user,
-        'media_root': media_root,
-        'domain_name': domain_name,
-    }
-    return render(request, 'Main/contacts.html', context=context)
-
-
-def services(request):
-    user = User.objects.filter(name=request.session.get('username','Guest')).first() 
-    media_root = settings.MEDIA_URL
-    domain_name = settings.ALLOWED_HOSTS[0]
-    context = {
-        'user': user,
-        'media_root': media_root,
-        'domain_name': domain_name,
-    }
-    return render(request, 'Main/services.html', context=context)
+    def get_context_data(self, **kwargs):
+        context = super(MainView, self).get_context_data(**kwargs)
+        context = U.initDefaults(self.request)
+        return context
 
 
 def load_message(request):
     message = {
         'common': '',
-        'username': _('обязательно'),
-        'email': _('обязательно'),
+        'username': '',
+        'email': '',
     }
     status = 200
     if request.method == 'POST':
@@ -116,7 +54,8 @@ def load_message(request):
             message['common'] = _('✔ вы успешно отправили сообщение')
             message['username'] = _('✔ Хорошо')
             message['email'] = _('✔ Хорошо')
-            new_message = Message(name=username, email=email, content=about)
+            source = 'about'
+            new_message = User_M.Message(source=source, name=username, email=email, content=about)
             new_message.save()
 
         return JsonResponse(message, status=status)
@@ -129,4 +68,13 @@ def load_message(request):
 
 
 def page_not_found(request, exception):
-    return render(request, 'Main/404.html', status=404)
+    context = U.initDefaults(request)
+    return render(request, 'Main/404.html', context=context, status=404)
+
+
+def load_table_of_content(request):
+    titles = json.loads(request.GET.get("titles"))
+    context = {
+        'titles': titles,
+    }
+    return render(request, "Main/table_of_content.html", context=context)

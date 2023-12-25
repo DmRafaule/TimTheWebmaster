@@ -1,30 +1,13 @@
-
-.about{
-    width: 100%;
-    padding: 10% 10% 0 10%;
+.introduction{
+	display: flex;
+	gap: var(--mid_pm);
+	justify-content: space-between;
+	align-items: flex-start;
+	flex-wrap: wrap;
 }
-.about li {
-  list-style: disc;
-  margin-top: 10px;
+.introduction > img{
+	flex-basis: 40%;
 }
-.about ul{
-    margin-left: 50px;
-}
-
-.about img{
-    max-width: 32px;
-    min-width: 32px;
-    margin-left: 10px;
-    margin-right: 10px;
-}
-
-
-.about p{
-    margin: 25px 0 0 0;
-}
-
-
-.about li span img{
-    position: relative;
-    bottom: 10px;
+.introduction > div{
+	max-width: 400px;
 }

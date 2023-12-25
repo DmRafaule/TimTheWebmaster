@@ -18,10 +18,9 @@ class ResponseAdmin(admin.ModelAdmin):
 
 
 class MessageAdmin(admin.ModelAdmin):
-    list_display = ('name', 'content', 'email')
+    list_display = ('name', 'source', 'email')
     list_display_links = ('name',)
-    list_editable = ('content', 'email')
-    search_fields = ('name', 'email')
+    search_fields = ('name', 'source')
 
 
 admin.site.register(User, UserAdmin)
