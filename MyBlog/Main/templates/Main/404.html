@@ -9,11 +9,16 @@
 {% endblock %}
 
 {% block content %}
-	<div class="title">
+	<div class="title_in_middle">
 		<h1>{% trans "Страница не найдена" %}</h1>
 	</div>
 {% endblock %}
 
+{% block footer_links %}
+	{% for ref in popular_posts %}
+		<li class="ref"><a href="{{ref.get_absolute_url}}">{{ref|truncatechars:15}}</a></li>
+	{% endfor %}
+{% endblock %}
 
 {% block styles %}
 {% endblock %}

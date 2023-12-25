@@ -1,27 +1,20 @@
-let next_article = document.getElementById('next_article')
-let next_case = document.getElementById('next_case')
 let more_news = document.getElementById('more_news')
 
 let number = 3
 let offset = 0
-let caseOffset = 0
-let articleOffset = 0
 
 
 function loadInitialPost(category, forWhichPage, whereToUpload){
-	var localOffset = 0
-	if (category === "Cases")
-		localOffset = caseOffset	
-	else if ( category === "Articles")
-		localOffset = articleOffset	
+	var localOffset = whereToUpload.data('offset')
 	$.ajax({
 		type: "GET",
-		url: "/" + language_code + "/load_post_preview-home/",
+		url: "load_post_preview-"+category+"/",
 		data: {
 			'number': 1,
 			'offset': localOffset,
 			'category': category,
-			'forWho': forWhichPage,
+			'is_recent': true,
+			'for_who': forWhichPage,
 		},
 		mode: 'same-origin', // Do not send CSRF token to another domain.
 		success: function(result){
@@ -30,22 +23,19 @@ function loadInitialPost(category, forWhichPage, whereToUpload){
 				whereToUpload.append(result)
 			}
 			else{
-				whereToUpload.next().find('.action_button').addClass('active_more_home_button')
+				whereToUpload.find('.action_button').addClass('active_more_home_button')
 			}
 			localOffset = localOffset + 1
-			if (category === "Cases"){
-				caseOffset = localOffset	
-				$("#read_case > a").attr("href", $("#home_case_link").attr("href"))
-			}
-			else if ( category === "Articles"){
-				articleOffset = localOffset 	
-				$("#read_article > a").attr("href", $("#home_article_link").attr("href"))
-			}
+			whereToUpload.data('offset', localOffset)
+			var next_post = document.querySelectorAll(".next_post");
+			next_post.forEach( (btn) => {
+				btn.addEventListener('click', loadNextPost)
+			})
 		}
 	})
 }
 function loadNextPost(){
-	var page = $(this.parentElement.parentElement.querySelector('.post_to_upload'))
+	var page = $(this.parentElement.parentElement.parentElement)
 	var category = page.data("category")
 	var forWho = page.data("forwho")
 	loadInitialPost(category,forWho,page)
@@ -85,12 +75,13 @@ function loadMoreNews(){
 
 	$.ajax({
 		type: "GET",
-		url: "/" + language_code + "/load_post_preview-home/",
+		url: "load_post_preview-news/",
 		data: {
 			'number': number,
 			'offset': offset,
-			'category': 'News',
-			'forWho': 'home',
+			'category': 'news',
+			'is_recent': true,
+			'for_who': 'home',
 		},
 		mode: 'same-origin', // Do not send CSRF token to another domain.
 		success: callback_success,
@@ -98,9 +89,7 @@ function loadMoreNews(){
 }
 
 
-loadInitialPost('Cases','home',$('#case_to_upload'))
-loadInitialPost('Articles','home',$('#article_to_upload'))
+loadInitialPost('cases','home',$('#case_to_upload'))
+loadInitialPost('articles','home',$('#article_to_upload'))
 loadMoreNews()
-next_article.addEventListener('click',loadNextPost) 
-next_case.addEventListener('click',loadNextPost) 
 more_news.addEventListener('click',loadMoreNews)

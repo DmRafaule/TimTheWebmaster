@@ -1,0 +1,29 @@
+{% load static %}
+{% load i18n %}
+
+{% for a in posts %}
+<div class="column min_row_gap">
+	{% if a.preview %}
+	<div class="marger-10">
+		<a id="home_article_link" href="{{a.get_absolute_url}}">
+			<img width="300" height="180" class="image dynamic_image button bordered_button" src="{% static 'placeholder.svg'%}" data-src="{% get_media_prefix %}{{a.preview}}" alt="{% trans "Превью статьи" %}">
+		</a>
+	</div>
+	{% endif %}
+	<div class="column min_row_gap">
+		<h3><a class="text_button" href="{{ a.get_absolute_url }}">{{a.headline}}</a></h3>
+		<div class="row min_col_gap">
+			<div class="post_el--description"><b>{% trans "Опубликованно:" %}</b></div>
+			<div>{{a.timeCreated|date:"d.m.Y"}}</div>
+		</div>
+	</div>
+	<div class="post_description">
+		<div class="post_description__description">
+			{{a.description}} 	
+		</div>
+	</div>
+</div>
+{% endfor %}
+{% if is_end %}
+<div class="end_list"></div>
+{% endif %}

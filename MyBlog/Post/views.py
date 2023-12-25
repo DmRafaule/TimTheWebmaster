@@ -1,195 +1,197 @@
+import re
 from django.shortcuts import render, get_object_or_404
-from django.utils.translation import activate, get_language
-from django.http import HttpResponse, JsonResponse, HttpResponseRedirect
-from Post.models import Post
-from User.models import User
-from Comment.models import Comment
-from MyBlog import settings
-from Main.models import Downloadable, Image
-import json
+from django.http import JsonResponse
+import Post.models as Post_M
+from django.utils.translation import gettext as _
+import Comment.models as Comment_M
+import Main.models as Main_M
+import User.models as User_M
+import Main.utils as U
+from django.views.generic import DetailView, ListView, TemplateView
+
+max_el_in_related_post = 5
 
 
-def getLatest(number, type):
-    new_cases = list()
-    cases = Post.objects.filter(type=type, isPublished=True)
-    if (len(cases) > number):
-        case = cases.latest('timeUpdated')
-        for i in range(0, number):
-            new_cases.append(case)
-            cases = cases.exclude(id=case.id)
-            case = cases.latest('timeUpdated')
+class PostPreviewView(TemplateView):
 
-    return new_cases
+    model = None
+    context = None
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context = U.initDefaults(self.request)
+        # Defines order of loading posts. Recent of latest
+        is_recent = self.request.GET.get('is_recent')
+        if is_recent == 'true':
+            order = '-timeCreated'
+        else:
+            order = 'timeCreated'
+        # Define how much to load
+        number = self.request.GET.get('number', 1)
+        # Define from which post to start count
+        offset = self.request.GET.get('offset', 1)
+        context.update({'posts': self.model.objects.filter(isPublished=True).order_by(order)[(int(offset)):(int(number)) + (int(offset))] })
+        offset = int(offset) + int(number)
+        length = self.model.objects.filter(isPublished=True).count()
+        is_end = False
+        if (length <= int(offset) or length == 0):
+            is_end = True
 
-def load_post_preview(request):
-    media_root = settings.MEDIA_URL
-    number = request.GET.get('number', 1)
-    offset = request.GET.get('offset', 1)
-    forWho = request.GET.get('forWho', '')
-    if forWho != '':
-        forWho = '-' + forWho
-    category = request.GET.get('category', 'Articles')
-    # Take published, in one category, newest first and just slice of available posts
-    loadedArticles = Post.objects.filter(type=category, isPublished=True).order_by('-timeCreated')[(int(offset)):(int(number)) + (int(offset))]
-    offset = int(offset) + int(number)
-    length = Post.objects.filter(type=category, isPublished=True).count()
-    category = category.lower()
-    is_end = False
-    if (length <= int(offset) or length == 0):
-        is_end = True
-    context = {
-        'posts': loadedArticles,
-        'user': User.objects.filter(name=request.session.get('username', 'Guest')).first(),
-        'media_root': media_root,
-        'is_end': is_end
-    }
-    return render(request, f'Post/{category}_preview{forWho}.html', context=context)
+        context.update({'is_end': is_end})
 
+        return context
 
-def article_list(request):
-    media_root = settings.MEDIA_URL
-    popular_posts = getLatest(1, "Articles")
-    popular_posts += getLatest(1, "Cases")
-    popular_posts += getLatest(1, "News")
-    context = {
-        'popular_posts': popular_posts,
-        'articles': Post.objects.filter(type="Articles"),
-        'media_root': media_root,
-        'user': User.objects.filter(name=request.session.get('username', 'Guest')).first(),
-    }
-    return render(request, 'Post/article_list.html', context=context)
+    def get(self, request):
+        context = self.get_context_data()
+        # Define how much data should be loaded on user screen
+        # There are 3 modes
+        # basic - display everything that possible from preview to views
+        # simple - display only needes information, title, description, date published
+        # minimal - display only title and date published
+        # raw - display row links to pages
+        mode = self.request.GET.get('mode', 'basic') + '--'
+        # Define specific (unique) preview templates
+        for_who = self.request.GET.get('for_who', '')
+        cat = "-" + self.request.GET.get('category', '')
+        if for_who != '':
+            for_who = '-' + for_who
+        return render(
+                request,
+                f'Post/{mode}post_preview{for_who}{cat}.html',
+                context=context)
 
 
-def news_list(request):
-    media_root = settings.MEDIA_URL
-    popular_posts = getLatest(1, "Articles")
-    popular_posts += getLatest(1, "Cases")
-    popular_posts += getLatest(1, "News")
-    context = {
-        'popular_posts': popular_posts,
-        'news': Post.objects.filter(type="News"),
-        'media_root': media_root,
-        'user': User.objects.filter(name=request.session.get('username','Guest')).first(),
-    }
-    return render(request, 'Post/news_list.html', context=context)
+class PostListView(ListView):
+
+    model = Post_M.Category
+    category = None
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context = U.initDefaults(self.request)
+        context['category'] = self.category
+        return context
 
 
-def proj_list(request):
-    media_root = settings.MEDIA_URL
-    popular_posts = getLatest(1, "Articles")
-    popular_posts += getLatest(1, "Cases")
-    popular_posts += getLatest(1, "News")
-    context = {
-        'popular_posts': popular_posts,
-        'projects': Post.objects.filter(type="Projects"),
-        'media_root': media_root,
-        'user': User.objects.filter(name=request.session.get('username','Guest')).first(),
-    }
-    return render(request, 'Post/proj_list.html', context=context)
-
-
-def case_list(request):
-    media_root = settings.MEDIA_URL
-    popular_posts = getLatest(1, "Articles")
-    popular_posts += getLatest(1, "Cases")
-    popular_posts += getLatest(1, "News")
-    context = {
-        'popular_posts': popular_posts,
-        'cases': Post.objects.filter(type="Cases"),
-        'media_root': media_root,
-        'user': User.objects.filter(name=request.session.get('username','Guest')).first(),
-    }
-    return render(request, 'Post/case_list.html', context=context)
-
-
-def post(request, post_slug):
-    post = get_object_or_404(Post, slug=post_slug)
+def article(request, post_slug):
+    post = get_object_or_404(Post_M.Article, slug=post_slug)
     post.viewed = post.viewed + 1
     post.save()
-    media_root = settings.MEDIA_URL
-    domain_name = settings.ALLOWED_HOSTS[0]
-    downloadables = Downloadable.objects.filter(type=post)
-    images = Image.objects.filter(type=post)
-    popular_posts = getLatest(1, "Articles")
-    popular_posts += getLatest(1, "Cases")
-    popular_posts += getLatest(1, "News")
-    context = {
-        'popular_posts': popular_posts,
-        'post': post,
-        'user': User.objects.filter(name=request.session.get('username','Guest')).first(),
-        'comments': Comment.objects.filter(type=post).order_by('-timeCreated'),
-        'comments_number': Comment.objects.filter(type=post).count(),
-        'media_root': media_root,
-        'domain_name': domain_name,
-        'downloadables': downloadables,
-        'images': images,
-    }
-    try:
-        template = post.template.path
-    except:
-        template = 'Main/InProccess.html'
+    downloadables = Main_M.Downloadable.objects.filter(type=post)
+    images = Main_M.Image.objects.filter(type=post)
+    context = U.initDefaults(request)
+    context.update({'post': post})
+    context.update({'comments': Comment_M.Comment.objects.filter(type=post).order_by('-timeCreated')})
+    context.update({'comments_number': Comment_M.Comment.objects.filter(type=post).count()})
+    context.update({'downloadables': downloadables})
+    context.update({'images': images})
 
-    return render(request, template, context=context)
+    return render(request, post.template.path, context=context)
 
 
-def CheckIdInRangeAndReturnValidOnError(id, size):
-    min = 1
-    max = size
-    rang = (1 + max - min)
-    id = ((((id - min) % rang) + rang) % rang) + min
-    return id
+def news(request, post_slug):
+    post = get_object_or_404(Post_M.News, slug=post_slug)
+    post.viewed = post.viewed + 1
+    post.save()
+    downloadables = Main_M.Downloadable.objects.filter(type=post)
+    images = Main_M.Image.objects.filter(type=post)
+    context = U.initDefaults(request)
+    context.update({'post': post})
+    context.update({'downloadables': downloadables})
+    context.update({'images': images})
+
+    return render(request, post.template, context=context)
 
 
-def load_case(request):
-    cases = Post.objects.filter(type="Cases", isPublished=True)
-    cases_number = cases.last().id
-    mod = int(request.GET.get('id'))
-    requested_id = request.session.get("case_id", 1)
-    request.session["case_id"] = requested_id
+def case(request, post_slug):
+    post = get_object_or_404(Post_M.Case, slug=post_slug)
+    post.viewed = post.viewed + 1
+    post.save()
+    downloadables = Main_M.Downloadable.objects.filter(type=post)
+    images = Main_M.Image.objects.filter(type=post)
+    context = U.initDefaults(request)
+    context.update({'post': post})
+    context.update({'downloadables': downloadables})
+    context.update({'images': images})
 
-    # find requested query in database
-    while True:
-        try:
-            requested_id = requested_id + mod
-            requested_id = CheckIdInRangeAndReturnValidOnError(requested_id, cases_number)
-            case_curr = cases.get(id=requested_id)
-            break
-        except:
-            request.session["case_id"] = request.session.get("case_id") + mod
+    return render(request, post.template, context=context)
 
-    # find prev query in database
-    requested_id = case_curr.id
-    while True:
-        try:
-            requested_id = requested_id - 1
-            requested_id = CheckIdInRangeAndReturnValidOnError(requested_id, cases_number)
-            case_prev = cases.get(id=requested_id)
-            break
-        except:
-            pass
 
-    # find next query in database
-    requested_id = case_curr.id
-    while True:
-        try:
-            requested_id = requested_id + 1
-            requested_id = CheckIdInRangeAndReturnValidOnError(requested_id, cases_number)
-            case_next = cases.get(id=requested_id)
-            break
-        except:
-            pass
+def qa(request, post_slug):
+    post = get_object_or_404(Post_M.QA, slug=post_slug)
+    post.viewed = post.viewed + 1
+    post.save()
+    downloadables = Main_M.Downloadable.objects.filter(type=post)
+    images = Main_M.Image.objects.filter(type=post)
+    context = U.initDefaults(request)
+    context.update({'post': post})
+    context.update({'downloadables': downloadables})
+    context.update({'images': images})
+    tags = post.tags.values_list('pk', flat=True)
+    related_articles = Post_M.Article.objects.filter(tags__in=tags)
+    context.update({'related_articles': set(related_articles[:max_el_in_related_post])})
 
-    request.session["case_id"] = request.session.get("case_id") + mod
+    related_cases = Post_M.Case.objects.filter(tags__in=tags)
+    context.update({'related_cases': set(related_cases[:max_el_in_related_post])})
 
-    media_root = settings.MEDIA_URL
-    context = {
-        'media_root': media_root,
-        "case_curr": case_curr,
-        "case_next": case_next,
-        "case_prev": case_prev,
-    }
-    return render(request, 'Post/case_preview.html', context=context)
+    related_news = Post_M.News.objects.filter(tags__in=tags)
+    context.update({'related_news': set(related_news[:max_el_in_related_post])})
+
+    related_tools = Post_M.Tool.objects.filter(tags__in=tags)
+    context.update({'related_tools': set(related_tools[:max_el_in_related_post])})
+
+    related_services = Post_M.Service.objects.filter(tags__in=tags)
+    context.update({'related_services': set(related_services[:max_el_in_related_post])})
+
+    return render(request, post.template, context=context)
+
+
+def td(request, post_slug):
+    post = get_object_or_404(Post_M.TD, slug=post_slug)
+    post.viewed = post.viewed + 1
+    post.save()
+    downloadables = Main_M.Downloadable.objects.filter(type=post)
+    images = Main_M.Image.objects.filter(type=post)
+    context = U.initDefaults(request)
+    context.update({'post': post})
+    context.update({'downloadables': downloadables})
+    context.update({'images': images})
+    tags = post.tags.values_list('pk', flat=True)
+    related_articles = Post_M.Article.objects.filter(tags__in=tags)
+    context.update({'related_articles': set(related_articles[:max_el_in_related_post])})
+
+    related_cases = Post_M.Case.objects.filter(tags__in=tags)
+    context.update({'related_cases': set(related_cases[:max_el_in_related_post])})
+
+    related_news = Post_M.News.objects.filter(tags__in=tags)
+    context.update({'related_news': set(related_news[:max_el_in_related_post])})
+
+    related_tools = Post_M.Tool.objects.filter(tags__in=tags)
+    context.update({'related_tools': set(related_tools[:max_el_in_related_post])})
+
+    related_services = Post_M.Service.objects.filter(tags__in=tags)
+    context.update({'related_services': set(related_services[:max_el_in_related_post])})
+
+    return render(request, post.template, context=context)
+
+
+def service(request, post_slug):
+    post = get_object_or_404(Post_M.Service, slug=post_slug)
+    post.viewed = post.viewed + 1
+    post.save()
+    downloadables = Main_M.Downloadable.objects.filter(type=post)
+    images = Main_M.Image.objects.filter(type=post)
+    context = U.initDefaults(request)
+    context.update({'post': post})
+    context.update({'downloadables': downloadables})
+    context.update({'images': images})
+    tags = post.tags.values_list('pk', flat=True)
+    cases = Post_M.Case.objects.filter(tags__in=tags)
+    qas = Post_M.QA.objects.filter(tags__in=tags)
+    context.update({'cases': cases})
+    context.update({'qas': qas})
+
+    return render(request, post.template, context=context)
 
 
 # Basicaly one browser one like for one article
@@ -197,7 +199,7 @@ def like_post(request):
     post_slug = request.POST['slug']
     isLiked = request.session.get("is_liked_" + post_slug, False)
     if not isLiked:
-        post = get_object_or_404(Post, slug=post_slug)
+        post = get_object_or_404(Post_M.Post, slug=post_slug)
         post.likes = post.likes + 1
         post.save()
         request.session["is_liked_" + post_slug] = True
@@ -207,14 +209,65 @@ def like_post(request):
     return JsonResponse(data)
 
 
-# No checks for multiple shares, because I do not want it. 
+# No checks for multiple shares, because I do not want it.
 # I want as many as I could get
 def share_post(request):
     post_slug = request.POST['slug']
-    post = get_object_or_404(Post, slug=post_slug)
+    post = get_object_or_404(Post_M.Post, slug=post_slug)
     post.shares = post.shares + 1
     post.save()
     data = {
         'shares': post.shares,
     }
     return JsonResponse(data)
+
+
+def load_message(request, post_slug):
+    message = {
+        'common': '',
+        'username': '',
+        'email': '',
+    }
+    status = 200
+    if request.method == 'POST':
+        # for validating an Email
+        regex = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,7}\b'
+        username = request.POST['username']
+        email = request.POST['email']
+        about = request.POST['about']
+
+        message['common']=_('✖ не могу отправить сообщение')
+        # username,email,password fields does not filled up
+        if len(username) == 0:
+            message['username']=_('⚠ поле пользователя не заполнено')
+            status = 406
+        if len(email) == 0:
+            message['email']=_('⚠ поле почты не заполнено')
+            status = 406
+        # Check if username's length is big enough
+        if len(username) < 3:
+            message['username']=_('⚠ введённое имя слишком короткое')
+            status = 406
+        # Check if username's length not to big
+        if len(username) > 25:
+            message['username']=_('⚠ введённое имя слишком длинное')
+            status = 406
+        # Email addres does not right
+        if not re.fullmatch(regex, email):
+            message['email']=_('⚠ введённый адрес почты некорректен')
+            status = 406
+        if status == 200:
+            message['common'] = _('✔ вы успешно отправили сообщение')
+            message['username'] = _('✔ Хорошо')
+            message['email'] = _('✔ Хорошо')
+            source = Post_M.Service.objects.get(slug=post_slug).get_absolute_url()
+            new_message = User_M.Message(source=source, name=username, email=email, content=about)
+            new_message.save()
+
+        return JsonResponse(message, status=status)
+    else:
+        status = 403
+        message['common'] = _("Ты, скользкий тип")
+        message['username'] = _("Даже не пытайся")
+        message['email'] = _("Или попытайся, всёравно")
+        return JsonResponse(message, status=status)

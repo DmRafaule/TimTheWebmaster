@@ -1,0 +1,51 @@
+{% extends 'Main/base.html' %}
+{% load static%}
+{% load i18n %}
+
+{% block head %}
+	<title>{{category.name}} | {% trans "Тим зе Вебмастер"%}</title>
+	<meta name="description" content="{{category.description}}">
+	<link rel="canonical" href="https://{{domain_name}}{{ category.get_absolute_url }}" />
+{% endblock %}
+
+{% block content %}
+	<div class="limiter in_middle in_middle-self no_wrap padder">
+		<h1 class="paragraph" >{{category.name}}</h1>
+		<div class="text">{{category.description}}</div>
+		<hr>
+	{% block content_list %}
+	{% endblock %}
+	</div>
+{% endblock %}
+
+{% block footer_links %}
+	{% for ref in popular_posts %}
+		<li class="ref"><a href="{{ref.get_absolute_url}}">{{ref|truncatechars:15}}</a></li>
+	{% endfor %}
+{% endblock %}
+
+{% block styles %}
+    <link type="text/css" rel="stylesheet" href="{% static 'blocks.css' %}"/>
+    <link type="text/css" rel="stylesheet" href="{% static 'images.css' %}"/>
+    <link type="text/css" rel="stylesheet" href="{% static 'lists.css' %}"/>
+    <link type="text/css" rel="stylesheet" href="{% static 'Post/css/post.css' %}"/>
+    <link type="text/css" rel="stylesheet" href="{% static 'Post/css/posts_preview.css' %}"/>
+	{% block styles_list %}
+	{% endblock %}
+{% endblock %}
+
+{% block scripts %}
+    {% csrf_token %}
+    <script>
+        const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+		const category_name = "{{category.slug}}"
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="{% static 'Post/js/infinity_scroll.js' %}"></script>
+    <script src="{% static 'Post/js/sorting.js' %}"></script>
+	{% block scripts_list %}
+	{% endblock %}
+{% endblock %}
+
+
+

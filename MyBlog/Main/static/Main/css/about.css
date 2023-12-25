@@ -1,0 +1,13 @@
+.introduction{
+	display: flex;
+	gap: var(--mid_pm);
+	justify-content: space-between;
+	align-items: flex-start;
+	flex-wrap: wrap;
+}
+.introduction > img{
+	flex-basis: 40%;
+}
+.introduction > div{
+	max-width: 400px;
+}

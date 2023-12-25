@@ -1,3 +1,6 @@
+.limiter{
+	max-width: var(--limiter-width-big);
+}
 .home_title{
 	text-align: center;
 	margin-top: 45svh;

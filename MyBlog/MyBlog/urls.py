@@ -26,10 +26,11 @@ urlpatterns = [
 
 urlpatterns += i18n_patterns(
     path('', include('Main.urls')),
-    path('', include('Post.urls')),
     path('', include('User.urls')),
     path('', include('Comment.urls')),
     path('tools/', include('ImageThief.urls')),
+    path('', include('Post.urls')),
+    path('', include('ShaderTEST.urls'))
 )
 
 handler404 = "Main.views.page_not_found"

@@ -18,36 +18,20 @@
 	<div class="row in_middle-even home_art_cas_news">
 		<div class="column home_art_cas">
 			<div class="column max_row_gap">
-				<h2>{% trans "Статьи" %}</h2>
+				<h2><a class="text_button" href="{% url 'articles-list' %}">{% trans "Статьи" %}</a></h2>
 				<hr>
-				<div id="article_to_upload" class="post_to_upload toObserve" data-category="Articles" data-forwho="home" >
-				</div>
-				<div class="row home_buttons">
-					<div id="next_article" class="button  action_button squered_button">
-						{% trans 'Ещё'%}
-					</div>
-					<div id="read_article" class="button link_button squered_button">
-						<a href="#">{% trans 'Читать'%}</a>
-					</div>
+				<div id="article_to_upload" class="post_to_upload toObserve" data-category="articles" data-forwho="home" data-offset="0" >
 				</div>
 			</div>
 			<div class="column max_row_gap">
-				<h2>{% trans "Кейсы" %}</h2>
+				<h2><a class="text_button" href="{% url 'cases-list' %}">{% trans "Кейсы" %}</a></h2>
 				<hr>
-				<div id="case_to_upload" class="post_to_upload toObserve" data-category="Cases" data-forwho="home" >
-				</div>
-				<div class="row home_buttons">
-					<div id="next_case" class="button action_button squered_button">
-						{% trans 'Ещё'%}
-					</div>
-					<div id="read_case" class="button link_button squered_button">
-						<a href="#">{% trans 'Читать'%}</a>
-					</div>
+				<div id="case_to_upload" class="post_to_upload toObserve" data-category="cases" data-forwho="home" data-offset="0" >
 				</div>
 			</div>
 		</div>
 		<div class="column home_news max_row_gap">
-			<h2>{% trans "Новости" %}</h2>
+			<h2><a class="text_button" href="{% url 'news-list' %}">{% trans "Новости" %}</a></h2>
 			<hr>
 			<div class="column news_to_upload max_row_gap toObserve">
 			</div>

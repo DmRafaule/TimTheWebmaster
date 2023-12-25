@@ -1,11 +1,15 @@
 from django.db import models
 from django.template.defaultfilters import slugify
 from django.urls import reverse
-from Post.models import Post, Tag, user_directory_path
+from Post.models import Post, Tag
 import os, shutil
 from django.db.models.signals import pre_delete
 from django.dispatch import receiver
 from MyBlog.settings import MEDIA_ROOT
+
+
+def user_directory_path(instance, filename):
+    return "{0}/{1}/{2}".format(instance.type, instance.slug, filename)
 
 
 class User(models.Model):
@@ -42,6 +46,7 @@ class Response(models.Model):
 
 # This is a questions or suggestions or offers for work or other types of matter.
 class Message(models.Model):
+    source = models.CharField(max_length=64, blank=True)
     name = models.CharField(max_length=256, blank=True)
     content = models.TextField(blank=False)
     email = models.EmailField(blank=False)

@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'User.apps.UserConfig',
     'Comment.apps.CommentConfig',
     'ImageThief.apps.ImagethiefConfig',
+    'ShaderTEST.apps.ShadertestConfig',
 ]
 
 MIDDLEWARE = [
@@ -83,7 +84,6 @@ TEMPLATES = [
 
 
 WSGI_APPLICATION = 'MyBlog.wsgi.application'
-
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases

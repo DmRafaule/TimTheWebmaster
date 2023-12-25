@@ -17,3 +17,12 @@
 .image-min_sized {
 	min-width: 300px;
 }
+
+.landscape_image{
+	height: 45vh;
+	width: auto;
+}
+
+.image-bordered{
+	border: var(--image-border-width) var(--image-border-style) var(--image-border-color);
+}

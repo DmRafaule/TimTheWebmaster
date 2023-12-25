@@ -65,6 +65,7 @@
 	<!-- /Yandex.Metrika counter -->
 </head>
 <body class="wrapper">
+	{% url 'profile' user.slug  as tested_url %}
 	<header id="header" class="sticky">
 		<div id="menu_button" class="button squered_button">
 			<img width="32" height="32" class="icon dynamic_image squered_button" src="{% static 'placeholder.svg' %}" data-src="{% static 'menu.svg' %}" alt="{% trans '3 горизонтальные линии, бургер' %}">
@@ -72,11 +73,10 @@
 		<div class="expander">
 		</div>
 		{% if request.session.is_auth %}
-			{% url 'profile' user.slug  as tested_url %}
 			<div  class="button rounded_button">
 				<a href="{{ tested_url }}" id="profile_ref">
 				{% if user.avatar|length > 0 %}
-				<img class="icon icon_avatar dynamic_image" width="32" height="32" src="{% static 'placeholder.svg' %}" data-src='{{media_root}}{{ user.avatar }}' alt="{% trans "Твой аватар" %}">
+				<img class="icon icon_avatar dynamic_image" width="32" height="32" src="{% static 'placeholder.svg' %}" data-src='{% get_media_prefix %}{{ user.avatar }}' alt="{% trans "Твой аватар" %}">
 				{% else %}
 					<img class="icon icon_avatar dynamic_image" width="32" height="32" src="{% static 'placeholder.svg' %}" data-src="{% static 'User/img/default_avatar.svg' %}" alt="{% trans "Аватар по умолчанию" %}">
 				{% endif %}
@@ -95,7 +95,9 @@
 				<li class="nav_menu_item"><a class=" text_button" href="{% url 'home'%}">{% trans "Домашняя" %}</a></li>
 				<li class="nav_menu_item"><a class=" text_button" href="{% url 'about'%}">{% trans "Об авторе" %}</a></li>
 				<li class="nav_menu_item"><a class=" text_button" href="{% url 'contacts'%}">{% trans "Контакты" %}</a></li>
-				<li class="nav_menu_item"><a class=" text_button" href="{% url 'services'%}">{% trans "Услуги" %}</a></li>
+				{% for cat_spec in categories_special %}
+				<li class="nav_menu_item"><a class=" text_button" href="{{ cat_spec.get_absolute_url }}">{{cat_spec.name}}</a></li>
+				{% endfor %}
 				<li class="nav_menu_item">
 					<div class="text_button toggle_button">
 						{% trans "Контент" %}
@@ -103,9 +105,9 @@
 					</div>
 					<div class="toggle_button_body">
 						<ul>
-							<li class="nav_menu_item"><a class=" text_button" href="{% url 'article_list'%}">{% trans "Статьи" %}</a></li>
-							<li class="nav_menu_item"><a class=" text_button" href="{% url 'case_list'%}">{% trans "Кейсы" %}</a></li>
-							<li class="nav_menu_item"><a class=" text_button" href="{% url 'news_list'%}">{% trans "Новости" %}</a></li>
+							{% for cat_spec in categories %}
+							<li class="nav_menu_item"><a class=" text_button" href="{{ cat_spec.get_absolute_url }}">{{cat_spec.name}}</a></li>
+							{% endfor %}
 						</ul>
 					</div>
 				</li>
@@ -133,7 +135,7 @@
 				<div class="footer_links_title">
 					<b>{% trans "Другие ссылки" %}</b>
 				</div>
-				<ul>
+				<ul class="footer_links_links">
 					<li class="ref"><a href="/sitemap.xml">{% trans "Карта сайта" %}</a></li>
 					<li class="ref"><a href="{% url 'login' %}">{% trans "Войти" %}</a></li>
 					<li class="ref"><a href="{% url 'signup' %}">{% trans "Зарегистрироваться" %}</a></li>
@@ -170,7 +172,6 @@
     <!-- This is for knowing where to look for an images-->
     <script>
         var PATH = "{% static .%}"
-		{% get_current_language as LANGUAGE_CODE %}
         {% get_available_languages as LANGUAGES %}
         {% get_language_info_list for LANGUAGES as languages %}
         {% for language in languages %}

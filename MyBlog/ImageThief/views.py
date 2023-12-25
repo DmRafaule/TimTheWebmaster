@@ -7,7 +7,7 @@ import shutil
 
 from django.http import JsonResponse
 from django.shortcuts import render
-from User.models import User
+from Main.utils import initDefaults
 from MyBlog import settings
 from django.utils.translation import gettext_lazy as _
 
@@ -16,6 +16,8 @@ from .ImgScrapper.scrapper import ImgScrapper
 from .Utils.utils import log, initFolder, initFile, checkURL, toMinimalURL, checkIsListURLs, extractURLs
 from .Utils.utils import toDomainURL, initDataFile
 import ImageThief.config as C
+from Main.models import Downloadable
+from Post.models import Tool
 
 
 TRY_LIMIT = 1000
@@ -23,26 +25,19 @@ TIME_BERFORE_CLEANUP = 3600
 
 
 def tool_main(request):
-    user = User.objects.filter(name=request.session.get('username','Guest')).first() 
-    media_root = settings.MEDIA_URL
-    domain_name = settings.ALLOWED_HOSTS[0]
     request.session[f"inWork_{request.session.session_key}"] = False
     try_limit = request.session["user_tries_limit"] = request.session.get(f"user_tries_limit", TRY_LIMIT)
     tries_counter = request.session[f"user_tries_{request.session.session_key}"] = request.session.get(f"user_tries_{request.session.session_key}", 1)
 
-    context = {
-        'user': user,
-        'media_root': media_root,
-        'domain_name': domain_name,
-        'try_limit': try_limit,
-        'tries_counter': tries_counter
-    }
+    context = initDefaults(request)
+    context.update({'try_limit': try_limit})
+    context.update({'tries_counter': tries_counter})
+    context.update({'archive': os.path.join('tools', C.SLUG, 'archive.zip') })
 
     return render(request, 'ImageThief/image_thief.html', context=context)
 
 
 def killProcess(pid: int) -> None:
-    print(pid)
     try:
         os.kill(pid, SIGKILL)
     except:

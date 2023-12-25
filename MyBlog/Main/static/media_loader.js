@@ -1,4 +1,6 @@
+
 function onReady() {
+
 	function WaitImageToUpload(image){
 		var options = {
 			  threshold: 0,
@@ -28,7 +30,6 @@ function onReady() {
 			}
 		  }
 		};
-
 
 	// Observe only those elements that I have explicitly assign
 	// This observe those elements that gonna have new children via ajax or

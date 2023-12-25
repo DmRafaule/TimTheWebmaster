@@ -71,3 +71,7 @@
 	padding-left: var(--button_padding_side);
 	padding-right: var(--button_padding_side);
 }
+
+.bordered_button{
+	border: 2px solid var(--secondary_color)
+}

@@ -142,7 +142,7 @@
 				{% trans "Данный инструмент разработан в 2х вариантах:" %}
 				<ul class="list">
 					<li>{% trans "Как приложение на сайте(django приложение)" %}<div class="ref" ><a href="https://github.com/DmRafaule/TimTheWebmaster/tree/master/MyBlog/ImageThief">Django {% trans "приложение"%}</a></div></li>
-					<li>{% trans "Скачать парсер, как самостоятельный Python скрипт." %}<div class="ref_downloadables" ><a class="ref_downloadable" href="{{media_root}}{{downloadables.0.file}}">ImageThief {% trans "скрипт"%}</a></div></li>
+					<li>{% trans "Скачать парсер, как самостоятельный Python скрипт." %}<div class="ref_downloadables" ><a class="ref_downloadable" href="{% get_media_prefix %}{{archive}}">ImageThief {% trans "скрипт"%}</a></div></li>
 				</ul>
 			</div>
 			<div class="text">

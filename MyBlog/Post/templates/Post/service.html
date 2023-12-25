@@ -1,0 +1,239 @@
+{% extends 'Post/base_post.html' %}
+{% load i18n %}
+{% load static %}
+{% load markdown %}
+
+{% block head_post %}
+	<title>{{post.name}} | {% trans "Тим Вебмастер" %}</title>
+	<meta name="description" content="{{post.description}}">
+    <script type="application/ld+json">
+    {
+		"@context": "https://schema.org",
+		"@type": "Article",
+		"headline": "{{post.name}}",
+		{% if post.preview %}
+		"image": [
+			"https://{{domain_name}}{% get_media_prefix %}{{post.preview}}"
+		],
+		{% endif %}
+		"datePublished": "{{post.timeCreated}}+03:00",
+		"dateModified": "{{post.timeUpdated}}+03:00",
+		"author": [{
+			"@type": "Person",
+			"name": "{% trans 'Тима Чудук' %}",
+			"url": "https://{{domain_name}}{% url 'about' %}"
+		}]
+    }
+    </script>
+{% endblock %}
+
+
+{% block content_post-before %}
+	{% if post.preview %}
+		<img class="landscape_image dynamic_image" width="1200" height="300" src="{% static 'placeholder.svg' %}" data-src="{% get_media_prefix %}{{post.preview}}" alt="{{post.name}}">
+	{% endif %}
+{% endblock %}
+
+{% block content_post %}
+	<h1 class="title" >{{post.name}}</h1>
+	<div class="tabs in_middle">
+		<div class="tab_button tab_active" data-bodyid="1">
+			{% trans "Основное" %}
+		</div>
+		<div class="tab_button" data-bodyid="2">
+			{% trans "Преимущества" %}
+		</div>
+		<div class="tab_button" data-bodyid="3">
+			{% trans "Процесс" %}
+		</div>
+		<div class="tab_button" data-bodyid="4">
+			{% trans "Для кого" %}
+		</div>
+	</div>
+	<div class="tab_body">
+		<div id="tab_body-1" class="tab_element tab_element__active">
+			<h2 class="paragraph" >{% trans "Описание" %}</h2>
+			<div class="row mid_gap in_middle-farapart">
+				<div class="row no_wrap max_col_gap in_middle">
+					<h3 class="paragraph">{% trans "Цена" %}</h3>
+					<p class="desrption_data">${{post.price}}</p>
+				</div>
+				<div class="row no_wrap max_col_gap in_middle">
+					<h3 class="paragraph">{% trans "Сроки" %}</h3>
+					<p class="desrption_data">{{post.deadline}}</p>
+				</div>
+			</div>
+			<div class="text">
+				{{post.description}}
+			</div>
+		</div>
+		<div id="tab_body-2" class="tab_element">
+			<h2 class="paragraph">{% trans "Преимущества" %}</h2>
+			<div class="text">
+				{{post.benefits|markdown|safe}}
+			</div>
+		</div>
+		<div id="tab_body-3" class="tab_element">
+			<h2 class="paragraph">{% trans "Процесс оказания услуги" %}</h2>
+			<div class="text">
+				{{post.process|markdown|safe}}
+			</div>
+		</div>
+		<div id="tab_body-4" class="tab_element">
+			<h2 class="paragraph">{% trans "Для кого" %}</h2>
+			<h3 class="paragraph">{% trans "Для кого подходит" %}</h3>
+			<div class="text">
+				{{post.for_who|markdown|safe}}
+			</div>
+			<h3 class="paragraph">{% trans "Для кого не подходит" %}</h3>
+			<div class="text">
+				{{post.for_who_not|markdown|safe}}
+			</div>
+		</div>
+	</div>
+	<div class="row max_gap" >
+		{% if cases|length > 0 %}
+			<div>
+				<h2 class="paragraph in_middle-self">{% trans "Похожие кейсы" %}</h2>
+				<ul class="list">
+				{% for case in cases %}
+					<li class="ref">
+						<a href="{{case.get_absolute_url}}">{{case}}</a>
+					</li>
+				{% endfor %}
+				</ul>
+			</div>
+		{% endif %}
+		{% if qas|length > 0 %}
+			<div>
+				<h2 class="paragraph in_middle-self">{% trans "Вопросы и ответы" %}</h2>
+				<ul class="list">
+				{% for qa in qas %}
+					<li class="ref">
+						<a href="{{qa.get_absolute_url}}">{{qa}}</a>
+					</li>
+				{% endfor %}
+				</ul>
+			</div>
+		{% endif %}
+	</div>
+	<h2 class="paragraph">{% trans "Контакты" %}</h2>
+	<div class="">
+		<div class="ref row in_middle-self mid_col_gap">
+			<img width="32" height="32" class="icon dynamic_image rounded_button" src="{% static 'placeholder.svg' %}" data-src="{% static 'instagram.svg' %}" alt="{% trans "instagram иконка" %}">
+			<a target="_blank" rel="contact" rev="{% trans "контактная страница Тимы, Вебмастера"%}" href="https://www.instagram.com/timachedr/" >Instagram</a>
+		</div>
+		<div class="ref row in_middle-self mid_col_gap">
+			<img width="32" height="32" class="icon dynamic_image rounded_button" src="{% static 'placeholder.svg' %}" data-src="{% static 'vk.svg' %}" alt="{% trans "vk иконка" %}">
+			<a target="_blank" rel="contact" rev="{% trans "контактная страница Тимы, Вебмастера"%}" href="https://vk.com/timachuduk" >VK</a>
+		</div>
+		<div class="ref row in_middle-self mid_col_gap">
+			<img width="32" height="32" class="icon dynamic_image rounded_button" src="{% static 'placeholder.svg' %}" data-src="{% static 'telegram.svg' %}" alt="{% trans "telegram иконка" %}">
+			<a target="_blank" rel="contact" rev="{% trans "контактная страница Тимы, Вебмастера"%}" href="https://t.me/DmitryChedr" >Telegram</a>
+		</div>
+		<div class="ref row in_middle-self mid_col_gap">
+			<img width="32" height="32" class="icon dynamic_image rounded_button" src="{% static 'placeholder.svg' %}" data-src="{% static 'twitter.svg' %}" alt="{% trans "twitter иконка" %}">
+			<a target="_blank" rel="contact" rev="{% trans "контактная страница Тимы, Вебмастера"%}" href="https://twitter.com/TimaChedr" >Twitter</a>
+		</div>
+		<div class="ref row in_middle-self mid_col_gap">
+			<img width="32" height="32" class="icon dynamic_image rounded_button" src="{% static 'placeholder.svg' %}" data-src="{% static 'email.svg' %}" alt="{% trans "email иконка" %}">
+			<a target="_blank" rel="contact" rev="{% trans "контактная страница Тимы, Вебмастера"%}" href="https://mail.google.com/mail/?view=cm&source=mailto&to=ChedrDen@gmail.com" >Email</a>
+		</div>
+	</div>
+	<h2 class="paragraph">{% trans "Форма заказа" %}</h2>
+	{% csrf_token %}
+	<form id="toSignup">
+		<div>
+			<p id="username-error" class="hint-required"></p>
+			<input placeholder="{% trans "* имя" %}" type="text" name="username" id="username">
+		</div>
+		<div>
+			<p id="email-error" class="hint-required"></p>
+			<input placeholder="{% trans "* почта" %}" type="email" name="email" id="email">
+		</div>
+		<div>
+			<textarea placeholder="{% trans "Сообщение" %}" name="about" id="about"></textarea>
+		</div>
+		<div class="rules">
+			<ul class="list_without_sign">
+				<li>{% trans "Поля отмеченые * обязательны к заполнению" %}</li>
+				<li>{% trans "Имя должно состоять от 3 до 25 букв" %}</li>
+				<li>{% trans "Email должен быть настоящим" %}</li>
+			</ul>
+		</div>
+		<div id="common-error" class="hint-required"></div>
+		<div id="send_button" class="button squered_button action_button">
+			{% trans "Отправить" %}
+		</div>
+	</form> 
+{% endblock %}
+
+{% block content_post-after %}
+	<div class="column max_row_gap">  
+		<div class="row">
+			<h2>{% trans "Отзывы" %}</h2>			
+			<div class="top_anotation">
+			({{comments_number}})
+			</div>
+		</div>
+		<div class="column max_row_gap toObserve">
+			{# Form for submiting new comment #}
+			<div id="toComment" class="column min_row_gap">
+				<div class="row mid_col_gap">
+					<div class="">
+						{% if user.avatar|length > 0 %}
+						<img class="icon icon_avatar dynamic_image" width="32" height="32" src="{% static 'placeholder.svg' %}" data-src='{% get_media_prefix %}{{ user.avatar }}' alt="{% trans "Аватар пользователя" %}" id="toAvatar">
+						{% else %}
+						<img class="icon icon_avatar dynamic_image" width="32" height="32" src="{% static 'placeholder.svg' %}" data-src="{% static 'Post/img/default_avatar.svg' %}" alt="{% trans "Аватар по умолчанию" %}" id="toAvatar">
+						{% endif %}
+					</div>
+					<b id="toUsername" >
+						{{user}}
+					</b>
+				</div>
+				{% csrf_token %}
+				<form>
+					<textarea  placeholder="{% trans "Ваше сообщение" %}" name="about"  id="about"></textarea>
+				</form> 
+				{% if not request.session.is_auth %}
+				<div id="onSend-guesting" class="button action_button  squered_button active">
+						{% trans "Оставить отзыв" %}
+				</div>
+				<div id="toSendVerify-guesting" class="row mid_gap">
+					<div id="onSendVerify-guesting" class="button action_button squered_button">
+						{% trans "Оставить отзыв" %}
+					</div>
+					<div id="toNewUsername" class="row active in_middle mid_col_gap">
+						{% csrf_token %}
+						<form action="prepare_user">
+							<input placeholder="{% trans "Твоё имя" %}" type="text" name="username"  id="userID"></input>
+						</form> 
+						<div id="onNewUsername" class="button rounded_button action_button">
+							✔
+						</div>
+					</div>
+				</div>
+				{% else %}
+				<div id="onSend-authorized" class="button action_button squered_button">
+					{% trans "Оставить отзыв" %}
+				</div>
+				{% endif %}
+				<div id="common-error" class="hint-required"></div>
+			</div>
+			{# Place which gonna be filled by comments#}
+			<div id="scroll-sentinel"></div>
+		</div>
+	</div>
+{% endblock %}
+
+{% block styles_post %}
+    <link type="text/css" rel="stylesheet" href="{% static 'images.css' %}"/>
+    <link type="text/css" rel="stylesheet" href="{% static 'Post/css/service.css' %}"/>
+    <link type="text/css" rel="stylesheet" href="{% static 'Post/css/tabs.css' %}"/>
+{% endblock %}
+
+{% block scripts_post %}
+    <script src="{% static 'Post/js/tabs.js' %}"></script>
+    <script src="{% static 'Comment/js/comments.js' %}"></script>
+    <script src="{% static 'Main/js/contact.js' %}"></script>
+{% endblock %}

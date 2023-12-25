@@ -9,7 +9,8 @@ class ScrappingMode(Enum):
     # Scrape list of pages `URLS
     LIST_PAGES = 2
 
-
+# Self slug
+SLUG = "image_thief"
 # Target URL
 URL = ""
 # List of URLS (ignored if ScrappingMode not `LIST_PAGES)

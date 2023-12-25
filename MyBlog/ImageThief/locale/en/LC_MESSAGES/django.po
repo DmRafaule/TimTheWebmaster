@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-11-30 15:20+0000\n"
+"POT-Creation-Date: 2023-12-19 10:21+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,8 +21,7 @@ msgstr ""
 #: ImageThief/templates/ImageThief/image_thief.html:6
 msgid ""
 "Бесплатный, онлайн парсер картинок с сайта ImageScraper | Тим зе Вебмастер"
-msgstr ""
-"Free, online, image web scrapper tool, ImageThief | Tim the Webmaster"
+msgstr "Free, online, image web scrapper tool, ImageThief | Tim the Webmaster"
 
 #: ImageThief/templates/ImageThief/image_thief.html:7
 msgid ""
@@ -32,147 +31,147 @@ msgstr ""
 "Image web scrapper, which one gonna scrape all images from sites or pages. "
 "You can use it as a web app or as standalone script on your machine."
 
-#: ImageThief/templates/ImageThief/image_thief.html:19
-msgid "Правила использования парсера"
-msgstr "Rules for using parser"
+#: ImageThief/templates/ImageThief/image_thief.html:16
+msgid "Правила"
+msgstr "Rules"
 
-#: ImageThief/templates/ImageThief/image_thief.html:25
+#: ImageThief/templates/ImageThief/image_thief.html:19
 msgid "Результаты парсинга храняться 1 час"
 msgstr "Scrapping results, live only for 1 hour"
 
-#: ImageThief/templates/ImageThief/image_thief.html:29
+#: ImageThief/templates/ImageThief/image_thief.html:20
 msgid "Максимум"
 msgstr "Maximum"
 
-#: ImageThief/templates/ImageThief/image_thief.html:29
+#: ImageThief/templates/ImageThief/image_thief.html:20
 msgid "запросов в час"
 msgstr "requests per hour"
 
-#: ImageThief/templates/ImageThief/image_thief.html:40
+#: ImageThief/templates/ImageThief/image_thief.html:25
 msgid "Опции, режимы работы"
 msgstr "Modes"
 
-#: ImageThief/templates/ImageThief/image_thief.html:45
+#: ImageThief/templates/ImageThief/image_thief.html:30
 msgid "Одну, конкретную страницу"
 msgstr "Single page"
 
-#: ImageThief/templates/ImageThief/image_thief.html:49
+#: ImageThief/templates/ImageThief/image_thief.html:34
 msgid "Несколько страниц, ссылки узазать через запятую"
 msgstr "List of pages, separate links using commas "
 
-#: ImageThief/templates/ImageThief/image_thief.html:53
+#: ImageThief/templates/ImageThief/image_thief.html:38
 msgid "Спарсить целый сайт."
 msgstr "Scrape a whole website"
 
-#: ImageThief/templates/ImageThief/image_thief.html:69
+#: ImageThief/templates/ImageThief/image_thief.html:49
 msgid "Бесплатный парсер изображений"
 msgstr "Free image webscaper"
 
-#: ImageThief/templates/ImageThief/image_thief.html:85
-msgid "Маска со шляпой"
-msgstr "Mask with hat"
-
-#: ImageThief/templates/ImageThief/image_thief.html:87 ImageThief/views.py:180
-#: ImageThief/views.py:191 ImageThief/views.py:324
+#: ImageThief/templates/ImageThief/image_thief.html:66 ImageThief/views.py:172
+#: ImageThief/views.py:183 ImageThief/views.py:316
 msgid "Начать"
 msgstr "Start"
 
-#: ImageThief/templates/ImageThief/image_thief.html:98
+#: ImageThief/templates/ImageThief/image_thief.html:76
 msgid "Состояние"
 msgstr "Status"
 
-#: ImageThief/templates/ImageThief/image_thief.html:117
+#: ImageThief/templates/ImageThief/image_thief.html:93
 msgid "Результаты"
 msgstr "Results"
 
-#: ImageThief/templates/ImageThief/image_thief.html:124
+#: ImageThief/templates/ImageThief/image_thief.html:98
+msgid "Иконка zip файла"
+msgstr "Zip icon"
+
+#: ImageThief/templates/ImageThief/image_thief.html:99
 msgid "Картинки"
 msgstr "Images"
 
-#: ImageThief/templates/ImageThief/image_thief.html:131
+#: ImageThief/templates/ImageThief/image_thief.html:105
 msgid "Логи"
 msgstr "Logs"
 
-#: ImageThief/templates/ImageThief/image_thief.html:146
+#: ImageThief/templates/ImageThief/image_thief.html:119
 msgid "Показать работу скрипта"
 msgstr "Verbose"
 
-#: ImageThief/templates/ImageThief/image_thief.html:157
+#: ImageThief/templates/ImageThief/image_thief.html:126
 msgid "Об парсере изображений"
 msgstr "About image parser"
 
-#: ImageThief/templates/ImageThief/image_thief.html:160
+#: ImageThief/templates/ImageThief/image_thief.html:128
 msgid ""
 "\n"
-"\t\t\t\tЭто вебпарсер, который ищет и скачивает все изображения с сайта.\n"
-"\t\t\t\t"
+"\t\t\tЭто вебпарсер, который ищет и скачивает все изображения с сайта.\n"
+"\t\t\t"
 msgstr ""
 "\n"
 "\t\t\t\tIt is a web scrapper; It is crawls and downloads all images from "
 "websites.\n"
 "\t\t\t\t"
 
-#: ImageThief/templates/ImageThief/image_thief.html:166
+#: ImageThief/templates/ImageThief/image_thief.html:133
 msgid "Работает в 3х режимах:"
 msgstr "Working in three modes:"
 
-#: ImageThief/templates/ImageThief/image_thief.html:169
+#: ImageThief/templates/ImageThief/image_thief.html:135
 msgid "Одностраничный. Парсит картинки только с одной страницы."
 msgstr "Single page. Scrape images from a single page."
 
-#: ImageThief/templates/ImageThief/image_thief.html:173
+#: ImageThief/templates/ImageThief/image_thief.html:136
 msgid "Многостраничный. Парсит картинки с нескольких страниц."
 msgstr "Many pages. Scrape images from a list of pages."
 
-#: ImageThief/templates/ImageThief/image_thief.html:177
+#: ImageThief/templates/ImageThief/image_thief.html:137
 msgid "Целый сайт. Парсит картинки со всего сайта."
 msgstr "Whole website. Scrape images from a whole website."
 
-#: ImageThief/templates/ImageThief/image_thief.html:184
+#: ImageThief/templates/ImageThief/image_thief.html:140
 msgid "Примечания"
 msgstr "Notes"
 
-#: ImageThief/templates/ImageThief/image_thief.html:187
+#: ImageThief/templates/ImageThief/image_thief.html:142
 msgid "Данный инструмент разработан в 2х вариантах:"
 msgstr "This tool was developed in two variants:"
 
-#: ImageThief/templates/ImageThief/image_thief.html:191
+#: ImageThief/templates/ImageThief/image_thief.html:144
 msgid "Как приложение на сайте(django приложение)"
 msgstr "As a app on a website(django app)."
 
-#: ImageThief/templates/ImageThief/image_thief.html:191
+#: ImageThief/templates/ImageThief/image_thief.html:144
 msgid "приложение"
 msgstr "app"
 
-#: ImageThief/templates/ImageThief/image_thief.html:195
+#: ImageThief/templates/ImageThief/image_thief.html:145
 msgid "Скачать парсер, как самостоятельный Python скрипт."
 msgstr "Download scrapper, as a Python script"
 
-#: ImageThief/templates/ImageThief/image_thief.html:195
+#: ImageThief/templates/ImageThief/image_thief.html:145
 msgid "скрипт"
 msgstr "script"
 
-#: ImageThief/templates/ImageThief/image_thief.html:200
+#: ImageThief/templates/ImageThief/image_thief.html:149
 msgid "Ограничения:"
 msgstr "Limitations:"
 
-#: ImageThief/templates/ImageThief/image_thief.html:204
+#: ImageThief/templates/ImageThief/image_thief.html:151
 msgid "Не парсит svg файлы"
 msgstr "Do not scrape SVG files."
 
-#: ImageThief/templates/ImageThief/image_thief.html:208
+#: ImageThief/templates/ImageThief/image_thief.html:152
 msgid "Не парсит фоновые изображения, которые прописаны в стилях"
 msgstr "Do not parse background images in CSS styles."
 
-#: ImageThief/templates/ImageThief/image_thief.html:212
+#: ImageThief/templates/ImageThief/image_thief.html:153
 msgid "Не парсит динамически подгружаемые изображения."
 msgstr "Do not parse dynamically loaded images."
 
-#: ImageThief/templates/ImageThief/image_thief.html:216
+#: ImageThief/templates/ImageThief/image_thief.html:154
 msgid "Прекращает парсинг, при закрытии вкладки или браузера."
 msgstr "Stop parsing if tabs in the browser are closed."
 
-#: ImageThief/templates/ImageThief/image_thief.html:221
+#: ImageThief/templates/ImageThief/image_thief.html:158
 msgid ""
 "\n"
 "\t\t\t\tОн абсолютно бесплатен. Единственное чего я прошу, добавь этот "
@@ -186,7 +185,7 @@ msgstr ""
 "\t\t\t\t\t\t\tor <b>share it</b>. Thanks\n"
 "\t\t\t\t\t\t"
 
-#: ImageThief/templates/ImageThief/image_thief.html:227
+#: ImageThief/templates/ImageThief/image_thief.html:164
 msgid ""
 "\n"
 "\t\t\t\tЕсли конечно, он был полезен для тебя. Спасибо.\n"
@@ -196,26 +195,26 @@ msgstr ""
 "\t\t\t\tIf this tool was useful to you, thanks.\n"
 "\t\t\t\t"
 
-#: ImageThief/views.py:173
+#: ImageThief/views.py:165
 msgid "Ещё раз"
 msgstr "One more"
 
-#: ImageThief/views.py:192
+#: ImageThief/views.py:184
 msgid "Ты достиг максимум попыток"
 msgstr "You have reach the limit of requests"
 
-#: ImageThief/views.py:212
+#: ImageThief/views.py:204
 msgid "Стоп"
 msgstr "Stop"
 
-#: ImageThief/views.py:234
+#: ImageThief/views.py:226
 msgid "Ошибка: Слишком мало адресов. Добавь хотябы 2."
 msgstr "Error: Too few ulrs. Paste at least 2."
 
-#: ImageThief/views.py:242
+#: ImageThief/views.py:234
 msgid "Ошибка: Ты выбрал не правильный режим для списка страниц"
 msgstr "Error: Wrong mode for list of pages"
 
-#: ImageThief/views.py:369
+#: ImageThief/views.py:361
 msgid "Нечего отображать. Запусти парсинг."
 msgstr "Can't display nothing. Press start button."

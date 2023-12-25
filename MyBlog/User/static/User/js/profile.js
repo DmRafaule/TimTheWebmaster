@@ -30,9 +30,11 @@ function loadComments(){
 		headers: {'X-CSRFToken': csrftoken},
 		mode: 'same-origin', // Do not send CSRF token to another domain.
 		success: function(result){
+			console.log('loaded comments')
 			$(result).insertBefore("#scroll-sentinel")
 			$(".comment_remove__button").on('click', function() {
 				removeComment(this)
+				console.log('removing comments')
 			})	
 			offset = offset + number
 		},
