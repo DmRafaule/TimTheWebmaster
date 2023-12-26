@@ -2,18 +2,6 @@
 precision mediump float;
 #endif
 
-// Copyright (c) Patricio Gonzalez Vivo, 2015 - http://patriciogonzalezvivo.com/
-// I am the sole copyright owner of this Work.
-//
-// You cannot host, display, distribute or share this Work in any form,
-// including physical and digital. You cannot use this Work in any
-// commercial or non-commercial product, website or project. You cannot
-// sell this Work and you cannot mint an NFTs of it.
-// I share this Work for educational purposes, and you can link to it,
-// through an URL, proper attribution and unmodified screenshot, as part
-// of your educational material. If these conditions are too restrictive
-// please contact me and we'll definitely work it out.
-
 uniform vec2 u_resolution;
 uniform vec2 u_mouse;
 uniform float u_time;
@@ -23,7 +11,7 @@ float random (in float x) {
 }
 
 float random (in vec2 st) {
-    return fract(sin(dot(st.xy, vec2(12.9898,78.233)))* 43758.5453123);
+    return fract(tan(dot(st.xy, vec2(1.9898,78.233)))* 44233.5453123);
 }
 
 float pattern(vec2 st, vec2 v, float t) {
