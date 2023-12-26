@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-12-19 10:21+0000\n"
+"POT-Creation-Date: 2023-12-25 19:15+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -67,8 +67,8 @@ msgstr "Scrape a whole website"
 msgid "Бесплатный парсер изображений"
 msgstr "Free image webscaper"
 
-#: ImageThief/templates/ImageThief/image_thief.html:66 ImageThief/views.py:172
-#: ImageThief/views.py:183 ImageThief/views.py:316
+#: ImageThief/templates/ImageThief/image_thief.html:66 ImageThief/views.py:175
+#: ImageThief/views.py:186 ImageThief/views.py:319
 msgid "Начать"
 msgstr "Start"
 
@@ -195,26 +195,26 @@ msgstr ""
 "\t\t\t\tIf this tool was useful to you, thanks.\n"
 "\t\t\t\t"
 
-#: ImageThief/views.py:165
+#: ImageThief/views.py:168
 msgid "Ещё раз"
 msgstr "One more"
 
-#: ImageThief/views.py:184
+#: ImageThief/views.py:187
 msgid "Ты достиг максимум попыток"
 msgstr "You have reach the limit of requests"
 
-#: ImageThief/views.py:204
+#: ImageThief/views.py:207
 msgid "Стоп"
 msgstr "Stop"
 
-#: ImageThief/views.py:226
+#: ImageThief/views.py:229
 msgid "Ошибка: Слишком мало адресов. Добавь хотябы 2."
 msgstr "Error: Too few ulrs. Paste at least 2."
 
-#: ImageThief/views.py:234
+#: ImageThief/views.py:237
 msgid "Ошибка: Ты выбрал не правильный режим для списка страниц"
 msgstr "Error: Wrong mode for list of pages"
 
-#: ImageThief/views.py:361
+#: ImageThief/views.py:364
 msgid "Нечего отображать. Запусти парсинг."
 msgstr "Can't display nothing. Press start button."

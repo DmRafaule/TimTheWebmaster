@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-12-20 14:47+0000\n"
+"POT-Creation-Date: 2023-12-25 19:15+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -385,46 +385,46 @@ msgstr "Leave a review"
 msgid "Значок расширенного представления"
 msgstr "Extended view icon"
 
-#: Post/views.py:238
+#: Post/views.py:239
 msgid "✖ не могу отправить сообщение"
 msgstr "✖ cannot send message"
 
-#: Post/views.py:241
+#: Post/views.py:242
 msgid "⚠ поле пользователя не заполнено"
 msgstr "⚠ user field is empty"
 
-#: Post/views.py:244
+#: Post/views.py:245
 msgid "⚠ поле почты не заполнено"
 msgstr "⚠ email field is not filled"
 
-#: Post/views.py:248
+#: Post/views.py:249
 msgid "⚠ введённое имя слишком короткое"
 msgstr "⚠ the entered name is too short"
 
-#: Post/views.py:252
+#: Post/views.py:253
 msgid "⚠ введённое имя слишком длинное"
 msgstr "⚠ the entered name is too long"
 
-#: Post/views.py:256
+#: Post/views.py:257
 msgid "⚠ введённый адрес почты некорректен"
 msgstr "⚠ The entered mail address is incorrect"
 
-#: Post/views.py:259
+#: Post/views.py:260
 msgid "✔ вы успешно отправили сообщение"
 msgstr "✔ you sent a message successfully"
 
-#: Post/views.py:260 Post/views.py:261
+#: Post/views.py:261 Post/views.py:262
 msgid "✔ Хорошо"
 msgstr "✔ Ok"
 
-#: Post/views.py:269
+#: Post/views.py:270
 msgid "Ты, скользкий тип"
 msgstr "You slimy bastard"
 
-#: Post/views.py:270
+#: Post/views.py:271
 msgid "Даже не пытайся"
 msgstr "Don't even try"
 
-#: Post/views.py:271
+#: Post/views.py:272
 msgid "Или попытайся, всёравно"
 msgstr "Or try, whatever"

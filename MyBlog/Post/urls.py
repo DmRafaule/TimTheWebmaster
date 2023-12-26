@@ -86,6 +86,8 @@ urlpatterns += [
     path('services/<slug:post_slug>/load_message/', V.load_message),
 
 ]
+
+
 # URL path for dispatching list of posts
 for cat in M.Category.objects.all():
     urlpatterns.append(
