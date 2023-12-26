@@ -12,7 +12,6 @@
 	display: none;
 }
 .page{
-	min-height: 100svh;
 }
 .selected_view{
 	background-color: var(--acent_color);

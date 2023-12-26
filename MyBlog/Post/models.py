@@ -7,7 +7,7 @@ import os, shutil
 from django.db.models.signals import pre_delete, pre_save
 from django.dispatch import receiver
 from django.utils.translation import get_language
-from MyBlog.settings import MEDIA_ROOT, BASE_DIR
+from MyBlog import settings as S 
 from django.utils import timezone
 
 
@@ -29,8 +29,8 @@ class Category(models.Model):
     description = models.TextField(blank=False)
     slug = models.SlugField(max_length=50, unique=True)
     template = models.FilePathField(
-            path=os.path.join(BASE_DIR,"Post","templates","Post"),
-            default=os.path.join(BASE_DIR,"Post","templates","Post","post_list.html")
+            path=os.path.join(S.BASE_DIR,"Post","templates","Post"),
+            default=os.path.join(S.BASE_DIR,"Post","templates","Post","post_list.html")
     )
 
     def __str__(self):
@@ -87,8 +87,8 @@ class News(Post):
     ending = models.TextField(blank=False, help_text="Render markdown")
     preview = models.ImageField(max_length=300, upload_to=user_directory_path, blank=True)
     template = models.FilePathField(
-            path=os.path.join(BASE_DIR,"Post","templates","Post"),
-            default=os.path.join(BASE_DIR,"Post","templates","Post","news.html")
+            path=os.path.join(S.BASE_DIR,"Post","templates","Post"),
+            default=os.path.join(S.BASE_DIR,"Post","templates","Post","news.html")
     )
 
     def save(self, *args, **kwargs):
@@ -114,8 +114,8 @@ class Case(Post):
     additional = models.TextField(blank=True, help_text="Render markdown")
 
     template = models.FilePathField(
-            path=os.path.join(BASE_DIR,"Post","templates","Post"),
-            default=os.path.join(BASE_DIR,"Post","templates","Post","case.html")
+            path=os.path.join(S.BASE_DIR,"Post","templates","Post"),
+            default=os.path.join(S.BASE_DIR,"Post","templates","Post","case.html")
     )
 
     def save(self, *args, **kwargs):
@@ -132,8 +132,8 @@ class QA(Post):
     description = models.TextField(blank=False)
     answer = models.TextField(blank=False, help_text="Render markdown")
     template = models.FilePathField(
-            path=os.path.join(BASE_DIR,"Post","templates","Post"),
-            default=os.path.join(BASE_DIR,"Post","templates","Post","qa.html")
+            path=os.path.join(S.BASE_DIR,"Post","templates","Post"),
+            default=os.path.join(S.BASE_DIR,"Post","templates","Post","qa.html")
     )
 
     def save(self, *args, **kwargs):
@@ -150,8 +150,8 @@ class TD(Post):
     description = models.TextField(blank=False)
     definition = models.TextField(blank=False, help_text="Render markdown")
     template = models.FilePathField(
-            path=os.path.join(BASE_DIR,"Post","templates","Post"),
-            default=os.path.join(BASE_DIR,"Post","templates","Post","td.html")
+            path=os.path.join(S.BASE_DIR,"Post","templates","Post"),
+            default=os.path.join(S.BASE_DIR,"Post","templates","Post","td.html")
     )
 
     def save(self, *args, **kwargs):
@@ -191,8 +191,8 @@ class Service(Post):
     for_who_not = models.TextField(blank=False, help_text="Render markdown.")
     benefits = models.TextField(blank=False, help_text="Render markdown.")
     template = models.FilePathField(
-            path=os.path.join(BASE_DIR,"Post","templates","Post"),
-            default=os.path.join(BASE_DIR,"Post","templates","Post","service.html")
+            path=os.path.join(S.BASE_DIR,"Post","templates","Post"),
+            default=os.path.join(S.BASE_DIR,"Post","templates","Post","service.html")
     )
 
     def save(self, *args, **kwargs):
@@ -224,4 +224,4 @@ class PostSitemap(Sitemap):
 # Remove all loaded files before deleting on database
 @receiver(pre_delete, sender=Post)
 def cleanupPost(sender, instance, **kwargs):
-    shutil.rmtree(os.path.join(MEDIA_ROOT, f"{instance.category.slug}/{instance.slug}"))
+    shutil.rmtree(os.path.join(S.MEDIA_ROOT, f"{instance.category.slug}/{instance.slug}"))

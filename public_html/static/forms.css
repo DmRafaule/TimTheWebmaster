@@ -1,0 +1,24 @@
+form > div{
+	margin-top: var(--form_el_margin-btw_them);
+	padding: 8px;
+}
+
+input{
+	border-bottom: 2px dashed grey;
+	max-width: 250px;
+	padding: var(--form_el_padding);
+	font-size: var(--size-main_font);
+}
+
+textarea{
+	font-size: var(--size-main_font);
+	border: 2px dashed grey;
+	width: 100%;
+	height: 25svh;
+	padding: var(--form_el_padding);
+	resize: none;
+}
+.rules{
+	font-family: var(--family-acent_font);
+	font-size: var(--size-mini_font);
+}

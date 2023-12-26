@@ -1,0 +1,13 @@
+.title{
+	text-align: center;
+	margin-top: 5svh;
+	margin-bottom: 5svh;
+	word-wrap: break-word;
+}
+
+.paragraph{
+	word-wrap: break-word;
+	padding-left: var(--max_pm);
+	font-family: var(--family-acent_font);
+	font-weight: var(--weight-title_font);
+}

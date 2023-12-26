@@ -1,0 +1,38 @@
+.url_field{
+	flex: 1 0 auto;
+	display: flex;
+	max-width: 100%;
+}
+:not(pre) > code[class*="language-"], pre[class*="language-"] {
+  background: none;
+}
+#container_imagethief-status{
+	display: none;
+}
+#container_imagethief-results{
+	display: none;
+}
+#container_imagethief-logs{
+	display: none;
+}
+#imagethief-logs_block{
+	border: 0px solid black;
+}
+.title_image_thief{
+	background-color: var(--secondary_color);
+	border-radius: 20px;
+	color: white;
+	padding-top: 15px;
+	padding-bottom: 15px;
+	padding-left: 30px;
+	padding-right: 30px;
+}
+#toSteal{
+	margin-top: 15svh;
+}
+#toSteal{
+	margin-top: 15svh;
+}
+.hint-container{
+	color: red;
+}

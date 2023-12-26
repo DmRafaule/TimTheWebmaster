@@ -1,0 +1,77 @@
+.button{
+	transition: 0.2s;
+	border: 0px solid black;
+	width: fit-content;
+}
+.button:hover{
+	cursor: pointer;
+	border-top: 1px solid var(--acent_color);
+	border-right: 2px solid var(--acent_color);
+	border-left: 2px solid var(--acent_color);
+	border-bottom: 3px solid var(--acent_color);
+}
+.button:active{
+	transform: translateY(5px);
+	cursor: pointer;
+}
+
+.text_button{
+	transition: 0.1s;
+}
+.text_button:hover{
+	cursor: pointer;
+	color: var(--acent_color); 
+}
+.text_button:active{
+	color: var(--acent_color);
+	padding: var(--indent_min);
+}
+
+.toggle_button{
+	display: flex;
+	align-items: center;
+	column-gap: var(--usual_space);
+}
+.toggle_button > img{
+	transition: 0.2s;
+}
+
+.toggle_button_body{
+	display: flex;
+	flex-direction: column;
+	height: 0;
+	transition: 0.2s;
+	overflow: hidden;
+}
+
+.rounded_button{
+	border-radius: 50%;
+}
+
+.squered_button{
+	border-radius: 8px;
+}
+
+.action_button{
+	background-color: var(--button_action_bg);
+	padding: var(--button_padding_top_bot);
+	padding-left: var(--button_padding_side);
+	padding-right: var(--button_padding_side);
+}
+
+.link_button{
+	background-color: var(--button_link_bg);
+	padding: var(--button_padding_top_bot);
+	padding-left: var(--button_padding_side);
+	padding-right: var(--button_padding_side);
+}
+.remove_action_button{
+	background-color: var(--button_danger_action_bg);
+	padding: var(--button_padding_top_bot);
+	padding-left: var(--button_padding_side);
+	padding-right: var(--button_padding_side);
+}
+
+.bordered_button{
+	border: 2px solid var(--secondary_color)
+}
