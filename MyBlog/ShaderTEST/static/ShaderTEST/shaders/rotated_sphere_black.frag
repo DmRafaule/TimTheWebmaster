@@ -61,7 +61,7 @@ vec3 sphereNormals(in vec2 uv) {
 
 void main(){
     vec2 st = gl_FragCoord.xy/u_resolution.xy;
-    st = scale(st, 2.0);
+    st = scale(st, 4.0);
     st = ratio(st, u_resolution);
 
     vec3 color = vec3(0.0);
@@ -70,7 +70,7 @@ void main(){
     // Calculate sun direction
     float speedSun = 0.25;
     vec3 sunPos = normalize(vec3(cos(u_time * speedSun - HALF_PI), 0.0, sin(speedSun * u_time - HALF_PI)));
-    vec3 surface = normalize(sphereNormals(st)*2.0-1.0);
+    vec3 surface = normalize(sphereNormals(st)*2.0-0.0);
    
     // Add Shadows
     color *= clamp(dot(sunPos, surface), 0.0, 1.0);
