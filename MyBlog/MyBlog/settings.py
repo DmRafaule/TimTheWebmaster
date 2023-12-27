@@ -48,7 +48,6 @@ INSTALLED_APPS = [
     'User.apps.UserConfig',
     'Comment.apps.CommentConfig',
     'ImageThief.apps.ImagethiefConfig',
-    'ShaderTEST.apps.ShadertestConfig',
 ]
 
 MIDDLEWARE = [
