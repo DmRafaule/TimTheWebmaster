@@ -9,7 +9,7 @@
 		{% if a.preview %}
 		<div class="post_preview_image marger-10">
 			<a href="{{a.get_absolute_url}}">
-				<img class="image image-min_sized dynamic_image button bordered_button" width="300" height="200" src="{% static 'placeholder.svg' %}" data-src="{% get_media_prefix %}{{a.preview}}" alt="{% trans "Превью статьи" %}">
+				<img class="image image-min_sized dynamic_image button image-bordered" width="300" height="200" src="{% static 'placeholder.svg' %}" data-src="{% get_media_prefix %}{{a.preview}}" alt="{% trans "Превью статьи" %}">
 			</a>
 		</div>
 		{% endif %}

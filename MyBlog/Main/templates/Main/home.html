@@ -10,9 +10,6 @@
 {% endblock %}
 
 {% block content %}
-<div class="canvas">
-	<canvas id="glslCanvas" class="glslCanvas" data-fragment-url="{% static 'Main/shaders/moving_rows.frag' %}" width="600px" height="600px"></canvas>
-</div>
 <div class="limiter in_middle in_middle-self no_wrap padder">
 	<div class="home_title column in_middle">
 		<h1>{% trans "Тим Вебмастер" %}</h1>
@@ -58,7 +55,6 @@
     <link type="text/css" rel="stylesheet" href="{% static 'blocks.css' %}"/>
     <link type="text/css" rel="stylesheet" href="{% static 'images.css' %}"/>
     <link type="text/css" rel="stylesheet" href="{% static 'Main/css/home.css' %}"/>
-	<link type="text/css" rel="stylesheet" href="{% static 'Main/css/shader.css' %}" />
 {% endblock %}
 
 {% block scripts %}
@@ -68,6 +64,4 @@
         const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
     </script>
     <script src="{% static 'Main/js/home.js' %}"></script>
-	<script type="text/javascript" src="https://rawgit.com/patriciogonzalezvivo/glslCanvas/master/dist/GlslCanvas.js"></script>
-	<script type="text/javascript" src="{% static 'Main/js/preview_shader.js' %}"></script>
 {% endblock %}

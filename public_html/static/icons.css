@@ -1,14 +1,1 @@
-.icon{
-	width: var(--icon_size);
-	height: var(--icon_size);
-	transition: 0.2s;
-}
-.icon_text{
-	text-align: center;
-	font-size: calc( var(--size-acent_font) * 2);
-}
-.icon_avatar{
-	border: 2px dashed var(--secondary_color);
-	border-radius: 20px;
-}
-
+.icon{width:var(--icon_size);height:var(--icon_size);transition:.2s}.icon_text{text-align:center;font-size:calc( var(--size-acent_font) * 2)}.icon_avatar{border:2px dashed var(--secondary_color);border-radius:20px}

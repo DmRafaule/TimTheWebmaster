@@ -1,9 +1,0 @@
-.canvas{
-	display: flex;
-	justify-content: end;
-
-}
-
-.glslCanvas{
-	overflow-x: hidden;
-}
