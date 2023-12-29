@@ -11,6 +11,7 @@
 }
 
 .image {
+	margin-top: var(--text_block_margin-top);
 	width: 100%;
 	height: auto;
 }
