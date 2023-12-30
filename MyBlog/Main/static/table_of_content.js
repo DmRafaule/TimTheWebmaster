@@ -23,11 +23,12 @@ $(document).ready( function(){
 		$(this).attr('id', ref.replace("#","") )
 	});
 	$.ajax({
-		type: "GET",
+		type: "POST",
 		url: "/" + language_code + "/load_table_of_content/",
 		data: {
 			'titles': JSON.stringify(titles)
 		},
+		headers: {'X-CSRFToken': csrftoken},
 		mode: 'same-origin', // Do not send CSRF token to another domain.
 		success: function(result) {
 			var title = $('h1');

@@ -73,7 +73,7 @@ def page_not_found(request, exception):
 
 
 def load_table_of_content(request):
-    titles = json.loads(request.GET.get("titles"))
+    titles = json.loads(request.POST.get("titles"))
     context = {
         'titles': titles,
     }
