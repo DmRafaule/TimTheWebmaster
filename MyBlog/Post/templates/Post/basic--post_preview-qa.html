@@ -7,14 +7,13 @@
 <div class="post_preview">
 	<div class="row in_middle-farapart no_wrap max_col_gap">
 		<h2><a class="text_button" href="{{ a.get_absolute_url }}">{{a.question}}</a></h2>
-		<div data-id="{{a.id}}" class="toggle_button action_button squered_button button">
-			{% trans "Показать ответ" %}
-		</div>
+	</div>
+	<div data-id="{{a.id}}" class="text_button toggle_button ">
+		[{% trans "Раскрыть" %}]
+		<img width="32" height="32" class="icon dynamic_image" src="{% static 'placeholder.svg'%}" data-src="{% static 'chevron_black.svg' %}"  alt="{% trans 'Шеврон' %}">
 	</div>
 	<div id="post_preview_body-{{a.id}}" class="answer post_preview_body--tool">
-		<div>
-			{{a.answer|markdown|safe}} 	
-		</div>
+		{{a.answer|markdown|safe}} 	
 	</div>
 </div>
 
