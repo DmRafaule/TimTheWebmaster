@@ -30,7 +30,6 @@ $(document).ready( function(){
 	var mode = viewsContainer.data('view')
 	var forWho = viewsContainer.data('who')
 	var isRecent = $("#onSort").data('sort')
-	LoadPosts(isRecent, mode, forWho)
 	const observer = new IntersectionObserver((entries, observer) => {
 	  // Loop through the entries
 	  for (const entry of entries) {
