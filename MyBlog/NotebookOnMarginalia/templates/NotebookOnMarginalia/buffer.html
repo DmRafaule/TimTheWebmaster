@@ -1,0 +1,84 @@
+{% extends 'Main/base.html' %}
+{% load i18n %}
+{% load static %}
+
+
+{% block head %}
+	<link rel="canonical" href="https://{{domain_name}}{% url 'buffer' %}" />
+	<title>{% trans "Заметки онлайн | Тим зе Вебмастер" %}</title>
+	<meta name="description" content="{% trans "Создание заметок, онлайн, бесплатно без регистрации и другой херни." %}">
+{% endblock %}
+
+
+{% block content %}
+	{% block content_post-before %}
+	{% endblock %}
+<div class="limiter in_middle in_middle-self no_wrap padder toObserve">
+	{% block content_post %}
+	{% endblock %}
+	<hr>
+	<div class="row in_middle" >
+		<div id="onLike">
+			<img class="icon button rounded_button dynamic_image" width="32" height="32" src="{% static 'placeholder.svg' %}" data-src="{% static 'Post/img/like.svg' %}" alt="{% trans "сердце" %}">
+			{{ post.likes }}
+		</div>
+		<div id="onShare">
+			<img  class="icon button rounded_button dynamic_image" width="32" height="32" src="{% static 'placeholder.svg' %}" data-src="{% static 'Post/img/share.svg' %}" alt="{% trans "3 соединённые точки" %}">
+			{{ post.shares }}
+		</div>
+	</div>
+	<div id="share_options" class="row share_options">
+		<a target="_blank" href="http://vk.com/share.php?url={{ post.get_absolute_url }}&title={{ post.name }}&description={{ post.short_description }}">
+			<div class="share_button">
+				<img class="icon button rounded_button dynamic_image" width="32" height="32" src="{% static 'placeholder.svg' %}" data-src="{% static 'Post/img/vk.svg' %}" alt="{% trans "vk иконка" %}">
+			</div>
+		</a>
+		<a target="_blank"  href="https://www.reddit.com/submit?url={{ post.get_absolute_url }}&title={{ post.name }}">
+			<div class="share_button">
+				<img class="icon button rounded_button dynamic_image" width="32" height="32" src="{% static 'placeholder.svg' %}" data-src="{% static 'Post/img/reddit.svg' %}" alt="{% trans "reddit иконка" %}">
+			</div>
+		</a>
+		<a target="_blank"  href="https://twitter.com/intent/tweet?url={{ post.get_absolute_url }}&text={{ post.short_description }}">
+			<div class="share_button">
+				<img class="icon button rounded_button dynamic_image" width="32" height="32" src="{% static 'placeholder.svg' %}" data-src="{% static 'Post/img/twitter.svg' %}" alt="{% trans "twitter иконка" %}">
+			</div>
+		</a>
+		<a target="_blank"  href="https://telegram.me/share/url?url={{ post.get_absolute_url }}&text={{ post.short_description }}">
+			<div class="share_button">
+				<img class="icon button rounded_button dynamic_image" width="32" height="32" src="{% static 'placeholder.svg' %}" data-src="{% static 'Post/img/telegram.svg' %}" alt="{% trans "telegram иконка" %}">
+			</div>
+		</a>
+	</div>
+	{% block content_post-after %}
+	{% endblock %}
+</div>
+{% endblock %}
+
+{% block footer_links %}
+	{% for ref in popular_posts %}
+		<li class="ref"><a href="{{ref.get_absolute_url}}">{{ref|truncatechars:15}}</a></li>
+	{% endfor %}
+	{% block footer_links_post %}
+	{% endblock %}
+{% endblock %}
+
+{% block styles %}
+    <link type="text/css" rel="stylesheet" href="{% static 'blocks.css' %}"/>
+    <link type="text/css" rel="stylesheet" href="{% static 'lists.css' %}"/>
+    <link type="text/css" rel="stylesheet" href="{% static 'forms.css' %}"/>
+    <link type="text/css" rel="stylesheet" href="{% static 'Post/css/post.css' %}"/>
+	{% block styles_post %}
+	{% endblock %}
+{% endblock %}
+
+{% block scripts %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    {% csrf_token %}
+    <script>
+        const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+		const post_slug = "{{post.slug}}"
+    </script>
+    <script src="{% static 'Post/js/feedback.js' %}"></script>
+	{% block scripts_post %}
+	{% endblock %}
+{% endblock %}

@@ -30,6 +30,7 @@ urlpatterns += i18n_patterns(
     path('', include('Comment.urls')),
     path('', include('Post.urls')),
     path('tools/', include('ImageThief.urls')),
+    path('tools/', include('NotebookOnMarginalia.urls')),
 )
 
 handler404 = "Main.views.page_not_found"
