@@ -1,0 +1,212 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-01-29 10:55+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+#: NotebookOnMarginalia/templates/NotebookOnMarginalia/buffer.html:8
+msgid "Заметки онлайн | Тим зе Вебмастер"
+msgstr ""
+
+#: NotebookOnMarginalia/templates/NotebookOnMarginalia/buffer.html:9
+msgid "Создание заметок, онлайн, бесплатно без регистрации и другой херни."
+msgstr ""
+
+#: NotebookOnMarginalia/templates/NotebookOnMarginalia/buffer.html:22
+msgid "сердце"
+msgstr ""
+
+#: NotebookOnMarginalia/templates/NotebookOnMarginalia/buffer.html:26
+msgid "3 соединённые точки"
+msgstr ""
+
+#: NotebookOnMarginalia/templates/NotebookOnMarginalia/buffer.html:33
+msgid "vk иконка"
+msgstr ""
+
+#: NotebookOnMarginalia/templates/NotebookOnMarginalia/buffer.html:38
+msgid "reddit иконка"
+msgstr ""
+
+#: NotebookOnMarginalia/templates/NotebookOnMarginalia/buffer.html:43
+msgid "twitter иконка"
+msgstr ""
+
+#: NotebookOnMarginalia/templates/NotebookOnMarginalia/buffer.html:48
+msgid "telegram иконка"
+msgstr ""
+
+#: NotebookOnMarginalia/templates/NotebookOnMarginalia/image_thief.html:6
+msgid ""
+"Бесплатный, онлайн парсер картинок с сайта ImageScraper | Тим зе Вебмастер"
+msgstr ""
+
+#: NotebookOnMarginalia/templates/NotebookOnMarginalia/image_thief.html:7
+msgid ""
+"Парсер картинок, который можно скачать в виде скрипта или опробывать онлайн "
+"на сайте. Работает в режиме парсинга целого сайта или отдельных страниц."
+msgstr ""
+
+#: NotebookOnMarginalia/templates/NotebookOnMarginalia/image_thief.html:16
+msgid "Правила"
+msgstr ""
+
+#: NotebookOnMarginalia/templates/NotebookOnMarginalia/image_thief.html:19
+msgid "Результаты парсинга храняться 1 час"
+msgstr ""
+
+#: NotebookOnMarginalia/templates/NotebookOnMarginalia/image_thief.html:20
+msgid "Максимум"
+msgstr ""
+
+#: NotebookOnMarginalia/templates/NotebookOnMarginalia/image_thief.html:20
+msgid "запросов в час"
+msgstr ""
+
+#: NotebookOnMarginalia/templates/NotebookOnMarginalia/image_thief.html:25
+msgid "Опции, режимы работы"
+msgstr ""
+
+#: NotebookOnMarginalia/templates/NotebookOnMarginalia/image_thief.html:30
+msgid "Одну, конкретную страницу"
+msgstr ""
+
+#: NotebookOnMarginalia/templates/NotebookOnMarginalia/image_thief.html:34
+msgid "Несколько страниц, ссылки узазать через запятую"
+msgstr ""
+
+#: NotebookOnMarginalia/templates/NotebookOnMarginalia/image_thief.html:38
+msgid "Спарсить целый сайт."
+msgstr ""
+
+#: NotebookOnMarginalia/templates/NotebookOnMarginalia/image_thief.html:49
+msgid "Бесплатный парсер изображений"
+msgstr ""
+
+#: NotebookOnMarginalia/templates/NotebookOnMarginalia/image_thief.html:66
+msgid "Начать"
+msgstr ""
+
+#: NotebookOnMarginalia/templates/NotebookOnMarginalia/image_thief.html:76
+msgid "Состояние"
+msgstr ""
+
+#: NotebookOnMarginalia/templates/NotebookOnMarginalia/image_thief.html:93
+msgid "Результаты"
+msgstr ""
+
+#: NotebookOnMarginalia/templates/NotebookOnMarginalia/image_thief.html:98
+msgid "Иконка zip файла"
+msgstr ""
+
+#: NotebookOnMarginalia/templates/NotebookOnMarginalia/image_thief.html:99
+msgid "Картинки"
+msgstr ""
+
+#: NotebookOnMarginalia/templates/NotebookOnMarginalia/image_thief.html:105
+msgid "Логи"
+msgstr ""
+
+#: NotebookOnMarginalia/templates/NotebookOnMarginalia/image_thief.html:119
+msgid "Показать работу скрипта"
+msgstr ""
+
+#: NotebookOnMarginalia/templates/NotebookOnMarginalia/image_thief.html:126
+msgid "Об парсере изображений"
+msgstr ""
+
+#: NotebookOnMarginalia/templates/NotebookOnMarginalia/image_thief.html:128
+msgid ""
+"\n"
+"\t\t\tЭто вебпарсер, который ищет и скачивает все изображения с сайта.\n"
+"\t\t\t"
+msgstr ""
+
+#: NotebookOnMarginalia/templates/NotebookOnMarginalia/image_thief.html:133
+msgid "Работает в 3х режимах:"
+msgstr ""
+
+#: NotebookOnMarginalia/templates/NotebookOnMarginalia/image_thief.html:135
+msgid "Одностраничный. Парсит картинки только с одной страницы."
+msgstr ""
+
+#: NotebookOnMarginalia/templates/NotebookOnMarginalia/image_thief.html:136
+msgid "Многостраничный. Парсит картинки с нескольких страниц."
+msgstr ""
+
+#: NotebookOnMarginalia/templates/NotebookOnMarginalia/image_thief.html:137
+msgid "Целый сайт. Парсит картинки со всего сайта."
+msgstr ""
+
+#: NotebookOnMarginalia/templates/NotebookOnMarginalia/image_thief.html:140
+msgid "Примечания"
+msgstr ""
+
+#: NotebookOnMarginalia/templates/NotebookOnMarginalia/image_thief.html:142
+msgid "Данный инструмент разработан в 2х вариантах:"
+msgstr ""
+
+#: NotebookOnMarginalia/templates/NotebookOnMarginalia/image_thief.html:144
+msgid "Как приложение на сайте(django приложение)"
+msgstr ""
+
+#: NotebookOnMarginalia/templates/NotebookOnMarginalia/image_thief.html:144
+msgid "приложение"
+msgstr ""
+
+#: NotebookOnMarginalia/templates/NotebookOnMarginalia/image_thief.html:145
+msgid "Скачать парсер, как самостоятельный Python скрипт."
+msgstr ""
+
+#: NotebookOnMarginalia/templates/NotebookOnMarginalia/image_thief.html:145
+msgid "скрипт"
+msgstr ""
+
+#: NotebookOnMarginalia/templates/NotebookOnMarginalia/image_thief.html:149
+msgid "Ограничения:"
+msgstr ""
+
+#: NotebookOnMarginalia/templates/NotebookOnMarginalia/image_thief.html:151
+msgid "Не парсит svg файлы"
+msgstr ""
+
+#: NotebookOnMarginalia/templates/NotebookOnMarginalia/image_thief.html:152
+msgid "Не парсит фоновые изображения, которые прописаны в стилях"
+msgstr ""
+
+#: NotebookOnMarginalia/templates/NotebookOnMarginalia/image_thief.html:153
+msgid "Не парсит динамически подгружаемые изображения."
+msgstr ""
+
+#: NotebookOnMarginalia/templates/NotebookOnMarginalia/image_thief.html:154
+msgid "Прекращает парсинг, при закрытии вкладки или браузера."
+msgstr ""
+
+#: NotebookOnMarginalia/templates/NotebookOnMarginalia/image_thief.html:158
+msgid ""
+"\n"
+"\t\t\t\tОн абсолютно бесплатен. Единственное чего я прошу, добавь этот "
+"инструмент \n"
+"\t\t\t\tв закладки, или поделись ссылкой на него.\n"
+"\t\t\t\t"
+msgstr ""
+
+#: NotebookOnMarginalia/templates/NotebookOnMarginalia/image_thief.html:164
+msgid ""
+"\n"
+"\t\t\t\tЕсли конечно, он был полезен для тебя. Спасибо.\n"
+"\t\t\t\t"
+msgstr ""
