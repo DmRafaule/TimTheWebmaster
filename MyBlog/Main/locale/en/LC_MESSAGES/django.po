@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-12-20 10:07+0000\n"
+"POT-Creation-Date: 2024-01-29 10:55+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -479,8 +479,10 @@ msgid "Тим Вебмастер"
 msgstr "Tim the Webmaster"
 
 #: Main/templates/Main/home.html:16
-msgid "Вебмастер и в некотором роде художник"
-msgstr "The Webmaster and in some sence an artist."
+msgid ""
+"Вебмастер, программист, художник (вроде того), немножко SEO и очень множко "
+"копирайтер."
+msgstr "I am webmaster, programmer, painter (in some sence), a little bit SEO specialist, and a copywriter."
 
 #: Main/templates/Main/home.html:21
 msgid "Статьи"
@@ -549,3 +551,6 @@ msgstr "Don't even try"
 #: Main/views.py:66
 msgid "Или попытайся, всёравно"
 msgstr "Or try, don't care"
+
+#~ msgid "Вебмастер и в некотором роде художник"
+#~ msgstr "The Webmaster and in some sence an artist."
