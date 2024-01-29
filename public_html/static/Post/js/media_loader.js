@@ -1,1 +1,1 @@
-$(document).ready(function(){const e=document.querySelectorAll(".dynamic_image");e.forEach(e=>{var t={threshold:.01},n=new IntersectionObserver((t)=>{for(const n of t)n.isIntersecting&&e.setAttribute("src",$(e).data("src"))},t);n.observe(e)})})
+$(document).ready(function(){const e=document.querySelectorAll(".dynamic_image");e.forEach(e=>{var t={threshold:.01},n=new IntersectionObserver(t=>{for(const n of t)n.isIntersecting&&e.setAttribute("src",$(e).data("src"))},t);n.observe(e)})})

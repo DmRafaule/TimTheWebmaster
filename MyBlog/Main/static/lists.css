@@ -24,6 +24,7 @@
 }
 
 .numeric_list{
+	margin-top: var(--list_margin-top);
 	list-style: decimal;
 }
 .numeric_list > li{

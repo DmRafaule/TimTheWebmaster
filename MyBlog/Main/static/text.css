@@ -1,9 +1,27 @@
-.quote{
-	font-family: var(--family-acent_font);
-	font-weight: var(--weight-acent_font);
-	font-size: var(--size-acent_font);
-	font-style: italic;
+
+.interesting{
+	margin-top: var(--mid_pm);
+	background: yellow;
+	border: 2px solid black;
+	border-radius: 10px;
 }
+.quote > legend{
+	display: flex;
+	align-items: center;
+	column-gap: 8px;
+	background: #a3c3c4;
+	border: 2px solid black;
+	border-radius: 10px;
+	vertical-align: middle;
+	padding: 8px;
+}
+
+.quote{
+	text-align: right;
+	margin-left: var(--max_pm);
+	margin-top: var(--mid_pm);
+}
+
 .text{
 	margin-top: var(--text_block_margin-top);
 	text-align: justify;
