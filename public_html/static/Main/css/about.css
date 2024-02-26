@@ -1,1 +1,25 @@
-.introduction{display:flex;gap:var(--mid_pm);justify-content:space-between;align-items:flex-start;flex-wrap:wrap}.introduction>img{flex-basis:40%}.introduction>div{max-width:400px}
+.introduction{
+	display: flex;
+	gap: var(--mid_pm);
+	justify-content: space-between;
+	align-items: flex-start;
+	flex-wrap: wrap;
+}
+.introduction > img{
+	flex-basis: 40%;
+	max-height: 480px;
+	border-radius: 20px;
+}
+.introduction > div{
+	max-width: 400px;
+}
+.limiter{
+	
+}
+
+.canvas_as_background{
+	position: absolute;
+	width: 100svw;
+	height: 100svh;
+
+}
