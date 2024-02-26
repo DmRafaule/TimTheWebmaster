@@ -1,0 +1,13 @@
+{% load i18n %}
+{% load static %}
+
+{% csrf_token %}
+{% for save in saves %}
+<div id="{{save.shader_id}}" class="save_shader min_col_gap padder">
+	<div class="save_shader_name">{{save.name}}</div>
+	<div class="save_shader_buttons row min_col_gap padder">
+		<img id="delete-{{save.shader_id}}" value="{{save.shader_id}}" width="32" height="32" class="icon bordered_button button squered_button shader_remove_action" src="{% static 'ShaderToy/img/delete.svg' %}">
+		<img id="upload-{{save.shader_id}}" value="{{save.shader_id}}" width="32" height="32" class="icon bordered_button button squered_button shader_upload_action"src="{% static 'ShaderToy/img/upload_shader.svg' %}">
+	</div>
+</div>
+{% endfor %}

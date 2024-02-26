@@ -1,0 +1,33 @@
+{% extends 'Main/base.html' %}
+{% load i18n %}
+{% load static %}
+
+
+{% block head %}
+	<link rel="canonical" href="https://{{domain_name}}{% url 'shader-toy' %}" />
+	<title>{% trans "Пример отрисовки. Геометрический задник | WebDI" %} | ShaderToy | Tim the webmaster</title>
+	<meta name="description" content="{% trans "Создание шейдеров для веба. Используя WebGL" %}">
+{% endblock %}
+
+
+{% block content %}
+	<div class="canvas_workspace full_width full_height">
+		<canvas id='canvas' class="full_width" data-vertex-shader="{% static "WebGLEngine/shaders/geometry_bg.vert" %}" data-fragment-shader="{% static "WebGLEngine/shaders/geometry_bg.frag" %}">
+		</canvas>
+	</div>
+{% endblock %}
+
+{% block footer_links %}
+{% endblock %}
+
+{% block styles %}
+    <link type="text/css" rel="stylesheet" href="{% static 'blocks.css' %}"/>
+{% endblock %}
+
+{% block scripts %}
+	<!-- Простой 3д рендерер для сайта -->
+    <script src="{% static 'WebGLEngine/js/webgl_engine_v0.js' %}"></script>
+	<!-- Скрипт для рендеринга на определённом канвасе -->
+    <script src="{% static 'WebGLEngine/js/geometry_bg.js' %}"></script>
+{% endblock %}
+

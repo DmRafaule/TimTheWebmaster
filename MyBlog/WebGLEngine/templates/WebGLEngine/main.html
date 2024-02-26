@@ -1,0 +1,24 @@
+{% extends 'Main/base.html' %}
+{% load i18n %}
+{% load static %}
+
+
+{% block head %}
+	<link rel="canonical" href="https://{{domain_name}}{% url 'webgl-engine' %}" />
+	<title>{% trans "Движок отрисовки | WebDI" %}</title>
+	<meta name="description" content="{% trans "" %}">
+{% endblock %}
+
+
+{% block content %}
+{% endblock %}
+
+{% block footer_links %}
+{% endblock %}
+
+{% block styles %}
+{% endblock %}
+
+{% block scripts %}
+    <script src="{% static 'WebGLEngine/js/webgl_engine_v0.js' %}"></script>
+{% endblock %}

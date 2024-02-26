@@ -1,0 +1,88 @@
+{% extends 'Main/base.html' %}
+{% load i18n %}
+{% load static %}
+
+
+{% block head %}
+	<link rel="canonical" href="https://{{domain_name}}{% url 'shader-toy' %}" />
+	<title>{% trans "Редактор и конструктор шейдеров" %} | ShaderToy | Tim the webmaster</title>
+	<meta name="description" content="{% trans "Создание шейдеров для веба. Используя WebGL" %}">
+{% endblock %}
+
+
+{% block content %}
+	<div class="canvas_workspace">
+		<canvas id='canvas' class="canvas_flex canvas_bordered" data-vertex-shader="{% static "WebGLEngine/shaders/simple_3d_camera.vert" %}" data-fragment-shader="{% static "WebGLEngine/shaders/simple_3d_camera.frag" %}">
+		</canvas>
+		<div id="canvas-editor" class="canvas_editor">
+			<h1>ShaderToy</h1>
+			<div class="column">
+				<label for="rotation-x">Rotate X</label>
+				<div class="slider">
+					<input type="range" min="-360" max="360" value="0" step="1"  id="rotation-x">
+					<output>0</output>
+				</div>
+				<label for="rotation-y">Rotate Y</label>
+				<div class="slider">
+					<input type="range" min="-360" max="360" value="0" step="1"  id="rotation-y">
+					<output>0</output>
+				</div>
+				<label for="rotation-z">Rotate Z</label>
+				<div class="slider">
+					<input type="range" min="-360" max="360" value="0" step="1"  id="rotation-z">
+					<output>0</output>
+				</div>
+				<label for="scale-x">Scale X</label>
+				<div class="slider">
+					<input type="range" min="-5" max="5" value="1" step="0.01"  id="scale-x">
+					<output>0</output>
+				</div>
+				<label for="scale-y">Scale Y</label>
+				<div class="slider">
+					<input type="range" min="-5" max="5" value="1" step="0.01" id="scale-y">
+					<output>0</output>
+				</div>
+				<label for="transform-x">Translate X</label>
+				<div class="slider">
+					<input type="range" min="0" max="500" value="0" id="transform-x">
+					<output>0</output>
+				</div>
+				<label for="transform-y">Translate Y</label>
+				<div class="slider">
+					<input type="range" min="0" max="400" value="0" id="transform-y">
+					<output>0</output>
+				</div>
+				<label for="transform-z">Translate Z</label>
+				<div class="slider">
+					<input type="range" min="-1000" max="1000" value="0" id="transform-z">
+					<output>0</output>
+				</div>
+				<label for="field-of-view">Field of view (in degrees)</label>
+				<div class="slider">
+					<input type="range" min="0" max="360" value="60" id="field-of-view">
+					<output>0</output>
+				</div>
+			</div>
+		<div>
+	</div>
+{% endblock %}
+
+{% block footer_links %}
+	{% for ref in popular_posts %}
+		<li class="ref"><a href="{{ref.get_absolute_url}}">{{ref|truncatechars:15}}</a></li>
+	{% endfor %}
+	{% block footer_links_post %}
+	{% endblock %}
+{% endblock %}
+
+{% block styles %}
+    <link type="text/css" rel="stylesheet" href="{% static 'blocks.css' %}"/>
+    <link type="text/css" rel="stylesheet" href="{% static 'slider.css' %}"/>
+    <link type="text/css" rel="stylesheet" href="{% static 'WebGLEngine/css/testing.css' %}"/>
+{% endblock %}
+
+{% block scripts %}
+	<script src="{% static 'slider.js' %}"></script>
+	<script src="{% static 'WebGLEngine/js/math.js' %}"></script>
+    <script src="{% static 'WebGLEngine/js/simple_3d_camera_canvas.js' %}"></script>
+{% endblock %}

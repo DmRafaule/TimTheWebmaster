@@ -44,11 +44,15 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.sitemaps',
     'Main.apps.MainConfig',
+    'WebGLEngine.apps.WebglengineConfig',
     'Post.apps.PostConfig',
     'User.apps.UserConfig',
     'Comment.apps.CommentConfig',
     'ImageThief.apps.ImagethiefConfig',
+    'NewsAggregator.apps.NewsaggregatorConfig',
     'NotebookOnMarginalia.apps.NotebookonmarginaliaConfig',
+    'ShaderToy.apps.ShadertoyConfig',
+    'Space091.apps.Space091Config',
 ]
 
 MIDDLEWARE = [
