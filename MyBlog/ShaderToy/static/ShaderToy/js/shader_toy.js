@@ -243,6 +243,7 @@ function LoadLibrary(){
 			el_insert_to.insertAdjacentHTML('beforeend', result)
 			var saves = el_insert_to.querySelectorAll('.save_shader')
 			saves.forEach( (save) => {
+				document.getElementById('delete-' + save.id).remove()
 				document.getElementById('upload-' + save.id).addEventListener('click', UploadShaderAction)
 			})
 		},
