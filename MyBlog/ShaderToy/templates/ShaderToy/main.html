@@ -1,0 +1,256 @@
+{% extends 'Main/base.html' %}
+{% load i18n %}
+{% load static %}
+
+
+{% block head %}
+	<link rel="canonical" href="https://{{domain_name}}{% url 'shader-toy' %}" />
+	<title>{% trans "Редактор шейдеров на glsl" %} | ShaderToy | Tim the webmaster</title>
+	<meta name="description" content="{% trans "Это инструмент, который позволяет создать, отредактировать, настроить и скачать вершинный и фрагментный шейдер написанные на glsl." %}">
+	<meta name="keywords" content"webgl2 shader, glsl, glsl es 3.0, редактор шейдеров">
+{% endblock %}
+
+
+{% block content %}
+	<div class="canvas_workspace">
+		<canvas  id='canvas' class="canvas_flex canvas_bordered" data-vertex-shader="{% static "ShaderToy/shaders/default.vert" %}" data-fragment-shader="{% static "ShaderToy/shaders/default.frag" %}">
+		</canvas>
+		<div id="canvas-editor" class="canvas_editor">
+			<h1>{% trans "Редактор шейдеров" %} | ShaderToy</h1>
+			<div class="tabs">
+				<div class="tab_button tab_active" data-bodyid="1">
+					<abbr title="{% trans "Фрагментный шейдер" %}"><img width="32" height="32" class="icon bordered_button button dynamic_image squered_button" src="{% static 'placeholder.svg' %}" data-src="{% static 'ShaderToy/img/fragment_shader.svg' %}" alt="{% trans "Иконка тюнинга" %}"></abbr>	
+				</div>
+				<div class="tab_button" data-bodyid="2">
+					<abbr title="{% trans "Вершинный шейдер" %}"><img width="32" height="32" class="icon bordered_button button dynamic_image squered_button" src="{% static 'placeholder.svg' %}" data-src="{% static 'ShaderToy/img/vertex_shader.svg' %}" alt="{% trans "Иконка тюнинга" %}"></abbr>		
+				</div>
+				<div class="tab_button" data-bodyid="3">
+					<abbr title="{% trans "Настройки холста" %}"><img width="32" height="32" class="icon bordered_button button dynamic_image squered_button" src="{% static 'placeholder.svg' %}" data-src="{% static 'ShaderToy/img/canvas_settings.svg' %}" alt="{% trans "Иконка тюнинга" %}"></abbr>
+				</div>
+				<div class="tab_button" data-bodyid="4">
+					<abbr title="{% trans "Настройки шейдера" %}"><img width="32" height="32" class="icon bordered_button button dynamic_image squered_button" src="{% static 'placeholder.svg' %}" data-src="{% static 'ShaderToy/img/shader_tune.svg' %}" alt="{% trans "Иконка настроек" %}"></abbr>
+				</div>
+				<div id="tab_button_for_lib" class="tab_button" data-bodyid="5">
+					<abbr title="{% trans "Библиотека шейдеров" %}"><img width="32" height="32" class="icon bordered_button button dynamic_image squered_button" src="{% static 'placeholder.svg' %}" data-src="{% static 'ShaderToy/img/library.svg' %}" alt="{% trans "Иконка библиотеки" %}"></abbr>	
+				</div>
+				<div class="tab_button" data-bodyid="6">
+					<abbr title="{% trans "Об инструменте" %}"><img width="32" height="32" class="icon bordered_button button dynamic_image squered_button" src="{% static 'placeholder.svg' %}" data-src="{% static 'ShaderToy/img/question_mark.svg' %}" alt="{% trans "Иконка вопроса" %}"></abbr>		
+				</div>
+				<div id="tab_button_for_err" class="tab_button" data-bodyid="7">
+					<abbr title="{% trans "Ошибки" %}"><img width="32" height="32" class="icon bordered_button button dynamic_image squered_button" src="{% static 'placeholder.svg' %}" data-src="{% static 'ShaderToy/img/error.svg' %}" alt="{% trans "Иконка ошибки" %}"></abbr>			
+				</div>
+				<div id="tab_button_for_save" class="tab_button" data-bodyid="8">
+					<abbr title="{% trans "Сохранения" %}"><img width="32" height="32" class="icon bordered_button button dynamic_image squered_button" src="{% static 'placeholder.svg' %}" data-src="{% static 'ShaderToy/img/save.svg' %}" alt="{% trans "Иконка сохранения" %}"></abbr>			
+				</div>
+			</div>
+			<div class="tab_body full_height canvas_bordered">
+				<div id="tab_body-1" class="tab_element tab_element__active">
+					<div id="fragment_editor" class="editor zIndZero">
+					</div>
+				</div>
+				<div id="tab_body-2" class="tab_element">
+					<div id="vertex_editor" class="editor zIndZero">
+					</div>
+				</div>
+				<div id="tab_body-3" class="tab_element">
+					<h2 class="padder">{% trans "Настройка холста" %}</h2>
+					<div class="row mid_row_gap canvas_settings">
+						<div class="padder">
+							<label>{% trans "Режим отрисовки" %}</label>
+							<hr>
+							<div class="column min_row_gap">
+								<div class="row in_middle-farapart">
+									<label for="geom-0">TRIANGLES</label>
+									<input id="geom-0" type="radio" class="render_mode" name="geometry" value="TRIANGLES" checked />
+								</div>
+								<div class="row in_middle-farapart">
+									<label for="geom-1">POINTS</label>
+									<input id="geom-1" type="radio" class="render_mode" name="geometry" value="POINTS">
+								</div>
+								<div class="row in_middle-farapart">
+									<label for="geom-2">LINES</label>
+									<input id="geom-2" type="radio" class="render_mode" name="geometry" value="LINES">
+								</div>
+								<div class="row in_middle-farapart">
+									<label for="geom-3">LINE_LOOP</label>
+									<input id="geom-3" type="radio" class="render_mode" name="geometry" value="LINE_LOOP">
+								</div>
+								<div class="row in_middle-farapart">
+									<label for="geom-4">LINE_STRIP</label>
+									<input id="geom-4" type="radio" class="render_mode" name="geometry" value="LINE_STRIP">
+								</div>
+								<div class="row in_middle-farapart">
+									<label for="geom-5">TRIANGLE_STRIP</label>
+									<input id="geom-5" type="radio" class="render_mode" name="geometry" value="TRIANGLE_STRIP">
+								</div>
+								<div class="row in_middle-farapart">
+									<label for="geom-6">TRIANGLE_FAN</label>
+									<input id="geom-6" type="radio" class="render_mode" name="geometry" value="TRIANGLE_FAN">
+								</div>
+							</div>
+						</div>
+						<div class="padder">
+							<label>{% trans "Работа конвеера" %}</label>
+							<hr>
+							<div class="column min_row_gap">
+								<div class="row in_middle-farapart">
+									<label>BLEND</label>
+									<input type="checkbox" class="pipeline_work" value="BLEND">
+								</div>
+								<div class="row in_middle-farapart">
+									<label>CULL_FACE</label>
+									<input type="checkbox" class="pipeline_work" value="CULL_FACE">
+								</div>
+								<div class="row in_middle-farapart">
+									<label>DEPTH_TEST</label>
+									<input type="checkbox" class="pipeline_work" value="DEPTH_TEST">
+								</div>
+								<div class="row in_middle-farapart">
+									<label>DITHER</label>
+									<input type="checkbox" class="pipeline_work" value="DITHER">
+								</div>
+								<div class="row in_middle-farapart">
+									<label>POLYGON_OFFSET_FILL</label>
+									<input type="checkbox" class="pipeline_work" value="POLYGON_OFFSET_FILL">
+								</div>
+								<div class="row in_middle-farapart">
+									<label>SAMPLE_ALPHA_TO_COVERAGE</label>
+									<input type="checkbox" class="pipeline_work" value="SAMPLE_ALPHA_TO_COVERAGE">
+								</div>
+								<div class="row in_middle-farapart">
+									<label>SAMPLE_COVERAGE</label>
+									<input type="checkbox" class="pipeline_work" value="SAMPLE_COVERAGE">
+								</div>
+								<div class="row in_middle-farapart">
+									<label>SCISSOR_TEST</label>
+									<input type="checkbox" class="pipeline_work" value="SCISSOR_TEST">
+								</div>
+								<div class="row in_middle-farapart">
+									<label>STENCIL_TEST</label>
+									<input type="checkbox" class="pipeline_work" value="STENCIL_TEST">
+								</div>
+							</div>
+						</div>
+						<div class="padder">
+							<label>{% trans "Цвет холста" %}</label>
+							<hr>
+							<div class="input_vector">
+								<input class="bg_color" data-field="r" value="1.0" type="number" step="0.01"/>
+								<input class="bg_color" data-field="g" value="1.0" type="number" step="0.01"/>
+								<input class="bg_color" data-field="b" value="1.0" type="number" step="0.01"/>
+								<input class="bg_color" data-field="a" value="1.0" type="number" step="0.01"/>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div id="tab_body-4" class="tab_element column mid_row_gap toObserve">
+					<h2 class="padder">{% trans "Настройка шейдера" %}</h2>
+				</div>
+				<div id="tab_body-5" class="tab_element column on_start_other min_row_gap">
+					<h2 class="padder">{% trans "Библиотека шейдеров glsl" %}</h2>
+				</div>
+				<div id="tab_body-6" class="tab_element column padder">
+					<h2 class="">{% trans "Об редакторе" %}</h2>
+					<div class="text">
+						{% blocktrans %}
+							Ключевой особенностью данного редактора является то, что вместе с фрагментнным шейдером можно
+							редактировать ещё и вершинный шейдер. При условии что вы разбираетесь в линейной алгебре, матрицах и
+							векторах.
+						{% endblocktrans %}
+					</div>
+					<div class="text">
+						{% blocktrans %}
+							Данный инструмент был создан для решения двух моих задач:
+						{% endblocktrans %}
+					</div>
+					<ul class="list">
+						<li>{% trans "Создание glsl шейдеров для дальнейшего их использования" %}</li>
+						<li>{% trans "Оттачивание навыков и знаний о математике" %}</li>
+					</ul>
+					<div class="text">
+						{% blocktrans %}
+							Он активно развивается. Я планирую добавить:
+						{% endblocktrans %}
+					</div>
+					<ul class="list">
+						<li>{% trans "Выбор между webgl и webgl2" %}</li>
+						<li>{% trans "Улучшение <b>UX/UI</b> для кнопки сохранения и вывода ошибок" %}</li>
+						<li>{% trans "Возможность давать имена сохранениям" %}</li>
+						<li>{% trans "Добавить поддержку текстур" %}</li>
+						<li>{% trans "Добавить поддержку горячих клавиш" %}</li>
+					</ul>
+					<div class="text">
+						{% blocktrans %}
+							Важно учитывать следующие особенности при работе с инструментом.
+						{% endblocktrans %}
+					</div>
+					<ul class="list">
+						<li>{% trans "Текстуры пока не поддерживаются" %}</li>
+						<li>
+							{% trans "Есть 3 встроенные юниформы" %}
+							<ul class="list">
+								<li>{% trans "<b>vec2</b> <i>u_time</i> - это время с начала загрузки страницы." %}</li>
+								<li>{% trans "<b>vec2</b> <i>u_resolution</i> - это ширина и высота холста" %}</li>
+								<li>{% trans "<b>vec2</b> <i>u_mouse</i> - это <b>x</b> и <b>y</b> координата мыши, относительно холста" %}</li>
+							</ul>
+						</li>
+						<li>{% trans "Если ты внёс изменения в шейдер и обновил его, но ничего не произошло, проверь может он стоит на паузе?" %}</li>
+						<li>{% trans "Текстовые поля ввода требуют перечисления цифр через запятую" %}</li>
+						<li>{% trans "В библиотеке шейдеров не все шейдеры мои." %}</li>
+					</ul>
+				</div>
+				<div id="tab_body-7" class="tab_element ">
+				</div>
+				<div id="tab_body-8" class="tab_element column on_start_other min_row_gap">
+					<h2 class="padder">{% trans "Сохранения" %}</h2>
+				</div>
+			</div>
+		<div>
+		<div class="row mid_gap">
+			<div class="buttons_group padder">
+				<abbr title="{% trans "Приостановить отрисовку" %}"><img id="pause_shader" width="32" height="32" class="icon bordered_button button dynamic_image squered_button switch_action" src="{% static 'placeholder.svg' %}" data-src="{% static 'ShaderToy/img/pause_the_shader.svg' %}" alt="{% trans "Иконка паузы" %}" data-seted-status="{% trans "Отрисовка приостановленна"%}"></abbr>
+				<abbr title="{% trans "Продолжить отрисовку" %}"><img id="resume_shader" width="32" height="32" class="icon bordered_button button dynamic_image squered_button switch_action" src="{% static 'placeholder.svg' %}" data-src="{% static 'ShaderToy/img/resume_the_shader.svg' %}" alt="{% trans "Иконка продолжения" %}" data-seted-status="{% trans "Отрисовывается"%}"></abbr>
+				<abbr title="{% trans "Обновить шейдер" %}"><img id="reload_shader" width="32" height="32" class="icon bordered_button button dynamic_image squered_button" src="{% static 'placeholder.svg' %}" data-src="{% static 'ShaderToy/img/refresh.svg' %}" alt="{% trans "Иконка старта" %}"></abbr>
+				<abbr title="{% trans "Сохранить" %}"><img id="save_shader" width="32" height="32" class="icon bordered_button button dynamic_image squered_button" src="{% static 'placeholder.svg' %}" data-src="{% static 'ShaderToy/img/save.svg' %}" alt="{% trans "Иконка старта" %}"></abbr>
+				<abbr title="{% trans "Сбросить все изменения" %}"><img id="toDefault_shader" width="32" height="32" class="icon bordered_button button dynamic_image squered_button" src="{% static 'placeholder.svg' %}" data-src="{% static 'ShaderToy/img/to_default.svg' %}" alt="{% trans "Иконка старта" %}"></abbr>
+			</div>
+			<div id="render-status" class="in_middle-self">
+			</div>
+		</div>
+	</div>
+{% endblock %}
+
+{% block footer_links %}
+	{% for ref in popular_posts %}
+		<li class="ref"><a href="{{ref.get_absolute_url}}">{{ref|truncatechars:15}}</a></li>
+	{% endfor %}
+	{% block footer_links_post %}
+	{% endblock %}
+{% endblock %}
+
+{% block styles %}
+    <link type="text/css" rel="stylesheet" href="{% static 'blocks.css' %}"/>
+    <link type="text/css" rel="stylesheet" href="{% static 'input.css' %}"/>
+    <link type="text/css" rel="stylesheet" href="{% static 'lists.css' %}"/>
+    <link type="text/css" rel="stylesheet" href="{% static 'Post/css/tabs.css' %}"/>
+    <link type="text/css" rel="stylesheet" href="{% static 'ShaderToy/css/shader_toy.css' %}"/>
+	{% block styles_post %}
+	{% endblock %}
+{% endblock %}
+
+{% block scripts %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    {% csrf_token %}
+    <script>
+        const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+    </script>
+    <script src="{% static 'inputvaluebutton.js' %}"></script>
+    <script src="{% static 'radiobutton.js' %}"></script>
+    <script src="{% static 'checkboxbutton.js' %}"></script>
+    <script src="{% static 'Post/js/tabs.js' %}"></script>
+	<script src="{% static 'ShaderToy/js/math.js' %}"></script>
+	{# ACE web based code editor#}
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.32.6/ace.min.js"></script>
+	{# To draw a shader on canvas. Specified webgl context, and set up everything #}
+    <script src="{% static 'ShaderToy/js/shader_toy.js' %}"></script>
+{% endblock %}

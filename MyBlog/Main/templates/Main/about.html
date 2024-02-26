@@ -9,92 +9,178 @@
 {% endblock %}
 
 {% block content %}
+<canvas id='canvas' class="canvas_as_background" data-vertex-shader="{% static "WebGLEngine/shaders/geometry_bg.vert" %}" data-fragment-shader="{% static "WebGLEngine/shaders/geometry_bg.frag" %}">
+</canvas>
 <div class="limiter in_middle in_middle-self no_wrap padder">
 	<h1 class="title_in_middle">{% trans "О Тиме" %}</h1>
-	<h2 class="paragraph">{% trans "Знакомство"%}</h2>
+	<h2 class="paragraph">{% trans "Вступление"%}</h2>
+	<div class="text">
+		{% blocktrans %}
+		Мне было скучно. Так, я обычно отвечаю, когда меня спрашивают, зачем?
+		Зачем ты делаешь свой сайт? Зачем ты пишешь статьи? Зачем делал игры?
+		{% endblocktrans %}
+	</div>
+	<div class="text">
+		{% blocktrans %}
+		Или вот, моё любимое. Зачем изучать <b>WebGL2</b> и линейную алгебру? 
+		Чтобы что? Просто получить на экране вращающийся кубик?
+		{% endblocktrans %}
+	</div>
+	<div class="text">
+		{% blocktrans %}
+		Проще было бы скачать готовую модель, подключить <b>three.js</b> библиотеку
+		и вставить там где тебе нужно.
+		{% endblocktrans %}
+	</div>
+	<h2 class="paragraph">{% trans "Интересы" %}</h2>
+	<div class="text">
+		{% blocktrans %}
+		Но вот что интересно. Делая вещи от скуки, я втягиваюсь. И как говорится,
+		за уши не оторвать.
+		{% endblocktrans %}
+	</div>
+	<div class="text">
+		{% blocktrans %}
+		Среди прочего, меня интересует:
+		{% endblocktrans %}
+	</div>
+	<ul class="list">
+		{% blocktrans %}
+		<li>Разработка телеграм ботов</li>
+		<li>Разработка и продвижение сайтов</li>
+		<li>Копирайтинг</li>
+		<li>Парсинг и контроль данных</li>
+		<li>Администрирование и поддержка серверов</li>
+		<li>3D рендеринг и математика</li>
+		<li>Разработка игр</li>
+		<li>История. Неожиданно, да?</li>
+		{% endblocktrans %}
+	</ul>
+	<div class="text">
+		{% blocktrans %}
+		А вот что меня точно не интересует:
+		{% endblocktrans %}
+	</div>
+	<ul class="list">
+		{% blocktrans %}
+		<li>Вёрстка</li>
+		<li>Работа с соц сетями</li>
+		{% endblocktrans %}
+	</ul>
+	<h2 class="paragraph">{% trans "Происхождение" %}</h2>
 	<div class="introduction">
 		<div>
 			<div class="text">
 				{% blocktrans %}
-				Привет, рад что ты решил узнать меня поближе.
+				Теперь немного о скучном. То есть моё образование, из какого болота я вылез
+				и вообще, кто я такой?
 				{% endblocktrans %}
 			</div>
 			<div class="text">
 				{% blocktrans %}
-				Давай знакомиться. Я Дима Чудук, или просто Тим <i>(мне этот вариант имени больше нравится)</i>.
-				Текущее место проживания город Минск, Беларусь.
+				Меня назвали Димой, Тим для друзей, вот; фамилия Чудук; из Беларуси. 
 				{% endblocktrans %}
-				{% trans "Сейчас мне " %}{% now "y" %}{% trans " года."%}
+			</div>
+			<div class="text">
+				{% blocktrans %}
+				Сейчас живу в Минске, мне 
+				{% endblocktrans %}
+				{{me_years}}
+				{% blocktrans %}
+				года
+				{% endblocktrans %}
+			</div>
+			<div class="text">
+				{% blocktrans %}
+				Насчёт образования, официального. У меня среднеспециальное, юридическое.
+				Да далеко меня занесло, знаю ;) Так как юристом я не стал, да и не хотел, честно говоря, сейчас я изучаю поисковую оптимизацию, маркетинг и сайтостроение.
+				{% endblocktrans %}
+			</div>
+			<div class="text">
+				{% blocktrans %}
+				Считаю что лучшая учёба это практика. Именно поэтому  вы видите сейчас этот сайт.
+				{% endblocktrans %}
 			</div>
 		</div>
 		<img class="image image-min_sized dynamic_image" width="629" height="1200" src="{% static 'placeholder.svg' %}" data-src="{% static 'Main/img/me1.jpg' %}" alt="{% trans "Дмитрий Чудук или Тим Вебмастер" %}">
 	</div>
-	<h2 class="paragraph">{% trans "Чем занимаюсь" %}</h2>
+	<h2 class="paragraph">{% trans "С чего начать?" %}</h2>
 	<div class="text">
 		{% blocktrans %}
-		Фрилансер в сфере IT, а конкретно в Вебе. 
+		Сейчас вкратце пройдусь по разделам своего сайта.
 		{% endblocktrans %}
 	</div>
-	<div class="text">
-		{% blocktrans %}
-		Занимаюсь тем, что разрабатываю:
-		{% endblocktrans %}
-	</div>
-	<ul class="list">
-		{% blocktrans %}
-		<li>Телеграмм ботов</li>
-		<li>Парсеры</li>
-		<li>Скрипты, различной тематики и направленности
-		<li>Утилиты и инструменты</li>
-		{% endblocktrans %}
-	</ul>
-	<div class="text">
-		{% blocktrans %}
-		Всё это делаю в различных интерфейсах:
-		{% endblocktrans %}
-	</div>
-	<ul class="list">
-		{% blocktrans %}
-		<li>Web интерфейс </li>
-		<li>Интерфейс командной строки.</li>
-		<li>Графический интерфейс </li>
-		{% endblocktrans %}
-	</ul>
-	<div class="text">
-		{% blocktrans %}
-		Создаю, поддерживаю и продвигаю сайты, с использованием Django фреймворка.
-		{% endblocktrans %}
-	</div>
-	<h2 class="paragraph">{% trans "С чего начать" %}</h2>
-	<div class="text ref">
-		{% blocktrans %}
-		Если ты не знаешь с чего начать, то советую зайти в раздел 
-		{% endblocktrans %}
-		<a href="{% url 'tools-list' %}">{% trans " инструментов "%}</a>
-		{% blocktrans %}
-		и поиграть там немного.
-		{% endblocktrans %}
-	</div>
-	<div class="text ref">
-		{% blocktrans %}
-		Дальше можно перейти в раздел
-		{% endblocktrans %}
-		<a href="{% url 'articles-list' %}">{% trans " статей. "%}</a>
-		{% blocktrans %}
-		Мой блог создан таким образом, что каждая статья это почти чистый лист, без ограничений, в творческом
-		смысле этого слова. И поэтому, каждая статья уникальна в плане вёрстки и дизайна
-		{% endblocktrans %}
-	</div>
-	<div class="text ref">
-		{% blocktrans %}
-		Интересует мой опыт и навыки? Тогда тебе в раздел 
-		{% endblocktrans %}
-		<a href="{% url 'cases-list' %}">{% trans " кейсов "%}</a>
-		{% trans " или "%}
-		<a href="{% url 'services-list' %}">{% trans " услуг "%}</a>
-		{% blocktrans %}
-		( тоже самое, что кейсы, только сгруппированы по направлениям моей деятельности). 
-		{% endblocktrans %}
+	<div class="row mid_col_gap in_middle-farapart">
+		<div class="column el-40-half min_row_gap el-expandable">
+			<div class="paragraph"></div>
+			<h3>{% trans "Статьи" %}</h3>
+			<div class="text ref">
+				<a href="{% url 'articles-list' %}">{% trans "Данная категория" %}</a>
+				{% blocktrans %}
+				содержит контент преимущественно длинного формата.
+				Где я стараюсь раскрыть поставленные вопросы максимально объёмно и
+				информативно.
+				{% endblocktrans %}
+			</div>
+		</div>
+		<div class="column el-40-half min_row_gap el-expandable">
+			<div class="paragraph"></div>
+			<h3>{% trans "Инструменты" %}</h3>
+			<div class="text ref">
+				<a href="{% url 'tools-list' %}">{% trans "Все инструменты "%}</a>
+				{% blocktrans %}
+				 на данном сайте реализованны, либо только с использованием <b>JS</b>, либо как <b>Django приложения</b>, написанные на <b>Python</b>
+				{% endblocktrans %}
+				{% blocktrans %}
+				Все инструменты, которые есть или появятся в будущем, используются лично мною и сделаны для меня и моего безвкусного глаза.
+				{% endblocktrans %}
+				{% blocktrans %}
+				Но если, кому-то они тоже пригодятся я только рад.
+				{% endblocktrans %}
+			</div>
+		</div>
+		<div class="column el-40-half min_row_gap el-expandable">
+			<div class="paragraph"></div>
+			<h3>{% trans "Новости" %}</h3>
+			<div class="text ref">
+				<a href="{% url 'news-list' %}">{% trans "Новости "%}</a>
+				{% blocktrans %}
+				 на моём сайте носят исключительно личный характер. То есть они будут, либо о самом сайте, либо обо мне. Это не новостной портал.
+				{% endblocktrans %}
+			</div>
+		</div>
+		<div class="column el-40-half min_row_gap el-expandable">
+			<div class="paragraph"></div>
+			<h3>{% trans "Не доведённое до ума (пока)" %}</h3>
+			<div class="text ref">
+				{% blocktrans %}
+				Также ещё есть категория 
+				{% endblocktrans %}
+				<a href="{% url 'cases-list' %}">{% trans "кейсов" %}</a> 
+				{% blocktrans %}
+				и
+				{% endblocktrans %}
+				<a href="{% url 'services-list' %}">{% trans "услуг" %}</a>
+				{% blocktrans %}
+				, но они либо не доведены до ума,
+				либо просто пустуют, пока. Поэтому не судите строго.
+				{% endblocktrans %}
+			</div>
+			<div class="text ref">
+				{% blocktrans %}
+				Ты даже можешь найти страницу 
+				{% endblocktrans %}
+				<a href="{% url 'signup' %}">{% trans "регистрации" %}</a> 
+				{% blocktrans %}
+				и 
+				{% endblocktrans %}
+				<a href="{% url 'login' %}">{% trans "входа" %}</a>
+				{% blocktrans %}
+				в аккаунт. Они рабочие,
+				всё как положено, но толку от них пока ноль.
+				{% endblocktrans %}
+			</div>
+		</div>
 	</div>
 	<h2 class="paragraph">{% trans "Как связаться" %}</h2>
 	<div class="text">
@@ -174,10 +260,15 @@
 {% endblock %}
 
 {% block scripts %}
+    <script src="{% static 'toggle_button.js' %}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     {% csrf_token %}
     <script>
         const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
     </script>
     <script src="{% static 'Main/js/contact.js' %}"></script>
+	<!-- Простой 3д рендерер для сайта -->
+    <script src="{% static 'WebGLEngine/js/webgl_engine_v0.js' %}"></script>
+	<!-- Скрипт для рендеринга на определённом канвасе -->
+    <script src="{% static 'WebGLEngine/js/geometry_bg.js' %}"></script>
 {% endblock %}

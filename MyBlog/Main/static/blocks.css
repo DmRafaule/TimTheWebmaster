@@ -62,6 +62,18 @@
 .in_middle-self{
 	align-self: center;
 }
+.zIndMin1{
+	z-index: -1;
+}
+.zIndZero{
+	z-index: 0;
+}
+.zIndPl1{
+	z-index: 1;
+}
+.zIndPl2{
+	z-index: 2;
+}
 
 .full_width{
 	width: 100%;
@@ -72,6 +84,11 @@
 .on_start{
 	justify-content: start;
 }
+
+.on_start_other{
+	align-items: start;
+}
+
 .on_end{
 	justify-content: end;
 }
@@ -152,6 +169,9 @@
 }
 .el-half{
 	flex-basis: 50%;
+}
+.el-40-half{
+	flex-basis: 40%;
 }
 .el-quad{
 	flex-basis: 25%;

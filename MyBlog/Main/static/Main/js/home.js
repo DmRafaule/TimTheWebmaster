@@ -29,6 +29,7 @@ function loadInitialPost(category, forWhichPage, whereToUpload){
 			whereToUpload.data('offset', localOffset)
 			var next_post = document.querySelectorAll(".next_post");
 			next_post.forEach( (btn) => {
+				console.log("EvSetup")
 				btn.addEventListener('click', loadNextPost)
 			})
 		}

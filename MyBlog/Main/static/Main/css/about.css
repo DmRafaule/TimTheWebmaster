@@ -7,7 +7,19 @@
 }
 .introduction > img{
 	flex-basis: 40%;
+	max-height: 480px;
+	border-radius: 20px;
 }
 .introduction > div{
 	max-width: 400px;
+}
+.limiter{
+	
+}
+
+.canvas_as_background{
+	position: absolute;
+	width: 100svw;
+	height: 100svh;
+
 }

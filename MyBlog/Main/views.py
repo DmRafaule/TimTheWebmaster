@@ -13,6 +13,7 @@ class MainView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super(MainView, self).get_context_data(**kwargs)
         context = U.initDefaults(self.request)
+        context['me_years'] = 23
         return context
 
 
