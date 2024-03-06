@@ -12,10 +12,16 @@
 	display: none;
 }
 .page{
+	row-gap: 90px;
+	display: flex;
+	flex-direction: column;
 }
 .selected_view{
 	background-color: var(--acent_color);
 }
 .rotate_X{
 	transform: rotateX(180deg);
+}
+#sort_actions{
+	margin-bottom: 90px;
 }

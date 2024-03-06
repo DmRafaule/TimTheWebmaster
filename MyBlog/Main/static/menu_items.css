@@ -10,3 +10,21 @@
 	color: var(--ui_text_color);
 }
 
+#nav{
+	display: flex;
+	flex-direction: column;
+}
+
+#lang_block{
+	padding-right: var(--indent_big);
+	align-content: center;
+}
+
+.lang_item{
+	font-size: var(--size-titleH4_font);
+	color: var(--ui_text_color);
+}
+
+.lang_item > a{
+	color: var(--ui_text_color);
+}

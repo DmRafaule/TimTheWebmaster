@@ -17,6 +17,10 @@ function UpdatePosts(isRecent = true, mode = 'basic', forWho = ''){
 			page.text('')
 			// Insert 'answer' from server into site code
 			page.append(result)
+			var posts = page.find('.post_preview')
+			for (var i = 0; i < posts.length; i++){
+				$(posts[i]).addClass('loader')
+			}
 		},
 		error: function(jqXHR, textStatus, errorThrown){
 		}

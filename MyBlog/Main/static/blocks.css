@@ -176,3 +176,7 @@
 .el-quad{
 	flex-basis: 25%;
 }
+
+.el-300-min-basis{
+	flex-basis: 300px;
+}

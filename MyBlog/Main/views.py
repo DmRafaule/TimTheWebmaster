@@ -13,7 +13,7 @@ class MainView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super(MainView, self).get_context_data(**kwargs)
         context = U.initDefaults(self.request)
-        context['me_years'] = 23
+        context['me_years'] = U.get_how_old_human_in_years('16/07/2000', "%d/%m/%Y")
         return context
 
 

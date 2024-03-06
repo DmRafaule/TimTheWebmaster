@@ -3,6 +3,11 @@
 	height: var(--icon_size);
 	transition: 0.2s;
 }
+.icon_small{
+	width: var(--icon_size_small);
+	height: var(--icon_size_small);
+	transition: 0.2s;
+}
 .icon_text{
 	text-align: center;
 	font-size: calc( var(--size-acent_font) * 2);
@@ -11,4 +16,11 @@
 	border: 2px dashed var(--secondary_color);
 	border-radius: 20px;
 }
-
+.flip_vert{
+	-webkit-transform: scaleX(-1);
+	transform: scaleX(-1);
+}
+.flip_horiz{
+	-webkit-transform: scaleY(-1);
+	transform: scaleY(-1);
+}

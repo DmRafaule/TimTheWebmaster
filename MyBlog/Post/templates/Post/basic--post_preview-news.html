@@ -8,37 +8,34 @@
 		{% if a.preview %}
 		<div class="post_preview_image marger-10">
 			<a href="{{a.get_absolute_url}}">
-				<img class="image image-min_sized dynamic_image button image-bordered" width="300" height="200" src="{% static 'placeholder.svg' %}" data-src="{% get_media_prefix %}{{a.preview}}" alt="{% trans "Превью статьи" %}">
+				<img class="image image-min_sized dynamic_image button" width="300" height="200" src="{% static 'placeholder.svg' %}" data-src="{% get_media_prefix %}{{a.preview}}" alt="{% trans "Превью статьи" %}">
 			</a>
 		</div>
 		{% endif %}
 		<div class="post_preview_meta column min_row_gap">
 			<h2><a class="text_button" href="{{ a.get_absolute_url }}">{{a.headline}}</a></h2>
 			<div class="row min_col_gap">
-				<div><b>{% trans "Опубликованно:" %}</b></div>
+				<img class="in_middle-self icon_small dynamic_image" width="32" height="32" src="{% static 'placeholder.svg' %}" data-src='{% static "Post/img/clock.svg" %}' alt="{% trans "Часы" %}">
 				<div>{{a.timeCreated|date:"d.m.Y"}}</div>
 			</div>
 			<div class="row min_col_gap">
 				<div class="row min_col_gap">
-					<div><b>{% trans "Просмотры:"%}</b></div> 
+					<img class="in_middle-self icon_small dynamic_image" width="32" height="32" src="{% static 'placeholder.svg' %}" data-src='{% static "Post/img/views.svg" %}' alt="{% trans "Глазик" %}">
 					<div>{{a.viewed}}</div>
 				</div>
 				<div class="row min_col_gap">
-					<div><b>{% trans "Нравится:"%}</b></div> 
+				<img class="in_middle-self icon_small dynamic_image" width="32" height="32" src="{% static 'placeholder.svg' %}" data-src='{% static "Post/img/like.svg" %}' alt="{% trans "Сердечки" %}">
 					<div>{{a.likes}}</div>
 				</div>
 				<div class="row min_col_gap">
-					<div ><b>{% trans "Поделилось:" %}</b></div> 
+					<img class="in_middle-self icon_small dynamic_image" width="32" height="32" src="{% static 'placeholder.svg' %}" data-src='{% static "Post/img/share.svg" %}' alt="{% trans "Соединённые точки" %}">
 					<div>{{a.shares}}</div>
 				</div>
 			</div>
 		</div>
 	</div>
 	<div class="post_preview_body">
-		<b>{% trans "Описание:" %}</b>	{{a.description}} 	
-	</div>
-	<div class="button link_button squered_button">
-		<a href="{{a.get_absolute_url}}">{% trans 'Читать'%}</a>
+		{{a.description}} 	
 	</div>
 </div>
 

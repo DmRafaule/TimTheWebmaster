@@ -13,23 +13,13 @@
 				</a>
 			</div>
 			{% endif %}
-			<div class="post_preview_meta--tool column min_row_gap">
-				<h2><a href="{{ a.get_absolute_url }}">{{a.name}}</a></h2>
-			</div>
-		</div>
-		<div class="row min_col_gap no_wrap">
-			<div class="button link_button squered_button in_middle-self">
-				<a href="{{a.get_absolute_url}}">{% trans 'Перейти'%}</a>
-			</div>
-			<div data-id="{{a.id}}" class="button action_button toggle_button squered_button in_middle-self">
-				{% trans 'Ещё'%}
+			<div class="post_preview_meta--tool">
+				<h2><a class="text_button" href="{{ a.get_absolute_url }}">{{a.name}}</a></h2>
 			</div>
 		</div>
 	</div>
-	<div id="post_preview_body-{{a.id}}" class="post_preview_body--tool">
-		<div>
-			{{a.description}} 	
-		</div>
+	<div>
+		{{a.description}} 	
 	</div>
 </div>
 

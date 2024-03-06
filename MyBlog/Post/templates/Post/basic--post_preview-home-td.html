@@ -1,0 +1,13 @@
+{% load static %}
+{% load i18n %}
+
+{% for a in posts %}
+<div class="home_post column min_row_gap">
+	<h3><a class="text_button" href="{{ a.get_absolute_url }}">{{a.termin}}</a></h3>
+	<div class="post_description">
+		{{a.description|truncatewords:50}} 	
+	</div>
+</div>
+{% endfor %}
+
+<div class="data-holder" data-length="{{length}}"></div>

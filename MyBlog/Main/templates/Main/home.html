@@ -11,33 +11,96 @@
 
 {% block content %}
 <div class="limiter in_middle in_middle-self no_wrap padder">
-	<div class="home_title column in_middle">
-		<h1>{% trans "Тим Вебмастер" %}</h1>
-		<p>{% trans "Вебмастер, программист, художник (вроде того), немножко SEO и очень множко копирайтер." %}</p>
+	<div class="row in_middle">
+		<h1 class="home_title" >{% trans "Тим Вебмастер" %}</h1>
+		<canvas id='canvas' class="canvas_as_element" data-vertex-shader="{% static "WebGLEngine/shaders/home_gik.vert" %}" data-fragment-shader="{% static "WebGLEngine/shaders/home_gik.frag" %}"></canvas>
 	</div>
-	<div class="row in_middle-even home_art_cas_news">
-		<div class="column home_art_cas">
-			<div class="column max_row_gap">
-				<h2><a class="text_button" href="{% url 'articles-list' %}">{% trans "Статьи" %}</a></h2>
+	<div class="column in_middle-even home_art_cas_news">
+		<div class="row in_middle-farapart mid_col_gap">
+			<div class="home_ui_el">
+				<h2 class="in_middle-self" ><a class="text_button" href="{% url 'articles-list' %}">{% trans "Статьи" %}</a></h2>
 				<hr>
-				<div id="article_to_upload" class="post_to_upload toObserve" data-category="articles" data-forwho="home" data-offset="0" >
+				<div id="article_to_upload" class="post_to_upload post_with_minimal_height row toObserve toLoad" data-category="articles" data-forwho="home" data-offset="0" data-howmuch="1" >
+				</div>
+				<div class="row home_buttons">
+					<div id="prev_article" data-targetcontainer="article_to_upload" class="prev_post button action_button">
+						<img class="icon dynamic_image flip_vert" width="32" height="32" src="" src="{% static 'placeholder.svg' %}" data-src="{% static "chevron.svg" %}" alt="Chevron">
+					</div>
+					<div id="next_article" data-targetcontainer="article_to_upload" class="next_post button action_button">
+						<img class="icon dynamic_image" width="32" height="32" src="" src="{% static 'placeholder.svg' %}" data-src="{% static "chevron.svg" %}" alt="Chevron">
+					</div>
 				</div>
 			</div>
-			<div class="column max_row_gap">
-				<h2><a class="text_button" href="{% url 'cases-list' %}">{% trans "Кейсы" %}</a></h2>
+			<div class="home_ui_el">
+				<h2 class="in_middle-self"><a class="text_button" href="{% url 'news-list' %}">{% trans "Новости" %}</a></h2>
 				<hr>
-				<div id="case_to_upload" class="post_to_upload toObserve" data-category="cases" data-forwho="home" data-offset="0" >
+				<div id="news_to_upload" class="post_to_upload post_with_minimal_height toObserve  toLoad" data-category="news" data-forwho="home" data-offset="0" data-howmuch="1">
+				</div>
+				<div class="row home_buttons on_end">
+					<div id="prev_article" data-targetcontainer="news_to_upload" class="prev_post button action_button">
+						<img class="icon dynamic_image flip_vert" width="32" height="32" src="" src="{% static 'placeholder.svg' %}" data-src="{% static "chevron.svg" %}" alt="Chevron">
+					</div>
+					<div id="next_article" data-targetcontainer="news_to_upload" class="next_post button action_button">
+						<img class="icon dynamic_image" width="32" height="32" src="" src="{% static 'placeholder.svg' %}" data-src="{% static "chevron.svg" %}" alt="Chevron">
+					</div>
 				</div>
 			</div>
 		</div>
-		<div class="column home_news max_row_gap">
-			<h2><a class="text_button" href="{% url 'news-list' %}">{% trans "Новости" %}</a></h2>
+		<div class="home_ui_el ">
+			<h2 class="in_middle-self"><a class="text_button" href="{% url 'tools-list' %}">{% trans "Инструменты" %}</a></h2>
 			<hr>
-			<div class="column news_to_upload max_row_gap toObserve">
+			<div id="tools_to_upload" class="post_to_upload row mid_row_gap mid_col_gap toObserve  toLoad" data-category="tools" data-forwho="home" data-offset="0" data-howmuch="2">
 			</div>
-			<div class="row home_buttons">
-				<div id="more_news" class="button action_button squered_button">
-					{% trans 'Ещё'%}
+			<div class="row home_buttons on_end">
+				<div id="prev_article" data-targetcontainer="tools_to_upload" class="prev_post button action_button">
+					<img class="icon dynamic_image flip_vert" width="32" height="32" src="" src="{% static 'placeholder.svg' %}" data-src="{% static "chevron.svg" %}" alt="Chevron">
+				</div>
+				<div id="next_article" data-targetcontainer="tools_to_upload" class="next_post button action_button">
+					<img class="icon dynamic_image" width="32" height="32" src="" src="{% static 'placeholder.svg' %}" data-src="{% static "chevron.svg" %}" alt="Chevron">
+				</div>
+			</div>
+		</div>
+		<div class="home_ui_el">
+			<h2 class="in_middle-self"><a class="text_button" href="{% url 'cases-list' %}">{% trans "Кейсы" %}</a></h2>
+			<hr>
+			<div id="case_to_upload" class="post_to_upload post_with_minimal_height2 toObserve toLoad" data-category="cases" data-forwho="home" data-offset="0" data-howmuch="1" >
+			</div>
+			<div class="row home_buttons on_end">
+				<div id="prev_article" data-targetcontainer="case_to_upload" class="prev_post button action_button">
+					<img class="icon dynamic_image flip_vert" width="31" height="32" src="" src="{% static 'placeholder.svg' %}" data-src="{% static "chevron.svg" %}" alt="Chevron">
+				</div>
+				<div id="next_article" data-targetcontainer="case_to_upload" class="next_post button action_button">
+					<img class="icon dynamic_image" width="31" height="32" src="" src="{% static 'placeholder.svg' %}" data-src="{% static "chevron.svg" %}" alt="Chevron">
+				</div>
+			</div>
+		</div>
+		<div class="row in_middle-farapart mid_col_gap">
+			<div class="home_ui_el">
+				<h2 class="in_middle-self"><a class="text_button" href="{% url 'td-list' %}">{% trans "T&D" %}</a></h2>
+				<hr>
+				<div id="termin_to_upload" class="column max_row_gap max_col_gap post_to_upload toObserve  toLoad" data-category="td" data-forwho="home" data-offset="0" data-howmuch="3">
+				</div>
+				<div class="row home_buttons on_end">
+					<div id="prev_article" data-targetcontainer="termin_to_upload" class="prev_post button action_button">
+						<img class="icon dynamic_image flip_vert" width="32" height="32" src="" src="{% static 'placeholder.svg' %}" data-src="{% static "chevron.svg" %}" alt="Chevron">
+					</div>
+					<div id="next_article" data-targetcontainer="termin_to_upload" class="next_post button action_button">
+						<img class="icon dynamic_image" width="32" height="32" src="" src="{% static 'placeholder.svg' %}" data-src="{% static "chevron.svg" %}" alt="Chevron">
+					</div>
+				</div>
+			</div>
+			<div class="home_ui_el">
+				<h2 class="in_middle-self"><a class="text_button" href="{% url 'qa-list' %}">{% trans "Q&A" %}</a></h2>
+				<hr>
+				<div id="question_to_upload" class="column max_row_gap max_col_gap post_to_upload toObserve  toLoad" data-category="qa" data-forwho="home" data-offset="0" data-howmuch="3">
+				</div>
+				<div class="row home_buttons on_end">
+					<div id="prev_article" data-targetcontainer="question_to_upload" class="prev_post button action_button">
+						<img class="icon dynamic_image flip_vert" width="32" height="32" src="" src="{% static 'placeholder.svg' %}" data-src="{% static "chevron.svg" %}" alt="Chevron">
+					</div>
+					<div id="next_article" data-targetcontainer="question_to_upload" class="next_post button action_button">
+						<img class="icon dynamic_image" width="32" height="32" src="" src="{% static 'placeholder.svg' %}" data-src="{% static "chevron.svg" %}" alt="Chevron">
+					</div>
 				</div>
 			</div>
 		</div>
@@ -64,4 +127,8 @@
         const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
     </script>
     <script src="{% static 'Main/js/home.js' %}"></script>
+	<!-- Простой 3д рендерер для сайта -->
+    <script src="{% static 'WebGLEngine/js/webgl_engine_v0.js' %}"></script>
+	<!-- Скрипт для рендеринга на определённом канвасе -->
+    <script src="{% static 'WebGLEngine/js/home_gik.js' %}"></script>
 {% endblock %}
