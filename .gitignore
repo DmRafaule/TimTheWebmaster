@@ -88,5 +88,4 @@ local_settings.py
 .venv
 db.sqlite3
 media
-Posts
-update.sh
+Docs

@@ -33,11 +33,7 @@ class PostPreviewView(TemplateView):
         context.update({'posts': self.model.objects.filter(isPublished=True).order_by(order)[(int(offset)):(int(number)) + (int(offset))] })
         offset = int(offset) + int(number)
         length = self.model.objects.filter(isPublished=True).count()
-        is_end = False
-        if (length <= int(offset) or length == 0):
-            is_end = True
-
-        context.update({'is_end': is_end})
+        context.update({'length': length})
 
         return context
 

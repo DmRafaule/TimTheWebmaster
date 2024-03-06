@@ -11,6 +11,8 @@ function onReady() {
 			// Check if the entry is intersecting the viewport
 			if (entry.isIntersecting) {
 				image.setAttribute('src',image.getAttribute('data-src'))
+				image.classList.add('loader')
+
 				image_observer.disconnect()
 			}
 		  }

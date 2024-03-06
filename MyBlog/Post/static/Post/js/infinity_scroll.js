@@ -18,6 +18,13 @@ function LoadPosts(isRecent = true, mode = 'basic', forWho = ''){
 			var page = $('#page');
 			// Insert 'answer' from server into site code
 			page.append(result)
+			// Вставляем анимацию проявления нового поста
+			var posts = page.find('.post_preview')
+			for (var i = 0; i < posts.length; i++){
+				if (!$(posts[i]).hasClass('loader'))
+					$(posts[i]).addClass('loader')
+			}
+
 			offset = offset + number
 		},
 		error: function(jqXHR, textStatus, errorThrown){

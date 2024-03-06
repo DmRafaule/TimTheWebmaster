@@ -9,10 +9,10 @@
 {% endblock %}
 
 {% block content %}
-<div class="limiter in_middle in_middle-self no_wrap padder">
-	<h1 class="title_in_middle">{% trans "Тим Вебмастер, его контакты и обратная связь" %}</h1>
-	<div class="row in_middle-even">
-		<div>
+<div class="contact_limiter in_middle in_middle-self no_wrap padder">
+	<h1>{% trans "Тим Вебмастер, его контакты и обратная связь" %}</h1>
+	<div class="row in_middle-farapart">
+		<div class="el-40-half">
 			<h2 class="paragraph">{% trans "Я в социальных сетях" %}</h2>
 			<ul class="list_without_sign">
 				<li class="ref">
@@ -37,7 +37,7 @@
 				</li>
 			</ul>
 		</div>
-		<div>
+		<div class="el-40-half">
 			<h2 class="paragraph">{% trans "Форма для обратной связи"%}</h2>
 			{% csrf_token %}
 			<form id="toSignup">

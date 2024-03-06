@@ -5,13 +5,14 @@
 .post_preview_header{
 }
 .post_preview_image{
+	display:flex;
 	flex: 0 0 25%;
+	align-self:center;
 }
 .post_preview_meta{
 	flex: 1 1 60%;
 }
 .post_preview_body{
-	max-width: 600px;
 }
 
 
@@ -37,6 +38,8 @@
 .post_preview_header--tool{
 }
 .post_preview--tool{
+}
+.post_preview--tool-grid{
 	width: min-content;
 }
 
@@ -64,4 +67,9 @@
 .post_preview-service{
 	flex: 0 0 30%;
   flex-wrap: nowrap;
+}
+.post_time{
+	display: flex;
+	column-gap: var(--min_pm);
+	align-items: center;
 }

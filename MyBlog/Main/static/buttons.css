@@ -52,6 +52,7 @@
 	border-radius: 8px;
 }
 
+
 .action_button{
 	background-color: var(--button_action_bg);
 	padding: var(--button_padding_top_bot);

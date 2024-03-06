@@ -27,6 +27,24 @@ urlpatterns += [
             model=M.Case,
         ),
         name="cases-home-preview"),
+    path(
+        'load_post_preview-tools/',
+        V.PostPreviewView.as_view(
+            model=M.Tool,
+        ),
+        name="tools-home-preview"),
+    path(
+        'load_post_preview-td/',
+        V.PostPreviewView.as_view(
+            model=M.TD,
+        ),
+        name="td-home-preview"),
+    path(
+        'load_post_preview-qa/',
+        V.PostPreviewView.as_view(
+            model=M.QA,
+        ),
+        name="qa-home-preview"),
 ]
 # patterns for handling previews of list of objects in website categories pages
 urlpatterns += [

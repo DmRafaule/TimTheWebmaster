@@ -3,41 +3,46 @@
 {% load markdown%}
 
 {% for a in posts %}
-<div class="column min_row_gap">
+<div class="home_post row min_row_gap">
 	{% if a.preview %}
-	<div class="marger-10">
-		<a id="home_article_link" href="{{a.get_absolute_url}}">
-			<img width="300" height="180" class="image dynamic_image button  image-bordered" src="{% static 'placeholder.svg'%}" data-src="{% get_media_prefix %}{{a.preview}}" alt="{% trans "Превью статьи" %}">
-		</a>
-	</div>
-	{% endif %}
-	<div class="column min_row_gap">
-		<h3><a class="text_button" href="{{ a.get_absolute_url }}">{{a.title}}</a></h3>
-		<div class="row min_col_gap">
-			<div class="post_el--description"><b>{% trans "Опубликованно:" %}</b></div>
-			<div>{{a.timeCreated|date:"d.m.Y"}}</div>
+	<div class="row  el-expandable el-40-half">
+		<div class="marger-10">
+			<a id="home_article_link" href="{{a.get_absolute_url}}">
+				<img width="300" height="180" class="home_image button" src="{% get_media_prefix %}{{a.preview}}" alt="{% trans "Превью статьи" %}">
+			</a>
 		</div>
 	</div>
-	<div class="post_description column min_row_gap">
-	{% if a.client_name %}
+	{% endif %}
+	<div class="column el-300-min-basis el-expandable el-40-half min_row_gap">
+		<h3><a class="text_button" href="{{ a.get_absolute_url }}">{{a.title}}</a></h3>
+		<div class="row mid_col_gap">
+			<div class="row min_col_gap">
+				<img class="in_middle-self icon_small dynamic_image" width="32" height="32" src="{% static 'placeholder.svg' %}" data-src='{% static "Post/img/clock.svg" %}' alt="{% trans "Часы" %}">
+				<div>{{a.timeCreated|date:"d.m.Y"}}</div>
+			</div>
+			<div class="row min_col_gap">
+				<img class="in_middle-self icon_small dynamic_image" width="32" height="32" src="{% static 'placeholder.svg' %}" data-src='{% static "Post/img/views.svg" %}' alt="{% trans "Глазик" %}">
+				<div>{{a.viewed}}</div>
+			</div>
+			<div class="row min_col_gap">
+				<img class="in_middle-self icon_small dynamic_image" width="32" height="32" src="{% static 'placeholder.svg' %}" data-src='{% static "Post/img/like.svg" %}' alt="{% trans "Сердечки" %}">
+				<div>{{a.likes}}</div>
+			</div>
+			<div class="row min_col_gap">
+				<img class="in_middle-self icon_small dynamic_image" width="32" height="32" src="{% static 'placeholder.svg' %}" data-src='{% static "Post/img/share.svg" %}' alt="{% trans "Соединённые точки" %}">
+				<div>{{a.shares}}</div>
+			</div>
+		</div>
+		{% if a.client_name %}
 		<span class="post_preview_body">
 			<b>{% trans "Клиент:" %}</b>	{{a.client_name}} 	
 		</span>
-	{% endif %}
-		<span class="post_description__description">
-			<b>{% trans "Описание:	" %}</b> {{a.description|truncatewords:50}} 	
-		</span>
-	</div>
-	<div class="row home_buttons">
-		<div id="next_article" class="next_post button  action_button squered_button">
-			{% trans 'Ещё'%}
-		</div>
-		<div id="read_article" class="button link_button squered_button">
-			<a href="{{a.get_absolute_url}}">{% trans 'Читать'%}</a>
+		{% endif %}
+		<div class="post_description__description">
+			{{a.description|truncatewords:50}} 	
 		</div>
 	</div>
 </div>
 {% endfor %}
-{% if is_end %}
-<div class="end_list"></div>
-{% endif %}
+
+<div class="data-holder" data-length="{{length}}"></div>
