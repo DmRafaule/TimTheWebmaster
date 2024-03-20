@@ -88,6 +88,9 @@
 .on_start_other{
 	align-items: start;
 }
+.on_end_other{
+	align-items: end;
+}
 
 .on_end{
 	justify-content: end;

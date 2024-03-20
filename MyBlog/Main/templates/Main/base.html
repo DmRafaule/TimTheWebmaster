@@ -71,6 +71,8 @@
 		<div id="menu_button" class="button squered_button">
 			<img width="32" height="32" class="icon dynamic_image squered_button" src="{% static 'placeholder.svg' %}" data-src="{% static 'menu.svg' %}" alt="{% trans '3 горизонтальные линии, бургер' %}">
 		</div>
+		{% block hat %}
+		{% endblock %}
 		<div class="expander">
 		</div>
 		{% if request.session.is_auth %}
