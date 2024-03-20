@@ -1,1 +1,185 @@
-.row{display:flex;flex-direction:row;flex-wrap:wrap}.no_wrap{flex-wrap:nowrap}.column{display:flex;flex-direction:column;flex-wrap:wrap}.padder{padding:var(--min_pm)}.padder-5{padding-left:10px}.padder-10{padding-left:20px}.padder-15{padding-left:30px}.padder-20{padding-left:40px}.padder-25{padding-left:50px}.rotate-right-90{transform:rotate(90deg)}.rotate-left-90{transform:rotate(-90deg)}.rotate-180{transform:rotate(180deg)}.marger_min{margin:var(--min_pm)}.marger_mid{margin:var(--mid_pm)}.marger_max{margin:var(--max_pm)}.no_marger-padder{margin:0;padding:0}.in_middle{align-items:center;justify-content:center}.in_middle-self{align-self:center}.zIndMin1{z-index:-1}.zIndZero{z-index:0}.zIndPl1{z-index:1}.zIndPl2{z-index:2}.full_width{width:100%}.full_height{height:100%}.on_start{justify-content:start}.on_start_other{align-items:start}.on_end{justify-content:end}.in_middle-even{justify-content:space-around}.in_middle-farapart{justify-content:space-between}.is_relative{position:relative}.is_absolute{position:absolute}.is_fixed{position:fixed}.t-l{top:0;left:0}.t-r{top:0;right:0}.b-l{bottom:0;left:0}.b-r{bottom:0;right:0}.m-m{left:50%;top:50%;transform:translate(-50%,-50%)}.min_gap{gap:var(--small_space)}.mid_gap{gap:var(--usual_space)}.max_gap{gap:var(--big_space)}.min_row_gap{row-gap:var(--small_space)}.mid_row_gap{row-gap:var(--usual_space)}.max_row_gap{row-gap:var(--big_space)}.min_col_gap{column-gap:var(--small_space)}.mid_col_gap{column-gap:var(--usual_space)}.max_col_gap{column-gap:var(--big_space)}.el-no_shrinkable{flex-shrink:0}.el-shrinkable{flex-shrink:1}.el-no_expandable{flex-grow:0}.el-expandable{flex-grow:1}.el-half{flex-basis:50%}.el-40-half{flex-basis:40%}.el-quad{flex-basis:25%}.el-300-min-basis{flex-basis:300px}
+
+.row{
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+}
+.no_wrap{
+	flex-wrap: nowrap;
+}
+.column{
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+}
+.padder{
+	padding: var(--min_pm);
+}
+.padder-5{
+	padding-left: 10px;
+}
+.padder-10{
+	padding-left: 20px;
+}
+.padder-15{
+	padding-left: 30px;
+}
+.padder-20{
+	padding-left: 40px;
+}
+.padder-25{
+	padding-left: 50px;
+}
+.rotate-right-90{
+	transform: rotate(90deg)
+}
+.rotate-left-90{
+	transform: rotate(-90deg)
+}
+.rotate-180{
+	transform: rotate(180deg)
+}
+.marger_min{
+	margin: var(--min_pm);
+}
+.marger_mid{
+	margin: var(--mid_pm);
+}
+.marger_max{
+	margin: var(--max_pm);
+}
+
+.no_marger-padder{
+	margin: 0px;
+	padding: 0px;
+}
+
+.in_middle{
+	align-items: center;
+	justify-content: center;
+}
+
+.in_middle-self{
+	align-self: center;
+}
+.zIndMin1{
+	z-index: -1;
+}
+.zIndZero{
+	z-index: 0;
+}
+.zIndPl1{
+	z-index: 1;
+}
+.zIndPl2{
+	z-index: 2;
+}
+
+.full_width{
+	width: 100%;
+}
+.full_height{
+	height: 100%;
+}
+.on_start{
+	justify-content: start;
+}
+
+.on_start_other{
+	align-items: start;
+}
+.on_end_other{
+	align-items: end;
+}
+
+.on_end{
+	justify-content: end;
+}
+.in_middle-even{
+	justify-content: space-around;
+}
+.in_middle-farapart{
+	justify-content: space-between;
+}
+.is_relative{
+	position: relative;
+}
+.is_absolute{
+	position: absolute;
+}
+.is_fixed{
+	position: fixed;
+}
+.t-l{
+	top: 0;
+	left: 0;
+}
+.t-r{
+	top: 0;
+	right: 0;
+}
+.b-l{
+	bottom: 0;
+	left: 0;
+}
+.b-r{
+	bottom: 0;
+	right: 0;
+}
+.m-m{
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+}
+.min_gap{
+	gap: var(--small_space);	
+}
+.mid_gap{
+	gap: var(--usual_space);	
+}
+.max_gap{
+	gap: var(--big_space);	
+}
+.min_row_gap{
+	row-gap: var(--small_space);	
+}
+.mid_row_gap{
+	row-gap: var(--usual_space);	
+}
+.max_row_gap{
+	row-gap: var(--big_space);	
+}
+.min_col_gap{
+	column-gap: var(--small_space);	
+}
+.mid_col_gap{
+	column-gap: var(--usual_space);	
+}
+.max_col_gap{
+	column-gap: var(--big_space);	
+}
+.el-no_shrinkable{
+	flex-shrink: 0;
+}
+.el-shrinkable{
+	flex-shrink: 1;
+}
+.el-no_expandable{
+	flex-grow: 0;
+}
+.el-expandable{
+	flex-grow: 1;
+}
+.el-half{
+	flex-basis: 50%;
+}
+.el-40-half{
+	flex-basis: 40%;
+}
+.el-quad{
+	flex-basis: 25%;
+}
+
+.el-300-min-basis{
+	flex-basis: 300px;
+}

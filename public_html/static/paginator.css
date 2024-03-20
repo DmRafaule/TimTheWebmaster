@@ -1,0 +1,69 @@
+.example_pagin_button{
+    display: none !important;
+}
+.pagin_button{
+    padding: calc(var(--min_pm)/2) var(--min_pm);
+    display:none;
+}
+
+.pagin_dots{
+    display: block;
+}
+
+/* Не отображаем точки если текущий элемент находится в одной кнопке до начала */
+.pagin_dots:has(+ .current_pagin_button){
+    display: none;
+}
+
+/* Не отображаем точки если текущий элемент находится в двух кнопках до начала */
+.pagin_dots:has(+ .pagin_button + .current_pagin_button){
+    display:none;
+}
+/* Не отображаем точки если текущий элемент находится в одной кнопке до конца */
+.current_pagin_button + .pagin_dots{
+    display: none;
+}
+/* Не отображаем точки если текущий элемент находится в двух кнопках до конца */
+.current_pagin_button + .pagin_button + .pagin_dots{
+    display: none;
+}
+
+/* Предыдущая кнопка */
+.pagin_button:has(+ .current_pagin_button){
+    display:block;
+}
+.pagin_button:has(+ .pagin_dots + .current_pagin_button){
+    display:block;
+}
+
+/* Следующая кнопка */
+.current_pagin_button + .pagin_button{
+    display:block;
+}
+.current_pagin_button + .pagin_dots + .pagin_button{
+    display:block;
+}
+
+.first_pagin_button{
+    display:block;
+}
+.last_pagin_button{
+    display:block;
+}
+
+.current_pagin_button{
+    display:block;
+    outline: 3px solid var(--acent_color);
+    outline-offset: 1px;
+}
+
+.hr_paginator{
+    border-top-color: grey;
+    border-top-width: calc(var(--devider_width)/2);
+}
+
+.action_button{
+    background-color: var(--secondary_color);
+    padding: calc(var(--button_padding_top_bot)/2);
+    border-radius: 16px;
+}
