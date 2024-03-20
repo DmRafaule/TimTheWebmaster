@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-19 15:03+0300\n"
+"POT-Creation-Date: 2024-03-20 05:42+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,203 +18,203 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: .\User\templates\User\login.html:7
+#: User/templates/User/login.html:7
 msgid "Страница входа"
 msgstr "Login page"
 
-#: .\User\templates\User\login.html:14
+#: User/templates/User/login.html:14
 msgid "Форма входа"
 msgstr "Login form"
 
-#: .\User\templates\User\login.html:20
+#: User/templates/User/login.html:20
 msgid "*Имя"
 msgstr "*Name"
 
-#: .\User\templates\User\login.html:24
+#: User/templates/User/login.html:24
 msgid "*Пароль"
 msgstr "*Password"
 
-#: .\User\templates\User\login.html:30 .\User\templates\User\signup.html:41
+#: User/templates/User/login.html:30 User/templates/User/signup.html:41
 msgid "Поля отмеченые * обязательны к заполнению"
 msgstr "Fields marked by * sign are required."
 
-#: .\User\templates\User\login.html:31 .\User\templates\User\signup.html:42
+#: User/templates/User/login.html:31 User/templates/User/signup.html:42
 msgid "Имя должно состоять от 3 до 25 букв"
 msgstr "The name must be between 3 and 25 letters"
 
-#: .\User\templates\User\login.html:32
+#: User/templates/User/login.html:32
 msgid "Пользователь должен существовать"
 msgstr "The user must exist."
 
-#: .\User\templates\User\login.html:33
+#: User/templates/User/login.html:33
 msgid "Пароль должен быть действительным"
 msgstr "The password must be valid."
 
-#: .\User\templates\User\login.html:39
+#: User/templates/User/login.html:39
 msgid "Вход"
 msgstr "Login"
 
-#: .\User\templates\User\login.html:43 .\User\templates\User\signup.html:51
+#: User/templates/User/login.html:43 User/templates/User/signup.html:51
 msgid "Регистрация"
 msgstr "Registration"
 
-#: .\User\templates\User\profile.html:7
+#: User/templates/User/profile.html:7
 msgid "Профиль"
 msgstr "Profile"
 
-#: .\User\templates\User\profile.html:15 .\User\templates\User\profile.html:17
+#: User/templates/User/profile.html:15 User/templates/User/profile.html:17
 msgid "Аватар пользователя"
 msgstr "User avatar"
 
-#: .\User\templates\User\profile.html:21
+#: User/templates/User/profile.html:21
 msgid "Имя: "
 msgstr "Name: "
 
-#: .\User\templates\User\profile.html:23
+#: User/templates/User/profile.html:23
 msgid "Почта: "
 msgstr "Email: "
 
-#: .\User\templates\User\profile.html:26
+#: User/templates/User/profile.html:26
 msgid "О пользователе"
 msgstr "About user"
 
-#: .\User\templates\User\profile.html:33
+#: User/templates/User/profile.html:33
 msgid "Коментарии"
 msgstr "Comments"
 
-#: .\User\templates\User\signup.html:7
+#: User/templates/User/signup.html:7
 msgid "Регистрация на сайте Тим Вебмастер"
 msgstr "Registration on site Tim the Webmaster"
 
-#: .\User\templates\User\signup.html:13
+#: User/templates/User/signup.html:13
 msgid "Форма регистрации"
 msgstr "Registration form"
 
-#: .\User\templates\User\signup.html:19
+#: User/templates/User/signup.html:19
 msgid "* Имя"
 msgstr "* Name"
 
-#: .\User\templates\User\signup.html:23
+#: User/templates/User/signup.html:23
 msgid "* Почта"
 msgstr "* Email"
 
-#: .\User\templates\User\signup.html:27
+#: User/templates/User/signup.html:27
 msgid "* Пароль"
 msgstr "* Password"
 
-#: .\User\templates\User\signup.html:31
+#: User/templates/User/signup.html:31
 msgid "* Повтори пароль"
 msgstr "* Retype password"
 
-#: .\User\templates\User\signup.html:34
+#: User/templates/User/signup.html:34
 msgid "Раскажи немного о себе"
 msgstr "Tell me a little about yourself"
 
-#: .\User\templates\User\signup.html:37
+#: User/templates/User/signup.html:37
 msgid "Выбрать файл"
 msgstr "Select a file"
 
-#: .\User\templates\User\signup.html:43
+#: User/templates/User/signup.html:43
 msgid "Имя должно быть уникальным"
 msgstr "The name should be unique"
 
-#: .\User\templates\User\signup.html:44
+#: User/templates/User/signup.html:44
 msgid "Пароль должен быть больше 6 знаков"
 msgstr "The password must be more than six characters."
 
-#: .\User\templates\User\signup.html:45
+#: User/templates/User/signup.html:45
 msgid "Пароли должны совпадать"
 msgstr "Passwords must match."
 
-#: .\User\templates\User\signup.html:46
+#: User/templates/User/signup.html:46
 msgid "Почта должна быть действительной"
 msgstr "The mail should be valid."
 
-#: .\User\views.py:47
+#: User/views.py:47
 msgid "✖ не могу войти"
 msgstr "✖ can't login"
 
-#: .\User\views.py:50
+#: User/views.py:50
 msgid "⚠ пользователь пуст"
 msgstr "⚠ username field is empty"
 
-#: .\User\views.py:53
+#: User/views.py:53
 msgid "⚠ пароль пуст"
 msgstr "⚠ password field is empty"
 
-#: .\User\views.py:63
+#: User/views.py:63
 msgid "✔ Вы успешно вошли, перенаправление ... "
 msgstr "✔ You have successfully logged in, redirecting ..."
 
-#: .\User\views.py:64 .\User\views.py:65 .\User\views.py:141
-#: .\User\views.py:142 .\User\views.py:143 .\User\views.py:144
+#: User/views.py:64 User/views.py:65 User/views.py:141 User/views.py:142
+#: User/views.py:143 User/views.py:144
 msgid "✔ Хорошо"
 msgstr "✔ Ok"
 
-#: .\User\views.py:67
+#: User/views.py:67
 msgid "⚠ Неправильный пароль"
 msgstr "⚠ Wrong password"
 
-#: .\User\views.py:70
+#: User/views.py:70
 msgid "⚠ Такого пользователя не существует"
 msgstr "⚠ This user does not exist"
 
-#: .\User\views.py:99
+#: User/views.py:99
 msgid "✖ не могу зарегестрировать нового пользователя"
 msgstr "✖ I can't register a new user"
 
-#: .\User\views.py:102
+#: User/views.py:102
 msgid "⚠ поле пользователя не заполнено"
 msgstr "⚠ user field is empty"
 
-#: .\User\views.py:105
+#: User/views.py:105
 msgid "⚠ поле почты не заполнено"
 msgstr "⚠ email field is empty"
 
-#: .\User\views.py:108
+#: User/views.py:108
 msgid "⚠ поле пароля не заполнено"
 msgstr "⚠ password field is empty"
 
-#: .\User\views.py:112
+#: User/views.py:112
 msgid "⚠ пользователь с таким именем уже существует"
 msgstr "⚠ user with this name already exist"
 
-#: .\User\views.py:116
+#: User/views.py:116
 msgid "⚠ такая почта уже используется"
 msgstr "⚠ This email is already in use"
 
-#: .\User\views.py:120
+#: User/views.py:120
 msgid "⚠ введённое имя слишком короткое"
 msgstr "⚠ username is too short"
 
-#: .\User\views.py:124
+#: User/views.py:124
 msgid "⚠ введённое имя слишком длинное"
 msgstr "⚠ username is too long"
 
-#: .\User\views.py:128
+#: User/views.py:128
 msgid "⚠ введённый пароль слишком короткий"
 msgstr "⚠ password is too short"
 
-#: .\User\views.py:132 .\User\views.py:133
+#: User/views.py:132 User/views.py:133
 msgid "⚠ пароль не совпадает"
 msgstr "⚠ password does not match"
 
-#: .\User\views.py:137
+#: User/views.py:137
 msgid "⚠ неправильный формат адреса почты"
 msgstr "⚠ incorrect email address format"
 
-#: .\User\views.py:140
+#: User/views.py:140
 msgid "✔ вы успешно зарегестрировались, перенаправление"
 msgstr "✔ you have successfully registered, redirecting"
 
-#: .\User\views.py:151
+#: User/views.py:151
 msgid "Ты, скользкий тип"
 msgstr "You, sneaky bastard"
 
-#: .\User\views.py:152
+#: User/views.py:152
 msgid "Даже не пытайся"
 msgstr "Don't even try"
 
-#: .\User\views.py:153
+#: User/views.py:153
 msgid "Или попытайся, всёравно"
 msgstr "Or try, don't care"

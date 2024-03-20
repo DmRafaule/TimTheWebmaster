@@ -25,7 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-da4fk(86vwdw7^kre!viz_3n2)80i7jon^-50=@8+18-@45f@5'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['timthewebmaster.com']
 
@@ -49,7 +49,7 @@ INSTALLED_APPS = [
     'User.apps.UserConfig',
     'Comment.apps.CommentConfig',
     'ImageThief.apps.ImagethiefConfig',
-    'NewsAggregator.apps.NewsaggregatorConfig',
+    'RSSAggregator.apps.RssaggregatorConfig',
     'NotebookOnMarginalia.apps.NotebookonmarginaliaConfig',
     'ShaderToy.apps.ShadertoyConfig',
     'Space091.apps.Space091Config',
