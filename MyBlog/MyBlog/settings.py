@@ -49,7 +49,7 @@ INSTALLED_APPS = [
     'User.apps.UserConfig',
     'Comment.apps.CommentConfig',
     'ImageThief.apps.ImagethiefConfig',
-    'NewsAggregator.apps.NewsaggregatorConfig',
+    'RSSAggregator.apps.RssaggregatorConfig',
     'NotebookOnMarginalia.apps.NotebookonmarginaliaConfig',
     'ShaderToy.apps.ShadertoyConfig',
     'Space091.apps.Space091Config',

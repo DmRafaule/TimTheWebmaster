@@ -2,7 +2,7 @@ import os
 import time
 from multiprocessing import Process
 from threading import Thread
-from signal import SIGKILL
+from signal import SIGABRT
 import shutil
 
 from django.http import JsonResponse
@@ -39,7 +39,7 @@ def tool_main(request):
 
 def killProcess(pid: int) -> None:
     try:
-        os.kill(pid, SIGKILL)
+        os.kill(pid, SIGABRT)
     except:
         log(f"Error: Could not kill {pid} process.")
     else:

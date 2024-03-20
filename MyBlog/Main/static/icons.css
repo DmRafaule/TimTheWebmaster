@@ -24,3 +24,7 @@
 	-webkit-transform: scaleY(-1);
 	transform: scaleY(-1);
 }
+.svg_icon_inverted{
+	filter: brightness(0) invert(1) ;
+}
+

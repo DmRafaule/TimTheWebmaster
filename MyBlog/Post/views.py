@@ -66,6 +66,7 @@ class PostListView(ListView):
         context = super().get_context_data(**kwargs)
         context = U.initDefaults(self.request)
         context['category'] = self.category
+        
         return context
 
 
