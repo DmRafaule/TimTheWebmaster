@@ -4,9 +4,9 @@
 }
 
 
-.loader,
-.loader:before,
-.loader:after {
+.image_thief-loader,
+.image_thief-loader:before,
+.image_thief-loader:after {
   width: 2.5em;
   height: 2.5em;
   -webkit-animation-fill-mode: both;
@@ -14,7 +14,7 @@
   -webkit-animation: load7 1.8s infinite ease-in-out;
   animation: load7 1.8s infinite ease-in-out;
 }
-.loader {
+.image_thief-loader {
   background-color: black;
   font-size: 10px;
   -webkit-transform: translateZ(0);
@@ -23,16 +23,16 @@
   -webkit-animation-delay: -0.32s;
   animation-delay: -0.32s;
 }
-.loader:before,
-.loader:after {
+.image_thief-loader:before,
+.image_thief-loader:after {
   content: '';
   background-color: black;
   position: absolute;
 }
-.loader:before {
+.image_thief-loader:before {
   left: 7.0em;
 }
-.loader:after {
+.image_thief-loader:after {
   -webkit-animation-delay: -0.16s;
   animation-delay: -0.16s;
   left: 3.5em;
