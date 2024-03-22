@@ -35,6 +35,7 @@
 	--size-mini_font: 16px;
 	--size-main_font: 18px;
 	--size-acent_font: 18px;
+	--size-table-header: 22px;
 	--size-titleH1_font: 48px;
 	--size-titleH2_font: 40px;
 	--size-titleH3_font: 36px;
@@ -46,6 +47,7 @@
 	--weight-mainBold_font: 700;
 	--weight-acent_font: 400;
 	--weight-title_font: 700;
+	--weight-table-header: 700;
 	/*Sizes*/
 	--small_space: 8px;
 	--usual_space: 16px;
@@ -98,5 +100,6 @@
 	--size-titleH4_font: 28px;
 	--size-titleH5_font: 22px;
 	--size-titleH6_font: 20px;
+	--size-table-header: 20px;
 }
 }
