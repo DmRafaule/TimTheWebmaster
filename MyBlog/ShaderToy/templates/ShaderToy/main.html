@@ -33,7 +33,7 @@
 				<div id="tab_button_for_lib" class="tab_button" data-bodyid="5">
 					<abbr title="{% trans "Библиотека шейдеров" %}"><img width="32" height="32" class="icon bordered_button button dynamic_image squered_button" src="{% static 'placeholder.svg' %}" data-src="{% static 'ShaderToy/img/library.svg' %}" alt="{% trans "Иконка библиотеки" %}"></abbr>	
 				</div>
-				<div class="tab_button" data-bodyid="6">
+				<div class="tab_button tab_button_shader_editor_not_active" data-bodyid="6">
 					<abbr title="{% trans "Об инструменте" %}"><img width="32" height="32" class="icon bordered_button button dynamic_image squered_button" src="{% static 'placeholder.svg' %}" data-src="{% static 'ShaderToy/img/question_mark.svg' %}" alt="{% trans "Иконка вопроса" %}"></abbr>		
 				</div>
 				<div id="tab_button_for_err" class="tab_button" data-bodyid="7">
@@ -150,54 +150,6 @@
 					<h2 class="padder">{% trans "Библиотека шейдеров glsl" %}</h2>
 				</div>
 				<div id="tab_body-6" class="tab_element column padder">
-					<h2 class="">{% trans "Об редакторе" %}</h2>
-					<div class="text">
-						{% blocktrans %}
-							Ключевой особенностью данного редактора является то, что вместе с фрагментнным шейдером можно
-							редактировать ещё и вершинный шейдер. При условии что вы разбираетесь в линейной алгебре, матрицах и
-							векторах.
-						{% endblocktrans %}
-					</div>
-					<div class="text">
-						{% blocktrans %}
-							Данный инструмент был создан для решения двух моих задач:
-						{% endblocktrans %}
-					</div>
-					<ul class="list">
-						<li>{% trans "Создание glsl шейдеров для дальнейшего их использования" %}</li>
-						<li>{% trans "Оттачивание навыков и знаний о математике" %}</li>
-					</ul>
-					<div class="text">
-						{% blocktrans %}
-							Он активно развивается. Я планирую добавить:
-						{% endblocktrans %}
-					</div>
-					<ul class="list">
-						<li>{% trans "Выбор между webgl и webgl2" %}</li>
-						<li>{% trans "Улучшение <b>UX/UI</b> для кнопки сохранения и вывода ошибок" %}</li>
-						<li>{% trans "Возможность давать имена сохранениям" %}</li>
-						<li>{% trans "Добавить поддержку текстур" %}</li>
-						<li>{% trans "Добавить поддержку горячих клавиш" %}</li>
-					</ul>
-					<div class="text">
-						{% blocktrans %}
-							Важно учитывать следующие особенности при работе с инструментом.
-						{% endblocktrans %}
-					</div>
-					<ul class="list">
-						<li>{% trans "Текстуры пока не поддерживаются" %}</li>
-						<li>
-							{% trans "Есть 3 встроенные юниформы" %}
-							<ul class="list">
-								<li>{% trans "<b>vec2</b> <i>u_time</i> - это время с начала загрузки страницы." %}</li>
-								<li>{% trans "<b>vec2</b> <i>u_resolution</i> - это ширина и высота холста" %}</li>
-								<li>{% trans "<b>vec2</b> <i>u_mouse</i> - это <b>x</b> и <b>y</b> координата мыши, относительно холста" %}</li>
-							</ul>
-						</li>
-						<li>{% trans "Если ты внёс изменения в шейдер и обновил его, но ничего не произошло, проверь может он стоит на паузе?" %}</li>
-						<li>{% trans "Текстовые поля ввода требуют перечисления цифр через запятую" %}</li>
-						<li>{% trans "В библиотеке шейдеров не все шейдеры мои." %}</li>
-					</ul>
 				</div>
 				<div id="tab_body-7" class="tab_element ">
 				</div>
@@ -217,7 +169,56 @@
 			<div id="render-status" class="in_middle-self">
 			</div>
 		</div>
+		<h2 class="">{% trans "Об редакторе" %}</h2>
+		<div class="text">
+			{% blocktrans %}
+				Ключевой особенностью данного редактора является то, что вместе с фрагментнным шейдером можно
+				редактировать ещё и вершинный шейдер. При условии что вы разбираетесь в линейной алгебре, матрицах и
+				векторах.
+			{% endblocktrans %}
+		</div>
+		<div class="text">
+			{% blocktrans %}
+				Данный инструмент был создан для решения двух моих задач:
+			{% endblocktrans %}
+		</div>
+		<ul class="list">
+			<li>{% trans "Создание glsl шейдеров для дальнейшего их использования" %}</li>
+			<li>{% trans "Оттачивание навыков и знаний о математике" %}</li>
+		</ul>
+		<div class="text">
+			{% blocktrans %}
+				Он активно развивается. Я планирую добавить:
+			{% endblocktrans %}
+		</div>
+		<ul class="list">
+			<li>{% trans "Выбор между webgl и webgl2" %}</li>
+			<li>{% trans "Улучшение <b>UX/UI</b> для кнопки сохранения и вывода ошибок" %}</li>
+			<li>{% trans "Возможность давать имена сохранениям" %}</li>
+			<li>{% trans "Добавить поддержку текстур" %}</li>
+			<li>{% trans "Добавить поддержку горячих клавиш" %}</li>
+		</ul>
+		<div class="text">
+			{% blocktrans %}
+				Важно учитывать следующие особенности при работе с инструментом.
+			{% endblocktrans %}
+		</div>
+		<ul class="list">
+			<li>{% trans "Текстуры пока не поддерживаются" %}</li>
+			<li>
+				{% trans "Есть 3 встроенные юниформы" %}
+				<ul class="list">
+					<li>{% trans "<b>vec2</b> <i>u_time</i> - это время с начала загрузки страницы." %}</li>
+					<li>{% trans "<b>vec2</b> <i>u_resolution</i> - это ширина и высота холста" %}</li>
+					<li>{% trans "<b>vec2</b> <i>u_mouse</i> - это <b>x</b> и <b>y</b> координата мыши, относительно холста" %}</li>
+				</ul>
+			</li>
+			<li>{% trans "Если ты внёс изменения в шейдер и обновил его, но ничего не произошло, проверь может он стоит на паузе?" %}</li>
+			<li>{% trans "Текстовые поля ввода требуют перечисления цифр через запятую" %}</li>
+			<li>{% trans "В библиотеке шейдеров не все шейдеры мои." %}</li>
+		</ul>
 	</div>
+	
 {% endblock %}
 
 {% block footer_links %}

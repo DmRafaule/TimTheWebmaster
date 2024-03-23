@@ -76,3 +76,6 @@
 	width: 100%;
 }
 
+.tab_button_shader_editor_not_active{
+	display: none;
+}
