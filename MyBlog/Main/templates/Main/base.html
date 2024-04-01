@@ -68,7 +68,7 @@
 <body class="wrapper">
 	{% url 'profile' user.slug  as tested_url %}
 	<header id="header" class="sticky">
-		<div id="menu_button" class="button squered_button">
+		<div class="header_button button squered_button" data-body="nav">
 			<img width="32" height="32" class="icon dynamic_image squered_button" src="{% static 'placeholder.svg' %}" data-src="{% static 'menu.svg' %}" alt="{% trans '3 горизонтальные линии, бургер' %}">
 		</div>
 		{% block hat %}
@@ -168,7 +168,7 @@
 		}();
     </script>
     <script src="{% static 'sticky.js' %}"></script>
-    <script src="{% static 'toggle_nav.js' %}"></script>
+    <script src="{% static 'hat_buttons.js' %}"></script>
     <script src="{% static 'toggle_button.js' %}"></script>
     <script src="{% static 'media_loader.js' %}"></script>
 	{% block scripts %}
