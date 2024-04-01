@@ -2,11 +2,6 @@ let feed_post_size = 5
 let feed_meta = null
 let feed_post_offset = 0
 
-function toggleGroups(){
-	var groups_container = document.getElementById("rss_aggregator_mobile_groups_container")
-	groups_container.classList.toggle("active_groups")	
-	groups_container.style.top = header_height
-}
 
 function loadPosts( feed_id, offset, sorted, callback ){
 	callback 	= callback 	|| function(){}
@@ -40,7 +35,9 @@ function loadPosts( feed_id, offset, sorted, callback ){
 function displayFeed(){
 	var feed_id = this.dataset.feedId
 	if (IS_MOBILE){
-		toggleGroups()
+		var groups_container = document.getElementById("rss_aggregator_mobile_groups_container")
+		groups_container.classList.toggle("active_nav")	
+		groups_container.style.top = header_height
 	}
 	/* Загружаем первые посты с фида */
 	loadPosts(feed_id, 0, false, function(){
@@ -306,6 +303,10 @@ function loadFeeds(data){
 	})	
 }
 
+function clearMessageOnAddFeed(){
+	document.getElementById('feedurl-error').innerText = ''
+}
+
 
 function onRSSAggregator(){
 	$(document).ready(function() {
@@ -317,10 +318,10 @@ function onRSSAggregator(){
 		});
 	});
 
-	let groups_button = document.getElementById('feeds_group')
-	groups_button.addEventListener('click', toggleGroups)
 	let add_feed_button_submit = document.getElementById('onAddFeedSubmit')
 	add_feed_button_submit.addEventListener('click', submitFeed)
+	let clear_feed_msg = document.getElementById('onAddFeed')
+	clear_feed_msg .addEventListener('click', clearMessageOnAddFeed)
 
 
 	if (IS_MOBILE){

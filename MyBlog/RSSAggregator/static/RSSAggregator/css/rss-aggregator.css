@@ -7,9 +7,7 @@
 .active_group_button{
 	display: none;
 }
-.active_groups{
-	width: 300px !important;
-}
+
 #rss_aggregator_feed{
 	flex-grow: 6;
 	min-width: 300px;
@@ -54,10 +52,18 @@
 	align-items: center;
 }
 .feed_url{
+	max-width: 200px;
 	padding: var(--min_pm);
 	border: 2px solid black;
 	border-radius: 10px;
+	
 }
+.feed_url-scrolled{
+	width: 100%;
+	white-space: nowrap;
+	overflow-x: scroll;
+}
+
 .feed_block_in_group{
 	align-items: center;
 }

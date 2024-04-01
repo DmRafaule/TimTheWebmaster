@@ -5,7 +5,9 @@
 {% for f in feeds %}
 <div class="row min_gap in_middle-farapart">
     <div class="feed_url">
-    {{ f.source }}
+        <div class="feed_url-scrolled">
+            {{ f.source }}
+        </div>
     </div>
     <div class="in_middle-self">
         <img data-feed-id="{{f.id}}" width="32" height="32" class="icon dynamic_image bordered_button button squered_button onDeleteFeed" src="{% static 'placeholder.svg'%}" data-src="{% static 'RSSAggregator/img/delete.svg' %}" alt="{% trans 'Иконка корзины' %}">

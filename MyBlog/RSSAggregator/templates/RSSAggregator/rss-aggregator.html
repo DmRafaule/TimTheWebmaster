@@ -11,7 +11,9 @@
 
 
 {% block hat %}
-	<img id="feeds_group" width="32" height="32" class="icon button dynamic_image squered_button active_group_button" src="{% static 'placeholder.svg' %}" data-src="{% static 'RSSAggregator/img/groups.svg' %}" alt="{% trans 'one layer on top of anothe' %}">
+	<div class="header_button"  data-body="rss_aggregator_mobile_groups_container">
+		<img id="feeds_group" width="32" height="32" class="icon button dynamic_image squered_button active_group_button" src="{% static 'placeholder.svg' %}" data-src="{% static 'RSSAggregator/img/groups.svg' %}" alt="{% trans 'one layer on top of anothe' %}">
+	</div>
 {% endblock %}
 
 {% block content %}

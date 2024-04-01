@@ -2,7 +2,7 @@
 	display: none;
 }
 .active_nav{
-	width: 300px;
+	width: 300px !important;
 }
 .active_toggle_button{
 }

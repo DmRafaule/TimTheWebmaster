@@ -19,9 +19,10 @@ def loadFeeds(request):
 
 def submitFeed(request):
     if request.method == 'POST':
-        # Check if feed is valid
+        
         if hasattr(ssl, '_create_unverified_context'):
             ssl._create_default_https_context = ssl._create_unverified_context
+
         feed = feedparser.parse(request.POST['feedname'])
         # Hack if empty string with '' will be sended
         if not len(request.POST['feedname']) >= 1:
@@ -31,6 +32,11 @@ def submitFeed(request):
             pass
         else:
             return JsonResponse({'common': f"Error: {feed['bozo_exception']}"}, status=500)
+        
+        # Check if feed is already in database
+        print(request.POST['feedname'])
+        if Feed.objects.filter(source=request.POST['feedname']).exists():
+            return JsonResponse({'common': "Error: This feed already in database."}, status=500)
 
         feed = Feed(
             user_id=request.session.session_key,
