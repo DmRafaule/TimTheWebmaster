@@ -12,7 +12,16 @@
 			</a>
 		</div>
 	</div>
+	{% else %}
+	<div class="row  el-expandable el-40-half">
+		<div class="marger-10">
+			<a id="home_article_link" href="{{a.get_absolute_url}}">
+				<img width="300" height="180" class="home_image button" src="{% static 'image-not-found.webp' %}" alt="{% trans "Превью статьи" %}">
+			</a>
+		</div>
+	</div>
 	{% endif %}
+	
 	<div class="column el-300-min-basis el-expandable el-40-half min_row_gap">
 		<h3><a class="text_button" href="{{ a.get_absolute_url }}">{{a.title}}</a></h3>
 		<div class="row mid_col_gap">

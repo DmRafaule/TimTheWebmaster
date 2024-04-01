@@ -12,6 +12,12 @@
 				<img class="image image-min_sized dynamic_image button" width="300" height="200" src="{% static 'placeholder.svg' %}" data-src="{% get_media_prefix %}{{a.preview}}" alt="{% trans "Превью статьи" %}">
 			</a>
 		</div>
+		{% else %}
+		<div class="post_preview_image marger-10">
+			<a href="{{a.get_absolute_url}}">
+				<img class="image image-min_sized dynamic_image button" width="300" height="200" src="{% static 'placeholder.svg' %}" data-src="{% static 'image-not-found.webp' %}" alt="{% trans "Превью статьи" %}">
+			</a>
+		</div>
 		{% endif %}
 		<div class="post_preview_meta column min_row_gap">
 			<h2><a class="text_button" href="{{ a.get_absolute_url }}">{{a.title}}</a></h2>
