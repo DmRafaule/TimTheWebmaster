@@ -6,7 +6,7 @@
 <div class="home_post row min_row_gap">
 	{% if a.preview %}
 	<div class="row  el-expandable el-40-half">
-		<div class="marger-10">
+		<div class="marger_min">
 			<a id="home_article_link" href="{{a.get_absolute_url}}">
 				<img width="300" height="180" class="home_image button" src="{% get_media_prefix %}{{a.preview}}" alt="{% trans "Превью статьи" %}">
 			</a>
@@ -14,7 +14,7 @@
 	</div>
 	{% else %}
 	<div class="row  el-expandable el-40-half">
-		<div class="marger-10">
+		<div class="marger_min">
 			<a id="home_article_link" href="{{a.get_absolute_url}}">
 				<img width="300" height="180" class="home_image button" src="{% static 'image-not-found.webp' %}" alt="{% trans "Превью статьи" %}">
 			</a>
