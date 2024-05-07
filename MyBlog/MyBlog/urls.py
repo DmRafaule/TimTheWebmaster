@@ -32,7 +32,7 @@ urlpatterns += i18n_patterns(
     path('tools/', include('ImageThief.urls')),
     path('tools/', include('WebGLEngine.urls')),
     path('tools/', include('RSSAggregator.urls')),
-    path('tools/', include('NotebookOnMarginalia.urls')),
+    #path('tools/', include('NotebookOnMarginalia.urls')),
     path('tools/', include('ShaderToy.urls')),
     path('games/', include('Space091.urls')),
 )
