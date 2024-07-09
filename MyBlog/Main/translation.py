@@ -50,18 +50,6 @@ class ToolTranslationOptions(TranslationOptions):
     fields = ('name', 'description')
 
 
-class ServiceTranslationOptions(TranslationOptions):
-    fields = (
-            'name',
-            'description',
-            'deadline',
-            'process',
-            'for_who',
-            'for_who_not',
-            'benefits',
-    )
-
-
 class ImageTranslationOptions(TranslationOptions):
     fields = ('text',)
 
@@ -77,6 +65,5 @@ translator.register(Post_M.Case, CaseTranslationOptions)
 translator.register(Post_M.QA, QATranslationOptions)
 translator.register(Post_M.TD, TDTranslationOptions)
 translator.register(Post_M.Tool, ToolTranslationOptions)
-translator.register(Post_M.Service, ServiceTranslationOptions)
 translator.register(Main_M.Image, ImageTranslationOptions)
 translator.register(Main_M.Downloadable, DownloadableTranslationOptions)

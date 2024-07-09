@@ -26,15 +26,11 @@ urlpatterns = [
 
 urlpatterns += i18n_patterns(
     path('', include('Main.urls')),
-    path('', include('User.urls')),
-    path('', include('Comment.urls')),
     path('', include('Post.urls')),
     path('tools/', include('ImageThief.urls')),
     path('tools/', include('WebGLEngine.urls')),
     path('tools/', include('RSSAggregator.urls')),
-    path('tools/', include('NotebookOnMarginalia.urls')),
     path('tools/', include('ShaderToy.urls')),
-    path('games/', include('Space091.urls')),
 )
 
 handler404 = "Main.views.page_not_found"

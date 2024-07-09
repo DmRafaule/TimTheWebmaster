@@ -22,3 +22,34 @@ textarea{
 	font-family: var(--family-acent_font);
 	font-size: var(--size-mini_font);
 }
+
+.form_error{
+	padding-left: 8px;
+	color:red;
+}
+
+.form_success{
+	color: green;
+}
+
+.notification{
+	opacity: 100%;
+	position: fixed;
+	top: calc(var(--usual_space)+50px);
+	right: var(--usual_space);
+	padding: 8px 14px 8px 14px;
+	border: 3px groove grey;
+	max-width: 300px;
+
+	animation-timing-function: ease-in;
+	animation-iteration-count: 1;
+	animation-duration: 5s;
+	animation-delay: 0s;
+	animation-fill-mode: forwards;
+	animation-name: notification_fadeout;
+}
+
+@keyframes notification_fadeout {
+	0% {opacity: 1;}
+   100% {opacity: 0;} 
+}

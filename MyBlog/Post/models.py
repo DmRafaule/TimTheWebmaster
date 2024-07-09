@@ -179,30 +179,6 @@ class Tool(Post):
         return f'/{get_language()}/tools/{self.slug}/'
 
 
-class Service(Post):
-    view_name = "service"
-    name = models.CharField(max_length=256, blank=False)
-    description = models.TextField(blank=False)
-    preview = models.ImageField(max_length=300, upload_to=user_directory_path, blank=True)
-    price = models.FloatField(default=0, help_text="In USD")
-    deadline = models.CharField(max_length=64, blank=False)
-    process = models.TextField(blank=False, help_text="Render markdown.")
-    for_who = models.TextField(blank=False, help_text="Render markdown.")
-    for_who_not = models.TextField(blank=False, help_text="Render markdown.")
-    benefits = models.TextField(blank=False, help_text="Render markdown.")
-    template = models.FilePathField(
-            path=os.path.join(S.BASE_DIR,"Post","templates","Post"),
-            default=os.path.join(S.BASE_DIR,"Post","templates","Post","service.html")
-    )
-
-    def save(self, *args, **kwargs):
-        self.category = Category.objects.get(slug="services")
-        super(Service, self).save(*args, **kwargs)
-
-    def __str__(self):
-        return self.name
-
-
 class PostSitemap(Sitemap):
     i18n = True
 
@@ -212,9 +188,8 @@ class PostSitemap(Sitemap):
         cases = Case.objects.filter(isPublished=True)
         qa = QA.objects.filter(isPublished=True)
         td = TD.objects.filter(isPublished=True)
-        services = Service.objects.filter(isPublished=True)
         tools = Tool.objects.filter(isPublished=True)
-        items = list(chain(articles, news, cases, qa, td, services, tools))
+        items = list(chain(articles, news, cases, qa, td, tools))
         return items
 
     def lastmod(self, obj):

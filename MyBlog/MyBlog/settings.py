@@ -46,13 +46,9 @@ INSTALLED_APPS = [
     'Main.apps.MainConfig',
     'WebGLEngine.apps.WebglengineConfig',
     'Post.apps.PostConfig',
-    'User.apps.UserConfig',
-    'Comment.apps.CommentConfig',
     'ImageThief.apps.ImagethiefConfig',
     'RSSAggregator.apps.RssaggregatorConfig',
-    'NotebookOnMarginalia.apps.NotebookonmarginaliaConfig',
     'ShaderToy.apps.ShadertoyConfig',
-    'Space091.apps.Space091Config',
 ]
 
 MIDDLEWARE = [
@@ -152,3 +148,12 @@ LANGUAGES = [
         ("en", _("Английский")),
 ]
 MODELTRANSLATION_DEFAULT_LANGUAGE = "ru"
+
+
+# For email sending 
+DEFAULT_FROM_EMAIL = 'timachuduk@timthewebmaster.com'
+DEFAULT_TO_EMAIL = 'timachuduk@gmail.com'
+EMAIL_HOST = 'smtp.beget.com'
+EMAIL_PORT = 25 
+EMAIL_HOST_USER = 'timachuduk@timthewebmaster.com' # Maybe change to timachuduk@timthewebmaster.com
+EMAIL_HOST_PASSWORD = 'EXNIkq1&yfOx'

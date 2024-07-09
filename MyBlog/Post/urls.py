@@ -84,12 +84,6 @@ urlpatterns += [
             model=M.Tool
         ),
         name="tools-preview"),
-    path(
-        'services/load_post_preview/',
-        V.PostPreviewView.as_view(
-            model=M.Service
-        ),
-        name="service-preview"),
 ]
 # Patterns for displaying posts by itself
 # There is no tools because tool is a django app so it has to
@@ -100,9 +94,6 @@ urlpatterns += [
     path('cases/<slug:post_slug>/', V.case, name="case"),
     path('qa/<slug:post_slug>/', V.qa, name="qa"),
     path('td/<slug:post_slug>/', V.td, name="td"),
-    path('services/<slug:post_slug>/', V.service, name="service"),
-    path('services/<slug:post_slug>/load_message/', V.load_message),
-
 ]
 
 

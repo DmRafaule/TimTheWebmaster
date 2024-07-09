@@ -177,36 +177,6 @@ class ToolAdmin(admin.ModelAdmin):
     list_filter = ('isPublished',)
 
 
-class ServiceAdmin(admin.ModelAdmin):
-    exclude = ('category', 'timeCreated', 'timeUpdated', 'name', 'description', 'process', 'for_who', 'for_who_not', 'benefits', 'deadline')
-    list_display = (
-            'id',
-            'name',
-            'preview',
-            'price',
-            'deadline',
-            'isPublished',
-            'slug',
-            'timeCreated',
-            'timeUpdated',
-    )
-    list_display_links = (
-            'name',
-    )
-    list_editable = (
-            'preview',
-            'price',
-            'deadline',
-            'isPublished',
-            'timeCreated'
-    )
-    search_fields = (
-            'name',
-            'tags'
-    )
-    list_filter = ('isPublished',)
-
-
 admin.site.register(M.Tag, TagAdmin)
 admin.site.register(M.Category, CategoryAdmin)
 admin.site.register(M.Article, ArticleAdmin)
@@ -214,5 +184,4 @@ admin.site.register(M.News, NewsAdmin)
 admin.site.register(M.Case, CaseAdmin)
 admin.site.register(M.QA, QAAdmin)
 admin.site.register(M.TD, TDAdmin)
-admin.site.register(M.Service, ServiceAdmin)
 admin.site.register(M.Tool, ToolAdmin)
