@@ -1,11 +1,8 @@
-import re
 from django.shortcuts import render, get_object_or_404
 from django.http import JsonResponse
 import Post.models as Post_M
 from django.utils.translation import gettext as _
-import Comment.models as Comment_M
 import Main.models as Main_M
-import User.models as User_M
 import Main.utils as U
 from django.views.generic import DetailView, ListView, TemplateView
 
@@ -40,11 +37,9 @@ class PostPreviewView(TemplateView):
     def get(self, request):
         context = self.get_context_data()
         # Define how much data should be loaded on user screen
-        # There are 3 modes
+        # There are 2 modes
         # basic - display everything that possible from preview to views
         # simple - display only needes information, title, description, date published
-        # minimal - display only title and date published
-        # raw - display row links to pages
         mode = self.request.GET.get('mode', 'basic') + '--'
         # Define specific (unique) preview templates
         for_who = self.request.GET.get('for_who', '')
@@ -78,8 +73,6 @@ def article(request, post_slug):
     images = Main_M.Image.objects.filter(type=post)
     context = U.initDefaults(request)
     context.update({'post': post})
-    context.update({'comments': Comment_M.Comment.objects.filter(type=post).order_by('-timeCreated')})
-    context.update({'comments_number': Comment_M.Comment.objects.filter(type=post).count()})
     context.update({'downloadables': downloadables})
     context.update({'images': images})
 
@@ -108,6 +101,7 @@ def case(request, post_slug):
     images = Main_M.Image.objects.filter(type=post)
     context = U.initDefaults(request)
     context.update({'post': post})
+    
     context.update({'downloadables': downloadables})
     context.update({'images': images})
 
@@ -137,9 +131,6 @@ def qa(request, post_slug):
     related_tools = Post_M.Tool.objects.filter(tags__in=tags)
     context.update({'related_tools': set(related_tools[:max_el_in_related_post])})
 
-    related_services = Post_M.Service.objects.filter(tags__in=tags)
-    context.update({'related_services': set(related_services[:max_el_in_related_post])})
-
     return render(request, post.template, context=context)
 
 
@@ -165,28 +156,6 @@ def td(request, post_slug):
 
     related_tools = Post_M.Tool.objects.filter(tags__in=tags)
     context.update({'related_tools': set(related_tools[:max_el_in_related_post])})
-
-    related_services = Post_M.Service.objects.filter(tags__in=tags)
-    context.update({'related_services': set(related_services[:max_el_in_related_post])})
-
-    return render(request, post.template, context=context)
-
-
-def service(request, post_slug):
-    post = get_object_or_404(Post_M.Service, slug=post_slug)
-    post.viewed = post.viewed + 1
-    post.save()
-    downloadables = Main_M.Downloadable.objects.filter(type=post)
-    images = Main_M.Image.objects.filter(type=post)
-    context = U.initDefaults(request)
-    context.update({'post': post})
-    context.update({'downloadables': downloadables})
-    context.update({'images': images})
-    tags = post.tags.values_list('pk', flat=True)
-    cases = Post_M.Case.objects.filter(tags__in=tags)
-    qas = Post_M.QA.objects.filter(tags__in=tags)
-    context.update({'cases': cases})
-    context.update({'qas': qas})
 
     return render(request, post.template, context=context)
 
@@ -217,54 +186,3 @@ def share_post(request):
         'shares': post.shares,
     }
     return JsonResponse(data)
-
-
-def load_message(request, post_slug):
-    message = {
-        'common': '',
-        'username': '',
-        'email': '',
-    }
-    status = 200
-    if request.method == 'POST':
-        # for validating an Email
-        regex = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,7}\b'
-        username = request.POST['username']
-        email = request.POST['email']
-        about = request.POST['about']
-
-        message['common']=_('✖ не могу отправить сообщение')
-        # username,email,password fields does not filled up
-        if len(username) == 0:
-            message['username']=_('⚠ поле пользователя не заполнено')
-            status = 406
-        if len(email) == 0:
-            message['email']=_('⚠ поле почты не заполнено')
-            status = 406
-        # Check if username's length is big enough
-        if len(username) < 3:
-            message['username']=_('⚠ введённое имя слишком короткое')
-            status = 406
-        # Check if username's length not to big
-        if len(username) > 25:
-            message['username']=_('⚠ введённое имя слишком длинное')
-            status = 406
-        # Email addres does not right
-        if not re.fullmatch(regex, email):
-            message['email']=_('⚠ введённый адрес почты некорректен')
-            status = 406
-        if status == 200:
-            message['common'] = _('✔ вы успешно отправили сообщение')
-            message['username'] = _('✔ Хорошо')
-            message['email'] = _('✔ Хорошо')
-            source = Post_M.Service.objects.get(slug=post_slug).get_absolute_url()
-            new_message = User_M.Message(source=source, name=username, email=email, content=about)
-            new_message.save()
-
-        return JsonResponse(message, status=status)
-    else:
-        status = 403
-        message['common'] = _("Ты, скользкий тип")
-        message['username'] = _("Даже не пытайся")
-        message['email'] = _("Или попытайся, всёравно")
-        return JsonResponse(message, status=status)

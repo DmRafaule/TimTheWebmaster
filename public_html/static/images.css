@@ -15,10 +15,22 @@
 	width: 100%;
 	height: auto;
 }
+
+.image_nomargin{
+	width: 100%;
+	height: auto;
+}
+
 .image-min_sized {
 	min-width: 300px;
 }
- 
+
+.image-max_height {
+	max-height: 300px;
+}
+.image-max_width {
+	max-width: 300px;
+}
 .landscape_image{
 	height: 45vh;
 	width: auto;

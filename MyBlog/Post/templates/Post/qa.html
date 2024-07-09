@@ -66,18 +66,6 @@
 				</ul>
 			</div>
 		{% endif %}
-		{% if related_services|length > 0 %}
-			<div class="related">
-				<h3 class="paragraph in_middle-self">{% trans "Относящиеся услуги" %}</h3>
-				<ul class="list">
-				{% for post in related_services %}
-					<li class="ref">
-						<a href="{{post.get_absolute_url}}">{{post}}</a>
-					</li>
-				{% endfor %}
-				</ul>
-			</div>
-		{% endif %}
 		{% if used_in_posts|length > 0 %}
 		{% endif %}
 	</div>

@@ -84,6 +84,9 @@
 .on_start{
 	justify-content: start;
 }
+.on_center{
+	justify-content: center;
+}
 
 .on_start_other{
 	align-items: start;

@@ -2,9 +2,15 @@
 	max-width: var(--limiter-width-big);
 }
 .home_title{
-	flex: 1 1 auto;
+	flex: 0 1 auto;
 	margin-top: 32px;
 	margin-bottom: 32px;
+	text-align: center;
+}
+
+.home_title_container{
+	height: 50vh;
+	flex-wrap: wrap-reverse;
 }
 
 .home_news{
@@ -25,7 +31,6 @@
 	right: 0;
 	top: 0;
 	justify-content: space-between;
-	width: 100%;
 }
 
 .home_buttons_mobile{
@@ -61,11 +66,13 @@
 }
 
 #next_article{
-	border-radius: 16px;
+	border-top-right-radius: 16px;
+	border-bottom-right-radius: 16px;
 }
 
 #prev_article{
-	border-radius: 16px;
+	border-top-left-radius: 16px;
+	border-bottom-left-radius: 16px;
 }
 
 #termin_to_upload{

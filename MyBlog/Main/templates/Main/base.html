@@ -66,7 +66,6 @@
 	<!-- /Yandex.Metrika counter -->
 </head>
 <body class="wrapper">
-	{% url 'profile' user.slug  as tested_url %}
 	<header id="header" class="sticky">
 		<div class="header_button button squered_button" data-body="nav">
 			<img width="32" height="32" class="icon dynamic_image squered_button" src="{% static 'placeholder.svg' %}" data-src="{% static 'menu.svg' %}" alt="{% trans '3 горизонтальные линии, бургер' %}">
@@ -75,17 +74,6 @@
 		{% endblock %}
 		<div class="expander">
 		</div>
-		{% if request.session.is_auth %}
-			<div  class="button rounded_button">
-				<a href="{{ tested_url }}" id="profile_ref">
-				{% if user.avatar|length > 0 %}
-				<img class="icon icon_avatar dynamic_image" width="32" height="32" src="{% static 'placeholder.svg' %}" data-src='{% get_media_prefix %}{{ user.avatar }}' alt="{% trans "Твой аватар" %}">
-				{% else %}
-					<img class="icon icon_avatar dynamic_image" width="32" height="32" src="{% static 'placeholder.svg' %}" data-src="{% static 'User/img/default_avatar.svg' %}" alt="{% trans "Аватар по умолчанию" %}">
-				{% endif %}
-				</a>
-			</div>
-		{% endif %}
 		<div class="button rounded_button">
 			<a class="logo" href="{% url 'home' %}">
 				<img class="icon dynamic_image rounded_button" width="32" height="32" src="{% static 'placeholder.svg' %}" data-src="{% static 'favicon.svg' %}" alt="{% trans 'Главная иконка сайта' %}">

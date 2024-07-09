@@ -39,61 +39,6 @@
 {% endblock %}
 
 {% block content_post-after %}
-	<div class="column max_row_gap">  
-		<div class="row">
-			<h2>{% trans "Коментарии" %}</h2>			
-			<div class="top_anotation">
-			({{comments_number}})
-			</div>
-		</div>
-		<div class="column max_row_gap toObserve">
-			{# Form for submiting new comment #}
-			<div id="toComment" class="column min_row_gap">
-				<div class="row mid_col_gap">
-					<div class="">
-						{% if user.avatar|length > 0 %}
-						<img class="icon icon_avatar dynamic_image" width="32" height="32" src="{% static 'placeholder.svg' %}" data-src='{% get_media_prefix %}{{ user.avatar }}' alt="{% trans "Аватар пользователя" %}" id="toAvatar">
-						{% else %}
-						<img class="icon icon_avatar dynamic_image" width="32" height="32" src="{% static 'placeholder.svg' %}" data-src="{% static 'Post/img/default_avatar.svg' %}" alt="{% trans "Аватар по умолчанию" %}" id="toAvatar">
-						{% endif %}
-					</div>
-					<b id="toUsername" >
-						{{user}}
-					</b>
-				</div>
-				{% csrf_token %}
-				<form>
-					<textarea  placeholder="{% trans "Ваше сообщение" %}" name="about"  id="about"></textarea>
-				</form> 
-				{% if not request.session.is_auth %}
-				<div id="onSend-guesting" class="button action_button  squered_button active">
-						{% trans "Оставить комментарий" %}
-				</div>
-				<div id="toSendVerify-guesting" class="row mid_gap">
-					<div id="onSendVerify-guesting" class="button action_button squered_button">
-						{% trans "Оставить комментарий" %}
-					</div>
-					<div id="toNewUsername" class="row active in_middle mid_col_gap">
-						{% csrf_token %}
-						<form action="prepare_user">
-							<input placeholder="{% trans "Твоё имя" %}" type="text" name="username"  id="userID"></input>
-						</form> 
-						<div id="onNewUsername" class="button rounded_button action_button">
-							✔
-						</div>
-					</div>
-				</div>
-				{% else %}
-				<div id="onSend-authorized" class="button action_button squered_button">
-					{% trans "Оставить комментарий" %}
-				</div>
-				{% endif %}
-				<div id="common-error" class="hint-required"></div>
-			</div>
-			{# Place which gonna be filled by comments#}
-			<div id="scroll-sentinel"></div>
-		</div>
-	</div>
 {% endblock %}
 
 {% block styles_post %}
@@ -102,7 +47,6 @@
 {% endblock %}
 
 {% block scripts_post %}
-    <script src="{% static 'Comment/js/comments.js' %}"></script>
 	{% block scripts_post_article %}
 	{% endblock %}
 {% endblock %}

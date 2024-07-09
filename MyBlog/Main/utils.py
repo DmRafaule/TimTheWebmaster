@@ -1,4 +1,3 @@
-from User.models import User
 from MyBlog.settings import MEDIA_URL, ALLOWED_HOSTS
 import Post.models as Post_M
 from datetime import datetime
@@ -53,7 +52,6 @@ def getNotSpecialLowLevelCategories(categories):
 
 
 def initDefaults(request):
-    user = User.objects.filter(name=request.session.get('username','Guest')).first() 
     categories = Post_M.Category.objects.all()
     categories_special = getSpecialTopLevelCategories(categories)
     # Categories(categories_special) that gonna appear in first level of menu
@@ -64,9 +62,9 @@ def initDefaults(request):
     popular_posts += get_latest_post(1, Post_M.News)
 
     context = {
-        'user': user,
         'categories_special': categories_special,
         'domain_name': domain_name,
         'popular_posts': popular_posts,
     }
+    
     return context

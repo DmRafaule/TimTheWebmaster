@@ -10,6 +10,11 @@
 
 {% block content %}
 <div class="contact_limiter in_middle in_middle-self no_wrap padder">
+	{% if feedback_message|length > 0 %}
+	<div class="notification">
+		{{ feedback_message }}
+	</div>
+	{% endif %}
 	<h1>{% trans "Тим Вебмастер, его контакты и обратная связь" %}</h1>
 	<div class="row in_middle-farapart">
 		<div class="el-40-half">
@@ -39,30 +44,23 @@
 		</div>
 		<div class="el-40-half">
 			<h2 class="paragraph">{% trans "Форма для обратной связи"%}</h2>
-			{% csrf_token %}
-			<form id="toSignup">
-				<div>
-					<p id="username-error" class="hint-required"></p>
-					<input placeholder="{% trans "* имя" %}" type="text" name="username" id="username">
-				</div>
-				<div>
-					<p id="email-error" class="hint-required"></p>
-					<input placeholder="{% trans "* почта" %}" type="email" name="email" id="email">
-				</div>
-				<div>
-					<textarea placeholder="{% trans "Сообщение" %}" name="about" id="about"></textarea>
-				</div>
+			<form action="" method="post">
+				{% csrf_token %}
+				{% for field in form %}
+					<div>
+						{{ field }}
+					</div>
+					{% for error in field.errors %}
+					<p class="form_error">{{ error }}</p>
+					{% endfor %}	
+				{% endfor %}
 				<div class="rules">
 					<ul class="list_without_sign">
-						<li>{% trans "Поля отмеченые * обязательны к заполнению" %}</li>
 						<li>{% trans "Имя должно состоять от 3 до 25 букв" %}</li>
 						<li>{% trans "Email должен быть настоящим" %}</li>
 					</ul>
 				</div>
-				<div id="common-error" class="hint-required"></div>
-				<div id="send_button" class="button squered_button action_button">
-					{% trans "Отправить" %}
-				</div>
+				<input id="feedback" class="button squered_button action_button" type="submit" value="{% trans "Отправить" %}">
 			</form> 
 		</div>
 	</div>

@@ -46,13 +46,9 @@ INSTALLED_APPS = [
     'Main.apps.MainConfig',
     'WebGLEngine.apps.WebglengineConfig',
     'Post.apps.PostConfig',
-    'User.apps.UserConfig',
-    'Comment.apps.CommentConfig',
     'ImageThief.apps.ImagethiefConfig',
     'RSSAggregator.apps.RssaggregatorConfig',
-    'NotebookOnMarginalia.apps.NotebookonmarginaliaConfig',
     'ShaderToy.apps.ShadertoyConfig',
-    'Space091.apps.Space091Config',
 ]
 
 MIDDLEWARE = [
@@ -162,3 +158,13 @@ LANGUAGES = [
 SITE_ID = 1
 # For automatic redirect from http to https
 SECURE_SSL_REDIRECT = True
+
+
+# For email sending 
+DEFAULT_FROM_EMAIL = 'timachuduk@timthewebmaster.com'
+DEFAULT_TO_EMAIL = 'timachuduk@gmail.com'
+EMAIL_HOST = 'smtp.beget.com'
+EMAIL_PORT = 2525
+EMAIL_HOST_USER = 'timachuduk@timthewebmaster.com' # Maybe change to timachuduk@timthewebmaster.com
+EMAIL_HOST_PASSWORD = 'EXNIkq1&yfOx'
+
