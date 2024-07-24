@@ -42,6 +42,7 @@ h1, h2, h3, h4, h5, h6 {
   font-family: var(--family-title_font);
   font-weight: bold;
   font-size: inherit;
+  word-wrap: anywhere;
 }
 h1{
 	font-size: var(--size-titleH1_font);

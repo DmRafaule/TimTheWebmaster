@@ -32,6 +32,7 @@
 .text{
 	margin-top: var(--text_block_margin-top);
 	text-align: justify;
+	word-wrap: anywhere;
 }
 .paragraph{
 	margin-top: var(--paragraph_margin-top);
