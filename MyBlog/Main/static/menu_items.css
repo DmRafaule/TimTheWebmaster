@@ -1,5 +1,5 @@
 .nav_menu_item{
-	font-size: var(--size-titleH4_font);
+	font-size: var(--size-titleH3_font);
 	color: var(--ui_text_color);
 	text-align: end;
 	display: flex;
@@ -21,7 +21,7 @@
 }
 
 .lang_item{
-	font-size: var(--size-titleH4_font);
+	font-size: var(--size-titleH3_font);
 	color: var(--ui_text_color);
 }
 
