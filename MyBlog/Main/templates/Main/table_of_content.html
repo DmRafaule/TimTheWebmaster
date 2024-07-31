@@ -1,6 +1,7 @@
 {% load i18n %}
 {% load static %}
 
+<hr>
 <div class="table_of_content">
 	<div class="table_of_content_title">{% trans "Содержание" %}</div>
 	<ul class="table_of_content_list">
@@ -12,9 +13,9 @@
 		{% endfor %}
 	</ul>
 </div> 
-
 <a href="#">
 	<div class="up_button button">
 		<img width="32" height="32" class="icon dynamic_image" src="{% static 'placeholder.svg' %}" data-src="{% static 'up_arrow.svg' %}" alt="{% trans 'Стрелка на верх' %}">
 	</div>
 </a>
+<hr>

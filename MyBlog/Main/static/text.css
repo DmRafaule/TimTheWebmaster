@@ -40,9 +40,9 @@
 	word-wrap: break-word;
 }
 .title{
-	text-align: center;
+	text-align: left;
 	margin-top: 5svh;
-	margin-bottom: 45svh;
+	margin-bottom: 5svh;
 	word-wrap: break-word;
 }
 

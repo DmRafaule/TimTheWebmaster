@@ -40,7 +40,6 @@ footer{
 	row-gap: var(--usual_space);
 	flex: 0 0 auto;
 	padding: var(--indent_min);
-	margin-top: var(--footer_top-bottom_padding);
 	padding-top: var(--footer_top-bottom_padding);
 	row-gap: var(--max_pm);
 }
@@ -96,6 +95,15 @@ footer{
 	max-width: var(--limiter-width);
 	width: 100%;
 	height: 100%;
+	padding: var(--mid_pm);
+	border-left: solid var(--main_color);
+	border-right: solid var(--main_color);
+}
+.limiter_list{
+	max-width: var(--limiter-width);
+	width: 100%;
+	height: 100%;
+	padding: var(--mid_pm);
 }
 .contact_limiter{
 	max-width: var(--limiter-width-big);
