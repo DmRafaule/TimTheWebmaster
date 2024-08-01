@@ -22,6 +22,40 @@
 	margin-top: var(--mid_pm);
 }
 
+.attention{
+	margin-top: var(--mid_pm);
+	background: rgb(252, 129, 29);
+	border: 2px solid black;
+	border-radius: 10px;
+}
+
+.termin{
+	margin-top: var(--mid_pm);
+	background: rgb(221, 236, 243);
+	border: 2px solid black;
+	border-radius: 10px;
+}
+
+.question{
+	margin-top: var(--mid_pm);
+	background: rgb(255, 255, 255);
+	border: 2px solid black;
+	border-radius: 10px;
+}
+
+.dangerouse{
+	margin-top: var(--mid_pm);
+	background: rgb(255, 47, 0);
+	border: 2px solid black;
+	border-radius: 10px;
+}
+.code{
+	margin-top: var(--mid_pm);
+	background: rgb(140, 225, 94);
+	border: 2px solid black;
+	border-radius: 10px;
+}
+
 .mat-type{
 	width: fit-content;
 	padding: 6px;
