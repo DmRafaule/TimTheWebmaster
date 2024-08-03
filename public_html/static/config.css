@@ -84,6 +84,8 @@
 	--devider_margin: 16px;
 	/*Post preview*/
 	--post_preview_margin-top: 40px;
+	/*Video player*/
+	--video-player_border-radius: 10px;
 }
 
 @media screen and (max-width: 900px){

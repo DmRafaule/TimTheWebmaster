@@ -8,3 +8,8 @@
 .content_body__codeblock_inner{
 	/*position: absolute;*/
 }
+
+/* Этот стиль нужен для обратной совместимости. Если блок кода обёрнут вокруг филдсета то убераем задний фон */
+fieldset > .code-toolbar > pre {
+	background-color: white;
+}
