@@ -26,8 +26,14 @@
     </script>
 {% endblock %}
 
+{% block hat_post %}
+	{% block hat_post_article %}
+	{% endblock%}
+{% endblock%}
 
 {% block content_post-before %}
+	{% block content_post_before-article %}
+	{% endblock %}
 {% endblock %}
 
 {% block content_post %}
@@ -39,6 +45,8 @@
 {% endblock %}
 
 {% block content_post-after %}
+	{% block content_post_after-article %}
+	{% endblock %}
 {% endblock %}
 
 {% block styles_post %}
