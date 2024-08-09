@@ -27,11 +27,16 @@
 {% endblock %}
 
 {% block hat_post %}
+	<div class="header_button"  data-body="table_of_content_groups_container">
+		<img id="table_of_content_group" width="32" height="32" class="icon button dynamic_image squered_button active_group_button active_more_home_button" src="{% static 'placeholder.svg' %}" data-src="{% static 'tree.png' %}" alt="{% trans 'one layer on top of anothe' %}">
+	</div>
 	{% block hat_post_article %}
 	{% endblock%}
 {% endblock%}
 
 {% block content_post-before %}
+	<div id="table_of_content_groups_container">
+	</div>
 	{% block content_post_before-article %}
 	{% endblock %}
 {% endblock %}
