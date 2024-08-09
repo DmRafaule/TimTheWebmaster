@@ -1,8 +1,7 @@
 {% load i18n %}
 {% load static %}
 
-<hr>
-<div class="table_of_content">
+<div id="table_of_content" class="table_of_content">
 	<div class="table_of_content_title">{% trans "Содержание" %}</div>
 	<ul class="table_of_content_list">
 		{% for el in titles %}
@@ -13,9 +12,17 @@
 		{% endfor %}
 	</ul>
 </div> 
-<a href="#">
-	<div class="up_button button">
-		<img width="32" height="32" class="icon dynamic_image" src="{% static 'placeholder.svg' %}" data-src="{% static 'up_arrow.svg' %}" alt="{% trans 'Стрелка на верх' %}">
+
+<div id="current_header" data-current="0"></div>
+<div id="table_of_content-minified" class="table_of_content-minified row no_wrap min_gap full_width in_middle-farapart in_middle padder">
+	<div id="table_of_content-sign" class="table_of_content_sign"></div>
+	<div id="table_of_content-text"></div>
+	<div  class="row no_wrap min_gap">
+		<div id="table_of_content-up" class="button text_button bordered_button squered_button ">
+			▲
+		</div>
+		<div id="table_of_content-down" class="button bordered_button squered_button">
+			▼
+		</div>
 	</div>
-</a>
-<hr>
+</div>
