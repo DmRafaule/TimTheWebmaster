@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-07-07 17:33+0300\n"
+"POT-Creation-Date: 2024-08-17 22:49+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,15 +18,15 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: .\Main\forms.py:6
+#: .\Main\forms.py:7
 msgid "Имя"
 msgstr "Name"
 
-#: .\Main\forms.py:7
+#: .\Main\forms.py:8
 msgid "Почта"
 msgstr "Email"
 
-#: .\Main\forms.py:8
+#: .\Main\forms.py:9
 msgid "Твоё сообщение"
 msgstr "Your message"
 
@@ -84,8 +84,8 @@ msgid ""
 "\t\t"
 msgstr ""
 "\n"
-"\t\t years old and I've been running <b>portfolio website</b> and sometimes writing "
-"articles on various topics.  \n"
+"\t\t years old and I've been running <b>portfolio website</b> and sometimes "
+"writing articles on various topics.  \n"
 "\t\t"
 
 #: .\Main\templates\Main\about.html:39
@@ -97,8 +97,8 @@ msgid ""
 "\t\t"
 msgstr ""
 "\n"
-"\t\tIf I have not been published anything for a long time it doesn't mean that I'm dead ;) "
-"Rather I'm just developing some new cool feature or tool.\n"
+"\t\tIf I have not been published anything for a long time it doesn't mean "
+"that I'm dead ;) Rather I'm just developing some new cool feature or tool.\n"
 "\t\tlike those in the  \n"
 "\t\t"
 
@@ -137,7 +137,8 @@ msgstr ""
 "\t\t<li>Personal articles</li>\n"
 "\t\t<li>Cases related to my work</li>\n"
 "\t\t<li>Tools and web services for various needs and purposes</li>\n"
-"\t\t<li>News concerning me personally, or <u>topics that are interesting for me</u></li>\n"
+"\t\t<li>News concerning me personally, or <u>topics that are interesting for "
+"me</u></li>\n"
 "\t\t<li>Author's images/caricatures (i.e. mine)</li>\n"
 "\t\t<li>Archives, scripts, programs and other files for downloading</li>\n"
 "\t\t"
@@ -348,15 +349,15 @@ msgstr "Tim the Webmaster"
 msgid "Статьи"
 msgstr "Articles"
 
-#: .\Main\templates\Main\home.html:27
-msgid "Инструменты"
-msgstr "Tools"
-
-#: .\Main\templates\Main\home.html:33
+#: .\Main\templates\Main\home.html:35
 msgid "Новости"
 msgstr "News"
 
-#: .\Main\templates\Main\home.html:39
+#: .\Main\templates\Main\home.html:50
+msgid "Инструменты"
+msgstr "Tools"
+
+#: .\Main\templates\Main\home.html:64
 msgid "Кейсы"
 msgstr "Cases"
 
@@ -364,10 +365,13 @@ msgstr "Cases"
 msgid "Содержание"
 msgstr "Content"
 
-#: .\Main\templates\Main\table_of_content.html:18
-msgid "Стрелка на верх"
-msgstr "Arrow to the top"
-
-#: .\Main\views.py:34
+#: .\Main\views.py:32
 msgid "✔ Вы успешно отправили сообщение"
 msgstr "✔ You have successfully sent a message"
+
+#: .\Main\views.py:34
+msgid "✗ Возникла ошибка при отправке формы"
+msgstr "✗ An error occurred while sending a form."
+
+#~ msgid "Стрелка на верх"
+#~ msgstr "Arrow to the top"

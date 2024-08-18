@@ -22,18 +22,20 @@ class MainView(TemplateView):
     
     def post(self, request, *args, **kwargs):
         form = FeedbackForm(self.request.POST)
-        if form.is_valid():
-            username = form.cleaned_data.get('username')
-            email = form.cleaned_data.get('email')
-            subject = f'{username} | {email}'
-            message = f'{form.cleaned_data.get("message")}'
-            send_mail(subject=subject, message=message, from_email=DEFAULT_FROM_EMAIL, recipient_list=[DEFAULT_TO_EMAIL])
-
         context = super(MainView, self).get_context_data(**kwargs)
         context = U.initDefaults(self.request)
+
+        if form.is_valid():
+            subject = f'{form.cleaned_data.get("username")} | {form.cleaned_data.get("email")}'
+            message = f'{form.cleaned_data.get("message")}'
+            send_mail(subject=subject, message=message, from_email=DEFAULT_FROM_EMAIL, recipient_list=[DEFAULT_TO_EMAIL])
+            context.update({'feedback_message': _('✔ Вы успешно отправили сообщение')})
+        else:
+            context.update({'feedback_message': _('✗ Возникла ошибка при отправке формы')})
+
+        
         context.update({'me_years': U.get_how_old_human_in_years('16/07/2000', "%d/%m/%Y")})
         context.update({'form': form})
-        context.update({'feedback_message': _('✔ Вы успешно отправили сообщение')})
     
         return render(request, self.template_name, context=context)
 
