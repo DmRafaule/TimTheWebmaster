@@ -85,7 +85,7 @@ target/
 __pycache__/
 local_settings.py
 
-.venv
+venv_new
 db.sqlite3
 media
 Docs
