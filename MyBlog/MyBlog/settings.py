@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sitemaps',
+    'captcha',
     'Main.apps.MainConfig',
     'WebGLEngine.apps.WebglengineConfig',
     'Post.apps.PostConfig',
