@@ -16,6 +16,17 @@
 	height: auto;
 }
 
+.image:hover{
+	cursor: pointer;
+}
+
+.image_dragable{
+	cursor: move;
+	touch-action: none;
+  	user-select: none;
+	box-sizing: border-box;
+}
+
 .image_nomargin{
 	width: 100%;
 	height: auto;

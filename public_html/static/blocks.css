@@ -1,3 +1,6 @@
+.is_none{
+	display: none;
+}
 
 .row{
 	display: flex;
@@ -74,6 +77,12 @@
 .zIndPl2{
 	z-index: 2;
 }
+.zIndPl3{
+	z-index: 3;
+}
+.zIndPl4{
+	z-index: 4;
+}
 
 .full_width{
 	width: 100%;
@@ -112,6 +121,9 @@
 }
 .is_fixed{
 	position: fixed;
+}
+.opacity-075{
+	opacity: 0.75;
 }
 .t-l{
 	top: 0;
@@ -185,4 +197,20 @@
 
 .el-300-min-basis{
 	flex-basis: 300px;
+}
+
+.bg-black{
+	background-color: black;
+}
+
+.bg-main{
+	background-color: var(--main_color);
+}
+
+.bg-secondary{
+	background-color: var(--secondary_color);
+}
+
+.bg-white{
+	background-color: white;
 }
