@@ -114,8 +114,8 @@
     <link type="text/css" rel="stylesheet" href="{% static 'tooltip.css' %}"/>
 	<link type="text/css" rel="stylesheet" href="{% static 'modal.css' %}"/>
 	<link type="text/css" rel="stylesheet" href="{% static 'forms.css' %}"/>
-	<link type="text/css" rel="stylesheet" href="{% static 'paginator.css' %}"/>
 	<link type="text/css" rel="stylesheet" href="{% static 'dynamic.css' %}"/>
+	<link type="text/css" rel="stylesheet" href="{% static 'RSSAggregator/css/paginator.css' %}"/>
     <link type="text/css" rel="stylesheet" href="{% static 'RSSAggregator/css/rss-aggregator.css' %}"/>
 {% endblock %}
 
@@ -125,8 +125,8 @@
 		const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
 	</script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="{% static 'paginator.js' %}"></script>
 	<script src="{% static 'modal.js' %}"></script>
+    <script src="{% static 'RSSAggregator/js/paginator.js' %}"></script>
 	<script src="{% static 'RSSAggregator/js/rss-aggregator.js' %}"></script>
 {% endblock %}
 

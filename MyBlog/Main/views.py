@@ -44,7 +44,6 @@ def page_not_found(request, exception):
     context = U.initDefaults(request)
     return render(request, 'Main/404.html', context=context, status=404)
 
-
 def load_table_of_content(request):
     titles = json.loads(request.POST.get("titles"))
     context = {

@@ -5,15 +5,49 @@
 {% block head %}
 	<title>{{category.name}} | {% trans "Тим зе Вебмастер"%}</title>
 	<meta name="description" content="{{category.description}}">
-	<link rel="canonical" href="https://{{domain_name}}{{ category.get_absolute_url }}" />
+	<link rel="canonical" href="https://{{domain_name}}{{ category.get_absolute_url }}page={{current_page}}&type=full&is_recent=true&mode=simple" />
+	{% if current_page != num_pages %}
+	<link rel='next' href="https://{{domain_name}}{{ category.get_absolute_url }}page={{current_page|add:'1'}}&type=full&is_recent=true&mode=simple">
+	{% endif %}
+	{% if current_page != 1%}
+	<link rel='prev' href="https://{{domain_name}}{{ category.get_absolute_url }}page={{current_page|add:'-1'}}&type=full&is_recent=true&mode=simple	">
+	{% endif %}
+{% endblock %}
+
+{% block hat %}
+<div class="header_button  button squered_button"  data-body="filters_body">
+	<img id="filters_hat_button" data-sort="true" width="32" height="32" class="icon dynamic_image " src="{% static 'placeholder.svg' %}" data-src="{% static 'filter.svg' %}" alt="{% trans 'one layer on top of anothe' %}">
+</div>
+<div class="nav_menu_item in_middle" ><h1>{{category.name}}</h1></div>
 {% endblock %}
 
 {% block content %}
+	<div id="filters_body" class="hat_body">
+		<div id="filters" class="full_width full_height padder">
+			{% block filters_body%}
+			{% endblock %}
+		</div>
+	</div>
 	<div class="limiter_list in_middle in_middle-self no_wrap padder">
-		<h1 class="paragraph" >{{category.name}}</h1>
-		<hr>
 	{% block content_list %}
 	{% endblock %}
+	</div>
+	<div id="paginator_container" class="paginator_container is_sticky b-l full_width no_wrap row in_middle">
+		<div id="paginator" class="paginator_limiter no_wrap row in_middle max_col_gap">
+			<div id="paginator_first_page_example" data-page="" class="example_pagin_button pagin_button first_pagin_button button bordered_button squered_button"></div>
+			<div id="paginator_dots_example" data-page=""  class="example_pagin_button pagin_dots">...</div>
+			<div id="paginator_default_page_example" data-page=""  class="example_pagin_button pagin_button button bordered_button squered_button"></div>
+			<div id="paginator_last_page_example" data-page=""  class="example_pagin_button pagin_button last_pagin_button  button bordered_button squered_button"></div>
+			<div id="prev_pagin_button" data-page=""  class=" button  squered_button  action_button">
+				<img width="32" height="32" class="icon flip_vert" src="{% static "chevron.svg" %}" alt="{% trans "Шеврон"%}">
+			</div>
+			<div id="paginator_body" class="row no_wrap full_width in_middle min_col_gap">
+				{# Place to insert buttons #}
+			</div>
+			<div id="next_pagin_button" data-page="" class=" button  squered_button  action_button">
+				<img width="32" height="32" class="icon" src="{% static "chevron.svg" %}" alt="{% trans "Шеврон"%}">
+			</div>
+		</div>
 	</div>
 {% endblock %}
 
@@ -24,8 +58,9 @@
 {% endblock %}
 
 {% block styles %}
-    <link type="text/css" rel="stylesheet" href="{% static 'blocks.css' %}"/>
-    <link type="text/css" rel="stylesheet" href="{% static 'images.css' %}"/>
+	<link type="text/css" rel="stylesheet" href="{% static 'images.css' %}"/>
+	<link type="text/css" rel="stylesheet" href="{% static 'blocks.css' %}"/>
+	<link type="text/css" rel="stylesheet" href="{% static 'paginator.css' %}"/>
     <link type="text/css" rel="stylesheet" href="{% static 'lists.css' %}"/>
     <link type="text/css" rel="stylesheet" href="{% static 'Post/css/post.css' %}"/>
     <link type="text/css" rel="stylesheet" href="{% static 'Post/css/posts_preview.css' %}"/>
@@ -40,8 +75,10 @@
 		const category_name = "{{category.slug}}"
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="{% static 'Post/js/infinity_scroll.js' %}"></script>
-    <script src="{% static 'Post/js/sorting.js' %}"></script>
+	<script src="{% static 'paginator.js' %}"></script>
+	<script src="{% static 'filtering.js' %}"></script>
+	<script src="{% static 'infinity_scroll.js' %}"></script>
+	<script src="{% static 'Post/js/post_list.js' %}"></script>
 	{% block scripts_list %}
 	{% endblock %}
 {% endblock %}

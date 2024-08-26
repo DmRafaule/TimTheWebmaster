@@ -36,7 +36,7 @@ def getNotEmptyCategories(categories):
 # Create queryset with special categories
 def getSpecialTopLevelCategories(categories):
     categories_result = []
-    selected_special = ("articles", "news", "tools", "services")
+    selected_special = ("articles", "tools")
     for selected in selected_special:
         categories_result.append(categories.get(slug=selected))
         categories = categories.exclude(slug=selected)
@@ -45,7 +45,7 @@ def getSpecialTopLevelCategories(categories):
 
 # Get only those categories that represent content part of my website
 def getNotSpecialLowLevelCategories(categories):
-    selected_special = ("tools", "services")
+    selected_special = ("tools" )
     for selected in selected_special:
         categories = categories.exclude(slug=selected)
     return categories

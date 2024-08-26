@@ -6,11 +6,14 @@ from django.conf.urls.i18n import i18n_patterns
 # For sitemap
 from django.contrib.sitemaps.views import sitemap
 from Post.models import PostSitemap
-from Main.models import StaticSitemap
+from Main.models import StaticSitemap, VideosSitemap
+from Gallery.models import ImagesSitemap
 
 sitemaps = {
     "articles": PostSitemap,
     "static": StaticSitemap,
+    "images": ImagesSitemap,
+    "videos": VideosSitemap,
 }
 
 urlpatterns = [
@@ -28,6 +31,7 @@ urlpatterns = [
 urlpatterns += i18n_patterns(
     path('', include('Main.urls')),
     path('', include('Post.urls')),
+    path('', include('Gallery.urls')),
     path('tools/', include('ImageThief.urls')),
     path('tools/', include('WebGLEngine.urls')),
     path('tools/', include('RSSAggregator.urls')),

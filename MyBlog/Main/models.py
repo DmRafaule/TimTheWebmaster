@@ -15,16 +15,54 @@ def user_directory_path_forImageAndDownloadabel(instance, filename):
 
 
 class Image(models.Model):
+    ART = 'Ar'
+    RESOURCE = 'Re'
+    IMAGE_CATEGORIES = {
+        ART: "Art",
+        RESOURCE: "Resource"
+    }
     type = models.ForeignKey(Post, on_delete=models.CASCADE)  # Which category this have to be put in
     file = models.ImageField(upload_to=user_directory_path_forImageAndDownloadabel, blank=False)
     text = models.CharField(max_length=250, blank=True)
+    category = models.CharField(max_length=2, choices=IMAGE_CATEGORIES, default=RESOURCE, blank=True)
+    timeCreated = models.DateTimeField(auto_now=True)
+    timeUpdated = models.DateTimeField(auto_now=True)
+
+    def get_absolute_url(self):
+        return '/media/{0}'.format(self.file)
 
 
 class Downloadable(models.Model):
+    VIDEO = 'Vi'
+    SCRIPT = 'Sc'
+    ARCHIVE = 'Ac'
+    TG_BOT = 'Tb'
+    PARSER = 'Pr'
+    DOWNLOADABLE_CATEGORIES = {
+        VIDEO: "Video",
+        SCRIPT: "Script",
+        ARCHIVE: "Archive",
+        TG_BOT: "Telegram bot",
+        PARSER: "Parser",
+    }
+
     type = models.ForeignKey(Post, on_delete=models.CASCADE)  # Which category this have to be put in
     file = models.FileField(upload_to=user_directory_path_forImageAndDownloadabel, blank=False)
     text = models.CharField(max_length=250, blank=True)
+    category = models.CharField(max_length=2, choices=DOWNLOADABLE_CATEGORIES, default=ARCHIVE, blank=True)
+    timeCreated = models.DateTimeField(auto_now=True)
+    timeUpdated = models.DateTimeField(auto_now=True)
 
+    def get_absolute_url(self):
+        return '/media/{0}'.format(self.file)
+
+class VideosSitemap(Sitemap):
+    def items(self):
+        videos = Downloadable.objects.filter(category=Downloadable.VIDEO)
+        return list(videos)
+
+    def lastmod(self, obj):
+        return obj.timeUpdated
 
 class StaticSitemap(Sitemap):
     i18n = True
@@ -45,4 +83,5 @@ def deleteImage(sender, instance, **kwargs):
 # Remove loaded file before deleting on database
 @receiver(pre_delete, sender=Downloadable)
 def deleteDownloadable(sender, instance, **kwargs):
+
     os.remove(os.path.join(MEDIA_ROOT, f"{instance.file}"))

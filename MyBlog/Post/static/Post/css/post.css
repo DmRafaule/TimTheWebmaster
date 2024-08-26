@@ -15,6 +15,7 @@
 	row-gap: 90px;
 	display: flex;
 	flex-direction: column;
+	margin-bottom: 100px;
 }
 .selected_view{
 	background-color: var(--acent_color);

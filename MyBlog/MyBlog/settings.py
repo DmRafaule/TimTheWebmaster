@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'ImageThief.apps.ImagethiefConfig',
     'RSSAggregator.apps.RssaggregatorConfig',
     'ShaderToy.apps.ShadertoyConfig',
+    'Gallery.apps.GalleryConfig',
 ]
 
 MIDDLEWARE = [

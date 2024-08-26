@@ -1,6 +1,5 @@
-
 function onReady() {
-
+	let onMediaUploaded = new CustomEvent('onMediaUploaded')
 	function WaitImageToUpload(image){
 		var options = {
 			  threshold: 0,
@@ -25,6 +24,7 @@ function onReady() {
 	function  WaitMediaToAppear(mutationList, observer) {
 		  for (const mutation of mutationList) {
 			if (mutation.addedNodes.length > 0){ 
+				document.dispatchEvent(onMediaUploaded)
 				const images = mutation.target.querySelectorAll(".dynamic_image");
 				images.forEach( (image) => {
 						WaitImageToUpload(image)

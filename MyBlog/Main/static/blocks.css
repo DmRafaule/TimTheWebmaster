@@ -122,6 +122,9 @@
 .is_fixed{
 	position: fixed;
 }
+.is_sticky{
+	position: sticky;
+}
 .opacity-075{
 	opacity: 0.75;
 }
@@ -213,4 +216,16 @@
 
 .bg-white{
 	background-color: white;
+}
+
+.hat_body{
+    display: flex;
+	position: fixed;
+	overflow-x: hidden;
+	height: 100%;
+	width: 0;
+	background-color: var(--secondary_color);
+	transition: 0.2s;
+	z-index: 1;
+	color: var(--ui_text_color)
 }
