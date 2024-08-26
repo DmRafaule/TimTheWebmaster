@@ -2,21 +2,28 @@
 {% load static%}
 {% load i18n %}
 
-{% block content_list %}
-	<div id="sort_actions" class="row">
-		<div class="row el-expandable" >
-			<img id="onSort" data-sort="true" width="32" height="32" class="icon dynamic_image bordered_button button squered_button" src="{% static 'placeholder.svg'%}" data-src="{% static 'Post/img/sort.svg' %}" alt="{% trans 'Значок сортировки' %}">
-		</div>
-		<div id="toViews" data-view="simple" class="row mid_col_gap" >
-			<img id="onBasicView" width="32" height="32" class="icon dynamic_image bordered_button button squered_button" src="{% static 'placeholder.svg'%}" data-src="{% static 'Post/img/basic_view.svg' %}" alt="{% trans 'Значок базового представления' %}">
-			<img id="onSimpleView" width="32" height="32" class="icon dynamic_image bordered_button button squered_button selected_view" src="{% static 'placeholder.svg'%}" data-src="{% static 'Post/img/simple_view.svg' %}" alt="{% trans 'Значок упрощённого представления' %}">
-		</div>
+{% block filters_body%}
+<div class="row mid_gap in_middle on_start no_wrap" >
+	<img id="onSort" data-sort="true" width="32" height="32" class="filter_button hat_button icon dynamic_image bordered_button button squered_button" src="{% static 'placeholder.svg'%}" data-src="{% static 'Post/img/sort.svg' %}" alt="{% trans 'Значок сортировки' %}">
+	<div>{% trans "Сортировка постов по дате публикации " %}</div>
+</div>
+<div id="toViews" data-view="basic" class="mid_col_gap" >
+	<div class="row mid_gap in_middle no_wrap">
+		<img id="onBasicView" width="32" height="32" class="filter_button hat_button icon dynamic_image bordered_button button squered_button selected_view" src="{% static 'placeholder.svg'%}" data-src="{% static 'Post/img/basic_view.svg' %}" alt="{% trans 'Значок базового представления' %}">
+		<div>{% trans "Отображение постов с превьюшкой и прочими данными"%}</div>
 	</div>
+	<div class="row mid_gap in_middle no_wrap">
+		<img id="onSimpleView" width="32" height="32" class="filter_button hat_button icon dynamic_image bordered_button button squered_button" src="{% static 'placeholder.svg'%}" data-src="{% static 'Post/img/simple_view.svg' %}" alt="{% trans 'Значок упрощённого представления' %}">
+		<div>{% trans "Отображение постов без превьюшек"%}</div>
+	</div>
+</div>
+{% endblock %}
 
+{% block content_list %}
+	<div id="meta-data" data-numpages={{num_pages}} data-currentpage="{{current_page}}" data-url="{{category.get_absolute_url}}"></div>
 	<div id="page" class="page toObserve">
-	{# Place to be filled by infinity_scroll script#}
+		{{ doc | safe}}
 	</div>
-	<div id="scroll-sentinel"></div>
 {% endblock %}
 
 {% block styles_list %}

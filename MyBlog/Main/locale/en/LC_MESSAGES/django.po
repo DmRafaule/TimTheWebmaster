@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-08-17 22:49+0300\n"
+"POT-Creation-Date: 2024-08-26 08:13+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -42,11 +42,11 @@ msgstr "Tim the Webmaster. Page not found"
 msgid "Страница не найдена"
 msgstr "Page not found"
 
-#: .\Main\templates\Main\about.html:6
+#: .\Main\templates\Main\about.html:6 .\Main\templates\Main\sitemap.html:6
 msgid "Тим, Вебмастер. Всё об авторе и его деятельности."
 msgstr "Tim the Webmaster. All about him and his passion."
 
-#: .\Main\templates\Main\about.html:7
+#: .\Main\templates\Main\about.html:7 .\Main\templates\Main\sitemap.html:7
 msgid ""
 "О вебмастере Тиме Чудуке. Его истории, интересах и оказываемых услугах "
 "разработки сайтов, тг ботов, скриптов, парсеров и копирайта"
@@ -193,7 +193,7 @@ msgstr ""
 "\t\tYou can contact me through my social networks:\n"
 "\t\t"
 
-#: .\Main\templates\Main\about.html:90 .\Main\templates\Main\base.html:132
+#: .\Main\templates\Main\about.html:90 .\Main\templates\Main\base.html:133
 #: .\Main\templates\Main\contacts.html:24
 msgid "instagram иконка"
 msgstr "instagram icon"
@@ -208,17 +208,17 @@ msgstr "instagram icon"
 msgid "контактная страница Тимы, Вебмастера"
 msgstr "contact page of Tim the Webmaster"
 
-#: .\Main\templates\Main\about.html:94 .\Main\templates\Main\base.html:131
+#: .\Main\templates\Main\about.html:94 .\Main\templates\Main\base.html:132
 #: .\Main\templates\Main\contacts.html:28
 msgid "vk иконка"
 msgstr "vk icon"
 
-#: .\Main\templates\Main\about.html:98 .\Main\templates\Main\base.html:129
+#: .\Main\templates\Main\about.html:98 .\Main\templates\Main\base.html:130
 #: .\Main\templates\Main\contacts.html:32
 msgid "telegram иконка"
 msgstr "telegram icon"
 
-#: .\Main\templates\Main\about.html:102 .\Main\templates\Main\base.html:133
+#: .\Main\templates\Main\about.html:102 .\Main\templates\Main\base.html:134
 #: .\Main\templates\Main\contacts.html:36
 msgid "twitter иконка"
 msgstr "twitter icon"
@@ -271,37 +271,41 @@ msgstr "Main icon of the website"
 msgid "Домашняя"
 msgstr "Home"
 
-#: .\Main\templates\Main\base.html:88 .\Main\templates\Main\base.html:111
+#: .\Main\templates\Main\base.html:88 .\Main\templates\Main\base.html:112
 msgid "Об авторе"
 msgstr "About"
 
-#: .\Main\templates\Main\base.html:89 .\Main\templates\Main\base.html:112
+#: .\Main\templates\Main\base.html:89 .\Main\templates\Main\base.html:113
 msgid "Контакты"
 msgstr "Contacts"
 
-#: .\Main\templates\Main\base.html:107
+#: .\Main\templates\Main\base.html:90
+msgid "Галлерея"
+msgstr "Gallery"
+
+#: .\Main\templates\Main\base.html:108
 msgid "Другие ссылки"
 msgstr "Other links"
 
-#: .\Main\templates\Main\base.html:110
+#: .\Main\templates\Main\base.html:111
 msgid "Карта сайта"
 msgstr "Sitemap"
 
-#: .\Main\templates\Main\base.html:117
+#: .\Main\templates\Main\base.html:118
 msgid "Популярные ссылки"
 msgstr "Popular links"
 
-#: .\Main\templates\Main\base.html:126
+#: .\Main\templates\Main\base.html:127
 msgid "Социальные сети"
 msgstr "Social networks"
 
-#: .\Main\templates\Main\base.html:129 .\Main\templates\Main\base.html:130
-#: .\Main\templates\Main\base.html:131 .\Main\templates\Main\base.html:132
-#: .\Main\templates\Main\base.html:133
+#: .\Main\templates\Main\base.html:130 .\Main\templates\Main\base.html:131
+#: .\Main\templates\Main\base.html:132 .\Main\templates\Main\base.html:133
+#: .\Main\templates\Main\base.html:134
 msgid "Контактная страница Тимы"
 msgstr "Contacts page of Tim"
 
-#: .\Main\templates\Main\base.html:130 .\Main\templates\Main\contacts.html:40
+#: .\Main\templates\Main\base.html:131 .\Main\templates\Main\contacts.html:40
 msgid "email иконка"
 msgstr "email icon"
 
@@ -372,6 +376,3 @@ msgstr "✔ You have successfully sent a message"
 #: .\Main\views.py:34
 msgid "✗ Возникла ошибка при отправке формы"
 msgstr "✗ An error occurred while sending a form."
-
-#~ msgid "Стрелка на верх"
-#~ msgstr "Arrow to the top"

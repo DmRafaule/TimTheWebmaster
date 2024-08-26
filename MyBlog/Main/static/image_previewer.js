@@ -183,7 +183,15 @@ function outImage(img){
 
 }
 
+function onNewImages(event){
+    var images = document.querySelectorAll('.image')
+    images.forEach( (img) => {
+        img.addEventListener('click', onImage,{once: true})
+    })
+}
+
 function onReady(){
+    document.addEventListener('onMediaUploaded', onNewImages)
     var images = document.querySelectorAll('.image')
     images.forEach( (img) => {
         img.addEventListener('click', onImage,{once: true})

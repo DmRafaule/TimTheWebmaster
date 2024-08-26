@@ -5,6 +5,11 @@
 	display: flex;
 	flex-direction: column;
 	align-items: end;
+	overflow: hidden;
+}
+.nav_menu_item > h1, .nav_menu_item > h2,.nav_menu_item > h3,.nav_menu_item > h4,.nav_menu_item > h5,.nav_menu_item > h6{
+	font-size: var(--size-titleH3_font);
+	color: var(--ui_text_color);
 }
 .nav_menu_item > a{
 	color: var(--ui_text_color);

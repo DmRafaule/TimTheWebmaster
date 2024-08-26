@@ -1,1 +1,75 @@
-.post_preview{margin-top:var(--post_preview_margin-top)}.post_preview_header{}.post_preview_image{display:flex;flex:0 0 25%;align-self:center}.post_preview_meta{flex:1 1 60%}.post_preview_body{}.post_preview_meta--raw{font-weight:var(--weight-mainThin_font);font-size:var(--size-titleH6_font)}.post_preview_meta--minimal{font-size:var(--size-titleH4_font)}.post_preview_meta--case{flex:none}.post_preview_meta--tool{}.post_preview_body--tool{height:0;transition:.2s;overflow:hidden}.post_preview_header--tool{}.post_preview--tool{}.post_preview--tool-grid{width:min-content}.answer{margin-left:var(--max_pm);max-width:600px}.price{border:2px solid #000;background-color:#f7d5f5;font-size:var(--size-titleH2_font);font-family:var(--family-acent_font);font-weight:var(--weight-mainBold_font);padding:6px;padding-left:var(--mid_pm);padding-right:var(--mid_pm)}.duration{font-size:var(--size-titleH3_font);font-weight:var(--weight-mainBold_font);font-family:var(--family-acent_font)}.post_preview-service{flex:0 0 30%;flex-wrap:nowrap}.post_time{display:flex;column-gap:var(--min_pm);align-items:center}
+/*Work also as identificator for how many posts are loaded on page*/
+.post_preview{
+	margin-top: var(--post_preview_margin-top);
+}
+.post_preview_header{
+}
+.post_preview_image{
+	display:flex;
+	flex: 0 0 25%;
+	align-self:center;
+}
+.post_preview_meta{
+	flex: 1 1 60%;
+}
+.post_preview_body{
+}
+
+
+
+.post_preview_meta--raw {
+	font-weight: var(--weight-mainThin_font);
+	font-size: var(--size-titleH6_font);
+}
+.post_preview_meta--minimal{
+	font-size: var(--size-titleH4_font);
+}
+.post_preview_meta--case{
+	flex: 0 0 auto;
+}
+.post_preview_meta--tool{
+
+}
+.post_preview_body--tool{
+	height: 0;
+	transition: 0.2s;
+	overflow: hidden;
+}
+.post_preview_header--tool{
+}
+.post_preview--tool{
+}
+.post_preview--tool-grid{
+	max-width: 300px;
+}
+
+.answer{
+	margin-left: var(--max_pm);
+	max-width: 600px;
+}
+.price{
+	border: 2px solid black;
+	background-color: #f7d5f5;
+	font-size: var(--size-titleH2_font);
+	font-family: var(--family-acent_font);
+	font-weight: var(--weight-mainBold_font);
+	padding: 6px;
+	padding-left: var(--mid_pm);
+	padding-right: var(--mid_pm);
+}
+
+.duration{
+	font-size: var(--size-titleH3_font);
+	font-weight: var(--weight-mainBold_font);
+	font-family: var(--family-acent_font);
+}
+
+.post_preview-service{
+	flex: 0 0 30%;
+  flex-wrap: nowrap;
+}
+.post_time{
+	display: flex;
+	column-gap: var(--min_pm);
+	align-items: center;
+}

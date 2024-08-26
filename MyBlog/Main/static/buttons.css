@@ -2,6 +2,7 @@
 	transition: 0.2s;
 	border: 0px solid black;
 	width: fit-content;
+	height: fit-content;
 }
 .button:hover{
 	cursor: pointer;
@@ -75,4 +76,12 @@
 
 .bordered_button{
 	border: 2px solid var(--secondary_color)
+}
+
+.header_button{
+	align-content: center;
+}
+
+.hat_button{
+	background-color: white;
 }

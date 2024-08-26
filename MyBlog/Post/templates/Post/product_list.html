@@ -2,20 +2,25 @@
 {% load static%}
 {% load i18n %}
 
-{% block content_list %}
-	<div class="row">
-		<div class="row el-expandable" >
-		</div>
-	<div id="toViews" data-view="list" data-who="{{category.slug}}" class="row mid_col_gap" >
-			<img id="onListView" width="32" height="32" class="icon dynamic_image bordered_button button squered_button selected_view" src="{% static 'placeholder.svg'%}" data-src="{% static 'Post/img/list_view.svg' %}"  alt="{% trans 'Значок показа ввиде списка' %}">
-			<img id="onGridView" width="32" height="32" class="icon dynamic_image bordered_button button squered_button" src="{% static 'placeholder.svg'%}" data-src="{% static 'Post/img/grid_view.svg' %}" alt="{% trans 'Значок показа ввиде плиток' %}">
-		</div>
+{% block filters_body%}
+<div id="onSort" data-sort="true"></div>
+<div id="toViews" data-view="list" data-who="{{category.slug}}" class="mid_col_gap" >
+	<div class="row mid_gap in_middle no_wrap">
+		<img id="onListView" width="32" height="32" class="filter_button hat_button icon dynamic_image bordered_button button squered_button selected_view" src="{% static 'placeholder.svg'%}" data-src="{% static 'Post/img/list_view.svg' %}"  alt="{% trans 'Значок показа ввиде списка' %}">
+		<div>{% trans "Отобразить элементы в виде списка"%}</div>
 	</div>
+	<div class="row mid_gap in_middle no_wrap">
+		<img id="onGridView" width="32" height="32" class="filter_button hat_button icon dynamic_image bordered_button button squered_button" src="{% static 'placeholder.svg'%}" data-src="{% static 'Post/img/grid_view.svg' %}" alt="{% trans 'Значок показа ввиде плиток' %}">
+		<div>{% trans "Отобразить элементы в виде плитки"%}</div>
+	</div>
+</div>
+{% endblock %}
 
+{% block content_list %}
+	<div id="meta-data" data-numpages={{num_pages}} data-currentpage="{{current_page}}" data-url="{{category.get_absolute_url}}"></div>
 	<div id="page" class="page toObserve">
-	{# Place to be filled by infinity_scroll script#}
+		{{ doc | safe}}
 	</div>
-	<div id="scroll-sentinel"></div>
 {% endblock %}
 
 {% block styles_list %}

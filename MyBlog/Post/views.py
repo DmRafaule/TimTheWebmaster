@@ -1,13 +1,16 @@
 from django.shortcuts import render, get_object_or_404
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponse
 import Post.models as Post_M
 from django.utils.translation import gettext as _
 import Main.models as Main_M
 import Main.utils as U
 from django.views.generic import DetailView, ListView, TemplateView
+from django.core.paginator import Paginator
+from django.apps import apps
+from django.template import loader
 
 max_el_in_related_post = 5
-
+UPLOAD_SIZE = 4
 
 class PostPreviewView(TemplateView):
 
@@ -52,7 +55,7 @@ class PostPreviewView(TemplateView):
                 context=context)
 
 
-class PostListView(ListView):
+class PostListView(TemplateView):
 
     model = Post_M.Category
     category = None
@@ -61,8 +64,51 @@ class PostListView(ListView):
         context = super().get_context_data(**kwargs)
         context = U.initDefaults(self.request)
         context['category'] = self.category
-        
         return context
+    
+    def get(self, request):
+        context = self.get_context_data()
+        # Defines order of loading posts. Recent of latest
+        is_recent = self.request.GET.get('is_recent', 'true')
+        if is_recent == 'true':
+            order = '-timeCreated'
+        else:
+            order = 'timeCreated'
+        # Resort posts by time of creation
+        # Get the category by some quirks, later add coresponding field
+        model = apps.get_model(f'Post.{self.category.categry_name}')
+        posts = model.objects.filter(isPublished=True).order_by(order)
+        # Create a paginator
+        paginator = Paginator(posts, UPLOAD_SIZE)
+        page = int(request.GET.get('page', 1))
+        if page > paginator.num_pages:
+            return HttpResponse(request, status=404)
+        page_obj = paginator.get_page(page)
+        type = request.GET.get('type', 'full') 
+        # Choose which template to render
+        # There are 2 modes
+        # basic - display everything that possible from preview to views
+        # simple - display only needes information, title, description, date published
+        if self.category.categry_name == 'Tool':
+            mode = self.request.GET.get('mode', 'list') + '--'    
+        else:
+            mode = self.request.GET.get('mode', 'basic') + '--'
+        # Define specific (unique) preview templates
+        for_who = self.request.GET.get('for_who', '')
+        cat = "-" + self.category.categry_name.lower()
+        if for_who != '':
+            for_who = '-' + for_who
+        # Update context data
+        context.update({'posts': page_obj})
+        context.update({'num_pages': paginator.num_pages})
+        context.update({'current_page': page})
+        context.update({'page': page + 1})
+        if type == 'full':
+            loaded_template = loader.get_template(f'Post/{mode}post_preview{for_who}{cat}.html')
+            context.update({'doc': loaded_template.render(context, request)})
+            return render(request, self.template_name, context)
+        elif type == 'part':
+            return render(request,f'Post/{mode}post_preview{for_who}{cat}.html',context=context)
 
 
 def article(request, post_slug):

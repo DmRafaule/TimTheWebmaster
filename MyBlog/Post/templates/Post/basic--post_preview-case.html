@@ -1,5 +1,6 @@
 {% load static %}
 {% load i18n %}
+{% load markdown %}
 
 {% for a in posts %}
 
@@ -8,13 +9,13 @@
 		{% if a.preview %}
 		<div class="post_preview_image marger-10">
 			<a href="{{a.get_absolute_url}}">
-				<img class="image_nomargin image-min_sized dynamic_image button" width="300" height="200"  src="{% static 'placeholder.svg' %}" data-src="{% get_media_prefix %}{{a.preview}}" alt="{% trans "Превью статьи" %}">
+				<img class="image_nomargin image-min_sized dynamic_image button" width="300" height="200" src="{% static 'placeholder.svg' %}" data-src="{% get_media_prefix %}{{a.preview}}" alt="{% trans "Превью статьи" %}">
 			</a>
 		</div>
 		{% else %}
 		<div class="post_preview_image marger-10">
 			<a href="{{a.get_absolute_url}}">
-				<img class="image_nomargin image-min_sized dynamic_image button" width="300" height="200"  src="{% static 'placeholder.svg' %}" data-src="{% static 'image-not-found.webp' %}" alt="{% trans "Превью статьи" %}">
+				<img class="image_nomargin image-min_sized dynamic_image button" width="300" height="200" src="{% static 'placeholder.svg' %}" data-src="{% static 'image-not-found.webp' %}" alt="{% trans "Превью статьи" %}">
 			</a>
 		</div>
 		{% endif %}
@@ -34,15 +35,23 @@
 					<div>{{a.likes}}</div>
 				</div>
 				<div class="row min_col_gap">
-				<img class="in_middle-self icon_small dynamic_image" width="32" height="32" src="{% static 'placeholder.svg' %}" data-src='{% static "Post/img/share.svg" %}' alt="{% trans "Соединённые точки" %}">
-				<div>{{a.shares}}</div>
+					<img class="in_middle-self icon_small dynamic_image" width="32" height="32" src="{% static 'placeholder.svg' %}" data-src='{% static "Post/img/share.svg" %}' alt="{% trans "Соединённые точки" %}">
+					<div>{{a.shares}}</div>
 				</div>
 			</div>
+			{% if a.client_name %}
+				<span class="post_preview_body">
+					<b>{% trans "Клиент:" %}</b>	{{a.client_name}} 	
+				</span>
+			{% endif %}
 		</div>
 	</div>
-	<div class="post_preview_body">
-		{{a.description|truncatewords:30}} 	
-	</div>
+	<span class="post_preview_body">
+		{{a.description|truncatewords:50}} 	
+	</span>
 </div>
 
 {% endfor %}
+{% if page <= num_pages %}
+<div id="scroll-sentinel-{{page}}" class="scroll-sentinel" data-page="{{page}}"></div>
+{% endif %}

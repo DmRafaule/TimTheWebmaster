@@ -1,1 +1,29 @@
-"use strict";{function ready(e){document.readyState!=="loading"?e():document.addEventListener("DOMContentLoaded",e)}ready(function(){function e(e){e.preventDefault();const t=new URLSearchParams(window.location.search);t.has("_popup")?window.close():window.history.back()}document.querySelectorAll(".cancel-link").forEach(function(t){t.addEventListener("click",e)})})}
+'use strict';
+{
+    // Call function fn when the DOM is loaded and ready. If it is already
+    // loaded, call the function now.
+    // http://youmightnotneedjquery.com/#ready
+    function ready(fn) {
+        if (document.readyState !== 'loading') {
+            fn();
+        } else {
+            document.addEventListener('DOMContentLoaded', fn);
+        }
+    }
+
+    ready(function() {
+        function handleClick(event) {
+            event.preventDefault();
+            const params = new URLSearchParams(window.location.search);
+            if (params.has('_popup')) {
+                window.close(); // Close the popup.
+            } else {
+                window.history.back(); // Otherwise, go back.
+            }
+        }
+
+        document.querySelectorAll('.cancel-link').forEach(function(el) {
+            el.addEventListener('click', handleClick);
+        });
+    });
+}

@@ -40,7 +40,7 @@
 .post_preview--tool{
 }
 .post_preview--tool-grid{
-	width: min-content;
+	max-width: 300px;
 }
 
 .answer{

@@ -3,9 +3,11 @@ header{
 	flex: 0 0 auto;
 	background-color: var(--main_color);
 	padding: var(--indent_min);
+	align-items: start;
 	top: 0;
 	z-index: 4;
 	column-gap: var(--usual_space);
+	overflow: hidden;
 }
 nav{
 	display: flex;

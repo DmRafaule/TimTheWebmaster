@@ -32,6 +32,7 @@ class Category(models.Model):
             path=os.path.join(S.BASE_DIR,"Post","templates","Post"),
             default=os.path.join(S.BASE_DIR,"Post","templates","Post","post_list.html")
     )
+    categry_name = models.SlugField(max_length=50, unique=False, blank=True, null=True, default='')
 
     def __str__(self):
         return self.name
