@@ -51,7 +51,7 @@ function LoadPosts(page, type, isRecent = true, mode = 'basic'){
 				sentinel_prev.addEventListener('onInfinityLoad', onInfinityLoadUpdate)
 				page_container.insertAdjacentElement('afterbegin',sentinel_prev)
 			}
-			history.replaceState(null, '', this.url)
+			UpdateState(page, 'full', isRecent, mode)
 		},
 		error: function(jqXHR, textStatus, errorThrown){
 		}
@@ -110,7 +110,7 @@ function UpdatePosts(page, type, isRecent = true, mode = 'basic'){
 				sentinel_prev.addEventListener('onInfinityLoad', onInfinityLoadUpdate)
 				page_container.insertAdjacentElement('afterbegin',sentinel_prev)
 			}
-			history.replaceState(null, '', this.url)
+			UpdateState(page, 'full', isRecent, mode)
 		},
 		error: function(jqXHR, textStatus, errorThrown){
 		}
@@ -144,7 +144,7 @@ function onInfinityLoadUpdate(event){
 	var isRecent = document.querySelector("#onSort").dataset.sort
 	var page = event.detail.sentinel.dataset.page
 	update_paginator(num_pages, page)
-	UpdateState(page, 'part', isRecent, mode)
+	UpdateState(page, 'full', isRecent, mode)
 }
 
 function onInfinityLoad(event){
@@ -165,7 +165,7 @@ function onPaginLoad(event){
 		sentinel.scrollIntoView({behavior: "smooth", block: "center", inline: "center"});
 		update_paginator(num_pages, page)
 	}
-	UpdateState(page, 'part', isRecent, mode)
+	UpdateState(page, 'full', isRecent, mode)
 }
 
 function onReady(){

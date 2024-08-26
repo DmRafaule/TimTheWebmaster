@@ -2,6 +2,9 @@ let num_pages = parseInt(document.querySelector('#meta-data').dataset.numpages)
 let current_page = parseInt(document.querySelector('#meta-data').dataset.currentpage)
 let gallery_intersection_options = {rootMargin: "-10% 0px -10% 0px"}
 
+function UpdateState(page, type){
+	history.replaceState(null, '', `/${language_code}/gallery/?page=${page}&type=${type}`)
+}
 
 function load(page, type){
 	$.ajax({
@@ -73,7 +76,7 @@ function load(page, type){
 				masonry.querySelectorAll('.masonry-col_forDelete').forEach( (item) => { item.remove()})
 			}
 			// Get the current url from response
-			history.replaceState(null, '', this.url)
+			UpdateState(page, 'full')
 		},
 		error: function(jqXHR, textStatus, errorThrown){
 		}
@@ -84,13 +87,13 @@ function load(page, type){
 function onInfinityLoadUpdate(event){
 	var page = event.detail.sentinel.dataset.page
 	update_paginator(num_pages, page)
-	history.replaceState(null, '', `/${language_code}/gallery/?page=${page}&type=part`)
+	UpdateState(page, 'full')
 }
 
 function onInfinityLoad(event){
 	var page = event.detail.sentinel.dataset.page
 	load(page,'part')
-	history.replaceState(null, '', `/${language_code}/gallery/?page=${page}&type=part`)
+	UpdateState(page, 'full')
 }
 
 function onPaginLoad(event){
@@ -100,7 +103,7 @@ function onPaginLoad(event){
 		sentinel.scrollIntoView({behavior: "smooth", block: "center", inline: "center"});
 		update_paginator(num_pages, page)
 	}
-	history.replaceState(null, '', `/${language_code}/gallery/?page=${page}&type=part`)
+	UpdateState(page, 'full')
 }
 
 
