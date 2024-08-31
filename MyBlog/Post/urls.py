@@ -46,45 +46,6 @@ urlpatterns += [
         ),
         name="qa-home-preview"),
 ]
-# patterns for handling previews of list of objects in website categories pages
-urlpatterns += [
-    path(
-        'articles/load_post_preview/',
-        V.PostPreviewView.as_view(
-            model=M.Article,
-        ),
-        name="article-preview"),
-    path(
-        'news/load_post_preview/',
-        V.PostPreviewView.as_view(
-            model=M.News
-        ),
-        name="news-preview"),
-    path(
-        'cases/load_post_preview/',
-        V.PostPreviewView.as_view(
-            model=M.Case
-        ),
-        name="cases-preview"),
-    path(
-        'td/load_post_preview/',
-        V.PostPreviewView.as_view(
-            model=M.TD
-        ),
-        name="td-preview"),
-    path(
-        'qa/load_post_preview/',
-        V.PostPreviewView.as_view(
-            model=M.QA
-        ),
-        name="qa-preview"),
-    path(
-        'tools/load_post_preview/',
-        V.PostPreviewView.as_view(
-            model=M.Tool
-        ),
-        name="tools-preview"),
-]
 # Patterns for displaying posts by itself
 # There is no tools because tool is a django app so it has to
 #   handle it's own urls

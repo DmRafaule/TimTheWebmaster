@@ -12,7 +12,6 @@
 	display: none;
 }
 .page{
-	row-gap: 90px;
 	display: flex;
 	flex-direction: column;
 	margin-bottom: 100px;

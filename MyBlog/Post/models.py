@@ -18,10 +18,15 @@ def user_directory_path(instance, filename):
 
 
 class Tag(models.Model):
-    name = models.CharField(max_length=256)
+    name = models.CharField(max_length=256, unique=True)
 
     def __str__(self):
         return self.name
+    
+    def get_absolute_url(self, *args, **kwargs):
+        print(args)
+        print(kwargs)
+        return reverse(f'articles-list')
 
 
 class Category(models.Model):

@@ -3,15 +3,19 @@ let current_page = parseInt(document.querySelector('#meta-data').dataset.current
 let url = document.querySelector('#meta-data').dataset.url
 let gallery_intersection_options = {rootMargin: "-10% 0px -10% 0px"}
 
-function LoadPosts(page, type, isRecent = true, mode = 'basic'){
+function LoadPosts(page, type, isRecent = true, mode = 'basic', tags=[]){
 	$.ajax({
 		type: "GET",
 		url: url,
+		// This option enable ability to send a list parameters in URL via &var=value&var=value2 ...
+		// Instead of &var[]=value&var[]=value2 ... 
+		traditional: true,
 		data: {
             'page': page,
             'type': type,
 			'is_recent': isRecent,
 			'mode': mode,
+			'tag': tags
 		},
 		mode: 'same-origin', // Do not send CSRF token to another domain.
 		success: function(result) {
@@ -51,26 +55,38 @@ function LoadPosts(page, type, isRecent = true, mode = 'basic'){
 				sentinel_prev.addEventListener('onInfinityLoad', onInfinityLoadUpdate)
 				page_container.insertAdjacentElement('afterbegin',sentinel_prev)
 			}
-			UpdateState(page, 'full', isRecent, mode)
+			UpdateState(page, 'full', isRecent, mode, tags)
 		},
 		error: function(jqXHR, textStatus, errorThrown){
 		}
 	})
 }
 
-function UpdateState(page, type, isRecent = true, mode = 'basic'){
-	history.replaceState(null, '', `${url}?page=${page}&type=${type}&is_recent=${isRecent}&mode=${mode}`)
+function UpdateState(page, type, isRecent = true, mode = 'basic', tags = []){
+	if (tags.length == 0)
+		history.replaceState(null, '', `${url}?page=${page}&type=${type}&is_recent=${isRecent}&mode=${mode}`)
+	else{
+		var base_url = `${url}?page=${page}&type=${type}&is_recent=${isRecent}&mode=${mode}`
+		tags.forEach( (tag) => {
+			base_url += `&tag=${tag}`
+		})
+		history.replaceState(null, '', base_url)
+	}
 }
 
-function UpdatePosts(page, type, isRecent = true, mode = 'basic'){
+function UpdatePosts(page, type, isRecent = true, mode = 'basic', tags = [] ){
 	$.ajax({
 		type: "GET",
 		url: url,
+		// This option enable ability to send a list parameters in URL via &var=value&var=value2 ...
+		// Instead of &var[]=value&var[]=value2 ... 
+		traditional: true,
 		data: {
 			'page': page,
             'type': type,
 			'is_recent': isRecent,
 			'mode': mode,
+			'tag': tags
 		},
 		mode: 'same-origin', // Do not send CSRF token to another domain.
 		success: function(result) {
@@ -110,7 +126,7 @@ function UpdatePosts(page, type, isRecent = true, mode = 'basic'){
 				sentinel_prev.addEventListener('onInfinityLoad', onInfinityLoadUpdate)
 				page_container.insertAdjacentElement('afterbegin',sentinel_prev)
 			}
-			UpdateState(page, 'full', isRecent, mode)
+			UpdateState(page, 'full', isRecent, mode, tags)
 		},
 		error: function(jqXHR, textStatus, errorThrown){
 		}
@@ -127,7 +143,9 @@ function onSort(){
 	sortButton.dataset.sort = isRecent
 	var viewsContainer = document.querySelector("#toViews")
 	var mode = viewsContainer.dataset.view
-	UpdatePosts(1, 'part', isRecent, mode)
+	var tagButton = document.querySelector("#onTags")
+	var tags = JSON.parse(tagButton.dataset.tags)
+	UpdatePosts(1, 'part', isRecent, mode, tags)
 }
 
 function onView(mode, forWho = ''){
@@ -135,7 +153,9 @@ function onView(mode, forWho = ''){
 	var isRecent = sortButton.dataset.sort
 	var viewsContainer = document.querySelector("#toViews")
 	viewsContainer.dataset.view = mode
-	UpdatePosts(1, 'part', isRecent, mode)
+	var tagButton = document.querySelector("#onTags")
+	var tags = JSON.parse(tagButton.dataset.tags)
+	UpdatePosts(1, 'part', isRecent, mode, tags)
 }
 
 function onInfinityLoadUpdate(event){
@@ -143,8 +163,10 @@ function onInfinityLoadUpdate(event){
 	var mode = viewsContainer.dataset.view
 	var isRecent = document.querySelector("#onSort").dataset.sort
 	var page = event.detail.sentinel.dataset.page
+	var tagButton = document.querySelector("#onTags")
+	var tags = JSON.parse(tagButton.dataset.tags)
 	update_paginator(num_pages, page)
-	UpdateState(page, 'full', isRecent, mode)
+	UpdateState(page, 'full', isRecent, mode, tags)
 }
 
 function onInfinityLoad(event){
@@ -152,7 +174,9 @@ function onInfinityLoad(event){
 	var mode = viewsContainer.dataset.view
 	var isRecent = document.querySelector("#onSort").dataset.sort
 	var page = event.detail.sentinel.dataset.page
-	LoadPosts(page, 'part', isRecent, mode)
+	var tagButton = document.querySelector("#onTags")
+	var tags = JSON.parse(tagButton.dataset.tags)
+	LoadPosts(page, 'part', isRecent, mode, tags)
 }
 
 function onPaginLoad(event){
@@ -165,7 +189,9 @@ function onPaginLoad(event){
 		sentinel.scrollIntoView({behavior: "smooth", block: "center", inline: "center"});
 		update_paginator(num_pages, page)
 	}
-	UpdateState(page, 'full', isRecent, mode)
+	var tagButton = document.querySelector("#onTags")
+	var tags = JSON.parse(tagButton.dataset.tags)
+	UpdateState(page, 'full', isRecent, mode, tags)
 }
 
 function onReady(){

@@ -2,6 +2,7 @@ from django.contrib import admin
 import Post.models as M
 
 
+
 class TagAdmin(admin.ModelAdmin):
     list_display = (
             'id',
@@ -28,6 +29,7 @@ class CategoryAdmin(admin.ModelAdmin):
 
 class ArticleAdmin(admin.ModelAdmin):
     exclude = ('category', 'timeCreated', 'timeUpdated', 'template', 'description', 'title')
+    filter_horizontal = ('tags',)
     list_display = (
             'id',
             'title',
@@ -130,6 +132,7 @@ class QAAdmin(admin.ModelAdmin):
 
 class TDAdmin(admin.ModelAdmin):
     exclude = ('category', 'timeCreated', 'timeUpdated', 'termin', 'description', 'definition')
+    filter_horizontal = ('tags',)
     list_display = (
             'id',
             'termin',
@@ -154,6 +157,7 @@ class TDAdmin(admin.ModelAdmin):
 
 class ToolAdmin(admin.ModelAdmin):
     exclude = ('category', 'timeCreated', 'timeUpdated', 'name', 'description', 'definition')
+    filter_horizontal = ('tags',)
     list_display = (
             'id',
             'name',

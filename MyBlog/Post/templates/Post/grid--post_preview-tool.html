@@ -1,5 +1,6 @@
 {% load static %}
 {% load i18n %}
+{% load addToListInURL %}
 
 <div class="row max_col_gap">
 {% for a in posts %}
@@ -21,6 +22,11 @@
 	</div>
 	<div>
 		{{a.description}} 	
+	</div>
+	<div class="post_preview_tags">
+		{% for tag in a.tags.all %}
+		<a href="{{ category.get_absolute_url }}?page=1&type=full&is_recent={{is_recent}}&mode={{mode}}{{tag|addToListInURL:current_tag}}"><div class="tag text_button tag_add">{{tag}}</div></a>
+		{% endfor %}
 	</div>
 </div>
 

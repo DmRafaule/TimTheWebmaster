@@ -1,16 +1,28 @@
 /*Work also as identificator for how many posts are loaded on page*/
 .post_preview{
+	padding: var(--min_pm);
+	border: 1px dashed var(--secondary_color);
 	margin-top: var(--post_preview_margin-top);
 }
 .post_preview_header{
 }
+.post_preview_title{
+	flex: 1 1 50%;
+	max-height: 150px;
+  	overflow: hidden;
+}
 .post_preview_image{
 	display:flex;
 	flex: 0 0 25%;
-	align-self:center;
+}
+.post_preview_tags{
+	display: flex;
+	margin-top: var(--usual_space);
+	gap: var(--small_space);
+	flex-wrap: wrap;
 }
 .post_preview_meta{
-	flex: 1 1 60%;
+	
 }
 .post_preview_body{
 }
