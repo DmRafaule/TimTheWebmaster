@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from django.http import JsonResponse, HttpResponse
+from django.http import JsonResponse, Http404
 import Post.models as Post_M
 from django.utils.translation import gettext as _
 import Main.models as Main_M
@@ -8,6 +8,7 @@ from django.views.generic import DetailView, ListView, TemplateView
 from django.core.paginator import Paginator
 from django.apps import apps
 from django.template import loader
+import json
 
 max_el_in_related_post = 5
 UPLOAD_SIZE = 4
@@ -55,6 +56,21 @@ class PostPreviewView(TemplateView):
                 context=context)
 
 
+def filterByTag(list, tags):
+    new_list = []
+    for item in set(list.filter(tags__in=tags)):
+        counter = 0
+        for tag in tags:
+            if item.tags.filter(name=tag):
+                counter += 1
+        if counter == len(tags):
+            new_list.append(item)
+
+    if len(new_list) == 0:
+        return None
+    else:
+        return new_list
+
 class PostListView(TemplateView):
 
     model = Post_M.Category
@@ -78,11 +94,18 @@ class PostListView(TemplateView):
         # Get the category by some quirks, later add coresponding field
         model = apps.get_model(f'Post.{self.category.categry_name}')
         posts = model.objects.filter(isPublished=True).order_by(order)
+        # Get posts with the same tags in
+        tags = request.GET.getlist('tag', [])
+        if len(tags) > 0:
+            tag_obj = Post_M.Tag.objects.filter(name__in=tags)
+            if not tag_obj:
+                raise Http404(tag_obj)
+            posts = filterByTag(posts, tag_obj)
         # Create a paginator
         paginator = Paginator(posts, UPLOAD_SIZE)
         page = int(request.GET.get('page', 1))
-        if page > paginator.num_pages:
-            return HttpResponse(request, status=404)
+        if page > paginator.num_pages :
+            raise Http404(page)
         page_obj = paginator.get_page(page)
         type = request.GET.get('type', 'full') 
         # Choose which template to render
@@ -103,6 +126,11 @@ class PostListView(TemplateView):
         context.update({'num_pages': paginator.num_pages})
         context.update({'current_page': page})
         context.update({'page': page + 1})
+        context.update({'type': type})
+        context.update({'mode': mode[:-2]})
+        context.update({'is_recent': is_recent})
+        context.update({'current_tag': tags})
+        context.update({'tags_json': json.dumps(tags)})
         if type == 'full':
             loaded_template = loader.get_template(f'Post/{mode}post_preview{for_who}{cat}.html')
             context.update({'doc': loaded_template.render(context, request)})

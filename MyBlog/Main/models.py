@@ -24,6 +24,8 @@ class Image(models.Model):
     type = models.ForeignKey(Post, on_delete=models.CASCADE)  # Which category this have to be put in
     file = models.ImageField(upload_to=user_directory_path_forImageAndDownloadabel, blank=False)
     text = models.CharField(max_length=250, blank=True)
+    # disable related name for tag field by setting related_name field to '+'
+    tags = models.ManyToManyField('Post.Tag', blank=True, related_name='+')
     category = models.CharField(max_length=2, choices=IMAGE_CATEGORIES, default=RESOURCE, blank=True)
     timeCreated = models.DateTimeField(auto_now=True)
     timeUpdated = models.DateTimeField(auto_now=True)

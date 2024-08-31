@@ -2,13 +2,13 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-23 10:49+0300\n"
+"POT-Creation-Date: 2024-08-31 20:30+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,11 +18,11 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: .\ShaderToy\templates\ShaderToy\main.html:8
+#: ShaderToy/templates/ShaderToy/main.html:8
 msgid "Редактор шейдеров на glsl"
 msgstr "Shader editor using GLSL"
 
-#: .\ShaderToy\templates\ShaderToy\main.html:9
+#: ShaderToy/templates/ShaderToy/main.html:9
 msgid ""
 "Это инструмент, который позволяет создать, отредактировать, настроить и "
 "скачать вершинный и фрагментный шейдер написанные на glsl."
@@ -30,140 +30,140 @@ msgstr ""
 "It is an online shader editor with options to view examples, tweak them, and "
 "eventually, learn from them. It uses GLSL shader language."
 
-#: .\ShaderToy\templates\ShaderToy\main.html:19
+#: ShaderToy/templates/ShaderToy/main.html:19
 msgid "Редактор шейдеров"
 msgstr "Shader editor"
 
-#: .\ShaderToy\templates\ShaderToy\main.html:22
+#: ShaderToy/templates/ShaderToy/main.html:22
 msgid "Фрагментный шейдер"
 msgstr "Fragment shader"
 
-#: .\ShaderToy\templates\ShaderToy\main.html:22
-#: .\ShaderToy\templates\ShaderToy\main.html:25
-#: .\ShaderToy\templates\ShaderToy\main.html:28
+#: ShaderToy/templates/ShaderToy/main.html:22
+#: ShaderToy/templates/ShaderToy/main.html:25
+#: ShaderToy/templates/ShaderToy/main.html:28
 msgid "Иконка тюнинга"
 msgstr "Tweaking icon"
 
-#: .\ShaderToy\templates\ShaderToy\main.html:25
+#: ShaderToy/templates/ShaderToy/main.html:25
 msgid "Вершинный шейдер"
 msgstr "Vertex shader"
 
-#: .\ShaderToy\templates\ShaderToy\main.html:28
+#: ShaderToy/templates/ShaderToy/main.html:28
 msgid "Настройки холста"
 msgstr "Canvas settings"
 
-#: .\ShaderToy\templates\ShaderToy\main.html:31
+#: ShaderToy/templates/ShaderToy/main.html:31
 msgid "Настройки шейдера"
 msgstr "Shader settings"
 
-#: .\ShaderToy\templates\ShaderToy\main.html:31
+#: ShaderToy/templates/ShaderToy/main.html:31
 msgid "Иконка настроек"
 msgstr "Settings icon"
 
-#: .\ShaderToy\templates\ShaderToy\main.html:34
+#: ShaderToy/templates/ShaderToy/main.html:34
 msgid "Библиотека шейдеров"
 msgstr "Shader examples"
 
-#: .\ShaderToy\templates\ShaderToy\main.html:34
+#: ShaderToy/templates/ShaderToy/main.html:34
 msgid "Иконка библиотеки"
 msgstr "Examples icon"
 
-#: .\ShaderToy\templates\ShaderToy\main.html:37
+#: ShaderToy/templates/ShaderToy/main.html:37
 msgid "Об инструменте"
 msgstr "About editor"
 
-#: .\ShaderToy\templates\ShaderToy\main.html:37
+#: ShaderToy/templates/ShaderToy/main.html:37
 msgid "Иконка вопроса"
 msgstr "Question icon"
 
-#: .\ShaderToy\templates\ShaderToy\main.html:40
+#: ShaderToy/templates/ShaderToy/main.html:40
 msgid "Ошибки"
 msgstr "Errors"
 
-#: .\ShaderToy\templates\ShaderToy\main.html:40
+#: ShaderToy/templates/ShaderToy/main.html:40
 msgid "Иконка ошибки"
 msgstr "Errors icon"
 
-#: .\ShaderToy\templates\ShaderToy\main.html:43
-#: .\ShaderToy\templates\ShaderToy\main.html:157
+#: ShaderToy/templates/ShaderToy/main.html:43
+#: ShaderToy/templates/ShaderToy/main.html:157
 msgid "Сохранения"
 msgstr "Saves"
 
-#: .\ShaderToy\templates\ShaderToy\main.html:43
+#: ShaderToy/templates/ShaderToy/main.html:43
 msgid "Иконка сохранения"
 msgstr "Saves icon"
 
-#: .\ShaderToy\templates\ShaderToy\main.html:56
+#: ShaderToy/templates/ShaderToy/main.html:56
 msgid "Настройка холста"
 msgstr "Canvas settings"
 
-#: .\ShaderToy\templates\ShaderToy\main.html:59
+#: ShaderToy/templates/ShaderToy/main.html:59
 msgid "Режим отрисовки"
 msgstr "Render mode"
 
-#: .\ShaderToy\templates\ShaderToy\main.html:93
+#: ShaderToy/templates/ShaderToy/main.html:93
 msgid "Работа конвеера"
 msgstr "Conveyor operation"
 
-#: .\ShaderToy\templates\ShaderToy\main.html:135
+#: ShaderToy/templates/ShaderToy/main.html:135
 msgid "Цвет холста"
 msgstr "Canvas color"
 
-#: .\ShaderToy\templates\ShaderToy\main.html:147
+#: ShaderToy/templates/ShaderToy/main.html:147
 msgid "Настройка шейдера"
 msgstr "Shader settings"
 
-#: .\ShaderToy\templates\ShaderToy\main.html:150
+#: ShaderToy/templates/ShaderToy/main.html:150
 msgid "Библиотека шейдеров glsl"
 msgstr "Shader examples in glsl"
 
-#: .\ShaderToy\templates\ShaderToy\main.html:163
+#: ShaderToy/templates/ShaderToy/main.html:163
 msgid "Приостановить отрисовку"
 msgstr "Pause drawing"
 
-#: .\ShaderToy\templates\ShaderToy\main.html:163
+#: ShaderToy/templates/ShaderToy/main.html:163
 msgid "Иконка паузы"
 msgstr "Pause icon"
 
-#: .\ShaderToy\templates\ShaderToy\main.html:163
+#: ShaderToy/templates/ShaderToy/main.html:163
 msgid "Отрисовка приостановленна"
 msgstr "Not drawing"
 
-#: .\ShaderToy\templates\ShaderToy\main.html:164
+#: ShaderToy/templates/ShaderToy/main.html:164
 msgid "Продолжить отрисовку"
 msgstr "Continue to draw"
 
-#: .\ShaderToy\templates\ShaderToy\main.html:164
+#: ShaderToy/templates/ShaderToy/main.html:164
 msgid "Иконка продолжения"
 msgstr "Continue icon"
 
-#: .\ShaderToy\templates\ShaderToy\main.html:164
+#: ShaderToy/templates/ShaderToy/main.html:164
 msgid "Отрисовывается"
 msgstr "Rendering"
 
-#: .\ShaderToy\templates\ShaderToy\main.html:165
+#: ShaderToy/templates/ShaderToy/main.html:165
 msgid "Обновить шейдер"
 msgstr "Update shader"
 
-#: .\ShaderToy\templates\ShaderToy\main.html:165
-#: .\ShaderToy\templates\ShaderToy\main.html:166
-#: .\ShaderToy\templates\ShaderToy\main.html:167
+#: ShaderToy/templates/ShaderToy/main.html:165
+#: ShaderToy/templates/ShaderToy/main.html:166
+#: ShaderToy/templates/ShaderToy/main.html:167
 msgid "Иконка старта"
 msgstr "Start icon"
 
-#: .\ShaderToy\templates\ShaderToy\main.html:166
+#: ShaderToy/templates/ShaderToy/main.html:166
 msgid "Сохранить"
 msgstr "Save"
 
-#: .\ShaderToy\templates\ShaderToy\main.html:167
+#: ShaderToy/templates/ShaderToy/main.html:167
 msgid "Сбросить все изменения"
 msgstr "To default"
 
-#: .\ShaderToy\templates\ShaderToy\main.html:172
+#: ShaderToy/templates/ShaderToy/main.html:172
 msgid "Об редакторе"
 msgstr "About editor"
 
-#: .\ShaderToy\templates\ShaderToy\main.html:174
+#: ShaderToy/templates/ShaderToy/main.html:174
 msgid ""
 "\n"
 "\t\t\t\tКлючевой особенностью данного редактора является то, что вместе с "
@@ -181,7 +181,7 @@ msgstr ""
 "\t\t\t\t\t\t\tvectors.\n"
 "\t\t\t\t\t\t"
 
-#: .\ShaderToy\templates\ShaderToy\main.html:181
+#: ShaderToy/templates/ShaderToy/main.html:181
 msgid ""
 "\n"
 "\t\t\t\tДанный инструмент был создан для решения двух моих задач:\n"
@@ -191,15 +191,15 @@ msgstr ""
 "\t\t\t\t\t\t\tThis tool was created to solve two main tasks:\n"
 "\t\t\t\t\t\t"
 
-#: .\ShaderToy\templates\ShaderToy\main.html:186
+#: ShaderToy/templates/ShaderToy/main.html:186
 msgid "Создание glsl шейдеров для дальнейшего их использования"
 msgstr "Creating glsl shaders for further use"
 
-#: .\ShaderToy\templates\ShaderToy\main.html:187
+#: ShaderToy/templates/ShaderToy/main.html:187
 msgid "Оттачивание навыков и знаний о математике"
 msgstr "Sharpening your math skills and knowledge"
 
-#: .\ShaderToy\templates\ShaderToy\main.html:190
+#: ShaderToy/templates/ShaderToy/main.html:190
 msgid ""
 "\n"
 "\t\t\t\tОн активно развивается. Я планирую добавить:\n"
@@ -209,27 +209,27 @@ msgstr ""
 "\t\t\t\t\t\t\tIt is actively developing. I plan to add:\n"
 "\t\t\t\t\t\t"
 
-#: .\ShaderToy\templates\ShaderToy\main.html:195
+#: ShaderToy/templates/ShaderToy/main.html:195
 msgid "Выбор между webgl и webgl2"
 msgstr "Choosing between webgl and webgl2"
 
-#: .\ShaderToy\templates\ShaderToy\main.html:196
+#: ShaderToy/templates/ShaderToy/main.html:196
 msgid "Улучшение <b>UX/UI</b> для кнопки сохранения и вывода ошибок"
 msgstr "Improved <b>UX/UI</b> for save button and error output"
 
-#: .\ShaderToy\templates\ShaderToy\main.html:197
+#: ShaderToy/templates/ShaderToy/main.html:197
 msgid "Возможность давать имена сохранениям"
 msgstr "Ability to name saves"
 
-#: .\ShaderToy\templates\ShaderToy\main.html:198
+#: ShaderToy/templates/ShaderToy/main.html:198
 msgid "Добавить поддержку текстур"
 msgstr "Add texture support"
 
-#: .\ShaderToy\templates\ShaderToy\main.html:199
+#: ShaderToy/templates/ShaderToy/main.html:199
 msgid "Добавить поддержку горячих клавиш"
 msgstr "Add keybingins"
 
-#: .\ShaderToy\templates\ShaderToy\main.html:202
+#: ShaderToy/templates/ShaderToy/main.html:202
 msgid ""
 "\n"
 "\t\t\t\tВажно учитывать следующие особенности при работе с инструментом.\n"
@@ -240,23 +240,23 @@ msgstr ""
 "working with tool.\n"
 "\t\t\t\t\t\t"
 
-#: .\ShaderToy\templates\ShaderToy\main.html:207
+#: ShaderToy/templates/ShaderToy/main.html:207
 msgid "Текстуры пока не поддерживаются"
 msgstr "Texture not implemented yet"
 
-#: .\ShaderToy\templates\ShaderToy\main.html:209
+#: ShaderToy/templates/ShaderToy/main.html:209
 msgid "Есть 3 встроенные юниформы"
 msgstr "There are 3 build-in uniforms"
 
-#: .\ShaderToy\templates\ShaderToy\main.html:211
+#: ShaderToy/templates/ShaderToy/main.html:211
 msgid "<b>vec2</b> <i>u_time</i> - это время с начала загрузки страницы."
 msgstr "<b>vec2</b> <i>u_time</i> is the time since the page started loading."
 
-#: .\ShaderToy\templates\ShaderToy\main.html:212
+#: ShaderToy/templates/ShaderToy/main.html:212
 msgid "<b>vec2</b> <i>u_resolution</i> - это ширина и высота холста"
 msgstr "<b>vec2</b> <i>u_resolution</i> is the width and height of the canvas"
 
-#: .\ShaderToy\templates\ShaderToy\main.html:213
+#: ShaderToy/templates/ShaderToy/main.html:213
 msgid ""
 "<b>vec2</b> <i>u_mouse</i> - это <b>x</b> и <b>y</b> координата мыши, "
 "относительно холста"
@@ -264,7 +264,7 @@ msgstr ""
 "<b>vec2</b> <i>u_mouse</i> it is a <b>x</b> and <b>y</b> mouse coordinates, "
 "relative to canvas"
 
-#: .\ShaderToy\templates\ShaderToy\main.html:216
+#: ShaderToy/templates/ShaderToy/main.html:216
 msgid ""
 "Если ты внёс изменения в шейдер и обновил его, но ничего не произошло, "
 "проверь может он стоит на паузе?"
@@ -272,10 +272,10 @@ msgstr ""
 "If you made changes to the shader and updated it, but nothing happened,Check "
 "if it's paused"
 
-#: .\ShaderToy\templates\ShaderToy\main.html:217
+#: ShaderToy/templates/ShaderToy/main.html:217
 msgid "Текстовые поля ввода требуют перечисления цифр через запятую"
 msgstr "Text input fields require numbers separated by commas"
 
-#: .\ShaderToy\templates\ShaderToy\main.html:218
+#: ShaderToy/templates/ShaderToy/main.html:218
 msgid "В библиотеке шейдеров не все шейдеры мои."
 msgstr "Not all shaders in the shader library are mine."

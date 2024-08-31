@@ -23,6 +23,11 @@
 .image{
     margin-top: 0;
 }
+
+.image-bordered > .image{
+    border-radius: 15px;
+}
+
 .image-bordered{
     border: var(--image-border-width) solid var(--image-border-color);
     border-radius: 15px

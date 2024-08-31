@@ -1,43 +1,44 @@
 {% load static %}
 {% load i18n %}
 {% load markdown %}
+{% load addToListInURL %}
 
 {% for a in posts %}
 
 <div class="post_preview column min_row_gap">
 	<div class=" post_preview_header row min_col_gap">
 		{% if a.preview %}
-		<div class="post_preview_image marger-10">
+		<div class="post_preview_image marger-10 image-bordered">
 			<a href="{{a.get_absolute_url}}">
-				<img class="image_nomargin image-min_sized dynamic_image button" width="300" height="200" src="{% static 'placeholder.svg' %}" data-src="{% get_media_prefix %}{{a.preview}}" alt="{% trans "Превью статьи" %}">
+				<img class="image_nomargin image-min_sized dynamic_image" width="300" height="200"  src="{% static 'placeholder.svg' %}" data-src="{% get_media_prefix %}{{a.preview}}" alt="{% trans "Превью статьи" %}">
 			</a>
 		</div>
 		{% else %}
-		<div class="post_preview_image marger-10">
+		<div class="post_preview_image marger-10 image-bordered">
 			<a href="{{a.get_absolute_url}}">
-				<img class="image_nomargin image-min_sized dynamic_image button" width="300" height="200" src="{% static 'placeholder.svg' %}" data-src="{% static 'image-not-found.webp' %}" alt="{% trans "Превью статьи" %}">
+				<img class="image_nomargin image-min_sized dynamic_image button" width="300" height="200"  src="{% static 'placeholder.svg' %}" data-src="{% static 'image-not-found.webp' %}" alt="{% trans "Превью статьи" %}">
 			</a>
 		</div>
 		{% endif %}
-		<div class="post_preview_meta column min_row_gap">
-			<h2><a class="text_button" href="{{ a.get_absolute_url }}">{{a.title}}</a></h2>
+		<h2 class="post_preview_title"><a class="text_button" href="{{ a.get_absolute_url }}">{{a.title}}</a></h2>
+	</div>
+	<div class="post_preview_meta row mid_gap">
+		<div class="row min_col_gap">
+			<img class="in_middle-self icon_small dynamic_image" width="32" height="32" src="{% static 'placeholder.svg' %}" data-src='{% static "Post/img/clock.svg" %}' alt="{% trans "Часы" %}">
+			<div>{{a.timeCreated|date:"d.m.Y"}}</div>
+		</div>
+		<div class="row min_col_gap">
 			<div class="row min_col_gap">
-				<img class="in_middle-self icon_small dynamic_image" width="32" height="32" src="{% static 'placeholder.svg' %}" data-src='{% static "Post/img/clock.svg" %}' alt="{% trans "Часы" %}">
-				<div>{{a.timeCreated|date:"d.m.Y"}}</div>
+				<img class="in_middle-self icon_small dynamic_image" width="32" height="32" src="{% static 'placeholder.svg' %}" data-src='{% static "Post/img/views.svg" %}' alt="{% trans "Глазик" %}">
+				<div>{{a.viewed}}</div>
 			</div>
 			<div class="row min_col_gap">
-				<div class="row min_col_gap">
-					<img class="in_middle-self icon_small dynamic_image" width="32" height="32" src="{% static 'placeholder.svg' %}" data-src='{% static "Post/img/views.svg" %}' alt="{% trans "Глазик" %}">
-					<div>{{a.viewed}}</div>
-				</div>
-				<div class="row min_col_gap">
-					<img class="in_middle-self icon_small dynamic_image" width="32" height="32" src="{% static 'placeholder.svg' %}" data-src='{% static "Post/img/like.svg" %}' alt="{% trans "Сердечки" %}">
-					<div>{{a.likes}}</div>
-				</div>
-				<div class="row min_col_gap">
-					<img class="in_middle-self icon_small dynamic_image" width="32" height="32" src="{% static 'placeholder.svg' %}" data-src='{% static "Post/img/share.svg" %}' alt="{% trans "Соединённые точки" %}">
-					<div>{{a.shares}}</div>
-				</div>
+				<img class="in_middle-self icon_small dynamic_image" width="32" height="32" src="{% static 'placeholder.svg' %}" data-src='{% static "Post/img/like.svg" %}' alt="{% trans "Сердечки" %}">
+				<div>{{a.likes}}</div>
+			</div>
+			<div class="row min_col_gap">
+			<img class="in_middle-self icon_small dynamic_image" width="32" height="32" src="{% static 'placeholder.svg' %}" data-src='{% static "Post/img/share.svg" %}' alt="{% trans "Соединённые точки" %}">
+			<div>{{a.shares}}</div>
 			</div>
 			{% if a.client_name %}
 				<span class="post_preview_body">
@@ -49,6 +50,11 @@
 	<span class="post_preview_body">
 		{{a.description|truncatewords:50}} 	
 	</span>
+	<div class="post_preview_tags">
+		{% for tag in a.tags.all %}
+		<a href="{{ category.get_absolute_url }}?page=1&type=full&is_recent={{is_recent}}&mode={{mode}}{{tag|addToListInURL:current_tag}}"><div class="tag text_button tag_add">{{tag}}</div></a>
+		{% endfor %}
+	</div>
 </div>
 
 {% endfor %}

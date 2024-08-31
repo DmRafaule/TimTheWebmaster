@@ -1,6 +1,7 @@
 {% load static %}
 {% load i18n %}
 {% load markdown %}
+{% load addToListInURL %}
 
 {% for a in posts %}
 
@@ -8,6 +9,11 @@
 	<h2><a class="text_button" href="{{ a.get_absolute_url }}">{{a.termin}}</a></h2>
 	<div class="answer">
 		{{a.definition|markdown|safe}}
+	</div>
+	<div class="post_preview_tags">
+		{% for tag in a.tags.all %}
+		<a href="{{ category.get_absolute_url }}?page=1&type=full&is_recent={{is_recent}}&mode={{mode}}{{tag|addToListInURL:current_tag}}"><div class="tag text_button tag_add">{{tag}}</div></a>
+		{% endfor %}
 	</div>
 </div>
 

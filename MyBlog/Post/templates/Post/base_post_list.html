@@ -1,16 +1,27 @@
 {% extends 'Main/base.html' %}
 {% load static%}
 {% load i18n %}
+{% load listToURL %}
 
 {% block head %}
 	<title>{{category.name}} | {% trans "Тим зе Вебмастер"%}</title>
 	<meta name="description" content="{{category.description}}">
-	<link rel="canonical" href="https://{{domain_name}}{{ category.get_absolute_url }}page={{current_page}}&type=full&is_recent=true&mode=simple" />
-	{% if current_page != num_pages %}
-	<link rel='next' href="https://{{domain_name}}{{ category.get_absolute_url }}page={{current_page|add:'1'}}&type=full&is_recent=true&mode=simple">
-	{% endif %}
-	{% if current_page != 1%}
-	<link rel='prev' href="https://{{domain_name}}{{ category.get_absolute_url }}page={{current_page|add:'-1'}}&type=full&is_recent=true&mode=simple	">
+	{% if current_tag|length == 0 %}
+		<link rel="canonical" href="https://{{domain_name}}{{ category.get_absolute_url }}?page={{current_page}}&type=full&is_recent=true&mode=simple" />
+		{% if current_page != num_pages %}
+		<link rel='next' href="https://{{domain_name}}{{ category.get_absolute_url }}?page={{current_page|add:'1'}}&type=full&is_recent=true&mode=simple">
+		{% endif %}
+		{% if current_page != 1%}
+		<link rel='prev' href="https://{{domain_name}}{{ category.get_absolute_url }}?page={{current_page|add:'-1'}}&type=full&is_recent=true&mode=simple	">
+		{% endif %}
+	{% else %}
+		<link rel="canonical" href="https://{{domain_name}}{{ category.get_absolute_url }}?page={{current_page}}&type=full&is_recent=true&mode=simple{{current_tag|listToURL}}" />
+		{% if current_page != num_pages %}
+		<link rel='next' href="https://{{domain_name}}{{ category.get_absolute_url }}?page={{current_page|add:'1'}}&type=full&is_recent=true&mode=simple{{current_tag|listToURL}}">
+		{% endif %}
+		{% if current_page != 1%}
+		<link rel='prev' href="https://{{domain_name}}{{ category.get_absolute_url }}?page={{current_page|add:'-1'}}&type=full&is_recent=true&mode=simple{{current_tag|listToURL}}">
+		{% endif %}
 	{% endif %}
 {% endblock %}
 

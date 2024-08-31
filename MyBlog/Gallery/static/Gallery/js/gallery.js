@@ -2,17 +2,29 @@ let num_pages = parseInt(document.querySelector('#meta-data').dataset.numpages)
 let current_page = parseInt(document.querySelector('#meta-data').dataset.currentpage)
 let gallery_intersection_options = {rootMargin: "-10% 0px -10% 0px"}
 
-function UpdateState(page, type){
-	history.replaceState(null, '', `/${language_code}/gallery/?page=${page}&type=${type}`)
+function UpdateState(page, type, tags=[]){
+	if (tags.length == 0)
+		history.replaceState(null, '', `/${language_code}/gallery/?page=${page}&type=${type}`)
+	else{
+		var base_url = `/${language_code}/gallery/?page=${page}&type=${type}`
+		tags.forEach( (tag) => {
+			base_url += `&tag=${tag}`
+		})
+		history.replaceState(null, '', base_url)
+	}
 }
 
-function load(page, type){
+function load(page, type, tags=[]){
 	$.ajax({
 		type: "GET",
 		url: `/${language_code}/gallery/`,
+		// This option enable ability to send a list parameters in URL via &var=value&var=value2 ...
+		// Instead of &var[]=value&var[]=value2 ... 
+		traditional: true,
 		data: {
 			'page': page,
-			'type': type
+			'type': type,
+			'tag': tags,
 		},
 		headers: {'X-CSRFToken': csrftoken},
 		mode: 'same-origin', // Do not send CSRF token to another domain.
@@ -76,7 +88,7 @@ function load(page, type){
 				masonry.querySelectorAll('.masonry-col_forDelete').forEach( (item) => { item.remove()})
 			}
 			// Get the current url from response
-			UpdateState(page, 'full')
+			UpdateState(page, 'full', tags)
 		},
 		error: function(jqXHR, textStatus, errorThrown){
 		}
@@ -86,14 +98,18 @@ function load(page, type){
 
 function onInfinityLoadUpdate(event){
 	var page = event.detail.sentinel.dataset.page
+	var tagButton = document.querySelector("#onTags")
+	var tags = JSON.parse(tagButton.dataset.tags)
 	update_paginator(num_pages, page)
-	UpdateState(page, 'full')
+	UpdateState(page, 'full', tags)
 }
 
 function onInfinityLoad(event){
 	var page = event.detail.sentinel.dataset.page
-	load(page,'part')
-	UpdateState(page, 'full')
+	var tagButton = document.querySelector("#onTags")
+	var tags = JSON.parse(tagButton.dataset.tags)
+	load(page,'part', tags)
+	UpdateState(page, 'full', tags)
 }
 
 function onPaginLoad(event){
@@ -103,7 +119,9 @@ function onPaginLoad(event){
 		sentinel.scrollIntoView({behavior: "smooth", block: "center", inline: "center"});
 		update_paginator(num_pages, page)
 	}
-	UpdateState(page, 'full')
+	var tagButton = document.querySelector("#onTags")
+	var tags = JSON.parse(tagButton.dataset.tag)
+	UpdateState(page, 'full', tags)
 }
 
 

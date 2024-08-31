@@ -2,13 +2,13 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-08-26 08:13+0300\n"
+"POT-Creation-Date: 2024-08-31 20:30+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,27 +17,35 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-#: .\Gallery\templates\Gallery\gallery-home.html:6
+
+#: Gallery/templates/Gallery/gallery-home.html:9
 msgid "Тим зе Вебмастер. Его галлерея."
 msgstr "Tim the Webmaster. His gallery"
 
-#: .\Gallery\templates\Gallery\gallery-home.html:7
+#: Gallery/templates/Gallery/gallery-home.html:10
 msgid "Галлерея Тимы. Все его изображения на одной странице"
 msgstr "Tim's gallery. All his images on one page."
 
-#: .\Gallery\templates\Gallery\gallery-home.html:19
+#: Gallery/templates/Gallery/gallery-home.html:32
 msgid "one layer on top of anothe"
 msgstr ""
 
-#: .\Gallery\templates\Gallery\gallery-home.html:21
+#: Gallery/templates/Gallery/gallery-home.html:34
 msgid "Галлерея"
 msgstr "Gallery"
 
-#: .\Gallery\templates\Gallery\gallery-home.html:27
-msgid "Пока ещё не приделал фильтры. Извини."
-msgstr "Filters on their way to this website."
+#: Gallery/templates/Gallery/gallery-home.html:43
+msgid "ТИП"
+msgstr "TYPE"
 
-#: .\Gallery\templates\Gallery\gallery-home.html:55
-#: .\Gallery\templates\Gallery\gallery-home.html:61
+#: Gallery/templates/Gallery/gallery-home.html:49
+msgid "Используемые теги для фильтрации"
+msgstr "Used tags for filtration"
+
+#: Gallery/templates/Gallery/gallery-home.html:93
+#: Gallery/templates/Gallery/gallery-home.html:99
 msgid "Шеврон"
 msgstr ""
+
+#~ msgid "Пока ещё не приделал фильтры. Извини."
+#~ msgstr "Filters on their way to this website."

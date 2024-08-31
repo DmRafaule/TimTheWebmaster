@@ -19,6 +19,7 @@ def galleryFolder(instance, filename):
 class Image(models.Model):
     file = models.ImageField(upload_to=galleryFolder, blank=False)
     text = models.CharField(max_length=250, blank=True)
+    tags = models.ManyToManyField('Post.Tag', blank=True)
     timeCreated = models.DateTimeField()
     timeUpdated = models.DateTimeField(auto_now=True)
 
