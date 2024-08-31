@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-08-26 08:13+0300\n"
+"POT-Creation-Date: 2024-08-31 22:58+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -24,7 +24,7 @@ msgid "Тима Чудук"
 msgstr "Tima Chuduk"
 
 #: .\Post\templates\Post\base_article.html:31
-#: .\Post\templates\Post\base_post_list.html:19
+#: .\Post\templates\Post\base_post_list.html:30
 msgid "one layer on top of anothe"
 msgstr ""
 
@@ -52,21 +52,21 @@ msgstr "twitter icon"
 msgid "telegram иконка"
 msgstr "telegram icon"
 
-#: .\Post\templates\Post\base_post_list.html:6
+#: .\Post\templates\Post\base_post_list.html:7
 msgid "Тим зе Вебмастер"
 msgstr "Tim the Webmaster"
 
-#: .\Post\templates\Post\base_post_list.html:42
-#: .\Post\templates\Post\base_post_list.html:48
-#: .\Post\templates\Post\basic--post_preview-qa.html:13
-#: .\Post\templates\Post\basic--post_preview-td.html:13
+#: .\Post\templates\Post\base_post_list.html:53
+#: .\Post\templates\Post\base_post_list.html:59
+#: .\Post\templates\Post\basic--post_preview-qa.html:14
+#: .\Post\templates\Post\basic--post_preview-td.html:14
 msgid "Шеврон"
 msgstr "Chevron"
 
-#: .\Post\templates\Post\basic--post_preview-article.html:11
-#: .\Post\templates\Post\basic--post_preview-article.html:17
-#: .\Post\templates\Post\basic--post_preview-case.html:12
-#: .\Post\templates\Post\basic--post_preview-case.html:18
+#: .\Post\templates\Post\basic--post_preview-article.html:12
+#: .\Post\templates\Post\basic--post_preview-article.html:18
+#: .\Post\templates\Post\basic--post_preview-case.html:13
+#: .\Post\templates\Post\basic--post_preview-case.html:19
 #: .\Post\templates\Post\basic--post_preview-home-articles.html:9
 #: .\Post\templates\Post\basic--post_preview-home-articles.html:15
 #: .\Post\templates\Post\basic--post_preview-home-cases.html:11
@@ -74,59 +74,59 @@ msgstr "Chevron"
 #: .\Post\templates\Post\basic--post_preview-home-news.html:9
 #: .\Post\templates\Post\basic--post_preview-home-news.html:15
 #: .\Post\templates\Post\basic--post_preview-home-tools.html:8
-#: .\Post\templates\Post\basic--post_preview-news.html:11
-#: .\Post\templates\Post\basic--post_preview-news.html:17
-#: .\Post\templates\Post\grid--post_preview-tool.html:13
-#: .\Post\templates\Post\list--post_preview-tool.html:12
+#: .\Post\templates\Post\basic--post_preview-news.html:12
+#: .\Post\templates\Post\basic--post_preview-news.html:18
+#: .\Post\templates\Post\grid--post_preview-tool.html:14
+#: .\Post\templates\Post\list--post_preview-tool.html:13
 msgid "Превью статьи"
 msgstr "Article preview"
 
-#: .\Post\templates\Post\basic--post_preview-article.html:24
-#: .\Post\templates\Post\basic--post_preview-case.html:25
+#: .\Post\templates\Post\basic--post_preview-article.html:26
+#: .\Post\templates\Post\basic--post_preview-case.html:27
 #: .\Post\templates\Post\basic--post_preview-home-articles.html:23
 #: .\Post\templates\Post\basic--post_preview-home-cases.html:29
 #: .\Post\templates\Post\basic--post_preview-home-news.html:24
-#: .\Post\templates\Post\basic--post_preview-news.html:24
-#: .\Post\templates\Post\simple--post_preview-article.html:11
-#: .\Post\templates\Post\simple--post_preview-case.html:12
-#: .\Post\templates\Post\simple--post_preview-news.html:11
+#: .\Post\templates\Post\basic--post_preview-news.html:26
+#: .\Post\templates\Post\simple--post_preview-article.html:12
+#: .\Post\templates\Post\simple--post_preview-case.html:13
+#: .\Post\templates\Post\simple--post_preview-news.html:12
 msgid "Часы"
 msgstr "Clock"
 
-#: .\Post\templates\Post\basic--post_preview-article.html:29
-#: .\Post\templates\Post\basic--post_preview-case.html:30
+#: .\Post\templates\Post\basic--post_preview-article.html:31
+#: .\Post\templates\Post\basic--post_preview-case.html:32
 #: .\Post\templates\Post\basic--post_preview-home-articles.html:27
 #: .\Post\templates\Post\basic--post_preview-home-cases.html:33
 #: .\Post\templates\Post\basic--post_preview-home-news.html:28
-#: .\Post\templates\Post\basic--post_preview-news.html:29
+#: .\Post\templates\Post\basic--post_preview-news.html:31
 msgid "Глазик"
 msgstr "An eye"
 
-#: .\Post\templates\Post\basic--post_preview-article.html:33
-#: .\Post\templates\Post\basic--post_preview-case.html:34
+#: .\Post\templates\Post\basic--post_preview-article.html:35
+#: .\Post\templates\Post\basic--post_preview-case.html:36
 #: .\Post\templates\Post\basic--post_preview-home-articles.html:31
 #: .\Post\templates\Post\basic--post_preview-home-cases.html:37
 #: .\Post\templates\Post\basic--post_preview-home-news.html:32
-#: .\Post\templates\Post\basic--post_preview-news.html:33
+#: .\Post\templates\Post\basic--post_preview-news.html:35
 msgid "Сердечки"
 msgstr "Hearts"
 
-#: .\Post\templates\Post\basic--post_preview-article.html:37
-#: .\Post\templates\Post\basic--post_preview-case.html:38
+#: .\Post\templates\Post\basic--post_preview-article.html:39
+#: .\Post\templates\Post\basic--post_preview-case.html:40
 #: .\Post\templates\Post\basic--post_preview-home-articles.html:35
 #: .\Post\templates\Post\basic--post_preview-home-cases.html:41
 #: .\Post\templates\Post\basic--post_preview-home-news.html:36
-#: .\Post\templates\Post\basic--post_preview-news.html:37
+#: .\Post\templates\Post\basic--post_preview-news.html:39
 msgid "Соединённые точки"
 msgstr "3 connected dots"
 
-#: .\Post\templates\Post\basic--post_preview-case.html:44
+#: .\Post\templates\Post\basic--post_preview-case.html:45
 #: .\Post\templates\Post\basic--post_preview-home-cases.html:47
 msgid "Клиент:"
 msgstr "Client:"
 
-#: .\Post\templates\Post\basic--post_preview-qa.html:12
-#: .\Post\templates\Post\basic--post_preview-td.html:12
+#: .\Post\templates\Post\basic--post_preview-qa.html:13
+#: .\Post\templates\Post\basic--post_preview-td.html:13
 msgid "Раскрыть"
 msgstr "Extend"
 
@@ -163,46 +163,72 @@ msgstr "Additional"
 msgid "Дополнительные материалы"
 msgstr "Additional materials"
 
-#: .\Post\templates\Post\post_list.html:7
-#: .\Post\templates\Post\termin_list.html:7
+#: .\Post\templates\Post\post_list.html:12
+#: .\Post\templates\Post\product_list.html:12
+#: .\Post\templates\Post\termin_list.html:12
+msgid "ПОРЯДОК"
+msgstr "ORDER"
+
+#: .\Post\templates\Post\post_list.html:16
+#: .\Post\templates\Post\product_list.html:16
+#: .\Post\templates\Post\termin_list.html:16
 msgid "Значок сортировки"
 msgstr "Sign of sorting"
 
-#: .\Post\templates\Post\post_list.html:8
-#: .\Post\templates\Post\termin_list.html:8
+#: .\Post\templates\Post\post_list.html:17
+#: .\Post\templates\Post\product_list.html:17
+#: .\Post\templates\Post\termin_list.html:17
 msgid "Сортировка постов по дате публикации "
 msgstr "Sort a posts by date"
 
-#: .\Post\templates\Post\post_list.html:12
-#: .\Post\templates\Post\termin_list.html:12
+#: .\Post\templates\Post\post_list.html:23
+#: .\Post\templates\Post\product_list.html:23
+#: .\Post\templates\Post\termin_list.html:23
+msgid "ОТОБРАЖЕНИЕ"
+msgstr "VIEW"
+
+#: .\Post\templates\Post\post_list.html:28
+#: .\Post\templates\Post\termin_list.html:28
 msgid "Значок базового представления"
 msgstr "Sign of basic view"
 
-#: .\Post\templates\Post\post_list.html:13
+#: .\Post\templates\Post\post_list.html:29
 msgid "Отображение постов с превьюшкой и прочими данными"
 msgstr "Display posts with previews and other data"
 
-#: .\Post\templates\Post\post_list.html:16
+#: .\Post\templates\Post\post_list.html:32
 msgid "Значок упрощённого представления"
 msgstr "Sign of simplified view"
 
-#: .\Post\templates\Post\post_list.html:17
+#: .\Post\templates\Post\post_list.html:33
 msgid "Отображение постов без превьюшек"
 msgstr "Display posts without a preview"
 
-#: .\Post\templates\Post\product_list.html:9
+#: .\Post\templates\Post\post_list.html:40
+#: .\Post\templates\Post\product_list.html:40
+#: .\Post\templates\Post\termin_list.html:40
+msgid "ТИП"
+msgstr "TYPE"
+
+#: .\Post\templates\Post\post_list.html:46
+#: .\Post\templates\Post\product_list.html:46
+#: .\Post\templates\Post\termin_list.html:46
+msgid "Используемые теги для фильтрации"
+msgstr "Used tags for filtration"
+
+#: .\Post\templates\Post\product_list.html:28
 msgid "Значок показа ввиде списка"
 msgstr "Sign of list view"
 
-#: .\Post\templates\Post\product_list.html:10
+#: .\Post\templates\Post\product_list.html:29
 msgid "Отобразить элементы в виде списка"
 msgstr "Display an elements in a list view"
 
-#: .\Post\templates\Post\product_list.html:13
+#: .\Post\templates\Post\product_list.html:32
 msgid "Значок показа ввиде плиток"
 msgstr "Sign of grid view"
 
-#: .\Post\templates\Post\product_list.html:14
+#: .\Post\templates\Post\product_list.html:33
 msgid "Отобразить элементы в виде плитки"
 msgstr "Display an elements in a grid view"
 
@@ -222,14 +248,14 @@ msgstr "Related news"
 msgid "Относящиеся инструменты"
 msgstr "Related tools"
 
-#: .\Post\templates\Post\termin_list.html:13
+#: .\Post\templates\Post\termin_list.html:29
 msgid "Спрятать все значения элементов"
 msgstr "Hide all fields of record"
 
-#: .\Post\templates\Post\termin_list.html:16
+#: .\Post\templates\Post\termin_list.html:32
 msgid "Значок расширенного представления"
 msgstr "Extended view icon"
 
-#: .\Post\templates\Post\termin_list.html:17
+#: .\Post\templates\Post\termin_list.html:33
 msgid "Отобразить все значения элементов"
 msgstr "Display all fields of record"

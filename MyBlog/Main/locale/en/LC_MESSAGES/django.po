@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-08-26 08:13+0300\n"
+"POT-Creation-Date: 2024-08-31 22:58+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -42,11 +42,11 @@ msgstr "Tim the Webmaster. Page not found"
 msgid "Страница не найдена"
 msgstr "Page not found"
 
-#: .\Main\templates\Main\about.html:6 .\Main\templates\Main\sitemap.html:6
+#: .\Main\templates\Main\about.html:6
 msgid "Тим, Вебмастер. Всё об авторе и его деятельности."
 msgstr "Tim the Webmaster. All about him and his passion."
 
-#: .\Main\templates\Main\about.html:7 .\Main\templates\Main\sitemap.html:7
+#: .\Main\templates\Main\about.html:7
 msgid ""
 "О вебмастере Тиме Чудуке. Его истории, интересах и оказываемых услугах "
 "разработки сайтов, тг ботов, скриптов, парсеров и копирайта"
