@@ -156,29 +156,51 @@ class TDAdmin(admin.ModelAdmin):
 
 
 class ToolAdmin(admin.ModelAdmin):
-    exclude = ('category', 'timeCreated', 'timeUpdated', 'name', 'description', 'definition')
+    fieldsets = [
+        (
+            None,
+            {
+                'fields': ['name_ru', 'name_en', 'description_ru', 'description_en', 'slug', 'isPublished']
+            }
+        ),
+        (
+            'Advanced options',
+            {
+                'fields': ['type', 'icon', 'archive', 'url', 'tags'],
+                'classes': ['collapse'],
+                'description': 'In this fieldset you can switch type of tool and configure other options.'
+            }
+        )
+    ]
+    exclude = ('category', 'timeCreated', 'timeUpdated', 'name', 'description', 'definition', 'likes', 'shares', 'viewed')
     filter_horizontal = ('tags',)
     list_display = (
             'id',
             'name',
+            'description',
             'isPublished',
-            'slug',
-            'timeCreated',
-            'timeUpdated',
-            'icon'
+            'icon',
+            'type',
+            'url',
+            'archive',
     )
     list_display_links = (
             'name',
     )
     list_editable = (
             'isPublished',
-            'timeCreated'
+            'description',
+            'icon',
+            'type',
+            'url',
+            'archive'
     )
     search_fields = (
             'name',
             'tags'
     )
-    list_filter = ('isPublished',)
+    radio_fields = {'type': admin.HORIZONTAL}
+    list_filter = ('isPublished', 'type')
 
 
 admin.site.register(M.Tag, TagAdmin)

@@ -168,21 +168,48 @@ class TD(Post):
         return self.termin
 
 
+def toolURLFieldValidator(self, value):
+    print(self)
+
+def toolArchiveFieldValidator(self, value):
+    print(self)
+
 class Tool(Post):
     view_name = "tool"
+    INTERNAL = 'In'
+    EXTERNAL = 'Ex'
+    ARCHIVE = 'Ac'
+    TOOL_CATEGORIES = {
+        INTERNAL:   'Internal',
+        EXTERNAL:   'External',
+        ARCHIVE:    'Archive',
+    }
     name = models.CharField(max_length=256, blank=False)
     description = models.TextField(blank=False)
     icon = models.FileField(max_length=300, upload_to=user_directory_path, blank=True)
+    url  = models.URLField(max_length=300, blank=True, help_text='Use only if it is External type')
+    archive = models.FileField(upload_to=user_directory_path, blank=True, help_text='Use only if it is Archive type')
+    type = models.CharField(max_length=2, choices=TOOL_CATEGORIES, default=ARCHIVE, blank=False)
 
     def save(self, *args, **kwargs):
         self.category = Category.objects.get(slug="tools")
+        os.makedirs(os.path.join(S.MEDIA_ROOT, f'{self.category.slug}', f'{self.slug}'), exist_ok=True)
         super(Tool, self).save(*args, **kwargs)
 
     def __str__(self):
         return self.name
 
     def get_absolute_url(self):
-        return f'/{get_language()}/tools/{self.slug}/'
+        url = ''
+        match self.type:
+            case self.ARCHIVE:
+                url = f'/media/{self.archive}'
+            case self.INTERNAL:
+                url = f'/{get_language()}/tools/{self.slug}/'
+            case self.EXTERNAL:
+                url = self.url
+
+        return url
 
 
 class PostSitemap(Sitemap):
@@ -194,7 +221,7 @@ class PostSitemap(Sitemap):
         cases = Case.objects.filter(isPublished=True)
         qa = QA.objects.filter(isPublished=True)
         td = TD.objects.filter(isPublished=True)
-        tools = Tool.objects.filter(isPublished=True)
+        tools = Tool.objects.filter(isPublished=True, type=Tool.INTERNAL)
         items = list(chain(articles, news, cases, qa, td, tools))
         return items
 
@@ -205,4 +232,4 @@ class PostSitemap(Sitemap):
 # Remove all loaded files before deleting on database
 @receiver(pre_delete, sender=Post)
 def cleanupPost(sender, instance, **kwargs):
-    shutil.rmtree(os.path.join(S.MEDIA_ROOT, f"{instance.category.slug}/{instance.slug}"))
+    shutil.rmtree(os.path.join(S.MEDIA_ROOT, f"{instance.category.slug}", f"{instance.slug}"))

@@ -15,9 +15,19 @@
 				</a>
 			</div>
 			{% endif %}
+			{% if a.type == 'Ac' %}
 			<div class="post_preview_meta--tool">
-				<h2><a class="text_button" href="{{ a.get_absolute_url }}">{{a.name}}</a></h2>
+				<h2 class="ref_downloadables" ><a class="text_button" href="{{ a.get_absolute_url }}">{{a.name}}</a></h2>
 			</div>
+			{% elif a.type == 'In' %}
+			<div class="post_preview_meta--tool">
+				<h2 class="ref"><a target='_blank' class="text_button" href="{{ a.get_absolute_url }}">{{a.name}}</a></h2>
+			</div>
+			{% elif a.type == 'Ex' %}
+			<div class="post_preview_meta--tool">
+				<h2 class="ref"><a rel='nofollow' target='_blank' class="text_button" href="{{ a.get_absolute_url }}">{{a.name}}</a></h2>
+			</div>
+			{% endif %}
 		</div>
 	</div>
 	<div>
