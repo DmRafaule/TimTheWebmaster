@@ -16,16 +16,6 @@
 		<img id="onSort" data-sort="true" width="32" height="32" class="filter_button hat_button icon dynamic_image bordered_button button squered_button" src="{% static 'placeholder.svg'%}" data-src="{% static 'Post/img/sort.svg' %}" alt="{% trans 'Значок сортировки' %}">
 		<div>{% trans "Сортировка постов по дате публикации " %}</div>
 	</div>
-	<fieldset class="fieldset_in_slider">
-		<legend>
-			<div class="row mid_gap in_middle on_start no_wrap" >
-				<div  id="onAlphabet">{% trans "Сортировка постов по алфавиту" %}</div>
-			</div>
-		</legend>
-		<div class="post_preview_alphabet">
-			
-		</div>
-	</fieldset>
 </fieldset>
 <div id="toViews" data-view="basic" data-who="{{category.slug}}"></div>
 <fieldset class="fieldset_in_slider">

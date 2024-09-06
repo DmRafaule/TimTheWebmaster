@@ -205,7 +205,10 @@ def qa(request, post_slug):
     related_tools = Post_M.Tool.objects.filter(tags__in=tags)
     context.update({'related_tools': set(related_tools[:max_el_in_related_post])})
 
-    return render(request, post.template, context=context)
+    if post.template:
+        return render(request, post.template.path, context=context)
+    else:
+        return render(request, post.default_template, context=context)
 
 
 def td(request, post_slug):
@@ -230,8 +233,10 @@ def td(request, post_slug):
 
     related_tools = Post_M.Tool.objects.filter(tags__in=tags)
     context.update({'related_tools': set(related_tools[:max_el_in_related_post])})
-
-    return render(request, post.template, context=context)
+    if post.template:
+        return render(request, post.template.path, context=context)
+    else:
+        return render(request, post.default_template, context=context)
 
 
 # Basicaly one browser one like for one article

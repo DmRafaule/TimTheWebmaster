@@ -34,7 +34,8 @@ class QATranslationOptions(TranslationOptions):
     fields = (
             'question',
             'description',
-            'answer'
+            'answer',
+            'template',
     )
 
 
@@ -42,7 +43,8 @@ class TDTranslationOptions(TranslationOptions):
     fields = (
             'termin',
             'description',
-            'definition'
+            'definition',
+            'template',
     )
 
 

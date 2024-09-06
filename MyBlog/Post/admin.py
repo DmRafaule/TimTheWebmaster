@@ -28,8 +28,32 @@ class CategoryAdmin(admin.ModelAdmin):
 
 
 class ArticleAdmin(admin.ModelAdmin):
+    fieldsets = [
+        (
+            None,
+            {
+                'fields': ['title_ru', 'title_en', 'description_ru', 'description_en', 'isPublished', 'slug', 'template_ru', 'template_en']
+            }
+        ),
+        (
+            'Advanced options',
+            {
+                'fields': ['preview', 'likes', 'shares', 'viewed'],
+                'classes': ['collapse'],
+                'description': 'In this fieldset you can switch type of tool and configure other options.'
+            }
+        ),
+        (
+            'Relations',
+            {
+                'fields': ['tags', 'tds', 'qas'],
+                'classes': ['collapse'],
+                'description': 'In this fieldset you can link this article to others post models (TD, QA, Tags)'
+            }
+        )
+    ]
     exclude = ('category', 'timeCreated', 'timeUpdated', 'template', 'description', 'title')
-    filter_horizontal = ('tags',)
+    filter_horizontal = ('tags', 'tds', 'qas')
     list_display = (
             'id',
             'title',
@@ -107,7 +131,7 @@ class CaseAdmin(admin.ModelAdmin):
 
 
 class QAAdmin(admin.ModelAdmin):
-    exclude = ('category', 'timeCreated', 'timeUpdated', 'question', 'answer', 'description', )
+    exclude = ('category', 'timeCreated', 'timeUpdated', 'question', 'answer', 'description', 'template')
     list_display = (
             'id',
             'question',
@@ -131,7 +155,7 @@ class QAAdmin(admin.ModelAdmin):
 
 
 class TDAdmin(admin.ModelAdmin):
-    exclude = ('category', 'timeCreated', 'timeUpdated', 'termin', 'description', 'definition')
+    exclude = ('category', 'timeCreated', 'timeUpdated', 'termin', 'description', 'definition', 'template')
     filter_horizontal = ('tags',)
     list_display = (
             'id',
