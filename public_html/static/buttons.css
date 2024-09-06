@@ -28,6 +28,30 @@
 	padding: var(--indent_min);
 }
 
+.link_text_button{
+	transition: 0.1s;
+}
+.link_text_button:hover{
+	cursor: pointer;
+	color: var(--link_color); 
+}
+.link_text_button:active{
+	color: var(--link_color);
+	padding: var(--indent_min);
+}
+
+.download_text_button{
+	transition: 0.1s;
+}
+.download_text_button:hover{
+	cursor: pointer;
+	color: var(--link-downloadable_color); 
+}
+.download_text_button:active{
+	color: var(--link-downloadable_color);
+	padding: var(--indent_min);
+}
+
 .toggle_button{
 	display: flex;
 	align-items: center;
@@ -55,6 +79,7 @@
 
 
 .action_button{
+	color: var(--ui_text_color);
 	background-color: var(--button_action_bg);
 	padding: var(--button_padding_top_bot);
 	padding-left: var(--button_padding_side);
@@ -67,6 +92,16 @@
 	padding-left: var(--button_padding_side);
 	padding-right: var(--button_padding_side);
 }
+.external_link_button{
+	background-color: var(--button_link_bg);
+}
+.internal_link_button{
+	background-color: var(--link-internal_color);
+}
+.download_button{
+	background-color: var(--link-downloadable_color);
+}
+
 .remove_action_button{
 	background-color: var(--button_danger_action_bg);
 	padding: var(--button_padding_top_bot);

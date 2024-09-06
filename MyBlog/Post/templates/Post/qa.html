@@ -1,82 +1,8 @@
-{% extends 'Post/base_post.html' %}
+{% extends 'Post/base_qa.html' %}
 {% load i18n %}
 {% load static %}
-{% load markdown %}
-
-{% block head_post %}
-<title>{{post.question}} | {% trans "Тим Вебмастер" %}</title>
-<meta name="description" content="{{post.description}}">
-{% endblock %}
 
 
-{% block content_post-before %}
-{% endblock %}
-
-{% block content_post %}
-	<h1 class="title" >{{post.question}}</h1>
-	<div class="answer">
-		{{post.answer|markdown|safe}}
-	</div>
-	<div class="row min_gap in_middle-farapart">
-		{% if related_articles|length > 0 %}
-			<div class="related">
-				<h3 class="paragraph in_middle-self">{% trans "Относящиеся статьи" %}</h3>
-				<ul class="list">
-				{% for post in related_articles %}
-					<li class="ref">
-						<a href="{{post.get_absolute_url}}">{{post}}</a>
-					</li>
-				{% endfor %}
-				</ul>
-			</div>
-		{% endif %}
-		{% if related_cases|length > 0 %}
-			<div class="related">
-				<h3 class="paragraph in_middle-self">{% trans "Относящиеся кейсы" %}</h3>
-				<ul class="list">
-				{% for post in related_cases %}
-					<li class="ref">
-						<a href="{{post.get_absolute_url}}">{{post}}</a>
-					</li>
-				{% endfor %}
-				</ul>
-			</div>
-		{% endif %}
-		{% if related_news|length > 0 %}
-			<div class="related">
-				<h3 class="paragraph in_middle-self">{% trans "Относящиеся новости" %}</h3>
-				<ul class="list">
-				{% for post in related_news %}
-					<li class="ref">
-						<a href="{{post.get_absolute_url}}">{{post}}</a>
-					</li>
-				{% endfor %}
-				</ul>
-			</div>
-		{% endif %}
-		{% if related_tools|length > 0 %}
-			<div class="related">
-				<h3 class="paragraph in_middle-self">{% trans "Относящиеся инструменты" %}</h3>
-				<ul class="list">
-				{% for post in related_tools %}
-					<li class="ref">
-						<a href="{{post.get_absolute_url}}">{{post}}</a>
-					</li>
-				{% endfor %}
-				</ul>
-			</div>
-		{% endif %}
-		{% if used_in_posts|length > 0 %}
-		{% endif %}
-	</div>
-{% endblock %}
-
-{% block content_post-after %}
-{% endblock %}
-
-{% block styles_post %}
-    <link type="text/css" rel="stylesheet" href="{% static 'Post/css/qa.css' %}"/>
-{% endblock %}
-
-{% block scripts_post %}
+{% block content_post_qa %}
+	
 {% endblock %}

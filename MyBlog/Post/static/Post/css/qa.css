@@ -1,12 +1,15 @@
 
 .title{
 	text-align: left;
-	margin-top: 45svh;
+	margin-top: 25svh;
 	margin-bottom: 5svh;
 	word-wrap: break-word;
 }
 .answer{
-	margin-bottom: 45svh
+	
+}
+.answer_pusher{
+	margin-bottom: 25svh
 }
 
 .related{

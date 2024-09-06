@@ -5,23 +5,18 @@
 
 {% for a in posts %}
 
-<div class="post_preview">
-	<div class="column in_middle-farapart no_wrap max_col_gap">
-		<h2><a class="text_button" href="{{ a.get_absolute_url }}">{{a.termin}}</a></h2>
-	</div>
-	<div data-id="{{a.id}}" class="text_button toggle_button ">
-		[{% trans "Раскрыть" %}]
-		<img width="32" height="32" class="icon dynamic_image" src="{% static 'placeholder.svg'%}" data-src="{% static 'chevron_black.svg' %}"  alt="{% trans 'Шеврон' %}">
-	</div>
-	<div id="post_preview_body-{{a.id}}" class="answer post_preview_body--tool">
-		{{a.definition|markdown|safe}} 	
-	</div>
-	<hr>
-	<div class="post_preview_tags">
-		{% for tag in a.tags.all %}
-		<a href="{{ category.get_absolute_url }}?page=1&type=full&is_recent={{is_recent}}&mode={{mode}}{{tag|addToListInURL:current_tag}}"><div class="tag text_button tag_add">{{tag}}</div></a>
-		{% endfor %}
-	</div>
+<div class="post_preview loader">
+	<fieldset class="column min_gap">
+        <legend class="question row mid_gap in_middle">
+			<h2 style='font-size: var(--size-titleH4_font)'><a  class="text_button" href='{{a.get_absolute_url}}'>{{a.termin}}</a></h2>
+        </legend>
+        <span>{{a.definition}}<span class="ref"> <a href='{{a.get_absolute_url}}'>{% trans 'Узнать больше' %}</a></span></span>
+		<div class="post_preview_tags">
+			{% for tag in a.tags.all %}
+			<a href="{{ category.get_absolute_url }}?page=1&type=full&is_recent={{is_recent}}&mode={{mode}}{{tag|addToListInURL:current_tag}}"><div class="tag text_button tag_add">{{tag}}</div></a>
+			{% endfor %}
+		</div>
+    </fieldset>
 </div>
 
 {% endfor %}

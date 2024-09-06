@@ -4,28 +4,39 @@
 
 {% for a in posts %}
 
-<div class="post_preview post_preview--tool column min_row_gap">
+<div class="post_preview post_preview--tool column min_row_gap  loader">
 	<div class=" post_preview_header--tool row min_gap">
-		<div class="row no_wrap min_col_gap">
-			{% if a.icon %}
-			<div class="marger-10 in_middle-self">
-				<a href="{{a.get_absolute_url}}">
-					<img class="icon dynamic_image" width="32" height="32" src="{% static 'placeholder.svg' %}" data-src="{% get_media_prefix %}{{a.icon}}" alt="{% trans "Превью статьи" %}">
-				</a>
-			</div>
-			{% endif %}
+		<div class="post_preview_meta--tool row mid_gap">
 			{% if a.type == 'Ac' %}
-			<div class="post_preview_meta--tool">
-				<h2 class="ref_downloadables" ><a class="text_button" href="{{ a.get_absolute_url }}">{{a.name}}</a></h2>
-			</div>
+				<div class="download_button squered_button button"><a href="{{ a.get_absolute_url }}"><img class="icon dynamic_image" width="32" height="32" src="{% static 'placeholder.svg' %}" data-src="{% static 'Post/img/download.svg' %}" alt="{% trans "Превью статьи" %}"></a></div>
+				{% if a.icon %}
+					<div class="marger-10 in_middle-self">
+						<a href="{{a.get_absolute_url}}">
+							<img class="icon dynamic_image" width="32" height="32" src="{% static 'placeholder.svg' %}" data-src="{% get_media_prefix %}{{a.icon}}" alt="{% trans "Превью статьи" %}">
+						</a>
+					</div>
+				{% endif %}
+				<h2 style='font-size: var(--size-titleH3_font)' ><a class="download_text_button" href="{{ a.get_absolute_url }}">{{a.name}}</a></h2>
 			{% elif a.type == 'In' %}
-			<div class="post_preview_meta--tool">
-				<h2 class="ref"><a target='_blank' class="text_button" href="{{ a.get_absolute_url }}">{{a.name}}</a></h2>
-			</div>
+				<div class="internal_link_button squered_button button"><a href="{{ a.get_absolute_url }}"><img class="icon dynamic_image" width="32" height="32" src="{% static 'placeholder.svg' %}" data-src="{% static 'Post/img/internal_link.svg' %}" alt="{% trans "Превью статьи" %}"></a></div>
+				{% if a.icon %}
+					<div class="marger-10 in_middle-self">
+						<a href="{{a.get_absolute_url}}">
+							<img class="icon dynamic_image" width="32" height="32" src="{% static 'placeholder.svg' %}" data-src="{% get_media_prefix %}{{a.icon}}" alt="{% trans "Превью статьи" %}">
+						</a>
+					</div>
+				{% endif %}
+				<h2 style='font-size: var(--size-titleH3_font)' ><a class="text_button" href="{{ a.get_absolute_url }}">{{a.name}}</a></h2>
 			{% elif a.type == 'Ex' %}
-			<div class="post_preview_meta--tool">
-				<h2 class="ref"><a rel='nofollow' target='_blank' class="text_button" href="{{ a.get_absolute_url }}">{{a.name}}</a></h2>
-			</div>
+				<div class="external_link_button squered_button button"><a href="{{ a.get_absolute_url }}"><img class="icon dynamic_image" width="32" height="32" src="{% static 'placeholder.svg' %}" data-src="{% static 'Post/img/external_link.svg' %}" alt="{% trans "Превью статьи" %}"></a></div>
+				{% if a.icon %}
+					<div class="marger-10 in_middle-self">
+						<a href="{{a.get_absolute_url}}">
+							<img class="icon dynamic_image" width="32" height="32" src="{% static 'placeholder.svg' %}" data-src="{% get_media_prefix %}{{a.icon}}" alt="{% trans "Превью статьи" %}">
+						</a>
+					</div>
+				{% endif %}
+				<h2 style='font-size: var(--size-titleH3_font)' ><a class="link_text_button" href="{{ a.get_absolute_url }}">{{a.name}}</a></h2>
 			{% endif %}
 		</div>
 	</div>

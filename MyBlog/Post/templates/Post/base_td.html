@@ -1,0 +1,38 @@
+{% extends 'Post/base_post.html' %}
+{% load i18n %}
+{% load static %}
+
+{% block head_post %}
+    <title>{{post.termin}} | {% trans "Тим Вебмастер" %}</title>
+    <meta name="description" content="{{post.description}}">
+{% endblock %}
+
+
+{% block content_post-before %}
+	
+{% endblock %}
+
+{% block content_post %}
+	<h1 class="title" >{{post.termin}}</h1>
+	<div class="answer">
+		{{post.definition}}
+	</div>
+	{% block content_post_td %}
+	{% endblock %}
+	<div class="answer_pusher"></div>
+{% endblock %}
+
+{% block content_post-after %}
+	
+{% endblock %}
+
+{% block styles_post %}
+	<link type="text/css" rel="stylesheet" href="{% static 'images.css' %}"/>
+	<link type="text/css" rel="stylesheet" href="{% static 'video.css' %}"/>
+	<link type="text/css" rel="stylesheet" href="{% static 'Post/css/qa.css' %}"/>
+{% endblock %}
+
+{% block scripts_post %}
+	<script src="{% static 'video.js' %}"></script>
+    <script src="{% static 'image_previewer.js' %}"></script>
+{% endblock %}

@@ -54,6 +54,7 @@ class Post(models.Model):
     timeUpdated = models.DateTimeField(auto_now=True)
     isPublished = models.BooleanField(default=True)
     tags = models.ManyToManyField(Tag, blank=True)
+    # Move them later to Article
     likes = models.IntegerField(default=0)
     shares = models.IntegerField(default=0)
     viewed = models.IntegerField(default=0)
@@ -68,12 +69,52 @@ class Post(models.Model):
         return reverse(self.view_name, kwargs={"post_slug": self.slug})
 
 
+class QA(Post):
+    view_name = "qa"
+    question = models.CharField(max_length=250, blank=False)
+    description = models.TextField(max_length=360, blank=False, help_text="To be used in meta tag - description")
+    answer = models.TextField(max_length=360, blank=False)
+    template = models.FileField(max_length=300, upload_to=user_directory_path, blank=True, help_text="If provided, default template not in use")
+    default_template = models.FilePathField(
+            path=os.path.join(S.BASE_DIR,"Post","templates","Post"),
+            default=os.path.join(S.BASE_DIR,"Post","templates","Post","qa.html")
+    )
+
+    def save(self, *args, **kwargs):
+        self.category = Category.objects.get(slug="qa")
+        super(QA, self).save(*args, **kwargs)
+
+    def __str__(self):
+        return self.question
+
+
+class TD(Post):
+    view_name = "td"
+    termin = models.CharField(max_length=60, blank=False)
+    description = models.TextField(max_length=360, blank=False, help_text="To be used in meta tag - description")
+    definition = models.TextField(max_length=360,blank=False)
+    template = models.FileField(max_length=300, upload_to=user_directory_path, blank=True, help_text="If provided, default template not in use")
+    default_template = models.FilePathField(
+            path=os.path.join(S.BASE_DIR,"Post","templates","Post"),
+            default=os.path.join(S.BASE_DIR,"Post","templates","Post","td.html")
+    )
+
+    def save(self, *args, **kwargs):
+        self.category = Category.objects.get(slug="td")
+        super(TD, self).save(*args, **kwargs)
+
+    def __str__(self):
+        return self.termin
+    
+
 class Article(Post):
     view_name = "article"
     title = models.CharField(max_length=256)
     description = models.TextField(blank=True)
     preview = models.ImageField(max_length=300, upload_to=user_directory_path, blank=True)
     template = models.FileField(max_length=300, upload_to=user_directory_path, blank=False)  # page to display
+    tds  = models.ManyToManyField(TD, blank=True)
+    qas  = models.ManyToManyField(QA, blank=True)
 
     def save(self, *args, **kwargs):
         self.category = Category.objects.get(slug="articles")
@@ -131,48 +172,6 @@ class Case(Post):
     def __str__(self):
         return self.title
 
-
-class QA(Post):
-    view_name = "qa"
-    question = models.CharField(max_length=512, blank=False)
-    description = models.TextField(blank=False)
-    answer = models.TextField(blank=False, help_text="Render markdown")
-    template = models.FilePathField(
-            path=os.path.join(S.BASE_DIR,"Post","templates","Post"),
-            default=os.path.join(S.BASE_DIR,"Post","templates","Post","qa.html")
-    )
-
-    def save(self, *args, **kwargs):
-        self.category = Category.objects.get(slug="qa")
-        super(QA, self).save(*args, **kwargs)
-
-    def __str__(self):
-        return self.question
-
-
-class TD(Post):
-    view_name = "td"
-    termin = models.CharField(max_length=128, blank=False)
-    description = models.TextField(blank=False)
-    definition = models.TextField(blank=False, help_text="Render markdown")
-    template = models.FilePathField(
-            path=os.path.join(S.BASE_DIR,"Post","templates","Post"),
-            default=os.path.join(S.BASE_DIR,"Post","templates","Post","td.html")
-    )
-
-    def save(self, *args, **kwargs):
-        self.category = Category.objects.get(slug="td")
-        super(TD, self).save(*args, **kwargs)
-
-    def __str__(self):
-        return self.termin
-
-
-def toolURLFieldValidator(self, value):
-    print(self)
-
-def toolArchiveFieldValidator(self, value):
-    print(self)
 
 class Tool(Post):
     view_name = "tool"

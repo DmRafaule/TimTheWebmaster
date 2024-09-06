@@ -31,6 +31,7 @@
 
 .termin{
 	margin-top: var(--mid_pm);
+	padding: var(--min_pm);
 	background: rgb(221, 236, 243);
 	border: 2px solid black;
 	border-radius: 10px;
@@ -38,6 +39,7 @@
 
 .question{
 	margin-top: var(--mid_pm);
+	padding: var(--min_pm);
 	background: rgb(255, 255, 255);
 	border: 2px solid black;
 	border-radius: 10px;
