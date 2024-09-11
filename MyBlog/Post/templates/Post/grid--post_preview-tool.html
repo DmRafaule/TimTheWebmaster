@@ -16,6 +16,12 @@
 							<img class="icon dynamic_image" width="32" height="32" src="{% static 'placeholder.svg' %}" data-src="{% get_media_prefix %}{{a.icon}}" alt="{% trans "Превью статьи" %}">
 						</a>
 					</div>
+				{% else %}
+					<div class="marger-10 in_middle-self">
+						<a href="{{a.get_absolute_url}}">
+							<img class="icon dynamic_image" width="32" height="32" src="{% static 'placeholder.svg' %}" data-src="{% static 'globe_placeholder.svg '%}" alt="{% trans "Превью статьи" %}">
+						</a>
+					</div>
 				{% endif %}
 				<h2 style='font-size: var(--size-titleH3_font)' ><a class="download_text_button" href="{{ a.get_absolute_url }}">{{a.name}}</a></h2>
 			{% elif a.type == 'In' %}
@@ -26,6 +32,12 @@
 							<img class="icon dynamic_image" width="32" height="32" src="{% static 'placeholder.svg' %}" data-src="{% get_media_prefix %}{{a.icon}}" alt="{% trans "Превью статьи" %}">
 						</a>
 					</div>
+				{% else %}
+					<div class="marger-10 in_middle-self">
+						<a href="{{a.get_absolute_url}}">
+							<img class="icon dynamic_image" width="32" height="32" src="{% static 'placeholder.svg' %}" data-src="{% static 'globe_placeholder.svg '%}" alt="{% trans "Превью статьи" %}">
+						</a>
+					</div>
 				{% endif %}
 				<h2 style='font-size: var(--size-titleH3_font)' ><a class="text_button" href="{{ a.get_absolute_url }}">{{a.name}}</a></h2>
 			{% elif a.type == 'Ex' %}
@@ -34,6 +46,12 @@
 					<div class="marger-10 in_middle-self">
 						<a href="{{a.get_absolute_url}}">
 							<img class="icon dynamic_image" width="32" height="32" src="{% static 'placeholder.svg' %}" data-src="{% get_media_prefix %}{{a.icon}}" alt="{% trans "Превью статьи" %}">
+						</a>
+					</div>
+				{% else %}
+					<div class="marger-10 in_middle-self">
+						<a href="{{a.get_absolute_url}}">
+							<img class="icon dynamic_image" width="32" height="32" src="{% static 'placeholder.svg' %}" data-src="{% static 'globe_placeholder.svg '%}" alt="{% trans "Превью статьи" %}">
 						</a>
 					</div>
 				{% endif %}
