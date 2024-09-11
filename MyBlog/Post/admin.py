@@ -132,6 +132,7 @@ class CaseAdmin(admin.ModelAdmin):
 
 class QAAdmin(admin.ModelAdmin):
     exclude = ('category', 'timeCreated', 'timeUpdated', 'question', 'answer', 'description', 'template')
+    filter_horizontal = ('tags',)
     list_display = (
             'id',
             'question',
@@ -203,6 +204,8 @@ class ToolAdmin(admin.ModelAdmin):
             'name',
             'description',
             'isPublished',
+            'timeCreated',
+            'timeUpdated',
             'icon',
             'type',
             'url',
@@ -213,6 +216,7 @@ class ToolAdmin(admin.ModelAdmin):
     )
     list_editable = (
             'isPublished',
+            'timeCreated',
             'description',
             'icon',
             'type',
