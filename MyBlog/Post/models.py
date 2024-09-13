@@ -124,55 +124,6 @@ class Article(Post):
         return self.title
 
 
-class News(Post):
-    view_name = "news"
-    headline = models.CharField(max_length=256, blank=False)
-    description = models.TextField(blank=False)
-    first_sentence = models.CharField(max_length=256, blank=False)
-    lead = models.TextField(blank=False)
-    body = models.TextField(blank=False, help_text="Render markdown")
-    ending = models.TextField(blank=False, help_text="Render markdown")
-    preview = models.ImageField(max_length=300, upload_to=user_directory_path, blank=True)
-    template = models.FilePathField(
-            path=os.path.join(S.BASE_DIR,"Post","templates","Post"),
-            default=os.path.join(S.BASE_DIR,"Post","templates","Post","news.html")
-    )
-
-    def save(self, *args, **kwargs):
-        self.category = Category.objects.get(slug="news")
-        super(News, self).save(*args, **kwargs)
-
-    def __str__(self):
-        return self.headline
-
-
-class Case(Post):
-    view_name = "case"
-    title = models.CharField(max_length=256, blank=False)
-    subtitle = models.CharField(max_length=256, blank=False)
-    description = models.TextField(blank=False)
-    resume = models.TextField(blank=False, help_text="Render markdown")
-    client_name = models.CharField(max_length=256, blank=True)
-    client_description = models.TextField(blank=True, help_text="Render markdown")
-    goals = models.TextField(blank=False, help_text="Render markdown")
-    solution = models.TextField(blank=False, help_text="Render markdown")
-    result = models.TextField(blank=False, help_text="Render markdown")
-    preview = models.ImageField(max_length=300, upload_to=user_directory_path, blank=True)
-    additional = models.TextField(blank=True, help_text="Render markdown")
-
-    template = models.FilePathField(
-            path=os.path.join(S.BASE_DIR,"Post","templates","Post"),
-            default=os.path.join(S.BASE_DIR,"Post","templates","Post","case.html")
-    )
-
-    def save(self, *args, **kwargs):
-        self.category = Category.objects.get(slug="cases")
-        super(Case, self).save(*args, **kwargs)
-
-    def __str__(self):
-        return self.title
-
-
 class Tool(Post):
     view_name = "tool"
     INTERNAL = 'In'
@@ -231,4 +182,6 @@ class PostSitemap(Sitemap):
 # Remove all loaded files before deleting on database
 @receiver(pre_delete, sender=Post)
 def cleanupPost(sender, instance, **kwargs):
-    shutil.rmtree(os.path.join(S.MEDIA_ROOT, f"{instance.category.slug}", f"{instance.slug}"))
+    path = os.path.join(S.MEDIA_ROOT, f"{instance.category.slug}", f"{instance.slug}")
+    if os.path.exists(path):
+        shutil.rmtree(path)

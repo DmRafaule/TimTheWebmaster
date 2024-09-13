@@ -11,25 +11,6 @@ class ArticleTranslationOptions(TranslationOptions):
     fields = ('title', 'description', 'template')
 
 
-class NewsTranslationOptions(TranslationOptions):
-    fields = ('headline', 'description', 'first_sentence', 'lead', 'body', 'ending', )
-
-
-class CaseTranslationOptions(TranslationOptions):
-    fields = (
-            'title',
-            'subtitle',
-            'description',
-            'resume',
-            'client_name',
-            'client_description',
-            'goals',
-            'solution',
-            'additional',
-            'result',
-    )
-
-
 class QATranslationOptions(TranslationOptions):
     fields = (
             'question',
@@ -62,8 +43,6 @@ class DownloadableTranslationOptions(TranslationOptions):
 
 translator.register(Post_M.Category, CategoryTranslationOptions)
 translator.register(Post_M.Article, ArticleTranslationOptions)
-translator.register(Post_M.News, NewsTranslationOptions)
-translator.register(Post_M.Case, CaseTranslationOptions)
 translator.register(Post_M.QA, QATranslationOptions)
 translator.register(Post_M.TD, TDTranslationOptions)
 translator.register(Post_M.Tool, ToolTranslationOptions)

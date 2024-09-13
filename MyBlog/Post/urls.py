@@ -16,18 +16,6 @@ urlpatterns += [
         ),
         name="article-home-preview"),
     path(
-        'load_post_preview-news/',
-        V.PostPreviewView.as_view(
-            model=M.News,
-        ),
-        name="news-home-preview"),
-    path(
-        'load_post_preview-cases/',
-        V.PostPreviewView.as_view(
-            model=M.Case,
-        ),
-        name="cases-home-preview"),
-    path(
         'load_post_preview-tools/',
         V.PostPreviewView.as_view(
             model=M.Tool,
@@ -51,8 +39,6 @@ urlpatterns += [
 #   handle it's own urls
 urlpatterns += [
     path('articles/<slug:post_slug>/', V.article, name="article"),
-    path('news/<slug:post_slug>/', V.news, name="news"),
-    path('cases/<slug:post_slug>/', V.case, name="case"),
     path('qa/<slug:post_slug>/', V.qa, name="qa"),
     path('td/<slug:post_slug>/', V.td, name="td"),
 ]

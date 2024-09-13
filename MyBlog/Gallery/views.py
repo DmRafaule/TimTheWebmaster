@@ -1,20 +1,15 @@
 from django.shortcuts import render
 from django.http import HttpResponse, Http404
 import Main.utils as U
-from Main.models import Image
-from Post.models import Article
-from .models import Image as GalleryImage
+from .utils import getLatesImagesAll
 import json
 from django.utils.translation import gettext as _
 from django.core.paginator import Paginator
-from datetime import datetime, date
 
 
 COLS = 2
 UPLOAD_SIZE = 4
 
-def byDate(img):
-    return datetime.strptime(img['image'].timeCreated.date().strftime('%m/%d/%Y %I:%M %p'), '%m/%d/%Y %I:%M %p')
 
 def filterByTag(list, tags):
     new_list = []
@@ -35,17 +30,8 @@ def filterByTag(list, tags):
 
 def gallery(request):
     context = U.initDefaults(request) 
-    images = []
-    # Get all images marked as ART + related tags
-    for img in Image.objects.filter(category=Image.ART):
-        images.append({'image': img, 'tags': img.tags.all()})
-    # Get all previews in articles + related tags
-    for post in Article.objects.exclude(preview=''):
-        images.append({'image': Image(file=post.preview,timeCreated=post.timeCreated), 'tags': post.tags.all()})
-    # Get all images in gallery and combine them all + related tags
-    for img in GalleryImage.objects.all(): 
-        images.append({'image': img, 'tags': img.tags.all()})
-    images = sorted(images, key=byDate, reverse=True)
+    images = getLatesImagesAll()
+    
     tags = request.GET.getlist('tag', [])
     if len(tags) > 0:
         images = filterByTag(images, tags)

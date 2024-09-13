@@ -51,6 +51,9 @@
 	color: var(--link-downloadable_color);
 	padding: var(--indent_min);
 }
+.white_text_button{
+	color: var(--ui_text_color)
+}
 
 .toggle_button{
 	display: flex;

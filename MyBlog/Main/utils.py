@@ -11,18 +11,39 @@ def get_how_old_human_in_years(birth_date: str, birth_date_str_frm: str) -> int:
     return math.trunc(me_years.days/365)
 
 
-def get_latest_post(number: int, category_queryset: Post_M.Category):
+def get_posts_by_tag(tag_name: str, category_queryset: Post_M.Category):
+    tags = Post_M.Tag.objects.filter(name=tag_name)
+    posts = category_queryset.objects.filter(isPublished=True, tags__in=tags)
+    return posts
+
+def get_latest_post(number: int, queryset: Post_M.Article):
     new_posts = list()
-    posts = category_queryset.objects.filter(isPublished=True)
+    posts = queryset.filter(isPublished=True)
     if (len(posts) > number):
-        post = posts.latest('timeUpdated')
+        post = posts.latest('timeCreated')
         for i in range(0, number):
             new_posts.append(post)
             posts = posts.exclude(id=post.id)
-            post = posts.latest('timeUpdated')
+            post = posts.latest('timeCreated')
 
     return new_posts
 
+def get_most_popular_post() -> Post_M.Article: 
+    articles = Post_M.Article.objects.filter(isPublished=True)
+    scores = []
+    for article in articles:
+        like_mod = article.likes * 2
+        shares_mode = article.shares * 10
+        views = article.viewed
+        interaction_score = like_mod + shares_mode + 0.0000001
+        scores.append({
+            'score': views/interaction_score,
+            'article': article,
+        })
+    # Will sort them descending
+    return min(scores, key=lambda x:x['score'])['article']
+
+    
 
 # Filtering out all empty categories
 def getNotEmptyCategories(categories):
@@ -57,9 +78,9 @@ def initDefaults(request):
     # Categories(categories_special) that gonna appear in first level of menu
     # All other (categories) gonna be in second lever under content menu
     domain_name = ALLOWED_HOSTS[0]
-    popular_posts = get_latest_post(1, Post_M.Tool)
-    popular_posts += get_latest_post(1, Post_M.Article)
-    popular_posts += get_latest_post(1, Post_M.News)
+    internal_tools = Post_M.Tool.objects.filter(type=Post_M.Tool.INTERNAL)
+    popular_posts = get_latest_post(2, internal_tools)
+    popular_posts.append(get_most_popular_post())
 
     context = {
         'categories_special': categories_special,

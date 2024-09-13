@@ -62,11 +62,13 @@
 	<div>
 		{{a.description}} 	
 	</div>
+	{% if displayTags %}
 	<div class="post_preview_tags">
 		{% for tag in a.tags.all %}
 		<a href="{{ category.get_absolute_url }}?page=1&type=full&is_recent={{is_recent}}&mode={{mode}}{{tag|addToListInURL:current_tag}}"><div class="tag text_button tag_add">{{tag}}</div></a>
 		{% endfor %}
 	</div>
+	{% endif %}
 </div>
 
 {% endfor %}

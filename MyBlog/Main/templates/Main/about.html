@@ -10,18 +10,16 @@
 
 {% block content %}
 
-<div class="limiter_about in_middle in_middle-self no_wrap padder">
+<div class="limiter in_middle in_middle-self no_wrap padder">
 	{% if feedback_message|length > 0 %}
 	<div class="notification">
 		{{ feedback_message }}
 	</div>
 	{% endif %}
 
-	<div class="title_header">
-		<h1>{% trans "Обо мне" %}</h1>
-		<div class="title_header__avatar">
-			<img class="image__avatar image image-min_sized dynamic_image" src="{% static 'placeholder.svg' %}" data-src="{% static 'Main/img/me1.jpg' %}" alt="{% trans "Дмитрий Чудук или Тим Вебмастер" %}">
-		</div>
+	<div class="row in_middle">
+		<h1 class="home_title" >{% trans "О Тиме Вебмастере" %}</h1>
+		<canvas id='canvas' class="canvas_as_element" data-vertex-shader="{% static "WebGLEngine/shaders/home_gik.vert" %}" data-fragment-shader="{% static "WebGLEngine/shaders/home_gik.frag" %}"></canvas>
 	</div>
 	
 
@@ -153,6 +151,12 @@
 {% block scripts %}
     {% csrf_token %}
     <script>
+		var STATIC = "{% static . %}"
         const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
     </script>
+	<!-- Простой 3д рендерер для сайта -->
+    <script src="{% static 'WebGLEngine/js/webgl_engine_v1.js' %}"></script>
+	<script src="{% static 'WebGLEngine/shaders/shader-simple_pcp.js' %}"></script>
+	<!-- Скрипт для рендеринга на определённом канвасе -->
+    <script src="{% static 'WebGLEngine/js/home_gik.js' %}"></script>
 {% endblock %}
