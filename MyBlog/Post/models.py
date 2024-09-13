@@ -167,12 +167,10 @@ class PostSitemap(Sitemap):
 
     def items(self):
         articles = Article.objects.filter(isPublished=True)
-        news = News.objects.filter(isPublished=True)
-        cases = Case.objects.filter(isPublished=True)
         qa = QA.objects.filter(isPublished=True)
         td = TD.objects.filter(isPublished=True)
         tools = Tool.objects.filter(isPublished=True, type=Tool.INTERNAL)
-        items = list(chain(articles, news, cases, qa, td, tools))
+        items = list(chain(articles, qa, td, tools))
         return items
 
     def lastmod(self, obj):
