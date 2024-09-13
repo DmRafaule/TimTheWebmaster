@@ -78,58 +78,6 @@ class ArticleAdmin(admin.ModelAdmin):
     )
 
 
-class NewsAdmin(admin.ModelAdmin):
-    exclude = ('category', 'timeCreated', 'timeUpdated', 'headline', 'description', 'first_sentence', 'lead', 'body', 'ending')
-    list_display = (
-            'id',
-            'headline',
-            'isPublished',
-            'slug',
-            'timeCreated',
-            'timeUpdated',
-            'preview',
-    )
-    list_display_links = (
-            'headline',
-    )
-    list_editable = (
-            'isPublished',
-            'timeCreated',
-            'preview',
-    )
-    search_fields = (
-            'headline',
-            'tags'
-    )
-    list_filter = ('isPublished',)
-
-
-class CaseAdmin(admin.ModelAdmin):
-    exclude = ('category', 'timeCreated', 'timeUpdated', 'additional', 'result', 'description', 'solution', 'goals', 'client_description', 'client_name', 'resume', 'subtitle', 'title')
-    list_display = (
-            'id',
-            'title',
-            'isPublished',
-            'slug',
-            'timeCreated',
-            'timeUpdated',
-            'preview',
-    )
-    list_display_links = (
-            'title',
-    )
-    list_editable = (
-            'isPublished',
-            'timeCreated',
-            'preview',
-    )
-    search_fields = (
-            'title',
-            'tags'
-    )
-    list_filter = ('isPublished',)
-
-
 class QAAdmin(admin.ModelAdmin):
     exclude = ('category', 'timeCreated', 'timeUpdated', 'question', 'answer', 'description', 'template')
     filter_horizontal = ('tags',)
@@ -234,8 +182,6 @@ class ToolAdmin(admin.ModelAdmin):
 admin.site.register(M.Tag, TagAdmin)
 admin.site.register(M.Category, CategoryAdmin)
 admin.site.register(M.Article, ArticleAdmin)
-admin.site.register(M.News, NewsAdmin)
-admin.site.register(M.Case, CaseAdmin)
 admin.site.register(M.QA, QAAdmin)
 admin.site.register(M.TD, TDAdmin)
 admin.site.register(M.Tool, ToolAdmin)

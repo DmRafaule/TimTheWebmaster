@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-06 09:32+0300\n"
+"POT-Creation-Date: 2024-09-13 09:21+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -90,15 +90,21 @@ msgstr "Tim the Webmaster"
 #: .\Post\templates\Post\grid--post_preview-tool.html:12
 #: .\Post\templates\Post\grid--post_preview-tool.html:16
 #: .\Post\templates\Post\grid--post_preview-tool.html:22
-#: .\Post\templates\Post\grid--post_preview-tool.html:26
+#: .\Post\templates\Post\grid--post_preview-tool.html:28
 #: .\Post\templates\Post\grid--post_preview-tool.html:32
-#: .\Post\templates\Post\grid--post_preview-tool.html:36
+#: .\Post\templates\Post\grid--post_preview-tool.html:38
+#: .\Post\templates\Post\grid--post_preview-tool.html:44
+#: .\Post\templates\Post\grid--post_preview-tool.html:48
+#: .\Post\templates\Post\grid--post_preview-tool.html:54
 #: .\Post\templates\Post\list--post_preview-tool.html:11
 #: .\Post\templates\Post\list--post_preview-tool.html:15
 #: .\Post\templates\Post\list--post_preview-tool.html:21
-#: .\Post\templates\Post\list--post_preview-tool.html:25
+#: .\Post\templates\Post\list--post_preview-tool.html:27
 #: .\Post\templates\Post\list--post_preview-tool.html:31
-#: .\Post\templates\Post\list--post_preview-tool.html:35
+#: .\Post\templates\Post\list--post_preview-tool.html:37
+#: .\Post\templates\Post\list--post_preview-tool.html:43
+#: .\Post\templates\Post\list--post_preview-tool.html:47
+#: .\Post\templates\Post\list--post_preview-tool.html:53
 msgid "Превью статьи"
 msgstr "Article preview"
 
@@ -253,27 +259,3 @@ msgstr "Display an elements in a grid view"
 #: .\Post\templates\Post\termin_list.html:22
 msgid "Сортировка постов по алфавиту"
 msgstr "Sort a posts by alphabet"
-
-#~ msgid "Раскрыть"
-#~ msgstr "Extend"
-
-#~ msgid "Относящиеся статьи"
-#~ msgstr "Related articles"
-
-#~ msgid "Относящиеся кейсы"
-#~ msgstr "Related cases"
-
-#~ msgid "Относящиеся новости"
-#~ msgstr "Related news"
-
-#~ msgid "Относящиеся инструменты"
-#~ msgstr "Related tools"
-
-#~ msgid "Спрятать все значения элементов"
-#~ msgstr "Hide all fields of record"
-
-#~ msgid "Значок расширенного представления"
-#~ msgstr "Extended view icon"
-
-#~ msgid "Отобразить все значения элементов"
-#~ msgstr "Display all fields of record"

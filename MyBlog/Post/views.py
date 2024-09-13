@@ -122,6 +122,7 @@ class PostListView(TemplateView):
         if for_who != '':
             for_who = '-' + for_who
         # Update context data
+        context.update({'displayTags': True})
         context.update({'posts': page_obj})
         context.update({'num_pages': paginator.num_pages})
         context.update({'current_page': page})
@@ -151,36 +152,6 @@ def article(request, post_slug):
     context.update({'images': images})
 
     return render(request, post.template.path, context=context)
-
-
-def news(request, post_slug):
-    post = get_object_or_404(Post_M.News, slug=post_slug)
-    post.viewed = post.viewed + 1
-    post.save()
-    downloadables = Main_M.Downloadable.objects.filter(type=post)
-    images = Main_M.Image.objects.filter(type=post)
-    context = U.initDefaults(request)
-    context.update({'post': post})
-    context.update({'downloadables': downloadables})
-    context.update({'images': images})
-
-    return render(request, post.template, context=context)
-
-
-def case(request, post_slug):
-    post = get_object_or_404(Post_M.Case, slug=post_slug)
-    post.viewed = post.viewed + 1
-    post.save()
-    downloadables = Main_M.Downloadable.objects.filter(type=post)
-    images = Main_M.Image.objects.filter(type=post)
-    context = U.initDefaults(request)
-    context.update({'post': post})
-    
-    context.update({'downloadables': downloadables})
-    context.update({'images': images})
-
-    return render(request, post.template, context=context)
-
 
 def qa(request, post_slug):
     post = get_object_or_404(Post_M.QA, slug=post_slug)
