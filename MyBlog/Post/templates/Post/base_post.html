@@ -21,14 +21,14 @@
 	{% block content_post %}
 	{% endblock %}
 	<hr>
-	<div class="row in_middle" >
-		<div id="onLike">
+	<div class="row in_middle max_gap" >
+		<div id="onLike" class="row min_gap in_middle">
 			<img class="icon button rounded_button dynamic_image" width="32" height="32" src="{% static 'placeholder.svg' %}" data-src="{% static 'Post/img/like.svg' %}" alt="{% trans "сердце" %}">
-			{{ post.likes }}
+			<div id="like_number">{{ post.likes }}</div>
 		</div>
-		<div id="onShare">
+		<div id="onShare" class="row min_gap in_middle">
 			<img  class="icon button rounded_button dynamic_image" width="32" height="32" src="{% static 'placeholder.svg' %}" data-src="{% static 'Post/img/share.svg' %}" alt="{% trans "3 соединённые точки" %}">
-			{{ post.shares }}
+			<div id="shares_number">{{ post.shares }}</div>
 		</div>
 	</div>
 	<div id="share_options" class="row share_options">

@@ -219,10 +219,15 @@ def like_post(request):
         post.likes = post.likes + 1
         post.save()
         request.session["is_liked_" + post_slug] = True
-    data = {
-        'likes': post.likes,
-    }
-    return JsonResponse(data)
+        data = {
+            'likes': post.likes,
+        }
+        return JsonResponse(data)
+    else:
+        data = {
+            'likes': _('Большое спасибо, но ты уже лайкнул)')
+        }
+        return JsonResponse(data)
 
 
 # No checks for multiple shares, because I do not want it.
