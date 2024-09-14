@@ -8,6 +8,8 @@ function likePost(){
 		headers: {'X-CSRFToken': csrftoken},
 		mode: 'same-origin', // Do not send CSRF token to another domain.
 		success: function(result){
+			var like_number = document.getElementById('like_number')
+			like_number.innerText = result['likes']
 		},
 	})
 }
@@ -22,6 +24,8 @@ function sharePost(){
 		headers: {'X-CSRFToken': csrftoken},
 		mode: 'same-origin', // Do not send CSRF token to another domain.
 		success: function(result){
+			var shares_number = document.getElementById('shares_number')
+			shares_number.innerText = result['shares']
 		},
 	})
 }
