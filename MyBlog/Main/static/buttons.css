@@ -89,6 +89,12 @@
 	padding-right: var(--button_padding_side);
 }
 
+.action_button_black{
+	color: var(--ui_text_color);
+	background-color: var(--secondary_color);
+	padding: var(--button_padding_top_bot);
+}
+
 .link_button{
 	background-color: var(--button_link_bg);
 	padding: var(--button_padding_top_bot);

@@ -25,7 +25,6 @@ function onReady(){
             var link = cont.querySelector('a')
             link.setAttribute('href', links[i])
             link.innerText = links[i]
-            console.log(cont)
             ex_link_list.insertAdjacentElement('beforeend', cont)
         }
         ex_link_exmpl_cont.classList.add('is_none')
