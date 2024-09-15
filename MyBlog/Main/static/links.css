@@ -3,6 +3,7 @@
 	transition: 0.3s;
 	border-bottom: 1px solid var(--link_color); 
 	cursor: pointer;
+	word-wrap: anywhere;
 }
 
 .ref > a:after{

@@ -2,10 +2,10 @@ function changeCursorOnTableEl(curr_index){
 	const els = $('.table_of_content_list>li')
 	els.each( function(index){
 		if (curr_index == index){
-			$(this).prepend('<div id="table_od_content-current-arrow">➥</div>')
+			$(this).css('color', 'orange')
 		}
 		else
-			$(this).find('#table_od_content-current-arrow').remove()
+			$(this).css('color', 'white')
 	})
 }
 
@@ -19,7 +19,6 @@ function CreateHeaderInterObserver(elements, element, element_indx){
 		for (const entry of entries) {
 			// Check if the entry is leaved the viewport
 			if (entry.isIntersecting) {
-				ChangeATileOfTableElement(element)
 				changeCursorOnTableEl(element_indx)
 				document.getElementById('current_header').dataset.current = String(element_indx)
 			}
@@ -28,47 +27,16 @@ function CreateHeaderInterObserver(elements, element, element_indx){
 	header_observer.observe(element);
 }
 
-function ChangeATileOfTableElement(element){
-	var max_size = 50
-	if (document.getElementById('table_of_content-text').innerText.length > max_size)
-		document.getElementById('table_of_content-text').innerText = $(element).text().substring(0,max_size) + '...'
-	else
-		document.getElementById('table_of_content-text').innerText = $(element).text().substring(0,max_size)
-	let tag_name  = $(element).prop("tagName").toLowerCase()
-	document.getElementById('table_of_content-sign').innerText = tag_name
-}
+document.addEventListener('clickOutsideHat', (ev)=>{
+	var side_menu_button_container = $("#table_of_content_groups_container")
+	if (!side_menu_button_container.hasClass('padder') && side_menu_button_container.hasClass('active_nav')){
+		side_menu_button_container.addClass('padder')
+	}
+	else{
+		side_menu_button_container.removeClass('padder')
+	}
+})
 
-function CreateNavigationBar(){
-	var toc_minified = $('#table_of_content-minified')
-	var limiter_left = $('.limiter').offset().left
-	toc_minified.css({left: limiter_left, transform: `translateY(${header_height})`})
-}
-
-function RemoveNavigationBar(){
-	var toc_minified = $('#table_of_content-minified')
-	toc_minified.css({transform: `translateY(0)`})
-
-}
-
-function WaitToBeHidden(element){
-	var options = {
-		threshold: 0,
-	  };
-	var table_of_content_observer = new IntersectionObserver((entries, observer) => {
-		// Loop through the entries
-		for (const entry of entries) {
-			// Check if the entry is leaved the viewport
-			if (!entry.isIntersecting) {
-				if (!$('#table_of_content_groups_container').hasClass('active_nav'))
-					CreateNavigationBar()
-			}
-			else{
-				RemoveNavigationBar()
-			}
-		}
-	}, options);
-	table_of_content_observer.observe(element);
-}
 
 $(document).ready( function(){
 	var headers = $('h2, h3, h4, h5, h6');
@@ -114,11 +82,9 @@ $(document).ready( function(){
 			side_menu_button.on('click', function(ev){
 				if (!side_menu_button_container.hasClass('padder')){
 					side_menu_button_container.addClass('padder')
-					RemoveNavigationBar()
 				}
 				else{
 					side_menu_button_container.removeClass('padder')
-					CreateNavigationBar()
 				}
 			})
 
@@ -133,7 +99,6 @@ $(document).ready( function(){
 							element_indx = index
 						}
 					})
-					ChangeATileOfTableElement(target)
 					changeCursorOnTableEl(element_indx)
 					document.getElementById('current_header').dataset.current = String(element_indx)
 					var offset = 200
@@ -141,7 +106,6 @@ $(document).ready( function(){
 				}) 
 			})
 			// Set up observer for h1-h6 headers
-			WaitToBeHidden($('.title').get(0))
 			headers.each( function(index){
 				CreateHeaderInterObserver(headers, headers[index], index)
 			})
@@ -150,7 +114,6 @@ $(document).ready( function(){
 				element_indx -= 1
 				if (!(element_indx < 0)){
 					var target = '#' + $(headers[element_indx]).attr('id')
-					ChangeATileOfTableElement(headers[element_indx])
 					changeCursorOnTableEl(element_indx)
 					document.getElementById('current_header').dataset.current = String(element_indx)
 					var offset = 300
@@ -162,7 +125,6 @@ $(document).ready( function(){
 				element_indx += 1
 				if (element_indx < headers.length){
 					var target = '#' + $(headers[element_indx]).attr('id')
-					ChangeATileOfTableElement(headers[element_indx])
 					changeCursorOnTableEl(element_indx)
 					document.getElementById('current_header').dataset.current = String(element_indx)
 					var offset = 300
