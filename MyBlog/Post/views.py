@@ -10,60 +10,20 @@ from django.apps import apps
 from django.template import loader
 import json
 
-max_el_in_related_post = 5
+
+max_el_in_related_post = 3
 UPLOAD_SIZE = 4
 
-class PostPreviewView(TemplateView):
-
-    model = None
-    context = None
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context = U.initDefaults(self.request)
-        # Defines order of loading posts. Recent of latest
-        is_recent = self.request.GET.get('is_recent')
-        if is_recent == 'true':
-            order = '-timeCreated'
-        else:
-            order = 'timeCreated'
-        # Define how much to load
-        number = self.request.GET.get('number', 1)
-        # Define from which post to start count
-        offset = self.request.GET.get('offset', 1)
-        context.update({'posts': self.model.objects.filter(isPublished=True).order_by(order)[(int(offset)):(int(number)) + (int(offset))] })
-        offset = int(offset) + int(number)
-        length = self.model.objects.filter(isPublished=True).count()
-        context.update({'length': length})
-
-        return context
-
-    def get(self, request):
-        context = self.get_context_data()
-        # Define how much data should be loaded on user screen
-        # There are 2 modes
-        # basic - display everything that possible from preview to views
-        # simple - display only needes information, title, description, date published
-        mode = self.request.GET.get('mode', 'basic') + '--'
-        # Define specific (unique) preview templates
-        for_who = self.request.GET.get('for_who', '')
-        cat = "-" + self.request.GET.get('category', '')
-        if for_who != '':
-            for_who = '-' + for_who
-        return render(
-                request,
-                f'Post/{mode}post_preview{for_who}{cat}.html',
-                context=context)
-
-
-def filterByTag(list, tags):
+# Return only those elements which has all tags in them
+def filterByTag(list, tags, threshold = None):
     new_list = []
+    max_len = threshold or len(tags)
     for item in set(list.filter(tags__in=tags)):
         counter = 0
         for tag in tags:
             if item.tags.filter(name=tag):
                 counter += 1
-        if counter == len(tags):
+        if counter == max_len:
             new_list.append(item)
 
     if len(new_list) == 0:
@@ -146,8 +106,20 @@ def article(request, post_slug):
     post.save()
     downloadables = Main_M.Downloadable.objects.filter(type=post)
     images = Main_M.Image.objects.filter(type=post)
+
     context = U.initDefaults(request)
+
+    sim_post_doc = None
+    sim_post = Post_M.Article.objects.filter(isPublished=True)
+    sim_post = filterByTag(sim_post, post.tags.all(), max_el_in_related_post)
+    if sim_post is not None:
+        context.update({'posts': sim_post[:3]})
+        loaded_template = loader.get_template(f'Post/basic--post_preview-article.html')
+        sim_post_doc = loaded_template.render(context, request)
+
+    
     context.update({'post': post})
+    context.update({'sim_post_doc': sim_post_doc})
     context.update({'downloadables': downloadables})
     context.update({'images': images})
 
@@ -163,18 +135,16 @@ def qa(request, post_slug):
     context.update({'post': post})
     context.update({'downloadables': downloadables})
     context.update({'images': images})
-    tags = post.tags.values_list('pk', flat=True)
-    related_articles = Post_M.Article.objects.filter(tags__in=tags)
-    context.update({'related_articles': set(related_articles[:max_el_in_related_post])})
 
-    related_cases = Post_M.Case.objects.filter(tags__in=tags)
-    context.update({'related_cases': set(related_cases[:max_el_in_related_post])})
-
-    related_news = Post_M.News.objects.filter(tags__in=tags)
-    context.update({'related_news': set(related_news[:max_el_in_related_post])})
-
-    related_tools = Post_M.Tool.objects.filter(tags__in=tags)
-    context.update({'related_tools': set(related_tools[:max_el_in_related_post])})
+    sim_post_doc = None
+    related_articles = Post_M.Article.objects.filter(qas=post)[:max_el_in_related_post]
+    print(related_articles)
+    if len(related_articles) > 0:
+        context.update({'posts': related_articles})
+        loaded_template = loader.get_template(f'Post/simple--post_preview-article.html')
+        sim_post_doc = loaded_template.render(context, request)
+    
+    context.update({'related_articles': sim_post_doc})
 
     if post.template:
         return render(request, post.template.path, context=context)
@@ -192,18 +162,16 @@ def td(request, post_slug):
     context.update({'post': post})
     context.update({'downloadables': downloadables})
     context.update({'images': images})
-    tags = post.tags.values_list('pk', flat=True)
-    related_articles = Post_M.Article.objects.filter(tags__in=tags)
-    context.update({'related_articles': set(related_articles[:max_el_in_related_post])})
 
-    related_cases = Post_M.Case.objects.filter(tags__in=tags)
-    context.update({'related_cases': set(related_cases[:max_el_in_related_post])})
+    sim_post_doc = None
+    related_articles = Post_M.Article.objects.filter(tds=post)[:max_el_in_related_post]
+    if len(related_articles) > 0:
+        context.update({'posts': related_articles})
+        loaded_template = loader.get_template(f'Post/simple--post_preview-article.html')
+        sim_post_doc = loaded_template.render(context, request)
+    
+    context.update({'related_articles': sim_post_doc})
 
-    related_news = Post_M.News.objects.filter(tags__in=tags)
-    context.update({'related_news': set(related_news[:max_el_in_related_post])})
-
-    related_tools = Post_M.Tool.objects.filter(tags__in=tags)
-    context.update({'related_tools': set(related_tools[:max_el_in_related_post])})
     if post.template:
         return render(request, post.template.path, context=context)
     else:
