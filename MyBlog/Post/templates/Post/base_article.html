@@ -51,7 +51,11 @@
 		{% block content_post_article %}
 		{% endblock %}
 	</div>
-	
+
+{% endblock %}
+
+{% block content_post-after %}
+
 	<div id="ex_links">
 		<h2 class="paragraph" style="margin-bottom: 0px">{% trans 'Внешние ссылки' %}</h2>
 		<li id='list_el_exmpl_cont' class="is_none" ><div class="ref"><a href=""></a></div></li>
@@ -83,14 +87,17 @@
 	</ul>
 	{% endif %}
 
-{% endblock %}
-
-{% block content_post-after %}
+	{% if sim_post_doc %}
+	<h2 class="paragraph">{% trans 'Похожие статьи' %}</h2>
+	{{sim_post_doc|safe}}
+	{% endif%}
+	
 	{% block content_post_after-article %}
 	{% endblock %}
 {% endblock %}
 
 {% block styles_post %}
+	<link type="text/css" rel="stylesheet" href="{% static 'Post/css/posts_preview.css' %}"/>	
 	{% block styles_post_article %}
 	{% endblock %}
 {% endblock %}

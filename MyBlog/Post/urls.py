@@ -7,33 +7,7 @@ urlpatterns = [
     path('like_post/', V.like_post),
     path('share_post/', V.share_post),
 ]
-# patterns for handling home page of website
-urlpatterns += [
-    path(
-        'load_post_preview-articles/',
-        V.PostPreviewView.as_view(
-            model=M.Article,
-        ),
-        name="article-home-preview"),
-    path(
-        'load_post_preview-tools/',
-        V.PostPreviewView.as_view(
-            model=M.Tool,
-        ),
-        name="tools-home-preview"),
-    path(
-        'load_post_preview-td/',
-        V.PostPreviewView.as_view(
-            model=M.TD,
-        ),
-        name="td-home-preview"),
-    path(
-        'load_post_preview-qa/',
-        V.PostPreviewView.as_view(
-            model=M.QA,
-        ),
-        name="qa-home-preview"),
-]
+
 # Patterns for displaying posts by itself
 # There is no tools because tool is a django app so it has to
 #   handle it's own urls

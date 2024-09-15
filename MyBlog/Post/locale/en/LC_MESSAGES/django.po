@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-15 11:47+0300\n"
+"POT-Creation-Date: 2024-09-15 13:46+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -38,6 +38,10 @@ msgstr "Used termins"
 #: .\Post\templates\Post\base_article.html:73
 msgid "Релевантные вопросы"
 msgstr "Related questions"
+
+#: .\Post\templates\Post\base_article.html:87
+msgid "Похожие статьи"
+msgstr "Similar articles"
 
 #: .\Post\templates\Post\base_post.html:26
 msgid "сердце"
@@ -75,6 +79,10 @@ msgstr "Chevron"
 #: .\Post\templates\Post\base_qa.html:6 .\Post\templates\Post\base_td.html:6
 msgid "Тим Вебмастер"
 msgstr "Tim the Webmaster"
+
+#: .\Post\templates\Post\base_qa.html:24 .\Post\templates\Post\base_td.html:24
+msgid "Использованно в"
+msgstr "Used in"
 
 #: .\Post\templates\Post\basic--post_preview-article.html:12
 #: .\Post\templates\Post\basic--post_preview-article.html:18
@@ -197,6 +205,6 @@ msgstr "Display an elements in a grid view"
 msgid "Сортировка постов по алфавиту"
 msgstr "Sort a posts by alphabet"
 
-#: .\Post\views.py:228
+#: .\Post\views.py:196
 msgid "Большое спасибо, но ты уже лайкнул)"
 msgstr "Thank you very much, but you already liked it:)"
