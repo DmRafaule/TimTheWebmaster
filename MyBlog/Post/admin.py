@@ -4,15 +4,18 @@ import Post.models as M
 
 
 class TagAdmin(admin.ModelAdmin):
+    prepopulated_fields = {"slug_ru": ("name_ru",), "slug_en": ("name_en",)}
+    exclude = ('name', 'slug')
     list_display = (
-            'id',
-            'name'
+            'slug_ru',
+            'slug_en',
+            'name_ru',
+            'name_en'
     )
     list_display_links = (
-            'id',
-            'name'
+            'slug_ru',
     )
-    search_fields = ('name',)
+    search_fields = ('name_ru', 'name_en',)
 
 
 class CategoryAdmin(admin.ModelAdmin):

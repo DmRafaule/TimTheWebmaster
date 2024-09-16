@@ -1,6 +1,7 @@
 from MyBlog.settings import MEDIA_URL, ALLOWED_HOSTS
 import Post.models as Post_M
 from datetime import datetime
+from django.db.models import Q
 import math
 
 
@@ -12,7 +13,7 @@ def get_how_old_human_in_years(birth_date: str, birth_date_str_frm: str) -> int:
 
 
 def get_posts_by_tag(tag_name: str, category_queryset: Post_M.Category):
-    tags = Post_M.Tag.objects.filter(name=tag_name)
+    tags = Post_M.Tag.objects.filter(Q(name_ru=tag_name) | Q(name_en=tag_name) | Q(slug_ru=tag_name) | Q(slug_en=tag_name))
     posts = category_queryset.objects.filter(isPublished=True, tags__in=tags)
     return posts
 

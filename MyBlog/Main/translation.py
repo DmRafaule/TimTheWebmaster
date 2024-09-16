@@ -11,6 +11,9 @@ class ArticleTranslationOptions(TranslationOptions):
     fields = ('title', 'description', 'template')
 
 
+class TagTranslationOptions(TranslationOptions):
+    fields = ('name','slug')
+
 class QATranslationOptions(TranslationOptions):
     fields = (
             'question',
@@ -46,6 +49,7 @@ translator.register(Post_M.Category, CategoryTranslationOptions)
 translator.register(Post_M.Article, ArticleTranslationOptions)
 translator.register(Post_M.QA, QATranslationOptions)
 translator.register(Post_M.TD, TDTranslationOptions)
+translator.register(Post_M.Tag, TagTranslationOptions)
 translator.register(Post_M.Tool, ToolTranslationOptions)
 translator.register(Main_M.Image, ImageTranslationOptions)
 translator.register(Main_M.Downloadable, DownloadableTranslationOptions)

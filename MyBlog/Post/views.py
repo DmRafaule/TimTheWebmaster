@@ -8,6 +8,7 @@ from django.views.generic import DetailView, ListView, TemplateView
 from django.core.paginator import Paginator
 from django.apps import apps
 from django.template import loader
+from django.db.models import Q
 import json
 
 
@@ -56,8 +57,14 @@ class PostListView(TemplateView):
         posts = model.objects.filter(isPublished=True).order_by(order)
         # Get posts with the same tags in
         tags = request.GET.getlist('tag', [])
+        tags_names = []
         if len(tags) > 0:
-            tag_obj = Post_M.Tag.objects.filter(name__in=tags)
+            # Search everywhere !!!
+            tag_obj = Post_M.Tag.objects.filter(Q(name_ru__in=tags) | Q(name_en__in=tags) | Q(slug_ru__in=tags)  | Q(slug_en__in=tags))
+            for key, tag in enumerate(tag_obj):
+                tags[key] = tag.slug
+            for key, tag in enumerate(tag_obj):
+                tags_names.append(tag.name)
             if not tag_obj:
                 raise Http404(tag_obj)
             posts = filterByTag(posts, tag_obj)
@@ -91,6 +98,7 @@ class PostListView(TemplateView):
         context.update({'mode': mode[:-2]})
         context.update({'is_recent': is_recent})
         context.update({'current_tag': tags})
+        context.update({'current_tag_names': tags_names})
         context.update({'tags_json': json.dumps(tags)})
         if type == 'full':
             loaded_template = loader.get_template(f'Post/{mode}post_preview{for_who}{cat}.html')
@@ -138,7 +146,6 @@ def qa(request, post_slug):
 
     sim_post_doc = None
     related_articles = Post_M.Article.objects.filter(qas=post)[:max_el_in_related_post]
-    print(related_articles)
     if len(related_articles) > 0:
         context.update({'posts': related_articles})
         loaded_template = loader.get_template(f'Post/simple--post_preview-article.html')
