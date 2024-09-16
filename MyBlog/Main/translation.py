@@ -24,6 +24,7 @@ class TDTranslationOptions(TranslationOptions):
     fields = (
             'termin',
             'description',
+            'key_phrases',
             'definition',
             'template',
     )

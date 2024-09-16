@@ -91,6 +91,7 @@ class QA(Post):
 class TD(Post):
     view_name = "td"
     termin = models.CharField(max_length=60, blank=False)
+    key_phrases = models.CharField(max_length=254, blank=True, help_text="To be used to search place for inserting a link. Use , as separator.")
     description = models.TextField(max_length=360, blank=False, help_text="To be used in meta tag - description")
     definition = models.TextField(max_length=360,blank=False)
     template = models.FileField(max_length=300, upload_to=user_directory_path, blank=True, help_text="If provided, default template not in use")

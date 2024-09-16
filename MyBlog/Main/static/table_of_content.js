@@ -91,7 +91,8 @@ $(document).ready( function(){
 			
 			var anch_links = document.querySelectorAll('.table_of_content_text')
 			anch_links.forEach( (link) => {
-				link.addEventListener('click',function(){
+				link.addEventListener('click',function(ev){
+					ev.preventDefault();
 					var element_indx = 0
 					var target = $(link).attr('href')
 					headers.each( function(index){
@@ -101,8 +102,8 @@ $(document).ready( function(){
 					})
 					changeCursorOnTableEl(element_indx)
 					document.getElementById('current_header').dataset.current = String(element_indx)
-					var offset = 200
-					jumpTo(target, offset)
+					var to = document.querySelector(target)
+					jumpTo(to, target)
 				}) 
 			})
 			// Set up observer for h1-h6 headers
@@ -110,25 +111,27 @@ $(document).ready( function(){
 				CreateHeaderInterObserver(headers, headers[index], index)
 			})
 			document.getElementById('table_of_content-up').addEventListener('click', function(ev){
+				ev.preventDefault();
 				var element_indx = Number(document.getElementById('current_header').dataset.current)
 				element_indx -= 1
 				if (!(element_indx < 0)){
 					var target = '#' + $(headers[element_indx]).attr('id')
 					changeCursorOnTableEl(element_indx)
 					document.getElementById('current_header').dataset.current = String(element_indx)
-					var offset = 300
-					jumpTo(target, offset)
+					var to = document.querySelector(target)
+					jumpTo(to, target)
 				}
 			})
 			document.getElementById('table_of_content-down').addEventListener('click', function(ev){
+				ev.preventDefault();
 				var element_indx = Number(document.getElementById('current_header').dataset.current)
 				element_indx += 1
 				if (element_indx < headers.length){
 					var target = '#' + $(headers[element_indx]).attr('id')
 					changeCursorOnTableEl(element_indx)
 					document.getElementById('current_header').dataset.current = String(element_indx)
-					var offset = 300
-					jumpTo(target, offset)
+					var to = document.querySelector(target)
+					jumpTo(to, target)
 				}
 			})
 		},
@@ -136,8 +139,10 @@ $(document).ready( function(){
 })
 
 
-function jumpTo( target, offset ){
-	var offsetObj = $(target).offset()
-	offsetObj.top -= offset
-	window.scrollTo(offsetObj)
+function jumpTo( target, ref ){
+	// Предотвращаем скачок к цели
+	// Меняем состояние
+	history.pushState(null, '',`${ref}`)
+	// Прыгаем к цели
+	target.scrollIntoView({behavior: "smooth", block: "center", inline: "center"});
 }
