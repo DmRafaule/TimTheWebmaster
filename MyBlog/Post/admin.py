@@ -28,17 +28,20 @@ class CategoryAdmin(admin.ModelAdmin):
 
 
 class ArticleAdmin(admin.ModelAdmin):
+    exclude = ('category', 'template', 'description', 'title')
+    filter_horizontal = ('tags', 'tds', 'qas')
+    ordering = ['-timeCreated']
     fieldsets = [
         (
             None,
             {
-                'fields': ['title_ru', 'title_en', 'description_ru', 'description_en', 'isPublished', 'slug', 'template_ru', 'template_en']
+                'fields': ['slug', 'isPublished', ('title_ru', 'title_en'), ('description_ru', 'description_en'), ('template_ru', 'template_en')]
             }
         ),
         (
             'Advanced options',
             {
-                'fields': ['preview', 'likes', 'shares', 'viewed'],
+                'fields': ['preview', ('likes', 'shares', 'viewed'), 'timeCreated'],
                 'classes': ['collapse'],
                 'description': 'In this fieldset you can switch type of tool and configure other options.'
             }
@@ -52,131 +55,180 @@ class ArticleAdmin(admin.ModelAdmin):
             }
         )
     ]
-    exclude = ('category', 'timeCreated', 'timeUpdated', 'template', 'description', 'title')
-    filter_horizontal = ('tags', 'tds', 'qas')
     list_display = (
-            'id',
-            'title',
-            'isPublished',
-            'slug',
-            'timeCreated',
-            'timeUpdated',
-            'preview',
+        'slug',
+        'isPublished',
+        'title_ru',
+        'title_en',
+        'description_ru',
+        'description_en',
+        'timeCreated',
     )
     list_display_links = (
-            'title',
+        'slug',
     )
     list_editable = (
-            'isPublished',
-            'timeCreated',
-            'preview'
+        'isPublished',
+        'title_ru',
+        'title_en',
+        'description_ru',
+        'description_en',
+        'timeCreated',
     )
-    list_filter = ('isPublished',)
+    list_filter = ('isPublished', 'timeCreated')
     search_fields = (
-            'title',
-            'tags'
+        'title_ru',
+        'title_en',
+        'description_ru',
+        'description_en',
     )
 
 
 class QAAdmin(admin.ModelAdmin):
-    exclude = ('category', 'timeCreated', 'timeUpdated', 'question', 'answer', 'description', 'template')
+    exclude = ('category', 'question', 'answer', 'description', 'template')
+    ordering = ['-timeCreated']
     filter_horizontal = ('tags',)
-    list_display = (
-            'id',
-            'question',
-            'isPublished',
-            'slug',
-            'timeCreated',
-            'timeUpdated',
-    )
-    list_display_links = (
-            'question',
-    )
-    list_editable = (
-            'isPublished',
-            'timeCreated',
-    )
-    search_fields = (
-            'question',
-            'tags'
-    )
-    list_filter = ('isPublished',)
-
-
-class TDAdmin(admin.ModelAdmin):
-    exclude = ('category', 'timeCreated', 'timeUpdated', 'termin', 'description', 'definition', 'template')
-    filter_horizontal = ('tags',)
-    list_display = (
-            'id',
-            'termin',
-            'isPublished',
-            'slug',
-            'timeCreated',
-            'timeUpdated',
-    )
-    list_display_links = (
-            'termin',
-    )
-    list_editable = (
-            'isPublished',
-            'timeCreated',
-    )
-    search_fields = (
-            'termin',
-            'tags'
-    )
-    list_filter = ('isPublished',)
-
-
-class ToolAdmin(admin.ModelAdmin):
     fieldsets = [
         (
             None,
             {
-                'fields': ['name_ru', 'name_en', 'description_ru', 'description_en', 'slug', 'isPublished']
+                'fields': ['slug', 'isPublished', ('question_ru', 'question_en'),('answer_ru', 'answer_en')]
             }
         ),
         (
             'Advanced options',
             {
-                'fields': ['type', 'icon', 'archive', 'url', 'tags'],
+                'fields': [('template_ru', 'template_en'), 'description_ru', 'description_en', 'tags', 'timeCreated'],
+                'classes': ['collapse']
+            }
+        )
+    ]
+    list_display = (
+        'isPublished',
+        'slug',
+        'question_ru',
+        'question_en',
+        'answer_ru',
+        'answer_en',
+        'timeCreated',
+    )
+    list_display_links = (
+        'slug',
+    )
+    list_editable = (
+        'question_ru',
+        'question_en',
+        'answer_ru',
+        'answer_en',
+        'isPublished',
+        'timeCreated',
+    )
+    search_fields = (
+        'question_ru',
+        'question_en',
+    )
+    list_filter = ('isPublished', 'timeCreated')
+
+
+class TDAdmin(admin.ModelAdmin):
+    exclude = ('category', 'termin', 'description', 'definition', 'template', 'key_phrases',)
+    ordering = ['-timeCreated']
+    filter_horizontal = ('tags',)
+    fieldsets = [
+        (
+            None,
+            {
+                'fields': ['slug', 'isPublished', ('termin_ru', 'termin_en'),('definition_ru', 'definition_en'), ('key_phrases_ru', 'key_phrases_en')]
+            }
+        ),
+        (
+            'Advanced options',
+            {
+                'fields': [('template_ru', 'template_en'), 'description_ru', 'description_en', 'tags', 'timeCreated'],
+                'classes': ['collapse']
+            }
+        )
+    ]
+    list_display = (
+        'isPublished',
+        'slug',
+        'termin_ru',
+        'termin_en',
+        'definition_ru',
+        'definition_en',
+        'key_phrases_ru',
+        'key_phrases_en',
+        'timeCreated',
+    )
+    list_display_links = (
+        'slug',
+    )
+    list_editable = (
+        'termin_ru',
+        'termin_en',
+        'definition_ru',
+        'definition_en',
+        'key_phrases_ru',
+        'key_phrases_en',
+        'isPublished',
+        'timeCreated',
+    )
+    search_fields = (
+        'termin_ru',
+        'termin_en',
+    )
+    list_filter = ('isPublished', 'timeCreated')
+
+
+class ToolAdmin(admin.ModelAdmin):
+    exclude = ('category','name', 'description', 'likes', 'shares', 'viewed')
+    filter_horizontal = ('tags',)
+    ordering = ['-timeCreated']
+    fieldsets = [
+        (
+            None,
+            {
+                'fields': ['slug', 'isPublished', ('name_ru', 'name_en'), ('description_ru', 'description_en')]
+            }
+        ),
+        (
+            'Advanced options',
+            {
+                'fields': ['type', ('icon', 'archive', 'url'), 'tags', 'timeCreated'],
                 'classes': ['collapse'],
                 'description': 'In this fieldset you can switch type of tool and configure other options.'
             }
         )
     ]
-    exclude = ('category', 'timeCreated', 'timeUpdated', 'name', 'description', 'definition', 'likes', 'shares', 'viewed')
-    filter_horizontal = ('tags',)
     list_display = (
-            'id',
-            'name',
-            'description',
-            'isPublished',
-            'timeCreated',
-            'timeUpdated',
-            'icon',
-            'type',
-            'url',
-            'archive',
+        'slug',
+        'isPublished',
+        'type',
+        'name_ru',
+        'name_en',
+        'description_ru',
+        'description_en',
+        'timeCreated',
     )
     list_display_links = (
-            'name',
+        'slug',
     )
     list_editable = (
-            'isPublished',
-            'timeCreated',
-            'description',
-            'icon',
-            'type',
-            'url',
-            'archive'
+        'isPublished',
+        'name_ru',
+        'name_en',
+        'description_ru',
+        'description_en',
+        'timeCreated',
+        'type',
     )
     search_fields = (
-            'name',
-            'tags'
+        'name_ru',
+        'name_en',
+        'tags'
     )
     radio_fields = {'type': admin.HORIZONTAL}
-    list_filter = ('isPublished', 'type')
+    list_filter = ('isPublished', 'type', 'timeCreated')
 
 
 admin.site.register(M.Tag, TagAdmin)

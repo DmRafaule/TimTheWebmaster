@@ -67,7 +67,7 @@
 	<h2 class="paragraph">{% trans 'Использованные термины' %}</h2>
 	<ul class="list_without_sign">
 	{% for td in post.tds.all %}
-		<li><span><b class="ref" style='font-size: var(--size-titleH4_font)'><a href='{{td.get_absolute_url}}'>{{td.termin}}</a></b> ⟶ {{td.definition}}
+		<li><span><b class="ref" style='font-size: var(--size-titleH4_font)'><a id="{{td.slug}}" class="td" data-phrases="{{td.key_phrases}}" href='{{td.get_absolute_url}}'>{{td.termin}}</a></b> ⟶ {{td.definition}}
 		</span></li>
 	{% endfor %}
 	</ul>
@@ -104,6 +104,7 @@
 
 {% block scripts_post %}
 	<script src="{% static 'Post/js/link_gather.js' %}"></script>
+	<script src="{% static 'Post/js/link_inserter.js' %}"></script>
 	{% block scripts_post_article %}
 	{% endblock %}
 {% endblock %}
