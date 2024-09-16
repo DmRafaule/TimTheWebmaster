@@ -7,7 +7,8 @@ from django.views.generic import TemplateView
 from .forms import FeedbackForm
 from MyBlog.settings import DEFAULT_FROM_EMAIL, DEFAULT_TO_EMAIL
 from django.core.mail import send_mail
-from Post.models import Tool, Article
+from Post.models import Tool, Article, Tag
+from django.db.models import Q
 from django.template import loader
 
 
@@ -44,76 +45,50 @@ class MainView(TemplateView):
 
 def home(request):
     context = U.initDefaults(request)
+    internal_tool_tag = Tag.objects.get(slug_en='internal-tool')
     internal_tools = Tool.objects.filter(type=Tool.INTERNAL)
     most_popular_article = [U.get_most_popular_post()]
-    news = U.get_posts_by_tag('news', Article)
+    latest_news_tag = Tag.objects.get(slug_en='news')
+    news = U.get_posts_by_tag('News', Article)
     latest_news = U.get_latest_post(3, news)
+    series_tag = Tag.objects.get(slug_en='search-result-parser-series')
     post_series = U.get_posts_by_tag('search-result-parser-series', Article)
     latest_post_series = U.get_latest_post(2, post_series)
     latest_images = GU.getLatesImagesAll()[:3]
-    my_resources = [
-        {
-            'tag': 'CLI',
-            'title': _('Командная строка'),
-            'objs': []
-        },
-        {
-            'tag': 'GUI',
-            'title': _('С графическим интерфейсом'),
-            'objs': []
-        },
-        {
-            'tag': 'bot',
-            'title': _('Боты'),
-            'objs': []
-        },
-        {
-            'tag': 'scraper',
-            'title': _('Парсеры'),
-            'objs': []
-        },
-        {
-            'tag': 'script',
-            'title': _('Скрипты'),
-            'objs': []
-        }
-    ]
-    for resource in my_resources:
-        objs = U.get_posts_by_tag(resource['tag'], Tool)
-        print(objs)
-        resource['objs'] = U.get_latest_post(3, objs)
 
-    other_articles = [
-        {
-            'tag': 'django',
-            'title': _('Джанго'),
-            'objs': []
-        },
-        {
-            'tag': 'bot',
-            'title': _('Боты'),
-            'objs': []
-        },
-        {
-            'tag': 'history',
-            'title': _('История'),
-            'objs': []
-        },
-        {
-            'tag': 'backend',
-            'title': _('Бэкенд'),
-            'objs': []
-        },
-        {
-            'tag': 'react',
-            'title': _('Реакт'),
-            'objs': []
-        }
+    tags = [
+        'CLI',
+        'GUI',
+        'Bot',
+        'Scraper',
+        'Script'
     ]
-    for resource in other_articles:
-        objs = U.get_posts_by_tag(resource['tag'], Article)
-        resource['objs'] = U.get_latest_post(2, objs)
+    my_resources = []
+    for tag in Tag.objects.filter(name_en__in=tags):
+        objs = U.get_posts_by_tag(tag.name, Tool)
+        my_resources.append({
+            'tag': tag.slug,
+            'title': tag.name,
+            'objs': U.get_latest_post(3, objs)
+        })
+
+    tags = [
+        'Django',
+        'Bot',
+        'History',
+        'Backend',
+        'React'
+    ]
+    other_articles = []
+    for tag in Tag.objects.filter(name_en__in=tags):
+        objs = U.get_posts_by_tag(tag.name, Article)
+        other_articles.append({
+            'tag': tag.slug,
+            'title': tag.name,
+            'objs': U.get_latest_post(2, objs)
+        })
     
+    context.update({'internal_tool_tag': internal_tool_tag.slug})
     context.update({'posts': internal_tools})
     context.update({'current_tag': ''})
     loaded_template = loader.get_template(f'Post/list--post_preview-tool.html')
@@ -124,11 +99,12 @@ def home(request):
     context.update({'most_popular_article': loaded_template.render(context, request)})
 
     context.update({'posts': latest_news})
+    context.update({'latest_news_tag': latest_news_tag.slug})
     loaded_template = loader.get_template(f'Post/simple--post_preview-article.html')
     context.update({'latest_news': loaded_template.render(context, request)})
 
     context.update({'posts': latest_post_series})
-    context.update({'series_tag': 'search-result-parser-series'})
+    context.update({'series_tag': series_tag.slug})
     loaded_template = loader.get_template(f'Post/simple--post_preview-article.html')
     context.update({'latest_post_series': loaded_template.render(context, request)})
 

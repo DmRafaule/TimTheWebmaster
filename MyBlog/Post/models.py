@@ -18,14 +18,13 @@ def user_directory_path(instance, filename):
 
 
 class Tag(models.Model):
-    name = models.CharField(max_length=256, unique=True)
+    slug = models.SlugField(unique=True, max_length=60, blank=False, default='')
+    name = models.CharField(max_length=256, unique=True, blank=False)
 
     def __str__(self):
         return self.name
     
     def get_absolute_url(self, *args, **kwargs):
-        print(args)
-        print(kwargs)
         return reverse(f'articles-list')
 
 
@@ -35,7 +34,7 @@ class Category(models.Model):
     slug = models.SlugField(max_length=50, unique=True)
     template = models.FilePathField(
             path=os.path.join(S.BASE_DIR,"Post","templates","Post"),
-            default=os.path.join(S.BASE_DIR,"Post","templates","Post","post_list.html")
+            default=os.path.join(S.BASE_DIR,"Post","templates","Post","article_list.html")
     )
     categry_name = models.SlugField(max_length=50, unique=False, blank=True, null=True, default='')
 

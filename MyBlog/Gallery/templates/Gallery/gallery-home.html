@@ -6,17 +6,24 @@
 {% load listToURL %}
 
 {% block head %}
-	<title>{% trans "Тим зе Вебмастер. Его галлерея." %}</title>
-	<meta name="description" content="{% trans "Галлерея Тимы. Все его изображения на одной странице" %}">
 	{% if current_tag|length == 0 %}
+		{% if current_page == 1%}
+			<title>{% trans 'Галлерея'%}</title>
+		{% else %}
+			<title>{% trans 'Галлерея'%} - {% trans 'страница '%}{{current_page}}</title>
+		{% endif %}
+		<meta name="description" content="{% trans 'Здесь собраны все мои изображения, картинки, рисунки. Я их публикую сюда вне зависимости от того насколько ужасными они получились.' %}">
 		<link rel="canonical" href="https://{{domain_name}}{%url 'gallery'%}?page={{current_page}}&type=full" />
 		{% if current_page != num_pages %}
-		<link rel='next' href="https://{{domain_name}}{%url 'gallery'%}?page={{current_page|add:'1'}}&type=full">
+			<link rel='next' href="https://{{domain_name}}{%url 'gallery'%}?page={{current_page|add:'1'}}&type=full">
 		{% endif %}
 		{% if current_page != 1%}
-		<link rel='prev' href="https://{{domain_name}}{%url 'gallery'%}?page={{current_page|add:'-1'}}&type=full">
+			<link rel='prev' href="https://{{domain_name}}{%url 'gallery'%}?page={{current_page|add:'-1'}}&type=full">
 		{% endif %}
 	{% else %}
+		<title>{% trans 'Галлерея'%},{% trans ' с тегами:' %} {{current_tag_names|join:', '}}. {% trans 'Страница '%}{{current_page}}</title>
+		
+		<meta name="description" content="{% trans 'Здесь собраны все мои изображения, картинки, рисунки. Я их публикую сюда вне зависимости от того насколько ужасными они получились.' %} {% trans ' Эти изображения были связаны и сгруппированы по следующим тегам: ' %}{{current_tag_names|join:', '}}.{% trans ' Страница '%}{{current_page}}">
 		<link rel="canonical" href="https://{{domain_name}}{%url 'gallery'%}?page={{current_page}}&type=full{{current_tag|listToURL}}" />
 		{% if current_page != num_pages %}
 		<link rel='next' href="https://{{domain_name}}{%url 'gallery'%}?page={{current_page|add:'1'}}&type=full{{current_tag|listToURL}}">
@@ -25,13 +32,13 @@
 		<link rel='prev' href="https://{{domain_name}}{%url 'gallery'%}?page={{current_page|add:'-1'}}&type=full{{current_tag|listToURL}}">
 		{% endif %}
 	{% endif %}
+	<meta name="keywords" content="{{current_tag_names|join:', '}}">
 {% endblock %}
 
 {% block hat %}
 <div class="header_button  button squered_button"  data-body="filters_body">
 	<img id="filters_hat_button" data-sort="true" width="32" height="32" class="icon dynamic_image " src="{% static 'placeholder.svg' %}" data-src="{% static 'filter.svg' %}" alt="{% trans 'one layer on top of anothe' %}">
 </div>
-<div class="nav_menu_item in_middle" ><h1>{% trans "Галлерея" %}</h1></div>
 {% endblock %}
 
 {% block content %}
@@ -59,6 +66,21 @@
 	</div>
 </div>
 <div class='gallery_limiter padder in_middle-self'>
+	{% if current_tag|length == 0 %}
+		{% if current_page == 1%}
+			<h1>{% trans 'Галлерея ' %}</h1>
+		{% else %}
+			<h1>{% trans 'Галлерея ' %}{% trans ' начиная с ' %}{{current_page}}{% trans ' страницы'%}</h1>
+		{% endif%}
+		<div class="text">
+			{% trans 'Здесь собраны все мои изображения, картинки, рисунки. Я их публикую сюда вне зависимости от того насколько ужасными они получились.' %}
+		</div>
+	{% else %}
+	<h1>{% trans 'Изображения ' %}{% trans 'связанные со следующими тегами: ' %} {{current_tag_names|join:', '}}. {% trans 'Страница '%}{{current_page}}</h1>
+	<div class="text">
+		{% trans 'Здесь собраны все мои изображения, картинки, рисунки. Я их публикую сюда вне зависимости от того насколько ужасными они получились.' %} {% trans ' Они были связаны и сгруппированы по следующим тегам: ' %}{{current_tag_names|join:', '}}.{% trans ' Страница '%}{{current_page}}
+	</div>
+	{% endif %}
 	<hr>
 	<div id='masonry' class='toObserve masonry-row row min_gap'>
 		<div id="meta-data" data-numpages={{num_pages}} data-currentpage="{{current_page}}"></div>
@@ -73,7 +95,7 @@
 					{% if image.tags|length >= 1 %}
 					<div class="row min_gap padder ">
 						{% for tag in image.tags %}
-							<a href="{% url 'gallery' %}?page=1&type=full{{tag|addToListInURL:current_tag}}"><div class="tag text_button tag_add">{{tag}}</div></a>
+							<a href="{% url 'gallery' %}?page=1&type=full{{tag.slug|addToListInURL:current_tag}}"><div class="tag text_button tag_add">{{tag}}</div></a>
 						{% endfor %}
 					</div>
 					{% endif %}

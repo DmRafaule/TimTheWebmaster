@@ -1,10 +1,12 @@
 from django.shortcuts import render
 from django.http import HttpResponse, Http404
 import Main.utils as U
+from Post.models import Tag
 from .utils import getLatesImagesAll
 import json
 from django.utils.translation import gettext as _
 from django.core.paginator import Paginator
+from django.db.models import Q
 
 
 COLS = 2
@@ -17,7 +19,7 @@ def filterByTag(list, tags):
         counter = 0
         for tag_name in tags:
             for tag in image['tags']:
-                if tag.name == tag_name:
+                if (tag.name_ru == tag_name) or (tag.name_en == tag_name) or (tag.slug_ru == tag_name) or (tag.slug_en == tag_name):
                     counter += 1
         if counter == len(tags):
             new_list.append(image)
@@ -33,8 +35,14 @@ def gallery(request):
     images = getLatesImagesAll()
     
     tags = request.GET.getlist('tag', [])
+    tags_names = []
     if len(tags) > 0:
+        tag_obj = Tag.objects.filter(Q(name_ru__in=tags) | Q(name_en__in=tags) | Q(slug_ru__in=tags)  | Q(slug_en__in=tags))
         images = filterByTag(images, tags)
+        for key, tag in enumerate(tag_obj):
+                tags[key] = tag.slug
+        for key, tag in enumerate(tag_obj):
+                tags_names.append(tag.name)
         if not images:
             raise Http404(images)
     # Create a paginator
@@ -57,6 +65,7 @@ def gallery(request):
     context.update({'current_page': page})
     context.update({'page': page + 1})
     context.update({'current_tag': tags})
+    context.update({'current_tag_names': tags_names})
     context.update({'tags_json': json.dumps(tags)})
     if type == 'full':
         return render(request, 'Gallery/gallery-home.html', context=context)

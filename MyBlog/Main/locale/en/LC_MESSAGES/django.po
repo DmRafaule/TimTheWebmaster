@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-13 09:29+0300\n"
+"POT-Creation-Date: 2024-09-16 14:15+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -385,46 +385,10 @@ msgstr "Other articles (by topic)"
 msgid "Содержание"
 msgstr "Content"
 
-#: .\Main\views.py:35
+#: .\Main\views.py:36
 msgid "✔ Вы успешно отправили сообщение"
 msgstr "✔ You have successfully sent a message"
 
-#: .\Main\views.py:37
+#: .\Main\views.py:38
 msgid "✗ Возникла ошибка при отправке формы"
 msgstr "✗ An error occurred while sending a form."
-
-#: .\Main\views.py:57
-msgid "Командная строка"
-msgstr "CLI"
-
-#: .\Main\views.py:62
-msgid "С графическим интерфейсом"
-msgstr "GUI"
-
-#: .\Main\views.py:67 .\Main\views.py:94
-msgid "Боты"
-msgstr "Bots"
-
-#: .\Main\views.py:72
-msgid "Парсеры"
-msgstr "Scrapers"
-
-#: .\Main\views.py:77
-msgid "Скрипты"
-msgstr "Scripts"
-
-#: .\Main\views.py:89
-msgid "Джанго"
-msgstr "Django"
-
-#: .\Main\views.py:99
-msgid "История"
-msgstr "History"
-
-#: .\Main\views.py:104
-msgid "Бэкенд"
-msgstr "Backend"
-
-#: .\Main\views.py:109
-msgid "Реакт"
-msgstr "React"
