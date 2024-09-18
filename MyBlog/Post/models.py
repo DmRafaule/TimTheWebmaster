@@ -113,8 +113,6 @@ class Article(Post):
     description = models.TextField(blank=True)
     preview = models.ImageField(max_length=300, upload_to=user_directory_path, blank=True)
     template = models.FileField(max_length=300, upload_to=user_directory_path, blank=False)  # page to display
-    tds  = models.ManyToManyField(TD, blank=True)
-    qas  = models.ManyToManyField(QA, blank=True)
 
     def save(self, *args, **kwargs):
         self.category = Category.objects.get(slug="articles")

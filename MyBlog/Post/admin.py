@@ -32,7 +32,7 @@ class CategoryAdmin(admin.ModelAdmin):
 
 class ArticleAdmin(admin.ModelAdmin):
     exclude = ('category', 'template', 'description', 'title')
-    filter_horizontal = ('tags', 'tds', 'qas')
+    filter_horizontal = ('tags', )
     ordering = ['-timeCreated']
     fieldsets = [
         (
@@ -52,7 +52,7 @@ class ArticleAdmin(admin.ModelAdmin):
         (
             'Relations',
             {
-                'fields': ['tags', 'tds', 'qas'],
+                'fields': ['tags', ],
                 'classes': ['collapse'],
                 'description': 'In this fieldset you can link this article to others post models (TD, QA, Tags)'
             }

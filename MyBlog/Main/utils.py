@@ -3,7 +3,15 @@ import Post.models as Post_M
 from datetime import datetime
 from django.db.models import Q
 import math
+from bs4 import BeautifulSoup
 
+    
+def page_to_string(html):
+    soup = BeautifulSoup(html, features='lxml')
+    text_blocks = ''
+    for el in soup.find_all('div', class_='text'):
+        text_blocks += el.getText()
+    return text_blocks
 
 def get_how_old_human_in_years(birth_date: str, birth_date_str_frm: str) -> int:
     day_of_birth = datetime.strptime(birth_date, birth_date_str_frm).date()
