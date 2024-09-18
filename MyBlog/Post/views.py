@@ -133,7 +133,7 @@ def article(request, post_slug):
     
 
     with open(post.template.path, 'r', encoding='utf-8') as file:
-        html_str = U.page_to_string(file.read())
+        html_str = U.page_to_string(file.read()).lower()
     
     # TD model's record must have at leas 2 similar tags with post tags and be published
     tds = filterByTag(Post_M.TD.objects.filter(Q(isPublished=True) & Q(tags__in=post.tags.all())), post.tags.all(), 2)
@@ -171,7 +171,7 @@ def qa(request, post_slug):
     sim_post_doc = None
     related_articles = filterByTag(Post_M.Article.objects.filter(Q(isPublished=True) & Q(tags__in=post.tags.all())), post.tags.all(), 3)
     if related_articles is not None:
-        context.update({'posts': related_articles})
+        context.update({'posts': related_articles[:5]})
         loaded_template = loader.get_template(f'Post/simple--post_preview-article.html')
         sim_post_doc = loaded_template.render(context, request)
     
@@ -197,7 +197,7 @@ def td(request, post_slug):
     sim_post_doc = None
     related_articles = filterByTag(Post_M.Article.objects.filter(Q(isPublished=True) & Q(tags__in=post.tags.all())), post.tags.all(), 2)
     if related_articles is not None:
-        context.update({'posts': related_articles})
+        context.update({'posts': related_articles[:5]})
         loaded_template = loader.get_template(f'Post/simple--post_preview-article.html')
         sim_post_doc = loaded_template.render(context, request)
     

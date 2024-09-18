@@ -43,7 +43,6 @@ function update_paginator(num_pages, page){
 		last_page.classList.remove('example_pagin_button')
 		paginator_body.insertAdjacentElement('beforeend', last_page)
 	}else if (num_pages == 3){
-		console.log('Here')
 		var first_page = first_page_example_in_paginator.cloneNode()
 		first_page.classList.add('current_pagin_button')
 		first_page.classList.add('pagin_button_1')
