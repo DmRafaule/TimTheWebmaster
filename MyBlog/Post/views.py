@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from django.http import JsonResponse, Http404
+from django.http import JsonResponse, Http404, HttpResponse
 import Post.models as Post_M
 from django.utils.translation import gettext as _
 import Main.models as Main_M
@@ -118,10 +118,10 @@ def article(request, post_slug):
     context = U.initDefaults(request)
 
     sim_post_doc = None
-    sim_post = Post_M.Article.objects.filter(isPublished=True)
-    sim_post = filterByTag(sim_post, post.tags.all(), max_el_in_related_post)
+    # Post model's records must have at least 3 similar tags with this post
+    sim_post = filterByTag(Post_M.Article.objects.filter(Q(isPublished=True) & Q(tags__in=post.tags.all())), post.tags.all(), 3)
     if sim_post is not None:
-        context.update({'posts': sim_post[:3]})
+        context.update({'posts': sim_post[:max_el_in_related_post]})
         loaded_template = loader.get_template(f'Post/basic--post_preview-article.html')
         sim_post_doc = loaded_template.render(context, request)
 
@@ -130,6 +130,30 @@ def article(request, post_slug):
     context.update({'sim_post_doc': sim_post_doc})
     context.update({'downloadables': downloadables})
     context.update({'images': images})
+    
+
+    with open(post.template.path, 'r', encoding='utf-8') as file:
+        html_str = U.page_to_string(file.read())
+    
+    # TD model's record must have at leas 2 similar tags with post tags and be published
+    tds = filterByTag(Post_M.TD.objects.filter(Q(isPublished=True) & Q(tags__in=post.tags.all())), post.tags.all(), 2)
+    if tds is not None:
+        tds_to_use = []
+        for td in tds:
+            phrases = td.key_phrases.split(',')
+            # Procceed next if only key_phrased field is not empty
+            if phrases[0] != '':
+                for phrase in phrases:
+                    # If occurence in text was found the propagate this TD record
+                    if html_str.find(phrase) != -1:
+                        tds_to_use.append(td)
+
+        context.update({'tds': list(set(tds_to_use))[:5]})
+
+    # QA model's record must have at leas 3 similar tags with post tags and be published
+    qas =  filterByTag(Post_M.QA.objects.filter(Q(isPublished=True) & Q(tags__in=post.tags.all())), post.tags.all(), 3)
+    if qas is not None:
+        context.update({'qas': qas[:5]})
 
     return render(request, post.template.path, context=context)
 
@@ -145,8 +169,8 @@ def qa(request, post_slug):
     context.update({'images': images})
 
     sim_post_doc = None
-    related_articles = Post_M.Article.objects.filter(qas=post)[:max_el_in_related_post]
-    if len(related_articles) > 0:
+    related_articles = filterByTag(Post_M.Article.objects.filter(Q(isPublished=True) & Q(tags__in=post.tags.all())), post.tags.all(), 3)
+    if related_articles is not None:
         context.update({'posts': related_articles})
         loaded_template = loader.get_template(f'Post/simple--post_preview-article.html')
         sim_post_doc = loaded_template.render(context, request)
@@ -171,8 +195,8 @@ def td(request, post_slug):
     context.update({'images': images})
 
     sim_post_doc = None
-    related_articles = Post_M.Article.objects.filter(tds=post)[:max_el_in_related_post]
-    if len(related_articles) > 0:
+    related_articles = filterByTag(Post_M.Article.objects.filter(Q(isPublished=True) & Q(tags__in=post.tags.all())), post.tags.all(), 2)
+    if related_articles is not None:
         context.update({'posts': related_articles})
         loaded_template = loader.get_template(f'Post/simple--post_preview-article.html')
         sim_post_doc = loaded_template.render(context, request)
