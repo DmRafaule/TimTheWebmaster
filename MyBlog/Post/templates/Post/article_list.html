@@ -43,7 +43,7 @@
 		</div>
 	</legend>
 	<div class="row mid_gap in_middle on_start no_wrap" >
-		<img id="onSort" data-sort="true" width="32" height="32" class="filter_button hat_button icon dynamic_image bordered_button button squered_button" src="{% static 'placeholder.svg'%}" data-src="{% static 'Post/img/sort.svg' %}" alt="{% trans 'Значок сортировки' %}">
+		<img id="onSort" data-sort="{{is_recent}}" width="32" height="32" class="filter_button hat_button icon dynamic_image bordered_button button squered_button" src="{% static 'placeholder.svg'%}" data-src="{% static 'Post/img/sort.svg' %}" alt="{% trans 'Значок сортировки' %}">
 		<div>{% trans "Сортировка постов по дате публикации " %}</div>
 	</div>
 </fieldset>
@@ -53,13 +53,21 @@
 			{% trans "ОТОБРАЖЕНИЕ" %}
 		</div>
 	</legend>
-	<div id="toViews" data-view="basic" class="mid_col_gap" >
+	<div id="toViews" data-view="{{mode}}" class="mid_col_gap" >
 		<div class="row mid_gap in_middle no_wrap">
-			<img id="onBasicView" width="32" height="32" class="filter_button hat_button icon dynamic_image bordered_button button squered_button selected_view" src="{% static 'placeholder.svg'%}" data-src="{% static 'Post/img/basic_view.svg' %}" alt="{% trans 'Значок базового представления' %}">
+			{% if mode == 'basic' %}
+				<img id="onBasicView" width="32" height="32" class="filter_button hat_button icon dynamic_image bordered_button button squered_button selected_view" src="{% static 'placeholder.svg'%}" data-src="{% static 'Post/img/basic_view.svg' %}" alt="{% trans 'Значок базового представления' %}">
+			{% else %}
+				<img id="onBasicView" width="32" height="32" class="filter_button hat_button icon dynamic_image bordered_button button squered_button " src="{% static 'placeholder.svg'%}" data-src="{% static 'Post/img/basic_view.svg' %}" alt="{% trans 'Значок базового представления' %}">
+			{% endif %}
 			<div>{% trans "Отображение постов с превьюшкой и прочими данными"%}</div>
 		</div>
 		<div class="row mid_gap in_middle no_wrap">
-			<img id="onSimpleView" width="32" height="32" class="filter_button hat_button icon dynamic_image bordered_button button squered_button" src="{% static 'placeholder.svg'%}" data-src="{% static 'Post/img/simple_view.svg' %}" alt="{% trans 'Значок упрощённого представления' %}">
+			{% if mode == 'simple' %}
+				<img id="onSimpleView" width="32" height="32" class="filter_button hat_button icon dynamic_image bordered_button button squered_button selected_view" src="{% static 'placeholder.svg'%}" data-src="{% static 'Post/img/simple_view.svg' %}" alt="{% trans 'Значок упрощённого представления' %}">
+			{% else %}
+				<img id="onSimpleView" width="32" height="32" class="filter_button hat_button icon dynamic_image bordered_button button squered_button" src="{% static 'placeholder.svg'%}" data-src="{% static 'Post/img/simple_view.svg' %}" alt="{% trans 'Значок упрощённого представления' %}">
+			{% endif %}
 			<div>{% trans "Отображение постов без превьюшек"%}</div>
 		</div>
 	</div>

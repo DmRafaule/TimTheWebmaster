@@ -195,6 +195,7 @@ function onPaginLoad(event){
 }
 
 function onReady(){
+
 	document.addEventListener('onSort', (event) => {
 		onSort()
 		event.detail.button.classList.toggle('rotate_X')

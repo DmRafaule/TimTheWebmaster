@@ -113,6 +113,8 @@ class Article(Post):
     description = models.TextField(blank=True)
     preview = models.ImageField(max_length=300, upload_to=user_directory_path, blank=True)
     template = models.FileField(max_length=300, upload_to=user_directory_path, blank=False)  # page to display
+    qas = models.ManyToManyField(QA, blank=True, help_text='You only use this field to pin actualy needed qas. Other will come automatically')
+    tds = models.ManyToManyField(TD, blank=True, help_text='You only use this field to pin actualy needed tds. Other will come automatically')
 
     def save(self, *args, **kwargs):
         self.category = Category.objects.get(slug="articles")

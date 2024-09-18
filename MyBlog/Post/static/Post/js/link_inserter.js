@@ -7,9 +7,9 @@ function onReady(){
             // Вставит по одной анкорной ссылке на фразу 
             // И вставить только по одной анкорной ссылке на блок текста
             String(phrases).split(',').forEach((phrase) => {
-                var text_blocks = document.querySelectorAll('.text:not(.ref_internal)')
+                var text_blocks = document.querySelectorAll('.text:not(.ref_internal,.ref_downloadables,.ref)')
                 for (var j = 0; j < text_blocks.length; j++){
-                    var pos = text_blocks[j].innerHTML.search(phrase)
+                    var pos = text_blocks[j].innerHTML.toLowerCase().search(phrase)
                     if (pos != -1 ){
                         text_blocks[j].innerHTML = text_blocks[j].innerHTML.replace(phrase,`<a class='${ref}' href="#${ref}">${phrase}</a>`)
                         text_blocks[j].classList.add('ref_internal')

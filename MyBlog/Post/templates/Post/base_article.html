@@ -57,15 +57,19 @@
 {% block content_post-after %}
 
 	<div id="ex_links">
-		<h2 class="paragraph" style="margin-bottom: 0px">{% trans 'Внешние ссылки' %}</h2>
+		<h2 class="paragraph" >{% trans 'Внешние ссылки' %}</h2>
 		<li id='list_el_exmpl_cont' class="is_none" ><div class="ref"><a href=""></a></div></li>
 		<ul id="ex_links_list" class="numeric_list">
 		</ul>
 	</div>
 
-	{% if tds|length > 0 %}
+	{% if tds|length > 0 or post.tds.all|length > 0%}
 	<h2 class="paragraph">{% trans 'Использованные термины' %}</h2>
 	<ul class="list_without_sign">
+	{% for td in post.tds.all %}
+		<li><span><b class="ref" style='font-size: var(--size-titleH4_font)'><a id="{{td.slug}}" class="td" data-phrases="{{td.key_phrases}}" href='{{td.get_absolute_url}}'>{{td.termin}}</a></b> ⟶ {{td.definition}}
+		</span></li>
+	{% endfor %}
 	{% for td in tds %}
 		<li><span><b class="ref" style='font-size: var(--size-titleH4_font)'><a id="{{td.slug}}" class="td" data-phrases="{{td.key_phrases}}" href='{{td.get_absolute_url}}'>{{td.termin}}</a></b> ⟶ {{td.definition}}
 		</span></li>
@@ -73,9 +77,17 @@
 	</ul>
 	{% endif %}
 
-	{% if qas|length > 0 %}
+	{% if qas|length > 0 or post.qas.all|length > 0%}
 	<h2 class="paragraph">{% trans 'Релевантные вопросы' %}</h2>
 	<ul class="list_without_sign">
+	{% for qa in post.qas.all %}
+		<li>
+			<b class="ref" style='font-size: var(--size-titleH4_font)'><a href='{{qa.get_absolute_url}}'>{{qa.question}}</a></b>
+			<span class='padder'>
+				{{qa.answer}}
+			</span>
+		</li>
+	{% endfor %}
 	{% for qa in qas %}
 		<li>
 			<b class="ref" style='font-size: var(--size-titleH4_font)'><a href='{{qa.get_absolute_url}}'>{{qa.question}}</a></b>
