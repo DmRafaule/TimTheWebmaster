@@ -31,14 +31,14 @@ class CategoryAdmin(admin.ModelAdmin):
 
 
 class ArticleAdmin(admin.ModelAdmin):
-    exclude = ('category', 'template', 'description', 'title')
+    exclude = ('category', 'template', 'description', 'title', 'h1', 'meta_keywords')
     filter_horizontal = ('tags', 'tds', 'qas' )
     ordering = ['-timeCreated']
     fieldsets = [
         (
             None,
             {
-                'fields': ['slug', 'isPublished', ('title_ru', 'title_en'), ('description_ru', 'description_en'), ('template_ru', 'template_en')]
+                'fields': [('title_ru', 'title_en'), ('h1_ru', 'h1_en'), ('description_ru', 'description_en'), ('meta_keywords_ru', 'meta_keywords_en'), ('template_ru', 'template_en'), 'slug', 'isPublished']
             }
         ),
         (
@@ -65,6 +65,8 @@ class ArticleAdmin(admin.ModelAdmin):
         'title_en',
         'description_ru',
         'description_en',
+        'meta_keywords_ru',
+        'meta_keywords_en',
         'timeCreated',
     )
     list_display_links = (
@@ -76,6 +78,8 @@ class ArticleAdmin(admin.ModelAdmin):
         'title_en',
         'description_ru',
         'description_en',
+        'meta_keywords_ru',
+        'meta_keywords_en',
         'timeCreated',
     )
     list_filter = ('isPublished', 'timeCreated')

@@ -109,8 +109,10 @@ class TD(Post):
 
 class Article(Post):
     view_name = "article"
-    title = models.CharField(max_length=256)
-    description = models.TextField(blank=True)
+    title = models.CharField(max_length=256, blank=False, default='')
+    h1 = models.CharField(max_length=256, blank=False, default='')
+    description = models.TextField(max_length=256, blank=True)
+    meta_keywords = models.CharField(max_length=256, blank=True, default='')
     preview = models.ImageField(max_length=300, upload_to=user_directory_path, blank=True)
     template = models.FileField(max_length=300, upload_to=user_directory_path, blank=False)  # page to display
     qas = models.ManyToManyField(QA, blank=True, help_text='You only use this field to pin actualy needed qas. Other will come automatically')
