@@ -1,8 +1,10 @@
 from MyBlog.settings import MEDIA_URL, ALLOWED_HOSTS
 import Post.models as Post_M
 from datetime import datetime
+from .models import Website
 from django.db.models import Q
 import math
+from itertools import chain
 from bs4 import BeautifulSoup
 
     
@@ -65,31 +67,20 @@ def getNotEmptyCategories(categories):
 
 # Create queryset with special categories
 def getSpecialTopLevelCategories(categories):
-    categories_result = []
-    selected_special = ("articles", "tools")
-    for selected in selected_special:
-        categories_result.append(categories.get(slug=selected))
-        categories = categories.exclude(slug=selected)
+    website_conf = Website.objects.get(is_current=True)
+    categories_result = website_conf.categories_to_display_on_side_menu.all()
+    categories = categories.exclude(slug__in=categories_result)
     return getNotEmptyCategories(categories_result)
 
 
-# Get only those categories that represent content part of my website
-def getNotSpecialLowLevelCategories(categories):
-    selected_special = ("tools" )
-    for selected in selected_special:
-        categories = categories.exclude(slug=selected)
-    return categories
-
-
 def initDefaults(request):
+    website_conf = Website.objects.get(is_current=True)
     categories = Post_M.Category.objects.all()
     categories_special = getSpecialTopLevelCategories(categories)
     # Categories(categories_special) that gonna appear in first level of menu
     # All other (categories) gonna be in second lever under content menu
     domain_name = ALLOWED_HOSTS[0]
-    internal_tools = Post_M.Tool.objects.filter(type=Post_M.Tool.INTERNAL)
-    popular_posts = get_latest_post(2, internal_tools)
-    popular_posts.append(get_most_popular_post())
+    popular_posts = list(chain(website_conf.popular_articles_on_footer.all(), website_conf.popular_tools_on_footer.all()))
 
     context = {
         'categories_special': categories_special,

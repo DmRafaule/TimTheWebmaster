@@ -14,6 +14,62 @@ def user_directory_path_forImageAndDownloadabel(instance, filename):
     return "{0}/{1}/{2}".format(instance.type.category.slug, instance.type.slug, filename)
 
 
+class Website(models.Model):
+    class Meta:
+         db_table_comment = "This is a general model of the site. It is created to manage all elements of the site, with the ability to switch between them (Different records of the model)"
+         verbose_name = 'Website'
+         verbose_name_plural = 'Website'
+
+    name = models.CharField(max_length=256, blank=False)
+    is_current = models.BooleanField(default=False, help_text='Should be checked only for one record of Website databse')
+    # Post part
+    NO_THRESHOLD = 1
+    MINIMAL_THRESHOLD = 2
+    TOLERATED_THRESHOLD = 3
+    MAXIMAL_THRESHOLD = 5
+    THRESHOLDS = {
+        NO_THRESHOLD: 'No threshold (1)',
+        MINIMAL_THRESHOLD: 'Minimal threshold (2)',
+        TOLERATED_THRESHOLD: 'Tolerated threshold (3)',
+        MAXIMAL_THRESHOLD: 'Maximal threshold (5)',
+    }
+
+    threshold_similar_articles = models.IntegerField(verbose_name='Threshold for tag matching between articles', default=TOLERATED_THRESHOLD, choices=THRESHOLDS, help_text='This field sets the threshold for tag matching between current viewed article and others articles.')
+    threshold_related_termins = models.IntegerField(verbose_name='Threshold for tag matching between articles and termins', default=MINIMAL_THRESHOLD, choices=THRESHOLDS, help_text='This field sets the threshold for tag matching between current viewed article and termins.')
+    threshold_related_questions = models.IntegerField(verbose_name='Threshold for tag matching between articles and questions', default=MINIMAL_THRESHOLD, choices=THRESHOLDS, help_text='This field sets the threshold for tag matching between current viewed article and questions.')
+
+    NO_DISPLAY = 0
+    MINIMAL_DISPLAY = 2
+    TOLERATED_DISPLAY = 3
+    MAXIMAL_DISPLAY = 5
+    MAX_DISPLAYS = {
+        NO_DISPLAY: 'Do not display',
+        MINIMAL_DISPLAY: 'Minimal display (2)',
+        TOLERATED_DISPLAY: 'Tolerate display (3)',
+        MAXIMAL_DISPLAY: 'Maximal display (5)',
+    }
+    max_displayed_similar_articles = models.IntegerField(verbose_name='How many sim. articles to display', default=MINIMAL_DISPLAY, choices=MAX_DISPLAYS, help_text='This field sets how many similar articles to display on the current viewed article.')
+    max_displayed_termins = models.IntegerField(verbose_name='How many related termins to display', default=MAXIMAL_DISPLAY, choices=MAX_DISPLAYS, help_text='This field sets how many related termins to display on the current viewed article.')
+    max_displayed_questions = models.IntegerField(verbose_name='How many related questions to display', default=TOLERATED_DISPLAY, choices=MAX_DISPLAYS, help_text='This field sets how many related questions to display on the current viewed article.')
+    # Post list part
+    paginator_per_page_posts = models.IntegerField(verbose_name='Posts per page', default=4, blank=False, help_text='This field sets how many posts should be loaded while scrolling or paginating')
+    paginator_per_page_gallery = models.IntegerField(verbose_name='Images per page', default=4, blank=False, help_text='This field sets how many images should be loaded while scrolling or paginating')
+    paginator_per_page_gallery_columns = models.IntegerField(verbose_name='Columns to use for masonry', default=2, blank=False, help_text='This field sets how many columns should be used for masonry')
+    # Common part
+    categories_to_display_on_side_menu = models.ManyToManyField('Post.Category', verbose_name='Categories to display on side menu', blank=False)
+    popular_articles_on_footer = models.ManyToManyField('Post.Article', verbose_name='Articles to display on footer', blank=False)
+    popular_tools_on_footer = models.ManyToManyField('Post.Tool', verbose_name='Tools(Archives) to display on footer', blank=False)
+
+    # Home page part
+    my_resources_choosen_tags_on_home = models.ManyToManyField('Post.Tag', verbose_name='Choosen tags for My resources part', blank=False, related_name='my_resouces')
+    min_displayed_my_resources = models.IntegerField(verbose_name='Minimum el in My resources part to be displayed if present', default=3, blank=False)
+    other_articles_choosen_tags_on_home = models.ManyToManyField('Post.Tag', verbose_name='Choosen tags for Other articles part', blank=False, related_name='other_articles')
+    min_displayed_other_articles = models.IntegerField(verbose_name='Minimum el in Other articles part to be displayed if present', default=2, blank=False)
+    max_displayed_news_on_home = models.IntegerField(verbose_name='Limit to display Latest news', default=3, blank=False)
+    max_displayed_postSeries_on_home = models.IntegerField(verbose_name='Limit to display post series', default=2, blank=False)
+    max_displayed_images_on_home = models.IntegerField(verbose_name='Limit to display images', default=3, blank=False)
+
+
 class Image(models.Model):
     ART = 'Ar'
     RESOURCE = 'Re'

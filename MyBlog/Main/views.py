@@ -1,5 +1,6 @@
 from django.shortcuts import render
 import Main.utils as U
+from .models import Website
 import Gallery.utils as GU
 import json
 from django.utils.translation import gettext as _
@@ -44,48 +45,36 @@ class MainView(TemplateView):
         return render(request, self.template_name, context=context)
 
 def home(request):
+    website_conf = Website.objects.get(is_current=True)
+
     context = U.initDefaults(request)
     internal_tool_tag = Tag.objects.get(slug_en='internal-tool')
     internal_tools = Tool.objects.filter(type=Tool.INTERNAL)
     most_popular_article = [U.get_most_popular_post()]
     latest_news_tag = Tag.objects.get(slug_en='news')
     news = U.get_posts_by_tag('News', Article)
-    latest_news = U.get_latest_post(3, news)
+    latest_news = U.get_latest_post(website_conf.max_displayed_news_on_home, news)
     series_tag = Tag.objects.get(slug_en='search-result-parser-series')
     post_series = U.get_posts_by_tag('search-result-parser-series', Article)
-    latest_post_series = U.get_latest_post(2, post_series)
-    latest_images = GU.getLatesImagesAll()[:3]
+    latest_post_series = U.get_latest_post(website_conf.max_displayed_postSeries_on_home, post_series)
+    latest_images = GU.getLatesImagesAll()[:website_conf.max_displayed_images_on_home]
 
-    tags = [
-        'CLI',
-        'GUI',
-        'Bot',
-        'Scraper',
-        'Script'
-    ]
     my_resources = []
-    for tag in Tag.objects.filter(name_en__in=tags):
+    for tag in website_conf.my_resources_choosen_tags_on_home.all():
         objs = U.get_posts_by_tag(tag.name, Tool)
         my_resources.append({
             'tag': tag.slug,
             'title': tag.name,
-            'objs': U.get_latest_post(3, objs)
+            'objs': U.get_latest_post(website_conf.min_displayed_my_resources, objs)
         })
 
-    tags = [
-        'Django',
-        'Bot',
-        'History',
-        'Backend',
-        'React'
-    ]
     other_articles = []
-    for tag in Tag.objects.filter(name_en__in=tags):
+    for tag in website_conf.other_articles_choosen_tags_on_home.all():
         objs = U.get_posts_by_tag(tag.name, Article)
         other_articles.append({
             'tag': tag.slug,
             'title': tag.name,
-            'objs': U.get_latest_post(2, objs)
+            'objs': U.get_latest_post(website_conf.min_displayed_other_articles, objs)
         })
     
     context.update({'internal_tool_tag': internal_tool_tag.slug})

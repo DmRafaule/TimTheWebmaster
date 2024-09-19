@@ -1,6 +1,84 @@
 from django.contrib import admin
-from .models import Image, Downloadable
+from .models import Website, Image, Downloadable
 
+
+class WebsiteAdmin(admin.ModelAdmin):
+    list_display = ('is_current', 'name')
+    list_display_links = ('name',)
+    filter_horizontal = (
+        'categories_to_display_on_side_menu', 
+        'popular_articles_on_footer', 
+        'popular_tools_on_footer',
+        'my_resources_choosen_tags_on_home', 
+        'other_articles_choosen_tags_on_home'
+    )
+    search_fields = (
+        'name',
+    )
+    fieldsets = [
+        (
+            None,
+            {
+                'fields': ['name', 'is_current']
+            }
+        ),
+        (
+            'Post options',
+            {
+                'fields': [
+                    'threshold_similar_articles', 
+                    'threshold_related_termins', 
+                    'threshold_related_questions',
+                    'max_displayed_similar_articles',
+                    'max_displayed_termins',
+                    'max_displayed_questions'],
+                'classes': ['collapsed'],
+                'description': 'In this section you could change and edit options related to every Post object on website(Tool, Article, Category, TD, QA)'
+            }
+        ),
+        (
+            'Post list options',
+            {
+                'fields': [
+                    'paginator_per_page_posts',
+                    'paginator_per_page_gallery',
+                    'paginator_per_page_gallery_columns'
+                ],
+                'classes': ['collapsed'],
+                'description': 'In this section you could change and edit options related to every paginator page, where you can find all of the Post object like: (Tool, Article, Category, TD, QA)'
+            }
+        ),
+        (
+            'Home page',
+            {
+                'fields': [
+                    'my_resources_choosen_tags_on_home',
+                    'min_displayed_my_resources',
+                    'other_articles_choosen_tags_on_home',
+                    'min_displayed_other_articles',
+                    (
+                        'max_displayed_news_on_home',
+                        'max_displayed_postSeries_on_home',
+                        'max_displayed_images_on_home',
+                    )
+                ],
+                'classes': ['collapsed'],
+                'description': 'In this section you could change and edit options related home page'
+            }
+        ),
+        (
+            'Common data',
+            {
+                'fields': [
+                    'categories_to_display_on_side_menu',
+                    'popular_articles_on_footer',
+                    'popular_tools_on_footer'
+                ],
+                'classes': ['collapsed'],
+                'description': 'In this section you could change and edit options related to any blocks and elements on website that present on every page, like: side menu or footer'
+            }
+        )
+    ]
 
 class ImageAdmin(admin.ModelAdmin):
     exclude = ('text',)
@@ -19,5 +97,6 @@ class DownloadableAdmin(admin.ModelAdmin):
     list_editable = ('file','category')
 
 
+admin.site.register(Website, WebsiteAdmin)
 admin.site.register(Downloadable, DownloadableAdmin)
 admin.site.register(Image, ImageAdmin)
