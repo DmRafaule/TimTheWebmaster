@@ -13,7 +13,6 @@ import json
 
 
 max_el_in_related_post = 3
-UPLOAD_SIZE = 4
 
 # Return only those elements which has all tags in them
 def filterByTag(list, tags, threshold = None):
@@ -44,6 +43,7 @@ class PostListView(TemplateView):
         return context
     
     def get(self, request):
+        website_conf = Main_M.Website.objects.get(is_current=True)
         context = self.get_context_data()
         # Defines order of loading posts. Recent of latest
         is_recent = self.request.GET.get('is_recent', 'true')
@@ -69,7 +69,7 @@ class PostListView(TemplateView):
                 raise Http404(tag_obj)
             posts = filterByTag(posts, tag_obj)
         # Create a paginator
-        paginator = Paginator(posts, UPLOAD_SIZE)
+        paginator = Paginator(posts, website_conf.paginator_per_page_posts)
         page = int(request.GET.get('page', 1))
         if page > paginator.num_pages :
             raise Http404(page)
@@ -109,6 +109,7 @@ class PostListView(TemplateView):
 
 
 def article(request, post_slug):
+    website_conf = Main_M.Website.objects.get(is_current=True)
     post = get_object_or_404(Post_M.Article, slug=post_slug)
     post.viewed = post.viewed + 1
     post.save()
@@ -119,9 +120,9 @@ def article(request, post_slug):
 
     sim_post_doc = None
     # Post model's records must have at least 3 similar tags with this post
-    sim_post = filterByTag(Post_M.Article.objects.filter(Q(isPublished=True) & Q(tags__in=post.tags.all())), post.tags.all(), 3)
+    sim_post = filterByTag(Post_M.Article.objects.filter(Q(isPublished=True) & Q(tags__in=post.tags.all())), post.tags.all(), website_conf.threshold_similar_articles)
     if sim_post is not None:
-        context.update({'posts': sim_post[:max_el_in_related_post]})
+        context.update({'posts': sim_post[:website_conf.max_displayed_similar_articles]})
         loaded_template = loader.get_template(f'Post/basic--post_preview-article.html')
         sim_post_doc = loaded_template.render(context, request)
 
@@ -136,7 +137,7 @@ def article(request, post_slug):
         html_str = U.page_to_string(file.read()).lower()
     
     # TD model's record must have at leas 2 similar tags with post tags and be published
-    tds = filterByTag(Post_M.TD.objects.filter(Q(isPublished=True) & Q(tags__in=post.tags.all())), post.tags.all(), 2)
+    tds = filterByTag(Post_M.TD.objects.filter(Q(isPublished=True) & Q(tags__in=post.tags.all())), post.tags.all(), website_conf.threshold_related_termins)
     if tds is not None:
         tds_to_use = []
         for td in tds:
@@ -148,16 +149,17 @@ def article(request, post_slug):
                     if html_str.find(phrase) != -1:
                         tds_to_use.append(td)
 
-        context.update({'tds': list(set(tds_to_use))[:5]})
+        context.update({'tds': list(set(tds_to_use))[:website_conf.max_displayed_termins]})
 
     # QA model's record must have at leas 3 similar tags with post tags and be published
-    qas =  filterByTag(Post_M.QA.objects.filter(Q(isPublished=True) & Q(tags__in=post.tags.all())), post.tags.all(), 3)
+    qas =  filterByTag(Post_M.QA.objects.filter(Q(isPublished=True) & Q(tags__in=post.tags.all())), post.tags.all(), website_conf.threshold_related_questions)
     if qas is not None:
-        context.update({'qas': qas[:5]})
+        context.update({'qas': qas[:website_conf.max_displayed_questions]})
 
     return render(request, post.template.path, context=context)
 
 def qa(request, post_slug):
+    website_conf = Main_M.Website.objects.get(is_current=True)
     post = get_object_or_404(Post_M.QA, slug=post_slug)
     post.viewed = post.viewed + 1
     post.save()
@@ -169,9 +171,9 @@ def qa(request, post_slug):
     context.update({'images': images})
 
     sim_post_doc = None
-    related_articles = filterByTag(Post_M.Article.objects.filter(Q(isPublished=True) & Q(tags__in=post.tags.all())), post.tags.all(), 3)
+    related_articles = filterByTag(Post_M.Article.objects.filter(Q(isPublished=True) & Q(tags__in=post.tags.all())), post.tags.all(), website_conf.threshold_related_questions)
     if related_articles is not None:
-        context.update({'posts': related_articles[:5]})
+        context.update({'posts': related_articles[:website_conf.max_displayed_questions]})
         loaded_template = loader.get_template(f'Post/simple--post_preview-article.html')
         sim_post_doc = loaded_template.render(context, request)
     
@@ -184,6 +186,7 @@ def qa(request, post_slug):
 
 
 def td(request, post_slug):
+    website_conf = Main_M.Website.objects.get(is_current=True)
     post = get_object_or_404(Post_M.TD, slug=post_slug)
     post.viewed = post.viewed + 1
     post.save()
@@ -195,9 +198,9 @@ def td(request, post_slug):
     context.update({'images': images})
 
     sim_post_doc = None
-    related_articles = filterByTag(Post_M.Article.objects.filter(Q(isPublished=True) & Q(tags__in=post.tags.all())), post.tags.all(), 2)
+    related_articles = filterByTag(Post_M.Article.objects.filter(Q(isPublished=True) & Q(tags__in=post.tags.all())), post.tags.all(), website_conf.threshold_related_termins)
     if related_articles is not None:
-        context.update({'posts': related_articles[:5]})
+        context.update({'posts': related_articles[:website_conf.max_displayed_termins]})
         loaded_template = loader.get_template(f'Post/simple--post_preview-article.html')
         sim_post_doc = loaded_template.render(context, request)
     

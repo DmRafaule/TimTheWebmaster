@@ -2,15 +2,12 @@ from django.shortcuts import render
 from django.http import HttpResponse, Http404
 import Main.utils as U
 from Post.models import Tag
+from Main.models import Website
 from .utils import getLatesImagesAll
 import json
 from django.utils.translation import gettext as _
 from django.core.paginator import Paginator
 from django.db.models import Q
-
-
-COLS = 2
-UPLOAD_SIZE = 4
 
 
 def filterByTag(list, tags):
@@ -31,6 +28,7 @@ def filterByTag(list, tags):
 
 
 def gallery(request):
+    website_conf = Website.objects.get(is_current=True)
     context = U.initDefaults(request) 
     images = getLatesImagesAll()
     
@@ -46,7 +44,7 @@ def gallery(request):
         if not images:
             raise Http404(images)
     # Create a paginator
-    paginator = Paginator(images, UPLOAD_SIZE)
+    paginator = Paginator(images, website_conf.paginator_per_page_gallery)
     page = int(request.GET.get('page', 1))
     if page > paginator.num_pages:
         raise Http404() 
@@ -54,10 +52,10 @@ def gallery(request):
     type = request.GET.get('type', 'full') 
     # Resort images for masonry
     columns = []
-    for i in range(0,COLS):
+    for i in range(0, website_conf.paginator_per_page_gallery_columns):
         columns.append([])
     for key in range(0,len(page_obj)):
-        col_id = key % COLS
+        col_id = key % website_conf.paginator_per_page_gallery_columns
         columns[col_id].append(page_obj[key])
     
     context.update({'columns': columns})
