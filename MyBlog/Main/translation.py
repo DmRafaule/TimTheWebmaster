@@ -8,7 +8,7 @@ class CategoryTranslationOptions(TranslationOptions):
 
 
 class ArticleTranslationOptions(TranslationOptions):
-    fields = ('title', 'description', 'template')
+    fields = ('title', 'h1', 'description', 'meta_keywords', 'template')
 
 
 class TagTranslationOptions(TranslationOptions):
