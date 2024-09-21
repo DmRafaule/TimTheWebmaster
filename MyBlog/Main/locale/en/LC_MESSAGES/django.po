@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-16 14:15+0300\n"
+"POT-Creation-Date: 2024-09-21 19:41+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -58,98 +58,99 @@ msgstr ""
 msgid "О Тиме Вебмастере"
 msgstr "About Tim"
 
-#: .\Main\templates\Main\about.html:26
-msgid "Вступление"
-msgstr "Intro"
-
 #: .\Main\templates\Main\about.html:28
 msgid ""
 "\n"
-"\t\tМеня зовут Чудук Дмитрий Сергеевич. Родом из Беларуси, беларус. Мне  \n"
-"\t\t"
+"\t\t\t\tЗнаешь, я эту страницу 10й переписываю. Мне это “немножко” надоело, "
+"хочу рассказать и то и сё и хочется о своей боли рассказать, и о том почему "
+"я занялся этим, и вообще, кто я такой. Но слов всегда не достаточно и "
+"всегда, что-нибудь перечитывая, я натыкаюсь на какую-нибудь неточность или "
+"недосказанность и понеслась … Начинаю с редактирования одного предложения, а "
+"заканчиваю полной переделкой всей страницы.\n"
+"\t\t\t\t"
 msgstr ""
 "\n"
-"\t\tMy name is Dzmitry Chuduk. I am from Belarus. I am  \n"
-"\t\t"
+"You know, I'm rewriting this page for the 10th time. I'm tired of this \"a little bit.\". You know, I just want to tell a bunch of stuff on different topics, like why I’ve started running this website or what the end goal is here. But words are never enough, and always, every time I’m rereading this page, I may stumble upon some inaccuracy or omission, and off I go... I start by editing one sentence and end up completely rewriting the entire page."
 
-#: .\Main\templates\Main\about.html:32
+#: .\Main\templates\Main\about.html:33
 msgid ""
 "\n"
-"\t\tгода и занимаюсь тем, что веду <b>сайт-портфолио</b> и иногда пишу "
-"статьи  на разные темы.  \n"
-"\t\t"
+"\t\t\t\tНо не в этот раз. На этот раз, эта страница должна продержаться "
+"очень долго). Отчего же я так в этом уверен ? Ну просто потому, что я напишу "
+"максимально кратко и ёмко. Кто я, зачем я и почему я.\n"
+"\t\t\t\t"
 msgstr ""
 "\n"
-"\t\t years old and I've been running <b>portfolio website</b> and sometimes "
-"writing articles on various topics.  \n"
-"\t\t"
+"But not this time. This time, this page should last a very long time ;). Why am I so sure about this? Well, simply because I will write as briefly as possible. Who am I, why am I, and for what reason am I?"
 
-#: .\Main\templates\Main\about.html:37
+#: .\Main\templates\Main\about.html:38
 msgid ""
 "\n"
-"\t\tЕсли я долго ничего не публиковал это не значит что я умер). Скорее "
-"всего я веду работу\n"
-"\t\tнад очередным своим проектом, по типу тех что находятся в разделе  \n"
-"\t\t"
+"\t\t\t\tНачну с себя. Я Дима, приятно познакомиться. Теперь ты знаешь почему "
+"timthewebmaster. (Тим это одна из форм имени Димы, ну если ты не догадался "
+"или не знал). Фамилия моя Чудук. Прикольная фамилия, скажу я тебе, "
+"однофамильцев пока не встречал, только родственников).\n"
+"\t\t\t\t"
 msgstr ""
 "\n"
-"\t\tIf I have not been published anything for a long time it doesn't mean "
-"that I'm dead ;) Rather I'm just developing some new cool feature or tool.\n"
-"\t\tlike those in the  \n"
-"\t\t"
-
-#: .\Main\templates\Main\about.html:41
-msgid "инструментов"
-msgstr "tools"
-
-#: .\Main\templates\Main\about.html:44
-msgid "О чём сайт, интересы"
-msgstr "What is the site about, interests"
+"I'll start with the question, Who am I? My real name is Dima; nice to meet you. Now you know why, TimThewebmaster. (Well, if you are an are an English-speaking person, you will not get it, but long story short, in Russian, the name Dima has a synonymous form, Tim.) My last name is Chuduk. A cool last name, I'll tell you; I haven't met anyone with the same last name yet, only relatives ;)."
 
 #: .\Main\templates\Main\about.html:46
+msgid "А это я."
+msgstr "It is me btw"
+
+#: .\Main\templates\Main\about.html:54
+msgid "Просто красивый вид. Где я живу."
+msgstr "Just a beautiful view."
+
+#: .\Main\templates\Main\about.html:59
 msgid ""
 "\n"
-"\t\tНа этом сайте ты найдёшь такие штуки как:\n"
+"\t\t\t\tКем работаю, учусь ли я и какое вообще у меня образование? Во всех "
+"гайдах и рекомендациях указывается, что такие данные нужно обязательно "
+"указывать, чтобы вызвать доверие и показать что ты реальный ЧЕЛОВЕК. Ну "
+"хорошо, что ещё паспортные данные не рекомендуют указывать)\n"
+"\t\t\t\t"
+msgstr ""
+"\n"
+"What do I do for a living, do I study, and what education do I have? All guides and recommendations indicate that such data must be provided in order to increase trust and show that you are a real PERSON. Well, it's good that they also do not recommend providing passport data, at least for now ;)"
+
+#: .\Main\templates\Main\about.html:64
+msgid ""
+"\n"
+"\t\t\t\tНу а если серьёзно, то я не очень люблю рассказывать такие детали. "
+"Скажу лишь что моим образованием можно подтереть ****. А работаю я где "
+"придётся и где берут. Будь то фриланс или реальная физическая работа. Не "
+"карьерист я короче).\n"
+"\t\t\t\t"
+msgstr ""
+"\n"
+"But seriously, I don't really like to tell such details. I'll just say that it is a useless piece of ****. And I work wherever I can and wherever someone hires me. Whether it's freelancing or real physical work. Well, I'm not a careerist)."
+
+#: .\Main\templates\Main\about.html:69
+msgid ""
+"\n"
+"\t\t\t\tВпрочем, об учёбе. Да я учусь, постоянно и самостоятельно. То есть, "
+"нет я не студент. Меня скорее лучше опишет слово Маргинал, Хастлер или "
+"Суетолог. Вот.\n"
+"\t\t\t\t"
+msgstr ""
+"\n"
+"Anyway, about studying. Yes, I study constantly and independently. That is, no, I am not a student. The words marginal or hustler would describe me better. That's it."
+
+#: .\Main\templates\Main\about.html:77
+msgid ""
+"\n"
+"\t\tТеперь, напишу о чём этот сайт и что тут можно найти. Вообще, у этого "
+"сайта нет какой-то определённой цели или направленности. Это сайт обо всём "
+"что мне интересно и скорее существует с той целью, чтобы обозначить моё "
+"присутствие в интернете. А вот темы которые меня интересуют: \n"
 "\t\t"
 msgstr ""
 "\n"
-"\t\tOn this site you will find things like:\n"
-"\t\t"
+"Now, I'll write what this site is about and what you can find here. In general, this site does not have any specific goal or focus. This site is about everything that is interesting for me and rather exists for the purpose of indicating my presence on the Internet. But here are the topics that are interesting for me:"
 
-#: .\Main\templates\Main\about.html:51
-msgid ""
-"\n"
-"\t\t<li>Статьи на <u>интересующие меня темы</u></li>\n"
-"\t\t<li>Статьи личного характера</li>\n"
-"\t\t<li>Кейсы связанные с моей работай</li>\n"
-"\t\t<li>Инструменты и вебсервисы под различные нужды и потребности</li>\n"
-"\t\t<li>Новости касающиеся меня лично, либо <u>интересных мне тем</u></li>\n"
-"\t\t<li>Авторские изображения/карикатуры ( т.е. мои)</li>\n"
-"\t\t<li>Архивы, скрипты, программы и прочие файлы для скачивания</li>\n"
-"\t\t"
-msgstr ""
-"\n"
-"\t\t<li>Articles on <u>topics that are interesting for me</u></li>\n"
-"\t\t<li>Personal articles</li>\n"
-"\t\t<li>Cases related to my work</li>\n"
-"\t\t<li>Tools and web services for various needs and purposes</li>\n"
-"\t\t<li>News concerning me personally, or <u>topics that are interesting for "
-"me</u></li>\n"
-"\t\t<li>Author's images/caricatures (i.e. mine)</li>\n"
-"\t\t<li>Archives, scripts, programs and other files for downloading</li>\n"
-"\t\t"
-
-#: .\Main\templates\Main\about.html:62
-msgid ""
-"\n"
-"\t\tИнтересующие меня темы:\n"
-"\t\t"
-msgstr ""
-"\n"
-"\t\tTopics that are interesting for me:\n"
-"\t\t"
-
-#: .\Main\templates\Main\about.html:67
+#: .\Main\templates\Main\about.html:82
 msgid ""
 "\n"
 "\t\t<li>Разработка телеграм ботов</li>\n"
@@ -175,85 +176,73 @@ msgstr ""
 "\t\t<li>History</li>\n"
 "\t\t"
 
-#: .\Main\templates\Main\about.html:80
-msgid "Как связаться"
-msgstr "How to contact"
-
-#: .\Main\templates\Main\about.html:82
+#: .\Main\templates\Main\about.html:95
 msgid ""
 "\n"
-"\t\tСо мной можно связаться через данные соцсети:\n"
+"\t\tЕсли тебя также интересуют такие вещи, то рад знакомству). Если нет, то "
+"всё равно рад встрече). Так же на сайте ты сможешь найти, такие штуки как: \n"
 "\t\t"
 msgstr ""
 "\n"
-"\t\tYou can contact me through my social networks:\n"
-"\t\t"
+"If you are also interested in such things, then I am glad to meet you. If not, then I am still glad to meet you. Also on the site, you can find such things as:"
 
-#: .\Main\templates\Main\about.html:88 .\Main\templates\Main\base.html:133
-#: .\Main\templates\Main\contacts.html:24
-msgid "instagram иконка"
-msgstr "instagram icon"
-
-#: .\Main\templates\Main\about.html:89 .\Main\templates\Main\about.html:93
-#: .\Main\templates\Main\about.html:97 .\Main\templates\Main\about.html:101
-#: .\Main\templates\Main\about.html:131 .\Main\templates\Main\contacts.html:25
-#: .\Main\templates\Main\contacts.html:29
-#: .\Main\templates\Main\contacts.html:33
-#: .\Main\templates\Main\contacts.html:37
-#: .\Main\templates\Main\contacts.html:41
-msgid "контактная страница Тимы, Вебмастера"
-msgstr "contact page of Tim the Webmaster"
-
-#: .\Main\templates\Main\about.html:92 .\Main\templates\Main\base.html:132
-#: .\Main\templates\Main\contacts.html:28
-msgid "vk иконка"
-msgstr "vk icon"
-
-#: .\Main\templates\Main\about.html:96 .\Main\templates\Main\base.html:130
-#: .\Main\templates\Main\contacts.html:32
-msgid "telegram иконка"
-msgstr "telegram icon"
-
-#: .\Main\templates\Main\about.html:100 .\Main\templates\Main\base.html:134
-#: .\Main\templates\Main\contacts.html:36
-msgid "twitter иконка"
-msgstr "twitter icon"
-
-#: .\Main\templates\Main\about.html:105
+#: .\Main\templates\Main\about.html:100
 msgid ""
 "\n"
-"\t\tИли форму обратной связи.\n"
+"\t\t<li>Статьи на <u>интересующие меня темы</u></li>\n"
+"\t\t<li>Статьи личного характера</li>\n"
+"\t\t<li>Кейсы связанные с моей работай</li>\n"
+"\t\t<li>Инструменты и вебсервисы под различные нужды и потребности</li>\n"
+"\t\t<li>Новости касающиеся меня лично, либо <u>интересных мне тем</u></li>\n"
+"\t\t<li>Авторские изображения/карикатуры ( т.е. мои)</li>\n"
+"\t\t<li>Архивы, скрипты, программы и прочие файлы для скачивания</li>\n"
 "\t\t"
 msgstr ""
 "\n"
-"\t\tOr a feedback form.\n"
+"\t\t<li>Articles on <u>topics that are interesting for me</u></li>\n"
+"\t\t<li>Personal articles</li>\n"
+"\t\t<li>Cases related to my work</li>\n"
+"\t\t<li>Tools and web services for various needs and purposes</li>\n"
+"\t\t<li>News concerning me personally, or <u>topics that are interesting for "
+"me</u></li>\n"
+"\t\t<li>Author's images/caricatures (i.e. mine)</li>\n"
+"\t\t<li>Archives, scripts, programs and other files for downloading</li>\n"
 "\t\t"
 
-#: .\Main\templates\Main\about.html:119 .\Main\templates\Main\contacts.html:63
-msgid "Отправить"
-msgstr "Send"
-
-#: .\Main\templates\Main\about.html:122 .\Main\templates\Main\contacts.html:59
-msgid "Имя должно состоять от 3 до 25 букв"
-msgstr "The name must be between 3 and 25 letters"
-
-#: .\Main\templates\Main\about.html:123 .\Main\templates\Main\contacts.html:60
-msgid "Email должен быть настоящим"
-msgstr "The email should be real"
-
-#: .\Main\templates\Main\about.html:128
+#: .\Main\templates\Main\about.html:111
 msgid ""
 "\n"
-"\t\tИли почту chedrden@gmail.com. А можно сразу написать\n"
+"\t\tВот, собственно говоря, всё что я хотел сказать про себя и сайт. Если "
+"хочешь узнать больше, милости прошу почитать соответствующие статьи. Кстати, "
+"где-то здесь будет облако тегов всего моего сайта, каждое слово будет "
+"представлять из себя ссылку на соответствующую страницу пагинации. (Если его "
+"нет, то прости, ещё в процессе)\n"
 "\t\t"
 msgstr ""
 "\n"
-"\t\tEither email chedrden@gmail.com or send immediately\n"
-"\t\t"
+"That's basically all I wanted to say about myself and the site. If you want to know more, please read the relevant articles. By the way, somewhere here there will be a tag cloud of my entire site; each word will be a link to the corresponding pagination page. (If it's not there, then forgive me; it's still in progress.)"
 
-#: .\Main\templates\Main\about.html:131
-msgid "письмо."
-msgstr " a message."
+#: .\Main\templates\Main\about.html:117
+msgid "Ещё одно красивое фото, где я когда-то жил."
+msgstr "Yet another beautiful photo."
+
+#: .\Main\templates\Main\about.html:120
+msgid ""
+"\n"
+"\t\tНа момент прочтения данной страницы тобой, мне \n"
+"\t\t"
+msgstr ""
+"\n"
+"At the time you read this page, I am"
+
+#: .\Main\templates\Main\about.html:124
+msgid ""
+"\n"
+"\t\tгода. И моему сайту 1 год.\n"
+"\t\t"
+msgstr ""
+"\n"
+"years old. And my site is 1 years old"
 
 #: .\Main\templates\Main\base.html:71
 msgid "3 горизонтальные линии, бургер"
@@ -301,9 +290,25 @@ msgstr "Social networks"
 msgid "Контактная страница Тимы"
 msgstr "Contacts page of Tim"
 
+#: .\Main\templates\Main\base.html:130 .\Main\templates\Main\contacts.html:32
+msgid "telegram иконка"
+msgstr "telegram icon"
+
 #: .\Main\templates\Main\base.html:131 .\Main\templates\Main\contacts.html:40
 msgid "email иконка"
 msgstr "email icon"
+
+#: .\Main\templates\Main\base.html:132 .\Main\templates\Main\contacts.html:28
+msgid "vk иконка"
+msgstr "vk icon"
+
+#: .\Main\templates\Main\base.html:133 .\Main\templates\Main\contacts.html:24
+msgid "instagram иконка"
+msgstr "instagram icon"
+
+#: .\Main\templates\Main\base.html:134 .\Main\templates\Main\contacts.html:36
+msgid "twitter иконка"
+msgstr "twitter icon"
 
 #: .\Main\templates\Main\contacts.html:6
 msgid "Тим, Вебмастер и его контакты"
@@ -325,9 +330,29 @@ msgstr "Tim the Webmaster and his contacts"
 msgid "Я в социальных сетях"
 msgstr "I'm on social networks"
 
+#: .\Main\templates\Main\contacts.html:25
+#: .\Main\templates\Main\contacts.html:29
+#: .\Main\templates\Main\contacts.html:33
+#: .\Main\templates\Main\contacts.html:37
+#: .\Main\templates\Main\contacts.html:41
+msgid "контактная страница Тимы, Вебмастера"
+msgstr "contact page of Tim the Webmaster"
+
 #: .\Main\templates\Main\contacts.html:46
 msgid "Форма для обратной связи"
 msgstr "Form for feedback"
+
+#: .\Main\templates\Main\contacts.html:59
+msgid "Имя должно состоять от 3 до 25 букв"
+msgstr "The name must be between 3 and 25 letters"
+
+#: .\Main\templates\Main\contacts.html:60
+msgid "Email должен быть настоящим"
+msgstr "The email should be real"
+
+#: .\Main\templates\Main\contacts.html:63
+msgid "Отправить"
+msgstr "Send"
 
 #: .\Main\templates\Main\home.html:7
 msgid "Тим, вебмастер"
@@ -385,10 +410,10 @@ msgstr "Other articles (by topic)"
 msgid "Содержание"
 msgstr "Content"
 
-#: .\Main\views.py:36
+#: .\Main\views.py:41
 msgid "✔ Вы успешно отправили сообщение"
 msgstr "✔ You have successfully sent a message"
 
-#: .\Main\views.py:38
+#: .\Main\views.py:43
 msgid "✗ Возникла ошибка при отправке формы"
 msgstr "✗ An error occurred while sending a form."

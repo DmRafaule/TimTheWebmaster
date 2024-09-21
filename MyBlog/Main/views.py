@@ -10,7 +10,12 @@ from MyBlog.settings import DEFAULT_FROM_EMAIL, DEFAULT_TO_EMAIL
 from django.core.mail import send_mail
 from Post.models import Tool, Article, Tag
 from django.db.models import Q
+from django.http import JsonResponse
 from django.template import loader
+import concurrent.futures as fu
+from concurrent.futures import ThreadPoolExecutor, Future
+import time
+from bs4 import BeautifulSoup
 
 
 class MainView(TemplateView):
@@ -18,7 +23,6 @@ class MainView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super(MainView, self).get_context_data(**kwargs)
         context = U.initDefaults(self.request)
-        context.update({'me_years': U.get_how_old_human_in_years('16/07/2000', "%d/%m/%Y")})
         
         form = FeedbackForm()
         context.update({'form': form})
@@ -39,10 +43,31 @@ class MainView(TemplateView):
             context.update({'feedback_message': _('✗ Возникла ошибка при отправке формы')})
 
         
-        context.update({'me_years': U.get_how_old_human_in_years('16/07/2000', "%d/%m/%Y")})
         context.update({'form': form})
     
         return render(request, self.template_name, context=context)
+
+def countWords_f(path):
+    with open(path, 'r', encoding='utf-8') as file:
+        soup = BeautifulSoup(file, features='lxml')
+        text_blocks = ''
+        for el in soup.find_all('div', class_='text'):
+            text_blocks += el.getText()
+        for el in soup.find_all(class_='title'):
+            text_blocks += el.getText()
+        for el in soup.find_all(class_='paragraph'):
+            text_blocks += el.getText()
+        for el in soup.find_all(class_='list'):
+            text_blocks += el.getText()
+        html_str_words = text_blocks.lower().split()
+    
+        return html_str_words
+
+
+def about(request):
+    context = U.initDefaults(request)
+    context.update({'me_years': U.get_how_old_human_in_years('16/07/2000', "%d/%m/%Y")})
+    return render(request, 'Main/about.html', context=context)
 
 def home(request):
     website_conf = Website.objects.get(is_current=True)
@@ -118,6 +143,7 @@ def home(request):
     context.update({'latest_images': latest_images})
 
     return render(request, 'Main/home.html', context=context)
+
 
 def page_not_found(request, exception):
     context = U.initDefaults(request)
