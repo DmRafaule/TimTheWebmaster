@@ -22,45 +22,60 @@
 		<canvas id='canvas' class="canvas_as_element" data-vertex-shader="{% static "WebGLEngine/shaders/home_gik.vert" %}" data-fragment-shader="{% static "WebGLEngine/shaders/home_gik.frag" %}"></canvas>
 	</div>
 	
-
-	<h2 class="paragraph">{% trans "Вступление"%}</h2>
-	<div class="text">
-		{% blocktrans %}
-		Меня зовут Чудук Дмитрий Сергеевич. Родом из Беларуси, беларус. Мне  
-		{% endblocktrans %}
-		{{me_years}}
-		{% blocktrans %}
-		года и занимаюсь тем, что веду <b>сайт-портфолио</b> и иногда пишу статьи  на разные темы.  
-		{% endblocktrans %}
+	<div class="text row max_gap">
+		<div class="column el-expandable el-no_shrinkable el-300-min-basis">
+			<div class="text" style='margin: 0'>
+				{% blocktrans %}
+				Знаешь, я эту страницу 10й переписываю. Мне это “немножко” надоело, хочу рассказать и то и сё и хочется о своей боли рассказать, и о том почему я занялся этим, и вообще, кто я такой. Но слов всегда не достаточно и всегда, что-нибудь перечитывая, я натыкаюсь на какую-нибудь неточность или недосказанность и понеслась … Начинаю с редактирования одного предложения, а заканчиваю полной переделкой всей страницы.
+				{% endblocktrans %}
+			</div>
+			<div class="text">
+				{% blocktrans %}
+				Но не в этот раз. На этот раз, эта страница должна продержаться очень долго). Отчего же я так в этом уверен ? Ну просто потому, что я напишу максимально кратко и ёмко. Кто я, зачем я и почему я.
+				{% endblocktrans %}
+			</div>
+			<div class="text">
+				{% blocktrans %}
+				Начну с себя. Я Дима, приятно познакомиться. Теперь ты знаешь почему timthewebmaster. (Тим это одна из форм имени Димы, ну если ты не догадался или не знал). Фамилия моя Чудук. Прикольная фамилия, скажу я тебе, однофамильцев пока не встречал, только родственников).
+				{% endblocktrans %}
+			</div>
+		</div>
+		<div>	
+			<img src="placeholder.svg" data-src="{% static '/Main/img/me1.jpg' %}" class=" dynamic_image " style="border-radius: 10px; max-width: 300px; max-height: 400px;">
+			<div class="under_image">
+				{% trans 'А это я.' %}
+			</div>
+		</div>
 	</div>
-	<div class="text ref">
-		{% blocktrans %}
-		Если я долго ничего не публиковал это не значит что я умер). Скорее всего я веду работу
-		над очередным своим проектом, по типу тех что находятся в разделе  
-		{% endblocktrans %}
-		<a href="{% url 'tools-list' %}">{% trans "инструментов"%}</a>
+	<div class="text row max_gap" style='flex-wrap: wrap-reverse;'>
+		<div>
+			<img src="placeholder.svg" data-src="{% static '/Main/img/sity1.jpg' %}" class=" dynamic_image " style="border-radius: 10px; max-width: 300px; max-height: 400px;">
+			<div class="under_image">
+				{% trans 'Просто красивый вид. Где я живу.' %}
+			</div>
+		</div>
+		<div class="column el-expandable el-no_shrinkable el-300-min-basis">
+			<div class="text" style="margin: 0">
+				{% blocktrans %}
+				Кем работаю, учусь ли я и какое вообще у меня образование? Во всех гайдах и рекомендациях указывается, что такие данные нужно обязательно указывать, чтобы вызвать доверие и показать что ты реальный ЧЕЛОВЕК. Ну хорошо, что ещё паспортные данные не рекомендуют указывать)
+				{% endblocktrans %}
+			</div>
+			<div class="text">
+				{% blocktrans %}
+				Ну а если серьёзно, то я не очень люблю рассказывать такие детали. Скажу лишь что моим образованием можно подтереть ****. А работаю я где придётся и где берут. Будь то фриланс или реальная физическая работа. Не карьерист я короче).
+				{% endblocktrans %}
+			</div>
+			<div class="text">
+				{% blocktrans %}
+				Впрочем, об учёбе. Да я учусь, постоянно и самостоятельно. То есть, нет я не студент. Меня скорее лучше опишет слово Маргинал, Хастлер или Суетолог. Вот.
+				{% endblocktrans %}
+			</div>
+		</div>
 	</div>
 	
-	<h2 class="paragraph">{% trans "О чём сайт, интересы" %}</h2>
 	<div class="text">
 		{% blocktrans %}
-		На этом сайте ты найдёшь такие штуки как:
-		{% endblocktrans %}
-	</div>
-	<ul class="list">
-		{% blocktrans %}
-		<li>Статьи на <u>интересующие меня темы</u></li>
-		<li>Статьи личного характера</li>
-		<li>Кейсы связанные с моей работай</li>
-		<li>Инструменты и вебсервисы под различные нужды и потребности</li>
-		<li>Новости касающиеся меня лично, либо <u>интересных мне тем</u></li>
-		<li>Авторские изображения/карикатуры ( т.е. мои)</li>
-		<li>Архивы, скрипты, программы и прочие файлы для скачивания</li>
-		{% endblocktrans %}
-	</ul>
-	<div class="text">
-		{% blocktrans %}
-		Интересующие меня темы:
+		Теперь, напишу о чём этот сайт и что тут можно найти. Вообще, у этого сайта нет какой-то определённой цели или направленности. Это сайт обо всём что мне интересно и скорее существует с той целью, чтобы обозначить моё присутствие в интернете. А вот темы которые меня интересуют: 
 		{% endblocktrans %}
 	</div>
 	<ul class="list">
@@ -76,59 +91,39 @@
 		<li>История</li>
 		{% endblocktrans %}
 	</ul>
-	
-	<h2 class="paragraph">{% trans "Как связаться" %}</h2>
 	<div class="text">
 		{% blocktrans %}
-		Со мной можно связаться через данные соцсети:
+		Если тебя также интересуют такие вещи, то рад знакомству). Если нет, то всё равно рад встрече). Так же на сайте ты сможешь найти, такие штуки как: 
 		{% endblocktrans %}
 	</div>
-	<ul class="list_without_sign">
-		<li class="ref">
-			<img width="32" height="32" class="icon dynamic_image rounded_button" src="{% static 'placeholder.svg' %}" data-src="{% static 'instagram.svg' %}" alt="{% trans "instagram иконка" %}">
-			<a target="_blank" rel="contact" rev="{% trans "контактная страница Тимы, Вебмастера"%}" href="https://www.instagram.com/timachedr/" >Instagram</a>
-		</li>
-		<li class="ref">
-			<img width="32" height="32" class="icon dynamic_image rounded_button" src="{% static 'placeholder.svg' %}" data-src="{% static 'vk.svg' %}" alt="{% trans "vk иконка" %}">
-			<a target="_blank" rel="contact" rev="{% trans "контактная страница Тимы, Вебмастера"%}" href="https://vk.com/timachuduk" >VK</a>
-		</li>
-		<li class="ref">
-			<img width="32" height="32" class="icon dynamic_image rounded_button" src="{% static 'placeholder.svg' %}" data-src="{% static 'telegram.svg' %}" alt="{% trans "telegram иконка" %}">
-			<a target="_blank" rel="contact" rev="{% trans "контактная страница Тимы, Вебмастера"%}" href="https://t.me/DmitryChedr" >Telegram</a>
-		</li>
-		<li class="ref">
-			<img width="32" height="32" class="icon dynamic_image rounded_button" src="{% static 'placeholder.svg' %}" data-src="{% static 'twitter.svg' %}" alt="{% trans "twitter иконка" %}">
-			<a target="_blank" rel="contact" rev="{% trans "контактная страница Тимы, Вебмастера"%}" href="https://twitter.com/TimaChedr" >Twitter</a>
-		</li>
+	<ul class="list">
+		{% blocktrans %}
+		<li>Статьи на <u>интересующие меня темы</u></li>
+		<li>Статьи личного характера</li>
+		<li>Кейсы связанные с моей работай</li>
+		<li>Инструменты и вебсервисы под различные нужды и потребности</li>
+		<li>Новости касающиеся меня лично, либо <u>интересных мне тем</u></li>
+		<li>Авторские изображения/карикатуры ( т.е. мои)</li>
+		<li>Архивы, скрипты, программы и прочие файлы для скачивания</li>
+		{% endblocktrans %}
 	</ul>
 	<div class="text">
 		{% blocktrans %}
-		Или форму обратной связи.
+		Вот, собственно говоря, всё что я хотел сказать про себя и сайт. Если хочешь узнать больше, милости прошу почитать соответствующие статьи. Кстати, где-то здесь будет облако тегов всего моего сайта, каждое слово будет представлять из себя ссылку на соответствующую страницу пагинации. (Если его нет, то прости, ещё в процессе)
 		{% endblocktrans %}
 	</div>
-	<form action="" method="post">
-		{% csrf_token %}
-		{% for field in form %}
-			<div>
-				{{ field }}
-			</div>
-			{% for error in field.errors %}
-			<p class="form_error">{{ error }}</p>
-			{% endfor %}	
-		{% endfor %}
-		<input id="feedback" class="button squered_button action_button" type="submit" value="{% trans "Отправить" %}">
-		<div class="rules">
-			<ul class="list_without_sign">
-				<li>{% trans "Имя должно состоять от 3 до 25 букв" %}</li>
-				<li>{% trans "Email должен быть настоящим" %}</li>
-			</ul>
-		</div>
-	</form> 
-	<div class="text ref">
+	<img src="placeholder.svg" data-src="{% static '/Main/img/sity2.jpg' %}" class="marger_top_mid dynamic_image full_width" style="border-radius: 10px; ">
+	<div class="under_image">
+        {% trans 'Ещё одно красивое фото, где я когда-то жил.' %}
+    </div>
+	<div class="text">
 		{% blocktrans %}
-		Или почту chedrden@gmail.com. А можно сразу написать
-		{% endblocktrans %} 
-		<a target="_blank" rel="contact" rev="{% trans "контактная страница Тимы, Вебмастера"%}" href="https://mail.google.com/mail/?view=cm&source=mailto&to=ChedrDen@gmail.com" >{% trans "письмо." %} </a>
+		На момент прочтения данной страницы тобой, мне 
+		{% endblocktrans %}
+		{{me_years}} 
+		{% blocktrans %}
+		года. И моему сайту 1 год.
+		{% endblocktrans %}
 	</div>
 </div>
 {% endblock %}
@@ -155,7 +150,7 @@
         const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
     </script>
 	<!-- Простой 3д рендерер для сайта -->
-    <script src="{% static 'WebGLEngine/js/webgl_engine_v1.js' %}"></script>
+	<script src="{% static 'WebGLEngine/js/webgl_engine_v1.js' %}"></script>
 	<script src="{% static 'WebGLEngine/shaders/shader-simple_pcp.js' %}"></script>
 	<!-- Скрипт для рендеринга на определённом канвасе -->
     <script src="{% static 'WebGLEngine/js/home_gik.js' %}"></script>

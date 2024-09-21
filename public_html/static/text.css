@@ -94,3 +94,9 @@
 .to_upper_case{
 	text-transform: uppercase;
 }
+
+.under_image{
+	font-family: var(--family-acent_font);
+	font-weight: var(--weight-acent_font);
+	font-size: var(--size-acent_font);
+}
