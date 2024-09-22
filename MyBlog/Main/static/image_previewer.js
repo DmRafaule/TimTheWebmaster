@@ -158,6 +158,16 @@ function addOverlay(img){
 
 // To open image previewer
 function onImage(event){
+    if (IS_MOBILE){
+        document.ontouchstart = startDrag
+        document.ontouchmove = dragging
+        document.ontouchend = stopDrag
+    }
+    else{
+        document.onmousedown = startDrag
+        document.onmouseup = stopDrag
+        document.onmousemove = dragging
+    }
     toggleImage(this)
     addOverlay(this)
     addExit(this)
@@ -166,6 +176,16 @@ function onImage(event){
 
 // To close image previewer
 function outImage(img){
+    if (IS_MOBILE){
+        document.ontouchstart = (e)=>{}
+        document.ontouchmove = (e)=>{}
+        document.ontouchend = (e)=>{}
+    }
+    else{
+        document.onmousedown = (e)=>{}
+        document.onmouseup = (e)=>{}
+        document.onmousemove = (e)=>{}
+    }
     img.style.transform = ''
     img.style.left = ''
     img.style.top = ''
@@ -196,21 +216,11 @@ function onReady(){
     images.forEach( (img) => {
         img.addEventListener('click', onImage,{once: true})
     })
-    if (IS_MOBILE){
-        document.ontouchstart = startDrag
-        document.ontouchmove = dragging
-        document.ontouchend = stopDrag
-    }
-    else{
-        document.onmousedown = startDrag;
-        document.onmouseup = stopDrag;
-        document.onmousemove = dragging;
-    }
 }
 
 if (document.readyState === "loading") {
     // Loading hasn't finished yet
     document.addEventListener("DOMContentLoaded", onReady);
-  } else {
-      onReady()
-  }
+} else {
+    onReady()
+}
