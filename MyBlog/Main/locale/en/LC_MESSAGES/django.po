@@ -265,7 +265,7 @@ msgid "Контакты"
 msgstr "Contacts"
 
 #: .\Main\templates\Main\base.html:90
-msgid "Галлерея"
+msgid "Галерея"
 msgstr "Gallery"
 
 #: .\Main\templates\Main\base.html:108

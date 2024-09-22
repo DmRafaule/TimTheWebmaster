@@ -21,7 +21,7 @@ msgstr ""
 #: .\Gallery\templates\Gallery\gallery-home.html:11
 #: .\Gallery\templates\Gallery\gallery-home.html:13
 #: .\Gallery\templates\Gallery\gallery-home.html:24
-msgid "Галлерея"
+msgid "Галерея"
 msgstr "Gallery"
 
 #: .\Gallery\templates\Gallery\gallery-home.html:13
@@ -71,7 +71,7 @@ msgstr "Used tags for filtration"
 
 #: .\Gallery\templates\Gallery\gallery-home.html:71
 #: .\Gallery\templates\Gallery\gallery-home.html:73
-msgid "Галлерея "
+msgid "Галерея "
 msgstr "Gallery"
 
 #: .\Gallery\templates\Gallery\gallery-home.html:73
