@@ -87,7 +87,7 @@
 				<li class="nav_menu_item"><a class=" text_button" href="{% url 'home'%}">{% trans "Домашняя" %}</a></li>
 				<li class="nav_menu_item"><a class=" text_button" href="{% url 'about'%}">{% trans "Об авторе" %}</a></li>
 				<li class="nav_menu_item"><a class=" text_button" href="{% url 'contacts'%}">{% trans "Контакты" %}</a></li>
-				<li class="nav_menu_item"><a class=" text_button" href="{% url 'gallery'%}">{% trans "Галлерея" %}</a></li>
+				<li class="nav_menu_item"><a class=" text_button" href="{% url 'gallery'%}">{% trans "Галерея" %}</a></li>
 				{% for cat_spec in categories_special %}
 				<li class="nav_menu_item"><a class=" text_button" href="{{ cat_spec.get_absolute_url }}">{{cat_spec.name}}</a></li>
 				{% endfor %}
