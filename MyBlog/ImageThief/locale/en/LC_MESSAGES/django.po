@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-19 15:03+0300\n"
+"POT-Creation-Date: 2024-09-23 09:31+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,180 +21,159 @@ msgstr ""
 #: .\ImageThief\templates\ImageThief\image_thief.html:6
 msgid ""
 "Бесплатный, онлайн парсер картинок с сайта ImageScraper | Тим зе Вебмастер"
-msgstr "Free, online, image web scrapper tool, ImageThief | Tim the Webmaster"
+msgstr "Free, online, image web scraper tool, ImageThief | Tim the Webmaster"
 
 #: .\ImageThief\templates\ImageThief\image_thief.html:7
 msgid ""
 "Парсер картинок, который можно скачать в виде скрипта или опробывать онлайн "
 "на сайте. Работает в режиме парсинга целого сайта или отдельных страниц."
 msgstr ""
-"Image web scrapper, which one gonna scrape all images from sites or pages. "
+"Image web scraper, which one gonna scrape all images from sites or pages. "
 "You can use it as a web app or as standalone script on your machine."
 
-#: .\ImageThief\templates\ImageThief\image_thief.html:16
-msgid "Правила"
-msgstr "Rules"
-
 #: .\ImageThief\templates\ImageThief\image_thief.html:19
-msgid "Результаты парсинга храняться 1 час"
-msgstr "Scrapping results, live only for 1 hour"
-
-#: .\ImageThief\templates\ImageThief\image_thief.html:20
-msgid "Максимум"
-msgstr "Maximum"
-
-#: .\ImageThief\templates\ImageThief\image_thief.html:20
-msgid "запросов в час"
-msgstr "requests per hour"
-
-#: .\ImageThief\templates\ImageThief\image_thief.html:25
-msgid "Опции, режимы работы"
-msgstr "Modes"
-
-#: .\ImageThief\templates\ImageThief\image_thief.html:30
-msgid "Одну, конкретную страницу"
-msgstr "Single page"
-
-#: .\ImageThief\templates\ImageThief\image_thief.html:34
-msgid "Несколько страниц, ссылки узазать через запятую"
-msgstr "List of pages, separate links using commas "
-
-#: .\ImageThief\templates\ImageThief\image_thief.html:38
-msgid "Спарсить целый сайт."
-msgstr "Scrape a whole website"
-
-#: .\ImageThief\templates\ImageThief\image_thief.html:49
 msgid "Бесплатный парсер изображений"
-msgstr "Free image webscaper"
+msgstr "Free image web scraper"
 
-#: .\ImageThief\templates\ImageThief\image_thief.html:66
+#: .\ImageThief\templates\ImageThief\image_thief.html:36
 #: .\ImageThief\views.py:175 .\ImageThief\views.py:186
 #: .\ImageThief\views.py:319
 msgid "Начать"
 msgstr "Start"
 
-#: .\ImageThief\templates\ImageThief\image_thief.html:76
+#: .\ImageThief\templates\ImageThief\image_thief.html:46
 msgid "Состояние"
 msgstr "Status"
 
-#: .\ImageThief\templates\ImageThief\image_thief.html:93
+#: .\ImageThief\templates\ImageThief\image_thief.html:63
 msgid "Результаты"
 msgstr "Results"
 
-#: .\ImageThief\templates\ImageThief\image_thief.html:98
+#: .\ImageThief\templates\ImageThief\image_thief.html:68
 msgid "Иконка zip файла"
 msgstr "Zip icon"
 
-#: .\ImageThief\templates\ImageThief\image_thief.html:99
+#: .\ImageThief\templates\ImageThief\image_thief.html:69
 msgid "Картинки"
 msgstr "Images"
 
-#: .\ImageThief\templates\ImageThief\image_thief.html:105
+#: .\ImageThief\templates\ImageThief\image_thief.html:75
 msgid "Логи"
 msgstr "Logs"
 
-#: .\ImageThief\templates\ImageThief\image_thief.html:119
+#: .\ImageThief\templates\ImageThief\image_thief.html:89
 msgid "Показать работу скрипта"
 msgstr "Verbose"
 
-#: .\ImageThief\templates\ImageThief\image_thief.html:126
+#: .\ImageThief\templates\ImageThief\image_thief.html:99
+msgid "Правила"
+msgstr "Rules"
+
+#: .\ImageThief\templates\ImageThief\image_thief.html:102
+msgid "Результаты парсинга храняться 1 час"
+msgstr "Scraping results, live only for 1 hour"
+
+#: .\ImageThief\templates\ImageThief\image_thief.html:103
+msgid "Максимум"
+msgstr "Maximum"
+
+#: .\ImageThief\templates\ImageThief\image_thief.html:103
+msgid "запросов в час"
+msgstr "requests per hour"
+
+#: .\ImageThief\templates\ImageThief\image_thief.html:108
+msgid "Мод"
+msgstr "Mode"
+
+#: .\ImageThief\templates\ImageThief\image_thief.html:113
+msgid "Одну, конкретную страницу"
+msgstr "Single page"
+
+#: .\ImageThief\templates\ImageThief\image_thief.html:117
+msgid "Несколько страниц, ссылки узазать через запятую"
+msgstr "List of pages, separate links using commas "
+
+#: .\ImageThief\templates\ImageThief\image_thief.html:121
+msgid "Спарсить целый сайт."
+msgstr "Scrape a whole website"
+
+#: .\ImageThief\templates\ImageThief\image_thief.html:127
 msgid "Об парсере изображений"
 msgstr "About image parser"
 
-#: .\ImageThief\templates\ImageThief\image_thief.html:128
+#: .\ImageThief\templates\ImageThief\image_thief.html:129
 msgid ""
 "\n"
-"\t\t\tЭто вебпарсер, который ищет и скачивает все изображения с сайта.\n"
+"\t\t\tЭто вебпарсер, который ищет и скачивает все изображения с сайта. Может "
+"работать в 3х различных режимах. В режиме одностраничного парсера, ищет и "
+"скачивает изображения только с указанной страницы. В многостраничном режиме. "
+"В таком случае, парсится список предаставленных страниц. И наконец режим "
+"парсинга целого сайта. Ищет изображения по всему сайту и по возможности "
+"скачивает их.\n"
+"\t\t\t"
+msgstr ""
+"\n" "\t\t\tThis is a web scraping tool that searches and downloads all images from a site. " "It works in 3 different modes. In the single-page parser mode, it searches and " "downloads images only from the specified page. In the multi-page mode. . " "In this case, the list of provided pages is parsed. And finally, the mode " "analyzes the image across the entire site and, if possible, " "downloads them.\n" "\t\t\t"
+
+#: .\ImageThief\templates\ImageThief\image_thief.html:134
+msgid ""
+"\n"
+"\t\t\tДанный инструмент разработан в 2х вариациях. Как django приложение и "
+"как отдельный CLI инструмент. Доволно важное примечание, если Django "
+"приложение я постоянно обновляю и улучшаю, то CLI вариант нет. Учти это. Вот "
+"ссылка на \n"
 "\t\t\t"
 msgstr ""
 "\n"
-"\t\t\t\tIt is a web scrapper; It is crawls and downloads all images from "
-"websites.\n"
-"\t\t\t\t"
-
-#: .\ImageThief\templates\ImageThief\image_thief.html:133
-msgid "Работает в 3х режимах:"
-msgstr "Working in three modes:"
-
-#: .\ImageThief\templates\ImageThief\image_thief.html:135
-msgid "Одностраничный. Парсит картинки только с одной страницы."
-msgstr "Single page. Scrape images from a single page."
-
-#: .\ImageThief\templates\ImageThief\image_thief.html:136
-msgid "Многостраничный. Парсит картинки с нескольких страниц."
-msgstr "Many pages. Scrape images from a list of pages."
+"\t\t\tThis tool is developed in 2 variations. As a django application and "
+"as a separate CLI tool. Quite an important note, if I constantly update and improve the Django "
+"application, then the CLI version is not. Keep this in mind. Here is a link to \n"
+"\t\t\t"
 
 #: .\ImageThief\templates\ImageThief\image_thief.html:137
-msgid "Целый сайт. Парсит картинки со всего сайта."
-msgstr "Whole website. Scrape images from a whole website."
+msgid "Django приложение"
+msgstr "Django app"
 
-#: .\ImageThief\templates\ImageThief\image_thief.html:140
-msgid "Примечания"
-msgstr "Notes"
+#: .\ImageThief\templates\ImageThief\image_thief.html:137
+msgid "А вот ссылка на"
+msgstr "Here it is a link to"
 
-#: .\ImageThief\templates\ImageThief\image_thief.html:142
-msgid "Данный инструмент разработан в 2х вариантах:"
-msgstr "This tool was developed in two variants:"
-
-#: .\ImageThief\templates\ImageThief\image_thief.html:144
-msgid "Как приложение на сайте(django приложение)"
-msgstr "As a app on a website(django app)."
-
-#: .\ImageThief\templates\ImageThief\image_thief.html:144
-msgid "приложение"
-msgstr "app"
-
-#: .\ImageThief\templates\ImageThief\image_thief.html:145
-msgid "Скачать парсер, как самостоятельный Python скрипт."
-msgstr "Download scrapper, as a Python script"
-
-#: .\ImageThief\templates\ImageThief\image_thief.html:145
+#: .\ImageThief\templates\ImageThief\image_thief.html:137
 msgid "скрипт"
 msgstr "script"
 
-#: .\ImageThief\templates\ImageThief\image_thief.html:149
-msgid "Ограничения:"
-msgstr "Limitations:"
+#: .\ImageThief\templates\ImageThief\image_thief.html:140
+msgid ""
+"\n"
+"\t\t\tУ данного инструмента существует несколько ограничений по парсингу. "
+"Такие как, не парсит svg файлы, не парсит фоновые изображения прописанные в "
+"стилях. Этот веб инструмент абсолютно бесплатен, единственное чего я прошу, "
+"добавь этот инструмент в <b>закладки</b>, или поделись ссылкой на него. "
+"Спасибо.\n"
+"\t\t\t"
+msgstr ""
+"\n"
+"\t\t\tThis tool has several limitations while scraping. "
+"Such as, it does not scrape svg files, it does not scrape background images specified in "
+"styles. This web tool is absolutely free, the only thing I ask is, "
+"add this tool to your <b>bookmarks</b>, or share a link to it. "
+"Thank you.\n"
+"\t\t\t"
 
-#: .\ImageThief\templates\ImageThief\image_thief.html:151
-msgid "Не парсит svg файлы"
-msgstr "Do not scrape SVG files."
+#: .\ImageThief\templates\ImageThief\image_thief.html:147
+msgid "vk иконка"
+msgstr "vk icon"
 
 #: .\ImageThief\templates\ImageThief\image_thief.html:152
-msgid "Не парсит фоновые изображения, которые прописаны в стилях"
-msgstr "Do not parse background images in CSS styles."
+msgid "reddit иконка"
+msgstr "reddit icon"
 
-#: .\ImageThief\templates\ImageThief\image_thief.html:153
-msgid "Не парсит динамически подгружаемые изображения."
-msgstr "Do not parse dynamically loaded images."
+#: .\ImageThief\templates\ImageThief\image_thief.html:157
+msgid "twitter иконка"
+msgstr "twitter icon"
 
-#: .\ImageThief\templates\ImageThief\image_thief.html:154
-msgid "Прекращает парсинг, при закрытии вкладки или браузера."
-msgstr "Stop parsing if tabs in the browser are closed."
-
-#: .\ImageThief\templates\ImageThief\image_thief.html:158
-msgid ""
-"\n"
-"\t\t\t\tОн абсолютно бесплатен. Единственное чего я прошу, добавь этот "
-"инструмент \n"
-"\t\t\t\tв закладки, или поделись ссылкой на него.\n"
-"\t\t\t\t"
-msgstr ""
-"\n"
-"\t\t\t\t\t\tIt is free. The only thing I'm asking for, is to add this tool   "
-"to your <b>bookmarks</b> \n"
-"\t\t\t\t\t\t\tor <b>share it</b>. Thanks\n"
-"\t\t\t\t\t\t"
-
-#: .\ImageThief\templates\ImageThief\image_thief.html:164
-msgid ""
-"\n"
-"\t\t\t\tЕсли конечно, он был полезен для тебя. Спасибо.\n"
-"\t\t\t\t"
-msgstr ""
-"\n"
-"\t\t\t\tIf this tool was useful to you, thanks.\n"
-"\t\t\t\t"
+#: .\ImageThief\templates\ImageThief\image_thief.html:162
+msgid "telegram иконка"
+msgstr "telegram icon"
 
 #: .\ImageThief\views.py:168
 msgid "Ещё раз"

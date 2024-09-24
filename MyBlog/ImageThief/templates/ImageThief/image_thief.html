@@ -10,36 +10,6 @@
 
 {% block content %}
 	<div class="limiter in_middle in_middle-self no_wrap padder">
-		<div class="row max_gap in_middle-even">
-			<fieldset>
-				<legend>
-					<h2 class="marger_mid">{%trans "Правила"%}</h2>
-				</legend>
-				<ul class="list">
-						<li>{% trans "Результаты парсинга храняться 1 час" %}</li>
-						<li>{% trans "Максимум" %} {{ try_limit }} {% trans "запросов в час" %}</li>
-				</ul>
-			</fieldset>
-			<fieldset form="toSteal">
-				<legend id="modes_block">
-					<h2 class="marger_mid">{%trans "Опции, режимы работы"%}</h2>
-				</legend>
-				<div class="column mid_row_gap padder">
-					<div>
-						<input type="radio" id="mod-1_single-one" name="mod" value="single-one" checked />
-						<label for="mod-1_single-one">{% trans "Одну, конкретную страницу" %}</label>
-					</div>
-					<div>
-						<input type="radio" id="mod-2_list-pages" name="mod" value="list-pages" />
-						<label for="mod-2_list-pages">{% trans "Несколько страниц, ссылки узазать через запятую" %}</label>
-					</div>
-					<div>
-						<input type="radio" id="mod-3_full" name="mod" value="full" />
-						<label for="mod-3_full">{% trans "Спарсить целый сайт." %}</label>
-					</div>
-				</div>
-			</fieldset>
-		</div>
 		<div id="common-error" class="hint-container hint-required hint-common_error"></div>
 		{% csrf_token %}
 		<form class="in_middle" id="toSteal">
@@ -123,49 +93,84 @@
 				</div>
 			</div>
 		</form> 
+		<div class="row max_gap">
+			<fieldset  class="el-expandable el-no_shrinkable  el-300-min-basis">
+				<legend>
+					<h2 class="marger_mid">{%trans "Правила"%}</h2>
+				</legend>
+				<ul class="list">
+					<li>{% trans "Результаты парсинга храняться 1 час" %}</li>
+					<li>{% trans "Максимум" %} {{ try_limit }} {% trans "запросов в час" %}</li>
+				</ul>
+			</fieldset>
+			<fieldset form="toSteal" class="el-expandable el-no_shrinkable el-300-min-basis">
+				<legend id="modes_block">
+					<h2 class="marger_mid">{%trans "Мод"%}</h2>
+				</legend>
+				<div class="column mid_row_gap padder">
+					<div>
+						<input type="radio" id="mod-1_single-one" name="mod" value="single-one" checked />
+						<label for="mod-1_single-one">{% trans "Одну, конкретную страницу" %}</label>
+					</div>
+					<div>
+						<input type="radio" id="mod-2_list-pages" name="mod" value="list-pages" />
+						<label for="mod-2_list-pages">{% trans "Несколько страниц, ссылки узазать через запятую" %}</label>
+					</div>
+					<div>
+						<input type="radio" id="mod-3_full" name="mod" value="full" />
+						<label for="mod-3_full">{% trans "Спарсить целый сайт." %}</label>
+					</div>
+				</div>
+			</fieldset>
+		</div>
+
 		<h2 class="paragraph">{%trans "Об парсере изображений"%}</h2>
 		<div class="text">
 			{% blocktrans %}
-			Это вебпарсер, который ищет и скачивает все изображения с сайта.
+			Это вебпарсер, который ищет и скачивает все изображения с сайта. Может работать в 3х различных режимах. В режиме одностраничного парсера, ищет и скачивает изображения только с указанной страницы. В многостраничном режиме. В таком случае, парсится список предаставленных страниц. И наконец режим парсинга целого сайта. Ищет изображения по всему сайту и по возможности скачивает их.
 			{% endblocktrans %}
 		</div>
-		<div class="text">
-			{% trans "Работает в 3х режимах:" %}
-			<ul class="list">
-				<li>{% trans "Одностраничный. Парсит картинки только с одной страницы." %}</li>
-				<li>{% trans "Многостраничный. Парсит картинки с нескольких страниц." %}</li>
-				<li>{% trans "Целый сайт. Парсит картинки со всего сайта." %}</li>
-			</ul>
+		<div class="text ref">
+			{% blocktrans %}
+			Данный инструмент разработан в 2х вариациях. Как django приложение и как отдельный CLI инструмент. Доволно важное примечание, если Django приложение я постоянно обновляю и улучшаю, то CLI вариант нет. Учти это. Вот ссылка на 
+			{% endblocktrans %}
+			<a href="https://github.com/DmRafaule/TimTheWebmaster/tree/master/MyBlog/ImageThief">{% trans 'Django приложение' %}</a>. {% trans 'А вот ссылка на'%} <a href="{% get_media_prefix %}{{archive}}">{% trans 'скрипт'%}</a>.
 		</div>
-			<h2 class="paragraph">{%trans "Примечания"%}</h2>
-			<div class="text">
-				{% trans "Данный инструмент разработан в 2х вариантах:" %}
-				<ul class="list">
-					<li>{% trans "Как приложение на сайте(django приложение)" %}<div class="ref" ><a href="https://github.com/DmRafaule/TimTheWebmaster/tree/master/MyBlog/ImageThief">Django {% trans "приложение"%}</a></div></li>
-					<li>{% trans "Скачать парсер, как самостоятельный Python скрипт." %}<div class="ref_downloadables" ><a class="ref_downloadable" href="{% get_media_prefix %}{{archive}}">ImageThief {% trans "скрипт"%}</a></div></li>
-				</ul>
-			</div>
-			<div class="text">
-				{% trans "Ограничения:" %}
-				<ul class="list">
-					<li>{% trans "Не парсит svg файлы" %}</li>
-					<li>{% trans "Не парсит фоновые изображения, которые прописаны в стилях" %}</li>
-					<li>{% trans "Не парсит динамически подгружаемые изображения." %}</li>
-					<li>{% trans "Прекращает парсинг, при закрытии вкладки или браузера." %}</li>
-				</ul>
-			</div>
-			<div class="text">
-				{% blocktrans %}
-				Он абсолютно бесплатен. Единственное чего я прошу, добавь этот инструмент 
-				в закладки, или поделись ссылкой на него.
-				{% endblocktrans %}
-			</div>
-			<div class="text">
-				{% blocktrans %}
-				Если конечно, он был полезен для тебя. Спасибо.
-				{% endblocktrans %}
-			</div>
+		<div class="text">
+			{% blocktrans %}
+			У данного инструмента существует несколько ограничений по парсингу. Такие как, не парсит svg файлы, не парсит фоновые изображения прописанные в стилях. Этот веб инструмент абсолютно бесплатен, единственное чего я прошу, добавь этот инструмент в <b>закладки</b>, или поделись ссылкой на него. Спасибо.
+			{% endblocktrans %}
+		</div>
+		<div class="text row min_gap padder">
+			<a target="_blank" href="http://vk.com/share.php?url={{ post.get_absolute_url }}&title={{ post.name }}&description={{ post.short_description }}">
+				<div class="share_button">
+					<img class="icon button rounded_button dynamic_image" width="32" height="32" src="{% static 'placeholder.svg' %}" data-src="{% static 'Post/img/vk.svg' %}" alt="{% trans "vk иконка" %}">
+				</div>
+			</a>
+			<a target="_blank"  href="https://www.reddit.com/submit?url={{ post.get_absolute_url }}&title={{ post.name }}">
+				<div class="share_button">
+					<img class="icon button rounded_button dynamic_image" width="32" height="32" src="{% static 'placeholder.svg' %}" data-src="{% static 'Post/img/reddit.svg' %}" alt="{% trans "reddit иконка" %}">
+				</div>
+			</a>
+			<a target="_blank"  href="https://twitter.com/intent/tweet?url={{ post.get_absolute_url }}&text={{ post.short_description }}">
+				<div class="share_button">
+					<img class="icon button rounded_button dynamic_image" width="32" height="32" src="{% static 'placeholder.svg' %}" data-src="{% static 'Post/img/twitter.svg' %}" alt="{% trans "twitter иконка" %}">
+				</div>
+			</a>
+			<a target="_blank"  href="https://telegram.me/share/url?url={{ post.get_absolute_url }}&text={{ post.short_description }}">
+				<div class="share_button">
+					<img class="icon button rounded_button dynamic_image" width="32" height="32" src="{% static 'placeholder.svg' %}" data-src="{% static 'Post/img/telegram.svg' %}" alt="{% trans "telegram иконка" %}">
+				</div>
+			</a>
+		</div>
+	
 	</div>
+{% endblock %}
+
+{% block footer_links %}
+{% for ref in popular_posts %}
+		<li class="ref"><a href="{{ref.get_absolute_url}}">{{ref|truncatechars:15}}</a></li>
+{% endfor %}
 {% endblock %}
 
 {% block scripts %}
