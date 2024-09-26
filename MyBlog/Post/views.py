@@ -31,6 +31,12 @@ def filterByTag(list, tags, threshold = None):
     else:
         return new_list
 
+def calculate_pages(total_items, items_per_page):
+    if total_items <= 0 or items_per_page <= 0:
+        raise ValueError("Both total_items and items_per_page must be positive integers.")
+    
+    return -(-total_items // items_per_page)  # Using ceiling division
+
 class PostListView(TemplateView):
 
     model = Post_M.Category
@@ -69,11 +75,11 @@ class PostListView(TemplateView):
                 raise Http404(tag_obj)
             posts = filterByTag(posts, tag_obj)
         # Create a paginator
-        paginator = Paginator(posts, website_conf.paginator_per_page_posts)
         page = int(request.GET.get('page', 1))
-        if page > paginator.num_pages :
+        pages = calculate_pages(len(posts), website_conf.paginator_per_page_posts)
+        if page > pages :
             raise Http404(page)
-        page_obj = paginator.get_page(page)
+        page_obj = posts[(page-1)*website_conf.paginator_per_page_posts:page*website_conf.paginator_per_page_posts]
         type = request.GET.get('type', 'full') 
         # Choose which template to render
         # There are 2 modes
@@ -91,7 +97,7 @@ class PostListView(TemplateView):
         # Update context data
         context.update({'displayTags': True})
         context.update({'posts': page_obj})
-        context.update({'num_pages': paginator.num_pages})
+        context.update({'num_pages': pages})
         context.update({'current_page': page})
         context.update({'page': page + 1})
         context.update({'type': type})
