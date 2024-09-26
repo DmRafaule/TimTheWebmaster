@@ -10,6 +10,7 @@ from django.apps import apps
 from django.template import loader
 from django.db.models import Q
 import json
+import time, shutil, os
 
 
 max_el_in_related_post = 3
@@ -31,6 +32,13 @@ def filterByTag(list, tags, threshold = None):
     else:
         return new_list
 
+        
+def calculate_pages(total_items, items_per_page):
+    if total_items <= 0 or items_per_page <= 0:
+        raise ValueError("Both total_items and items_per_page must be positive integers.")
+    
+    return -(-total_items // items_per_page)  # Using ceiling division
+
 class PostListView(TemplateView):
 
     model = Post_M.Category
@@ -43,6 +51,8 @@ class PostListView(TemplateView):
         return context
     
     def get(self, request):
+        if os.path.exists('time.txt'):
+            os.remove('time.txt')
         website_conf = Main_M.Website.objects.get(is_current=True)
         context = self.get_context_data()
         # Defines order of loading posts. Recent of latest
@@ -69,11 +79,11 @@ class PostListView(TemplateView):
                 raise Http404(tag_obj)
             posts = filterByTag(posts, tag_obj)
         # Create a paginator
-        paginator = Paginator(posts, website_conf.paginator_per_page_posts)
         page = int(request.GET.get('page', 1))
-        if page > paginator.num_pages :
+        pages = calculate_pages(len(posts), website_conf.paginator_per_page_posts)
+        if page > pages :
             raise Http404(page)
-        page_obj = paginator.get_page(page)
+        page_obj = posts[(page-1)*website_conf.paginator_per_page_posts:page*website_conf.paginator_per_page_posts]
         type = request.GET.get('type', 'full') 
         # Choose which template to render
         # There are 2 modes
@@ -88,10 +98,11 @@ class PostListView(TemplateView):
         cat = "-" + self.category.categry_name.lower()
         if for_who != '':
             for_who = '-' + for_who
+            
         # Update context data
         context.update({'displayTags': True})
         context.update({'posts': page_obj})
-        context.update({'num_pages': paginator.num_pages})
+        context.update({'num_pages': pages})
         context.update({'current_page': page})
         context.update({'page': page + 1})
         context.update({'type': type})
@@ -100,12 +111,16 @@ class PostListView(TemplateView):
         context.update({'current_tag': tags})
         context.update({'current_tag_names': tags_names})
         context.update({'tags_json': json.dumps(tags)})
+        
+        whatToRender = ''
         if type == 'full':
             loaded_template = loader.get_template(f'Post/{mode}post_preview{for_who}{cat}.html')
             context.update({'doc': loaded_template.render(context, request)})
-            return render(request, self.template_name, context)
+            whatToRender = render(request, self.template_name, context)
         elif type == 'part':
-            return render(request,f'Post/{mode}post_preview{for_who}{cat}.html',context=context)
+            whatToRender = render(request,f'Post/{mode}post_preview{for_who}{cat}.html',context=context)
+            
+        return whatToRender
 
 
 def article(request, post_slug):
