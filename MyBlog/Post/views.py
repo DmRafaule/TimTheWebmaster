@@ -1,12 +1,9 @@
 from django.shortcuts import render, get_object_or_404
-from django.http import JsonResponse, Http404, HttpResponse
+from django.http import JsonResponse, Http404
 import Post.models as Post_M
 from django.utils.translation import gettext as _
 import Main.models as Main_M
 import Main.utils as U
-from django.views.generic import DetailView, ListView, TemplateView
-from django.core.paginator import Paginator
-from django.apps import apps
 from django.template import loader
 from django.db.models import Q
 import json
@@ -37,82 +34,81 @@ def calculate_pages(total_items, items_per_page):
     
     return -(-total_items // items_per_page)  # Using ceiling division
 
-class PostListView(TemplateView):
+def post_list(request, model, category, template_path):
+    website_conf = Main_M.Website.objects.get(is_current=True)
+    context = U.initDefaults(request)
+    # Defines order of loading posts. Recent of latest
+    is_recent = request.GET.get('is_recent', 'true')
+    if is_recent == 'true':
+        order = '-timeCreated'
+    else:
+        order = 'timeCreated'
+    # Resort posts by time of creation
+    posts = model.objects.filter(isPublished=True).order_by(order)
+    # Get posts with the same tags in
+    tags = request.GET.getlist('tag', [])
+    tags_names = []
+    if len(tags) > 0:
+        # Search everywhere !!!
+        tag_obj = Post_M.Tag.objects.filter(Q(name_ru__in=tags) | Q(name_en__in=tags) | Q(slug_ru__in=tags)  | Q(slug_en__in=tags))
+        for key, tag in enumerate(tag_obj):
+            tags[key] = tag.slug
+        for key, tag in enumerate(tag_obj):
+            tags_names.append(tag.name)
+        if not tag_obj:
+            raise Http404(tag_obj)
+        posts = filterByTag(posts, tag_obj)
+    # Create a paginator
+    page = int(request.GET.get('page', 1))
+    pages = calculate_pages(len(posts), website_conf.paginator_per_page_posts)
+    if page > pages :
+        raise Http404(page)
+    page_obj = posts[(page-1)*website_conf.paginator_per_page_posts:page*website_conf.paginator_per_page_posts]
+    type = request.GET.get('type', 'full') 
+    # Choose which template to render
+    # There are 2 modes
+    # basic - display everything that possible from preview to views
+    # simple - display only needes information, title, description, date published
+    if category.categry_name == 'Tool':
+        mode = request.GET.get('mode', 'list') + '--'    
+    else:
+        mode = request.GET.get('mode', 'basic') + '--'
+    # Define specific (unique) preview templates
+    for_who = request.GET.get('for_who', '')
+    cat = "-" + category.categry_name.lower()
+    if for_who != '':
+        for_who = '-' + for_who
+    # Update context data
+    context.update({'category': category})
+    context.update({'displayTags': True})
+    context.update({'posts': page_obj})
+    context.update({'num_pages': pages})
+    context.update({'current_page': page})
+    context.update({'page': page + 1})
+    context.update({'type': type})
+    context.update({'mode': mode[:-2]})
+    context.update({'is_recent': is_recent})
+    context.update({'current_tag': tags})
+    context.update({'current_tag_names': tags_names})
+    context.update({'tags_json': json.dumps(tags)})
+    if type == 'full':
+        loaded_template = loader.get_template(f'Post/{mode}post_preview{for_who}{cat}.html')
+        context.update({'doc': loaded_template.render(context, request)})
+        return render(request, template_path, context)
+    elif type == 'part':
+        return render(request,f'Post/{mode}post_preview{for_who}{cat}.html',context=context)
 
-    model = Post_M.Category
-    category = None
+def article_list(request):
+    return post_list(request, Post_M.Article, Post_M.Category.objects.get(slug='articles'), 'Post/article_list.html')
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context = U.initDefaults(self.request)
-        context['category'] = self.category
-        return context
-    
-    def get(self, request):
-        website_conf = Main_M.Website.objects.get(is_current=True)
-        context = self.get_context_data()
-        # Defines order of loading posts. Recent of latest
-        is_recent = self.request.GET.get('is_recent', 'true')
-        if is_recent == 'true':
-            order = '-timeCreated'
-        else:
-            order = 'timeCreated'
-        # Resort posts by time of creation
-        # Get the category by some quirks, later add coresponding field
-        model = apps.get_model(f'Post.{self.category.categry_name}')
-        posts = model.objects.filter(isPublished=True).order_by(order)
-        # Get posts with the same tags in
-        tags = request.GET.getlist('tag', [])
-        tags_names = []
-        if len(tags) > 0:
-            # Search everywhere !!!
-            tag_obj = Post_M.Tag.objects.filter(Q(name_ru__in=tags) | Q(name_en__in=tags) | Q(slug_ru__in=tags)  | Q(slug_en__in=tags))
-            for key, tag in enumerate(tag_obj):
-                tags[key] = tag.slug
-            for key, tag in enumerate(tag_obj):
-                tags_names.append(tag.name)
-            if not tag_obj:
-                raise Http404(tag_obj)
-            posts = filterByTag(posts, tag_obj)
-        # Create a paginator
-        page = int(request.GET.get('page', 1))
-        pages = calculate_pages(len(posts), website_conf.paginator_per_page_posts)
-        if page > pages :
-            raise Http404(page)
-        page_obj = posts[(page-1)*website_conf.paginator_per_page_posts:page*website_conf.paginator_per_page_posts]
-        type = request.GET.get('type', 'full') 
-        # Choose which template to render
-        # There are 2 modes
-        # basic - display everything that possible from preview to views
-        # simple - display only needes information, title, description, date published
-        if self.category.categry_name == 'Tool':
-            mode = self.request.GET.get('mode', 'list') + '--'    
-        else:
-            mode = self.request.GET.get('mode', 'basic') + '--'
-        # Define specific (unique) preview templates
-        for_who = self.request.GET.get('for_who', '')
-        cat = "-" + self.category.categry_name.lower()
-        if for_who != '':
-            for_who = '-' + for_who
-        # Update context data
-        context.update({'displayTags': True})
-        context.update({'posts': page_obj})
-        context.update({'num_pages': pages})
-        context.update({'current_page': page})
-        context.update({'page': page + 1})
-        context.update({'type': type})
-        context.update({'mode': mode[:-2]})
-        context.update({'is_recent': is_recent})
-        context.update({'current_tag': tags})
-        context.update({'current_tag_names': tags_names})
-        context.update({'tags_json': json.dumps(tags)})
-        if type == 'full':
-            loaded_template = loader.get_template(f'Post/{mode}post_preview{for_who}{cat}.html')
-            context.update({'doc': loaded_template.render(context, request)})
-            return render(request, self.template_name, context)
-        elif type == 'part':
-            return render(request,f'Post/{mode}post_preview{for_who}{cat}.html',context=context)
+def td_list(request):
+    return post_list(request, Post_M.TD, Post_M.Category.objects.get(slug='td'), 'Post/termin_list.html')
 
+def qa_list(request):
+    return post_list(request, Post_M.QA, Post_M.Category.objects.get(slug='qa'), 'Post/question_list.html')
+
+def tools_list(request):
+    return post_list(request, Post_M.Tool, Post_M.Category.objects.get(slug='tools'), 'Post/tool_list.html')
 
 def article(request, post_slug):
     website_conf = Main_M.Website.objects.get(is_current=True)
@@ -190,7 +186,6 @@ def qa(request, post_slug):
     else:
         return render(request, post.default_template, context=context)
 
-
 def td(request, post_slug):
     website_conf = Main_M.Website.objects.get(is_current=True)
     post = get_object_or_404(Post_M.TD, slug=post_slug)
@@ -217,7 +212,6 @@ def td(request, post_slug):
     else:
         return render(request, post.default_template, context=context)
 
-
 # Basicaly one browser one like for one article
 def like_post(request):
     post_slug = request.POST['slug']
@@ -236,7 +230,6 @@ def like_post(request):
             'likes': _('Большое спасибо, но ты уже лайкнул)')
         }
         return JsonResponse(data)
-
 
 # No checks for multiple shares, because I do not want it.
 # I want as many as I could get
