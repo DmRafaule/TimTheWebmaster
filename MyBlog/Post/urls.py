@@ -17,15 +17,9 @@ urlpatterns += [
     path('td/<slug:post_slug>/', V.td, name="td"),
 ]
 
-
-# URL path for dispatching list of posts
-for cat in M.Category.objects.all():
-    urlpatterns.append(
-        path(
-            f'{cat.slug}/',
-            V.PostListView.as_view(
-                template_name=cat.template,
-                category=cat),
-            name=f"{cat.slug}-list"
-        )
-    )
+urlpatterns += [
+    path('articles/', V.article_list, name='articles-list'),
+    path('td/', V.td_list, name='td-list'),
+    path('qa/', V.qa_list, name='qa-list'),
+    path('tools/', V.tools_list, name='tools-list'),
+]
