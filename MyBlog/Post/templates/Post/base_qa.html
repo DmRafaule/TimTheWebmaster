@@ -14,7 +14,7 @@
 
 {% block content_post %}
 	<h1 class="title" >{{post.question}}</h1>
-	<div class="answer">
+	<div class="text">
 		{{post.answer}}
 	</div>
 	{% block content_post_qa %}
@@ -31,13 +31,12 @@
 {% endblock %}
 
 {% block styles_post %}
-	<link type="text/css" rel="stylesheet" href="{% static 'images.css' %}"/>
-	<link type="text/css" rel="stylesheet" href="{% static 'video.css' %}"/>
 	<link type="text/css" rel="stylesheet" href="{% static 'Post/css/qa.css' %}"/>
-	<link type="text/css" rel="stylesheet" href="{% static 'Post/css/posts_preview.css' %}"/>
+	{% block styles_post_qa %}
+	{% endblock %}
 {% endblock %}
 
 {% block scripts_post %}
-	<script src="{% static 'video.js' %}"></script>
-    <script src="{% static 'image_previewer.js' %}"></script>
+	{% block scripts_post_qa %}
+	{% endblock%}
 {% endblock %}
