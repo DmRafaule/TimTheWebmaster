@@ -72,6 +72,14 @@ def getSpecialTopLevelCategories(categories):
     categories = categories.exclude(slug__in=categories_result)
     return getNotEmptyCategories(categories_result)
 
+def toDebugFile(msg, isFirst = False):
+    if isFirst:
+        with open('my_debug.txt', 'w', encoding='utf-8') as file:
+            file.write('DEBUG FILE v 0.2\n\n')    
+
+    with open('my_debug.txt', 'a+', encoding='utf-8') as file:
+        file.write(msg+'\n')
+
 
 def initDefaults(request):
     website_conf = Website.objects.get(is_current=True)

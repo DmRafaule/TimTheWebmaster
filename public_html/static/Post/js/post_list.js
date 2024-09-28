@@ -29,7 +29,7 @@ function LoadPosts(page, type, isRecent = true, mode = 'basic', tags=[]){
             })
 			var num_pages = document.querySelector('#meta-data').dataset.numpages
 			// Insert sentinel only if the next page is exist
-			if (!((page + 1) > num_pages)){
+			if (!((Number(page) + 1) > num_pages)){
 				var sentinel_next = page_container.querySelector(`#scroll-sentinel-${Number(page)+1}`)
 				WaitSetinelToInteract(sentinel_next)
 				sentinel_next.addEventListener('onInfinityLoad', onInfinityLoad, {once: true})
@@ -37,7 +37,7 @@ function LoadPosts(page, type, isRecent = true, mode = 'basic', tags=[]){
 			}
 			// Insert sentinel for previos page load if it is exist
 			var is_exist = page_container.querySelector(`#scroll-sentinel-${Number(page)-1}`)
-			if (page - 1 > 0 && !is_exist){
+			if (Number(page) - 1 > 0 && !is_exist){
 				var sentinel_next = page_container.querySelector(`#scroll-sentinel-${Number(page)+1}`)
 				var sentinel_prev = null
 				// The last sentinel is not going to exist we need to check this
