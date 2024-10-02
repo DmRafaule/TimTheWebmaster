@@ -39,6 +39,7 @@
 			"@type": "FAQPage",
 			"mainEntity": [
 			{% for qa in posts %}
+			{% if forloop.counter == posts|length%}
 				{
 					"@type": "Question",
 					"name": "{{qa.question}}",
@@ -46,7 +47,17 @@
 						"@type": "Answer",
 						"text": "{{qa.answer}}"
 					}
-				}, 
+				} 
+			{% else %}
+				{
+					"@type": "Question",
+					"name": "{{qa.question}}",
+					"acceptedAnswer": {
+						"@type": "Answer",
+						"text": "{{qa.answer}}"
+					}
+				},
+			{% endif%}
 			{% endfor %}
 			]
 		}
