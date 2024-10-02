@@ -37,7 +37,7 @@ function LoadPosts(page, type, isRecent = true, mode = 'basic', tags=[]){
 			}
 			// Insert sentinel for previos page load if it is exist
 			var is_exist = page_container.querySelector(`#scroll-sentinel-${Number(page)-1}`)
-			if (Number(page) - 1 > 0 && !is_exist){
+			if (page - 1 > 0 && !is_exist){
 				var sentinel_next = page_container.querySelector(`#scroll-sentinel-${Number(page)+1}`)
 				var sentinel_prev = null
 				// The last sentinel is not going to exist we need to check this
