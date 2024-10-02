@@ -33,6 +33,24 @@
 		{% endif %}
 	{% endif %}
 	<meta name="keywords" content="{{current_tag_names|join:', '}}">
+	<script type="application/ld+json">
+		{
+			"@context": "https://schema.org",
+			"@type": "FAQPage",
+			"mainEntity": [
+			{% for qa in posts %}
+				{
+					"@type": "Question",
+					"name": "{{qa.question}}",
+					"acceptedAnswer": {
+						"@type": "Answer",
+						"text": "{{qa.answer}}"
+					}
+				}, 
+			{% endfor %}
+			]
+		}
+	</script>
 {% endblock %}
 
 {% block filters_body%}

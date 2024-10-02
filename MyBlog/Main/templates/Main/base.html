@@ -1,5 +1,6 @@
 {% load static%}
 {% load i18n %}
+{% load urlToBreadcrumbs %}
 
 <!DOCTYPE html>
 {% get_current_language as LANGUAGE_CODE %}
@@ -11,6 +12,22 @@
 	{% endblock %}
 	<link rel="icon" href="https://{{domain_name}}/favicon.svg" type="image/svg+xml">
 	<link rel="icon" href="https://{{domain_name}}/favicon.ico" sizes="32x32" type="image/x-icon">
+	<script type="application/ld+json">
+		{
+			"@context": "https://schema.org",
+			"@type": "BreadcrumbList",
+			"itemListElement": [
+				{% for item in request.get_full_path|urlToBreadcrumbs %}
+				{
+					"@type": "ListItem",
+					"position": {{item.level}},
+					"name": "{{item.name}}",
+					"item": "https://{{domain_name}}{{item.url|safe}}"
+				},
+				{% endfor %}
+			]
+		}
+	</script>
     <link type="text/css" rel="stylesheet" href="{% static 'config.css' %}"/>
     <link type="text/css" rel="stylesheet" href="{% static 'zero.css' %}"/>
     <link type="text/css" rel="stylesheet" href="{% static 'text.css' %}"/>

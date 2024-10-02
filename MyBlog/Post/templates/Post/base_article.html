@@ -26,6 +26,59 @@
 		}]
     }
     </script>
+	<script type="application/ld+json">
+		{
+			"@context": "https://schema.org",
+			"@type": "FAQPage",
+			"mainEntity": [
+		  	{% if tds|length > 0 or post.tds.all|length > 0 %}
+				{% for td in post.tds.all %}
+					{
+						"@type": "Question",
+						"name": "{{td.termin}}",
+						"acceptedAnswer": {
+							"@type": "Answer",
+							"text": "{{td.definition}}"
+						}
+					}, 
+				{% endfor %}
+				{% for td in tds %}
+					{
+						"@type": "Question",
+						"name": "{{td.termin}}",
+						"acceptedAnswer": {
+							"@type": "Answer",
+							"text": "{{td.definition}}"
+						}
+					}, 
+				{% endfor %}
+			{% endif %}
+			{% if qas|length > 0 or post.qas.all|length > 0 %}
+				{% for qa in post.qas.all %}
+					{
+						"@type": "Question",
+						"name": "{{qa.question}}",
+						"acceptedAnswer": {
+							"@type": "Answer",
+							"text": "{{qa.answer}}"
+						}
+					}, 
+				{% endfor %}
+				{% for qa in qas %}
+					{
+						"@type": "Question",
+						"name": "{{qa.question}}",
+						"acceptedAnswer": {
+							"@type": "Answer",
+							"text": "{{qa.answer}}"
+						}
+					}, 
+				{% endfor %}
+			{% endif %}
+			]
+		}
+	</script>
+	
 {% endblock %}
 
 {% block hat_post %}

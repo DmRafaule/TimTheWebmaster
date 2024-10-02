@@ -6,6 +6,26 @@
 	<title>{% trans "Тим, Вебмастер. Всё об авторе и его деятельности." %}</title>
 	<meta name="description" content="{% trans "О вебмастере Тиме Чудуке. Его истории, интересах и оказываемых услугах разработки сайтов, тг ботов, скриптов, парсеров и копирайта" %}">
 	<link rel="canonical" href="https://{{domain_name}}{%url 'about'%}" />
+	<script type="application/ld+json">
+		{
+		  "@context": "https://schema.org",
+		  "@type": "ProfilePage",
+		  "dateCreated": "2023-10-09T12:34:00-05:00",
+		  "dateModified": "2024-10-02T14:53:00-05:00",
+		  "mainEntity": {
+			"@type": "Person",
+			"name": "{% trans 'Тима Чудук' %}",
+			"description": "Defender of Truth",
+			"image": "{% static '/Main/img/me1.jpg' %}",
+			"sameAs": [
+			  "https://vk.com/timachuduk",
+			  "https://x.com/TimaChedr",
+			  "https://www.reddit.com/user/DmRafaule/",
+			  "https://www.instagram.com/timachedr/"
+			]
+		  }
+		}
+	</script>	
 {% endblock %}
 
 {% block content %}
@@ -21,7 +41,6 @@
 		<h1 class="home_title" >{% trans "О Тиме Вебмастере" %}</h1>
 		<canvas id='canvas' class="canvas_as_element" data-vertex-shader="{% static "WebGLEngine/shaders/home_gik.vert" %}" data-fragment-shader="{% static "WebGLEngine/shaders/home_gik.frag" %}"></canvas>
 	</div>
-	
 	<div class="text row max_gap">
 		<div class="column el-expandable el-no_shrinkable el-300-min-basis">
 			<div class="text" style='margin: 0'>
