@@ -39,6 +39,16 @@
 			"@type": "FAQPage",
 			"mainEntity": [
 			{% for td in posts %}
+			{% if forloop.counter == posts|length%}
+				{
+					"@type": "Question",
+					"name": "{{td.termin}}",
+					"acceptedAnswer": {
+						"@type": "Answer",
+						"text": "{{td.definition}}"
+					}
+				}
+			{% else %}
 				{
 					"@type": "Question",
 					"name": "{{td.termin}}",
@@ -47,6 +57,7 @@
 						"text": "{{td.definition}}"
 					}
 				}, 
+			{% endif %}
 			{% endfor %}
 			]
 		}

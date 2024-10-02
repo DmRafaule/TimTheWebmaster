@@ -1,6 +1,7 @@
 {% load static%}
 {% load i18n %}
 {% load urlToBreadcrumbs %}
+{% load urlToList %}
 
 <!DOCTYPE html>
 {% get_current_language as LANGUAGE_CODE %}
@@ -18,12 +19,21 @@
 			"@type": "BreadcrumbList",
 			"itemListElement": [
 				{% for item in request.get_full_path|urlToBreadcrumbs %}
+				{% if forloop.counter == request.get_full_path|urlToList|length%}
+				{
+					"@type": "ListItem",
+					"position": {{item.level}},
+					"name": "{{item.name}}",
+					"item": "https://{{domain_name}}{{item.url|safe}}"
+				}
+				{% else %}
 				{
 					"@type": "ListItem",
 					"position": {{item.level}},
 					"name": "{{item.name}}",
 					"item": "https://{{domain_name}}{{item.url|safe}}"
 				},
+				{% endif %}
 				{% endfor %}
 			]
 		}
