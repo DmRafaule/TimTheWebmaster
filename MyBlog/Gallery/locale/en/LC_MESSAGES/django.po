@@ -2,13 +2,13 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-22 13:15+0000\n"
+"POT-Creation-Date: 2024-10-03 20:20+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,20 +18,20 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: Gallery/templates/Gallery/gallery-home.html:11
-#: Gallery/templates/Gallery/gallery-home.html:13
-#: Gallery/templates/Gallery/gallery-home.html:24
+#: .\Gallery\templates\Gallery\gallery-home.html:11
+#: .\Gallery\templates\Gallery\gallery-home.html:13
+#: .\Gallery\templates\Gallery\gallery-home.html:24
 msgid "Галерея"
 msgstr "Gallery"
 
-#: Gallery/templates/Gallery/gallery-home.html:13
+#: .\Gallery\templates\Gallery\gallery-home.html:13
 msgid "страница "
 msgstr "page "
 
-#: Gallery/templates/Gallery/gallery-home.html:15
-#: Gallery/templates/Gallery/gallery-home.html:26
-#: Gallery/templates/Gallery/gallery-home.html:76
-#: Gallery/templates/Gallery/gallery-home.html:81
+#: .\Gallery\templates\Gallery\gallery-home.html:15
+#: .\Gallery\templates\Gallery\gallery-home.html:26
+#: .\Gallery\templates\Gallery\gallery-home.html:76
+#: .\Gallery\templates\Gallery\gallery-home.html:81
 msgid ""
 "Здесь собраны все мои изображения, картинки, рисунки. Я их публикую сюда вне "
 "зависимости от того насколько ужасными они получились."
@@ -39,62 +39,62 @@ msgstr ""
 "Here are all my images, pictures, drawings. I publish them here regardless "
 "of how awful they turned out."
 
-#: Gallery/templates/Gallery/gallery-home.html:24
+#: .\Gallery\templates\Gallery\gallery-home.html:24
 msgid " с тегами:"
 msgstr " with tags:"
 
-#: Gallery/templates/Gallery/gallery-home.html:24
-#: Gallery/templates/Gallery/gallery-home.html:79
+#: .\Gallery\templates\Gallery\gallery-home.html:24
+#: .\Gallery\templates\Gallery\gallery-home.html:79
 msgid "Страница "
 msgstr "Page "
 
-#: Gallery/templates/Gallery/gallery-home.html:26
+#: .\Gallery\templates\Gallery\gallery-home.html:26
 msgid " Эти изображения были связаны и сгруппированы по следующим тегам: "
 msgstr " These images have been linked and grouped under the following tags: "
 
-#: Gallery/templates/Gallery/gallery-home.html:26
-#: Gallery/templates/Gallery/gallery-home.html:81
+#: .\Gallery\templates\Gallery\gallery-home.html:26
+#: .\Gallery\templates\Gallery\gallery-home.html:81
 msgid " Страница "
 msgstr " Page "
 
-#: Gallery/templates/Gallery/gallery-home.html:40
+#: .\Gallery\templates\Gallery\gallery-home.html:40
 msgid "one layer on top of anothe"
 msgstr ""
 
-#: Gallery/templates/Gallery/gallery-home.html:50
+#: .\Gallery\templates\Gallery\gallery-home.html:50
 msgid "ТИП"
 msgstr "TYPE"
 
-#: Gallery/templates/Gallery/gallery-home.html:56
+#: .\Gallery\templates\Gallery\gallery-home.html:56
 msgid "Используемые теги для фильтрации"
 msgstr "Used tags for filtration"
 
-#: Gallery/templates/Gallery/gallery-home.html:71
-#: Gallery/templates/Gallery/gallery-home.html:73
+#: .\Gallery\templates\Gallery\gallery-home.html:71
+#: .\Gallery\templates\Gallery\gallery-home.html:73
 msgid "Галерея "
 msgstr "Gallery"
 
-#: Gallery/templates/Gallery/gallery-home.html:73
+#: .\Gallery\templates\Gallery\gallery-home.html:73
 msgid " начиная с "
 msgstr " starting with "
 
-#: Gallery/templates/Gallery/gallery-home.html:73
+#: .\Gallery\templates\Gallery\gallery-home.html:73
 msgid " страницы"
 msgstr " pages"
 
-#: Gallery/templates/Gallery/gallery-home.html:79
+#: .\Gallery\templates\Gallery\gallery-home.html:79
 msgid "Изображения "
 msgstr "Pictures"
 
-#: Gallery/templates/Gallery/gallery-home.html:79
+#: .\Gallery\templates\Gallery\gallery-home.html:79
 msgid "связанные со следующими тегами: "
 msgstr "related to the following tags: "
 
-#: Gallery/templates/Gallery/gallery-home.html:81
+#: .\Gallery\templates\Gallery\gallery-home.html:81
 msgid " Они были связаны и сгруппированы по следующим тегам: "
 msgstr " These images have been linked and grouped under the following tags: "
 
-#: Gallery/templates/Gallery/gallery-home.html:115
-#: Gallery/templates/Gallery/gallery-home.html:121
+#: .\Gallery\templates\Gallery\gallery-home.html:120
+#: .\Gallery\templates\Gallery\gallery-home.html:126
 msgid "Шеврон"
 msgstr ""

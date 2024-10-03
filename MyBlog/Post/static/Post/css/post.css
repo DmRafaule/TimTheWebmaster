@@ -16,7 +16,7 @@
 	flex-direction: column;
 	margin-bottom: 100px;
 }
-.selected_view{
+.selected_view, .selected_order{
 	background-color: var(--acent_color);
 }
 .rotate_X{

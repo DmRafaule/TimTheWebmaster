@@ -3,7 +3,9 @@ let current_page = parseInt(document.querySelector('#meta-data').dataset.current
 let url = document.querySelector('#meta-data').dataset.url
 let gallery_intersection_options = {rootMargin: "-10% 0px -10% 0px"}
 
-function LoadPosts(page, type, isRecent = true, mode = 'basic', tags=[]){
+function LoadPosts(page, type, isRecent = true, mode = 'basic', tags=[], relative_this = '', week_day = '', month_day = '', month = '', year = ''){
+	var progressbar = document.querySelector('#progressbar')
+	progressbar.style.display = 'block'
 	$.ajax({
 		type: "GET",
 		url: url,
@@ -15,7 +17,12 @@ function LoadPosts(page, type, isRecent = true, mode = 'basic', tags=[]){
             'type': type,
 			'is_recent': isRecent,
 			'mode': mode,
-			'tag': tags
+			'tag': tags,
+			'relative_this': relative_this,
+			'week_day': week_day,
+			'month_day': month_day,
+			'month': month,
+			'year': year,
 		},
 		mode: 'same-origin', // Do not send CSRF token to another domain.
 		success: function(result) {
@@ -24,10 +31,11 @@ function LoadPosts(page, type, isRecent = true, mode = 'basic', tags=[]){
 			page_container.insertAdjacentHTML('beforeend', result)
 			// Insert animation for newly loade posts
 			page_container.querySelectorAll('.post_preview').forEach( (post) => {
+				num_pages = post.dataset.numpages
                 if (!post.classList.contains('loader'))
 					post.classList.add('loader')
             })
-			var num_pages = document.querySelector('#meta-data').dataset.numpages
+			update_paginator(num_pages, page)
 			// Insert sentinel only if the next page is exist
 			if (!((Number(page) + 1) > num_pages)){
 				var sentinel_next = page_container.querySelector(`#scroll-sentinel-${Number(page)+1}`)
@@ -55,6 +63,7 @@ function LoadPosts(page, type, isRecent = true, mode = 'basic', tags=[]){
 				sentinel_prev.addEventListener('onInfinityLoad', onInfinityLoadUpdate)
 				page_container.insertAdjacentElement('afterbegin',sentinel_prev)
 			}
+			progressbar.style.display = 'none'
 			UpdateState(page, 'full', isRecent, mode, tags)
 		},
 		error: function(jqXHR, textStatus, errorThrown){
@@ -74,7 +83,9 @@ function UpdateState(page, type, isRecent = true, mode = 'basic', tags = []){
 	}
 }
 
-function UpdatePosts(page, type, isRecent = true, mode = 'basic', tags = [] ){
+function UpdatePosts(page, type, isRecent = true, mode = 'basic', tags = [], relative_this = '', week_day = '', month_day = '', month = '', year = '' ){
+	var progressbar = document.querySelector('#progressbar')
+	progressbar.style.display = 'block'
 	$.ajax({
 		type: "GET",
 		url: url,
@@ -86,7 +97,12 @@ function UpdatePosts(page, type, isRecent = true, mode = 'basic', tags = [] ){
             'type': type,
 			'is_recent': isRecent,
 			'mode': mode,
-			'tag': tags
+			'tag': tags,
+			'relative_this': relative_this,
+			'week_day': week_day,
+			'month_day': month_day,
+			'month': month,
+			'year': year,
 		},
 		mode: 'same-origin', // Do not send CSRF token to another domain.
 		success: function(result) {
@@ -95,10 +111,11 @@ function UpdatePosts(page, type, isRecent = true, mode = 'basic', tags = [] ){
 			page_container.insertAdjacentHTML('beforeend', result)
 			// Insert animation for newly loade posts
 			page_container.querySelectorAll('.post_preview').forEach( (post) => {
+				num_pages = post.dataset.numpages
                 if (!post.classList.contains('loader'))
 					post.classList.add('loader')
             })
-			var num_pages = document.querySelector('#meta-data').dataset.numpages
+			update_paginator(num_pages, page)
 			// Insert sentinel only if the next page is exist
 			if (!((page + 1) > num_pages)){
 				var sentinel_next = page_container.querySelector(`#scroll-sentinel-${Number(page)+1}`)
@@ -126,6 +143,7 @@ function UpdatePosts(page, type, isRecent = true, mode = 'basic', tags = [] ){
 				sentinel_prev.addEventListener('onInfinityLoad', onInfinityLoadUpdate)
 				page_container.insertAdjacentElement('afterbegin',sentinel_prev)
 			}
+			progressbar.style.display = 'none'
 			UpdateState(page, 'full', isRecent, mode, tags)
 		},
 		error: function(jqXHR, textStatus, errorThrown){
@@ -145,7 +163,28 @@ function onSort(){
 	var mode = viewsContainer.dataset.view
 	var tagButton = document.querySelector("#onTags")
 	var tags = JSON.parse(tagButton.dataset.tags)
-	UpdatePosts(1, 'part', isRecent, mode, tags)
+	var this_time = document.querySelector('input[name="thisTime"]:checked');
+	if (!this_time)
+		this_time = ''
+	else
+		this_time = this_time.value
+	var week_day = []
+	document.querySelectorAll('.week_day.selected_order').forEach((el)=>{
+		week_day.push(el.dataset.time)
+	})
+	var month_day = []
+	document.querySelectorAll('.month_day.selected_order').forEach((el)=>{
+		month_day.push(el.dataset.time)
+	})
+	var month = []
+	document.querySelectorAll('.month.selected_order').forEach((el)=>{
+		month.push(el.dataset.time)
+	})
+	var year = []
+	document.querySelectorAll('.year.selected_order').forEach((el)=>{
+		year.push(el.dataset.time)
+	})
+	UpdatePosts(1, 'part', isRecent, mode, tags, this_time, week_day, month_day, month, year)
 }
 
 function onView(mode, forWho = ''){
@@ -155,7 +194,54 @@ function onView(mode, forWho = ''){
 	viewsContainer.dataset.view = mode
 	var tagButton = document.querySelector("#onTags")
 	var tags = JSON.parse(tagButton.dataset.tags)
-	UpdatePosts(1, 'part', isRecent, mode, tags)
+	var this_time = document.querySelector('input[name="thisTime"]:checked');
+	if (!this_time)
+		this_time = ''
+	else
+		this_time = this_time.value
+	var week_day = []
+	document.querySelectorAll('.week_day.selected_order').forEach((el)=>{
+		week_day.push(el.dataset.time)
+	})
+	var month_day = []
+	document.querySelectorAll('.month_day.selected_order').forEach((el)=>{
+		month_day.push(el.dataset.time)
+	})
+	var month = []
+	document.querySelectorAll('.month.selected_order').forEach((el)=>{
+		month.push(el.dataset.time)
+	})
+	var year = []
+	document.querySelectorAll('.year.selected_order').forEach((el)=>{
+		year.push(el.dataset.time)
+	})
+	UpdatePosts(1, 'part', isRecent, mode, tags, this_time, week_day, month_day, month, year)
+}
+
+function onOrderTime(selected_order_btns, this_time){
+	var sortButton = document.querySelector("#onSort")
+	var isRecent = sortButton.dataset.sort
+	var viewsContainer = document.querySelector("#toViews")
+	var mode = viewsContainer.dataset.view
+	var tagButton = document.querySelector("#onTags")
+	var tags = JSON.parse(tagButton.dataset.tags)
+	var week_day = []
+	document.querySelectorAll('.week_day.selected_order').forEach((el)=>{
+		week_day.push(el.dataset.time)
+	})
+	var month_day = []
+	document.querySelectorAll('.month_day.selected_order').forEach((el)=>{
+		month_day.push(el.dataset.time)
+	})
+	var month = []
+	document.querySelectorAll('.month.selected_order').forEach((el)=>{
+		month.push(el.dataset.time)
+	})
+	var year = []
+	document.querySelectorAll('.year.selected_order').forEach((el)=>{
+		year.push(el.dataset.time)
+	})
+	UpdatePosts(1, 'part', isRecent, mode, tags, this_time.value, week_day, month_day, month, year)
 }
 
 function onInfinityLoadUpdate(event){
@@ -176,10 +262,32 @@ function onInfinityLoad(event){
 	var page = event.detail.sentinel.dataset.page
 	var tagButton = document.querySelector("#onTags")
 	var tags = JSON.parse(tagButton.dataset.tags)
-	LoadPosts(page, 'part', isRecent, mode, tags)
+	var this_time = document.querySelector('input[name="thisTime"]:checked');
+	if (!this_time)
+		this_time = ''
+	else
+	this_time = this_time.value
+	var week_day = []
+	document.querySelectorAll('.week_day.selected_order').forEach((el)=>{
+		week_day.push(el.dataset.time)
+	})
+	var month_day = []
+	document.querySelectorAll('.month_day.selected_order').forEach((el)=>{
+		month_day.push(el.dataset.time)
+	})
+	var month = []
+	document.querySelectorAll('.month.selected_order').forEach((el)=>{
+		month.push(el.dataset.time)
+	})
+	var year = []
+	document.querySelectorAll('.year.selected_order').forEach((el)=>{
+		year.push(el.dataset.time)
+	})
+	LoadPosts(page, 'part', isRecent, mode, tags, this_time, week_day, month_day, month, year)
 }
 
 function onPaginLoad(event){
+
 	var viewsContainer = document.querySelector("#toViews")
 	var mode = viewsContainer.dataset.view
 	var isRecent = document.querySelector("#onSort").dataset.sort
@@ -196,10 +304,33 @@ function onPaginLoad(event){
 
 function onReady(){
 
+	// Ordering and filtering by date
+	var order_btns = document.querySelectorAll('.week_day,.month_day,.month,.year')
+	order_btns.forEach( btn => {
+		btn.addEventListener('click', (event) => {
+			var this_time = document.querySelector('input[name="thisTime"]:checked');
+			btn.classList.toggle('selected_order')
+			selected_order_btns = document.querySelectorAll('.selected_order')
+			onOrderTime(selected_order_btns, this_time)
+		})
+	})
+	var this_time_btns = document.querySelectorAll('input[name="thisTime"]')
+	this_time_btns.forEach( btn => {
+		btn.addEventListener('click', (event) => {
+			var order_btns = document.querySelectorAll('.week_day,.month_day,.month,.year')
+			order_btns.forEach( btn => {
+				btn.classList.remove('selected_order')
+			})
+			selected_order_btns = document.querySelectorAll('.selected_order')
+			onOrderTime(selected_order_btns, btn)
+		})
+	})
+
 	document.addEventListener('onSort', (event) => {
 		onSort()
 		event.detail.button.classList.toggle('rotate_X')
 	})
+
 	document.addEventListener('onBasicView', (event) =>{
 		onView('basic')
 		var container = document.querySelector('#toViews')

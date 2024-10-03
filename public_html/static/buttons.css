@@ -95,6 +95,12 @@
 	padding: var(--button_padding_top_bot);
 }
 
+.action_button_white{
+	color: var(--main_text_color);
+	background-color: var(--bg_color);
+	padding: var(--button_padding_top_bot);
+}
+
 .link_button{
 	background-color: var(--button_link_bg);
 	padding: var(--button_padding_top_bot);

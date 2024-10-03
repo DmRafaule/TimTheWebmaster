@@ -237,6 +237,53 @@ class ToolAdmin(admin.ModelAdmin):
     radio_fields = {'type': admin.HORIZONTAL}
     list_filter = ('isPublished', 'type', 'timeCreated')
 
+class NoteAdmin(admin.ModelAdmin):
+    exclude = ('category','title', 'description')
+    filter_horizontal = ('tags',)
+    ordering = ['-timeCreated']
+    fieldsets = [
+        (
+            None,
+            {
+                'fields': [('title_ru', 'title_en'), ('description_ru', 'description_en'), 'isPublished']
+            }
+        ),
+        (
+            'Advanced options',
+            {
+                'fields': ['tags', 'timeCreated'],
+                'classes': ['collapse'],
+            }
+        )
+    ]
+    list_display = (
+        'id',
+        'isPublished',
+        'title_ru',
+        'title_en',
+        'description_ru',
+        'description_en',
+        'timeCreated',
+    )
+    list_display_links = (
+        'id',
+    )
+    list_editable = (
+        'isPublished',
+        'title_ru',
+        'title_en',
+        'description_ru',
+        'description_en',
+        'timeCreated',
+    )
+    search_fields = (
+        'title_ru',
+        'title_en',
+        'description_ru',
+        'description_en',
+        'tags'
+    )
+
 
 admin.site.register(M.Tag, TagAdmin)
 admin.site.register(M.Category, CategoryAdmin)
@@ -244,3 +291,4 @@ admin.site.register(M.Article, ArticleAdmin)
 admin.site.register(M.QA, QAAdmin)
 admin.site.register(M.TD, TDAdmin)
 admin.site.register(M.Tool, ToolAdmin)
+admin.site.register(M.Note, NoteAdmin)

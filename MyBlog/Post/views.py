@@ -5,6 +5,7 @@ from django.utils.translation import gettext as _
 import Main.models as Main_M
 import Main.utils as U
 from django.template import loader
+from datetime import datetime
 from django.db.models import Q
 import json
 
@@ -30,7 +31,7 @@ def filterByTag(list, tags, threshold = None):
 
 def calculate_pages(total_items, items_per_page):
     if total_items <= 0 or items_per_page <= 0:
-        raise ValueError("Both total_items and items_per_page must be positive integers.")
+        return 1
     
     return -(-total_items // items_per_page)  # Using ceiling division
 
@@ -45,6 +46,29 @@ def post_list(request, model, category, template_path):
         order = 'timeCreated'
     # Resort posts by time of creation
     posts = model.objects.filter(isPublished=True).order_by(order)
+    
+    # Filter posts by date filters specified
+    relative_this = request.GET.get('relative_this')
+    match (relative_this):
+        case 'this_day':
+            posts = U.get_this_day_posts(posts)
+        case 'this_week':
+            posts = U.get_this_week_posts(posts)
+        case 'this_month':
+            posts = U.get_this_month_posts(posts)
+        case 'this_year':
+            posts = U.get_this_year_posts(posts)
+
+    week_days = request.GET.getlist('week_day', [])
+    posts = U.get_posts_by_week_days(week_days, posts)
+    month_days = request.GET.getlist('month_day', [])
+    posts = U.get_posts_by_month_days(month_days, posts)
+    months = request.GET.getlist('month', [])
+    posts = U.get_posts_by_months(months, posts)
+    years = request.GET.getlist('year', [])
+    posts = U.get_posts_by_years(years, posts)
+    
+
     # Get posts with the same tags in
     tags = request.GET.getlist('tag', [])
     tags_names = []
@@ -78,8 +102,14 @@ def post_list(request, model, category, template_path):
     cat = "-" + category.categry_name.lower()
     if for_who != '':
         for_who = '-' + for_who
+    # Update how many years are
+    last_year = datetime.today().year 
+    years = []
+    for y in range(2021,last_year + 1):
+        years.append(y)
     # Update context data
     context.update({'category': category})
+    context.update({'years': years})
     context.update({'displayTags': True})
     context.update({'posts': page_obj})
     context.update({'num_pages': pages})
@@ -109,6 +139,9 @@ def qa_list(request):
 
 def tools_list(request):
     return post_list(request, Post_M.Tool, Post_M.Category.objects.get(slug='tools'), 'Post/tool_list.html')
+
+def notes_list(request):
+    return post_list(request, Post_M.Note, Post_M.Category.objects.get(slug='notes'), 'Post/note_list.html')
 
 def article(request, post_slug):
     website_conf = Main_M.Website.objects.get(is_current=True)

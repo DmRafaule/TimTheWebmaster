@@ -5,7 +5,7 @@
 <div class="row max_col_gap">
 {% for a in posts %}
 
-<div class="post_preview post_preview--tool-grid column min_row_gap  loader">
+<div class="post_preview post_preview--tool-grid column min_row_gap  loader"  data-numpages="{{num_pages}}">
 	<div class=" post_preview_header--tool row min_gap">
 		<div class="post_preview_meta--tool row mid_gap">
 			{% if a.type == 'Ac' %}

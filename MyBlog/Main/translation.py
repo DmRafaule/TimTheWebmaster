@@ -22,7 +22,6 @@ class QATranslationOptions(TranslationOptions):
             'template',
     )
 
-
 class TDTranslationOptions(TranslationOptions):
     fields = (
             'termin',
@@ -32,14 +31,14 @@ class TDTranslationOptions(TranslationOptions):
             'template',
     )
 
+class NoteTranslationOptions(TranslationOptions):
+    fields = ('title', 'description',)
 
 class ToolTranslationOptions(TranslationOptions):
     fields = ('name', 'description')
 
-
 class ImageTranslationOptions(TranslationOptions):
     fields = ('text',)
-
 
 class DownloadableTranslationOptions(TranslationOptions):
     fields = ('text',)
@@ -49,6 +48,7 @@ translator.register(Post_M.Category, CategoryTranslationOptions)
 translator.register(Post_M.Article, ArticleTranslationOptions)
 translator.register(Post_M.QA, QATranslationOptions)
 translator.register(Post_M.TD, TDTranslationOptions)
+translator.register(Post_M.Note, NoteTranslationOptions)
 translator.register(Post_M.Tag, TagTranslationOptions)
 translator.register(Post_M.Tool, ToolTranslationOptions)
 translator.register(Main_M.Image, ImageTranslationOptions)

@@ -164,6 +164,24 @@ class Tool(Post):
         return url
 
 
+class Note(models.Model):
+    view_name = "note"
+    title = models.CharField(max_length=256, blank=False, default='')
+    description = models.TextField(max_length=512, blank=False, default='')
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, blank=False)
+    timeCreated = models.DateTimeField()
+    timeUpdated = models.DateTimeField(auto_now=True)
+    isPublished = models.BooleanField(default=True)
+    tags = models.ManyToManyField(Tag, blank=True)
+
+    def save(self, *args, **kwargs):
+        self.category = Category.objects.get(slug="notes")
+        super(Note, self).save(*args, **kwargs)
+
+    def __str__(self):
+        return self.title
+
+
 class PostSitemap(Sitemap):
     i18n = True
 

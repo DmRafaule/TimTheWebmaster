@@ -15,6 +15,8 @@ function UpdateState(page, type, tags=[]){
 }
 
 function load(page, type, tags=[]){
+	var progressbar = document.querySelector('#progressbar')
+	progressbar.style.display = 'block'
 	$.ajax({
 		type: "GET",
 		url: `/${language_code}/gallery/`,
@@ -88,6 +90,7 @@ function load(page, type, tags=[]){
 				masonry.querySelectorAll('.masonry-col_forDelete').forEach( (item) => { item.remove()})
 			}
 			// Get the current url from response
+			progressbar.style.display = 'none'
 			UpdateState(page, 'full', tags)
 		},
 		error: function(jqXHR, textStatus, errorThrown){

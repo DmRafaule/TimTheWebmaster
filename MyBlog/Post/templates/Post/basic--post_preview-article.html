@@ -4,7 +4,7 @@
 
 {% for a in posts %}
 
-<div class="post_preview row min_gap loader">
+<div class="post_preview row min_gap loader" data-numpages="{{num_pages}}">
 	<div class="el-quad el-no_expandable">
 		{% if a.preview %}
 		<div class="post_preview_image">

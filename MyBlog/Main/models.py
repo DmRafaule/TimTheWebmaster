@@ -61,6 +61,10 @@ class Website(models.Model):
     popular_tools_on_footer = models.ManyToManyField('Post.Tool', verbose_name='Tools(Archives) to display on footer', blank=False)
 
     # Home page part
+    # Максимальное число отображаемых инструментов
+    # Число отображаеммых определений
+    # Число отображаеммых вопросов
+    # Число отображаеммых заметок
     my_resources_choosen_tags_on_home = models.ManyToManyField('Post.Tag', verbose_name='Choosen tags for My resources part', blank=False, related_name='my_resouces')
     min_displayed_my_resources = models.IntegerField(verbose_name='Minimum el in My resources part to be displayed if present', default=3, blank=False)
     other_articles_choosen_tags_on_home = models.ManyToManyField('Post.Tag', verbose_name='Choosen tags for Other articles part', blank=False, related_name='other_articles')
@@ -68,6 +72,10 @@ class Website(models.Model):
     max_displayed_news_on_home = models.IntegerField(verbose_name='Limit to display Latest news', default=3, blank=False)
     max_displayed_postSeries_on_home = models.IntegerField(verbose_name='Limit to display post series', default=2, blank=False)
     max_displayed_images_on_home = models.IntegerField(verbose_name='Limit to display images', default=3, blank=False)
+    max_displayed_inner_tools_on_home = models.IntegerField(verbose_name='Limit to display inner tools', default=3, blank=False)
+    max_displayed_qa_on_home = models.IntegerField(verbose_name='Limit to display termins', default=2, blank=False)
+    max_displayed_td_on_home = models.IntegerField(verbose_name='Limit to display questions', default=2, blank=False)
+    max_displayed_notes_on_home = models.IntegerField(verbose_name='Limit to display notes', default=5, blank=False)
 
 
 class Image(models.Model):
