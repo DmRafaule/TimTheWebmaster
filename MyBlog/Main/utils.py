@@ -27,7 +27,50 @@ def get_posts_by_tag(tag_name: str, category_queryset: Post_M.Category):
     posts = category_queryset.objects.filter(isPublished=True, tags__in=tags)
     return posts
 
-def get_latest_post(number: int, queryset: Post_M.Article):
+def get_this_day_posts(queryset: Post_M.Post):
+    today = datetime.today().date()
+    return queryset.filter(timeCreated__date=today)
+
+def get_this_week_posts(queryset):
+    this_year = datetime.today().date().year
+    week_number = datetime.today().date().isocalendar().week
+    return queryset.filter(Q(timeCreated__week=week_number) & Q(timeCreated__year=this_year))
+
+def get_this_month_posts(queryset):
+    this_year = datetime.today().date().year
+    this_month = datetime.today().date().month
+    return queryset.filter(Q(timeCreated__month=this_month) & Q(timeCreated__year=this_year))
+
+def get_this_year_posts(queryset):
+    this_year = datetime.today().date().year
+    return queryset.filter(timeCreated__year=this_year)
+
+def get_posts_by_week_days(days, queryset):
+    if len(days) > 0:
+        return queryset.filter(timeCreated__iso_week_day__in=days)
+    else:
+        return queryset
+
+def get_posts_by_month_days(days, queryset):
+    if len(days) > 0:
+        return queryset.filter(timeCreated__day__in=days)
+    else:
+        return queryset
+
+def get_posts_by_months(months, queryset):
+    if len(months) > 0:
+        return queryset.filter(timeCreated__month__in=months)
+    else:
+        return queryset
+
+def get_posts_by_years(years, queryset):
+    if len(years) > 0:
+        return queryset.filter(timeCreated__year__in=years)
+    else:
+        return queryset
+
+
+def get_latest_post(number: int, queryset):
     new_posts = list()
     posts = queryset.filter(isPublished=True)
     if (len(posts) > number):

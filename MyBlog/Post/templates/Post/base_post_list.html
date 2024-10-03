@@ -20,6 +20,7 @@
 		<div id="filters" class="full_width full_height padder">
 			{% block filters_body%}
 			{% endblock %}
+			<div style='margin-top: 80px'></div>
 		</div>
 	</div>
 	<div class="limiter_list in_middle in_middle-self no_wrap padder">
@@ -41,6 +42,11 @@
 	<hr>
 	{% block content_list %}
 	{% endblock %}
+	<div id="progressbar" class="marger in_middle" >
+		<div class="progressbar-container">
+			<div class="progress-loader"></div>
+		</div>
+	</div>
 	</div>
 	<div id="paginator_container" class="paginator_container is_sticky b-l full_width no_wrap row in_middle">
 		<div id="paginator" class="paginator_limiter no_wrap row in_middle max_col_gap">
@@ -69,6 +75,7 @@
 
 {% block styles %}
 	<link type="text/css" rel="stylesheet" href="{% static 'images.css' %}"/>
+	<link type="text/css" rel="stylesheet" href="{% static 'progressbar.css' %}"/>
 	<link type="text/css" rel="stylesheet" href="{% static 'blocks.css' %}"/>
 	<link type="text/css" rel="stylesheet" href="{% static 'paginator.css' %}"/>
     <link type="text/css" rel="stylesheet" href="{% static 'lists.css' %}"/>

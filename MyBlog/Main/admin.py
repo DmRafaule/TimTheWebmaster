@@ -60,6 +60,10 @@ class WebsiteAdmin(admin.ModelAdmin):
                         'max_displayed_news_on_home',
                         'max_displayed_postSeries_on_home',
                         'max_displayed_images_on_home',
+                        'max_displayed_inner_tools_on_home',
+                        'max_displayed_td_on_home',
+                        'max_displayed_qa_on_home',
+                        'max_displayed_notes_on_home',
                     )
                 ],
                 'classes': ['collapsed'],

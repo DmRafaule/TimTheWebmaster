@@ -130,6 +130,10 @@
 	border-bottom: 2px solid var(--main_color);
 }
 
+.post_preview {
+	margin-top: 0;
+}
+
 
 .post_previews--category>.post_preview--tool, .post_previews--category-forNews>.post_preview{
 	flex: 0 0 300px;

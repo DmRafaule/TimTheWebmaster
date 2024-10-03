@@ -43,13 +43,35 @@
 				<a class="white_text_button " href="{% url 'articles-list' %}?page=1&type=full&is_recent=true&mode=basic&tag={{latest_news_tag}}">{% trans 'Больше ...' %}</a>
 			</div>
 		</div>
-		<div class="home_ui_el">
-			<h2 class="">{% trans "Серии статей" %}</h2>
-			<div class="post_previews--category-forSeries mid_gap">
-				{{latest_post_series|safe}}
+		<div class="row max_gap">
+			<div class="home_ui_el">
+				<div class="home_ui_el">
+					<h2 class="">{% trans "Словарь" %}</h2>
+					<div class="post_previews--category-forSeries mid_gap">
+						{{latest_termins|safe}}
+					</div>
+					<div class="see_more_button button action_button">
+						<a class="white_text_button " href="{% url 'td-list' %}">{% trans 'Больше ...' %}</a>
+					</div>
+				</div>
+				<div class="home_ui_el">
+					<h2 class="">{% trans "Вопросы" %}</h2>
+					<div class="post_previews--category-forSeries mid_gap">
+						{{latest_questions|safe}}
+					</div>
+					<div class="see_more_button button action_button">
+						<a class="white_text_button " href="{% url 'qa-list' %}">{% trans 'Больше ...' %}</a>
+					</div>
+				</div>
 			</div>
-			<div class="see_more_button button action_button">
-				<a class="white_text_button " href="{% url 'articles-list' %}?page=1&type=full&is_recent=true&mode=basic&tag={{series_tag}}">{% trans 'Больше ...' %}</a>
+			<div class="home_ui_el">
+				<h2 class="">{% trans "Заметки" %}</h2>
+				<div class="post_previews--category-forSeries mid_gap">
+					{{latest_notes|safe}}
+				</div>
+				<div class="see_more_button button action_button">
+					<a class="white_text_button " href="{% url 'notes-list' %}">{% trans 'Больше ...' %}</a>
+				</div>
 			</div>
 		</div>
 		<div class="home_ui_el">
@@ -155,6 +177,7 @@
     <link type="text/css" rel="stylesheet" href="{% static 'blocks.css' %}"/>
     <link type="text/css" rel="stylesheet" href="{% static 'images.css' %}"/>
     <link type="text/css" rel="stylesheet" href="{% static 'Post/css/tabs.css' %}"/>
+	<link type="text/css" rel="stylesheet" href="{% static 'Post/css/posts_preview.css' %}"/>
     <link type="text/css" rel="stylesheet" href="{% static 'Main/css/home.css' %}"/>
 {% endblock %}
 

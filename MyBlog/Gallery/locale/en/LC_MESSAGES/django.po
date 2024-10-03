@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-16 13:14+0300\n"
+"POT-Creation-Date: 2024-10-03 20:20+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -94,7 +94,7 @@ msgstr "related to the following tags: "
 msgid " Они были связаны и сгруппированы по следующим тегам: "
 msgstr " These images have been linked and grouped under the following tags: "
 
-#: .\Gallery\templates\Gallery\gallery-home.html:115
-#: .\Gallery\templates\Gallery\gallery-home.html:121
+#: .\Gallery\templates\Gallery\gallery-home.html:120
+#: .\Gallery\templates\Gallery\gallery-home.html:126
 msgid "Шеврон"
 msgstr ""

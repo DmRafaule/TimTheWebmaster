@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-10-02 11:27+0300\n"
+"POT-Creation-Date: 2024-10-03 20:20+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -279,69 +279,69 @@ msgstr ""
 "\n"
 "years old. And my site is 1 years old"
 
-#: .\Main\templates\Main\base.html:88
+#: .\Main\templates\Main\base.html:98
 msgid "3 горизонтальные линии, бургер"
 msgstr "3 horizontal lines, burger"
 
-#: .\Main\templates\Main\base.html:96
+#: .\Main\templates\Main\base.html:106
 msgid "Главная иконка сайта"
 msgstr "Main icon of the website"
 
-#: .\Main\templates\Main\base.html:104
+#: .\Main\templates\Main\base.html:114
 msgid "Домашняя"
 msgstr "Home"
 
-#: .\Main\templates\Main\base.html:105 .\Main\templates\Main\base.html:129
+#: .\Main\templates\Main\base.html:115 .\Main\templates\Main\base.html:139
 msgid "Об авторе"
 msgstr "About"
 
-#: .\Main\templates\Main\base.html:106 .\Main\templates\Main\base.html:130
+#: .\Main\templates\Main\base.html:116 .\Main\templates\Main\base.html:140
 msgid "Контакты"
 msgstr "Contacts"
 
-#: .\Main\templates\Main\base.html:107
+#: .\Main\templates\Main\base.html:117
 msgid "Галерея"
 msgstr "Gallery"
 
-#: .\Main\templates\Main\base.html:125
+#: .\Main\templates\Main\base.html:135
 msgid "Другие ссылки"
 msgstr "Other links"
 
-#: .\Main\templates\Main\base.html:128
+#: .\Main\templates\Main\base.html:138
 msgid "Карта сайта"
 msgstr "Sitemap"
 
-#: .\Main\templates\Main\base.html:135
+#: .\Main\templates\Main\base.html:145
 msgid "Популярные ссылки"
 msgstr "Popular links"
 
-#: .\Main\templates\Main\base.html:144
+#: .\Main\templates\Main\base.html:154
 msgid "Социальные сети"
 msgstr "Social networks"
 
-#: .\Main\templates\Main\base.html:147 .\Main\templates\Main\base.html:148
-#: .\Main\templates\Main\base.html:149 .\Main\templates\Main\base.html:150
-#: .\Main\templates\Main\base.html:151
+#: .\Main\templates\Main\base.html:157 .\Main\templates\Main\base.html:158
+#: .\Main\templates\Main\base.html:159 .\Main\templates\Main\base.html:160
+#: .\Main\templates\Main\base.html:161
 msgid "Контактная страница Тимы"
 msgstr "Contacts page of Tim"
 
-#: .\Main\templates\Main\base.html:147 .\Main\templates\Main\contacts.html:32
+#: .\Main\templates\Main\base.html:157 .\Main\templates\Main\contacts.html:32
 msgid "telegram иконка"
 msgstr "telegram icon"
 
-#: .\Main\templates\Main\base.html:148 .\Main\templates\Main\contacts.html:40
+#: .\Main\templates\Main\base.html:158 .\Main\templates\Main\contacts.html:40
 msgid "email иконка"
 msgstr "email icon"
 
-#: .\Main\templates\Main\base.html:149 .\Main\templates\Main\contacts.html:28
+#: .\Main\templates\Main\base.html:159 .\Main\templates\Main\contacts.html:28
 msgid "vk иконка"
 msgstr "vk icon"
 
-#: .\Main\templates\Main\base.html:150 .\Main\templates\Main\contacts.html:24
+#: .\Main\templates\Main\base.html:160 .\Main\templates\Main\contacts.html:24
 msgid "instagram иконка"
 msgstr "instagram icon"
 
-#: .\Main\templates\Main\base.html:151 .\Main\templates\Main\contacts.html:36
+#: .\Main\templates\Main\base.html:161 .\Main\templates\Main\contacts.html:36
 msgid "twitter иконка"
 msgstr "twitter icon"
 
@@ -410,10 +410,11 @@ msgid "Инструменты"
 msgstr "Tools"
 
 #: .\Main\templates\Main\home.html:25 .\Main\templates\Main\home.html:34
-#: .\Main\templates\Main\home.html:43 .\Main\templates\Main\home.html:52
-#: .\Main\templates\Main\home.html:65 .\Main\templates\Main\home.html:90
-#: .\Main\templates\Main\home.html:97 .\Main\templates\Main\home.html:128
-#: .\Main\templates\Main\home.html:135
+#: .\Main\templates\Main\home.html:43 .\Main\templates\Main\home.html:54
+#: .\Main\templates\Main\home.html:63 .\Main\templates\Main\home.html:73
+#: .\Main\templates\Main\home.html:87 .\Main\templates\Main\home.html:112
+#: .\Main\templates\Main\home.html:119 .\Main\templates\Main\home.html:150
+#: .\Main\templates\Main\home.html:157
 msgid "Больше ..."
 msgstr "See more ..."
 
@@ -425,19 +426,27 @@ msgstr "The best article"
 msgid "Последние новости"
 msgstr "Latest news"
 
-#: .\Main\templates\Main\home.html:47
-msgid "Серии статей"
-msgstr "The article's series"
+#: .\Main\templates\Main\home.html:49
+msgid "Словарь"
+msgstr "Glossary"
 
-#: .\Main\templates\Main\home.html:56
+#: .\Main\templates\Main\home.html:58
+msgid "Вопросы"
+msgstr "Questions"
+
+#: .\Main\templates\Main\home.html:68
+msgid "Заметки"
+msgstr "Notes"
+
+#: .\Main\templates\Main\home.html:78
 msgid "Последние добавленные изображения"
 msgstr "The latest added images"
 
-#: .\Main\templates\Main\home.html:69
+#: .\Main\templates\Main\home.html:91
 msgid "Другие ресурсы"
 msgstr "Other resources"
 
-#: .\Main\templates\Main\home.html:107
+#: .\Main\templates\Main\home.html:129
 msgid "Другие статьи (по темам)"
 msgstr "Other articles (by topic)"
 

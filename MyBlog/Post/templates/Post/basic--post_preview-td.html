@@ -5,7 +5,7 @@
 
 {% for a in posts %}
 
-<div class="post_preview loader">
+<div class="post_preview loader" data-numpages="{{num_pages}}">
 	<fieldset class="column min_gap">
         <legend class="question row mid_gap in_middle">
 			<h2 style='font-size: var(--size-titleH4_font)'><a  class="text_button" href='{{a.get_absolute_url}}'>{{a.termin}}</a></h2>

@@ -22,4 +22,5 @@ urlpatterns += [
     path('td/', V.td_list, name='td-list'),
     path('qa/', V.qa_list, name='qa-list'),
     path('tools/', V.tools_list, name='tools-list'),
+    path('notes/', V.notes_list, name='notes-list'),
 ]

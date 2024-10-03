@@ -8,7 +8,7 @@ from django.views.generic import TemplateView
 from .forms import FeedbackForm
 from MyBlog.settings import DEFAULT_FROM_EMAIL, DEFAULT_TO_EMAIL
 from django.core.mail import send_mail
-from Post.models import Tool, Article, Tag
+from Post.models import Tool, Article, Tag, TD, QA, Note
 from django.db.models import Q
 from django.http import JsonResponse
 from django.template import loader
@@ -74,14 +74,14 @@ def home(request):
 
     context = U.initDefaults(request)
     internal_tool_tag = Tag.objects.get(slug_en='internal-tool')
-    internal_tools = Tool.objects.filter(type=Tool.INTERNAL)
+    internal_tools = Tool.objects.filter(type=Tool.INTERNAL)[:website_conf.max_displayed_inner_tools_on_home]
     most_popular_article = [U.get_most_popular_post()]
     latest_news_tag = Tag.objects.get(slug_en='news')
     news = U.get_posts_by_tag('News', Article)
     latest_news = U.get_latest_post(website_conf.max_displayed_news_on_home, news)
-    series_tag = Tag.objects.get(slug_en='search-result-parser-series')
-    post_series = U.get_posts_by_tag('search-result-parser-series', Article)
-    latest_post_series = U.get_latest_post(website_conf.max_displayed_postSeries_on_home, post_series)
+    latest_termins = U.get_latest_post(website_conf.max_displayed_td_on_home, TD.objects.all())
+    latest_questions = U.get_latest_post(website_conf.max_displayed_qa_on_home, QA.objects.all())
+    latest_notes = U.get_latest_post(website_conf.max_displayed_notes_on_home, Note.objects.all())
     latest_images = GU.getLatesImagesAll()[:website_conf.max_displayed_images_on_home]
 
     my_resources = []
@@ -117,10 +117,18 @@ def home(request):
     loaded_template = loader.get_template(f'Post/simple--post_preview-article.html')
     context.update({'latest_news': loaded_template.render(context, request)})
 
-    context.update({'posts': latest_post_series})
-    context.update({'series_tag': series_tag.slug})
-    loaded_template = loader.get_template(f'Post/simple--post_preview-article.html')
-    context.update({'latest_post_series': loaded_template.render(context, request)})
+    context.update({'posts': latest_termins})
+    loaded_template = loader.get_template(f'Post/basic--post_preview-td.html')
+    context.update({'latest_termins': loaded_template.render(context, request)})
+    
+    context.update({'posts': latest_questions})
+    loaded_template = loader.get_template(f'Post/basic--post_preview-qa.html')
+    context.update({'latest_questions': loaded_template.render(context, request)})
+    
+    context.update({'posts': latest_notes})
+    loaded_template = loader.get_template(f'Post/basic--post_preview-note.html')
+    context.update({'latest_notes': loaded_template.render(context, request)})
+
 
     my_res = []
     for res in my_resources:
