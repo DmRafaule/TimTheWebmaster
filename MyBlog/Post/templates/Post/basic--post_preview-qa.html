@@ -11,11 +11,13 @@
 			<h2 style='font-size: var(--size-titleH4_font)'><a class='text_button' href='{{a.get_absolute_url}}'>{{a.question}}</a></h2>
         </legend>
         <span>{{a.answer}}<span class="ref"> <a href='{{a.get_absolute_url}}'>{% trans 'Узнать больше' %}</a></span></span>
+		{% if displayTags %}
 		<div class="post_preview_tags">
 			{% for tag in a.tags.all %}
 			<a href="{{ category.get_absolute_url }}?page=1&type=full&is_recent={{is_recent}}&mode={{mode}}{{tag.slug|addToListInURL:current_tag}}"><div class="tag text_button tag_add">{{tag}}</div></a>
 			{% endfor %}
 		</div>
+		{% endif %}
     </fieldset>
 </div>
 
