@@ -73,6 +73,7 @@ def home(request):
     website_conf = Website.objects.get(is_current=True)
 
     context = U.initDefaults(request)
+    context.update({'displayTags': False})
     internal_tool_tag = Tag.objects.get(slug_en='internal-tool')
     internal_tools = Tool.objects.filter(type=Tool.INTERNAL)[:website_conf.max_displayed_inner_tools_on_home]
     most_popular_article = [U.get_most_popular_post()]
