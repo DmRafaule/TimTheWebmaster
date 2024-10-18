@@ -86,7 +86,7 @@
 {% endblock %}
 
 {% block scripts %}
-    {% csrf_token %}
+	{% csrf_token %}
     <script>
         const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
 		const category_name = "{{category.slug}}"
