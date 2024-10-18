@@ -72,14 +72,14 @@ def templates_list(request):
     user = User.objects.get(username=request.user)
     msg = _('✗ Возникла ошибка при получении списка')
     status = 503
+    templates = []
     templates_query = PostTemplate.objects.filter(user=user)
     if len(templates_query) > 0:
         templates_query = templates_query.order_by('-timeUpdated')
         templates_values = templates_query.values('filename', 'template', 'option')
         templates = list(templates_values)
         for template in templates:
-            path = template['template']
-            path = f"{MEDIA_URL}{path.replace(MEDIA_ROOT, '')}"
+            path = os.path.join(MEDIA_URL, 'tools', PostTemplate.ROOT_DIR, template['filename'])
             template['template'] =  path
             template['option'] = _get_option_name(template['option'])
         status = 200

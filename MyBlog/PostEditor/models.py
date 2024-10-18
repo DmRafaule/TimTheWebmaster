@@ -25,7 +25,7 @@ class PostTemplate(models.Model):
     )
     timeCreated = models.DateTimeField(auto_created=True, auto_now_add=True)
     timeUpdated = models.DateTimeField(auto_now=True)
-    filename = models.CharField(max_length=25)
+    filename = models.CharField(max_length=100)
     option = models.IntegerField(choices=OPTIONS, default=RAW)
     content = models.TextField(blank=True)
     used_styles = models.TextField(blank=True)
