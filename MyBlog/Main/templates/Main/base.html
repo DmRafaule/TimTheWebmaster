@@ -136,7 +136,7 @@
 				<div class="footer_links_title">
 					<b>{% trans "Другие ссылки" %}</b>
 				</div>
-				<ul class="footer_links_links">
+				<ul class="blank_list footer_links_links">
 					<li class="ref"><a href="/sitemap.xml">{% trans "Карта сайта" %}</a></li>
 					<li class="ref"><a href="{% url 'about' %}">{% trans "Об авторе" %}</a></li>
 					<li class="ref"><a href="{% url 'contacts' %}">{% trans "Контакты" %}</a></li>
@@ -146,7 +146,7 @@
 				<div class="footer_links_title">
 					<b>{% trans "Популярные ссылки" %}</b>
 				</div>
-				<ul>
+				<ul class="blank_list">
 				{% block footer_links %}
 				{% endblock %}
 				</ul>
@@ -155,7 +155,7 @@
 				<div class="footer_links_title">
 					<b>{% trans "Социальные сети" %}</b>
 				</div>
-				<ul>
+				<ul class="blank_list">
 					<li><a target="_blank" rel="contact" rev="{% trans "Контактная страница Тимы"%}" href="https://t.me/DmitryChedr" ><img width="32" height="32" class="icon button rounded_button dynamic_image" src="{% static 'placeholder.svg' %}" data-src="{% static 'telegram.svg' %}" alt="{% trans "telegram иконка" %}"></a></li>
 					<li><a target="_blank" rel="contact" rev="{% trans "Контактная страница Тимы"%}" href="https://mail.google.com/mail/?view=cm&source=mailto&to=ChedrDen@gmail.com" ><img width="32" height="32" class="icon button rounded_button dynamic_image" src="{% static 'placeholder.svg' %}" data-src="{% static 'email.svg' %}" alt="{% trans "email иконка"%}"></a></li>
 				<li><a target="_blank" rel="contact" rev="{% trans "Контактная страница Тимы"%}" href="https://vk.com/timachuduk" ><img width="32" height="32" class="icon button rounded_button dynamic_image" src="{% static 'placeholder.svg' %}" data-src="{% static 'vk.svg' %}" alt="{% trans "vk иконка"%}"></a></li>
