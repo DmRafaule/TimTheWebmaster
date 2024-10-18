@@ -22,9 +22,9 @@
 	--link-internal_color: #d4755f;
 	--link-hover-internal_color: #D98C45;
 	--tag_sign: "#";
-	--link_sign: "	➚";
+	--link_sign: "➚";
 	--link-downloadable_sign: "⇣";
-	--link-internal_sign: "	§";
+	--link-internal_sign: "§";
 	/*Images*/
 	--image-border-width: 2px;
 	--image-border-color: #2D2F2F;
@@ -49,6 +49,11 @@
 	--weight-acent_font: 400;
 	--weight-title_font: 700;
 	--weight-table-header: 700;
+	/*Status colors*/
+	--error: #b63838;
+	--success: #45c94c;
+	--warning: #dfc534;
+	--info: var(--main_text_color);
 	/*Sizes*/
 	--small_space: 8px;
 	--usual_space: 16px;
@@ -87,12 +92,15 @@
 	--post_preview_margin-top: 40px;
 	/*Video player*/
 	--video-player_border-radius: 10px;
+	/*Modal window radius*/
+	--modal-radius: 10px;
 }
 
 @media screen and (max-width: 900px){
 :root{
 	/*Icons*/
 	--icon_size: 48px;
+	--icon_size_small: 24px;
 	/*Fonts*/
 	--size-mini_font: 14px;
 	--size-main_font: 18px;

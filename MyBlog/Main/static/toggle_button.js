@@ -1,8 +1,7 @@
 let toggle_buttons = document.querySelectorAll(".toggle_button") 
 
 function toggleButton(){
-	body_of_toggler = this.nextElementSibling
-	console.log(body_of_toggler.firstElementChild.clientHeight)
+	var body_of_toggler = this.nextElementSibling
 	if (body_of_toggler.classList.contains("active_toggle_button")){
 		body_of_toggler.style.height = 0
 	}

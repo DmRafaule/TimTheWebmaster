@@ -1,1 +1,21 @@
-.list{margin-top:var(--list_margin-top)}.list>li,.list_el{column-gap:var(--list_unordered_element_gap);margin-top:var(--min_pm);margin-left:var(--mid_pm);word-wrap:anywhere}.list>li::before,.list_el::before{content:var(--list_unordered_element_sign);font-size:var(--list_sign_size);padding-right:var(--min_pm)}.list_without_sign{}.list_without_sign>li{display:flex;flex-wrap:wrap;align-items:center;column-gap:var(--list_unordered_element_gap);margin-top:var(--min_pm)}.numeric_list{margin-top:var(--list_margin-top);list-style:decimal}.numeric_list>li{list-style-position:outside;list-style-type:decimal;margin-left:var(--mid_pm)}
+.list, .numeric_list, ul, ol{
+	margin-top: var(--list_margin-top);
+}
+.list > li, .numeric_list > li, ul > li, ol > li{
+	list-style-position: inside;
+	list-style-type: disc;
+	margin-top: var(--min_pm);
+	margin-left: var(--mid_pm);
+	word-wrap: anywhere;
+}
+
+.list_without_sign{
+	
+}
+.list_without_sign > li{
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	column-gap: var(--list_unordered_element_gap);
+	margin-top: var(--min_pm);
+}

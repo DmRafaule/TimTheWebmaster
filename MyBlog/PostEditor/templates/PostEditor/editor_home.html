@@ -1,0 +1,229 @@
+{% extends 'Post/base_tool.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block head_tool %}
+    <title>{% trans 'Редактор постов'%}</title>
+    <meta name="description" content="">
+    <link rel="canonical" href="https://{{domain_name}}{%url 'editor_home'%}" />
+    <meta name="keywords" content="">
+{% endblock %}
+
+{% block hat_tool %}
+  <div class="header_button  button squered_button"  data-body="toolbar_body">
+    <img id="filters_hat_button" data-sort="true" width="32" height="32" class="icon dynamic_image " src="{% static 'placeholder.svg' %}" data-src="{% static 'PostEditor/img/construction.png' %}" alt="{% trans 'one layer on top of anothe' %}">
+  </div>
+{% endblock %}
+
+{% block content_tool %}
+  <div id="toolbar_body" class="hat_body">
+    <div id="toolbar-container" class="no_wrap" style="display: flex; flex-direction: column">
+      <fieldset class="fieldset_in_slider">
+        <legend>
+          <div>
+            {% trans "Фонт и размер" %}
+          </div>
+        </legend>
+        <span class="ql-formats">
+          <select class="ql-font">
+            <option value="open-sans" selected>Open Sans</option>
+            <option value="advent-pro">Advent Pro</option>
+            <option value="roboto-slab">Roboto Slab</option>
+          </select>
+          <select class="ql-size">
+            <option value="16px" selected>16px</option>
+            <option value="14px">14px</option>
+          </select>
+        </span>
+      </fieldset>
+      <fieldset class="fieldset_in_slider">
+        <legend>
+          <div>
+            {% trans "Текст" %}
+          </div>
+        </legend>
+        <span class="ql-formats">
+          <abbr title="{% trans 'Жирный' %}"><button class="ql-bold"></button></abbr>
+          <abbr title="{% trans 'Скошеный' %}"><button class="ql-italic"></button></abbr>
+          <abbr title="{% trans 'Подчёркнутый' %}"><button class="ql-underline"></button></abbr>
+          <abbr title="{% trans 'Перечёркнутый' %}"><button class="ql-strike"></button></abbr>
+          <abbr title="{% trans 'Аббревиатура' %}"><button class="ql-abbr icon"></button></abbr>
+        </span>
+      </fieldset>
+      <fieldset class="fieldset_in_slider">
+        <legend>
+          <div>
+            {% trans "Заголовки" %}
+          </div>
+        </legend>
+        <span class="ql-formats">
+          <button class="ql-header" value="1"></button>
+          <button class="ql-header" value="2"></button>
+          <button class="ql-header" value="3"></button>
+          <button class="ql-header" value="4"></button>
+          <button class="ql-header" value="5"></button>
+          <button class="ql-header" value="6"></button>
+        </span>
+      </fieldset>
+      <fieldset class="fieldset_in_slider">
+        <legend>
+          <div>
+            {% trans "Другие блоки" %}
+          </div>
+        </legend>
+        <span class="ql-formats">
+          <abbr title="{% trans 'Цитата' %}"><button class="ql-quote svg_color_white" value="{% static "PostEditor/img/blockQuote.svg" %},quote"></button></abbr>
+          <abbr title="{% trans 'Внимание' %}"><button class="ql-attention svg_color_white" value="{% static "PostEditor/img/blockAttention.svg" %},attention"></button></abbr>
+          <abbr title="{% trans 'Опасно' %}"><button class="ql-danger svg_color_white" value="{% static "PostEditor/img/blockDangerouse.svg" %},danger"></button></abbr>
+          <abbr title="{% trans 'Это интересно' %}"><button class="ql-interesting svg_color_white" value="{% static "PostEditor/img/blockInteresting.svg" %},interesting"></button></abbr>
+          <abbr title="{% trans 'Вопрос' %}"><button class="ql-question svg_color_white" value="{% static "PostEditor/img/blockQuestion.svg" %},question"></button></abbr>
+          <abbr title="{% trans 'Определение' %}"><button class="ql-termin svg_color_white" value="{% static "PostEditor/img/blockTermin.svg" %},termin"></button></abbr>
+          <abbr title="{% trans 'Блок кода' %}"><button class="ql-code-block"></button></abbr>
+        </span>
+      </fieldset>
+      <fieldset class="fieldset_in_slider">
+        <legend>
+          <div>
+            {% trans "Структуризаторы" %}
+          </div>
+        </legend>
+        <span class="ql-formats">
+          <abbr title="{% trans 'Список нумерованный' %}"><button class="ql-list" value="decimal"><img class="icon button squered_button dynamic_image loader" src='{% static "placeholder.svg" %}' data-src="{% static "PostEditor/img/list-decimal.svg" %}"></button></abbr>
+          <abbr title="{% trans 'Список ненумерованный' %}"><button class="ql-list" value="disc"><img class="icon button squered_button dynamic_image loader" src='{% static "placeholder.svg" %}' data-src="{% static "PostEditor/img/list-disc.svg" %}"></button></abbr>
+          <abbr title="{% trans 'Список ненумерованный' %}"><button class="ql-list" value="lower-alpha"><img class="icon button squered_button dynamic_image loader" src='{% static "placeholder.svg" %}' data-src="{% static "PostEditor/img/list-alpha.svg" %}"></button></abbr>
+          <abbr title="{% trans 'Таблица' %}"><button class="ql-table"></button></abbr>
+          <abbr title="{% trans 'Табы(в разработке)' %}"><button class="ql-tabs"></button></abbr>
+          <abbr title="{% trans 'Горизонтальная линия' %}"><button class="ql-horizontal-line"></button></abbr>
+        </span>
+      </fieldset>
+      <fieldset class="fieldset_in_slider">
+        <legend>
+          <div>
+            {% trans "Медиа" %}
+          </div>
+        </legend>
+        <span class="ql-formats">
+          <abbr title="{% trans 'Ссылка на внешний рессурс'%}"><button class="ql-external-link"></button></abbr>
+          <abbr title="{% trans 'Ссылка на часть статьи'%}"><button class="ql-internal-link"></button></abbr>
+          <abbr title="{% trans 'Ссылка на скачиваеммый контент'%}"><button class="ql-downloadable-link"></button></abbr>
+          <abbr title="{% trans 'Изображение'%}"><button class="ql-image"></button></abbr>
+          </span>
+      </fieldset>
+      <div class="el-expandable el-no_shrinkable row"></div>
+    </div>
+  </div>
+  {# This is a text to be used in PostEditor/js/quill_customized.js #}
+  <div style="display: none">
+    <div id='save_text'>{% trans 'Сохранить' %}</div>
+    <div id='remove_text'>{% trans 'Удалить' %}</div>
+    <div id='insertRowAbove_text'>{% trans 'Вставка ряда выше' %}</div>
+    <div id='insertRowBelow_text'>{% trans 'Вставка ряда ниже' %}</div>
+    <div id='insertColumnAfter_text'>{% trans 'Вставка колонки после' %}</div>
+    <div id='insertColumnBefore_text'>{% trans 'Вставка колонки перед' %}</div>
+    <div id='removeRow_text'>{% trans 'Удалить ряд' %}</div>
+    <div id='removeCol_text'>{% trans 'Удалить колонку' %}</div>
+    <div id='removeTable_text'>{% trans 'Удалить таблицу' %}</div>
+    <div id='main_placeholder_quill'>{% trans 'Да начни творить' %}</div>
+  </div>
+  <div id='toSaveModal' class="modal modal-window" data-btn-id="save_btn" data-btn-close-id='close_btn'>
+    <div class="modal-content">
+      <div class="modal_body">
+        <div class="row in_middle">
+          <div class="row mid_gap on_end_other">
+            <form class="vertical" action='' id="toSave"  method="post" enctype='multipart/form-data'>
+              {% csrf_token %}
+              {% for field in form %}
+                <div>
+                  {{ field }}
+                </div>
+                {% for error in field.errors %}
+                <p class="form_error">{{ error }}</p>
+                {% endfor %}	
+              {% endfor %}
+            </form>
+          </div>
+        </div>
+      </div>
+      <hr>
+      <div class="modal_actions">
+        <img id="save_btn_submit" width="32" height="32" class="close_modal svg_icon_inverted icon dynamic_image bordered_button button" src="{% static 'placeholder.svg'%}" data-src="{% static 'ok.svg' %}" alt="{% trans 'Крестик' %}"  style='border-bottom-left-radius: var(--modal-radius)'>
+        <img id='close_btn' width="32" height="32" class="close_modal svg_icon_inverted icon dynamic_image bordered_button button" src="{% static 'placeholder.svg'%}" data-src="{% static 'close.svg' %}" alt="{% trans 'Крестик' %}" style='border-bottom-right-radius: var(--modal-radius)'>
+      </div>
+    </div>
+  </div>
+
+  <div id='toListModal' class="modal modal-window" data-btn-id="load_btn" data-btn-close-id='close_btn'>
+      <div class="modal-content">
+        <div class="modal_body">
+          <div class="row in_middle">
+            <div class="row mid_gap on_end_other">
+              <div id='toList' class=" templates mid_gap no_wrap">
+              </div>
+            </div>
+          </div>
+        </div>
+        <hr>
+        <div class="modal_actions">
+          <img id='close_btn' width="32" height="32" class="close_modal svg_icon_inverted icon dynamic_image bordered_button button" src="{% static 'placeholder.svg'%}" data-src="{% static 'close.svg' %}" alt="{% trans 'Крестик' %}" style='border-bottom-right-radius: var(--modal-radius);border-bottom-left-radius: var(--modal-radius)'>
+        </div>
+      </div>
+  </div>
+  <div class="limiter in_middle-self "><div id="editor" class="full_width full_height"></div></div>
+{% endblock %}
+
+{% block footer_tool %}
+    <div class="row min_gap in_middle">
+        {% if request.user.is_authenticated %}
+        <abbr class="row" title="{% trans 'Сохранить' %}">
+            <img id='save_btn' width="32" height="32" class="icon button   bordered_button dynamic_image loader" alt="{% trans 'Сохранить' %}" src="{% static 'placeholder.svg' %}" data-src="{% static 'PostEditor/img/save.svg' %}">
+        </abbr>
+        <abbr class="row" title="{% trans 'Загрузить' %}">
+            <img id='load_btn' width="32" height="32" class="icon button  bordered_button dynamic_image loader" alt="{% trans 'Загрузить' %}" src="{% static 'placeholder.svg' %}" data-src="{% static 'PostEditor/img/list.svg' %}">
+        </abbr>
+        <abbr class="row" title="{% trans 'Скачать всё' %}">
+          <a id='download_btn' href='#'>
+            <img width="32" height="32" class=" icon dynamic_image bordered_button button" src="{% static 'placeholder.svg'%}" data-src="{% static 'PostEditor/img/download.svg' %}" alt="{% trans 'Крестик' %}">
+          </a>
+        </abbr>
+        {% else %}
+        <abbr class="row" title="{% trans 'Скачать содержимое' %}">
+            <img id='download_btn_raw' width="32" height="32" class=" icon dynamic_image bordered_button button" src="{% static 'placeholder.svg'%}" data-src="{% static 'PostEditor/img/download.svg' %}" alt="{% trans 'Крестик' %}">
+        </abbr>
+        {% endif %}
+    </div>
+    <div class="el-expandable"></div>
+{% endblock %}
+
+{% block styles_tool %}
+  <link type="text/css" rel="stylesheet" href="{% static 'Post/css/post.css' %}"/>
+  {# Need for html_media_checker, which stylesheet to check, start point #}
+  <link id='post_styles_exporter_top_line' type="text/css" rel="stylesheet" href="{% static 'PostEditor/css/main.css' %}"/>
+    <link type="text/css" rel="stylesheet" href="{% static 'images.css' %}"/>
+    <link type="text/css" rel="stylesheet" href="{% static 'video.css' %}"/>
+    <link type="text/css" rel="stylesheet" href="{% static 'tables.css' %}"/>
+    {# Specified a special keyword to trigger check function #}
+    <link data-special='table_of_content' type="text/css" rel="stylesheet" href="{% static 'table_of_content.css' %}"/>
+    <link type="text/css" rel="stylesheet" href="{% static 'Post/css/tabs.css' %}"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css"/>
+  {# Need for html_media_checker, which stylesheet to check, end point #}
+  <link id='post_styles_exporter_bottom_line' type="text/css" rel="stylesheet" href="{% static 'progressbar.css' %}"/>
+{% endblock %}
+
+{% block scripts_tool %}
+    {# Need for html_media_checker, which script to check, start point #}
+    <script id='post_script_exporter_top_line' src="{% static 'PostEditor/js/utils.js' %}"></script>
+      <script data-special='video' src="{% static 'video.js' %}"></script>
+      <script data-special='table_of_content' type="application/json" src="{% static 'table_of_content.js' %}"></script>
+      <script data-special='image_previewer' src="{% static 'image_previewer.js' %}"></script>
+      <script data-special='tabs' src="{% static 'Post/js/tabs.js' %}"></script>
+      <script data-special='code' src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    {# Need for html_media_checker, which script to check, end point #}
+    <script id='post_script_exporter_bottom_line' src="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.js"></script>
+    
+    <script src="{% static 'PostEditor/js/quill_customized.js' %}"></script>
+    <script src="{% static 'PostEditor/js/server_media_updater.js' %}"></script>
+    <script src="{% static 'PostEditor/js/exporter.js' %}"></script>
+    {% if request.user.is_authenticated %}
+    <script src="{% static 'PostEditor/js/initer.js' %}"></script>
+    {% endif %}
+{% endblock %}

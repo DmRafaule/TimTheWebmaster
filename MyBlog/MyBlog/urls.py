@@ -32,6 +32,7 @@ urlpatterns += i18n_patterns(
     path('', include('Main.urls')),
     path('', include('Post.urls')),
     path('', include('Gallery.urls')),
+    path('tools/', include('PostEditor.urls')),
     path('tools/', include('ImageThief.urls')),
     path('tools/', include('WebGLEngine.urls')),
     path('tools/', include('RSSAggregator.urls')),

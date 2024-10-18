@@ -32,7 +32,7 @@ function onHeaderButton(body){
 }
 
 const clickOutsideHat = new Event('clickOutsideHat')
-const onClickOutsideHat = (button, body, callback) => {
+let onClickOutsideHat = (button, body, callback) => {
 	document.addEventListener('click', e => {
 		if (!body.contains(e.target) && !button.contains(e.target)){ 
 			document.dispatchEvent(clickOutsideHat)

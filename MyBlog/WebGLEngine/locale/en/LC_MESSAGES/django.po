@@ -3,13 +3,12 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#: WebGLEngine/templates/WebGLEngine/main.html:9
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-20 05:42+0000\n"
+"POT-Creation-Date: 2024-10-18 08:47+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,21 +18,21 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: WebGLEngine/templates/WebGLEngine/geometry_bg.html:8
-#: WebGLEngine/templates/WebGLEngine/home_gik.html:8
+#: .\WebGLEngine\templates\WebGLEngine\geometry_bg.html:8
+#: .\WebGLEngine\templates\WebGLEngine\home_gik.html:8
 msgid "Пример отрисовки. Геометрический задник | WebDI"
 msgstr ""
 
-#: WebGLEngine/templates/WebGLEngine/geometry_bg.html:9
-#: WebGLEngine/templates/WebGLEngine/home_gik.html:9
-#: WebGLEngine/templates/WebGLEngine/testing.html:9
+#: .\WebGLEngine\templates\WebGLEngine\geometry_bg.html:9
+#: .\WebGLEngine\templates\WebGLEngine\home_gik.html:9
+#: .\WebGLEngine\templates\WebGLEngine\testing.html:9
 msgid "Создание шейдеров для веба. Используя WebGL"
 msgstr ""
 
-#: WebGLEngine/templates/WebGLEngine/main.html:8
+#: .\WebGLEngine\templates\WebGLEngine\main.html:7
 msgid "Движок отрисовки | WebDI"
 msgstr ""
 
-#: WebGLEngine/templates/WebGLEngine/testing.html:8
+#: .\WebGLEngine\templates\WebGLEngine\testing.html:8
 msgid "Редактор и конструктор шейдеров"
 msgstr ""

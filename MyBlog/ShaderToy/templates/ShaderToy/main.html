@@ -1,9 +1,9 @@
-{% extends 'Main/base.html' %}
+{% extends 'Post/base_tool.html' %}
 {% load i18n %}
 {% load static %}
 
 
-{% block head %}
+{% block head_tool %}
 	<link rel="canonical" href="https://{{domain_name}}{% url 'shader-toy' %}" />
 	<title>{% trans "Редактор шейдеров на glsl" %} | ShaderToy | Tim the webmaster</title>
 	<meta name="description" content="{% trans "Это инструмент, который позволяет создать, отредактировать, настроить и скачать вершинный и фрагментный шейдер написанные на glsl." %}">
@@ -11,7 +11,7 @@
 {% endblock %}
 
 
-{% block content %}
+{% block content_tool %}
 	<div class="canvas_workspace">
 		<canvas  id='canvas' class="canvas_flex canvas_bordered" data-vertex-shader="{% static "ShaderToy/shaders/default.vert" %}" data-fragment-shader="{% static "ShaderToy/shaders/default.frag" %}">
 		</canvas>
@@ -221,30 +221,17 @@
 	
 {% endblock %}
 
-{% block footer_links %}
-	{% for ref in popular_posts %}
-		<li class="ref"><a href="{{ref.get_absolute_url}}">{{ref|truncatechars:15}}</a></li>
-	{% endfor %}
-	{% block footer_links_post %}
-	{% endblock %}
+{% block footer_tool %}
 {% endblock %}
 
-{% block styles %}
-    <link type="text/css" rel="stylesheet" href="{% static 'blocks.css' %}"/>
+{% block styles_tool %}
     <link type="text/css" rel="stylesheet" href="{% static 'input.css' %}"/>
-    <link type="text/css" rel="stylesheet" href="{% static 'lists.css' %}"/>
     <link type="text/css" rel="stylesheet" href="{% static 'Post/css/tabs.css' %}"/>
     <link type="text/css" rel="stylesheet" href="{% static 'ShaderToy/css/shader_toy.css' %}"/>
-	{% block styles_post %}
-	{% endblock %}
 {% endblock %}
 
-{% block scripts %}
+{% block scripts_tool %}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    {% csrf_token %}
-    <script>
-        const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
-    </script>
     <script src="{% static 'inputvaluebutton.js' %}"></script>
     <script src="{% static 'radiobutton.js' %}"></script>
     <script src="{% static 'checkboxbutton.js' %}"></script>

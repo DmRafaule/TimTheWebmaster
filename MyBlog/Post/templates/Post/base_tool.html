@@ -1,0 +1,52 @@
+{% extends 'Main/base.html' %}
+{% load i18n %}
+{% load static %}
+
+{% block head %}
+	{% block head_tool %}
+	{% endblock %}
+{% endblock %}
+
+{% block hat %}
+	{% block hat_tool %}
+	{% endblock%}
+{% endblock %}
+
+
+{% block content %}
+    <div class='notificator-container'>
+        <div class="notificator-blank notificator notificator-inactive"></div>
+    </div>
+	{% block content_tool %}
+	{% endblock %}
+{% endblock %}
+
+{% block footer %}
+    {% block footer_tool %}
+	{% endblock %}
+{% endblock %}
+
+{% block styles %}
+    <link type="text/css" rel="stylesheet" href="{% static 'modal.css' %}"/>
+    <link type="text/css" rel="stylesheet" href="{% static 'blocks.css' %}"/>
+    <link type="text/css" rel="stylesheet" href="{% static 'lists.css' %}"/>
+    <link type="text/css" rel="stylesheet" href="{% static 'forms.css' %}"/>
+    <link type="text/css" rel="stylesheet" href="{% static 'images.css' %}"/>
+    <link type="text/css" rel="stylesheet" href="{% static 'tooltip.css' %}"/>
+	<link type="text/css" rel="stylesheet" href="{% static 'dynamic.css' %}"/>
+    <link type="text/css" rel="stylesheet" href="{% static 'footer-tool.css' %}"/>
+    <link type="text/css" rel="stylesheet" href="{% static 'notificator.css' %}"/>
+	{% block styles_tool %}
+	{% endblock %}
+{% endblock %}
+
+{% block scripts %}
+    {% csrf_token %}
+    <script>
+        const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+    </script>
+    <script src="{% static 'modal.js' %}"></script>
+    <script src="{% static 'notificator.js' %}"></script>
+	{% block scripts_tool %}
+	{% endblock %}
+{% endblock %}

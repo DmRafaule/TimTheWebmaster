@@ -15,15 +15,25 @@
   /* Modal Content/Box */
   .modal-content {
     background-color: var(--secondary_color);
-  margin: auto 10%;
-  color: white;
-  border: 1px solid #888;
-  
-  top: 50%;
-  bottom: 50%;
+    color: white;
+    border: 2px solid #888;
+    border-radius: var(--modal-radius);
+    word-break: break-all;
+    padding: var(--min_pm);
     display: flex;
     flex-direction: column;
-    position: relative;
+    
+    position: fixed;
+    inset: 0px;
+    width: fit-content;
+    height: fit-content;
+    max-width: 100vw;
+    max-height: 100dvh;
+    margin: auto;
+
+    box-shadow: 10px 10px 22px 3px rgba(0,0,0,0.33);
+    -webkit-box-shadow: 10px 10px 22px 3px rgba(0,0,0,0.33);
+    -moz-box-shadow: 10px 10px 22px 3px rgba(0,0,0,0.33);
   }
 .modal-content > hr{
     margin:0;
@@ -31,8 +41,8 @@
 }
 
   .modal_actions{
-
-
+    display: flex;
+    justify-content: right;
   }
 
   .modal_body{

@@ -1,0 +1,271 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-10-18 08:47+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: .\PostEditor\forms.py:13
+msgid "Как сохранить результат"
+msgstr "How to save result"
+
+#: .\PostEditor\forms.py:16
+msgid "Название файла"
+msgstr "Filename"
+
+#: .\PostEditor\models.py:17
+msgid "Чистый HTML"
+msgstr "Raw HTML"
+
+#: .\PostEditor\models.py:18
+msgid "Для статей"
+msgstr "For articles"
+
+#: .\PostEditor\models.py:19
+msgid "Для определений"
+msgstr "For definitions"
+
+#: .\PostEditor\models.py:20
+msgid "Для вопросов"
+msgstr "For questions"
+
+#: .\PostEditor\templates\PostEditor\editor_home.html:6
+msgid "Редактор постов"
+msgstr "Post editor"
+
+#: .\PostEditor\templates\PostEditor\editor_home.html:14
+msgid "one layer on top of anothe"
+msgstr ""
+
+#: .\PostEditor\templates\PostEditor\editor_home.html:24
+msgid "Фонт и размер"
+msgstr "Font and size"
+
+#: .\PostEditor\templates\PostEditor\editor_home.html:42
+msgid "Текст"
+msgstr "Text"
+
+#: .\PostEditor\templates\PostEditor\editor_home.html:46
+msgid "Жирный"
+msgstr "Bold"
+
+#: .\PostEditor\templates\PostEditor\editor_home.html:47
+msgid "Скошеный"
+msgstr "Italic"
+
+#: .\PostEditor\templates\PostEditor\editor_home.html:48
+msgid "Подчёркнутый"
+msgstr "Underline"
+
+#: .\PostEditor\templates\PostEditor\editor_home.html:49
+msgid "Перечёркнутый"
+msgstr "Crossed out"
+
+#: .\PostEditor\templates\PostEditor\editor_home.html:50
+msgid "Аббревиатура"
+msgstr "Abbreviation"
+
+#: .\PostEditor\templates\PostEditor\editor_home.html:56
+msgid "Заголовки"
+msgstr "Headers"
+
+#: .\PostEditor\templates\PostEditor\editor_home.html:71
+msgid "Другие блоки"
+msgstr "Other blocks"
+
+#: .\PostEditor\templates\PostEditor\editor_home.html:75
+msgid "Цитата"
+msgstr "Quote"
+
+#: .\PostEditor\templates\PostEditor\editor_home.html:76
+msgid "Внимание"
+msgstr "Attention"
+
+#: .\PostEditor\templates\PostEditor\editor_home.html:77
+msgid "Опасно"
+msgstr "Danger"
+
+#: .\PostEditor\templates\PostEditor\editor_home.html:78
+msgid "Это интересно"
+msgstr "This is interesting"
+
+#: .\PostEditor\templates\PostEditor\editor_home.html:79
+msgid "Вопрос"
+msgstr "Question"
+
+#: .\PostEditor\templates\PostEditor\editor_home.html:80
+msgid "Определение"
+msgstr "Definition"
+
+#: .\PostEditor\templates\PostEditor\editor_home.html:81
+msgid "Блок кода"
+msgstr "A block of code"
+
+#: .\PostEditor\templates\PostEditor\editor_home.html:87
+msgid "Структуризаторы"
+msgstr "Structurizers"
+
+#: .\PostEditor\templates\PostEditor\editor_home.html:91
+msgid "Список нумерованный"
+msgstr "Numeric list"
+
+#: .\PostEditor\templates\PostEditor\editor_home.html:92
+#: .\PostEditor\templates\PostEditor\editor_home.html:93
+msgid "Список ненумерованный"
+msgstr "Bullet list"
+
+#: .\PostEditor\templates\PostEditor\editor_home.html:94
+msgid "Таблица"
+msgstr "Table"
+
+#: .\PostEditor\templates\PostEditor\editor_home.html:95
+msgid "Табы(в разработке)"
+msgstr "Tabs (in development)"
+
+#: .\PostEditor\templates\PostEditor\editor_home.html:96
+msgid "Горизонтальная линия"
+msgstr "Horizontal line"
+
+#: .\PostEditor\templates\PostEditor\editor_home.html:102
+msgid "Медиа"
+msgstr "Media"
+
+#: .\PostEditor\templates\PostEditor\editor_home.html:106
+msgid "Ссылка на внешний рессурс"
+msgstr "A link to outside a site"
+
+#: .\PostEditor\templates\PostEditor\editor_home.html:107
+msgid "Ссылка на часть статьи"
+msgstr "A link to a part of article"
+
+#: .\PostEditor\templates\PostEditor\editor_home.html:108
+msgid "Ссылка на скачиваеммый контент"
+msgstr "A link to downloadable content"
+
+#: .\PostEditor\templates\PostEditor\editor_home.html:109
+msgid "Изображение"
+msgstr "Image"
+
+#: .\PostEditor\templates\PostEditor\editor_home.html:117
+#: .\PostEditor\templates\PostEditor\editor_home.html:177
+#: .\PostEditor\templates\PostEditor\editor_home.html:178
+msgid "Сохранить"
+msgstr "Save"
+
+#: .\PostEditor\templates\PostEditor\editor_home.html:118
+msgid "Удалить"
+msgstr "Remove"
+
+#: .\PostEditor\templates\PostEditor\editor_home.html:119
+msgid "Вставка ряда выше"
+msgstr "Insert a row above"
+
+#: .\PostEditor\templates\PostEditor\editor_home.html:120
+msgid "Вставка ряда ниже"
+msgstr "Insert a row below"
+
+#: .\PostEditor\templates\PostEditor\editor_home.html:121
+msgid "Вставка колонки после"
+msgstr "Insert a column after"
+
+#: .\PostEditor\templates\PostEditor\editor_home.html:122
+msgid "Вставка колонки перед"
+msgstr "Insert a column before"
+
+#: .\PostEditor\templates\PostEditor\editor_home.html:123
+msgid "Удалить ряд"
+msgstr "Remove a row"
+
+#: .\PostEditor\templates\PostEditor\editor_home.html:124
+msgid "Удалить колонку"
+msgstr "Remove a column"
+
+#: .\PostEditor\templates\PostEditor\editor_home.html:125
+msgid "Удалить таблицу"
+msgstr "Delete a table"
+
+#: .\PostEditor\templates\PostEditor\editor_home.html:126
+msgid "Да начни творить"
+msgstr "Let's start creating"
+
+#: .\PostEditor\templates\PostEditor\editor_home.html:149
+#: .\PostEditor\templates\PostEditor\editor_home.html:150
+#: .\PostEditor\templates\PostEditor\editor_home.html:167
+#: .\PostEditor\templates\PostEditor\editor_home.html:185
+#: .\PostEditor\templates\PostEditor\editor_home.html:190
+msgid "Крестик"
+msgstr "Cross"
+
+#: .\PostEditor\templates\PostEditor\editor_home.html:180
+#: .\PostEditor\templates\PostEditor\editor_home.html:181
+msgid "Загрузить"
+msgstr "Load"
+
+#: .\PostEditor\templates\PostEditor\editor_home.html:183
+msgid "Скачать всё"
+msgstr "Download all"
+
+#: .\PostEditor\templates\PostEditor\editor_home.html:189
+msgid "Скачать содержимое"
+msgstr "Download content"
+
+#: .\PostEditor\views.py:73
+msgid "✗ Возникла ошибка при получении списка"
+msgstr "✗ An error occure while retrieving result"
+
+#: .\PostEditor\views.py:86
+msgid "✔ Список шаблонов успешно получен"
+msgstr "✔ A list of templates successfully recieved"
+
+#: .\PostEditor\views.py:88
+msgid "✗ Список шаблонов пуст"
+msgstr "✗ A list of templates is empty"
+
+#: .\PostEditor\views.py:94
+msgid "✗ Не удалось удалить шаблон"
+msgstr "✗ An error occure while deleting a template"
+
+#: .\PostEditor\views.py:101
+msgid "✔ Шаблон успешно удалён"
+msgstr "✔ A template has been deleted successfully"
+
+#: .\PostEditor\views.py:103 .\PostEditor\views.py:121
+msgid "✗ Только POST запросы обрабатываются"
+msgstr "✗ Only POST requests are allowed"
+
+#: .\PostEditor\views.py:110
+msgid "✗ Не удалось загрузить шаблон"
+msgstr "✗ An error occure while loading a template"
+
+#: .\PostEditor\views.py:117
+msgid "✔ Шаблон получен"
+msgstr "✔ Recieved a templated"
+
+#: .\PostEditor\views.py:119
+msgid "✗ Такого файла больше не существует"
+msgstr "✗ Such file no longer exist"
+
+#: .\PostEditor\views.py:128
+msgid "✗ Возникла ошибка при сохранении"
+msgstr "✗ An error occure while saving"
+
+#: .\PostEditor\views.py:147
+msgid "✔ Успешное сохранение"
+msgstr "✔ Saved successfully"
+
+#: .\PostEditor\views.py:150
+msgid "✗ Форма не валидна"
+msgstr "✗ Form isn't valid"

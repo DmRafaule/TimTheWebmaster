@@ -1,6 +1,12 @@
-form > div{
-	margin-top: var(--form_el_margin-btw_them);
-	padding: 8px;
+form.vertical{
+	display: flex;
+	flex-direction: column;
+	gap: var(--min_pm);
+}
+form{
+	display: flex;
+	flex-direction: column;
+	gap: var(--min_pm);
 }
 
 input{
@@ -25,12 +31,21 @@ textarea{
 
 .form_error{
 	padding-left: 8px;
-	color:red;
+	color: var(--error);
 }
 
 .form_success{
-	color: green;
+	color: var(--success);
 }
+
+.form_warning{
+	color: var(--warning);
+}
+
+.form_info{
+	color: var(--info);
+}
+
 
 .notification{
 	opacity: 100%;
@@ -52,4 +67,8 @@ textarea{
 @keyframes notification_fadeout {
 	0% {opacity: 1;}
    100% {opacity: 0;} 
+}
+
+button{
+	background: none;
 }
