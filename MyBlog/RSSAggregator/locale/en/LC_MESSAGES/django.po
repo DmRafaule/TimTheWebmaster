@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-06-08 19:22+0300\n"
+"POT-Creation-Date: 2024-10-17 09:33+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -43,18 +43,18 @@ msgstr ""
 msgid "one layer on top of anothe"
 msgstr "one layer on top of another"
 
-#: .\RSSAggregator\templates\RSSAggregator\rss-aggregator.html:25
-#: .\RSSAggregator\templates\RSSAggregator\rss-aggregator.html:35
-msgid "Крестик"
-msgstr "Cross"
-
-#: .\RSSAggregator\templates\RSSAggregator\rss-aggregator.html:32
+#: .\RSSAggregator\templates\RSSAggregator\rss-aggregator.html:28
 msgid "Введи URL RSS канала"
 msgstr "Enter URL RSS channel"
 
-#: .\RSSAggregator\templates\RSSAggregator\rss-aggregator.html:34
+#: .\RSSAggregator\templates\RSSAggregator\rss-aggregator.html:30
 msgid "http(s)://domain.com/file.rss"
 msgstr "http(s)://domain.com/file.rss"
+
+#: .\RSSAggregator\templates\RSSAggregator\rss-aggregator.html:37
+#: .\RSSAggregator\templates\RSSAggregator\rss-aggregator.html:38
+msgid "Крестик"
+msgstr "Cross"
 
 #: .\RSSAggregator\templates\RSSAggregator\rss-aggregator.html:48
 msgid "RSS Лента и агрегатор"

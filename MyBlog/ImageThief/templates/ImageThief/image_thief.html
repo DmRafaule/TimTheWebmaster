@@ -1,22 +1,24 @@
-{% extends 'Main/base.html' %}
+{% extends 'Post/base_tool.html' %}
 {% load static%}
 {% load i18n %}
 
-{% block head %}
+{% block head_tool %}
 	<title>{% trans "Бесплатный, онлайн парсер картинок с сайта ImageScraper | Тим зе Вебмастер" %}</title>
 	<meta name="description" content="{% trans "Парсер картинок, который можно скачать в виде скрипта или опробывать онлайн на сайте. Работает в режиме парсинга целого сайта или отдельных страниц." %}">
 	<link rel="canonical" href="https://{{domain_name}}{%url 'image_thief'%}" />
 {% endblock %}
 
-{% block content %}
+{% block hat_tool %}
+{% endblock%}
+
+{% block content_tool %}
 	<div class="limiter in_middle in_middle-self no_wrap padder">
 		<div id="common-error" class="hint-container hint-required hint-common_error"></div>
 		{% csrf_token %}
 		<form class="in_middle" id="toSteal">
-			<fieldset>
+			<fieldset class="full_width">
 				<legend>
 					<h1 class="title_image_thief">ImageThief</h1>
-					<p class="quote">{% trans "Бесплатный парсер изображений" %}</p>
 				</legend>
 				<div class="column">
 					<div class="row in_middle-farapart mid_gap marger_min">
@@ -167,23 +169,16 @@
 	</div>
 {% endblock %}
 
-{% block footer_links %}
-{% for ref in popular_posts %}
-		<li class="ref"><a href="{{ref.get_absolute_url}}">{{ref|truncatechars:15}}</a></li>
-{% endfor %}
+{% block footer_tool %}
 {% endblock %}
 
-{% block scripts %}
+{% block scripts_tool %}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="{% static 'ImageThief/js/prism.js' %}"></script>
     <script src="{% static 'ImageThief/js/imageThiefController.js' %}"></script>
 {% endblock %}
 
-{% block styles %}
-    <link type="text/css" rel="stylesheet" href="{% static 'text.css' %}"/>
-    <link type="text/css" rel="stylesheet" href="{% static 'forms.css' %}"/>
-    <link type="text/css" rel="stylesheet" href="{% static 'lists.css' %}"/>
-    <link type="text/css" rel="stylesheet" href="{% static 'blocks.css' %}"/>
+{% block styles_tool %}
     <link type="text/css" rel="stylesheet" href="{% static 'ImageThief/css/codeblock.css' %}"/>
     <link type="text/css" rel="stylesheet" href="{% static 'ImageThief/css/prism.css' %}"/>
     <link type="text/css" rel="stylesheet" href="{% static 'ImageThief/css/image_thief.css' %}"/>

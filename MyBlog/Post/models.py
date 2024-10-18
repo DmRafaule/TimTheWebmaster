@@ -33,8 +33,8 @@ class Category(models.Model):
     description = models.TextField(blank=False)
     slug = models.SlugField(max_length=50, unique=True)
     template = models.FilePathField(
-            path=os.path.join(S.BASE_DIR,"Post","templates","Post"),
-            default=os.path.join(S.BASE_DIR,"Post","templates","Post","article_list.html")
+        path=os.path.join(S.BASE_DIR,"Post","templates","Post"),
+        default=os.path.join(S.BASE_DIR,"Post","templates","Post","article_list.html")
     )
     categry_name = models.SlugField(max_length=50, unique=False, blank=True, null=True, default='')
 

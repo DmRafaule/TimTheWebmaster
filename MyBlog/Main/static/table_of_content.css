@@ -43,6 +43,7 @@
 	border: 1px solid black;
 	padding: 5px;
 	border-radius: 50%;
+	word-wrap: break-word;
 }
 .table_of_content_text{
 	color: var(--link-internal_color);

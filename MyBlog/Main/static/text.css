@@ -1,6 +1,6 @@
 
 .interesting{
-	margin-top: var(--mid_pm);
+	margin-top: var(--text_block_margin-top);
 	background: yellow;
 	border: 2px solid black;
 	border-radius: 10px;
@@ -17,45 +17,58 @@
 }
 
 .quote{
+	margin-top: var(--text_block_margin-top);
 	text-align: right;
-	margin-left: var(--max_pm);
-	margin-top: var(--mid_pm);
+	background: #a3c3c4;
+	border: 2px solid black;
+	border-radius: 10px;
+	display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
 .attention{
-	margin-top: var(--mid_pm);
+	margin-top: var(--text_block_margin-top);
 	background: rgb(252, 129, 29);
 	border: 2px solid black;
 	border-radius: 10px;
 }
 
 .termin{
-	margin-top: var(--mid_pm);
-	padding: var(--min_pm);
+	margin-top: var(--text_block_margin-top);
 	background: rgb(221, 236, 243);
 	border: 2px solid black;
 	border-radius: 10px;
 }
 
 .question{
-	margin-top: var(--mid_pm);
-	padding: var(--min_pm);
+	margin-top: var(--text_block_margin-top);
 	background: rgb(255, 255, 255);
 	border: 2px solid black;
 	border-radius: 10px;
 }
 
-.dangerouse{
-	margin-top: var(--mid_pm);
+.danger{
+	margin-top: var(--text_block_margin-top);
 	background: rgb(255, 47, 0);
 	border: 2px solid black;
 	border-radius: 10px;
 }
 .code{
-	margin-top: var(--mid_pm);
+	margin-top: var(--text_block_margin-top);
 	background: rgb(140, 225, 94);
 	border: 2px solid black;
 	border-radius: 10px;
+	gap: var(--mid_pm);
+	display: flex;
+}
+.ql-code-block-container{
+	white-space: pre-wrap;
+}
+
+.abbreviation{
+	font-family: var(--family-acent_font);
+	font-weight: bold;
 }
 
 .mat-type{

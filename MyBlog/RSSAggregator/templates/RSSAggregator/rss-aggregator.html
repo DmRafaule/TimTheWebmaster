@@ -1,8 +1,8 @@
-{% extends 'Main/base.html' %}
+{% extends 'Post/base_tool.html' %}
 {% load static%}
 {% load i18n %}
 
-{% block head %}
+{% block head_tool %}
 	<title>{% trans "RSS Лента и агрегатор | Тим зе вебмастер" %}</title>
 	<meta name="description" content="{% trans "Данный инструмент позволит просматривать и подписываться на интерерующие тебя rss фиды и каналы бесплатно и в неограниченом количестве." %}">
 	<meta name="keywords" content="{% trans 'rss поток, добавление rss, rss приложение, регистрация rss, чтение rss, подключение rss, добавить rss ленту, rss фильтр, мобильные rss, веб rss, rss лента онлайн, сортировка rss ленты' %}">
@@ -10,32 +10,32 @@
 {% endblock %}
 
 
-{% block hat %}
+{% block hat_tool %}
 	<div class="header_button"  data-body="rss_aggregator_mobile_groups_container">
 		<img id="feeds_group" width="32" height="32" class="icon button dynamic_image squered_button active_group_button" src="{% static 'placeholder.svg' %}" data-src="{% static 'RSSAggregator/img/groups.svg' %}" alt="{% trans 'one layer on top of anothe' %}">
 	</div>
 {% endblock %}
 
-{% block content %}
+{% block content_tool %}
 	<div id="rss_aggregator_mobile_groups_container">
 	</div>
-	<div id="myModal" class="modal" data-btn-id="onAddFeed">
+	<div class="modal modal-window" data-btn-id="onAddFeed" data-btn-close-id="onCloseModal">
 		<div class="modal-content">
-			<div class="modal_actions">
-				<img width="32" height="32" class="close_modal svg_icon_inverted icon dynamic_image bordered_button button" src="{% static 'placeholder.svg'%}" data-src="{% static 'close.svg' %}" alt="{% trans 'Крестик' %}">
-			</div>
-			<hr>
 			<div class="modal_body">
 				<div class="row in_middle">
 					<div class="row mid_gap on_end_other">
 						<form id="toAddFeed column">
 							<div>{% trans "Введи URL RSS канала" %}</div>
 							<p id="feedurl-error" class="hint-required"></p>
-							<input placeholder="{% trans "http(s)://domain.com/file.rss" %}" type="text" name="feedname" autocomplete="off" id="feedname">
-							<img id="onAddFeedSubmit" width="32" height="32" class="close_modal svg_icon_inverted icon dynamic_image bordered_button button" src="{% static 'placeholder.svg'%}" data-src="{% static 'ok.svg' %}" alt="{% trans 'Крестик' %}">							
+							<input placeholder="{% trans "http(s)://domain.com/file.rss" %}" type="text" name="feedname" autocomplete="off" id="feedname">						
 						</form>
 					</div>
 				</div>
+			</div>
+			<hr>
+			<div class="modal_actions">
+				<img id="onAddFeedSubmit" width="32" height="32" class="close_modal svg_icon_inverted icon dynamic_image bordered_button button" src="{% static 'placeholder.svg'%}" data-src="{% static 'ok.svg' %}" alt="{% trans 'Крестик' %}" style='border-bottom-left-radius: var(--modal-radius)'>	
+				<img id='onCloseModal' width="32" height="32" class="close_modal svg_icon_inverted icon dynamic_image bordered_button button" src="{% static 'placeholder.svg'%}" data-src="{% static 'close.svg' %}" alt="{% trans 'Крестик' %}" style='border-bottom-right-radius: var(--modal-radius)'>
 			</div>
 		</div>
 	</div>
@@ -105,27 +105,16 @@
 	</div>
 {% endblock %}
 
-{% block footer_links %}
+{% block footer_tool %}
 {% endblock %}
 
-{% block styles %}
-    <link type="text/css" rel="stylesheet" href="{% static 'blocks.css' %}"/>
-    <link type="text/css" rel="stylesheet" href="{% static 'images.css' %}"/>
-    <link type="text/css" rel="stylesheet" href="{% static 'tooltip.css' %}"/>
-	<link type="text/css" rel="stylesheet" href="{% static 'modal.css' %}"/>
-	<link type="text/css" rel="stylesheet" href="{% static 'forms.css' %}"/>
-	<link type="text/css" rel="stylesheet" href="{% static 'dynamic.css' %}"/>
+{% block styles_tool %}
 	<link type="text/css" rel="stylesheet" href="{% static 'RSSAggregator/css/paginator.css' %}"/>
     <link type="text/css" rel="stylesheet" href="{% static 'RSSAggregator/css/rss-aggregator.css' %}"/>
 {% endblock %}
 
-{% block scripts %}
-	{% csrf_token %}
-    <script>
-		const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
-	</script>
+{% block scripts_tool %}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-	<script src="{% static 'modal.js' %}"></script>
     <script src="{% static 'RSSAggregator/js/paginator.js' %}"></script>
 	<script src="{% static 'RSSAggregator/js/rss-aggregator.js' %}"></script>
 {% endblock %}

@@ -5,6 +5,9 @@
 }
 table{
     text-align: justify;
+    width: 100%;
+    overflow-x:auto;
+    margin-top: var(--text_block_margin-top);
 }
 caption{
     text-align: start;

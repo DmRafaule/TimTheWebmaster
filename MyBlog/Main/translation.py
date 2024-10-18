@@ -1,6 +1,7 @@
 from modeltranslation.translator import translator, TranslationOptions
 import Post.models as Post_M
 import Main.models as Main_M
+from  PostEditor.models import PostTemplate
 
 
 class CategoryTranslationOptions(TranslationOptions):

@@ -1,0 +1,35 @@
+{% verbatim %}
+{% extends 'Post/base_article.html' %}
+{% load i18n %}
+{% load static %}
+{% endverbatim %}
+
+{% verbatim %}
+{% block content_post_article %}
+{% endverbatim %}
+
+    {{content|safe}}
+
+{% verbatim %}
+{% endblock %}
+{% endverbatim %}
+
+{% verbatim %}
+{% block styles_post_article %}
+{% endverbatim %}
+
+    {{styles|safe}}
+
+{% verbatim %}
+{% endblock %}
+{% endverbatim %}
+
+{% verbatim %}
+{% block scripts_post_article %}
+{% endverbatim %}
+
+    {{scripts|safe}}
+    
+{% verbatim %}
+{% endblock %}
+{% endverbatim %}
