@@ -6,6 +6,7 @@ let gallery_intersection_options = {rootMargin: "-10% 0px -10% 0px"}
 function LoadPosts(page, type, isRecent = true, mode = 'basic', tags=[], relative_this = '', week_day = '', month_day = '', month = '', year = ''){
 	var progressbar = document.querySelector('#progressbar')
 	progressbar.style.display = 'block'
+
 	$.ajax({
 		type: "GET",
 		url: url,
@@ -25,7 +26,8 @@ function LoadPosts(page, type, isRecent = true, mode = 'basic', tags=[], relativ
 			'year': year,
 		},
 		mode: 'same-origin', // Do not send CSRF token to another domain.
-		success: function(result) {
+	})
+	.done( function(result) {
 			var page_container = document.querySelector('#page');
 			// Insert 'answer' from server into site code
 			page_container.insertAdjacentHTML('beforeend', result)
@@ -44,31 +46,36 @@ function LoadPosts(page, type, isRecent = true, mode = 'basic', tags=[], relativ
 				sentinel_next.addEventListener('onInfinityLoad', onInfinityLoadUpdate)
 			}
 			// Insert sentinel for previos page load if it is exist
-			var is_exist = page_container.querySelector(`#scroll-sentinel-${Number(page)-1}`)
-			if (page - 1 > 0 && !is_exist){
-				var sentinel_next = page_container.querySelector(`#scroll-sentinel-${Number(page)+1}`)
-				var sentinel_prev = null
-				// The last sentinel is not going to exist we need to check this
-				if (!sentinel_next){
-					sentinel_next = page_container.querySelector(`#scroll-sentinel-${Number(page)-1}`)
-					sentinel_prev = sentinel_next.cloneNode(true)
-				}
-				else{
-					sentinel_prev = sentinel_next.cloneNode(true)
-					sentinel_prev.id = `scroll-sentinel-${Number(page)-1}`
-				}
-				sentinel_prev.dataset.page = Number(page) - 1
-				WaitSetinelToInteract(sentinel_prev, gallery_intersection_options)
-				//sentinel_prev.addEventListener('onInfinityLoad', onInfinityLoad, {once: true})
-				sentinel_prev.addEventListener('onInfinityLoad', onInfinityLoadUpdate)
-				page_container.insertAdjacentElement('afterbegin',sentinel_prev)
-			}
+			//var is_exist = page_container.querySelector(`#scroll-sentinel-${Number(page)-1}`)
+			//if (page - 1 > 0 && !is_exist){
+			//	var sentinel_next = page_container.querySelector(`#scroll-sentinel-${Number(page)+1}`)
+			//	var sentinel_prev = null
+			//	// The last sentinel is not going to exist we need to check this
+			//	if (!sentinel_next){
+			//		sentinel_next = page_container.querySelector(`#scroll-sentinel-${Number(page)-1}`)
+			//		sentinel_prev = sentinel_next.cloneNode(true)
+			//	}
+			//	else{
+			//		sentinel_prev = sentinel_next.cloneNode(true)
+			//		sentinel_prev.id = `scroll-sentinel-${Number(page)-1}`
+			//	}
+			//	sentinel_prev.dataset.page = Number(page) - 1
+			//	WaitSetinelToInteract(sentinel_prev, gallery_intersection_options)
+			//	//sentinel_prev.addEventListener('onInfinityLoad', onInfinityLoad, {once: true})
+			//	sentinel_prev.addEventListener('onInfinityLoad', onInfinityLoadUpdate)
+			//	page_container.insertAdjacentElement('afterbegin',sentinel_prev)
+			//}
 			progressbar.style.display = 'none'
 			UpdateState(page, 'full', isRecent, mode, tags)
-		},
-		error: function(jqXHR, textStatus, errorThrown){
-		}
 	})
+	.fail( function(jqXHR, textStatus, errorThrown){
+
+	})
+	.then(()=>{
+		progressbar.style.display = 'none'
+	})
+
+	
 }
 
 function UpdateState(page, type, isRecent = true, mode = 'basic', tags = []){
@@ -86,6 +93,7 @@ function UpdateState(page, type, isRecent = true, mode = 'basic', tags = []){
 function UpdatePosts(page, type, isRecent = true, mode = 'basic', tags = [], relative_this = '', week_day = '', month_day = '', month = '', year = '' ){
 	var progressbar = document.querySelector('#progressbar')
 	progressbar.style.display = 'block'
+
 	$.ajax({
 		type: "GET",
 		url: url,
@@ -105,49 +113,52 @@ function UpdatePosts(page, type, isRecent = true, mode = 'basic', tags = [], rel
 			'year': year,
 		},
 		mode: 'same-origin', // Do not send CSRF token to another domain.
-		success: function(result) {
-			var page_container = document.querySelector('#page');
-			page_container.innerHTML = ''
-			page_container.insertAdjacentHTML('beforeend', result)
-			// Insert animation for newly loade posts
-			page_container.querySelectorAll('.post_preview').forEach( (post) => {
-				num_pages = post.dataset.numpages
-                if (!post.classList.contains('loader'))
-					post.classList.add('loader')
-            })
-			update_paginator(num_pages, page)
-			// Insert sentinel only if the next page is exist
-			if (!((page + 1) > num_pages)){
-				var sentinel_next = page_container.querySelector(`#scroll-sentinel-${Number(page)+1}`)
-				WaitSetinelToInteract(sentinel_next)
-				sentinel_next.addEventListener('onInfinityLoad', onInfinityLoad, {once: true})
-				sentinel_next.addEventListener('onInfinityLoad', onInfinityLoadUpdate)
-			}
-			// Insert sentinel for previos page load if it is exist
-			var is_exist = page_container.querySelector(`#scroll-sentinel-${Number(page)-1}`)
-			if (page - 1 > 0 && !is_exist){
-				var sentinel_next = page_container.querySelector(`#scroll-sentinel-${Number(page)+1}`)
-				var sentinel_prev = null
-				// The last sentinel is not going to exist we need to check this
-				if (!sentinel_next){
-					sentinel_next = page_container.querySelector(`#scroll-sentinel-${Number(page)-1}`)
-					sentinel_prev = sentinel_next.cloneNode(true)
-				}
-				else{
-					sentinel_prev = sentinel_next.cloneNode(true)
-					sentinel_prev.id = `scroll-sentinel-${Number(page)-1}`
-				}
-				sentinel_prev.dataset.page = Number(page) - 1
-				WaitSetinelToInteract(sentinel_prev, gallery_intersection_options)
-				//sentinel_prev.addEventListener('onInfinityLoad', onInfinityLoad, {once: true})
-				sentinel_prev.addEventListener('onInfinityLoad', onInfinityLoadUpdate)
-				page_container.insertAdjacentElement('afterbegin',sentinel_prev)
-			}
-			progressbar.style.display = 'none'
-			UpdateState(page, 'full', isRecent, mode, tags)
-		},
-		error: function(jqXHR, textStatus, errorThrown){
+	})
+	.done((result) => {
+		var page_container = document.querySelector('#page');
+		page_container.innerHTML = ''
+		page_container.insertAdjacentHTML('beforeend', result)
+		// Insert animation for newly loade posts
+		page_container.querySelectorAll('.post_preview').forEach( (post) => {
+			num_pages = post.dataset.numpages
+			if (!post.classList.contains('loader'))
+				post.classList.add('loader')
+		})
+		update_paginator(num_pages, page)
+		// Insert sentinel only if the next page is exist
+		if (!((page + 1) > num_pages)){
+			var sentinel_next = page_container.querySelector(`#scroll-sentinel-${Number(page)+1}`)
+			WaitSetinelToInteract(sentinel_next)
+			sentinel_next.addEventListener('onInfinityLoad', onInfinityLoad, {once: true})
+			sentinel_next.addEventListener('onInfinityLoad', onInfinityLoadUpdate)
 		}
+		// Insert sentinel for previos page load if it is exist
+		//var is_exist = page_container.querySelector(`#scroll-sentinel-${Number(page)-1}`)
+		//if (page - 1 > 0 && !is_exist){
+		//	var sentinel_next = page_container.querySelector(`#scroll-sentinel-${Number(page)+1}`)
+		//	var sentinel_prev = null
+		//	// The last sentinel is not going to exist we need to check this
+		//	if (!sentinel_next){
+		//		sentinel_next = page_container.querySelector(`#scroll-sentinel-${Number(page)-1}`)
+		//		sentinel_prev = sentinel_next.cloneNode(true)
+		//	}
+		//	else{
+		//		sentinel_prev = sentinel_next.cloneNode(true)
+		//		sentinel_prev.id = `scroll-sentinel-${Number(page)-1}`
+		//	}
+		//	sentinel_prev.dataset.page = Number(page) - 1
+		//	WaitSetinelToInteract(sentinel_prev, gallery_intersection_options)
+		//	//sentinel_prev.addEventListener('onInfinityLoad', onInfinityLoad, {once: true})
+		//	sentinel_prev.addEventListener('onInfinityLoad', onInfinityLoadUpdate)
+		//	page_container.insertAdjacentElement('afterbegin',sentinel_prev)
+		//}
+		progressbar.style.display = 'none'
+		UpdateState(page, 'full', isRecent, mode, tags)
+	})
+	.fail((jqXHR, textStatus, errorThrown) => {
+	})
+	.then(()=>{
+		progressbar.style.display = 'none'
 	})
 }
 
@@ -266,7 +277,7 @@ function onInfinityLoad(event){
 	if (!this_time)
 		this_time = ''
 	else
-	this_time = this_time.value
+		this_time = this_time.value
 	var week_day = []
 	document.querySelectorAll('.week_day.selected_order').forEach((el)=>{
 		week_day.push(el.dataset.time)
@@ -287,19 +298,43 @@ function onInfinityLoad(event){
 }
 
 function onPaginLoad(event){
-
 	var viewsContainer = document.querySelector("#toViews")
 	var mode = viewsContainer.dataset.view
 	var isRecent = document.querySelector("#onSort").dataset.sort
 	var page = event.detail.button.dataset.page
 	var sentinel = document.querySelector(`#scroll-sentinel-${page}`)
+	var tagButton = document.querySelector("#onTags")
+	var tags = JSON.parse(tagButton.dataset.tags)
+	UpdateState(page, 'full', isRecent, mode, tags)
 	if (sentinel){
 		sentinel.scrollIntoView({behavior: "smooth", block: "center", inline: "center"});
 		update_paginator(num_pages, page)
 	}
-	var tagButton = document.querySelector("#onTags")
-	var tags = JSON.parse(tagButton.dataset.tags)
-	UpdateState(page, 'full', isRecent, mode, tags)
+	else{
+		var this_time = document.querySelector('input[name="thisTime"]:checked');
+		if (!this_time)
+			this_time = ''
+		else
+			this_time = this_time.value
+		var week_day = []
+		document.querySelectorAll('.week_day.selected_order').forEach((el)=>{
+			week_day.push(el.dataset.time)
+		})
+		var month_day = []
+		document.querySelectorAll('.month_day.selected_order').forEach((el)=>{
+			month_day.push(el.dataset.time)
+		})
+		var month = []
+		document.querySelectorAll('.month.selected_order').forEach((el)=>{
+			month.push(el.dataset.time)
+		})
+		var year = []
+		document.querySelectorAll('.year.selected_order').forEach((el)=>{
+			year.push(el.dataset.time)
+		})
+		
+		UpdatePosts(page, 'part', isRecent, mode, tags, this_time, week_day, month_day, month, year)
+	}
 }
 
 function onReady(){

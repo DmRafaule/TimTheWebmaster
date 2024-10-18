@@ -96,6 +96,9 @@ function load(page, type, tags=[]){
 		error: function(jqXHR, textStatus, errorThrown){
 		}
 	})
+	.then(()=>{
+		progressbar.style.display = 'none'
+	})
 
 }
 
