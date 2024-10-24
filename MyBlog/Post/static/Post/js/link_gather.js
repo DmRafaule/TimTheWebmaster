@@ -5,8 +5,10 @@ function getAllExternalLinks(){
     var links = page.querySelectorAll('a')
     links.forEach(link => {
         var ref = link.getAttribute('href')
-        if (!(ref.startsWith(`https://${DOMAIN_NAME}`)) && (ref.startsWith(`https://`) || ref.startsWith(`http://`))){
-            list.push(ref)
+        if (ref){
+            if (!(ref.startsWith(`https://${DOMAIN_NAME}`)) && (ref.startsWith(`https://`) || ref.startsWith(`http://`))){
+                list.push(ref)
+            }
         }
     });
     return [...new Set(list)]
