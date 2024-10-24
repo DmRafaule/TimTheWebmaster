@@ -72,6 +72,9 @@ function saveQuill( event ){
     var special_scripts = []
     // Check stylesheets for usage in document element (editor)
     scripts.forEach( (script) => {
+        if (script.hasAttribute('type')){
+            script.removeAttribute('type')
+        }
         switch(script.dataset.special){
             case 'table_of_content':
                 if (is_table_of_content_special(scope)){
@@ -117,6 +120,14 @@ function saveQuill( event ){
     form.querySelector('#id_used_styles').value = stylesheets_string
     form.querySelector('#id_used_scripts').value = scripts_string
 
+    // Set the default name
+    var filename = form.querySelector('#id_filename').value
+    if (String(filename).length == 0){
+        var current = new Date().toISOString()
+        current = current.replaceAll(':', '_').replace('.', '_')
+        form.querySelector('#id_filename').value = `noname--${current}.html`
+    }
+
     formData = new FormData(form)
 
     fetch('save/', {
@@ -154,6 +165,7 @@ function listQuill( event ){
             return response.json().then( response => {
                 var container = document.querySelector('#toList')
                 container.innerHTML = ''
+                var modal = document.querySelector('#toConfirmModal')
                 response.templates.forEach( (template, indx) => {
                     var label = document.createElement('label')
                     label.classList.add('min_gap')
@@ -185,18 +197,38 @@ function listQuill( event ){
                     upload.dataset.ref = template['template']
                     upload.addEventListener('click', (ev) => {
                         uploadTemplateReq(ev, template['filename'])
+                        // Update a save form, filename and selected option
+                        var form = document.querySelector('#toSave')
+                        form.querySelector('#id_filename').value = template['filename'] 
+                        form.querySelectorAll('input[name="option"]').forEach( (opt) => {
+                            opt.setAttribute('checked', false)
+                        })
+                        form.querySelectorAll('input[name="option"]').forEach( (opt) => {
+                            if (opt.parentElement.innerText.replaceAll('\n','').replaceAll(' ', '') === template['option'].replaceAll('\n','').replaceAll(' ', '')){
+                                opt.setAttribute('checked', true)
+                            }
+                        })
                     })
                     var delete_ic = createIcon(PATH+'PostEditor/img/delete.svg')
                     delete_ic.classList.add('button')
                     delete_ic.addEventListener('click', (ev) => {
-                        deleteTemplateReq(ev, template['filename'])
+                        var modal_confirm = modal.querySelector('#delete_btn_submit')
+                        var modal_close = modal.querySelector('#close_btn')
+                        openModal(modal)
+                        modal_confirm.addEventListener('click', (event) => {
+                            deleteTemplateReq(event, template['filename'])
+                            modal_confirm.replaceWith(modal_confirm.cloneNode(true));
+                            closeModal(modal)
+                        })
+                        modal_close.addEventListener('click', (event) => {
+                            modal_confirm.replaceWith(modal_confirm.cloneNode(true));
+                        })
                     })
                     action_cont.insertAdjacentElement('beforeend', download_link)
                     action_cont.insertAdjacentElement('beforeend', upload)
                     action_cont.insertAdjacentElement('beforeend', delete_ic)
                     label.insertAdjacentElement('beforeend', action_cont)
                     container.insertAdjacentElement('beforeend', label)
-        
                 })
                 notificator.notify(response['msg'],'success')
               })
@@ -303,3 +335,4 @@ if (document.readyState === "loading") {
 } else {
     onReady()
 }
+window.addEventListener('unload', saveQuill)

@@ -4,7 +4,6 @@ function onTab(){
 	/* Then show only needed one*/
 	var id = this.dataset.bodyid
 	var this_body = this.parentElement.nextElementSibling 
-	console.log(this_body)
 	/* First of all, hide all tab_elements*/
 	var all_bodies = this_body.querySelectorAll(".tab_element")
 	all_bodies.forEach((body) => {

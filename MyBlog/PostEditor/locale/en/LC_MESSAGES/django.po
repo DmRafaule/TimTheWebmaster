@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-10-18 08:47+0300\n"
+"POT-Creation-Date: 2024-10-24 11:53+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -160,8 +160,8 @@ msgid "Изображение"
 msgstr "Image"
 
 #: .\PostEditor\templates\PostEditor\editor_home.html:117
-#: .\PostEditor\templates\PostEditor\editor_home.html:177
-#: .\PostEditor\templates\PostEditor\editor_home.html:178
+#: .\PostEditor\templates\PostEditor\editor_home.html:195
+#: .\PostEditor\templates\PostEditor\editor_home.html:196
 msgid "Сохранить"
 msgstr "Save"
 
@@ -204,21 +204,27 @@ msgstr "Let's start creating"
 #: .\PostEditor\templates\PostEditor\editor_home.html:149
 #: .\PostEditor\templates\PostEditor\editor_home.html:150
 #: .\PostEditor\templates\PostEditor\editor_home.html:167
-#: .\PostEditor\templates\PostEditor\editor_home.html:185
-#: .\PostEditor\templates\PostEditor\editor_home.html:190
+#: .\PostEditor\templates\PostEditor\editor_home.html:183
+#: .\PostEditor\templates\PostEditor\editor_home.html:184
+#: .\PostEditor\templates\PostEditor\editor_home.html:203
+#: .\PostEditor\templates\PostEditor\editor_home.html:208
 msgid "Крестик"
 msgstr "Cross"
 
-#: .\PostEditor\templates\PostEditor\editor_home.html:180
-#: .\PostEditor\templates\PostEditor\editor_home.html:181
+#: .\PostEditor\templates\PostEditor\editor_home.html:177
+msgid "Ты уверен в том, что хочешь удалить этот шаблон ?"
+msgstr "Are you sure, you want to delete this template ?"
+
+#: .\PostEditor\templates\PostEditor\editor_home.html:198
+#: .\PostEditor\templates\PostEditor\editor_home.html:199
 msgid "Загрузить"
 msgstr "Load"
 
-#: .\PostEditor\templates\PostEditor\editor_home.html:183
+#: .\PostEditor\templates\PostEditor\editor_home.html:201
 msgid "Скачать всё"
 msgstr "Download all"
 
-#: .\PostEditor\templates\PostEditor\editor_home.html:189
+#: .\PostEditor\templates\PostEditor\editor_home.html:207
 msgid "Скачать содержимое"
 msgstr "Download content"
 
