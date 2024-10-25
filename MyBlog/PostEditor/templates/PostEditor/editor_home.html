@@ -107,7 +107,7 @@
           <abbr title="{% trans 'Ссылка на часть статьи'%}"><button class="ql-internal-link"></button></abbr>
           <abbr title="{% trans 'Ссылка на скачиваеммый контент'%}"><button class="ql-downloadable-link"></button></abbr>
           <abbr title="{% trans 'Изображение'%}"><button class="ql-image"></button></abbr>
-          </span>
+        </span>
       </fieldset>
       <div class="el-expandable el-no_shrinkable row"></div>
     </div>
@@ -120,6 +120,8 @@
     <div id='insertRowBelow_text'>{% trans 'Вставка ряда ниже' %}</div>
     <div id='insertColumnAfter_text'>{% trans 'Вставка колонки после' %}</div>
     <div id='insertColumnBefore_text'>{% trans 'Вставка колонки перед' %}</div>
+    <div id='insertTopHeader_text'>{% trans 'Вставка верхнего хедера' %}</div>
+    <div id='insertLeftHeader_text'>{% trans 'Вставка левого хедера' %}</div>
     <div id='removeRow_text'>{% trans 'Удалить ряд' %}</div>
     <div id='removeCol_text'>{% trans 'Удалить колонку' %}</div>
     <div id='removeTable_text'>{% trans 'Удалить таблицу' %}</div>
@@ -228,6 +230,9 @@
 {% endblock %}
 
 {% block scripts_tool %}
+    {% if request.user.is_authenticated %}
+    <script src="{% static 'PostEditor/js/editor.js' %}"></script>
+    {% endif %}
     {# Need for html_media_checker, which script to check, start point #}
     <script id='post_script_exporter_top_line' src="{% static 'PostEditor/js/utils.js' %}"></script>
       <script data-special='video' src="{% static 'video.js' %}"></script>
@@ -237,11 +242,12 @@
       <script data-special='code' src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
     {# Need for html_media_checker, which script to check, end point #}
     <script id='post_script_exporter_bottom_line' src="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.js"></script>
-    
-    <script src="{% static 'PostEditor/js/quill_customized.js' %}"></script>
-    <script src="{% static 'PostEditor/js/server_media_updater.js' %}"></script>
-    <script src="{% static 'PostEditor/js/exporter.js' %}"></script>
-    {% if request.user.is_authenticated %}
-    <script src="{% static 'PostEditor/js/initer.js' %}"></script>
-    {% endif %}
+    <script src="{% static 'PostEditor/js/quill_images.js' %}"></script>
+    <script src="{% static 'PostEditor/js/quill_videos.js' %}"></script>
+    <script src="{% static 'PostEditor/js/quill_blocks.js' %}"></script>
+    <script src="{% static 'PostEditor/js/quill_codeblock.js' %}"></script>
+    <script src="{% static 'PostEditor/js/quill_abbr.js' %}"></script>
+    <script src="{% static 'PostEditor/js/quill_links.js' %}"></script>
+    <script src="{% static 'PostEditor/js/quill_table.js' %}"></script>
+    <script src="{% static 'PostEditor/js/quill.js' %}"></script>
 {% endblock %}
