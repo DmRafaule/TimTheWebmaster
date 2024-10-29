@@ -13,6 +13,9 @@
   <div class="header_button  button squered_button"  data-body="toolbar_body">
     <img id="filters_hat_button" data-sort="true" width="32" height="32" class="icon dynamic_image " src="{% static 'placeholder.svg' %}" data-src="{% static 'PostEditor/img/construction.png' %}" alt="{% trans 'one layer on top of anothe' %}">
   </div>
+  <div class="header_button  button squered_button"  data-body="toolbar_settings_body">
+    <img id="filters_hat_button" data-sort="true" width="32" height="32" class="icon dynamic_image svg_icon_inverted " src="{% static 'placeholder.svg' %}" data-src="{% static 'PostEditor/img/settings.svg' %}" alt="{% trans 'one layer on top of anothe' %}">
+  </div>
 {% endblock %}
 
 {% block content_tool %}
@@ -112,8 +115,35 @@
       <div class="el-expandable el-no_shrinkable row"></div>
     </div>
   </div>
+  <div id="toolbar_settings_body" class="hat_body">
+    <div class='full_width full_height padder'>
+      <div>
+        {% trans "Модули" %}
+      </div>
+      <hr class='hr-white'>
+      <div class="column min_gap padder-10">
+        <div>
+          <input type="checkbox" id="toc_module" name="toc" checked />
+          <label for="toc">Table of content</label>
+        </div>
+        <div>
+          <input type="checkbox" id="word_counter_module" name="word_counter" disabled />
+          <label for="word_counter">Words counter</label>
+        </div>
+        <div>
+          <input type="checkbox" id="words_cloud_module" name="words_cloud" disabled />
+          <label for="words_cloud">Words cloud</label>
+        </div>
+        <div>
+          <input type="checkbox" id="history_module" name="history" disabled />
+          <label for="history">History</label>
+        </div>
+      </div>
+    </div>
+  </div>
   {# This is a text to be used in PostEditor/js/quill_customized.js #}
   <div style="display: none">
+    <div id='table_of_content_text'>{% trans 'Содержание' %}</div>
     <div id='save_text'>{% trans 'Сохранить' %}</div>
     <div id='remove_text'>{% trans 'Удалить' %}</div>
     <div id='insertRowAbove_text'>{% trans 'Вставка ряда выше' %}</div>
@@ -249,5 +279,6 @@
     <script src="{% static 'PostEditor/js/quill_abbr.js' %}"></script>
     <script src="{% static 'PostEditor/js/quill_links.js' %}"></script>
     <script src="{% static 'PostEditor/js/quill_table.js' %}"></script>
+    <script src="{% static 'PostEditor/js/quill_table_of_contents.js' %}"></script>
     <script src="{% static 'PostEditor/js/quill.js' %}"></script>
 {% endblock %}

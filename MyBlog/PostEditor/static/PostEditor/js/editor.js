@@ -278,6 +278,10 @@ function listQuill( event ){
 function loadQuill( content ){
     var scope = document.querySelector('.ql-editor')
     scope.innerHTML = content
+    var table_of_content = scope.querySelector('.table_of_contents')
+    if (table_of_content){
+        table_of_content.remove()
+    }
 }
 
 // Will download current content in ql-editor element and send it back as file

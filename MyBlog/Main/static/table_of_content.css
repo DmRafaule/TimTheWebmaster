@@ -18,17 +18,20 @@
 .table_of_content{
 	display: flex;
 	flex-direction: column;
+	justify-content: center;
 	width: 100%;
 }
 .table_of_content_title{
 	font-family: var(--family-acent_font);
 	font-weight: var(--weight-title_font);
 	font-size: var(--size-titleH2_font);
+	padding: var(--small_space)
 }
 .table_of_content_list{
 	list-style: none;
 	overflow-y: auto;
 	padding-bottom: 40px;
+	border-top: 2px solid;
 }
 .table_of_content_element{
 	display: flex;

@@ -78,6 +78,7 @@ const quill = new Quill('#editor', {
         syntax: true,
         clipboard: true,
         table: true,
+        table_of_contents: true,
         toolbar: {
             container: '#toolbar-container',
             handlers: {
@@ -96,7 +97,7 @@ const quill = new Quill('#editor', {
 });
 
 quill.on('selection-change', (range, oldRange, source) => {
-    let blot = Quill.find(event.target);
+    let blot = Quill.find(quill.getLeaf(range.index)[0].domNode).parent
     if (blot){
         switch(blot.domNode.tagName){
             case 'TD':
