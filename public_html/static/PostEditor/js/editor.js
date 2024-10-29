@@ -35,7 +35,7 @@ function updateDownloadablesForServer(){
 }
 
 function is_table_of_content_special(document_part){
-    if (document_part.querySelectorAll('h1,h2,h3,h4,h5,h6').length >= 3 ){
+    if (document_part.querySelectorAll('h1,h2,h3,h4,h5,h6').length >= 3 && document_part.querySelectorAll('.table_of_contents').length == 0){
         return true
     }else{
         return false
