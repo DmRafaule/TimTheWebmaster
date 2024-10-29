@@ -102,10 +102,7 @@
 	margin-bottom: 5svh;
     font-size: var(--size-titleH1_font)  !important;
 }
-.ql-editor h2, .ql-editor h3, .ql-editor h4, .ql-editor h5, .ql-editor h6 {
-    margin-top: var(--paragraph_margin-top) !important;
-	margin-bottom: var(--paragraph_margin-bottom) !important;
-}
+
 .ql-editor h2{
     font-size: var(--size-titleH2_font)  !important;
 } 
