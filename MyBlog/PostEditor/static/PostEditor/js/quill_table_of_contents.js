@@ -81,12 +81,11 @@ function RunTableOfContents(){
 
 function InitTableOfContents(quill, options) {
     quill.on(Quill.events.TEXT_CHANGE, RunTableOfContents);
-
 }
   
 Quill.register('modules/table_of_contents', InitTableOfContents);
 document.querySelector('#toc_module').addEventListener('click', (event)=>{
-    console.log(event.target)
+    
     if (event.target.checked){
         quill.emitter.addListener(Quill.events.TEXT_CHANGE, RunTableOfContents, quill.emitter) 
     }else{
