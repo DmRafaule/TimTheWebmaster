@@ -155,7 +155,7 @@ def article(request, post_slug):
 
     sim_post_doc = None
     # Post model's records must have at least 3 similar tags with this post
-    sim_post = filterByTag(Post_M.Article.objects.filter(Q(isPublished=True) & Q(tags__in=post.tags.all())), post.tags.all(), website_conf.threshold_similar_articles)
+    sim_post = filterByTag(Post_M.Article.objects.filter(Q(isPublished=True) & Q(tags__in=post.tags.all())).exclude(slug=post_slug), post.tags.all(), website_conf.threshold_similar_articles)
     if sim_post is not None:
         context.update({'posts': sim_post[:website_conf.max_displayed_similar_articles]})
         loaded_template = loader.get_template(f'Post/basic--post_preview-article.html')
