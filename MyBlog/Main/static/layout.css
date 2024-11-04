@@ -98,8 +98,6 @@ footer{
 	width: 100%;
 	height: 100%;
 	padding: var(--mid_pm);
-	border-left: solid var(--main_color);
-	border-right: solid var(--main_color);
 }
 .limiter_list{
 	max-width: var(--limiter-width);
@@ -111,4 +109,10 @@ footer{
 	max-width: var(--limiter-width-big);
 	width: 100%;
 	height: 100%;
+}
+
+#content_post_article{
+	background-color: #c3c3c35c;
+	border-radius: 10px;
+	padding: 5px;
 }

@@ -124,6 +124,7 @@
 				<div class="lang_item"><a class="text_button" href="/en{{ request.get_full_path|cut:"ru/"|cut:"en/" }}">EN</a></div>
 			</div>
 		</nav>
+		<img class="full_width full_height is_fixed" style='pointer-events: none;' src="{% static 'Main/img/bg_1.webp' %}">
 		<!--Here you should paste (posts, articles, projects, about, contacts, busket, home )-->
 		{% block content %}
 		{% endblock %}
