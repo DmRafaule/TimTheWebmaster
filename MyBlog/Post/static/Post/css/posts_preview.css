@@ -2,6 +2,9 @@
 .post_preview{
 	padding: var(--min_pm);
 	margin-top: var(--post_preview_margin-top);
+	background-color: #ffffff29;
+	border-radius: 10px;
+	padding: 5px;
 }
 .post_preview_header{
 }

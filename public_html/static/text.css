@@ -1,7 +1,7 @@
 
 .interesting{
 	margin-top: var(--text_block_margin-top);
-	background: yellow;
+	background: rgba(255, 255, 0, 0.274);
 	border: 2px solid black;
 	border-radius: 10px;
 }
@@ -9,7 +9,7 @@
 	display: flex;
 	align-items: center;
 	column-gap: 8px;
-	background: #a3c3c4;
+	background: #a3c3c454;
 	border: 2px solid black;
 	border-radius: 10px;
 	vertical-align: middle;
@@ -19,7 +19,7 @@
 .quote{
 	margin-top: var(--text_block_margin-top);
 	text-align: right;
-	background: #a3c3c4;
+	background: #a3c3c454;
 	border: 2px solid black;
 	border-radius: 10px;
 	display: flex;
@@ -29,34 +29,34 @@
 
 .attention{
 	margin-top: var(--text_block_margin-top);
-	background: rgb(252, 129, 29);
+	background: rgb(252, 129, 29, 0.185);
 	border: 2px solid black;
 	border-radius: 10px;
 }
 
 .termin{
 	margin-top: var(--text_block_margin-top);
-	background: rgb(221, 236, 243);
+	background: rgb(221, 236, 243, 0.185);
 	border: 2px solid black;
 	border-radius: 10px;
 }
 
 .question{
 	margin-top: var(--text_block_margin-top);
-	background: rgb(255, 255, 255);
+	background: rgba(255, 255, 255, 0.185);
 	border: 2px solid black;
 	border-radius: 10px;
 }
 
 .danger{
 	margin-top: var(--text_block_margin-top);
-	background: rgb(255, 47, 0);
+	background: rgb(255, 47, 0, 0.185);
 	border: 2px solid black;
 	border-radius: 10px;
 }
 .code{
 	margin-top: var(--text_block_margin-top);
-	background: rgb(140, 225, 94);
+	background: rgb(140, 225, 94, 0.185);
 	border: 2px solid black;
 	border-radius: 10px;
 	gap: var(--mid_pm);
