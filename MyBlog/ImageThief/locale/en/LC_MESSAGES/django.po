@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-11-17 17:30+0300\n"
+"POT-Creation-Date: 2024-11-17 20:55+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -32,8 +32,8 @@ msgstr ""
 "You can use it as a web app or as standalone script on your machine."
 
 #: .\ImageThief\templates\ImageThief\image_thief.html:38
-#: .\ImageThief\views.py:165 .\ImageThief\views.py:169
-#: .\ImageThief\views.py:301
+#: .\ImageThief\views.py:141 .\ImageThief\views.py:145
+#: .\ImageThief\views.py:276
 msgid "Начать"
 msgstr "Start"
 
@@ -68,7 +68,9 @@ msgstr "Rules"
 #: .\ImageThief\templates\ImageThief\image_thief.html:104
 msgid ""
 "Результаты парсинга храняться до 0:00 часов следующего дня с начала парсинга"
-msgstr "Scraping results are stored until 0:00 the next day from the start of scraping."
+msgstr ""
+"Scraping results are stored until 0:00 the next day from the start of "
+"scraping."
 
 #: .\ImageThief\templates\ImageThief\image_thief.html:105
 msgid "Максимум"
@@ -183,26 +185,26 @@ msgstr "twitter icon"
 msgid "telegram иконка"
 msgstr "telegram icon"
 
-#: .\ImageThief\views.py:158
+#: .\ImageThief\views.py:134
 msgid "Ещё раз"
 msgstr "One more"
 
-#: .\ImageThief\views.py:170
+#: .\ImageThief\views.py:146
 msgid "Не так быстро ковбой, подожди 5 секунд"
 msgstr "Not so fast cowboy, wait 5 more seconds"
 
-#: .\ImageThief\views.py:192
-msgid "Стоп"
-msgstr "Stop"
+#: .\ImageThief\views.py:167
+msgid "Ожидай"
+msgstr "Wait"
 
-#: .\ImageThief\views.py:214
+#: .\ImageThief\views.py:189
 msgid "Ошибка: Слишком мало адресов. Добавь хотябы 2."
 msgstr "Error: Too few ulrs. Paste at least 2."
 
-#: .\ImageThief\views.py:222
+#: .\ImageThief\views.py:197
 msgid "Ошибка: Ты выбрал не правильный режим для списка страниц"
 msgstr "Error: Wrong mode for list of pages"
 
-#: .\ImageThief\views.py:345
+#: .\ImageThief\views.py:320
 msgid "Нечего отображать. Запусти парсинг."
 msgstr "Can't display nothing. Press start button."

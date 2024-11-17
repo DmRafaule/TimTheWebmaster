@@ -1,6 +1,4 @@
 import os
-import time
-#import ctypes # Only used on Windows
 from threading import Thread
 
 from django.http import JsonResponse
@@ -32,19 +30,6 @@ def tool_main(request):
     context.update({'archive': os.path.join('tools', C.SLUG, 'archive.zip') })
 
     return render(request, 'ImageThief/image_thief.html', context=context)
-
-# This is how you will kill a thread if thread function target is not a loop-base one
-def killProcess(pid: int) -> None:
-    try:
-        res = ctypes.pythonapi.PyThreadState_SetAsyncExc(pid,
-            ctypes.py_object(SystemExit))
-        if res > 1:
-            ctypes.pythonapi.PyThreadState_SetAsyncExc(pid, 0)
-            print('Exception raise failure')
-    except:
-        log(f"Error: Could not kill {pid} process.")
-    else:
-        log(f"Ok: Killed {pid} process.")
 
 def downloadAllImagesFromListPage(
         urls: [],
@@ -115,12 +100,6 @@ def startProcess(request):
         mode = C.ScrappingMode.SINGLE_PAGE
         downloadAllImagesFromPage(url, data_file, log_file, images_folder, result_folder, C.VERBOSE)
 
-# Timer which gonna let user use it only after some period of time
-def timerTillNewRequestsAvailable(request, tim: int):
-    time.sleep(tim)
-    request.session[f"user_istried_{request.session.session_key}"] = False
-    request.session.save()
-
 def start(request):
     data = {}
     user_id = request.session.session_key
@@ -128,21 +107,16 @@ def start(request):
     request.session[f"current_log_line_{user_id}"] = 0
     try_limit = request.session[f"user_tries_limit"]
     tries_counter = request.session[f"user_tries_{user_id}"]
-    isTried = request.session.get(f"user_istried_{user_id}")
-    if tries_counter <= try_limit and tries_counter >= 1 and not isTried:
+    if tries_counter <= try_limit and tries_counter >= 1:
         startProcessProcess = Thread(target=startProcess, args=(request,))
         try:
             startProcessProcess.start()
             # Save a process pid for earlier closing (like tab, window)
             request.session[f"process_{user_id}"] = startProcessProcess.native_id
             request.session[f"inWork_{user_id}"] = True
-            request.session[f"user_istried_{user_id}"] = True
             request.session.save()
             # Max time of execution 1 hour
             startProcessProcess.join(timeout=3600)  # 1 hour
-            # Start timer
-            timer = Thread(target=timerTillNewRequestsAvailable, args=(request, REQUEST_LAG), daemon=True)
-            timer.start()
             exitCode = True
             startProcessProcess.close()
         except Exception as ex:
@@ -180,7 +154,6 @@ def init(request):
     user_id = request.session.session_key
     request.session["user_tries_limit"] = request.session.get(f"user_tries_limit", TRY_LIMIT)
     request.session[f"user_tries_{user_id}"] = request.session.get(f"user_tries_{user_id}", 1)
-    request.session[f"user_istried_{user_id}"] = request.session.get(f"user_istried_{user_id}", False)
     url = request.GET["url"]
     mode = request.GET["mode"]
     if mode == "full":
@@ -189,7 +162,7 @@ def init(request):
         MODE = C.ScrappingMode.LIST_PAGES
     else:
         MODE = C.ScrappingMode.SINGLE_PAGE
-    btn = _("Стоп")
+    btn = _("Ожидай")
     status_msg = ""
     status = 200
     URLS = []
