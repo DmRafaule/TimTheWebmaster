@@ -31,7 +31,7 @@ HEADERS = {
     "Sec-Fetch-Mode": "navigate",
 }
 # Where results will be found
-RESULT_FOLDER = "ImageThief"
+RESULT_FOLDER = "tools/image_thief"
 # Folder for Images
 IMAGES_FOLDER = "imgs"
 # Where logs stored,
@@ -43,7 +43,7 @@ ARCHIVE_FILE = "imgs.zip"
 # Name of program
 NAME = "ImageStealer"
 # Version of program
-VERSION = "08"
+VERSION = "09"
 # Creator of this program
 AUTHOR = "Tim the Webmaster"
 # Where it can be found

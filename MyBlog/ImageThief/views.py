@@ -1,9 +1,7 @@
 import os
 import time
-from multiprocessing import Process
+#import ctypes # Only used on Windows
 from threading import Thread
-from signal import SIGABRT
-import shutil
 
 from django.http import JsonResponse
 from django.shortcuts import render
@@ -16,11 +14,10 @@ from .ImgScrapper.scrapper import ImgScrapper
 from .Utils.utils import log, initFolder, initFile, checkURL, toMinimalURL, checkIsListURLs, extractURLs
 from .Utils.utils import toDomainURL, initDataFile
 import ImageThief.config as C
-from Main.models import Downloadable
-from Post.models import Tool
 
 
 TRY_LIMIT = 1000
+REQUEST_LAG = 5
 TIME_BERFORE_CLEANUP = 3600
 
 
@@ -36,29 +33,18 @@ def tool_main(request):
 
     return render(request, 'ImageThief/image_thief.html', context=context)
 
-
+# This is how you will kill a thread if thread function target is not a loop-base one
 def killProcess(pid: int) -> None:
     try:
-        os.kill(pid, SIGABRT)
+        res = ctypes.pythonapi.PyThreadState_SetAsyncExc(pid,
+            ctypes.py_object(SystemExit))
+        if res > 1:
+            ctypes.pythonapi.PyThreadState_SetAsyncExc(pid, 0)
+            print('Exception raise failure')
     except:
         log(f"Error: Could not kill {pid} process.")
     else:
         log(f"Ok: Killed {pid} process.")
-
-
-def cleanUpProcess(archive: str, folder: str) -> None:
-    time.sleep(60)
-    while not os.path.exists(archive):
-        log("Info: Results aren't ready yet.")
-        time.sleep(60)
-    else:
-        log("Info: Results are ready.\nInfo: Cleaning up.")
-        time.sleep(TIME_BERFORE_CLEANUP)
-        try:
-            shutil.rmtree(folder, ignore_errors=True)
-        except OSError as e:
-            pass
-
 
 def downloadAllImagesFromListPage(
         urls: [],
@@ -76,7 +62,6 @@ def downloadAllImagesFromListPage(
     log("Status: Finishing", log_file)
     log(f"Result: ImageThief has successfully scrape {len(scrapper.getImgs())} images from {len(urls)} pages", log_file)
 
-
 def downloadAllImagesFromPage(
         url: str,
         data_file: str,
@@ -91,7 +76,6 @@ def downloadAllImagesFromPage(
     scrapper.zip()
     log("Status: Finishing", log_file)
     log(f"Result: ImageThief has successfully scrape {len(scrapper.getImgs())} images from {url} pages", log_file)
-
 
 def downloadAllImagesFromSite(
         url: str,
@@ -112,7 +96,6 @@ def downloadAllImagesFromSite(
     log("Status: Finishing", log_file)
     log(f"Result: ImageThief has successfully scrape {len(scrapper.getImgs())} images from {len(links_to_scrapp)} pages", log_file)
 
-
 def startProcess(request):
     user_id = request.session.session_key
     url = request.GET["url"]
@@ -132,14 +115,11 @@ def startProcess(request):
         mode = C.ScrappingMode.SINGLE_PAGE
         downloadAllImagesFromPage(url, data_file, log_file, images_folder, result_folder, C.VERBOSE)
 
-
 # Timer which gonna let user use it only after some period of time
 def timerTillNewRequestsAvailable(request, tim: int):
     time.sleep(tim)
-    request.session[f"user_tries_{request.session.session_key}"] = 1
     request.session[f"user_istried_{request.session.session_key}"] = False
     request.session.save()
-
 
 def start(request):
     data = {}
@@ -147,23 +127,33 @@ def start(request):
     status = 200
     request.session[f"current_log_line_{user_id}"] = 0
     try_limit = request.session[f"user_tries_limit"]
-    tries_counter = request.session[f"user_tries_{request.session.session_key}"]
-    if tries_counter <= try_limit and tries_counter >= 1: # TMP, to 10
-        startProcessProcess = Process(target=startProcess, args=(request,))
-        startProcessProcess.start()
-        request.session[f"inWork_{user_id}"] = True
-        # Save a process pid for earlier closing (like tab, window)
-        request.session[f"process_{request.session.session_key}"] = startProcessProcess.pid
-        request.session.save()
-        # Max time of execution 1 hour
-        startProcessProcess.join(timeout=3600)  # 1 hour
-        exitCode = startProcessProcess.exitcode
-        startProcessProcess.close()
+    tries_counter = request.session[f"user_tries_{user_id}"]
+    isTried = request.session.get(f"user_istried_{user_id}")
+    if tries_counter <= try_limit and tries_counter >= 1 and not isTried:
+        startProcessProcess = Thread(target=startProcess, args=(request,))
+        try:
+            startProcessProcess.start()
+            # Save a process pid for earlier closing (like tab, window)
+            request.session[f"process_{user_id}"] = startProcessProcess.native_id
+            request.session[f"inWork_{user_id}"] = True
+            request.session[f"user_istried_{user_id}"] = True
+            request.session.save()
+            # Max time of execution 1 hour
+            startProcessProcess.join(timeout=3600)  # 1 hour
+            # Start timer
+            timer = Thread(target=timerTillNewRequestsAvailable, args=(request, REQUEST_LAG), daemon=True)
+            timer.start()
+            exitCode = True
+            startProcessProcess.close()
+        except Exception as ex:
+            exitCode = False
+        else:
+            exitCode = False
         tries_counter += 1
-        request.session[f"user_tries_{request.session.session_key}"] = tries_counter
+        request.session[f"user_tries_{user_id}"] = tries_counter
         request.session.save()
         imgs = os.path.join(request.session[f"result_folder_{user_id}"], "imgs.zip")
-        imgs = imgs[imgs.find(settings.MEDIA_URL + C.RESULT_FOLDER):]
+        imgs = imgs[imgs.find(os.path.join(settings.MEDIA_URL.replace('/',''),C.RESULT_FOLDER)) - 1:]
         data = {
             "btn": _("Ещё раз"),
             "imgs_path": imgs,
@@ -175,27 +165,22 @@ def start(request):
             data["btn"] = _("Начать")
             status = 406
     else:
-        # Timer process function gonna fire up only once and can be used only limited times per hour
-        isTried = request.session.get(f"user_istried_{request.session.session_key}", False)
-        if not isTried:
-            request.session[f"user_istried_{request.session.session_key}"] = True
-            request.session.save()
-            timer = Process(target=timerTillNewRequestsAvailable, args=(request, 3600), daemon=True)
-            timer.start()
         data = {
             "btn": _("Начать"),
-            "status_msg": _("Ты достиг максимум попыток"),
+            "status_msg": _("Не так быстро ковбой, подожди 5 секунд"),
             "try": tries_counter,
             "try_limit": try_limit,
         }
         status = 406
+
     return JsonResponse(data, status=status)
 
 
 def init(request):
     user_id = request.session.session_key
     request.session["user_tries_limit"] = request.session.get(f"user_tries_limit", TRY_LIMIT)
-    request.session[f"user_tries_{request.session.session_key}"] = request.session.get(f"user_tries_{request.session.session_key}", 1)
+    request.session[f"user_tries_{user_id}"] = request.session.get(f"user_tries_{user_id}", 1)
+    request.session[f"user_istried_{user_id}"] = request.session.get(f"user_istried_{user_id}", False)
     url = request.GET["url"]
     mode = request.GET["mode"]
     if mode == "full":
@@ -298,10 +283,6 @@ def init(request):
 
 ============================================\n""", LOG_FILE)
 
-    # Cleaning after 1 hour. Removin zip archive and images in imgs folder
-    zip_archive = os.path.join(RESULT_FOLDER, C.ARCHIVE_FILE)
-    cleanUp = Thread(target=cleanUpProcess, args=(zip_archive, RESULT_FOLDER), daemon=True)
-    cleanUp.start()
     return JsonResponse({
         "btn": btn,
         "url": URL,
@@ -316,6 +297,7 @@ def stop(request):
         killProcess(request.session[f"process_{request.session.session_key}"])
     except Exception:
         pass
+
     btn = _("Начать")
     return JsonResponse({
         "btn": btn,
@@ -335,7 +317,6 @@ def update_status(request):
         end_period = text.find("\n", start_period)
         data["period"] = text[start_period:end_period]
     return JsonResponse(data, status=status)
-
 
 def update_logs(request):
     status = 200
