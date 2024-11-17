@@ -125,10 +125,15 @@ class ImgScrapper:
                 length = self.__dataGetImgsNumber()
                 filename = img_path[img_path.rfind("/"):]
                 filename = filename[:max_img_name_length]
-                with open(self.images_folder + "/" + filename, "wb") as F:
-                    log(f"{status}: Downloaded {current+1}/{length}  {filename}", self.log_file)
-                    F.write(img.content)
-                    self.__dataSetCurrentImg(current + 1)
+                try:
+                    with open(self.images_folder + "/" + filename, "wb") as F:
+                        log(f"{status}: Downloaded {current+1}/{length}  {filename}", self.log_file)
+                        F.write(img.content)
+                        self.__dataSetCurrentImg(current + 1)
+                except Exception as ex:
+                    log(f"Error: Invalid file path.", self.log_file)
+                    status = "NotOk"
+
 
     def zip(self) -> str:
         log("Status: Archiving", self.log_file)

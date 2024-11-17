@@ -101,8 +101,9 @@
 					<h2 class="marger_mid">{%trans "Правила"%}</h2>
 				</legend>
 				<ul class="list">
-					<li>{% trans "Результаты парсинга храняться 1 час" %}</li>
+					<li>{% trans "Результаты парсинга храняться до 0:00 часов следующего дня с начала парсинга" %}</li>
 					<li>{% trans "Максимум" %} {{ try_limit }} {% trans "запросов в час" %}</li>
+					<li>{% trans "Интервал между запросами 5 секунд." %}</li>
 				</ul>
 			</fieldset>
 			<fieldset form="toSteal" class="el-expandable el-no_shrinkable el-300-min-basis">

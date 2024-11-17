@@ -30,6 +30,8 @@ function StartImageThief(url, mode){
 			clearInterval(update_status_repeater);
 			$("#start").off()
 			$("#start").on('click', InitImageThief)
+			$("#imagethief_text_inButton").css("background-color", "var(--acent_color)")
+			$("#imagethief_text_inButton").addClass('button')
 		},
 		// Results of scrapping images fail 
 		error: function(jqXHR, textStatus, errorThrown){
@@ -50,6 +52,8 @@ function StartImageThief(url, mode){
 			// Clear all events handlers before seting up new one
 			$("#start").off()
 			$("#start").on('click', InitImageThief)
+			$("#imagethief_text_inButton").css("background-color", "var(--acent_color)")
+			$("#imagethief_text_inButton").addClass('button')
 		}
 	})
 }
@@ -81,7 +85,8 @@ function InitImageThief(){
 			update_status_repeater = setInterval(UpdateStatus, 1000);
 			// Clear all events handlers before seting up new one
 			$("#start").off()
-			$("#start").on('click', StopImageThief)
+			$("#imagethief_text_inButton").css("background-color", "grey")
+			$("#imagethief_text_inButton").removeClass('button')
 			StartImageThief(result.url, result.mode)
 			// Make sure it is empty
 			$("#imagethief-logs").text("")
@@ -90,30 +95,6 @@ function InitImageThief(){
 		// Errors if some invalid input 
 		error: function(jqXHR, textStatus, errorThrown){
 			$("#verbose-error").text(jqXHR.responseJSON.status_msg)	
-		}
-	})
-}
-
-function StopImageThief(){
-	$.ajax({
-		type: "GET",
-		url: "/" + language_code + "/tools/image_thief-stop/",
-		mode: 'same-origin', // Do not send CSRF token to another domain.
-		success: function(result) {
-			// Disable mode selection
-			$('input[name=mod]').attr("disabled",false);
-			// Change background color of Modes block
-			$("#modes_block").css("color", "black")
-			// Hide status field of tool
-			$("#container_imagethief-status").hide()
-			$("#container_imagethief-results").hide()
-			// Insert requested text
-			$("#imagethief_text_inButton").text(result.btn) 
-			// Remove interval function
-			clearInterval(update_status_repeater);
-			// Clear all events handlers before seting up new one
-			$("#start").off()
-			$("#start").on('click', InitImageThief)
 		}
 	})
 }
