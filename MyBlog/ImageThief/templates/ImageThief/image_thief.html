@@ -15,7 +15,7 @@
 	<div class="limiter in_middle in_middle-self no_wrap padder">
 		<div id="common-error" class="hint-container hint-required hint-common_error"></div>
 		{% csrf_token %}
-		<form class="in_middle" id="toSteal">
+		<form id="toSteal" enctype="multipart/form-data">
 			<fieldset class="full_width">
 				<legend>
 					<h1 class="title_image_thief">ImageThief</h1>
@@ -24,16 +24,6 @@
 					<div class="row in_middle-farapart mid_gap marger_min">
 						<input class="url_field" placeholder="http(s)://(www.)domain.com" type="text" name="url" id="url">
 						<div id="start" class="row no_wrap in_middle mid_col_gap">
-							<div class="row no_wrap imageThief_tries">
-								<div id="current_try">
-									{{tries_counter}}
-								</div>
-								/
-								<div id="total_try">
-									{{try_limit}}
-								</div>
-							</div>
-							|
 							<div id="imagethief_text_inButton" class="button squered_button action_button">
 							{% trans "Начать" %}
 							</div>
@@ -98,13 +88,31 @@
 		<div class="row max_gap">
 			<fieldset  class="el-expandable el-no_shrinkable  el-300-min-basis">
 				<legend>
-					<h2 class="marger_mid">{%trans "Правила"%}</h2>
+					<h2 class="marger_mid">{%trans "Прокси"%}</h2>
 				</legend>
-				<ul class="list">
-					<li>{% trans "Результаты парсинга храняться до 0:00 часов следующего дня с начала парсинга" %}</li>
-					<li>{% trans "Максимум" %} {{ try_limit }} {% trans "запросов в час" %}</li>
-					<li>{% trans "Интервал между запросами 5 секунд." %}</li>
-				</ul>
+				<div class="column mid_gap">
+					<div class="row mid_gap" style="align-items: center">
+						<label for='proxy_file'>{% trans 'Выбрать файл с прокси:' %}</label>
+						<input id='proxy_file' class="proxy_options" type='file' >
+						<abbr title="{% trans 'Пример файла ты можешь посмотреть внизу' %}">
+							<div class="hint_mark"><div class="hint_mark_sign">?</div></div>
+						</abbr>
+					</div>
+					<div class="row mid_gap" style="align-items: center">
+						<label for='proxy_file'>{% trans 'Или сгенерировать для целевого сайта за меня:' %}</label>
+						<input id='proxy_generate' class="proxy_options" type='checkbox' disabled="true">
+						<abbr title="{% trans 'Инструмент по подбору прокси для конкретного сайта ещё не перенесён на сайт.' %}">
+							<div class="hint_mark"><div class="hint_mark_sign">?</div></div>
+						</abbr>
+					</div>
+					<div class="row mid_gap" style="align-items: center">
+						<label for='proxy_file'>{% trans 'Или указать самому:' %}</label>
+						<input id='proxy_input' class="proxy_options" type='text' placeholder="PROTOCOL:ADDRESS:PORT">
+						<abbr title="{% trans 'Пример: http:123.22.44.1:801' %}">
+							<div class="hint_mark"><div class="hint_mark_sign">?</div></div>
+						</abbr>
+					</div>
+				</div>
 			</fieldset>
 			<fieldset form="toSteal" class="el-expandable el-no_shrinkable el-300-min-basis">
 				<legend id="modes_block">
@@ -128,20 +136,47 @@
 		</div>
 
 		<h2 class="paragraph">{%trans "Об парсере изображений"%}</h2>
+		<h3 class="paragraph">{%trans "Общие сведения"%}</h3>
 		<div class="text">
 			{% blocktrans %}
-			Это вебпарсер, который ищет и скачивает все изображения с сайта. Может работать в 3х различных режимах. В режиме одностраничного парсера, ищет и скачивает изображения только с указанной страницы. В многостраничном режиме. В таком случае, парсится список предаставленных страниц. И наконец режим парсинга целого сайта. Ищет изображения по всему сайту и по возможности скачивает их.
+			Это вебпарсер, который ищет и скачивает все изображения с сайта. Может работать в 3х различных режимах. В режиме одностраничного парсера, ищет и скачивает изображения только с указанной страницы. В многостраничном режиме. В таком случае, парсится список предоставленных страниц. И наконец режим парсинга целого сайта. Ищет изображения по всему сайту и по возможности скачивает их. Хоть остановить парсинг и нельзя, но можно закрыть вкладку и продолжить парсинг с последней ссылки. Просто вбей тот же адрес и мод и нажми <b>Начать</b>.
+			{% endblocktrans %}
+		</div>
+		<div class="text">
+			{% blocktrans %}
+			Парсинг реализован в многопоточном режиме со свопингом пользовательских агентов и прокси. Свопинг и подбор оных проводится случайным образом с использованием весов. То есть, чем больше и дольше парсишь сайт, тем лучше и быстрее парсер подберёт самые эффективные прокси и пользовательские агенты.
+			{% endblocktrans %}
+		</div>
+		<div class="text">
+			{% blocktrans %}
+			<i>Для экономии места на сервере, каждые сутки в 0:00 по Москве я удаляю все собранные результаты парсинга.</i>
 			{% endblocktrans %}
 		</div>
 		<div class="text ref">
 			{% blocktrans %}
-			Данный инструмент разработан в 2х вариациях. Как django приложение и как отдельный CLI инструмент. Доволно важное примечание, если Django приложение я постоянно обновляю и улучшаю, то CLI вариант нет. Учти это. Вот ссылка на 
+			Данный инструмент разработан в 2х вариациях. Как django приложение и как отдельный CLI инструмент. Довольно важное примечание, если Django приложение я постоянно обновляю и улучшаю, то CLI вариант нет. Учти это. Вот ссылка на 
 			{% endblocktrans %}
-			<a href="https://github.com/DmRafaule/TimTheWebmaster/tree/master/MyBlog/ImageThief">{% trans 'Django приложение' %}</a>. {% trans 'А вот ссылка на'%} <a href="{% get_media_prefix %}{{archive}}">{% trans 'скрипт'%}</a>.
+			<a href="https://github.com/DmRafaule/TimTheWebmaster/tree/master/MyBlog/ImageThief">{% trans 'Django приложение' %}</a>. {% trans 'А вот ссылка на'%} <a  class="ref-downloadable" href="{% get_media_prefix %}{{archive}}">{% trans 'скрипт'%}</a>.
+		</div>
+		<h3 class="paragraph">{%trans "Про прокси"%}</h3>
+		<div class="text">
+			{% blocktrans %}
+			Он поддерживает прокси. Пока только общедоступные, но всё же.
+			{% endblocktrans %}
+			<a class="ref-downloadable" href="{% get_media_prefix %}{{proxies_example}}">{% trans 'Вот пример файла с прокси.' %}</a>
+			{% blocktrans %}
+			Может работать с такими прокси протоколами как http, https, socks4 socks5. Так же, из-за того что инструмент проверки прокси ещё не готов, недоступна опция автоматической генерации и подборки прокси под конкретный сайт.
+			{% endblocktrans %}
+		</div>
+		<h3 class="paragraph">{%trans "Ограничения и дисклеймер"%}</h3>
+		<div class="text">
+			{% blocktrans %}
+			У данного инструмента существует несколько ограничений по парсингу. Такие, как не парсит svg файлы, не парсит фоновые изображения прописанные в стилях. Так же ещё не реализован мод динамического парсинга, хотя к этому иду :). Этот веб инструмент абсолютно бесплатен, единственное чего я прошу, добавь этот инструмент в <b>закладки</b>, или поделись ссылкой на него. Спасибо.
+			{% endblocktrans %}
 		</div>
 		<div class="text">
 			{% blocktrans %}
-			У данного инструмента существует несколько ограничений по парсингу. Такие как, не парсит svg файлы, не парсит фоновые изображения прописанные в стилях. Этот веб инструмент абсолютно бесплатен, единственное чего я прошу, добавь этот инструмент в <b>закладки</b>, или поделись ссылкой на него. Спасибо.
+			Так же автор данного инструмента не несёт никакой ответственности за то, что парсят посетители. Он создан исключительно в целях экономии времени и нервов тех, кому просто нужно собрать все изображения с сайта.
 			{% endblocktrans %}
 		</div>
 		<div class="text row min_gap padder">

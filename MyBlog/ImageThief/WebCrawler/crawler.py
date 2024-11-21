@@ -1,5 +1,6 @@
 from enum import Enum
 import json
+import os
 import time
 
 from bs4 import BeautifulSoup
@@ -7,6 +8,7 @@ import requests
 
 import ImageThief.config as C
 from ImageThief.Utils.utils import log, toMinimalURL, afterDomain
+from ImageThief.proxy_rotator import Rotator, Proxy, load_proxies, proxy_to_requests_proxy
 
 
 class LinkType(Enum):
@@ -19,13 +21,16 @@ class WebCrawler:
     domain = str
     data_file = str
     log_file = str
+    proxy_file = str
 
     def __init__(self, url: str,
                  data_file: str,
                  log_file: str,
+                 proxy_file: str,
                  noisy: bool = True):
         self.data_file = data_file
         self.log_file = log_file
+        self.proxy_file = proxy_file
         start = time.time()
         self.url = url
         current = self.__dataGetCurrentLink()
@@ -38,6 +43,7 @@ class WebCrawler:
         if length == 0:
             self.__crawl(self.url)
 
+        # For implementing multithreading
         while True:
             links = self.__dataGetLinks(LinkType.INTERNAL)
             length = len(links)
@@ -56,80 +62,170 @@ class WebCrawler:
 
     def __crawl(self, url: str):
         status = "Ok"
-        try:
-            if self.__crawlable(url):
-                page = requests.get(url, headers=C.HEADERS, timeout=1, verify=False)
-            else:
-                raise NotImplementedError
-        except requests.exceptions.HTTPError as e:
-            log(f"Error: {e.args[0]}.", self.log_file)
-            status = "NotOk"
-        except requests.exceptions.ReadTimeout:
-            log("Error: Time out.", self.log_file)
-            status = "NotOk"
-        except requests.exceptions.ConnectionError as e:
-            log(f"Error: Something wrong with connection. {e}", self.log_file)
-            status = "NotOk"
-        except requests.exceptions.RequestException as e:
-            log(f"Error: While trying make request. {e}", self.log_file)
-            status = "NotOk"
-        except NotImplementedError:
-            log("Error: Could parse file with such extention name.", self.log_file)
-            status = "NotOk"
+        updateProxy = True
+    
+        if os.path.exists(self.proxy_file):
+            proxies: list[Proxy] = []
+            dead_proxies = {}
+            # Load predefined proxies
+            proxies_json = load_proxies(self.proxy_file)
+            for proxy_item in proxies_json:
+                proxies.append(Proxy(
+                    proxy_item['path'], 
+                    proxy_item['type'], 
+                    proxy_item['protocol'],
+                    proxy_item['status'], 
+                    proxy_item['weight'])
+                )
+            
+            rotator = Rotator(proxies)
+            isProxyUsed = True
+            max_retries = len(proxies) * 5
+            retries = 0
         else:
-            soup = BeautifulSoup(page.text, 'lxml')
-            for link in soup.find_all("a"):
-                # Does our link even has 'href' attribute and it is not 'anchor' link
-                if link.has_attr('href') and "#" not in link['href']:
-                    # We check again, on does it crawlable to deserve a chanse to 
-                    # be inserted indo database
-                    if self.__crawlable(link["href"]):
-                        if link['href'].startswith(('/')):
-                            self.__dataLinkInsert(link['href'], LinkType.INTERNAL, page.status_code)
+            isProxyUsed = False
+        
+        # For implementing multithreading
+        while updateProxy:
+            if isProxyUsed:
+                retries += 1
+                rotator_proxy = rotator.get()
+                proxy = proxy_to_requests_proxy(rotator_proxy.ip, rotator_proxy.protocol)
+                log(f"Info: Proxy in use {rotator_proxy.ip}.", self.log_file)
+
+            try:
+                if self.__crawlable(url):
+                    if isProxyUsed:
+                        page = requests.get(url, headers=C.HEADERS, verify=False, proxies=proxy, timeout=10)
+                    else:
+                        page = requests.get(url, headers=C.HEADERS, verify=False, timeout=10)
+                    if page.status_code != 200:
+                        log(f"Error: Code is not 200.", self.log_file)
+                        if not isProxyUsed:
+                            updateProxy = False
                         else:
-                            if link['href'].startswith((self.url, self.url.replace("https", "http"), self.url.replace("http", "https"))):
-                                self.__dataLinkInsert(link['href'].replace(self.url, ""), LinkType.INTERNAL, page.status_code)
+                            log("Info: Swap proxy.", self.log_file)
+                            updateProxy = True
+                            dead_proxies[rotator_proxy.ip] = rotator_proxy
+                            if len(dead_proxies) == len(proxies) and max_retries <= retries:
+                                log("Failure: Could not parse an page due to bad proxies.", self.log_file)
+                                updateProxy = False
+                            break
+                else:
+                    raise NotImplementedError
+            except Exception as e:
+                log(f"Error: {e.args[0]}.", self.log_file)
+                status = "NotOk"
+                if not isProxyUsed:
+                    updateProxy = False
+                else:
+                    log("Info: Swap proxy.", self.log_file)
+                    updateProxy = True
+                    dead_proxies[rotator_proxy.ip] = rotator_proxy
+                    if len(dead_proxies) == len(proxies) and max_retries <= retries:
+                        log("Failure: Could not parse an page due to bad proxies.", self.log_file)
+                        updateProxy = False
+                    break
+            else:
+                updateProxy = False
+                soup = BeautifulSoup(page.text, 'lxml')
+                for link in soup.find_all("a"):
+                    # Does our link even has 'href' attribute and it is not 'anchor' link
+                    if link.has_attr('href') and "#" not in link['href']:
+                        # We check again, on does it crawlable to deserve a chanse to 
+                        # be inserted indo database
+                        if self.__crawlable(link["href"]):
+                            if link['href'].startswith(('/')):
+                                self.__dataLinkInsert(link['href'], LinkType.INTERNAL, page.status_code)
                             else:
-                                if link['href'].startswith(("https://", "http://")):
-                                    self.__dataLinkInsert(link['href'], LinkType.EXTERNAL, page.status_code)
-        finally:
-            self.__dataSetCurrentLink(self.__dataGetCurrentLink() + 1)
-            current = self.__dataGetCurrentLink()
-            log(f"{status}: Crawled {current}/{self.__dataGetLinkNumber()} {url}", self.log_file)
+                                if link['href'].startswith((self.url, self.url.replace("https", "http"), self.url.replace("http", "https"))):
+                                    self.__dataLinkInsert(link['href'].replace(self.url, ""), LinkType.INTERNAL, page.status_code)
+                                else:
+                                    if link['href'].startswith(("https://", "http://")):
+                                        self.__dataLinkInsert(link['href'], LinkType.EXTERNAL, page.status_code)
+            finally:
+                self.__dataSetCurrentLink(self.__dataGetCurrentLink() + 1)
+                current = self.__dataGetCurrentLink()
+                log(f"{status}: Crawled {current}/{self.__dataGetLinkNumber()} {url}", self.log_file)
 
     # Walk through sitemap file
     def __crawlSitemap(self, sitemap: str):
-        status = "Ok"
         log("Status: Checking sitemap", self.log_file)
-        try:
-            if self.__crawlable(sitemap):
-                page = requests.get(url=sitemap, headers=C.HEADERS, timeout=1, verify=False)
-            else:
-                # Maybe make your own Exception class
-                raise NotImplementedError
-        except requests.exceptions.HTTPError as e:
-            log(f"Error: {e.args[0]}.", self.log_file)
-            status = "NotOk"
-        except requests.exceptions.ReadTimeout as e:
-            log(f"Error: Time out. {e}", self.log_file)
-            status = "NotOk"
-        except requests.exceptions.ConnectionError as e:
-            log(f"Error: Something wrong with connection. {e}", self.log_file)
-            status = "NotOk"
-        except requests.exceptions.RequestException as e:
-            log(f"Error: While trying make request. {e}", self.log_file)
-            status = "NotOk"
-        except NotImplementedError:
-            log("Error: Could parse file with such extention name.", self.log_file)
-            status = "NotOk"
+        status = "Ok"
+        updateProxy = True
+    
+        if os.path.exists(self.proxy_file):
+            proxies: list[Proxy] = []
+            dead_proxies = {}
+            # Load predefined proxies
+            proxies_json = load_proxies(self.proxy_file)
+            for proxy_item in proxies_json:
+                proxies.append(Proxy(
+                    proxy_item['path'], 
+                    proxy_item['type'], 
+                    proxy_item['protocol'],
+                    proxy_item['status'], 
+                    proxy_item['weight'])
+                )
+            
+            rotator = Rotator(proxies)
+            isProxyUsed = True
+            max_retries = len(proxies) * 5
+            retries = 0
         else:
-            soup = BeautifulSoup(page.text, 'xml')
-            for sm in soup.find_all('loc'):
-                if ".xml" in sm.text:
-                    log(f"{status}ey: New sub sitemap ({sm.text})", self.log_file)
-                    self.__crawlSitemap(sm.text)
+            isProxyUsed = False
+        
+        # For implementing multithreading
+        while updateProxy:
+            if isProxyUsed:
+                retries += 1
+                rotator_proxy = rotator.get()
+                proxy = proxy_to_requests_proxy(rotator_proxy.ip, rotator_proxy.protocol)
+                log(f"Info: Proxy in use {rotator_proxy.ip}.", self.log_file)
+
+            try:
+                if self.__crawlable(sitemap):
+                    if isProxyUsed:
+                        page = requests.get(url=sitemap, headers=C.HEADERS, timeout=10, verify=False, proxies=proxy)
+                    else:
+                        page = requests.get(url=sitemap, headers=C.HEADERS, timeout=10, verify=False)
+                    if page.status_code != 200:
+                        log(f"Error: Code is not 200.", self.log_file)
+                        if not isProxyUsed:
+                            updateProxy = False
+                        else:
+                            log("Info: Swap proxy.", self.log_file)
+                            updateProxy = True
+                            dead_proxies[rotator_proxy.ip] = rotator_proxy
+                            if len(dead_proxies) == len(proxies) and max_retries <= retries:
+                                log("Failure: Could not parse an sitemaps due to bad proxies.", self.log_file)
+                                updateProxy = False
+                            break
                 else:
-                    self.__dataLinkInsert(sm.text.replace(self.url, ""), LinkType.INTERNAL, page.status_code)
+                    # Maybe make your own Exception class
+                    raise NotImplementedError
+            except Exception as e:
+                log(f"Error: {e.args[0]}.", self.log_file)
+                status = "NotOk"
+                if not isProxyUsed:
+                    updateProxy = False
+                else:
+                    log("Info: Swap proxy.", self.log_file)
+                    updateProxy = True
+                    dead_proxies[rotator_proxy.ip] = rotator_proxy
+                    if len(dead_proxies) == len(proxies) and max_retries <= retries:
+                        log("Failure: Could not parse an sitemaps due to bad proxies.", self.log_file)
+                        updateProxy = False
+                    break
+            else:
+                updateProxy = False
+                soup = BeautifulSoup(page.text, 'xml')
+                for sm in soup.find_all('loc'):
+                    if ".xml" in sm.text:
+                        log(f"{status}ey: New sub sitemap ({sm.text})", self.log_file)
+                        self.__crawlSitemap(sm.text)
+                    else:
+                        self.__dataLinkInsert(sm.text.replace(self.url, ""), LinkType.INTERNAL, page.status_code)
 
     def __crawlable(self, url: str) -> bool:
         notcrawlable_ext = (

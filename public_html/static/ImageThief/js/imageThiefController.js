@@ -5,13 +5,18 @@ let update_logs_repeater
 let isFocusedLogs = false
 
 function StartImageThief(url, mode){
+
+	formData = new FormData();
+	formData.append('url', url)
+	formData.append('mode', mode)
+	formData.append('csrfmiddlewaretoken', csrftoken)
+
 	$.ajax({
-		type: "GET",
+		type: "POST",
 		url: "/" + language_code + "/tools/image_thief-start/",
-		data: {
-			"url": url,
-			"mode": mode,
-		},
+		data: formData,
+		processData: false,
+		contentType: false,
 		mode: 'same-origin', // Do not send CSRF token to another domain.
 		// Results of scrapping images success
 		success: function(result) {
@@ -61,13 +66,35 @@ function StartImageThief(url, mode){
 function InitImageThief(){
 	var url = $("#url").val()
 	var mode = $('input[name=mod]:checked').val()
+	var proxy_file = 'EMPTY'
+	if($('#proxy_file').prop('files').length > 0){
+		proxy_file = $('#proxy_file').prop('files')[0];
+	}
+
+	var proxy_generate = 'EMPTY'
+	if (!$('#proxy_generate').attr('disabled')){
+		proxy_generate = $('#proxy_generate').is(':checked')
+	}
+
+	var proxy_input = 'EMPTY'
+	if ($('#proxy_input').val().length > 0){
+		var proxy_input = $('#proxy_input').val()
+	}
+
+	formData = new FormData();
+	formData.append('url', url)
+	formData.append('mode', mode)
+	formData.append('proxy_file', proxy_file)
+	formData.append('proxy_generate', proxy_generate)
+	formData.append('proxy_input', proxy_input)
+	formData.append('csrfmiddlewaretoken', csrftoken)
+
 	$.ajax({
-		type: "GET",
+		type: "POST",
 		url: "/" + language_code + "/tools/image_thief-init/",
-		data: {
-			'url': url,
-			'mode': mode,
-		},
+		data: formData,
+		processData: false,
+		contentType: false,
 		mode: 'same-origin',
 		// Result of initialization of scrapping images 
 		success: function(result) {
@@ -171,23 +198,56 @@ function UpdateLogs(){
 	})
 }
 
-function TabClosed(){
-	$.ajax({
-		type: "GET",
-		url: "/" + language_code + "/tools/image_thief-tabclosed/",
-		data: {
-		},
-		mode: 'same-origin', // Do not send CSRF token to another domain.
-		success: function(result) {
-			clearInterval(update_logs_repeater);
-			clearInterval(update_status_repeater);
-		},
-	})
+// Thanks to https://jsbin.com/muhipoye/1/edit
+function clearInputFile(f){
+	if(f.value){
+		try{
+			f.value = ''; //for IE11, latest Chrome/Firefox/Opera...
+		}catch(err){
+		}
+		if(f.value){ //for IE5 ~ IE10
+			var form = document.createElement('form'), ref = f.nextSibling;
+			form.appendChild(f);
+			form.reset();
+			ref.parentNode.insertBefore(f,ref);
+		}
+	}
+}
+
+function setCheckbox(el, value){
+	el.checked = value
+}
+
+function clearInput(el){
+	el.value = ''
+}
+
+function UpdateProxies(target){
+	switch($(target.target).attr('id')){
+		case 'proxy_file':
+			setCheckbox(document.querySelector('#proxy_generate'), false)
+			clearInput(document.querySelector('#proxy_input'))
+			break
+		case 'proxy_generate':
+			clearInputFile(document.querySelector('#proxy_file'))
+			clearInput(document.querySelector('#proxy_input'))
+			break
+		case 'proxy_input':
+			setCheckbox(document.querySelector('#proxy_generate'), false)
+			clearInputFile(document.querySelector('#proxy_file'))
+			break
+	}
+	//$(".proxy_options").each( (indx, el) => {
+	//	$(el).attr("disabled",true);
+	//});
+	//$(target.target).attr('disabled', false)
 }
 
 $(document).ready(function(){
 	$("#start").on('click', InitImageThief)
 	$("#verbose").on('click', ToggleVerbose)
-	window.addEventListener("beforeunload", TabClosed);
+	$(".proxy_options").each( (indx, el) => {
+		$(el).on('click', UpdateProxies)
+	});
 })
 

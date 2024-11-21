@@ -8,6 +8,10 @@ from urllib.parse import urlparse
 from ImageThief.config import VERBOSE, HEADERS
 
 
+def removeFile(filename: str) -> None:
+    if os.path.exists(filename):
+        os.remove(filename)
+
 def initFile(filename: str) -> None:
     with open(filename, "w", encoding="utf-8") as F:
         F.write("")

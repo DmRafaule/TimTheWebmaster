@@ -72,3 +72,29 @@ textarea{
 button{
 	background: none;
 }
+
+.hint_mark {
+	width: var(--icon_size);
+	height: var(--icon_size);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.hint_mark_sign {
+	border-radius: 10px;
+	border: 1px solid gray;
+	width: 100%;
+	height: 100%;
+	text-align: center;
+	padding: 5px;
+}
+
+.hint_mark_sign:active {
+	background-color: var(--acent_color);
+	cursor: help;
+}
+.hint_mark_sign:hover {
+	background-color: var(--acent_color);
+	cursor: help;
+}
