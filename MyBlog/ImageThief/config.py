@@ -38,6 +38,8 @@ IMAGES_FOLDER = "imgs"
 LOG_FILE = "log.txt"
 # Where all data stored
 DATA_FILE = "data.json"
+# Where all proxies stored
+PROXY_FILE = "proxies.json"
 # Compressed images
 ARCHIVE_FILE = "imgs.zip"
 # Name of program

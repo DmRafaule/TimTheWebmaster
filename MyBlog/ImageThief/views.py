@@ -1,4 +1,5 @@
 import os
+import json
 from threading import Thread
 
 from django.http import JsonResponse
@@ -10,7 +11,7 @@ from django.utils.translation import gettext_lazy as _
 from .WebCrawler.crawler import WebCrawler
 from .ImgScrapper.scrapper import ImgScrapper
 from .Utils.utils import log, initFolder, initFile, checkURL, toMinimalURL, checkIsListURLs, extractURLs
-from .Utils.utils import toDomainURL, initDataFile
+from .Utils.utils import toDomainURL, initDataFile, removeFile
 import ImageThief.config as C
 
 
@@ -21,13 +22,10 @@ TIME_BERFORE_CLEANUP = 3600
 
 def tool_main(request):
     request.session[f"inWork_{request.session.session_key}"] = False
-    try_limit = request.session["user_tries_limit"] = request.session.get(f"user_tries_limit", TRY_LIMIT)
-    tries_counter = request.session[f"user_tries_{request.session.session_key}"] = request.session.get(f"user_tries_{request.session.session_key}", 1)
 
     context = initDefaults(request)
-    context.update({'try_limit': try_limit})
-    context.update({'tries_counter': tries_counter})
     context.update({'archive': os.path.join('tools', C.SLUG, 'archive.zip') })
+    context.update({'proxies_example': os.path.join('tools', C.SLUG, 'proxies.json') })
 
     return render(request, 'ImageThief/image_thief.html', context=context)
 
@@ -35,12 +33,13 @@ def downloadAllImagesFromListPage(
         urls: [],
         data_file: str,
         log_file: str,
+        proxy_file: str,
         images_folder: str,
         result_folder: str,
         noisy: bool = True) -> None:
     log("Mode: Download images from list of pages.", log_file)
     for url in urls:
-        scrapper = ImgScrapper(url, data_file, log_file, images_folder, result_folder,  noisy)
+        scrapper = ImgScrapper(url, data_file, log_file, proxy_file, images_folder, result_folder,  noisy)
         scrapper.scrape(url)
         scrapper.download()
     scrapper.zip()
@@ -51,11 +50,12 @@ def downloadAllImagesFromPage(
         url: str,
         data_file: str,
         log_file: str,
+        proxy_file: str,
         images_folder: str,
         result_folder: str,
         noisy: bool = True) -> None:
     log(f"Mode: Download images from single page ({url}).", log_file)
-    scrapper = ImgScrapper(url, data_file, log_file, images_folder, result_folder, noisy)
+    scrapper = ImgScrapper(url, data_file, log_file, proxy_file, images_folder, result_folder, noisy)
     scrapper.scrape(url)
     scrapper.download()
     scrapper.zip()
@@ -66,15 +66,16 @@ def downloadAllImagesFromSite(
         url: str,
         data_file: str,
         log_file: str,
+        proxy_file: str,
         images_folder: str,
         result_folder: str,
         noisy: bool = True,
         mode: C.ScrappingMode = C.ScrappingMode.FULL) -> None:
     log(f"Mode: Download images from whole site ({url}).", log_file)
-    spider = WebCrawler(url, data_file, log_file, noisy)
+    spider = WebCrawler(url, data_file, log_file, proxy_file, noisy)
     links_to_scrapp = spider.getAllInternalLinks()
 
-    scrapper = ImgScrapper(url, data_file, log_file, images_folder, result_folder, noisy)
+    scrapper = ImgScrapper(url, data_file, log_file, proxy_file, images_folder, result_folder, noisy)
     scrapper.scrape(*links_to_scrapp)
     scrapper.download()
     scrapper.zip()
@@ -83,68 +84,52 @@ def downloadAllImagesFromSite(
 
 def startProcess(request):
     user_id = request.session.session_key
-    url = request.GET["url"]
+    url = request.POST["url"]
     urls = extractURLs(url)
-    mode = request.GET["mode"]
+    mode = request.POST["mode"]
     log_file = request.session[f"log_file_{user_id}"]
     data_file = request.session[f"data_file_{user_id}"]
+    proxy_file = request.session[f"proxy_file_{user_id}"]
     images_folder = request.session[f"image_folder_{user_id}"]
     result_folder = request.session[f"result_folder_{user_id}"]
     if mode == "full":
         mode = C.ScrappingMode.FULL
-        downloadAllImagesFromSite(url, data_file, log_file, images_folder, result_folder, C.VERBOSE, mode)
+        downloadAllImagesFromSite(url, data_file, log_file, proxy_file, images_folder, result_folder, C.VERBOSE, mode)
     elif mode == "list-pages":
         mode = C.ScrappingMode.LIST_PAGES
-        downloadAllImagesFromListPage(urls, data_file, log_file, images_folder, result_folder, C.VERBOSE)
+        downloadAllImagesFromListPage(urls, data_file, log_file, proxy_file,  images_folder, result_folder, C.VERBOSE)
     else:
         mode = C.ScrappingMode.SINGLE_PAGE
-        downloadAllImagesFromPage(url, data_file, log_file, images_folder, result_folder, C.VERBOSE)
+        downloadAllImagesFromPage(url, data_file, log_file, proxy_file, images_folder, result_folder, C.VERBOSE)
 
 def start(request):
     data = {}
     user_id = request.session.session_key
     status = 200
     request.session[f"current_log_line_{user_id}"] = 0
-    try_limit = request.session[f"user_tries_limit"]
-    tries_counter = request.session[f"user_tries_{user_id}"]
-    if tries_counter <= try_limit and tries_counter >= 1:
-        startProcessProcess = Thread(target=startProcess, args=(request,))
-        try:
-            startProcessProcess.start()
-            # Save a process pid for earlier closing (like tab, window)
-            request.session[f"process_{user_id}"] = startProcessProcess.native_id
-            request.session[f"inWork_{user_id}"] = True
-            request.session.save()
-            # Max time of execution 1 hour
-            startProcessProcess.join(timeout=3600)  # 1 hour
-            exitCode = True
-            startProcessProcess.close()
-        except Exception as ex:
-            exitCode = False
-        else:
-            exitCode = False
-        tries_counter += 1
-        request.session[f"user_tries_{user_id}"] = tries_counter
+    startProcessProcess = Thread(target=startProcess, args=(request,))
+    try:
+        startProcessProcess.start()
+        # Save a process pid for earlier closing (like tab, window)
+        request.session[f"inWork_{user_id}"] = True
         request.session.save()
-        imgs = os.path.join(request.session[f"result_folder_{user_id}"], "imgs.zip")
-        imgs = imgs[imgs.find(os.path.join(settings.MEDIA_URL.replace('/',''),C.RESULT_FOLDER)) - 1:]
-        data = {
-            "btn": _("Ещё раз"),
-            "imgs_path": imgs,
-            "try": tries_counter,
-            "try_limit": try_limit,
-        }
-        # If user stoped a tool, will return error code
-        if exitCode:
-            data["btn"] = _("Начать")
-            status = 406
+        # Max time of execution 1 hour
+        startProcessProcess.join(timeout=3600)  # 1 hour
+        exitCode = True
+        startProcessProcess.close()
+    except Exception as ex:
+        exitCode = False
     else:
-        data = {
-            "btn": _("Начать"),
-            "status_msg": _("Не так быстро ковбой, подожди 5 секунд"),
-            "try": tries_counter,
-            "try_limit": try_limit,
-        }
+        exitCode = False
+    imgs = os.path.join(request.session[f"result_folder_{user_id}"], "imgs.zip")
+    imgs = imgs[imgs.find(os.path.join(settings.MEDIA_URL.replace('/',''),C.RESULT_FOLDER)) - 1:]
+    data = {
+        "btn": _("Ещё раз"),
+        "imgs_path": imgs,
+    }
+    # If user stoped a tool, will return error code
+    if exitCode:
+        data["btn"] = _("Начать")
         status = 406
 
     return JsonResponse(data, status=status)
@@ -152,16 +137,53 @@ def start(request):
 
 def init(request):
     user_id = request.session.session_key
-    request.session["user_tries_limit"] = request.session.get(f"user_tries_limit", TRY_LIMIT)
-    request.session[f"user_tries_{user_id}"] = request.session.get(f"user_tries_{user_id}", 1)
-    url = request.GET["url"]
-    mode = request.GET["mode"]
+    url = request.POST["url"]
+    mode = request.POST["mode"]
     if mode == "full":
         MODE = C.ScrappingMode.FULL
     elif mode == "list-pages":
         MODE = C.ScrappingMode.LIST_PAGES
     else:
         MODE = C.ScrappingMode.SINGLE_PAGE
+
+    proxies = []
+    # If proxy file provided then convert it to python dict and put it in proxies list
+    if len(request.FILES) == 1:
+        proxy_file = request.FILES["proxy_file"]
+        try:
+            with proxy_file.open(mode='r') as file:
+                proxies = json.load(file)
+                if proxies[0]['weight'] != 1000:
+                    proxies = []
+        except:
+            pass
+
+    # If proxy genrate option provided then make a request to ProxyChecker
+    proxy_generate = request.POST["proxy_generate"]
+    if proxy_generate != 'EMPTY':
+        if proxy_generate == 'true':
+           pass # Make some request to ProxyChecker tool
+        else:
+            pass
+
+    # If proxy string provided then split it an put single one proxy to proxies list
+    proxy_input = request.POST["proxy_input"]
+    if proxy_input != 'EMPTY':
+        values = proxy_input.split(':')
+        if len(values) == 3:
+            protocol = proxy_input.split(':')[0]
+            ip = proxy_input.split(':')[1]
+            port = proxy_input.split(':')[2]
+            proxies.append({
+                "path": ":".join([ip,port]),
+                "country": "UNKNOWN",
+                "protocol": protocol,
+                "type": "datacenter",
+                "weight": 1000,
+                "status": "unchecked"
+            })
+    
+    
     btn = _("Ожидай")
     status_msg = ""
     status = 200
@@ -248,6 +270,14 @@ def init(request):
     DATA_FILE = os.path.join(RESULT_FOLDER, C.DATA_FILE)
     request.session[f"data_file_{user_id}"] = DATA_FILE
     initDataFile(C.DATA_JSON_TEMPLATE, DATA_FILE)
+    # Init proxy file
+    if len(proxies) > 0:
+        PROXY_FILE = os.path.join(RESULT_FOLDER, C.PROXY_FILE)
+        request.session[f"proxy_file_{user_id}"] = PROXY_FILE
+        removeFile(PROXY_FILE)
+        initDataFile(proxies, PROXY_FILE)
+    else:
+        request.session[f"proxy_file_{user_id}"] = 'None'
 
     log(f"""
     {C.NAME} v{C.VERSION}
@@ -262,20 +292,6 @@ def init(request):
         "mode": mode,
         "status_msg": status_msg
         }, status=status)
-
-
-def stop(request):
-    status = 200
-    try:
-        killProcess(request.session[f"process_{request.session.session_key}"])
-    except Exception:
-        pass
-
-    btn = _("Начать")
-    return JsonResponse({
-        "btn": btn,
-        }, status=status)
-
 
 def update_status(request):
     data = {
