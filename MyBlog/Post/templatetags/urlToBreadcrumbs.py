@@ -76,20 +76,22 @@ def urlToBreadcrumbs(url: str):
                         'level': indx + 1
                     })
                 else:
-                    name = ''
+                    name = None
                     if len(Article.objects.filter(slug=url)) == 1:
                         name = Article.objects.filter(slug=url)[0].title
                     elif len(QA.objects.filter(slug=url)) == 1:
                         name = QA.objects.filter(slug=url)[0].question
                     elif len(TD.objects.filter(slug=url)) == 1:
                         name = TD.objects.filter(slug=url)[0].termin
-                    else:
+                    elif len(Tool.objects.filter(slug=url)) == 1:
                         name = Tool.objects.filter(slug=url)[0].name
-                    result_list.append({
-                        'name': name,
-                        'url': curr_url + '/',
-                        'level': indx + 1
-                    })
+                        
+                    if name is not None:
+                        result_list.append({
+                            'name': name,
+                            'url': curr_url + '/',
+                            'level': indx + 1
+                        })
             case _:
                 result_list.append({
                     'name': url.capitalize(),
