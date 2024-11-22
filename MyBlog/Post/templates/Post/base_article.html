@@ -26,6 +26,7 @@
 		}]
     }
     </script>
+	{% if post.tds.all|length != 0 or tds|length != 0 or post.qas.all|length != 0 or qas|length != 0 %}
 	<script type="application/ld+json">
 		{
 			"@context": "https://schema.org",
@@ -151,6 +152,7 @@
 			]
 		}
 	</script>
+	{% endif %}
 	
 {% endblock %}
 
