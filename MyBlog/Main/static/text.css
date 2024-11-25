@@ -65,6 +65,8 @@
 .ql-code-block-container{
 	white-space: pre-wrap;
 	word-break: break-word;
+	max-height: 600px;
+  	overflow: auto;
 }
 
 .abbreviation{
