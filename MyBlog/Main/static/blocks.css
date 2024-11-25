@@ -264,10 +264,11 @@
 	overflow-x: hidden;
 	height: 100%;
 	width: 0;
-	background-color: var(--main_color);
+	background-color: var(--secondary_color);
 	transition: 0.2s;
 	z-index: 1;
-	color: var(--ui_text_color)
+	color: var(--ui_text_color);
+	border-right: 4px solid var(--main_color);
 }
 
 .tag{
