@@ -75,7 +75,7 @@
 					</div>
 				</fieldset>
 			</fieldset>
-			<div class="row on_end">
+			<div class="row on_end mid_gap">
 				<div>
 					<input class="form_el"  type="checkbox" value="verbose" id="verbose">
 					<label for="verbose">{% trans "Показать работу скрипта" %}</label>
@@ -83,10 +83,19 @@
 						<p id="verbose-error" class="hint-required"></p>
 					</div>
 				</div>
+				<div>
+					<input class="form_el"  type="checkbox" value="dynamic" id="dynamic" disabled>
+					<abbr title="{% trans 'Парсит сайт которые используют JS для загрузки изображений.' %}" style="color: grey;">
+						<label for="dynamic">{% trans "Динамический" %}</label>
+					</abbr>
+					<div class="hint-container">
+						<p id="dynamic-error" class="hint-required"></p>
+					</div>
+				</div>
 			</div>
 		</form> 
 		<div class="row max_gap">
-			<fieldset  class="el-expandable el-no_shrinkable  el-300-min-basis">
+			<fieldset id="proxy_block" class="el-expandable el-no_shrinkable  el-300-min-basis">
 				<legend>
 					<h2 class="marger_mid">{%trans "Прокси"%}</h2>
 				</legend>
