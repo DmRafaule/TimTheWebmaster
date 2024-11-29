@@ -4,11 +4,12 @@ let update_status_repeater
 let update_logs_repeater
 let isFocusedLogs = false
 
-function StartImageThief(url, mode){
+function StartImageThief(url, mode, isDynamic){
 
 	formData = new FormData();
 	formData.append('url', url)
 	formData.append('mode', mode)
+	formData.append('isDynamic', isDynamic)
 	formData.append('csrfmiddlewaretoken', csrftoken)
 
 	$.ajax({
@@ -23,8 +24,12 @@ function StartImageThief(url, mode){
 			clearInterval(update_status_repeater);
 			// Disable mode selection
 			$('input[name=mod]').attr("disabled",false);
+			$('#dynamic').attr("disabled",false);
+			$("#dynamic+abbr").css("color", "black")
 			// Change background color of Modes block
 			$("#modes_block").css("color", "black")
+			// Change background color of Proxy block
+			$("#proxy_block").css("color", "black")
 			$("#imagethief-results-images").attr("href", result.imgs_path)
 			$("#imagethief_text_inButton").text(result.btn)
 			$("#current_try").text(result.try)
@@ -42,8 +47,12 @@ function StartImageThief(url, mode){
 		error: function(jqXHR, textStatus, errorThrown){
 			// Disable mode selection
 			$('input[name=mod]').attr("disabled",false);
+			$('#dynamic').attr("disabled",false);
+			$("#dynamic+abbr").css("color", "black")
 			// Change background color of Modes block
 			$("#modes_block").css("color", "black")
+			// Change background color of Proxy block
+			$("#proxy_block").css("color", "black")
 			// Show status field of tool
 			$("#container_imagethief-status").hide()
 			$("#container_imagethief-results").hide()
@@ -66,6 +75,8 @@ function StartImageThief(url, mode){
 function InitImageThief(){
 	var url = $("#url").val()
 	var mode = $('input[name=mod]:checked').val()
+	var isDynamic = $('#dynamic').is(":checked")
+
 	var proxy_file = 'EMPTY'
 	if($('#proxy_file').prop('files').length > 0){
 		proxy_file = $('#proxy_file').prop('files')[0];
@@ -84,6 +95,7 @@ function InitImageThief(){
 	formData = new FormData();
 	formData.append('url', url)
 	formData.append('mode', mode)
+	formData.append('isDynamic', isDynamic)
 	formData.append('proxy_file', proxy_file)
 	formData.append('proxy_generate', proxy_generate)
 	formData.append('proxy_input', proxy_input)
@@ -100,8 +112,12 @@ function InitImageThief(){
 		success: function(result) {
 			// Disable mode selection
 			$('input[name=mod]').attr("disabled",true);
+			$('#dynamic').attr("disabled",true);
+			$("#dynamic+abbr").css("color", "grey")
 			// Change background color of Modes block
 			$("#modes_block").css("color", "grey")
+			// Change background color of Proxy block
+			$("#proxy_block").css("color", "grey")
 			// Show status field of tool
 			$("#container_imagethief-status").show()
 			$("#container_imagethief-results").hide()
@@ -114,7 +130,7 @@ function InitImageThief(){
 			$("#start").off()
 			$("#imagethief_text_inButton").css("background-color", "grey")
 			$("#imagethief_text_inButton").removeClass('button')
-			StartImageThief(result.url, result.mode)
+			StartImageThief(result.url, result.mode, isDynamic)
 			// Make sure it is empty
 			$("#imagethief-logs").text("")
 				

@@ -36,10 +36,11 @@ def downloadAllImagesFromListPage(
         proxy_file: str,
         images_folder: str,
         result_folder: str,
+        isDynamic: bool,
         noisy: bool = True) -> None:
     log("Mode: Download images from list of pages.", log_file)
     for url in urls:
-        scrapper = ImgScrapper(url, data_file, log_file, proxy_file, images_folder, result_folder,  noisy)
+        scrapper = ImgScrapper(url, data_file, log_file, proxy_file, images_folder, result_folder, isDynamic, noisy)
         scrapper.scrape(url)
         scrapper.download()
     scrapper.zip()
@@ -53,9 +54,10 @@ def downloadAllImagesFromPage(
         proxy_file: str,
         images_folder: str,
         result_folder: str,
+        isDynamic: bool,
         noisy: bool = True) -> None:
     log(f"Mode: Download images from single page ({url}).", log_file)
-    scrapper = ImgScrapper(url, data_file, log_file, proxy_file, images_folder, result_folder, noisy)
+    scrapper = ImgScrapper(url, data_file, log_file, proxy_file, images_folder, result_folder, isDynamic, noisy)
     scrapper.scrape(url)
     scrapper.download()
     scrapper.zip()
@@ -69,13 +71,14 @@ def downloadAllImagesFromSite(
         proxy_file: str,
         images_folder: str,
         result_folder: str,
+        isDynamic: bool,
         noisy: bool = True,
         mode: C.ScrappingMode = C.ScrappingMode.FULL) -> None:
     log(f"Mode: Download images from whole site ({url}).", log_file)
     spider = WebCrawler(url, data_file, log_file, proxy_file, noisy)
     links_to_scrapp = spider.getAllInternalLinks()
 
-    scrapper = ImgScrapper(url, data_file, log_file, proxy_file, images_folder, result_folder, noisy)
+    scrapper = ImgScrapper(url, data_file, log_file, proxy_file, images_folder, result_folder, isDynamic, noisy)
     scrapper.scrape(*links_to_scrapp)
     scrapper.download()
     scrapper.zip()
@@ -88,19 +91,26 @@ def startProcess(request):
     urls = extractURLs(url)
     mode = request.POST["mode"]
     log_file = request.session[f"log_file_{user_id}"]
+    isDynamic = request.POST["isDynamic"]
+    if isDynamic == 'true':
+        isDynamic = True
+        log(f"The way to parse: DYNAMIC", log_file)
+    else:
+        isDynamic = False
+        log(f"The way to parse: STATIC", log_file)
     data_file = request.session[f"data_file_{user_id}"]
     proxy_file = request.session[f"proxy_file_{user_id}"]
     images_folder = request.session[f"image_folder_{user_id}"]
     result_folder = request.session[f"result_folder_{user_id}"]
     if mode == "full":
         mode = C.ScrappingMode.FULL
-        downloadAllImagesFromSite(url, data_file, log_file, proxy_file, images_folder, result_folder, C.VERBOSE, mode)
+        downloadAllImagesFromSite(url, data_file, log_file, proxy_file, images_folder, result_folder, isDynamic, C.VERBOSE, mode)
     elif mode == "list-pages":
         mode = C.ScrappingMode.LIST_PAGES
-        downloadAllImagesFromListPage(urls, data_file, log_file, proxy_file,  images_folder, result_folder, C.VERBOSE)
+        downloadAllImagesFromListPage(urls, data_file, log_file, proxy_file,  images_folder, result_folder, isDynamic, C.VERBOSE)
     else:
         mode = C.ScrappingMode.SINGLE_PAGE
-        downloadAllImagesFromPage(url, data_file, log_file, proxy_file, images_folder, result_folder, C.VERBOSE)
+        downloadAllImagesFromPage(url, data_file, log_file, proxy_file, images_folder, result_folder, isDynamic, C.VERBOSE)
 
 def start(request):
     data = {}
@@ -133,7 +143,6 @@ def start(request):
         status = 406
 
     return JsonResponse(data, status=status)
-
 
 def init(request):
     user_id = request.session.session_key

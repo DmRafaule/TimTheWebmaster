@@ -8,6 +8,17 @@ from zipfile import ZipFile, ZIP_DEFLATED
 from bs4 import BeautifulSoup
 import requests
 
+# For creating webdriver
+from selenium import webdriver
+# For navigation purpose
+from selenium.webdriver.common.by import By
+# For easy to send parameters to driver when set
+from selenium.webdriver.firefox.options import Options
+# For events handling
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions  as EC
+from selenium.common.exceptions import TimeoutException
+
 import ImageThief.config as C
 from ImageThief.Utils.utils import toDomainURL, toMinimalURL, log
 from ImageThief.proxy_rotator import Rotator, Proxy, load_proxies, proxy_to_requests_proxy
@@ -17,6 +28,26 @@ def GetRandomString(length: int) -> str:
     letters = string.ascii_letters
     random_string = ''.join(random.choice(letters) for i in range(length))
     return random_string
+
+def getPageStatically(url, proxy = None):
+    if proxy is not None:
+        resp = requests.get(url, headers=C.HEADERS, verify=False, proxies=proxy, timeout=10)
+        return resp.text, resp.status_code, resp.content
+    else:
+        resp = requests.get(url, headers=C.HEADERS, verify=False, timeout=10)
+        return resp.text, resp.status_code, resp.content
+
+def getPageDynamically(url, proxy = None):
+    firefox_opt = Options()
+    firefox_opt.add_argument('--headless')
+    firefox_opt.add_argument("--no-sandbox")
+    firefox_opt.add_argument("--disable-dev-shm-usage")  
+    if proxy is not None:
+        firefox_opt.add_argument(f"--proxy-server={proxy}")
+    driver = webdriver.Firefox(options=firefox_opt)
+    driver.implicitly_wait(10)
+    driver.get(url)
+    return driver.page_source, 200
 
 
 class ImgScrapper:
@@ -28,6 +59,7 @@ class ImgScrapper:
     proxy_file = str,
     images_folder = str
     result_folder = str
+    is_dynamic = bool
 
     def __init__(self,
                  url: str,
@@ -36,6 +68,7 @@ class ImgScrapper:
                  proxy_file: str,
                  images_folder: str,
                  result_folder: str,
+                 isDynamic: bool,
                  noisy: bool = True):
         self.url = url
         self.min_url = toMinimalURL(url)
@@ -45,6 +78,7 @@ class ImgScrapper:
         self.proxy_file = proxy_file
         self.images_folder = images_folder
         self.result_folder = result_folder
+        self.is_dynamic = isDynamic
 
     def scrape(self, *urls):
         log("Status: Scrapping images", self.log_file)
@@ -60,6 +94,8 @@ class ImgScrapper:
         start = time.time()
         status = "Ok"
         updateProxy = True
+        proxy = None
+        rotator_proxy = None
     
         if os.path.exists(self.proxy_file):
             proxies: list[Proxy] = []
@@ -93,24 +129,20 @@ class ImgScrapper:
             for link in urls[self.__dataGetCurrentLink():]:
                 if type(link) is not str:
                     l_url = link["url"]
+                    to_get_url = self.url + l_url
                 else:
                     l_url = link
+                    to_get_url = l_url
 
                 current = self.__dataGetCurrentLink()
                 # Here aquire a user_agent
                 try:
-                    if isProxyUsed:
-                        if type(link) is not str:
-                            page = requests.get(self.url + l_url, headers=C.HEADERS, verify=False, proxies=proxy, timeout=10)
-                        else:
-                            page = requests.get(l_url, headers=C.HEADERS, verify=False, proxies=proxy, timeout=10)
+                    if not self.is_dynamic:
+                        page, status_code, content = getPageStatically(to_get_url, proxy)
                     else:
-                        if type(link) is not str:
-                            page = requests.get(self.url + l_url, headers=C.HEADERS, verify=False, timeout=10)
-                        else:
-                            page = requests.get(l_url, headers=C.HEADERS, verify=False, timeout=10)
+                        page, status_code = getPageDynamically(to_get_url, rotator_proxy)
                     
-                    if page.status_code != 200:
+                    if status_code != 200:
                         log(f"Error: Code is not 200.", self.log_file)
                         if not isProxyUsed:
                             updateProxy = False
@@ -139,7 +171,7 @@ class ImgScrapper:
                     updateProxy = False
                     length = len(urls)
                     log(f"{status}: Scraped {current+1}/{length} ({l_url})", self.log_file)
-                    soup = BeautifulSoup(page.text, 'lxml')
+                    soup = BeautifulSoup(page, 'lxml')
                     for img_tag in soup.find_all('img'):
                         if img_tag.has_attr('src'):
                             if img_tag['src'].startswith(("http")):
@@ -164,7 +196,8 @@ class ImgScrapper:
         # Make a slice of list of images
         imgs = self.__dataGetImgs()[self.__dataGetCurrentImg():]
         max_img_name_length = 50
-
+        proxy = None
+        rotator_proxy = None
         updateProxy = True
     
         if os.path.exists(self.proxy_file):
@@ -201,12 +234,9 @@ class ImgScrapper:
                 # Here aquire a user_agent
                 try:
                     status = "Ok"
-                    if isProxyUsed:
-                        img = requests.get(img_path, headers=C.HEADERS, verify=False, timeout=10, proxies=proxy)
-                    else:
-                        img = requests.get(img_path, headers=C.HEADERS, verify=False, timeout=10)
+                    img, status_code, content = getPageStatically(img_path, proxy)
 
-                    if img.status_code != 200:
+                    if status_code != 200:
                         log(f"Error: Code is not 200.", self.log_file)
                         if not isProxyUsed:
                             updateProxy = False
@@ -240,7 +270,7 @@ class ImgScrapper:
                     try:
                         with open(self.images_folder + "/" + filename, "wb") as F:
                             log(f"{status}: Downloaded {current+1}/{length}  {filename}", self.log_file)
-                            F.write(img.content)
+                            F.write(content)
                             self.__dataSetCurrentImg(current + 1)
                     except Exception as ex:
                         log(f"Error: Invalid file path.", self.log_file)
