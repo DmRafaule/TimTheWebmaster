@@ -44,6 +44,9 @@
 .post_preview_meta--tool{
 	align-items: center;
 }
+.post_preview_meta--tool>h2{
+	flex: 1 1 100%;
+}
 .post_preview_body--tool{
 	height: 0;
 	transition: 0.2s;
