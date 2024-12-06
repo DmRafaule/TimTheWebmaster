@@ -3,11 +3,15 @@ import json
 from threading import Thread
 
 from django.http import JsonResponse
+from django.template import loader
 from django.shortcuts import render
 from Main.utils import initDefaults
 from MyBlog import settings
 from django.utils.translation import gettext_lazy as _
 
+import Main.utils as U
+import Post.views as P
+from Post.models import Note, Tag
 from .WebCrawler.crawler import WebCrawler
 from .ImgScrapper.scrapper import ImgScrapper
 from .Utils.utils import log, initFolder, initFile, checkURL, toMinimalURL, checkIsListURLs, extractURLs
@@ -18,6 +22,7 @@ import ImageThief.config as C
 TRY_LIMIT = 1000
 REQUEST_LAG = 5
 TIME_BERFORE_CLEANUP = 3600
+MAX_NOTES_ON_TOOL = 3
 
 
 def tool_main(request):
@@ -26,6 +31,16 @@ def tool_main(request):
     context = initDefaults(request)
     context.update({'archive': os.path.join('tools', C.SLUG, 'archive.zip') })
     context.update({'proxies_example': os.path.join('tools', C.SLUG, 'proxies.json') })
+
+    # Get latest notes about ImageThief
+    imageThief_tags = Tag.objects.filter(slug_en='imagethief')
+    if len(imageThief_tags) > 0:
+        posts = P.filterByTag(Note.objects.filter(isPublished=True), [imageThief_tags[0]])[:MAX_NOTES_ON_TOOL]
+        print(posts)
+        context.update({'imageThief_tag': imageThief_tags[0].slug})
+        context.update({'posts': posts})
+        loaded_template = loader.get_template(f'Post/basic--post_preview-note.html')
+        context.update({'latest_notes': loaded_template.render(context, request)})
 
     return render(request, 'ImageThief/image_thief.html', context=context)
 
