@@ -1,7 +1,7 @@
 from django.shortcuts import render
 import Main.utils as U
 from .models import Website
-import Gallery.utils as GU
+#import Gallery.utils as GU
 import json
 from django.utils.translation import gettext as _
 from django.views.generic import TemplateView
@@ -78,7 +78,7 @@ def home(request):
     latest_termins = U.get_latest_post(website_conf.max_displayed_td_on_home, TD.objects.all())
     latest_questions = U.get_latest_post(website_conf.max_displayed_qa_on_home, QA.objects.all())
     latest_notes = U.get_latest_post(website_conf.max_displayed_notes_on_home, Note.objects.all())
-    latest_images = GU.getLatesImagesAll()[:website_conf.max_displayed_images_on_home]
+    #latest_images = GU.getLatesImagesAll()[:website_conf.max_displayed_images_on_home]
 
     my_resources = []
     for tag in website_conf.my_resources_choosen_tags_on_home.all():
@@ -144,7 +144,7 @@ def home(request):
             oth_art.append(res)
     context.update({'other_articles': oth_art})
 
-    context.update({'latest_images': latest_images})
+    #context.update({'latest_images': latest_images})
 
     return render(request, 'Main/home.html', context=context)
 
