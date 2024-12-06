@@ -43,3 +43,6 @@
 	padding: var(--mid_pm);
 	border: none;
 }
+.post_preview{
+	flex: 1 1 300px;
+}

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-11-29 10:01+0300\n"
+"POT-Creation-Date: 2024-12-06 16:48+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -32,7 +32,7 @@ msgstr ""
 "You can use it as a web app or as standalone script on your machine."
 
 #: .\ImageThief\templates\ImageThief\image_thief.html:28
-#: .\ImageThief\views.py:142
+#: .\ImageThief\views.py:157
 msgid "Начать"
 msgstr "Start"
 
@@ -292,22 +292,30 @@ msgstr "twitter icon"
 msgid "telegram иконка"
 msgstr "telegram icon"
 
-#: .\ImageThief\views.py:137
+#: .\ImageThief\templates\ImageThief\image_thief.html:214
+msgid "Рабочие заметки об инструменте"
+msgstr "Working notes about a tool"
+
+#: .\ImageThief\templates\ImageThief\image_thief.html:219
+msgid "Показать все ..."
+msgstr "Show all ..."
+
+#: .\ImageThief\views.py:152
 msgid "Ещё раз"
 msgstr "One more"
 
-#: .\ImageThief\views.py:196
+#: .\ImageThief\views.py:211
 msgid "Ожидай"
 msgstr "Wait"
 
-#: .\ImageThief\views.py:218
+#: .\ImageThief\views.py:233
 msgid "Ошибка: Слишком мало адресов. Добавь хотябы 2."
 msgstr "Error: Too few ulrs. Paste at least 2."
 
-#: .\ImageThief\views.py:226
+#: .\ImageThief\views.py:241
 msgid "Ошибка: Ты выбрал не правильный режим для списка страниц"
 msgstr "Error: Wrong mode for list of pages"
 
-#: .\ImageThief\views.py:343
+#: .\ImageThief\views.py:358
 msgid "Нечего отображать. Запусти парсинг."
 msgstr "Can't display nothing. Press start button."
