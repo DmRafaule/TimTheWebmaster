@@ -15,7 +15,7 @@
 		{% else %}
 		<div class="post_preview_image">
 			<a href="{{a.get_absolute_url}}">
-				<img class="image_nomargin image-min_sized dynamic_image button" width="300" height="200"  src="{% static 'placeholder.svg' %}" data-src="{% static 'image-not-found.webp' %}" alt="{% trans "Превью статьи" %}">
+				<img class="image_nomargin image-min_sized dynamic_image button" width="300" height="200"  src="{% static 'placeholder.svg' %}" data-src="{% get_media_prefix %}{{default_post_preview}}" alt="{% trans "Превью статьи" %}">
 			</a>
 		</div>
 		{% endif %}

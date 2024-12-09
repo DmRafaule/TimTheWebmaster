@@ -35,7 +35,7 @@ def calculate_pages(total_items, items_per_page):
     
     return -(-total_items // items_per_page)  # Using ceiling division
 
-def post_list(request, model, category, template_path):
+def post_list(request, model, category, template_path, image):
     website_conf = Main_M.Website.objects.get(is_current=True)
     context = U.initDefaults(request)
     # Defines order of loading posts. Recent of latest
@@ -121,6 +121,7 @@ def post_list(request, model, category, template_path):
     context.update({'current_tag': tags})
     context.update({'current_tag_names': tags_names})
     context.update({'tags_json': json.dumps(tags)})
+    context.update({'post_list_preview': image})
     if type == 'full':
         loaded_template = loader.get_template(f'Post/{mode}post_preview{for_who}{cat}.html')
         context.update({'doc': loaded_template.render(context, request)})
@@ -129,19 +130,29 @@ def post_list(request, model, category, template_path):
         return render(request,f'Post/{mode}post_preview{for_who}{cat}.html',context=context)
 
 def article_list(request):
-    return post_list(request, Post_M.Article, Post_M.Category.objects.get(slug='articles'), 'Post/article_list.html')
+    website_conf = Main_M.Website.objects.get(is_current=True)
+    image = website_conf.articles_post_preview
+    return post_list(request, Post_M.Article, Post_M.Category.objects.get(slug='articles'), 'Post/article_list.html', image)
 
 def td_list(request):
-    return post_list(request, Post_M.TD, Post_M.Category.objects.get(slug='td'), 'Post/termin_list.html')
+    website_conf = Main_M.Website.objects.get(is_current=True)
+    image = website_conf.tds_post_preview
+    return post_list(request, Post_M.TD, Post_M.Category.objects.get(slug='td'), 'Post/termin_list.html', image)
 
 def qa_list(request):
-    return post_list(request, Post_M.QA, Post_M.Category.objects.get(slug='qa'), 'Post/question_list.html')
+    website_conf = Main_M.Website.objects.get(is_current=True)
+    image = website_conf.qas_post_preview
+    return post_list(request, Post_M.QA, Post_M.Category.objects.get(slug='qa'), 'Post/question_list.html', image)
 
 def tools_list(request):
-    return post_list(request, Post_M.Tool, Post_M.Category.objects.get(slug='tools'), 'Post/tool_list.html')
+    website_conf = Main_M.Website.objects.get(is_current=True)
+    image = website_conf.tools_post_preview
+    return post_list(request, Post_M.Tool, Post_M.Category.objects.get(slug='tools'), 'Post/tool_list.html', image)
 
 def notes_list(request):
-    return post_list(request, Post_M.Note, Post_M.Category.objects.get(slug='notes'), 'Post/note_list.html')
+    website_conf = Main_M.Website.objects.get(is_current=True)
+    image = website_conf.notes_post_preview
+    return post_list(request, Post_M.Note, Post_M.Category.objects.get(slug='notes'), 'Post/note_list.html', image)
 
 def article(request, post_slug):
     website_conf = Main_M.Website.objects.get(is_current=True)

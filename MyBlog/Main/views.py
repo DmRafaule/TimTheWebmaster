@@ -70,7 +70,7 @@ def home(request):
     context = U.initDefaults(request)
     context.update({'displayTags': False})
     internal_tool_tag = Tag.objects.get(slug_en='internal-tool')
-    internal_tools = Tool.objects.filter(type=Tool.INTERNAL).order_by('-timeCreated')[:website_conf.max_displayed_inner_tools_on_home]
+    internal_tools = website_conf.choosen_tools.all()[:website_conf.max_displayed_inner_tools_on_home]
     most_popular_article = [U.get_most_popular_post()]
     latest_news_tag = Tag.objects.get(slug_en='news')
     news = U.get_posts_by_tag('News', Article)
@@ -100,6 +100,7 @@ def home(request):
     
     context.update({'internal_tool_tag': internal_tool_tag.slug})
     context.update({'posts': internal_tools})
+    context.update({'internal_tools_length': len(internal_tools)})
     context.update({'current_tag': ''})
     loaded_template = loader.get_template(f'Post/list--post_preview-tool.html')
     context.update({'internal_tools': loaded_template.render(context, request)})
