@@ -68,6 +68,7 @@ class Website(models.Model):
     my_resources_choosen_tags_on_home = models.ManyToManyField('Post.Tag', verbose_name='Choosen tags for My resources part', blank=False, related_name='my_resouces')
     min_displayed_my_resources = models.IntegerField(verbose_name='Minimum el in My resources part to be displayed if present', default=3, blank=False)
     other_articles_choosen_tags_on_home = models.ManyToManyField('Post.Tag', verbose_name='Choosen tags for Other articles part', blank=False, related_name='other_articles')
+    choosen_tools = models.ManyToManyField('Post.Tool', verbose_name='Tools to display at home page', blank=True, related_name="choosen_tools")
     min_displayed_other_articles = models.IntegerField(verbose_name='Minimum el in Other articles part to be displayed if present', default=2, blank=False)
     max_displayed_news_on_home = models.IntegerField(verbose_name='Limit to display Latest news', default=3, blank=False)
     max_displayed_postSeries_on_home = models.IntegerField(verbose_name='Limit to display post series', default=2, blank=False)
@@ -76,6 +77,12 @@ class Website(models.Model):
     max_displayed_qa_on_home = models.IntegerField(verbose_name='Limit to display termins', default=2, blank=False)
     max_displayed_td_on_home = models.IntegerField(verbose_name='Limit to display questions', default=2, blank=False)
     max_displayed_notes_on_home = models.IntegerField(verbose_name='Limit to display notes', default=5, blank=False)
+    articles_post_preview = models.ImageField(upload_to='articles', blank=True)
+    tools_post_preview = models.ImageField(upload_to='tools', blank=True)
+    qas_post_preview = models.ImageField(upload_to='qa', blank=True)
+    tds_post_preview = models.ImageField(upload_to='td', blank=True)
+    notes_post_preview = models.ImageField(blank=True)
+    default_image_preview = models.ImageField(blank=True)
 
 
 class Image(models.Model):

@@ -132,11 +132,12 @@ def initDefaults(request):
     # All other (categories) gonna be in second lever under content menu
     domain_name = ALLOWED_HOSTS[0]
     popular_posts = list(chain(website_conf.popular_articles_on_footer.all(), website_conf.popular_tools_on_footer.all()))
-
+    default_post_preview = website_conf.default_image_preview
     context = {
         'categories_special': categories_special,
         'domain_name': domain_name,
         'popular_posts': popular_posts,
+        'default_post_preview': default_post_preview,
     }
     
     return context

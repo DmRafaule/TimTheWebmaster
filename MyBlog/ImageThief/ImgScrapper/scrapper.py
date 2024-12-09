@@ -9,15 +9,15 @@ from bs4 import BeautifulSoup
 import requests
 
 # For creating webdriver
-from selenium import webdriver
+#from selenium import webdriver
 # For navigation purpose
-from selenium.webdriver.common.by import By
+#from selenium.webdriver.common.by import By
 # For easy to send parameters to driver when set
-from selenium.webdriver.firefox.options import Options
+#from selenium.webdriver.firefox.options import Options
 # For events handling
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions  as EC
-from selenium.common.exceptions import TimeoutException
+#from selenium.webdriver.support.ui import WebDriverWait
+#from selenium.webdriver.support import expected_conditions  as EC
+#from selenium.common.exceptions import TimeoutException
 
 import ImageThief.config as C
 from ImageThief.Utils.utils import toDomainURL, toMinimalURL, log
@@ -38,16 +38,17 @@ def getPageStatically(url, proxy = None):
         return resp.text, resp.status_code, resp.content
 
 def getPageDynamically(url, proxy = None):
-    firefox_opt = Options()
-    firefox_opt.add_argument('--headless')
-    firefox_opt.add_argument("--no-sandbox")
-    firefox_opt.add_argument("--disable-dev-shm-usage")  
-    if proxy is not None:
-        firefox_opt.add_argument(f"--proxy-server={proxy}")
-    driver = webdriver.Firefox(options=firefox_opt)
-    driver.implicitly_wait(10)
-    driver.get(url)
-    return driver.page_source, 200
+    #firefox_opt = Options()
+    #firefox_opt.add_argument('--headless')
+    #firefox_opt.add_argument("--no-sandbox")
+    #firefox_opt.add_argument("--disable-dev-shm-usage")  
+    #if proxy is not None:
+    #    firefox_opt.add_argument(f"--proxy-server={proxy}")
+    #driver = webdriver.Firefox(options=firefox_opt)
+    #driver.implicitly_wait(10)
+    #driver.get(url)
+    #return driver.page_source, 200
+    return "", 503
 
 
 class ImgScrapper:

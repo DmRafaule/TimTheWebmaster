@@ -6,6 +6,7 @@ class WebsiteAdmin(admin.ModelAdmin):
     list_display = ('is_current', 'name')
     list_display_links = ('name',)
     filter_horizontal = (
+        'choosen_tools',
         'categories_to_display_on_side_menu', 
         'popular_articles_on_footer', 
         'popular_tools_on_footer',
@@ -42,7 +43,12 @@ class WebsiteAdmin(admin.ModelAdmin):
                 'fields': [
                     'paginator_per_page_posts',
                     'paginator_per_page_gallery',
-                    'paginator_per_page_gallery_columns'
+                    'paginator_per_page_gallery_columns',
+                    'articles_post_preview',
+                    'tools_post_preview',
+                    'qas_post_preview',
+                    'tds_post_preview',
+                    'notes_post_preview',
                 ],
                 'classes': ['collapsed'],
                 'description': 'In this section you could change and edit options related to every paginator page, where you can find all of the Post object like: (Tool, Article, Category, TD, QA)'
@@ -52,6 +58,7 @@ class WebsiteAdmin(admin.ModelAdmin):
             'Home page',
             {
                 'fields': [
+                    'choosen_tools',
                     'my_resources_choosen_tags_on_home',
                     'min_displayed_my_resources',
                     'other_articles_choosen_tags_on_home',
@@ -76,7 +83,8 @@ class WebsiteAdmin(admin.ModelAdmin):
                 'fields': [
                     'categories_to_display_on_side_menu',
                     'popular_articles_on_footer',
-                    'popular_tools_on_footer'
+                    'popular_tools_on_footer',
+                    'default_image_preview',
                 ],
                 'classes': ['collapsed'],
                 'description': 'In this section you could change and edit options related to any blocks and elements on website that present on every page, like: side menu or footer'

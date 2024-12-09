@@ -23,6 +23,9 @@
 			<div style='margin-top: 80px'></div>
 		</div>
 	</div>
+	{% if post_list_preview %}
+	<div class="post_image_container" style="background-image: url({% get_media_prefix %}{{post_list_preview}});"></div>
+	{% endif %}
 	<div class="limiter_list in_middle in_middle-self no_wrap padder">
 	{% if current_tag|length == 0 %}
 		{% if current_page == 1%}
