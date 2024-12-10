@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.sitemaps',
     'captcha',
     'Main.apps.MainConfig',
+    'Admin.apps.AdminConfig',
     'WebGLEngine.apps.WebglengineConfig',
     'Post.apps.PostConfig',
     'PostEditor.apps.PostEditorConfig',

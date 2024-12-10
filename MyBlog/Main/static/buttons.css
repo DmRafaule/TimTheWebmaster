@@ -135,3 +135,41 @@
 .hat_button{
 	background-color: white;
 }
+
+.sided-button{
+	writing-mode: vertical-rl;
+	text-orientation: mixed;
+	display: flex;
+	align-content: center;
+	justify-content: center;
+	align-items: center;
+	cursor: pointer;
+	z-index: 3;
+}
+.left-sided-button{
+	display: flex;
+	flex-direction: row-reverse;
+	position: fixed;
+	top: 0;
+	left: 0;
+	height: 100%;
+	background-color: var(--main_color);
+	color: var(--ui_text_color);
+}
+.right-sided-button{
+	display: flex;
+	position: fixed;
+	top: 0;
+	right: 0;
+	height: 100%;
+	background-color: var(--main_color);
+	color: var(--ui_text_color);
+	
+}
+
+.sided-button_body{
+	width: 0;
+	height: 100%;
+	background-color: var(--secondary_color);
+	color: var(--ui_text_color);
+}

@@ -24,7 +24,7 @@
 					<div class="row in_middle-farapart mid_gap marger_min">
 						<input class="url_field" placeholder="http(s)://(www.)domain.com" type="text" name="url" id="url">
 						<div id="start" class="row no_wrap in_middle mid_col_gap">
-							<div id="imagethief_text_inButton" class="button squered_button action_button">
+							<div id="imagethief_text_inButton" class="button squered_button action_button" style='background-color: var(--acent_color);'>
 							{% trans "Начать" %}
 							</div>
 						</div>
@@ -153,7 +153,7 @@
 		</div>
 		<div class="text">
 			{% blocktrans %}
-			Парсинг реализован в многопоточном режиме со свопингом пользовательских агентов и прокси. Свопинг и подбор оных проводится случайным образом с использованием весов. То есть, чем больше и дольше парсишь сайт, тем лучше и быстрее парсер подберёт самые эффективные прокси и пользовательские агенты.
+			Парсинг реализован в однопоточном режиме со свопингом пользовательских агентов и прокси. Свопинг и подбор оных проводится случайным образом с использованием весов. То есть, чем больше и дольше парсишь сайт, тем лучше и быстрее парсер подберёт самые эффективные прокси и пользовательские агенты.
 			{% endblocktrans %}
 		</div>
 		<div class="text">

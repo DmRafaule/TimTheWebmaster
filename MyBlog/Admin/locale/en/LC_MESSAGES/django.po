@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-12-09 14:46+0300\n"
+"POT-Creation-Date: 2024-12-09 17:57+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,10 +18,18 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: .\MyBlog\settings.py:151
-msgid "Русский"
-msgstr "Russian"
+#: .\Admin\templates\Admin\admin.html:6
+msgid "Админка"
+msgstr "Admin"
 
-#: .\MyBlog\settings.py:152
-msgid "Английский"
-msgstr "English"
+#: .\Admin\templates\Admin\admin.html:8
+msgid "Новая админка сайта. Тим зе Вебмастер."
+msgstr "New admin app for the website. Tim the webmaster."
+
+#: .\Admin\templates\Admin\admin.html:16
+msgid "Модели"
+msgstr "Models"
+
+#: .\Admin\templates\Admin\admin.html:25
+msgid "Последние действия"
+msgstr "Last actions"
