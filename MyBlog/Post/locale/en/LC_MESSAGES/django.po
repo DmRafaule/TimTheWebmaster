@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-11-29 10:01+0300\n"
+"POT-Creation-Date: 2024-12-09 14:19+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -35,7 +35,7 @@ msgid "с тегами:"
 msgstr "with tags:"
 
 #: .\Post\templates\Post\article_list.html:24
-#: .\Post\templates\Post\base_post_list.html:37
+#: .\Post\templates\Post\base_post_list.html:40
 #: .\Post\templates\Post\note_list.html:24
 #: .\Post\templates\Post\question_list.html:24
 #: .\Post\templates\Post\termin_list.html:24
@@ -45,7 +45,7 @@ msgid "Страница "
 msgstr "Page "
 
 #: .\Post\templates\Post\article_list.html:26
-#: .\Post\templates\Post\base_post_list.html:39
+#: .\Post\templates\Post\base_post_list.html:42
 #: .\Post\templates\Post\note_list.html:26
 #: .\Post\templates\Post\question_list.html:26
 #: .\Post\templates\Post\termin_list.html:26
@@ -54,7 +54,7 @@ msgid " Они были связаны и сгруппированы по сле
 msgstr " They were linked and grouped under the following tags: "
 
 #: .\Post\templates\Post\article_list.html:26
-#: .\Post\templates\Post\base_post_list.html:39
+#: .\Post\templates\Post\base_post_list.html:42
 #: .\Post\templates\Post\note_list.html:26
 #: .\Post\templates\Post\question_list.html:26
 #: .\Post\templates\Post\termin_list.html:26
@@ -319,20 +319,20 @@ msgstr "twitter icon"
 msgid "telegram иконка"
 msgstr "telegram icon"
 
-#: .\Post\templates\Post\base_post_list.html:31
+#: .\Post\templates\Post\base_post_list.html:34
 msgid " начиная с "
 msgstr " starting from "
 
-#: .\Post\templates\Post\base_post_list.html:31
+#: .\Post\templates\Post\base_post_list.html:34
 msgid " страницы"
 msgstr " page"
 
-#: .\Post\templates\Post\base_post_list.html:37
+#: .\Post\templates\Post\base_post_list.html:40
 msgid "связанные со следующими тегами: "
 msgstr "related to the following tags: "
 
-#: .\Post\templates\Post\base_post_list.html:58
-#: .\Post\templates\Post\base_post_list.html:64
+#: .\Post\templates\Post\base_post_list.html:61
+#: .\Post\templates\Post\base_post_list.html:67
 msgid "Шеврон"
 msgstr "Chevron"
 
@@ -432,6 +432,6 @@ msgstr "Contacts"
 msgid "Галерея"
 msgstr "Gallery"
 
-#: .\Post\views.py:263
+#: .\Post\views.py:274
 msgid "Большое спасибо, но ты уже лайкнул)"
 msgstr "Thank you very much, but you already liked it:)"

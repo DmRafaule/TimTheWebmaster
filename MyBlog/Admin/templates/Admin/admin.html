@@ -1,0 +1,53 @@
+{% extends 'Main/base.html' %}
+{% load i18n%}
+{% load static%}
+
+{% block head %}
+	<title>{% trans "Админка" %}</title>
+    <meta name="robots" content="noindex">
+	<meta name="description" content="{% trans "Новая админка сайта. Тим зе Вебмастер." %}">
+	<link rel="canonical" href="https://{{domain_name}}{%url 'admin'%}" />
+{% endblock %}
+
+{% block content %}
+    <div class="left-sided-button">
+        <div class="sided-button">
+            <img width="32" height="32" class="icon" src="{% static 'chevron.svg' %}" alt="Chevron">
+            <div>{% trans 'Модели' %}</div>
+        </div>
+        <div class="left-sided-button_body sided-button_body">
+
+        </div>
+    </div>
+    <div class="right-sided-button">
+        <div class="sided-button">
+            <img width="32" height="32" class="icon flip_vert" src="{% static 'chevron.svg' %}" alt="Chevron">
+            <div>{% trans 'Последние действия' %}</div>
+        </div>
+        <div class="right-sided-button_body sided-button_body">
+
+        </div>
+    </div>
+{% endblock %}
+
+{% block footer_links %}
+	{% for ref in popular_posts %}
+		<li class="ref"><a href="{{ref.get_absolute_url}}">{{ref|truncatechars:15}}</a></li>
+	{% endfor %}
+{% endblock %}
+
+{% block styles %}
+	<link type="text/css" rel="stylesheet" href="{% static 'blocks.css' %}"/>
+	<link type="text/css" rel="stylesheet" href="{% static 'lists.css' %}"/>
+	<link type="text/css" rel="stylesheet" href="{% static 'forms.css' %}"/>
+    <link type="text/css" rel="stylesheet" href="{% static 'footer-tool.css' %}"/>
+{% endblock %}
+
+
+{% block scripts %}
+    {% csrf_token %}
+    <script>
+        const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+    </script>
+    <script src="{% static 'sided_buttons.js' %}"></script>
+{% endblock %}
