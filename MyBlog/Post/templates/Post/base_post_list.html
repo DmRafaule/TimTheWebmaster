@@ -4,8 +4,14 @@
 {% load listToURL %}
 
 {% block head %}
-	{% block head_body %}
-	{% endblock %}
+	{% if cfp_title and cfp_description %}
+		<title>{{ cfp_title }}</title>
+		<meta name="description" content="{{cfp_description}}">
+		<meta name="keywords" content="{{current_tag_names|join:', '}}">
+	{% else %}
+		{% block head_body %}
+		{% endblock %}
+	{% endif %}
 {% endblock %}
 
 {% block hat %}
@@ -23,28 +29,63 @@
 			<div style='margin-top: 80px'></div>
 		</div>
 	</div>
-	{% if post_list_preview %}
-	<div class="post_image_container" style="background-image: url({% get_media_prefix %}{{post_list_preview}});"></div>
+	
+	{% if cfp_preview %}
+		<div class="post_image_container" style="background-image: url({% get_media_prefix %}{{cfp_preview}});"></div>
+	{% else %}
+		{% if post_list_preview %}
+		<div class="post_image_container" style="background-image: url({% get_media_prefix %}{{post_list_preview}});"></div>
+		{% endif %}
 	{% endif %}
+
 	<div class="limiter_list in_middle in_middle-self no_wrap padder">
+
 	{% if current_tag|length == 0 %}
 		{% if current_page == 1%}
-			<h1>{{category.name}}</h1>
+			{% if cfp_h1 %}
+				<h1>{{cfp_h1}}</h1>
+			{% else %}
+				<h1>{{category.name}}</h1>
+			{% endif %}
 		{% else %}
-			<h1>{{category.name}}{% trans ' начиная с ' %}{{current_page}}{% trans ' страницы'%}</h1>
+			{% if cfp_h1 %}
+				<h1>{{cfp_h1}}</h1>
+			{% else %}
+				<h1>{{category.name}}{% trans ' начиная с ' %}{{current_page}}{% trans ' страницы'%}</h1>
+			{% endif %}
 		{% endif %}
-		<div class="text">
-			{{category.description}}
-		</div>
+
+		{% if cfp_lead %}
+			<div class="text">
+				{{cfp_lead}}
+			</div>
+		{% else %}
+			<div class="text">
+				{{category.description}}
+			</div>
+		{% endif %}
 	{% else %}
-		<h1>{{category.name}} {% trans 'связанные со следующими тегами: ' %} {{current_tag_names|join:', '}}. {% trans 'Страница '%}{{current_page}}</h1>
-		<div class="text">
-			{{category.description}} {% trans ' Они были связаны и сгруппированы по следующим тегам: ' %}{{current_tag_names|join:', '}}.{% trans ' Страница '%}{{current_page}}
-		</div>
+		{% if cfp_h1 %}
+			<h1>{{cfp_h1}}</h1>
+		{% else %}
+			<h1>{{category.name}} {% trans 'связанные со следующими тегами: ' %} {{current_tag_names|join:', '}}. {% trans 'Страница '%}{{current_page}}</h1>
+		{% endif %}
+
+		{% if cfp_lead %}
+			<div class="text">
+				{{cfp_lead}}
+			</div>
+		{% else %}
+			<div class="text">
+				{{category.description}} {% trans ' Они были связаны и сгруппированы по следующим тегам: ' %}{{current_tag_names|join:', '}}.{% trans ' Страница '%}{{current_page}}
+			</div>
+		{% endif %}
 	{% endif %}
 	<hr>
+
 	{% block content_list %}
 	{% endblock %}
+
 	<div id="progressbar" class="marger in_middle" >
 		<div class="progressbar-container">
 			<div class="progress-loader"></div>
