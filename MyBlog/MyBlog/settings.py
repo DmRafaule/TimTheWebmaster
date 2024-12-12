@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'WebGLEngine.apps.WebglengineConfig',
     'Post.apps.PostConfig',
     'PostEditor.apps.PostEditorConfig',
+    'PostFilterEditor.apps.PostfiltereditorConfig',
     'ImageThief.apps.ImagethiefConfig',
     'RSSAggregator.apps.RssaggregatorConfig',
     'ShaderToy.apps.ShadertoyConfig',

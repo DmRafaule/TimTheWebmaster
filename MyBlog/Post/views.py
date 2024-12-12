@@ -1,13 +1,15 @@
-from django.shortcuts import render, get_object_or_404
-from django.http import JsonResponse, Http404
+import json
+from datetime import datetime
+
 import Post.models as Post_M
-from django.utils.translation import gettext as _
 import Main.models as Main_M
 import Main.utils as U
+from PostFilterEditor.utils import GetCustomFilterPage
+from django.http import JsonResponse, Http404
 from django.template import loader
-from datetime import datetime
 from django.db.models import Q
-import json
+from django.shortcuts import render, get_object_or_404
+from django.utils.translation import gettext as _
 
 
 max_el_in_related_post = 3
@@ -122,6 +124,16 @@ def post_list(request, model, category, template_path, image):
     context.update({'current_tag_names': tags_names})
     context.update({'tags_json': json.dumps(tags)})
     context.update({'post_list_preview': image})
+
+    # Here you will be check if URL match with slug of custom filter page
+    filter_page = GetCustomFilterPage(request.get_full_path())
+    if filter_page is not None:
+        context.update({'cfp_title': filter_page.title})
+        context.update({'cfp_description': filter_page.description})
+        context.update({'cfp_h1': filter_page.h1})
+        context.update({'cfp_lead': filter_page.lead})
+        context.update({'cfp_preview': filter_page.preview})
+
     if type == 'full':
         loaded_template = loader.get_template(f'Post/{mode}post_preview{for_who}{cat}.html')
         context.update({'doc': loaded_template.render(context, request)})
