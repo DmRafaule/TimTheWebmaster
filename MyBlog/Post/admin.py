@@ -44,7 +44,7 @@ class ArticleAdmin(admin.ModelAdmin):
         (
             'Advanced options',
             {
-                'fields': ['preview', ('likes', 'shares', 'viewed'), 'timeCreated'],
+                'fields': ['preview', 'timeCreated'],
                 'classes': ['collapse'],
                 'description': 'In this fieldset you can switch type of tool and configure other options.'
             }
