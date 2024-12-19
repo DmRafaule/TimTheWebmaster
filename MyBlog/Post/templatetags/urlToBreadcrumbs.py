@@ -1,8 +1,8 @@
 from django import template
-from django.template.defaultfilters import stringfilter
 from Post.models import Category, Tag, Article, TD, QA, Tool
 from django.utils.translation import gettext as _
 from django.db.models import Q
+from urllib.parse import urlsplit
 
 register = template.Library()
 
@@ -16,15 +16,17 @@ def remove_items(list, item):
 
 @register.filter(name='urlToBreadcrumbs')
 def urlToBreadcrumbs(url: str):
-    urlList = url.split('/')
+    url_dict = urlsplit(url)
+    updated_url = f"{url_dict.path}/{url_dict.query}"
+    urlList = updated_url.split('/')
     # Clean up after slplit function
     urlList = remove_items(urlList, '')
     result_list = []
     curr_url = ''
     for indx, url in enumerate(urlList):
-        curr_url = '/'.join([curr_url, url])
         match indx + 1:
             case 1:
+                curr_url = '/'.join([curr_url, url])
                 name = ''
                 if url == 'ru':
                     name = _("На русском")
@@ -36,6 +38,7 @@ def urlToBreadcrumbs(url: str):
                     'level': indx + 1
                 })
             case 2:
+                curr_url = '/'.join([curr_url, url])
                 cat = Category.objects.filter(slug=url)
                 if len(cat) == 1:
                     name = cat[0].name
@@ -53,8 +56,9 @@ def urlToBreadcrumbs(url: str):
                 })
             case 3:
                 # Check if it is a pagination page
-                if url.startswith('?page'):
-                    parse_res = url.removeprefix('?').split('&')
+                if url.startswith('page='):
+                    parse_res = url.split('&')
+                    curr_url = '/'.join([curr_url, f'?{url}'])
                     args = {}
                     tag_counter = 0
                     for item in parse_res:
@@ -72,10 +76,11 @@ def urlToBreadcrumbs(url: str):
                             name += ','.join([tag.name, ' ' ])
                     result_list.append({
                         'name': name,
-                        'url': curr_url + '/',
+                        'url': curr_url,
                         'level': indx + 1
                     })
                 else:
+                    curr_url = '/'.join([curr_url, url])
                     name = None
                     if len(Article.objects.filter(slug=url)) == 1:
                         name = Article.objects.filter(slug=url)[0].title
@@ -93,6 +98,7 @@ def urlToBreadcrumbs(url: str):
                             'level': indx + 1
                         })
             case _:
+                curr_url = '/'.join([curr_url, url])
                 result_list.append({
                     'name': url.capitalize(),
                     'url': curr_url + '/',

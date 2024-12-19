@@ -1,0 +1,15 @@
+{% load static %}
+{% load i18n %}
+{% load urlToBreadcrumbs %}
+{% load urlToList %}
+
+<div class="row in_middle_other" style="gap: 4px;">
+{% for item in path|urlToBreadcrumbs%}
+    {% if forloop.counter == path|urlToList|length %} {# Last element #}
+        <i class="ref_no-sign"><a href="{{item.url}}">{{item.name|safe}}</a></i>/
+        <i>{{post_title}}</i>
+    {% else %} {# All other elements #}
+        <i class="ref_no-sign"><a href="{{item.url}}">{{item.name|safe}}</a></i>/
+    {% endif %}
+{% endfor %}
+</div>

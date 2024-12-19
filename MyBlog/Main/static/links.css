@@ -1,3 +1,19 @@
+.ref_no-sign > a, a.ref_no-sign-ext{
+	color: var(--link_color) !important;	
+	transition: 0.3s;
+	border-bottom: 1px solid var(--link_color); 
+	cursor: pointer;
+	word-wrap: anywhere;
+}
+
+.ref_no-sign > a:after, a.ref_no-sign-ext:after{
+	font-size: 120%;	
+}
+
+.ref_no-sign > a:hover, a.ref_no-sign-ext:hover{
+	color: var(--link-hover_color) !important;	
+}
+
 .ref > a, a.ref-ext{
 	color: var(--link_color) !important;	
 	transition: 0.3s;
