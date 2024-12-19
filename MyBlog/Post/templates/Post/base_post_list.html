@@ -84,6 +84,11 @@
 			</div>
 		{% endif %}
 	{% endif %}
+
+	{% if isBreadcrumbsMiddlewareConnected %}
+		{% include 'Breadcrumbs/breadcrumbs_list.html' with path=request.get_full_path %}
+	{% endif %}
+
 	<hr>
 
 	{% block content_list %}
@@ -133,8 +138,11 @@
     <link type="text/css" rel="stylesheet" href="{% static 'Post/css/posts_preview.css' %}"/>
 
 	{% if isEngagementMiddlewareConnected %}
-		<link type="text/css" rel="stylesheet" href="{% static 'Engagement/css/engagement.css' %}"/>
 		{% include 'Engagement/engagement_styles.html' %}
+	{% endif %}
+
+	{% if isBreadcrumbsMiddlewareConnected %}
+		{% include 'Breadcrumbs/breadcrumbs_styles.html' %}
 	{% endif %}
 
 	{% block styles_list %}
@@ -155,6 +163,10 @@
 	
 	{% if isEngagementMiddlewareConnected %}
 		{% include 'Engagement/engagement_scripts.html' %}
+	{% endif %}
+
+	{% if isBreadcrumbsMiddlewareConnected %}
+		{% include 'Breadcrumbs/breadcrumbs_scripts.html' %}
 	{% endif %}
 
 	{% block scripts_list %}

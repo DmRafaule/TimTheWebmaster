@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-12-18 21:50+0300\n"
+"POT-Creation-Date: 2024-12-19 21:17+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,6 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
 #: .\Engagement\forms.py:14
 msgid "Твоё имя"
 msgstr "Your name"
@@ -46,43 +47,43 @@ msgstr "Feedback form"
 msgid "Крестик"
 msgstr "Cross"
 
-#: .\Engagement\templates\Engagement\engagement_options.html:8
-#: .\Engagement\templates\Engagement\engagement_options.html:65
+#: .\Engagement\templates\Engagement\engagement_options.html:9
+#: .\Engagement\templates\Engagement\engagement_options.html:67
 msgid "сердце"
 msgstr "heart"
 
-#: .\Engagement\templates\Engagement\engagement_options.html:13
-#: .\Engagement\templates\Engagement\engagement_options.html:70
+#: .\Engagement\templates\Engagement\engagement_options.html:14
+#: .\Engagement\templates\Engagement\engagement_options.html:72
 msgid "3 соединённые точки"
 msgstr "3 connected dots"
 
-#: .\Engagement\templates\Engagement\engagement_options.html:18
-#: .\Engagement\templates\Engagement\engagement_options.html:75
+#: .\Engagement\templates\Engagement\engagement_options.html:19
+#: .\Engagement\templates\Engagement\engagement_options.html:77
 msgid "vk иконка"
 msgstr "vk icon"
 
-#: .\Engagement\templates\Engagement\engagement_options.html:23
-#: .\Engagement\templates\Engagement\engagement_options.html:80
+#: .\Engagement\templates\Engagement\engagement_options.html:24
+#: .\Engagement\templates\Engagement\engagement_options.html:82
 msgid "reddit иконка"
 msgstr "reddit icon"
 
-#: .\Engagement\templates\Engagement\engagement_options.html:28
-#: .\Engagement\templates\Engagement\engagement_options.html:85
+#: .\Engagement\templates\Engagement\engagement_options.html:29
+#: .\Engagement\templates\Engagement\engagement_options.html:87
 msgid "twitter иконка"
 msgstr "twitter icon"
 
-#: .\Engagement\templates\Engagement\engagement_options.html:33
-#: .\Engagement\templates\Engagement\engagement_options.html:90
+#: .\Engagement\templates\Engagement\engagement_options.html:34
+#: .\Engagement\templates\Engagement\engagement_options.html:92
 msgid "telegram иконка"
 msgstr "telegram icon"
 
-#: .\Engagement\templates\Engagement\engagement_options.html:42
-#: .\Engagement\templates\Engagement\engagement_options.html:47
-#: .\Engagement\templates\Engagement\engagement_options.html:52
-#: .\Engagement\templates\Engagement\engagement_options.html:57
-#: .\Engagement\templates\Engagement\engagement_options.html:99
-#: .\Engagement\templates\Engagement\engagement_options.html:104
-#: .\Engagement\templates\Engagement\engagement_options.html:109
+#: .\Engagement\templates\Engagement\engagement_options.html:43
+#: .\Engagement\templates\Engagement\engagement_options.html:48
+#: .\Engagement\templates\Engagement\engagement_options.html:53
+#: .\Engagement\templates\Engagement\engagement_options.html:58
+#: .\Engagement\templates\Engagement\engagement_options.html:101
+#: .\Engagement\templates\Engagement\engagement_options.html:106
+#: .\Engagement\templates\Engagement\engagement_options.html:111
 msgid "облачко"
 msgstr "cloud"
 
@@ -112,7 +113,9 @@ msgstr "Connected dots"
 msgid ""
 "≡[。。]≡ Извини, JS не позволяет создавать собственные кнопки создания "
 "закладок и по этому, чтобы создать закладку нажми ctrl+d"
-msgstr "≡[。。]≡ Sorry, JS doesn't allow you to create your own bookmark buttons, so to create a bookmark, press ctrl+d"
+msgstr ""
+"≡[。。]≡ Sorry, JS doesn't allow you to create your own bookmark buttons, so "
+"to create a bookmark, press ctrl+d"
 
 #: .\Engagement\views.py:31 .\Engagement\views.py:59 .\Engagement\views.py:80
 #: .\Engagement\views.py:135 .\Engagement\views.py:178

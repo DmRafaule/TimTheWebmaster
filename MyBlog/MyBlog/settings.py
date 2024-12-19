@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'PostEditor.apps.PostEditorConfig',
     'PostFilterEditor.apps.PostfiltereditorConfig',
     'Engagement.apps.EngagementConfig',
+    'Breadcrumbs.apps.BreadcrumbsConfig',
     'ImageThief.apps.ImagethiefConfig',
     'RSSAggregator.apps.RssaggregatorConfig',
     'ShaderToy.apps.ShadertoyConfig',
@@ -59,6 +60,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'Engagement.middleware.EngagementMiddleware',
+    'Breadcrumbs.middleware.BreadcrumbsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.locale.LocaleMiddleware',

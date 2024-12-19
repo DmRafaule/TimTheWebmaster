@@ -17,6 +17,11 @@
     <div class='notificator-container'>
         <div class="notificator-blank notificator notificator-inactive"></div>
     </div>
+    <div class="limiter in_middle-self">
+	{% if isBreadcrumbsMiddlewareConnected %}
+		{% include 'Breadcrumbs/breadcrumbs.html' with path=request.META.HTTP_REFERER%}
+	{% endif %}
+    </div>
 	
     {% block content_tool %}
 	{% endblock %}
@@ -44,10 +49,12 @@
     <link type="text/css" rel="stylesheet" href="{% static 'notificator.css' %}"/>
 
     {% if isEngagementMiddlewareConnected %}
-        <link type="text/css" rel="stylesheet" href="{% static 'Post/css/post.css' %}"/>
-        <link type="text/css" rel="stylesheet" href="{% static 'Engagement/css/engagement.css' %}"/>
         {% include 'Engagement/engagement_styles.html' %}
     {% endif %}
+
+	{% if isBreadcrumbsMiddlewareConnected %}
+		{% include 'Breadcrumbs/breadcrumbs_styles.html' %}
+	{% endif %}
 	
     {% block styles_tool %}
 	{% endblock %}
@@ -64,6 +71,10 @@
     {% if isEngagementMiddlewareConnected %}
         {% include 'Engagement/engagement_scripts.html' %}
     {% endif %}
+
+	{% if isBreadcrumbsMiddlewareConnected %}
+		{% include 'Breadcrumbs/breadcrumbs_scripts.html' %}
+	{% endif %}
 
 	{% block scripts_tool %}
 	{% endblock %}

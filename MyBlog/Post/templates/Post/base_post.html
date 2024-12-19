@@ -29,6 +29,9 @@
 		{% if isEngagementMiddlewareConnected %}
 			{% include 'Engagement/interaction.html' with path=post.get_absolute_url %}
 		{% endif %}
+		{% if isBreadcrumbsMiddlewareConnected %}
+			{% include 'Breadcrumbs/breadcrumbs.html' with path=request.META.HTTP_REFERER %}
+		{% endif %}
 	</div>
 	<hr>
 	{% block content_post %}
@@ -59,8 +62,11 @@
     <link type="text/css" rel="stylesheet" href="{% static 'Post/css/post.css' %}"/>
 
 	{% if isEngagementMiddlewareConnected %}
-		<link type="text/css" rel="stylesheet" href="{% static 'Engagement/css/engagement.css' %}"/>
 		{% include 'Engagement/engagement_styles.html' %}
+	{% endif %}
+
+	{% if isBreadcrumbsMiddlewareConnected %}
+		{% include 'Breadcrumbs/breadcrumbs_styles.html' %}
 	{% endif %}
 
 	{% block styles_post %}
@@ -77,6 +83,10 @@
 
 	{% if isEngagementMiddlewareConnected %}
 		{% include 'Engagement/engagement_scripts.html' %}
+	{% endif %}
+
+	{% if isBreadcrumbsMiddlewareConnected %}
+		{% include 'Breadcrumbs/breadcrumbs_scripts.html' %}
 	{% endif %}
 	
 	{% block scripts_post %}

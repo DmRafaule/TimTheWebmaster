@@ -1,6 +1,5 @@
 from django import template
-from django.template.defaultfilters import stringfilter
-import json
+from urllib.parse import urlsplit
 
 register = template.Library()
 
@@ -14,7 +13,9 @@ def remove_items(list, item):
 
 @register.filter(name='urlToList')
 def urlToList(url: str):
-    urlList = url.split('/')
+    url_dict = urlsplit(url)
+    updated_url = f"{url_dict.path}/{url_dict.query}"
+    urlList = updated_url.split('/')
     # Clean up after slplit function
     urlList = remove_items(urlList, '')
     return urlList

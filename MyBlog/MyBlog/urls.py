@@ -33,6 +33,7 @@ urlpatterns += i18n_patterns(
     path('', include('Post.urls')),
     path('', include('Admin.urls')),
     path('', include('Engagement.urls')),
+    path('', include('Breadcrumbs.urls')),
     #path('', include('Gallery.urls')),
     path('tools/', include('PostEditor.urls')),
     path('tools/', include('PostFilterEditor.urls')),

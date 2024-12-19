@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-12-18 21:50+0300\n"
+"POT-Creation-Date: 2024-12-19 21:17+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -40,7 +40,7 @@ msgstr "with tags:"
 #: .\Post\templates\Post\question_list.html:24
 #: .\Post\templates\Post\termin_list.html:24
 #: .\Post\templates\Post\tool_list.html:24
-#: .\Post\templatetags\urlToBreadcrumbs.py:67
+#: .\Post\templatetags\urlToBreadcrumbs.py:71
 msgid "Страница "
 msgstr "Page "
 
@@ -314,8 +314,8 @@ msgstr " page"
 msgid "связанные со следующими тегами: "
 msgstr "related to the following tags: "
 
-#: .\Post\templates\Post\base_post_list.html:105
-#: .\Post\templates\Post\base_post_list.html:111
+#: .\Post\templates\Post\base_post_list.html:110
+#: .\Post\templates\Post\base_post_list.html:116
 msgid "Шеврон"
 msgstr "Chevron"
 
@@ -377,22 +377,22 @@ msgstr "Sign of grid view"
 msgid "Отобразить элементы в виде плитки"
 msgstr "Display an elements in a grid view"
 
-#: .\Post\templatetags\urlToBreadcrumbs.py:30
+#: .\Post\templatetags\urlToBreadcrumbs.py:32
 msgid "На русском"
 msgstr "In russian"
 
-#: .\Post\templatetags\urlToBreadcrumbs.py:32
+#: .\Post\templatetags\urlToBreadcrumbs.py:34
 msgid "На английском"
 msgstr "In english"
 
-#: .\Post\templatetags\urlToBreadcrumbs.py:44
+#: .\Post\templatetags\urlToBreadcrumbs.py:47
 msgid "Об авторе"
 msgstr "About author"
 
-#: .\Post\templatetags\urlToBreadcrumbs.py:46
+#: .\Post\templatetags\urlToBreadcrumbs.py:49
 msgid "Контакты"
 msgstr "Contacts"
 
-#: .\Post\templatetags\urlToBreadcrumbs.py:48
+#: .\Post\templatetags\urlToBreadcrumbs.py:51
 msgid "Галерея"
 msgstr "Gallery"
