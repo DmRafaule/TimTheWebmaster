@@ -82,7 +82,7 @@ class EngagementMiddleware:
 
     # Updates articles + adding comments 
     def no_engagement_handler(self, request, response):
-        pass
+        response.context_data.update({'isDisplayingActualAvailableInteractions': False})
 
     # Updates articles + adding comments 
     def post_handler(self, request, response):
@@ -94,6 +94,8 @@ class EngagementMiddleware:
         response.context_data.update({'is_bookmarks': True})
         response.context_data.update({'is_feedbacks': True})
         response.context_data.update({'form': self.form})
+        response.context_data.update({'isBottomEngagementBody': True})
+        response.context_data.update({'isDisplayingActualAvailableInteractions': True})
         self._update_views_counter(request.path)
 
     # Updates td and qa types of posts withour commentst
@@ -106,6 +108,8 @@ class EngagementMiddleware:
         response.context_data.update({'is_bookmarks': True})
         response.context_data.update({'is_feedbacks': True})
         response.context_data.update({'form': self.form})
+        response.context_data.update({'isBottomEngagementBody': True})
+        response.context_data.update({'isDisplayingActualAvailableInteractions': True})
         self._update_views_counter(request.path)
 
     # Updates internal tools + comments
@@ -118,6 +122,8 @@ class EngagementMiddleware:
         response.context_data.update({'is_bookmarks': True})
         response.context_data.update({'is_feedbacks': True})
         response.context_data.update({'form': self.form})
+        response.context_data.update({'isBottomEngagementBody': True})
+        response.context_data.update({'isDisplayingActualAvailableInteractions': True})
         self._update_views_counter(request.path)
 
    # Updates pages of paginator 
@@ -128,4 +134,6 @@ class EngagementMiddleware:
         response.context_data.update({'is_bookmarks': True})
         response.context_data.update({'is_feedbacks': True})
         response.context_data.update({'form': self.form})
+        response.context_data.update({'isBottomEngagementBody': False})
+        response.context_data.update({'isDisplayingActualAvailableInteractions': False})
         self._update_views_counter(request.path)
