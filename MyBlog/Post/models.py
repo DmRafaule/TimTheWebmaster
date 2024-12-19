@@ -53,10 +53,6 @@ class Post(models.Model):
     timeUpdated = models.DateTimeField(auto_now=True)
     isPublished = models.BooleanField(default=True)
     tags = models.ManyToManyField(Tag, blank=True)
-    # Move them later to Article
-    likes = models.IntegerField(default=0)
-    shares = models.IntegerField(default=0)
-    viewed = models.IntegerField(default=0)
 
     def save(self, *args, **kwargs):
         self.timeUpdated = timezone.now()

@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import JsonResponse
+from django.template.response import TemplateResponse
 from Main.utils import initDefaults
 from .models import Feed
 import feedparser
@@ -7,7 +8,7 @@ import ssl
 
 def tool_main(request):
     context = initDefaults(request)
-    return render(request, 'RSSAggregator/rss-aggregator.html', context=context)
+    return TemplateResponse(request, 'RSSAggregator/rss-aggregator.html', context=context)
 
 def loadFeeds(request):
     user_id = request.session.session_key

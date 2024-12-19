@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-12-12 07:13+0300\n"
+"POT-Creation-Date: 2024-12-18 21:50+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -35,7 +35,7 @@ msgid "с тегами:"
 msgstr "with tags:"
 
 #: .\Post\templates\Post\article_list.html:24
-#: .\Post\templates\Post\base_post_list.html:71
+#: .\Post\templates\Post\base_post_list.html:74
 #: .\Post\templates\Post\note_list.html:24
 #: .\Post\templates\Post\question_list.html:24
 #: .\Post\templates\Post\termin_list.html:24
@@ -45,7 +45,7 @@ msgid "Страница "
 msgstr "Page "
 
 #: .\Post\templates\Post\article_list.html:26
-#: .\Post\templates\Post\base_post_list.html:80
+#: .\Post\templates\Post\base_post_list.html:83
 #: .\Post\templates\Post\note_list.html:26
 #: .\Post\templates\Post\question_list.html:26
 #: .\Post\templates\Post\termin_list.html:26
@@ -54,7 +54,7 @@ msgid " Они были связаны и сгруппированы по сле
 msgstr " They were linked and grouped under the following tags: "
 
 #: .\Post\templates\Post\article_list.html:26
-#: .\Post\templates\Post\base_post_list.html:80
+#: .\Post\templates\Post\base_post_list.html:83
 #: .\Post\templates\Post\note_list.html:26
 #: .\Post\templates\Post\question_list.html:26
 #: .\Post\templates\Post\termin_list.html:26
@@ -279,60 +279,43 @@ msgstr "Tima Chuduk"
 msgid "one layer on top of anothe"
 msgstr ""
 
-#: .\Post\templates\Post\base_article.html:189
+#: .\Post\templates\Post\base_article.html:193
 msgid "Внешние ссылки"
 msgstr "External links"
 
-#: .\Post\templates\Post\base_article.html:196
+#: .\Post\templates\Post\base_article.html:200
 msgid "Использованные термины"
 msgstr "Used termins"
 
-#: .\Post\templates\Post\base_article.html:210
+#: .\Post\templates\Post\base_article.html:214
 msgid "Релевантные вопросы"
 msgstr "Related questions"
 
-#: .\Post\templates\Post\base_article.html:232
+#: .\Post\templates\Post\base_article.html:236
 msgid "Похожие статьи"
 msgstr "Similar articles"
 
 #: .\Post\templates\Post\base_post.html:26
-msgid "сердце"
-msgstr "heart"
+#: .\Post\templates\Post\basic--post_preview-article.html:27
+#: .\Post\templates\Post\basic--post_preview-note.html:12
+#: .\Post\templates\Post\simple--post_preview-article.html:12
+msgid "Часы"
+msgstr "Clock"
 
-#: .\Post\templates\Post\base_post.html:30
-msgid "3 соединённые точки"
-msgstr "3 connected dots"
-
-#: .\Post\templates\Post\base_post.html:37
-msgid "vk иконка"
-msgstr "vk icon"
-
-#: .\Post\templates\Post\base_post.html:42
-msgid "reddit иконка"
-msgstr "reddit icon"
-
-#: .\Post\templates\Post\base_post.html:47
-msgid "twitter иконка"
-msgstr "twitter icon"
-
-#: .\Post\templates\Post\base_post.html:52
-msgid "telegram иконка"
-msgstr "telegram icon"
-
-#: .\Post\templates\Post\base_post_list.html:54
+#: .\Post\templates\Post\base_post_list.html:57
 msgid " начиная с "
 msgstr " starting from "
 
-#: .\Post\templates\Post\base_post_list.html:54
+#: .\Post\templates\Post\base_post_list.html:57
 msgid " страницы"
 msgstr " page"
 
-#: .\Post\templates\Post\base_post_list.html:71
+#: .\Post\templates\Post\base_post_list.html:74
 msgid "связанные со следующими тегами: "
 msgstr "related to the following tags: "
 
-#: .\Post\templates\Post\base_post_list.html:102
-#: .\Post\templates\Post\base_post_list.html:108
+#: .\Post\templates\Post\base_post_list.html:105
+#: .\Post\templates\Post\base_post_list.html:111
 msgid "Шеврон"
 msgstr "Chevron"
 
@@ -340,7 +323,7 @@ msgstr "Chevron"
 msgid "Тим Вебмастер"
 msgstr "Tim the Webmaster"
 
-#: .\Post\templates\Post\base_qa.html:28 .\Post\templates\Post\base_td.html:28
+#: .\Post\templates\Post\base_qa.html:29 .\Post\templates\Post\base_td.html:29
 msgid "Использованно в"
 msgstr "Used in"
 
@@ -366,24 +349,6 @@ msgstr "Used in"
 #: .\Post\templates\Post\list--post_preview-tool.html:53
 msgid "Превью статьи"
 msgstr "Article preview"
-
-#: .\Post\templates\Post\basic--post_preview-article.html:27
-#: .\Post\templates\Post\basic--post_preview-note.html:12
-#: .\Post\templates\Post\simple--post_preview-article.html:12
-msgid "Часы"
-msgstr "Clock"
-
-#: .\Post\templates\Post\basic--post_preview-article.html:32
-msgid "Глазик"
-msgstr "An eye"
-
-#: .\Post\templates\Post\basic--post_preview-article.html:36
-msgid "Сердечки"
-msgstr "Hearts"
-
-#: .\Post\templates\Post\basic--post_preview-article.html:40
-msgid "Соединённые точки"
-msgstr "3 connected dots"
 
 #: .\Post\templates\Post\basic--post_preview-qa.html:13
 #: .\Post\templates\Post\basic--post_preview-td.html:13
@@ -431,7 +396,3 @@ msgstr "Contacts"
 #: .\Post\templatetags\urlToBreadcrumbs.py:48
 msgid "Галерея"
 msgstr "Gallery"
-
-#: .\Post\views.py:286
-msgid "Большое спасибо, но ты уже лайкнул)"
-msgstr "Thank you very much, but you already liked it:)"

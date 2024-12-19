@@ -1,0 +1,148 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-12-18 21:50+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+#: .\Engagement\forms.py:14
+msgid "Твоё имя"
+msgstr "Your name"
+
+#: .\Engagement\forms.py:15
+msgid "Твоё сообщение"
+msgstr "Your message"
+
+#: .\Engagement\templates\Engagement\comment_form.html:17
+msgid "Отправить"
+msgstr "Send"
+
+#: .\Engagement\templates\Engagement\engagement_comments.html:10
+msgid "Сейчас тут пусто. Буть первым (oﾟvﾟ)ノ"
+msgstr "It's empty now. Be the first (oﾟvﾟ)ノ"
+
+#: .\Engagement\templates\Engagement\engagement_comments.html:17
+msgid "Больше ..."
+msgstr "More ..."
+
+#: .\Engagement\templates\Engagement\engagement_feedback_form.html:6
+msgid "Форма обратной связи"
+msgstr "Feedback form"
+
+#: .\Engagement\templates\Engagement\engagement_feedback_form.html:27
+#: .\Engagement\templates\Engagement\engagement_feedback_form.html:28
+msgid "Крестик"
+msgstr "Cross"
+
+#: .\Engagement\templates\Engagement\engagement_options.html:8
+#: .\Engagement\templates\Engagement\engagement_options.html:65
+msgid "сердце"
+msgstr "heart"
+
+#: .\Engagement\templates\Engagement\engagement_options.html:13
+#: .\Engagement\templates\Engagement\engagement_options.html:70
+msgid "3 соединённые точки"
+msgstr "3 connected dots"
+
+#: .\Engagement\templates\Engagement\engagement_options.html:18
+#: .\Engagement\templates\Engagement\engagement_options.html:75
+msgid "vk иконка"
+msgstr "vk icon"
+
+#: .\Engagement\templates\Engagement\engagement_options.html:23
+#: .\Engagement\templates\Engagement\engagement_options.html:80
+msgid "reddit иконка"
+msgstr "reddit icon"
+
+#: .\Engagement\templates\Engagement\engagement_options.html:28
+#: .\Engagement\templates\Engagement\engagement_options.html:85
+msgid "twitter иконка"
+msgstr "twitter icon"
+
+#: .\Engagement\templates\Engagement\engagement_options.html:33
+#: .\Engagement\templates\Engagement\engagement_options.html:90
+msgid "telegram иконка"
+msgstr "telegram icon"
+
+#: .\Engagement\templates\Engagement\engagement_options.html:42
+#: .\Engagement\templates\Engagement\engagement_options.html:47
+#: .\Engagement\templates\Engagement\engagement_options.html:52
+#: .\Engagement\templates\Engagement\engagement_options.html:57
+#: .\Engagement\templates\Engagement\engagement_options.html:99
+#: .\Engagement\templates\Engagement\engagement_options.html:104
+#: .\Engagement\templates\Engagement\engagement_options.html:109
+msgid "облачко"
+msgstr "cloud"
+
+#: .\Engagement\templates\Engagement\engagement_post_comments.html:4
+msgid "Комментарии"
+msgstr "Comments"
+
+#: .\Engagement\templates\Engagement\engagement_tool_comments.html:5
+msgid "Отзывы"
+msgstr "Reviews"
+
+#: .\Engagement\templates\Engagement\interaction.html:8
+msgid "Глазик"
+msgstr "An eye"
+
+#: .\Engagement\templates\Engagement\interaction.html:13
+msgid "Сердечки"
+msgstr "Hearts"
+
+#: .\Engagement\templates\Engagement\interaction.html:19
+#: .\Engagement\templates\Engagement\interaction.html:25
+#: .\Engagement\templates\Engagement\interaction.html:31
+msgid "Соединённые точки"
+msgstr "Connected dots"
+
+#: .\Engagement\views.py:26
+msgid ""
+"≡[。。]≡ Извини, JS не позволяет создавать собственные кнопки создания "
+"закладок и по этому, чтобы создать закладку нажми ctrl+d"
+msgstr "≡[。。]≡ Sorry, JS doesn't allow you to create your own bookmark buttons, so to create a bookmark, press ctrl+d"
+
+#: .\Engagement\views.py:31 .\Engagement\views.py:59 .\Engagement\views.py:80
+#: .\Engagement\views.py:135 .\Engagement\views.py:178
+msgid "Только POST запросы (╬▔皿▔)╯"
+msgstr "Only POST request (╬▔皿▔)╯"
+
+#: .\Engagement\views.py:49
+msgid "Спасибо \\(￣︶￣*\\))"
+msgstr "Thanks \\(￣︶￣*\\))"
+
+#: .\Engagement\views.py:54
+msgid "Большое спасибо, но ты уже лайкнул (*￣3￣)╭"
+msgstr "A big thanks, but you already did like me (*￣3￣)╭"
+
+#: .\Engagement\views.py:75
+msgid "Большое спасибо что поделился \\(￣︶￣*\\))"
+msgstr "Thanks for share, \\(￣︶￣*\\))"
+
+#: .\Engagement\views.py:96 .\Engagement\views.py:160
+msgid "✔ Вы успешно отправили сообщение (＠＾０＾)"
+msgstr "✔ You have successfully sent your message (＠＾０＾)"
+
+#: .\Engagement\views.py:105
+msgid "✗ Возникла ошибка при отправке формы ＼（〇_ｏ）／"
+msgstr "✗ There was an error submitting the form ＼（〇_ｏ）／"
+
+#: .\Engagement\views.py:132
+msgid "Чувак, используй UI ┗( T﹏T )┛"
+msgstr "Dude, use UI ┗( T﹏T )┛"
+
+#: .\Engagement\views.py:172
+msgid "✗ Возникла ошибка при отправке комментария ＼（〇_ｏ）／"
+msgstr "✗ There was an error sending your comment ＼（〇_ｏ）／"

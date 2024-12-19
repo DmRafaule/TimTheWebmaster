@@ -5,6 +5,7 @@ from .models import Website
 import json
 from django.utils.translation import gettext as _
 from django.views.generic import TemplateView
+from django.template.response import TemplateResponse
 from .forms import FeedbackForm
 from MyBlog.settings import DEFAULT_FROM_EMAIL, DEFAULT_TO_EMAIL
 from django.core.mail import send_mail
@@ -99,55 +100,37 @@ def home(request):
         })
     
     context.update({'internal_tool_tag': internal_tool_tag.slug})
-    context.update({'posts': internal_tools})
+    context.update({'internal_tools_posts': internal_tools})
     context.update({'internal_tools_length': len(internal_tools)})
     context.update({'current_tag': ''})
-    loaded_template = loader.get_template(f'Post/list--post_preview-tool.html')
-    context.update({'internal_tools': loaded_template.render(context, request)})
     
-    context.update({'posts': most_popular_article})
-    loaded_template = loader.get_template(f'Post/basic--post_preview-article.html')
-    context.update({'most_popular_article': loaded_template.render(context, request)})
+    context.update({'most_popular_article_posts': most_popular_article})
 
-    context.update({'posts': latest_news})
+    context.update({'latest_news_posts': latest_news})
     context.update({'latest_news_tag': latest_news_tag.slug})
-    loaded_template = loader.get_template(f'Post/simple--post_preview-article.html')
-    context.update({'latest_news': loaded_template.render(context, request)})
 
-    context.update({'posts': latest_termins})
-    loaded_template = loader.get_template(f'Post/basic--post_preview-td.html')
-    context.update({'latest_termins': loaded_template.render(context, request)})
+    context.update({'latest_termins_posts': latest_termins})
     
-    context.update({'posts': latest_questions})
-    loaded_template = loader.get_template(f'Post/basic--post_preview-qa.html')
-    context.update({'latest_questions': loaded_template.render(context, request)})
+    context.update({'latest_questions_posts': latest_questions})
     
-    context.update({'posts': latest_notes})
-    loaded_template = loader.get_template(f'Post/basic--post_preview-note.html')
-    context.update({'latest_notes': loaded_template.render(context, request)})
+    context.update({'latest_notes_posts': latest_notes})
 
 
     my_res = []
     for res in my_resources:
         if len(res['objs']) > 0:
-            context.update({'posts': res['objs']})
-            loaded_template = loader.get_template(f'Post/list--post_preview-tool.html')
-            res['objs'] = loaded_template.render(context, request)
             my_res.append(res)
     context.update({'my_resources': my_res})
 
     oth_art = []
     for res in other_articles:
         if len(res['objs']) > 0:
-            context.update({'posts': res['objs']})
-            loaded_template = loader.get_template(f'Post/basic--post_preview-article.html')
-            res['objs'] = loaded_template.render(context, request)
             oth_art.append(res)
     context.update({'other_articles': oth_art})
 
     #context.update({'latest_images': latest_images})
 
-    return render(request, 'Main/home.html', context=context)
+    return TemplateResponse(request, 'Main/home.html', context=context)
 
 
 def page_not_found(request, exception):

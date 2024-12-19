@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-10-29 13:36+0300\n"
+"POT-Creation-Date: 2024-12-18 21:50+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -245,50 +245,50 @@ msgstr "Download all"
 msgid "Скачать содержимое"
 msgstr "Download content"
 
-#: .\PostEditor\views.py:73
+#: .\PostEditor\views.py:74
 msgid "✗ Возникла ошибка при получении списка"
 msgstr "✗ An error occure while retrieving result"
 
-#: .\PostEditor\views.py:86
+#: .\PostEditor\views.py:87
 msgid "✔ Список шаблонов успешно получен"
 msgstr "✔ A list of templates successfully recieved"
 
-#: .\PostEditor\views.py:88
+#: .\PostEditor\views.py:89
 msgid "✗ Список шаблонов пуст"
 msgstr "✗ A list of templates is empty"
 
-#: .\PostEditor\views.py:94
+#: .\PostEditor\views.py:95
 msgid "✗ Не удалось удалить шаблон"
 msgstr "✗ An error occure while deleting a template"
 
-#: .\PostEditor\views.py:101
+#: .\PostEditor\views.py:102
 msgid "✔ Шаблон успешно удалён"
 msgstr "✔ A template has been deleted successfully"
 
-#: .\PostEditor\views.py:103 .\PostEditor\views.py:121
+#: .\PostEditor\views.py:104 .\PostEditor\views.py:122
 msgid "✗ Только POST запросы обрабатываются"
 msgstr "✗ Only POST requests are allowed"
 
-#: .\PostEditor\views.py:110
+#: .\PostEditor\views.py:111
 msgid "✗ Не удалось загрузить шаблон"
 msgstr "✗ An error occure while loading a template"
 
-#: .\PostEditor\views.py:117
+#: .\PostEditor\views.py:118
 msgid "✔ Шаблон получен"
 msgstr "✔ Recieved a templated"
 
-#: .\PostEditor\views.py:119
+#: .\PostEditor\views.py:120
 msgid "✗ Такого файла больше не существует"
 msgstr "✗ Such file no longer exist"
 
-#: .\PostEditor\views.py:128
+#: .\PostEditor\views.py:129
 msgid "✗ Возникла ошибка при сохранении"
 msgstr "✗ An error occure while saving"
 
-#: .\PostEditor\views.py:147
+#: .\PostEditor\views.py:148
 msgid "✔ Успешное сохранение"
 msgstr "✔ Saved successfully"
 
-#: .\PostEditor\views.py:150
+#: .\PostEditor\views.py:151
 msgid "✗ Форма не валидна"
 msgstr "✗ Form isn't valid"

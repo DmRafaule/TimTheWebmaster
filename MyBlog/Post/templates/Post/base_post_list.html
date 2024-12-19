@@ -22,6 +22,9 @@
 {% endblock %}
 
 {% block content %}
+	<div class='notificator-container'>
+		<div class="notificator-blank notificator notificator-inactive"></div>
+	</div>
 	<div id="filters_body" class="hat_body">
 		<div id="filters" class="full_width full_height padder">
 			{% block filters_body%}
@@ -109,6 +112,9 @@
 			</div>
 		</div>
 	</div>
+	{% if isEngagementMiddlewareConnected %}
+		{% include 'Engagement/engagement_options.html' %}
+	{% endif %}
 {% endblock %}
 
 {% block footer_links %}
@@ -125,6 +131,12 @@
     <link type="text/css" rel="stylesheet" href="{% static 'lists.css' %}"/>
     <link type="text/css" rel="stylesheet" href="{% static 'Post/css/post.css' %}"/>
     <link type="text/css" rel="stylesheet" href="{% static 'Post/css/posts_preview.css' %}"/>
+
+	{% if isEngagementMiddlewareConnected %}
+		<link type="text/css" rel="stylesheet" href="{% static 'Engagement/css/engagement.css' %}"/>
+		{% include 'Engagement/engagement_styles.html' %}
+	{% endif %}
+
 	{% block styles_list %}
 	{% endblock %}
 {% endblock %}
@@ -140,6 +152,11 @@
 	<script src="{% static 'filtering.js' %}"></script>
 	<script src="{% static 'infinity_scroll.js' %}"></script>
 	<script src="{% static 'Post/js/post_list.js' %}"></script>
+	
+	{% if isEngagementMiddlewareConnected %}
+		{% include 'Engagement/engagement_scripts.html' %}
+	{% endif %}
+
 	{% block scripts_list %}
 	{% endblock %}
 {% endblock %}

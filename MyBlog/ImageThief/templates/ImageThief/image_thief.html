@@ -188,28 +188,6 @@
 			Так же автор данного инструмента не несёт никакой ответственности за то, что парсят посетители. Он создан исключительно в целях экономии времени и нервов тех, кому просто нужно собрать все изображения с сайта.
 			{% endblocktrans %}
 		</div>
-		<div class="text row min_gap padder">
-			<a target="_blank" href="http://vk.com/share.php?url={{ post.get_absolute_url }}&title={{ post.name }}&description={{ post.short_description }}">
-				<div class="share_button">
-					<img class="icon button rounded_button dynamic_image" width="32" height="32" src="{% static 'placeholder.svg' %}" data-src="{% static 'Post/img/vk.svg' %}" alt="{% trans "vk иконка" %}">
-				</div>
-			</a>
-			<a target="_blank"  href="https://www.reddit.com/submit?url={{ post.get_absolute_url }}&title={{ post.name }}">
-				<div class="share_button">
-					<img class="icon button rounded_button dynamic_image" width="32" height="32" src="{% static 'placeholder.svg' %}" data-src="{% static 'Post/img/reddit.svg' %}" alt="{% trans "reddit иконка" %}">
-				</div>
-			</a>
-			<a target="_blank"  href="https://twitter.com/intent/tweet?url={{ post.get_absolute_url }}&text={{ post.short_description }}">
-				<div class="share_button">
-					<img class="icon button rounded_button dynamic_image" width="32" height="32" src="{% static 'placeholder.svg' %}" data-src="{% static 'Post/img/twitter.svg' %}" alt="{% trans "twitter иконка" %}">
-				</div>
-			</a>
-			<a target="_blank"  href="https://telegram.me/share/url?url={{ post.get_absolute_url }}&text={{ post.short_description }}">
-				<div class="share_button">
-					<img class="icon button rounded_button dynamic_image" width="32" height="32" src="{% static 'placeholder.svg' %}" data-src="{% static 'Post/img/telegram.svg' %}" alt="{% trans "telegram иконка" %}">
-				</div>
-			</a>
-		</div>
 		<div class="home_ui_el text">
 			<h2 class="">{% trans "Рабочие заметки об инструменте" %}</h2>
 			<div class="post_previews--category mid_gap">

@@ -1,0 +1,19 @@
+{% load static %}
+{% load i18n %}
+
+<div id="toSendCommentContainer" class="add_comment_form marger_bottom_max mid_gap column">
+    <form class="vertical" action='' id="toSendComment"  method="post">
+        {% csrf_token %}
+        {% for field in comment_form %}
+            <div>
+                {{ field }}
+            </div>
+            {% for error in field.errors %}
+            <p class="form_error">{{ error }}</p>
+            {% endfor %}	
+        {% endfor %}
+    </form>
+    <div id="onCommentSend" class="zIndZero button action_button squered_button">
+        {% trans "Отправить" %}
+    </div>
+</div>

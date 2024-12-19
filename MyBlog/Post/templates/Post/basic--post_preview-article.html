@@ -24,23 +24,12 @@
 		<h2 class="post_preview_title"><a class="text_button" href="{{ a.get_absolute_url }}">{{a.title}}</a></h2>
 		<div class="post_preview_meta row mid_gap">
 			<div class="row min_col_gap">
-				<img class="in_middle-self icon_small dynamic_image" width="32" height="32" src="{% static 'placeholder.svg' %}" data-src='{% static "Post/img/clock.svg" %}' alt="{% trans "Часы" %}">
+				<img class="in_middle-self icon_small dynamic_image" width="32" height="32" src="{% static 'placeholder.svg' %}" data-src='{% static "Post/img/calendar.svg" %}' alt="{% trans "Часы" %}">
 				<div>{{a.timeCreated|date:"d.m.Y"}}</div>
 			</div>
-			<div class="row min_col_gap">
-				<div class="row min_col_gap">
-					<img class="in_middle-self icon_small dynamic_image" width="32" height="32" src="{% static 'placeholder.svg' %}" data-src='{% static "Post/img/views.svg" %}' alt="{% trans "Глазик" %}">
-					<div>{{a.viewed}}</div>
-				</div>
-				<div class="row min_col_gap">
-					<img class="in_middle-self icon_small dynamic_image" width="32" height="32" src="{% static 'placeholder.svg' %}" data-src='{% static "Post/img/like.svg" %}' alt="{% trans "Сердечки" %}">
-					<div>{{a.likes}}</div>
-				</div>
-				<div class="row min_col_gap">
-				<img class="in_middle-self icon_small dynamic_image" width="32" height="32" src="{% static 'placeholder.svg' %}" data-src='{% static "Post/img/share.svg" %}' alt="{% trans "Соединённые точки" %}">
-				<div>{{a.shares}}</div>
-				</div>
-			</div>
+			{% if isEngagementMiddlewareConnected %}
+				{% include 'Engagement/interaction.html' with path=a.get_absolute_url%}
+			{% endif %}
 		</div>
 		{% if displayTags %}
 		<div class="post_preview_tags">

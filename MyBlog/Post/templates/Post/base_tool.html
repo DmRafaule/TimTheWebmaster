@@ -17,8 +17,14 @@
     <div class='notificator-container'>
         <div class="notificator-blank notificator notificator-inactive"></div>
     </div>
-	{% block content_tool %}
+	
+    {% block content_tool %}
 	{% endblock %}
+    <hr class="limiter in_middle-self" style="border-top: 2px solid black;">
+    {% if isEngagementMiddlewareConnected %}
+	    {% include 'Engagement/engagement_options.html' %}
+    {% endif %}
+
 {% endblock %}
 
 {% block footer %}
@@ -36,7 +42,14 @@
 	<link type="text/css" rel="stylesheet" href="{% static 'dynamic.css' %}"/>
     <link type="text/css" rel="stylesheet" href="{% static 'footer-tool.css' %}"/>
     <link type="text/css" rel="stylesheet" href="{% static 'notificator.css' %}"/>
-	{% block styles_tool %}
+
+    {% if isEngagementMiddlewareConnected %}
+        <link type="text/css" rel="stylesheet" href="{% static 'Post/css/post.css' %}"/>
+        <link type="text/css" rel="stylesheet" href="{% static 'Engagement/css/engagement.css' %}"/>
+        {% include 'Engagement/engagement_styles.html' %}
+    {% endif %}
+	
+    {% block styles_tool %}
 	{% endblock %}
 {% endblock %}
 
@@ -47,6 +60,11 @@
     </script>
     <script src="{% static 'modal.js' %}"></script>
     <script src="{% static 'notificator.js' %}"></script>
+    
+    {% if isEngagementMiddlewareConnected %}
+        {% include 'Engagement/engagement_scripts.html' %}
+    {% endif %}
+
 	{% block scripts_tool %}
 	{% endblock %}
 {% endblock %}

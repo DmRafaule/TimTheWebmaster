@@ -10,6 +10,7 @@ from django.template import loader
 from django.db.models import Q
 from django.shortcuts import render, get_object_or_404
 from django.utils.translation import gettext as _
+from django.template.response import TemplateResponse
 
 
 max_el_in_related_post = 3
@@ -135,11 +136,9 @@ def post_list(request, model, category, template_path, image):
         context.update({'cfp_preview': filter_page.preview})
 
     if type == 'full':
-        loaded_template = loader.get_template(f'Post/{mode}post_preview{for_who}{cat}.html')
-        context.update({'doc': loaded_template.render(context, request)})
-        return render(request, template_path, context)
+        return TemplateResponse(request, template_path, context)
     elif type == 'part':
-        return render(request,f'Post/{mode}post_preview{for_who}{cat}.html',context=context)
+        return TemplateResponse(request,f'Post/{mode}post_preview{for_who}{cat}.html',context=context)
 
 def article_list(request):
     website_conf = Main_M.Website.objects.get(is_current=True)
@@ -169,8 +168,6 @@ def notes_list(request):
 def article(request, post_slug):
     website_conf = Main_M.Website.objects.get(is_current=True)
     post = get_object_or_404(Post_M.Article, slug=post_slug)
-    post.viewed = post.viewed + 1
-    post.save()
     downloadables = Main_M.Downloadable.objects.filter(type=post)
     images = Main_M.Image.objects.filter(type=post)
 
@@ -184,7 +181,6 @@ def article(request, post_slug):
         loaded_template = loader.get_template(f'Post/basic--post_preview-article.html')
         sim_post_doc = loaded_template.render(context, request)
 
-    
     context.update({'post': post})
     context.update({'sim_post_doc': sim_post_doc})
     context.update({'downloadables': downloadables})
@@ -214,13 +210,11 @@ def article(request, post_slug):
     if qas is not None:
         context.update({'qas': qas[:website_conf.max_displayed_questions]})
 
-    return render(request, post.template.path, context=context)
+    return TemplateResponse(request, post.template.path, context=context)
 
 def qa(request, post_slug):
     website_conf = Main_M.Website.objects.get(is_current=True)
     post = get_object_or_404(Post_M.QA, slug=post_slug)
-    post.viewed = post.viewed + 1
-    post.save()
     downloadables = Main_M.Downloadable.objects.filter(type=post)
     images = Main_M.Image.objects.filter(type=post)
     context = U.initDefaults(request)
@@ -234,19 +228,16 @@ def qa(request, post_slug):
         context.update({'posts': related_articles[:website_conf.max_displayed_questions]})
         loaded_template = loader.get_template(f'Post/simple--post_preview-article.html')
         sim_post_doc = loaded_template.render(context, request)
-    
     context.update({'related_articles': sim_post_doc})
 
     if post.template:
-        return render(request, post.template.path, context=context)
+        return TemplateResponse(request, post.template.path, context=context)
     else:
-        return render(request, post.default_template, context=context)
+        return TemplateResponse(request, post.default_template, context=context)
 
 def td(request, post_slug):
     website_conf = Main_M.Website.objects.get(is_current=True)
     post = get_object_or_404(Post_M.TD, slug=post_slug)
-    post.viewed = post.viewed + 1
-    post.save()
     downloadables = Main_M.Downloadable.objects.filter(type=post)
     images = Main_M.Image.objects.filter(type=post)
     context = U.initDefaults(request)
@@ -259,42 +250,10 @@ def td(request, post_slug):
     if related_articles is not None:
         context.update({'posts': related_articles[:website_conf.max_displayed_termins]})
         loaded_template = loader.get_template(f'Post/simple--post_preview-article.html')
-        sim_post_doc = loaded_template.render(context, request)
-    
+        sim_post_doc = loaded_template.render(context, request) 
     context.update({'related_articles': sim_post_doc})
 
     if post.template:
-        return render(request, post.template.path, context=context)
+        return TemplateResponse(request, post.template.path, context=context)
     else:
-        return render(request, post.default_template, context=context)
-
-# Basicaly one browser one like for one article
-def like_post(request):
-    post_slug = request.POST['slug']
-    isLiked = request.session.get("is_liked_" + post_slug, False)
-    if not isLiked:
-        post = get_object_or_404(Post_M.Post, slug=post_slug)
-        post.likes = post.likes + 1
-        post.save()
-        request.session["is_liked_" + post_slug] = True
-        data = {
-            'likes': post.likes,
-        }
-        return JsonResponse(data)
-    else:
-        data = {
-            'likes': _('Большое спасибо, но ты уже лайкнул)')
-        }
-        return JsonResponse(data)
-
-# No checks for multiple shares, because I do not want it.
-# I want as many as I could get
-def share_post(request):
-    post_slug = request.POST['slug']
-    post = get_object_or_404(Post_M.Post, slug=post_slug)
-    post.shares = post.shares + 1
-    post.save()
-    data = {
-        'shares': post.shares,
-    }
-    return JsonResponse(data)
+        return TemplateResponse(request, post.default_template, context=context)

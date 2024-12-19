@@ -69,7 +69,7 @@
 	--footer_top-bottom_padding: 100px;
 	--text_block_margin-top: 30px;
 	--paragraph_margin-top: 60px;
-	--paragraph_margin-bottom: 60px;
+	--paragraph_margin-bottom: 10px;
 	/*Lists*/
 	--list_unordered_element_sign: "◼️";
 	--list_sign_size: 10px;

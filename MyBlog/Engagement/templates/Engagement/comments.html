@@ -1,0 +1,20 @@
+{% load static %}
+{% load i18n %}
+
+{% for comment in comments %}
+<div class="comment column min_gap">
+    <div class="row mid_gap wrap">
+        <div class="comment_time row min_gap nowrap">
+            <img class="in_middle-self icon_small  loader" width="32" height="32" src="{% static 'Engagement/img/calendar.svg' %}" alt="Часы">
+            {{comment.time_published}}
+        </div>
+        <div class="comment_person row min_gap nowrap">
+            <img class="in_middle-self icon_small  loader" width="32" height="32" src="{% static 'Engagement/img/person.svg' %}" alt="Человек">
+            {{comment.name}}
+        </div>
+    </div>
+    <div class="comment_message">
+        {{comment.message}}
+    </div>
+</div>
+{% endfor %}

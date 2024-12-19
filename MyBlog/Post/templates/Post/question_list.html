@@ -101,7 +101,7 @@
 {% block content_list %}
 	<div id="meta-data" data-numpages={{num_pages}} data-currentpage="{{current_page}}" data-url="{{category.get_absolute_url}}"></div>
 	<div id="page" class="page toObserve">
-		{{ doc | safe}}
+		{% include 'Post/basic--post_preview-qa.html' %}
 	</div>
 {% endblock %}
 

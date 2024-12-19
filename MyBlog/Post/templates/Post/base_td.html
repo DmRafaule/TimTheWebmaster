@@ -9,11 +9,12 @@
 
 
 {% block content_post-before %}
+	<h1 class="title" >{{post.termin}}</h1>
 	
 {% endblock %}
 
 {% block content_post %}
-	<h1 class="title" >{{post.termin}}</h1>
+
 	<div class="text">
 		{{post.definition}}
 	</div>
