@@ -214,7 +214,11 @@
 {% block content_list %}
 	<div id="meta-data" data-numpages={{num_pages}} data-currentpage="{{current_page}}" data-url="{{category.get_absolute_url}}"></div>
 	<div id="page" class="page toObserve">
-		{{ doc | safe}}
+		{% if mode == 'basic' %}
+			{% include 'Post/basic--post_preview-article.html' %}
+		{% else %}
+			{% include 'Post/simple--post_preview-article.html' %}
+		{% endif %}
 	</div>
 {% endblock %}
 

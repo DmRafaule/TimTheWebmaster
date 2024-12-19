@@ -4,6 +4,7 @@ from threading import Thread
 
 from django.http import JsonResponse
 from django.template import loader
+from django.template.response import TemplateResponse
 from django.shortcuts import render
 from Main.utils import initDefaults
 from MyBlog import settings
@@ -36,13 +37,12 @@ def tool_main(request):
     imageThief_tags = Tag.objects.filter(slug_en='imagethief')
     if len(imageThief_tags) > 0:
         posts = P.filterByTag(Note.objects.filter(isPublished=True), [imageThief_tags[0]])[:MAX_NOTES_ON_TOOL]
-        print(posts)
         context.update({'imageThief_tag': imageThief_tags[0].slug})
         context.update({'posts': posts})
         loaded_template = loader.get_template(f'Post/basic--post_preview-note.html')
         context.update({'latest_notes': loaded_template.render(context, request)})
 
-    return render(request, 'ImageThief/image_thief.html', context=context)
+    return TemplateResponse(request, 'ImageThief/image_thief.html', context=context)
 
 def downloadAllImagesFromListPage(
         urls: [],

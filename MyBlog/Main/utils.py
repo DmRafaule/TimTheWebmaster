@@ -1,5 +1,7 @@
 from MyBlog.settings import MEDIA_URL, ALLOWED_HOSTS
 import Post.models as Post_M
+from Engagement.models import Interaction
+from Engagement.utils import getSlugFromURL 
 from datetime import datetime
 from .models import Website
 from django.db.models import Q
@@ -83,19 +85,22 @@ def get_latest_post(number: int, queryset):
     return new_posts
 
 def get_most_popular_post() -> Post_M.Article: 
-    articles = Post_M.Article.objects.filter(isPublished=True)
-    scores = []
-    for article in articles:
-        like_mod = article.likes * 2
-        shares_mode = article.shares * 10
-        views = article.viewed
-        interaction_score = like_mod + shares_mode + 0.0000001
-        scores.append({
-            'score': views/interaction_score,
-            'article': article,
-        })
+    #interactions = Interaction.objects.all()
+    #scores = []
+    #for interaction in interactions:
+    #    like_mod = interaction.likes * 3
+    #    shares_mode = interaction.shares * 10
+    #    views = interaction.views
+    #    comment_mode = interaction.comments * 5
+    #    bookmark_mode = interaction.bookmarks * 2
+    #    interaction_score = like_mod + shares_mode + comment_mode + bookmark_mode + 1
+    #    scores.append({
+    #        'score': views/interaction_score,
+    #        'article': interaction,
+    #    })
     # Will sort them descending
-    return min(scores, key=lambda x:x['score'])['article']
+    #most_popular_interaction_data = min(scores, key=lambda x:x['score'])['article']
+    return Post_M.Article.objects.all().order_by('-timeCreated')[0]
 
     
 

@@ -1,15 +1,16 @@
 from django.shortcuts import render
 from ShaderToy.models import Shader
 from django.http import JsonResponse
+from django.template.response import TemplateResponse
 import Main.utils as U
 import json
 
 
-def main(request):
+def tool_main(request):
     context = U.initDefaults(request)
     # Upload all examples shaders
     # Upload all user shaders
-    return render(request, 'ShaderToy/main.html', context=context)
+    return TemplateResponse(request, 'ShaderToy/main.html', context=context)
 
 
 def save_shader(request):

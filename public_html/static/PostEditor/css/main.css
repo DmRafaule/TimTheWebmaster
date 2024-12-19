@@ -1,7 +1,6 @@
 .limiter{
     border: 0;
     padding-bottom: 20px;
-    white-space: pre-wrap;
 }
 #toolbar-container{
     overflow: auto;
@@ -16,7 +15,7 @@
     text-decoration: none !important;
 }
 .ql-container.ql-snow {
-
+    
 }
 
 .ql-editor {
@@ -26,6 +25,7 @@
     width: 100%;
     height: 100%;
     padding: 4px;
+    min-height: 90svh;
 }
 
 /* Tooltips */

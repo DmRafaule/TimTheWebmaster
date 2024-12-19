@@ -7,6 +7,7 @@ from django.http import JsonResponse
 from django.template import loader
 from MyBlog.settings import MEDIA_ROOT, MEDIA_URL
 from django.utils.translation import gettext as _
+from django.template.response import TemplateResponse
 import os
 from django.contrib.auth.decorators import login_required
 
@@ -63,9 +64,9 @@ def _update_record_template(request, record, path_to_template):
 def _get_option_name(option):
         return PostTemplate.OPTIONS[option]
 
-def home(request):
+def tool_main(request):
     context = _initPostEditorContext(request)
-    return render(request, 'PostEditor/editor_home.html', context)
+    return TemplateResponse(request, 'PostEditor/editor_home.html', context)
     
 @login_required
 def templates_list(request):

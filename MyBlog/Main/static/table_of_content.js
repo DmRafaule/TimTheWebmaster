@@ -72,8 +72,6 @@ $(document).ready( function(){
 		headers: {'X-CSRFToken': csrftoken},
 		mode: 'same-origin', // Do not send CSRF token to another domain.
 		success: function(result) {
-			var title = $('h1');
-			$('<hr>').insertAfter(title)
 			var side_menu_button_container = $("#table_of_content_groups_container")
 			side_menu_button_container.css({color: 'white'})
 			side_menu_button_container.append(result)

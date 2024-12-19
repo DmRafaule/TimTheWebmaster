@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-12-09 14:46+0300\n"
+"POT-Creation-Date: 2024-12-18 21:50+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -449,10 +449,10 @@ msgstr "Other articles (by topic)"
 msgid "Содержание"
 msgstr "Content"
 
-#: .\Main\views.py:36
+#: .\Main\views.py:37
 msgid "✔ Вы успешно отправили сообщение"
 msgstr "✔ You have successfully sent a message"
 
-#: .\Main\views.py:38
+#: .\Main\views.py:39
 msgid "✗ Возникла ошибка при отправке формы"
 msgstr "✗ An error occurred while sending a form."

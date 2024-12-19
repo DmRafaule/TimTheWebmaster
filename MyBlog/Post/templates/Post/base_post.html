@@ -15,44 +15,29 @@
 
 
 {% block content %}
+<div class='notificator-container'>
+	<div class="notificator-blank notificator notificator-inactive"></div>
+</div>
+<div class="limiter in_middle in_middle-self no_wrap toObserve">
 	{% block content_post-before %}
 	{% endblock %}
-<div class="limiter in_middle in_middle-self no_wrap toObserve">
+	<div class="marger_top_min marger_bottom_max"> 
+		<div class="row min_col_gap">
+			<img class="in_middle-self icon_small dynamic_image" width="32" height="32" src="{% static 'placeholder.svg' %}" data-src='{% static "Post/img/calendar.svg" %}' alt="{% trans "Часы" %}">
+			<div>{{post.timeCreated|date:"d.m.Y"}}</div>
+		</div>
+		{% if isEngagementMiddlewareConnected %}
+			{% include 'Engagement/interaction.html' with path=post.get_absolute_url %}
+		{% endif %}
+	</div>
+	<hr>
 	{% block content_post %}
 	{% endblock %}
 	<hr>
-	<div class="row in_middle max_gap" >
-		<div id="onLike" class="row min_gap in_middle">
-			<img class="icon button rounded_button dynamic_image" width="32" height="32" src="{% static 'placeholder.svg' %}" data-src="{% static 'Post/img/like.svg' %}" alt="{% trans "сердце" %}">
-			<div id="like_number">{{ post.likes }}</div>
-		</div>
-		<div id="onShare" class="row min_gap in_middle">
-			<img  class="icon button rounded_button dynamic_image" width="32" height="32" src="{% static 'placeholder.svg' %}" data-src="{% static 'Post/img/share.svg' %}" alt="{% trans "3 соединённые точки" %}">
-			<div id="shares_number">{{ post.shares }}</div>
-		</div>
-	</div>
-	<div id="share_options" class="row share_options">
-		<a target="_blank" href="http://vk.com/share.php?url={{ post.get_absolute_url }}&title={{ post.name }}&description={{ post.short_description }}">
-			<div class="share_button">
-				<img class="icon button rounded_button dynamic_image" width="32" height="32" src="{% static 'placeholder.svg' %}" data-src="{% static 'Post/img/vk.svg' %}" alt="{% trans "vk иконка" %}">
-			</div>
-		</a>
-		<a target="_blank"  href="https://www.reddit.com/submit?url={{ post.get_absolute_url }}&title={{ post.name }}">
-			<div class="share_button">
-				<img class="icon button rounded_button dynamic_image" width="32" height="32" src="{% static 'placeholder.svg' %}" data-src="{% static 'Post/img/reddit.svg' %}" alt="{% trans "reddit иконка" %}">
-			</div>
-		</a>
-		<a target="_blank"  href="https://twitter.com/intent/tweet?url={{ post.get_absolute_url }}&text={{ post.short_description }}">
-			<div class="share_button">
-				<img class="icon button rounded_button dynamic_image" width="32" height="32" src="{% static 'placeholder.svg' %}" data-src="{% static 'Post/img/twitter.svg' %}" alt="{% trans "twitter иконка" %}">
-			</div>
-		</a>
-		<a target="_blank"  href="https://telegram.me/share/url?url={{ post.get_absolute_url }}&text={{ post.short_description }}">
-			<div class="share_button">
-				<img class="icon button rounded_button dynamic_image" width="32" height="32" src="{% static 'placeholder.svg' %}" data-src="{% static 'Post/img/telegram.svg' %}" alt="{% trans "telegram иконка" %}">
-			</div>
-		</a>
-	</div>
+	{% if isEngagementMiddlewareConnected %}
+		{% include 'Engagement/engagement_options.html' %}
+	{% endif %}
+	
 	{% block content_post-after %}
 	{% endblock %}
 </div>
@@ -72,6 +57,12 @@
     <link type="text/css" rel="stylesheet" href="{% static 'forms.css' %}"/>
 	<link type="text/css" rel="stylesheet" href="{% static 'images.css' %}">
     <link type="text/css" rel="stylesheet" href="{% static 'Post/css/post.css' %}"/>
+
+	{% if isEngagementMiddlewareConnected %}
+		<link type="text/css" rel="stylesheet" href="{% static 'Engagement/css/engagement.css' %}"/>
+		{% include 'Engagement/engagement_styles.html' %}
+	{% endif %}
+
 	{% block styles_post %}
 	{% endblock %}
 {% endblock %}
@@ -83,7 +74,11 @@
         const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
 		const post_slug = "{{post.slug}}"
     </script>
-    <script src="{% static 'Post/js/feedback.js' %}"></script>
+
+	{% if isEngagementMiddlewareConnected %}
+		{% include 'Engagement/engagement_scripts.html' %}
+	{% endif %}
+	
 	{% block scripts_post %}
 	{% endblock %}
 {% endblock %}

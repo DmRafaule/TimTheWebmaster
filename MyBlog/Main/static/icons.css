@@ -27,6 +27,9 @@
 .svg_icon_inverted{
 	filter: brightness(0) invert(1) ;
 }
+.svg_icon_inverted_black{
+	filter: brightness(0) invert(0) ;
+}
 
 .svg_icon_selected{
 	filter: invert(78%) sepia(20%) saturate(2656%) hue-rotate(324deg) brightness(92%) contrast(82%);

@@ -130,6 +130,12 @@
 .full_height{
 	height: 100%;
 }
+.min_height{
+	height: min-content;
+}
+.min_width{
+	width: min-content;
+}
 .on_start{
 	justify-content: start;
 }
@@ -142,6 +148,9 @@
 }
 .on_end_other{
 	align-items: end;
+}
+.on_middle_other{
+	align-items: center;
 }
 
 .on_end{
@@ -266,7 +275,7 @@
 	width: 0;
 	background-color: var(--secondary_color);
 	transition: 0.2s;
-	z-index: 1;
+	z-index: 3;
 	color: var(--ui_text_color);
 	border-right: 4px solid var(--main_color);
 }

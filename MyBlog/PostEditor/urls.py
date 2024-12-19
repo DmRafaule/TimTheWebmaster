@@ -3,7 +3,7 @@ from . import views as V
 
 
 urlpatterns = [
-    path('editor/', V.home, name='editor_home'),
+    path('editor/', V.tool_main, name='editor_home'),
     path('editor/list/', V.templates_list),
     path('editor/delete/', V.delete_template),
     path('editor/upload/', V.upload_template),

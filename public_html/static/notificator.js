@@ -8,10 +8,14 @@ class Notificator{
         this.notification.classList.remove('notificator-inactive')
     }
 
-    notify(msg, status){
+    notify(msg, status, time){
         this.clean()
         var notif = this.notification.cloneNode()
         notif.innerText = msg
+        if (time == null){
+            time = 5
+        }
+        notif.style.animationDuration = time + 's'
         notif.classList.add(`notificator_${status}`)
         notif.addEventListener('animationend', (ev)=>{
             notif.remove()

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-12-09 14:19+0300\n"
+"POT-Creation-Date: 2024-12-18 21:50+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -275,27 +275,11 @@ msgstr ""
 "who simply need to collect all the images from the site.\n"
 "\t\t\t"
 
-#: .\ImageThief\templates\ImageThief\image_thief.html:194
-msgid "vk иконка"
-msgstr "vk icon"
-
-#: .\ImageThief\templates\ImageThief\image_thief.html:199
-msgid "reddit иконка"
-msgstr "reddit icon"
-
-#: .\ImageThief\templates\ImageThief\image_thief.html:204
-msgid "twitter иконка"
-msgstr "twitter icon"
-
-#: .\ImageThief\templates\ImageThief\image_thief.html:209
-msgid "telegram иконка"
-msgstr "telegram icon"
-
-#: .\ImageThief\templates\ImageThief\image_thief.html:214
+#: .\ImageThief\templates\ImageThief\image_thief.html:192
 msgid "Рабочие заметки об инструменте"
 msgstr "Working notes about a tool"
 
-#: .\ImageThief\templates\ImageThief\image_thief.html:219
+#: .\ImageThief\templates\ImageThief\image_thief.html:197
 msgid "Показать все ..."
 msgstr "Show all ..."
 
