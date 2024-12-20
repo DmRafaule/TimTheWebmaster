@@ -16,7 +16,7 @@ def _initPostEditorContext(request):
     context = U.initDefaults(request)
         
     form = PostTemplateForm()
-    context.update({'form': form})
+    context.update({'form_save': form})
     
     return context
 
