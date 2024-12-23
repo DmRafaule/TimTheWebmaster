@@ -12,6 +12,7 @@ class Interaction(models.Model):
     shares = models.IntegerField(default=0)
     comments = models.IntegerField(default=0)
     bookmarks = models.IntegerField(default=0)
+    time_updated = models.DateTimeField(auto_now=True, auto_created=True)
 
 class Comment(models.Model):
     COMMENTS_PER_PAGE = 5
