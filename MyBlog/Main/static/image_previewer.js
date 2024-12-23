@@ -43,7 +43,7 @@ function addZoom(){
     zoom_container.classList.add('marger_mid')
     zoom_container.classList.add('is_fixed')
     zoom_container.classList.add('b-l')
-    zoom_container.classList.add('zIndPl3')
+    zoom_container.classList.add('zIndPl5')
     zoom_container.classList.add('padder')
 
     var zoom_in_img = document.createElement('img')
@@ -126,12 +126,19 @@ function stopDrag( e ){
     drag = false;
 }
 
-function toggleImage(img){
+function addImage(img){
+    img.id = 'image_previewer_copy'
     img.classList.toggle('is_fixed')
     img.classList.toggle('image_zoomable')
     img.classList.toggle('m-m')
-    img.classList.toggle('zIndPl2')
+    img.classList.toggle('zIndPl4')
     img.classList.toggle('image_dragable')
+    var main = document.getElementById('main')
+    main.insertAdjacentElement('afterbegin',img)
+}
+
+function removeImage(img){
+    document.querySelector('#image_previewer_copy').remove()
 }
 
 function removeOverlay(){
@@ -148,7 +155,7 @@ function addOverlay(img){
     dark_overlay.classList.add('full_height')
     dark_overlay.classList.add('opacity-075')
     dark_overlay.classList.add('bg-black')
-    dark_overlay.classList.add('zIndPl2')
+    dark_overlay.classList.add('zIndPl4')
     dark_overlay.addEventListener('click', (event) => {
         outImage(img)
     })
@@ -168,7 +175,8 @@ function onImage(event){
         document.onmouseup = stopDrag
         document.onmousemove = dragging
     }
-    toggleImage(this)
+    var image_copy = this.cloneNode(true)
+    addImage(image_copy)
     addOverlay(this)
     addExit(this)
     addZoom()
@@ -189,9 +197,7 @@ function outImage(img){
     img.style.transform = ''
     img.style.left = ''
     img.style.top = ''
-    // Put image back
-    toggleImage(img)
-    img.addEventListener('click', onImage, {once: true})
+    removeImage(img)
     // Remove overlay
     removeOverlay()
     // Remove close button
@@ -206,7 +212,7 @@ function outImage(img){
 function onNewImages(event){
     var images = document.querySelectorAll('.image')
     images.forEach( (img) => {
-        img.addEventListener('click', onImage,{once: true})
+        img.addEventListener('click', onImage)
     })
 }
 
@@ -214,7 +220,7 @@ function onReady(){
     document.addEventListener('onMediaUploaded', onNewImages)
     var images = document.querySelectorAll('.image')
     images.forEach( (img) => {
-        img.addEventListener('click', onImage,{once: true})
+        img.addEventListener('click', onImage)
     })
 }
 

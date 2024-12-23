@@ -18,7 +18,7 @@ class CommentAdmin(admin.ModelAdmin):
     ]
 
 class InteractionAdmin(admin.ModelAdmin):
-    list_display = ('url', 'views', 'likes', 'shares', 'comments', 'bookmarks')
+    list_display = ('url', 'time_updated', 'views', 'likes', 'shares', 'comments', 'bookmarks')
     list_display_links = ('url',)
     list_editable = ( 'views', 'likes', 'shares', 'comments', 'bookmarks')
     search_fields = ('slug',)
