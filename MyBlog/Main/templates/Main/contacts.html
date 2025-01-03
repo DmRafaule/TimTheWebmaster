@@ -16,33 +16,23 @@
 	</div>
 	{% endif %}
 	<h1>{% trans "Тим Вебмастер, его контакты и обратная связь" %}</h1>
-	<div class="row in_middle-farapart">
-		<div class="el-40-half">
+	<div class="row in_middle-farapart mid_gap">
+		<div class="el-expandable el-half">
 			<h2 class="paragraph">{% trans "Я в социальных сетях" %}</h2>
-			<ul class="list_without_sign">
-				<li class="ref">
-					<img width="32" height="32" class="icon dynamic_image squered_button" src="{% static 'placeholder.svg' %}" data-src="{% static 'instagram.svg' %}" alt="{% trans "instagram иконка" %}">
-					<a target="_blank" rel="contact" rev="{% trans "контактная страница Тимы, Вебмастера"%}" href="https://www.instagram.com/timachedr/" >Instagram</a>
-				</li>
-				<li class="ref">
-					<img width="32" height="32" class="icon dynamic_image squered_button" src="{% static 'placeholder.svg' %}" data-src="{% static 'vk.svg' %}" alt="{% trans "vk иконка" %}">
-					<a target="_blank" rel="contact" rev="{% trans "контактная страница Тимы, Вебмастера"%}" href="https://vk.com/timachuduk" >VK</a>
-				</li>
-				<li class="ref">
-					<img width="32" height="32" class="icon dynamic_image squered_button" src="{% static 'placeholder.svg' %}" data-src="{% static 'telegram.svg' %}" alt="{% trans "telegram иконка" %}">
-					<a target="_blank" rel="contact" rev="{% trans "контактная страница Тимы, Вебмастера"%}" href="https://t.me/DmitryChedr" >Telegram</a>
-				</li>
-				<li class="ref">
-					<img width="32" height="32" class="icon dynamic_image squered_button" src="{% static 'placeholder.svg' %}" data-src="{% static 'twitter.svg' %}" alt="{% trans "twitter иконка" %}">
-					<a target="_blank" rel="contact" rev="{% trans "контактная страница Тимы, Вебмастера"%}" href="https://twitter.com/TimaChedr" >Twitter</a>
-				</li>
-				<li class="ref">
-					<img width="32" height="32" class="icon dynamic_image squered_button" src="{% static 'placeholder.svg' %}" data-src="{% static 'gmail.svg' %}" alt="{% trans "email иконка" %}">
-					<a target="_blank" rel="contact" rev="{% trans "контактная страница Тимы, Вебмастера"%}" href="https://mail.google.com/mail/?view=cm&source=mailto&to=ChedrDen@gmail.com" >Email</a>
-				</li>
+			<ul class="list_without_sign max_gap column">
+				{% for contact in contacts %}
+					<div class="row mid_gap no_wrap">
+					<li>
+						<a target="_blank" rel="contact" rev="{{contact.description}}" href="{{contact.url}}" >
+							<img width="32" height="32" class="icon button squered_button dynamic_image" src="{% static 'placeholder.svg' %}" data-src="{% get_media_prefix %}{{contact.icon}}" alt="{{ contact.name }} {% trans 'иконка' %}">
+						</a>
+					</li>
+					<div>{{ contact.description }}</div>
+					</div>
+				{% endfor %}
 			</ul>
 		</div>
-		<div class="el-40-half">
+		<div class="el-expandable">
 			<h2 class="paragraph">{% trans "Форма для обратной связи"%}</h2>
 			<form action="" method="post">
 				{% csrf_token %}
@@ -81,7 +71,6 @@
 
 
 {% block scripts %}
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     {% csrf_token %}
     <script>
         const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;

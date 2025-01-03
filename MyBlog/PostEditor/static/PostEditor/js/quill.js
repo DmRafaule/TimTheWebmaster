@@ -1,27 +1,14 @@
 // Load custom icons for custom formaters
 var icons = Quill.import("ui/icons");
-icons["abbr"] = readFile(`${PATH}PostEditor/img/abbr.svg`)
-icons["external-link"] = readFile(`${PATH}PostEditor/img/link.svg`)
-icons["internal-link"] = readFile(`${PATH}PostEditor/img/paragraph.svg`)
-icons["downloadable-link"] = readFile(`${PATH}PostEditor/img/download.svg`)
-icons["attention"] = readFile(`${PATH}PostEditor/img/blockAttention.svg`)
-icons["quote"] = readFile(`${PATH}PostEditor/img/blockQuote.svg`)
-icons["danger"] = readFile(`${PATH}PostEditor/img/blockDangerouse.svg`)
-icons["interesting"] = readFile(`${PATH}PostEditor/img/blockInteresting.svg`)
-icons["question"] = readFile(`${PATH}PostEditor/img/blockQuestion.svg`)
-icons["termin"] = readFile(`${PATH}PostEditor/img/blockTermin.svg`)
-icons["toggle-block"] = readFile(`${PATH}PostEditor/img/hidden-block.svg`)
-icons["table"] = readFile(`${PATH}PostEditor/img/table.svg`)
-icons["tabs"] = readFile(`${PATH}PostEditor/img/tabs.svg`)
-icons["horizontal-line"] = readFile(`${PATH}PostEditor/img/hr.svg`)
-icons["my-video"] = readFile(`${PATH}PostEditor/img/video.svg`)
-icons["bold"] = readFile(`${PATH}PostEditor/img/bold.svg`)
-icons["italic"] = readFile(`${PATH}PostEditor/img/italic.svg`)
-icons["strikethrough"] = readFile(`${PATH}PostEditor/img/strikethrough.svg`)
-icons["underline"] = readFile(`${PATH}PostEditor/img/underline.svg`)
-icons["image"] = readFile(`${PATH}PostEditor/img/img.svg`)
+icons["abbr"] = null
+icons["code-block"] = null
+icons["table"] = null 
+icons["bold"] = null
+icons["italic"] = null
+icons["strike"] = null
+icons["underline"] = null
+icons["image"] = null 
 //icons["list-decimal"] = readFile(`${PATH}PostEditor/img/list-decimal.svg`)
-//icons["list-disk"] = readFile(`${PATH}PostEditor/img/list-disk.svg`)
 
 let List = Quill.import('formats/list')
 class CustomList extends List{
@@ -72,15 +59,63 @@ HorizontalLine.tagName = 'hr'
 HorizontalLine.blotName = 'horizontal-line'
 Quill.register({'formats/horizontal-line': HorizontalLine})
 
+const bindings = {
+    indent: {
+        key: 'Tab',
+        handler(range) {
+            let blot = Quill.find(this.quill.getLeaf(range.index)[0].domNode).parent
+            let domNode = blot.domNode
+            var indent_depth = 5
+            var indent_start_check_counter = 0
+            for (var i = 1; i <= indent_depth; i++){
+                if (!domNode.classList.contains(`indent-${i}`)){
+                    indent_start_check_counter++
+                }
+            }
+            if (indent_start_check_counter === indent_depth){
+                domNode.classList.add(`indent-0`)
+            }
+
+            for (var i = 0; i < 5; i++){
+                if (domNode.classList.contains(`indent-${i}`)){
+                    domNode.classList.remove(`indent-${i}`)
+                    domNode.classList.add(`indent-${i+1}`)
+                    break
+                }
+            }
+            return false;
+        },
+    },
+    outdent: {
+        key: 'Tab',
+        shiftKey: true,
+        handler(range) {
+            let blot = Quill.find(this.quill.getLeaf(range.index)[0].domNode).parent
+            let domNode = blot.domNode
+            for (var i = 1; i <= 5; i++ ){
+                if (domNode.classList.contains(`indent-${i}`)){
+                    domNode.classList.remove(`indent-${i}`)
+                    if (i != 1)
+                        domNode.classList.add(`indent-${i-1}`)
+                    break
+                }
+            }
+            return false;
+        },
+    },
+}
 
 const quill = new Quill('#editor', {
     modules: {
+        keyboard: {
+            bindings: bindings
+        },
         syntax: true,
         clipboard: true,
         table: true,
         table_of_contents: true,
         toolbar: {
-            container: '#toolbar-container',
+            container: '#editor-side-menu',
             handlers: {
                 'attention': SomeBlockHandler,
                 'danger': SomeBlockHandler,
@@ -95,6 +130,7 @@ const quill = new Quill('#editor', {
     placeholder: document.querySelector('#main_placeholder_quill').innerText,
     theme: 'snow',
 });
+
 
 quill.on('selection-change', (range, oldRange, source) => {
     let blot = Quill.find(quill.getLeaf(range.index)[0].domNode).parent
@@ -114,9 +150,16 @@ quill.on('selection-change', (range, oldRange, source) => {
                 AbbrTooltip.remove()
                 LinkTooltip.remove()
         }
+        if (blot.domNode.classList.contains('ql-code-block') || blot.domNode.classList.contains('ql-token')){
+            var cBlock = blot.domNode
+            if (cBlock.classList.contains('ql-token')){
+                cBlock = cBlock.parentElement
+            } 
+            cBlock.classList.toggle('code-block_selected')
+        }
     }
 });
 
 
 // Override behavior of hat buttons. They will not closed if clicked outside of them
-onClickOutsideHat = (button, body, callback) => {}
+//onClickOutsideHat = (button, body, callback) => {}

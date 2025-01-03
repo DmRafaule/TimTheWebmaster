@@ -77,12 +77,18 @@ class Website(models.Model):
     max_displayed_qa_on_home = models.IntegerField(verbose_name='Limit to display termins', default=2, blank=False)
     max_displayed_td_on_home = models.IntegerField(verbose_name='Limit to display questions', default=2, blank=False)
     max_displayed_notes_on_home = models.IntegerField(verbose_name='Limit to display notes', default=5, blank=False)
-    articles_post_preview = models.ImageField(upload_to='articles', blank=True)
-    tools_post_preview = models.ImageField(upload_to='tools', blank=True)
-    qas_post_preview = models.ImageField(upload_to='qa', blank=True)
-    tds_post_preview = models.ImageField(upload_to='td', blank=True)
-    notes_post_preview = models.ImageField(blank=True)
-    default_image_preview = models.ImageField(blank=True)
+    articles_post_preview = models.FileField(upload_to='articles', blank=True)
+    tools_post_preview = models.FileField(upload_to='tools', blank=True)
+    qas_post_preview = models.FileField(upload_to='qa', blank=True)
+    tds_post_preview = models.FileField(upload_to='td', blank=True)
+    notes_post_preview = models.FileField(blank=True)
+    default_image_preview = models.FileField(blank=True)
+
+class Contact(models.Model):
+    icon = models.FileField(blank=False)
+    name = models.CharField(max_length=64, blank=False)
+    description = models.TextField(blank=True)
+    url = models.URLField(max_length=512, blank=False)
 
 
 class Image(models.Model):

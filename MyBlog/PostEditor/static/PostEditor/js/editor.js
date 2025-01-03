@@ -380,19 +380,22 @@ function onReady(){
 	observer.observe(observed, config);
 
     var save_btn = document.querySelector('#save_btn_submit')
-    if (save_btn)
+    if (save_btn){
         save_btn.addEventListener('click', saveQuill)
+    }
     var load_btn = document.querySelector('#load_btn')
-    if (load_btn)
+    if (load_btn){
         load_btn.addEventListener('click', listQuill)
+    }
     var download_btn_raw = document.querySelector('#download_btn_raw')
-    if (download_btn_raw)
+    if (download_btn_raw){
         download_btn_raw.addEventListener('click', (ev) => {
             downloadQuill(ev)
         })
-    
+    }
+    // To remove default tooltip container
+    document.querySelector('.ql-tooltip').remove()
 }
-
 
 if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", onReady);

@@ -22,11 +22,18 @@ class AbbrTooltip extends Quill.import('ui/tooltip'){
         this.root.classList.add('abbr-tooltip')
         this.insertTextInput()
         this.insertAddBtn()
+        this.insertRemoveBtn()
     }
     insertTextInput(){
         this.textbox = document.createElement('input')
         this.textbox.setAttribute('type', 'text')
-        this.textbox.placeholder = "Введите аббревиатуру"
+        var value = this.boundsContainer.getAttribute('title')
+        if (value != 'unasigned'){
+            this.textbox.value = value
+        }
+        else{
+            this.textbox.placeholder = document.querySelector('#abbr_placeholder').innerText
+        }
         this.textbox.addEventListener('keydown', (event) => {
             if (event.key === 'Enter') {
               this.save(this);
@@ -46,6 +53,14 @@ class AbbrTooltip extends Quill.import('ui/tooltip'){
         add.addEventListener('click', () => {this.save(this)})
         this.root.insertAdjacentElement('beforeend', add)
     }
+    insertRemoveBtn(){
+        let add = document.createElement('div')
+        add.classList.add('remove_button')
+        add.classList.add('text_button')
+        add.innerText = document.querySelector('#remove_text').innerText
+        add.addEventListener('click', () => {this.remove(this)})
+        this.root.insertAdjacentElement('beforeend', add)
+    }
 
     cancel() {
         this.hide();
@@ -63,6 +78,12 @@ class AbbrTooltip extends Quill.import('ui/tooltip'){
     }
     setHeight(height){
         this.root.style.height = `${height}px`
+    }
+    remove(tooltip){
+        let text = tooltip.boundsContainer.innerText
+        tooltip.boundsContainer.outerHTML = text
+        tooltip.hide();
+        AbbrTooltip.remove();
     }
 
 }

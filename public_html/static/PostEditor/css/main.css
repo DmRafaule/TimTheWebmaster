@@ -178,13 +178,13 @@ footer{
 
 
 /* Font stuff */
-#toolbar-container .ql-font span[data-label="Open Sans"]::before {
+#editor-side-menu .ql-font span[data-label="Open Sans"]::before {
     font-family: var(--family-main_font);
 }
-#toolbar-container .ql-font span[data-label="Advent Pro"]::before {
+#editor-side-menu .ql-font span[data-label="Advent Pro"]::before {
     font-family: var(--family-acent_font);
 }
-#toolbar-container .ql-font span[data-label="Roboto Slab"]::before {
+#editor-side-menu .ql-font span[data-label="Roboto Slab"]::before {
     font-family: var(--family-title_font);
 }
 
@@ -199,12 +199,43 @@ footer{
 .ql-font-roboto-slab {
     font-family: var(--family-title_font);
 }
+/* Color stuff */
+#editor-side-menu .ql-color option[value="#ffffff"], #editor-side-menu .ql-background option[value="#ffffff"] {
+    background-color: #ffffff;
+}
+#editor-side-menu .ql-color option[value="#a33939"], #editor-side-menu .ql-background option[value="#a33939"] {
+    background-color: #a33939;
+}
+#editor-side-menu .ql-color option[value="#39a344"], #editor-side-menu .ql-background option[value="#39a344"] {
+    background-color: #39a344;
+}
+#editor-side-menu .ql-color option[value="#2f3091"], #editor-side-menu .ql-background option[value="#2f3091"] {
+    background-color: #2f3091;
+}
+#editor-side-menu .ql-color option[value="#39dbc3"], #editor-side-menu .ql-background option[value="#39dbc3"] {
+    background-color: #39dbc3;
+}
+#editor-side-menu .ql-color option[value="#000000"], #editor-side-menu .ql-background option[value="#000000"] {
+    background-color: #000000;
+}
+#editor-side-menu .ql-color option[value="#8739db"], #editor-side-menu .ql-background option[value="#8739db"] {
+    background-color: #8739db;
+}
+#editor-side-menu .ql-color option[value="#c98036"], #editor-side-menu .ql-background option[value="#c98036"] {
+    background-color: #c98036;
+}
+#editor-side-menu .ql-color option[value="#bdbf34"], #editor-side-menu .ql-background option[value="#bdbf34"] {
+    background-color: #bdbf34;
+}
+
+
+
 
 /*Size stuff */
-#toolbar-container .ql-size span[data-value="16px"]::before {
+#editor-side-menu .ql-size span[data-value="16px"]::before {
     font-size: var(--size-main_font);
 }
-#toolbar-container .ql-size span[data-value="14px"]::before {
+#editor-side-menu .ql-size span[data-value="14px"]::before {
     font-size: var(--size-mini_font);
 }
 
@@ -216,20 +247,24 @@ footer{
     font-size: var(--size-mini_font) !important;
 }
 /* Font and size common */
-.ql-font, .ql-size, .ql-list{
+.ql-font , .ql-size, .ql-color, .ql-background, .ql-list, .ql-header{
     display: block !important;
     max-width: 150px;
     
 }
-select.ql-font, select.ql-size, select.ql-list{
+.ql-font.ql-picker, .ql-size.ql-picker, .ql-color.ql-picker, .ql-background.ql-picker, .ql-header.ql-picker{
+    display: none !important;
+}
+select.ql-font, select.ql-size, select.ql-color, select.ql-background, select.ql-list, select.ql-header{
     background-color: var(--big_space);
-    border: 2px solid white;
+    border: 2px solid var(--main_color);
     padding: 5px;
-    color: var(--ui_text_color);
+    color: var(--main_text_color);
 }
-select.ql-font>option, select.ql-size>option, select.ql-list>option{
-    background-color: var(--secondary_color);
+select.ql-font>option, select.ql-size>option, select.ql-list>option, select.ql-header>option{
+    background-color: var(--bg_color);
 }
+
 
 
 /* Templates */
@@ -246,4 +281,55 @@ select.ql-font>option, select.ql-size>option, select.ql-list>option{
 
 input.ql-image{
     display: none;
+}
+
+/* Flex containers */
+.flex-selected{
+    border: 2px solid var(--acent_color);
+    border-radius: 10px;
+}
+
+.flex-tooltip{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--min_pm);
+    position: fixed  !important;
+    bottom: 0;
+    left: 0;
+    background-color: var(--main_color) !important;
+    width: 100%;
+    color: white !important;
+    transform: translateY(0px) !important;
+    z-index: 3;
+    padding: 8px;
+}
+.ql-snow .table-tooltip::before {
+    content: "" !important;
+}
+
+#editor-side-menu{
+    background-color: #ffffffe8;
+    padding-bottom: 0;
+}
+#editor-side-menu>hr{
+    margin-bottom: 0
+}
+
+.quill-drop-down-list{
+    position: relative;
+}
+.quill-drop-down-container_active{
+    display: flex;
+    flex-direction: column;
+    gap: var(--min_pm);
+    position: absolute;
+    padding: var(--min_pm);
+    background-color: var(--bg_color);
+    border: 1px solid gray;
+    border-radius: 5px;
+}
+.quill-drop-down-container_notactive{
+    display: none;
+
 }

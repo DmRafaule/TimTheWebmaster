@@ -1,5 +1,22 @@
 from django.contrib import admin
-from .models import Website, Image, Downloadable
+from .models import Website, Contact, Image, Downloadable
+
+
+class ContactAdmin(admin.ModelAdmin):
+    exclude = ('name', 'description')
+    list_display = ('name_en', 'url')
+    list_display_links = ('name_en',)
+    search_fields = (
+        'name_en',
+    )
+    fieldsets = [
+        (
+            None,
+            {
+                'fields': [('name_ru', 'name_en', 'url', 'icon'), ('description_ru', 'description_en')]
+            }
+        )
+    ]
 
 
 class WebsiteAdmin(admin.ModelAdmin):
@@ -110,5 +127,6 @@ class DownloadableAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Website, WebsiteAdmin)
+admin.site.register(Contact, ContactAdmin)
 admin.site.register(Downloadable, DownloadableAdmin)
 admin.site.register(Image, ImageAdmin)

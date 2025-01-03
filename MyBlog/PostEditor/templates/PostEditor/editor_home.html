@@ -3,118 +3,25 @@
 {% load i18n %}
 
 {% block head_tool %}
-    <title>{% trans 'Редактор постов'%}</title>
-    <meta name="description" content="">
+    {% if request.user.is_authenticated %}
+      <title>{% trans 'Редактор постов'%}</title>
+      <meta name="description" content="">
+      <meta name="keywords" content="">
+    {% else %}
+      <title>{% trans 'Онлайн, WYSIWYG редактор '%}</title>
+      <meta name="description" content=" Это онлайн, WYSIWYG редактор созданный в качестве примера того, как можно использовать quilljs библиотеку. Содержит несколько модулей имеет простое разделение кода.">
+      <meta name="keywords" content="WYSIWYG, quilljs, редактор">
+    {% endif %}
     <link rel="canonical" href="https://{{domain_name}}{%url 'editor_home'%}" />
-    <meta name="keywords" content="">
 {% endblock %}
 
 {% block hat_tool %}
-  <div class="header_button  button squered_button"  data-body="toolbar_body">
-    <img id="filters_hat_button" data-sort="true" width="32" height="32" class="icon dynamic_image " src="{% static 'placeholder.svg' %}" data-src="{% static 'PostEditor/img/construction.png' %}" alt="{% trans 'one layer on top of anothe' %}">
-  </div>
   <div class="header_button  button squered_button"  data-body="toolbar_settings_body">
     <img id="filters_hat_button" data-sort="true" width="32" height="32" class="icon dynamic_image svg_icon_inverted " src="{% static 'placeholder.svg' %}" data-src="{% static 'PostEditor/img/settings.svg' %}" alt="{% trans 'one layer on top of anothe' %}">
   </div>
 {% endblock %}
 
 {% block content_tool %}
-  <div id="toolbar_body" class="hat_body">
-    <div id="toolbar-container" class="no_wrap" style="display: flex; flex-direction: column">
-      <fieldset class="fieldset_in_slider">
-        <legend>
-          <div>
-            {% trans "Фонт и размер" %}
-          </div>
-        </legend>
-        <span class="ql-formats">
-          <select class="ql-font">
-            <option value="open-sans" selected>Open Sans</option>
-            <option value="advent-pro">Advent Pro</option>
-            <option value="roboto-slab">Roboto Slab</option>
-          </select>
-          <select class="ql-size">
-            <option value="16px" selected>16px</option>
-            <option value="14px">14px</option>
-          </select>
-        </span>
-      </fieldset>
-      <fieldset class="fieldset_in_slider">
-        <legend>
-          <div>
-            {% trans "Текст" %}
-          </div>
-        </legend>
-        <span class="ql-formats">
-          <abbr title="{% trans 'Жирный' %}"><button class="ql-bold"></button></abbr>
-          <abbr title="{% trans 'Скошеный' %}"><button class="ql-italic"></button></abbr>
-          <abbr title="{% trans 'Подчёркнутый' %}"><button class="ql-underline"></button></abbr>
-          <abbr title="{% trans 'Перечёркнутый' %}"><button class="ql-strike"></button></abbr>
-          <abbr title="{% trans 'Аббревиатура' %}"><button class="ql-abbr icon"></button></abbr>
-        </span>
-      </fieldset>
-      <fieldset class="fieldset_in_slider">
-        <legend>
-          <div>
-            {% trans "Заголовки" %}
-          </div>
-        </legend>
-        <span class="ql-formats">
-          <button class="ql-header" value="1"></button>
-          <button class="ql-header" value="2"></button>
-          <button class="ql-header" value="3"></button>
-          <button class="ql-header" value="4"></button>
-          <button class="ql-header" value="5"></button>
-          <button class="ql-header" value="6"></button>
-        </span>
-      </fieldset>
-      <fieldset class="fieldset_in_slider">
-        <legend>
-          <div>
-            {% trans "Другие блоки" %}
-          </div>
-        </legend>
-        <span class="ql-formats">
-          <abbr title="{% trans 'Цитата' %}"><button class="ql-quote svg_color_white" value="{% static "PostEditor/img/blockQuote.svg" %},quote"></button></abbr>
-          <abbr title="{% trans 'Внимание' %}"><button class="ql-attention svg_color_white" value="{% static "PostEditor/img/blockAttention.svg" %},attention"></button></abbr>
-          <abbr title="{% trans 'Опасно' %}"><button class="ql-danger svg_color_white" value="{% static "PostEditor/img/blockDangerouse.svg" %},danger"></button></abbr>
-          <abbr title="{% trans 'Это интересно' %}"><button class="ql-interesting svg_color_white" value="{% static "PostEditor/img/blockInteresting.svg" %},interesting"></button></abbr>
-          <abbr title="{% trans 'Вопрос' %}"><button class="ql-question svg_color_white" value="{% static "PostEditor/img/blockQuestion.svg" %},question"></button></abbr>
-          <abbr title="{% trans 'Определение' %}"><button class="ql-termin svg_color_white" value="{% static "PostEditor/img/blockTermin.svg" %},termin"></button></abbr>
-          <abbr title="{% trans 'Блок кода' %}"><button class="ql-code-block"></button></abbr>
-        </span>
-      </fieldset>
-      <fieldset class="fieldset_in_slider">
-        <legend>
-          <div>
-            {% trans "Структуризаторы" %}
-          </div>
-        </legend>
-        <span class="ql-formats">
-          <abbr title="{% trans 'Список нумерованный' %}"><button class="ql-list" value="decimal"><img class="icon button squered_button dynamic_image loader" src='{% static "placeholder.svg" %}' data-src="{% static "PostEditor/img/list-decimal.svg" %}"></button></abbr>
-          <abbr title="{% trans 'Список ненумерованный' %}"><button class="ql-list" value="disc"><img class="icon button squered_button dynamic_image loader" src='{% static "placeholder.svg" %}' data-src="{% static "PostEditor/img/list-disc.svg" %}"></button></abbr>
-          <abbr title="{% trans 'Список ненумерованный' %}"><button class="ql-list" value="lower-alpha"><img class="icon button squered_button dynamic_image loader" src='{% static "placeholder.svg" %}' data-src="{% static "PostEditor/img/list-alpha.svg" %}"></button></abbr>
-          <abbr title="{% trans 'Таблица' %}"><button class="ql-table"></button></abbr>
-          <abbr title="{% trans 'Табы(в разработке)' %}"><button class="ql-tabs"></button></abbr>
-          <abbr title="{% trans 'Горизонтальная линия' %}"><button class="ql-horizontal-line"></button></abbr>
-        </span>
-      </fieldset>
-      <fieldset class="fieldset_in_slider">
-        <legend>
-          <div>
-            {% trans "Медиа" %}
-          </div>
-        </legend>
-        <span class="ql-formats">
-          <abbr title="{% trans 'Ссылка на внешний рессурс'%}"><button class="ql-external-link"></button></abbr>
-          <abbr title="{% trans 'Ссылка на часть статьи'%}"><button class="ql-internal-link"></button></abbr>
-          <abbr title="{% trans 'Ссылка на скачиваеммый контент'%}"><button class="ql-downloadable-link"></button></abbr>
-          <abbr title="{% trans 'Изображение'%}"><button class="ql-image"></button></abbr>
-        </span>
-      </fieldset>
-      <div class="el-expandable el-no_shrinkable row"></div>
-    </div>
-  </div>
   <div id="toolbar_settings_body" class="hat_body">
     <div class='full_width full_height padder'>
       <div>
@@ -156,6 +63,7 @@
     <div id='removeCol_text'>{% trans 'Удалить колонку' %}</div>
     <div id='removeTable_text'>{% trans 'Удалить таблицу' %}</div>
     <div id='main_placeholder_quill'>{% trans 'Да начни творить' %}</div>
+    <div id='abbr_placeholder'>{% trans 'Введи аббревиатуру' %}</div>
   </div>
   <div id='toSaveModal' class="modal modal-window" data-btn-id="save_btn" data-btn-close-id='close_btn'>
     <div class="modal-content">
@@ -217,8 +125,189 @@
       </div>
     </div>
   </div>
+  <div id="editor-side-menu" class="limiter padder is_sticky in_middle-self column zIndPl0">
+    <div class="row min_gap">
+      <select class="ql-font">
+        <option value="open-sans" selected>Open Sans</option>
+        <option value="advent-pro">Advent Pro</option>
+        <option value="roboto-slab">Roboto Slab</option>
+      </select>
+      <select class="ql-size">
+        <option value="16px" selected>16px</option>
+        <option value="14px">14px</option>
+      </select>
+      <select class="ql-color">
+        <option value="#000000" selected>T #000000</option>
+        <option value="#ffffff">T #ffffff</option>
+        <option value="#a33939">T #a33939</option>
+        <option value="#39a344">T #39a344</option>
+        <option value="#2f3091">T #2f3091</option>
+        <option value="#39dbc3">T #39dbc3</option>
+        <option value="#8739db">T #8739db</option>
+        <option value="#c98036">T #c98036</option>
+        <option value="#bdbf34">T #bdbf34</option>
+      </select>
+      <select class="ql-background">
+        <option value="#000000" selected>B #000000</option>
+        <option value="#ffffff">B #ffffff</option>
+        <option value="#a33939">B #a33939</option>
+        <option value="#39a344">B #39a344</option>
+        <option value="#2f3091">B #2f3091</option>
+        <option value="#39dbc3">B #39dbc3</option>
+        <option value="#8739db">B #8739db</option>
+        <option value="#c98036">B #c98036</option>
+        <option value="#bdbf34">B #bdbf34</option>
+      </select>
+      <div class="quill-drop-down-list">
+        <img class="quill-drop-down-button icon button squered_button action_button_black" src="{% static "PostEditor/img/common/text_options.svg" %}"  data-src="{% static "PostEditor/img/common/text_options.svg" %}"  data-close-btn="{% static 'close_white.svg' %}">
+        <div class="quill-drop-down-container quill-drop-down-container_notactive">
+          <div class="row min_gap no_wrap on_middle_other">
+            <button class="ql-bold"><img class="icon button squered_button dynamic_image loader action_button_black " src='{% static "placeholder.svg" %}' data-src="{% static "PostEditor/img/bold.svg" %}"></button>
+            <div>{% trans 'Жирный' %}</div>
+          </div>
+          <div class="row min_gap no_wrap on_middle_other">
+            <button class="ql-italic"><img class="icon button squered_button dynamic_image loader action_button_black " src='{% static "placeholder.svg" %}' data-src="{% static "PostEditor/img/italic.svg" %}"></button>
+            <div>{% trans 'Скошеный' %}</div>
+          </div>
+          <div class="row min_gap no_wrap on_middle_other">
+            <button class="ql-underline"><img class="icon button squered_button dynamic_image loader action_button_black " src='{% static "placeholder.svg" %}' data-src="{% static "PostEditor/img/underline.svg" %}"></button>
+            <div>{% trans 'Подчёркнутый' %}</div>
+          </div>
+          <div class="row min_gap no_wrap on_middle_other">
+            <button class="ql-strike"><img class="icon button squered_button dynamic_image loader action_button_black " src='{% static "placeholder.svg" %}' data-src="{% static "PostEditor/img/strikethrough.svg" %}"></button>
+            <div>{% trans 'Перечёркнутый' %}</div>
+          </div>
+          <div class="row min_gap no_wrap on_middle_other">
+            <button class="ql-abbr"><img class="icon button squered_button dynamic_image loader action_button_black " src='{% static "placeholder.svg" %}' data-src="{% static "PostEditor/img/abbr.svg" %}"></button>
+            <div>{% trans 'Аббревиатура' %}</div>
+          </div>
+        </div>
+      </div>
+      <select class="ql-header">
+        <option selected value="1">H1</option>
+        <option value="2">H2</option>
+        <option value="3">H3</option>
+        <option value="4">H4</option>
+        <option value="5">H5</option>
+        <option value="6">H6</option>
+      </select>
+      <div class="quill-drop-down-list">
+        <img class="quill-drop-down-button icon button squered_button action_button_black" src="{% static "PostEditor/img/common/blocks.svg" %}" data-src="{% static "PostEditor/img/common/blocks.svg" %}" data-close-btn="{% static 'close_white.svg' %}">
+        <div class="quill-drop-down-container quill-drop-down-container_notactive">
+          <div class="row min_gap no_wrap on_middle_other">
+            <button class="ql-quote" value="{% static "Post/img/blockQuote.svg" %},quote"><img class="icon button squered_button dynamic_image loader action_button_black " src='{% static "placeholder.svg" %}' data-src="{% static "PostEditor/img/blockQuote.svg" %}"></button>
+            <div>{% trans 'Цитата' %}</div>
+          </div>
+          <div class="row min_gap no_wrap on_middle_other">
+            <button class="ql-attention" value="{% static "Post/img/blockAttention.svg" %},attention"><img class="icon button squered_button dynamic_image loader action_button_black" src='{% static "placeholder.svg" %}' data-src="{% static "PostEditor/img/blockAttention.svg" %}"></button>
+            <div>{% trans 'Внимание' %}</div>
+          </div>
+          <div class="row min_gap no_wrap on_middle_other">
+            <button class="ql-danger" value="{% static "Post/img/blockDangerouse.svg" %},danger"><img class="icon button squered_button dynamic_image loader action_button_black" src='{% static "placeholder.svg" %}' data-src="{% static "PostEditor/img/blockDangerouse.svg" %}"></button>
+            <div>{% trans 'Опасно' %}</div>
+          </div>
+          <div class="row min_gap no_wrap on_middle_other">
+            <button class="ql-interesting" value="{% static "Post/img/blockInteresting.svg" %},interesting"><img class="icon button squered_button dynamic_image loader action_button_black" src='{% static "placeholder.svg" %}' data-src="{% static "PostEditor/img/blockInteresting.svg" %}"></button>
+            <div>{% trans 'Это интересно' %}</div>
+          </div>
+          <div class="row min_gap no_wrap on_middle_other">
+            <button class="ql-question" value="{% static "Post/img/blockQuestion.svg" %},question"><img class="icon button squered_button dynamic_image loader action_button_black" src='{% static "placeholder.svg" %}' data-src="{% static "PostEditor/img/blockQuestion.svg" %}"></button>
+            <div>{% trans 'Вопрос' %}</div>
+          </div>
+          <div class="row min_gap no_wrap on_middle_other">
+            <button class="ql-termin" value="{% static "Post/img/blockTermin.svg" %},termin"><img class="icon button squered_button dynamic_image loader action_button_black" src='{% static "placeholder.svg" %}' data-src="{% static "PostEditor/img/blockTermin.svg" %}"></button>
+            <div>{% trans 'Определение' %}</div>
+          </div>
+          <div class="row min_gap no_wrap on_middle_other">
+            <button class="ql-code-block"><img class="icon button squered_button dynamic_image loader action_button_black" src='{% static "placeholder.svg" %}' data-src="{% static "PostEditor/img/blockCode.svg" %}"></button>
+            <div>{% trans 'Блок кода' %}</div>
+          </div>
+        </div>
+      </div>
+      <div class="quill-drop-down-list">
+        <img class="quill-drop-down-button icon button squered_button action_button_black" src="{% static "PostEditor/img/common/structurizers.svg" %}" data-src="{% static "PostEditor/img/common/structurizers.svg" %}" data-close-btn="{% static 'close_white.svg' %}">
+        <div class="quill-drop-down-container quill-drop-down-container_notactive">
+          <div class="row min_gap no_wrap on_middle_other">
+            <button class="ql-list" value="decimal"><img class="icon button squered_button dynamic_image action_button_black loader" src='{% static "placeholder.svg" %}' data-src="{% static "PostEditor/img/list-decimal.svg" %}"></button>
+            <div>{% trans 'Список нумерованный' %}</div>
+          </div>
+          <div class="row min_gap no_wrap on_middle_other">
+            <button class="ql-list" value="disc"><img class="icon button squered_button dynamic_image action_button_black loader" src='{% static "placeholder.svg" %}' data-src="{% static "PostEditor/img/list-disc.svg" %}"></button>
+            <div>{% trans 'Список ненумерованный' %}</div>
+          </div>
+          <div class="row min_gap no_wrap on_middle_other">
+            <button class="ql-list" value="lower-alpha"><img class="icon button squered_button dynamic_image loader action_button_black" src='{% static "placeholder.svg" %}' data-src="{% static "PostEditor/img/list-alpha.svg" %}"></button>
+            <div>{% trans 'Список латиницей' %}</div>
+          </div>
+          <div class="row min_gap no_wrap on_middle_other">
+            <button class="ql-table"><img class="icon button squered_button dynamic_image loader action_button_black" src='{% static "placeholder.svg" %}' data-src="{% static "PostEditor/img/table.svg" %}"></button>
+            <div>{% trans 'Таблица' %}</div>
+          </div>
+          <div class="row min_gap no_wrap on_middle_other">
+            <button class="ql-horizontal-line"><img class="icon button squered_button dynamic_image loader action_button_black" src='{% static "placeholder.svg" %}' data-src="{% static "PostEditor/img/hr.svg" %}"></button>
+            <div>{% trans 'Горизонтальная линия' %}</div>
+          </div>
+        </div>
+      </div>
+      <div class="quill-drop-down-list">
+        <img class="quill-drop-down-button icon button squered_button action_button_black" src="{% static "PostEditor/img/common/links.svg" %}" data-src="{% static "PostEditor/img/common/links.svg" %}" data-close-btn="{% static 'close_white.svg' %}">
+        <div class="quill-drop-down-container quill-drop-down-container_notactive">
+          <div class="row min_gap no_wrap on_middle_other">
+            <button class="ql-external-link"><img class="icon button squered_button dynamic_image loader action_button_black" src='{% static "placeholder.svg" %}' data-src="{% static "PostEditor/img/link.svg" %}"></button>
+            <div>{% trans 'Ссылка на внешний рессурс'%}</div>
+          </div>
+          <div class="row min_gap no_wrap on_middle_other">
+            <button class="ql-internal-link"><img class="icon button squered_button dynamic_image loader action_button_black" src='{% static "placeholder.svg" %}' data-src="{% static "PostEditor/img/paragraph.svg" %}"></button>
+            <div>{% trans 'Ссылка на часть статьи'%}</div>
+          </div>
+          <div class="row min_gap no_wrap on_middle_other">
+            <button class="ql-downloadable-link"><img class="icon button squered_button dynamic_image loader action_button_black" src='{% static "placeholder.svg" %}' data-src="{% static "PostEditor/img/download.svg" %}"></button>
+            <div>{% trans 'Ссылка на скачиваеммый контент'%}</div>
+          </div>
+        </div>
+      </div>
+      <div class="quill-drop-down-list">
+        <img class="quill-drop-down-button icon button squered_button action_button_black" src="{% static "PostEditor/img/common/media.svg" %}" data-src="{% static "PostEditor/img/common/media.svg" %}" data-close-btn="{% static 'close_white.svg' %}">
+        <div class="quill-drop-down-container quill-drop-down-container_notactive">
+          <div class="row min_gap no_wrap on_middle_other">
+            <button class="ql-image" type="button">
+              <img class="icon button squered_button action_button_black" src="{% static "PostEditor/img/common/img.svg" %}">
+            </button>
+            <div>{% trans 'Изображение'%}</div>
+          </div>
+          <div class="row min_gap no_wrap on_middle_other">
+            <button class="ql-text-under-image" type="button">
+              <img class="icon button squered_button action_button_black" src="{% static "PostEditor/img/text_under_img.svg" %}">
+            </button>
+            <div>{% trans 'Текст под изображением'%}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <hr>
+  </div>
+  <div class="column limiter in_middle-self " style="white-space: pre-wrap;">
+    <div id="editor" class="full_width full_height"></div>
+  </div>
+  {% if not request.user.is_authenticated %}
+  <div class="column limiter in_middle-self ">
+    <h1 class="title"> {% trans 'WYSIWYG онлайн редактор на quilljs' %} </h1>
+      <div class="text">
+      {% blocktrans %}
+        Данный редактор был разработан только в развлекательных и общеобразовательных целях. Он может и должен использоваться только как пример реализации редактора с использованием <b>quilljs</b>. С его помощью вы сможете подготовить и создать <i>html страничку</i>, которую после сможете вставить туда, куда вам нужно.
+      {% endblocktrans %}
+      </div>
+      <div class="text">
+        {% trans 'Все обучающиеся материалы:' %}
+      </div>
+      <ol class="numeric_list">
+        <li class="ref" ><a href="{% url 'articles-list' %}?page=1&type=full&is_recent=true&mode=basic&tag={{quilljs_module_tag}}&tag={{quilljs_tag}}">{% trans 'По разработке модулей для редактора на quilljs' %}</a></li>
+        <li class="ref"><a href="{% url 'articles-list' %}?page=1&type=full&is_recent=true&mode=basic&tag={{quilljs_tag}}">{% trans 'По редактированию и кастомизации редактора на quilljs' %}</a></li>
+      </ol>
+  </div>
+  {% endif %}
+  <div id="editor-side-menu-vertical-limiter" class="full_width"></div>
 
-  <div class="limiter in_middle-self " style="white-space: pre-wrap;"><div id="editor" class="full_width full_height"></div></div>
 {% endblock %}
 
 {% block footer_tool %}
@@ -260,9 +349,7 @@
 {% endblock %}
 
 {% block scripts_tool %}
-    {% if request.user.is_authenticated %}
     <script src="{% static 'PostEditor/js/editor.js' %}"></script>
-    {% endif %}
     {# Need for html_media_checker, which script to check, start point #}
     <script id='post_script_exporter_top_line' src="{% static 'PostEditor/js/utils.js' %}"></script>
       <script data-special='video' src="{% static 'video.js' %}"></script>
@@ -272,6 +359,7 @@
       <script data-special='code' src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
     {# Need for html_media_checker, which script to check, end point #}
     <script id='post_script_exporter_bottom_line' src="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.js"></script>
+    <script src="{% static 'PostEditor/js/side_menu.js' %}"></script>
     <script src="{% static 'PostEditor/js/quill_images.js' %}"></script>
     <script src="{% static 'PostEditor/js/quill_videos.js' %}"></script>
     <script src="{% static 'PostEditor/js/quill_blocks.js' %}"></script>

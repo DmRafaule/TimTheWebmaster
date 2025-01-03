@@ -25,7 +25,13 @@ class LinkTooltip extends Quill.import('ui/tooltip'){
     insertTextInput(placeholder){
         this.textbox = document.createElement('input')
         this.textbox.setAttribute('type', 'text')
-        this.textbox.placeholder = placeholder
+        var value = this.boundsContainer.getAttribute('href')
+        if (value != null){
+            this.textbox.value = value
+        }
+        else{
+            this.textbox.placeholder = placeholder 
+        }
         this.textbox.addEventListener('keydown', (event) => {
             if (event.key === 'Enter') {
               this.save(this);
