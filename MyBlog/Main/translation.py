@@ -7,6 +7,9 @@ from  PostEditor.models import PostTemplate
 class CategoryTranslationOptions(TranslationOptions):
     fields = ('name', 'description')
 
+class ContactTranslationOptions(TranslationOptions):
+    fields = ('name', 'description')
+
 
 class ArticleTranslationOptions(TranslationOptions):
     fields = ('title', 'h1', 'description', 'meta_keywords', 'template')
@@ -54,3 +57,4 @@ translator.register(Post_M.Tag, TagTranslationOptions)
 translator.register(Post_M.Tool, ToolTranslationOptions)
 translator.register(Main_M.Image, ImageTranslationOptions)
 translator.register(Main_M.Downloadable, DownloadableTranslationOptions)
+translator.register(Main_M.Contact, ContactTranslationOptions)

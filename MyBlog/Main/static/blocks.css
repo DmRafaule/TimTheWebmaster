@@ -310,3 +310,15 @@
   	padding: 10px;
   	border-radius: 0px;
 }
+
+.code-block_selected {
+    background-color: #f3f358;
+}
+.code-block_copy{
+}
+
+.code-block-legend_separator{
+	width: 2px;
+	min-height: 100%;
+	background-color: black;
+}

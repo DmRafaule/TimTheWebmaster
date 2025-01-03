@@ -3,7 +3,7 @@ import Post.models as Post_M
 from Engagement.models import Interaction
 from Engagement.utils import getSlugFromURL 
 from datetime import datetime
-from .models import Website
+from .models import Website, Contact
 from django.db.models import Q
 import math
 from itertools import chain
@@ -138,9 +138,11 @@ def initDefaults(request):
     domain_name = ALLOWED_HOSTS[0]
     popular_posts = list(chain(website_conf.popular_articles_on_footer.all(), website_conf.popular_tools_on_footer.all()))
     default_post_preview = website_conf.default_image_preview
+    contacts = Contact.objects.all()
     context = {
         'categories_special': categories_special,
         'domain_name': domain_name,
+        'contacts': contacts,
         'popular_posts': popular_posts,
         'default_post_preview': default_post_preview,
     }

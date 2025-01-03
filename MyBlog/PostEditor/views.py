@@ -8,6 +8,7 @@ from django.template import loader
 from MyBlog.settings import MEDIA_ROOT, MEDIA_URL
 from django.utils.translation import gettext as _
 from django.template.response import TemplateResponse
+from Post.models import Tag
 import os
 from django.contrib.auth.decorators import login_required
 
@@ -66,6 +67,10 @@ def _get_option_name(option):
 
 def tool_main(request):
     context = _initPostEditorContext(request)
+    quilljs_tag = Tag.objects.get(slug_en='quilljs')
+    quilljs_module_tag = Tag.objects.get(slug_en='quill-module')
+    context.update({'quilljs_tag': quilljs_tag.slug})
+    context.update({'quilljs_module_tag': quilljs_module_tag.slug})
     return TemplateResponse(request, 'PostEditor/editor_home.html', context)
     
 @login_required

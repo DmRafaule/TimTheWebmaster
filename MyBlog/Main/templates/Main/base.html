@@ -157,14 +157,16 @@
 			</div>
 			<div class="social_links">
 				<div class="footer_links_title">
-					<b>{% trans "Социальные сети" %}</b>
+					<b>{% trans "Контакты" %}</b>
 				</div>
 				<ul class="blank_list">
-					<li><a target="_blank" rel="contact" rev="{% trans "Контактная страница Тимы"%}" href="https://t.me/DmitryChedr" ><img width="32" height="32" class="icon button squered_button dynamic_image" src="{% static 'placeholder.svg' %}" data-src="{% static 'telegram.svg' %}" alt="{% trans "telegram иконка" %}"></a></li>
-					<li><a target="_blank" rel="contact" rev="{% trans "Контактная страница Тимы"%}" href="https://mail.google.com/mail/?view=cm&source=mailto&to=ChedrDen@gmail.com" ><img width="32" height="32" class="icon button squered_button dynamic_image" src="{% static 'placeholder.svg' %}" data-src="{% static 'gmail.svg' %}" alt="{% trans "email иконка"%}"></a></li>
-				<li><a target="_blank" rel="contact" rev="{% trans "Контактная страница Тимы"%}" href="https://vk.com/timachuduk" ><img width="32" height="32" class="icon button squered_button dynamic_image" src="{% static 'placeholder.svg' %}" data-src="{% static 'vk.svg' %}" alt="{% trans "vk иконка"%}"></a></li>
-				<li><a target="_blank" rel="contact" rev="{% trans "Контактная страница Тимы"%}" href="https://www.instagram.com/timachedr/" ><img width="32" height="32" class="icon button squered_button dynamic_image" src="{% static 'placeholder.svg' %}" data-src="{% static 'instagram.svg' %}" alt="{% trans "instagram иконка"%}"></a></li>
-					<li><a target="_blank" rel="contact" rev="{% trans "Контактная страница Тимы"%}" href="https://twitter.com/TimaChedr" ><img width="32" height="32" class="icon button squered_button dynamic_image" src="{% static 'placeholder.svg' %}" data-src="{% static 'twitter.svg' %}" alt="{% trans "twitter иконка"%}"></a></li>
+					{% for contact in contacts %}
+					<li>
+						<a target="_blank" rel="contact" rev="{{contact.description}}" href="{{contact.url}}" >
+							<img width="32" height="32" class="icon button squered_button dynamic_image" src="{% static 'placeholder.svg' %}" data-src="{% get_media_prefix %}{{contact.icon}}" alt="{{ contact.name }} {% trans 'иконка' %}">
+						</a>
+					</li>
+					{% endfor %}
 				</ul>
 			</div>
 		</div>
