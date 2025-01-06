@@ -34,3 +34,34 @@
     z-index: 0;
     position: relative;
 }
+/* Rating stuff */
+.comment_rating{
+    display: flex;
+    gap: var(--min_gap);
+}
+
+#id_rating > div:nth-child(7) > label:nth-child(1), #id_rating > div:nth-child(1) > label:nth-child(1), #id_rating > * > label > input  {
+    display: none;
+}
+
+#id_rating{
+    display: flex;
+    flex-direction: row;
+}
+
+#id_rating > * > label {
+    font-size: 30px;
+}
+
+.selected_star{
+    color: rgb(255, 255, 86);
+}
+.selected_star::after{
+    content: '★';
+}
+.not_selected_star{
+    color: rgb(0, 0, 0);
+}
+.not_selected_star::after{
+    content: '✰';
+}

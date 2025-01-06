@@ -12,7 +12,7 @@ class CommentAdmin(admin.ModelAdmin):
         (
             None,
             {
-                'fields': ['url', 'name', 'message', 'interaction']
+                'fields': ['url', 'rating', 'name', 'message', 'interaction']
             }
         ),
     ]

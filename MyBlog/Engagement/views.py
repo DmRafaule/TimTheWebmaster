@@ -4,7 +4,7 @@ from django.utils.translation import gettext as _
 from Main.forms import FeedbackForm
 from django.core.mail import send_mail
 from .models import Comment, Interaction
-from .forms import CommentForm
+from .forms import CommentForm, ReviewForm
 from .utils import getSlugFromURL
 from MyBlog.settings import DEFAULT_FROM_EMAIL, DEFAULT_TO_EMAIL
 from django.core.paginator import Paginator
@@ -138,7 +138,13 @@ def load_comments(request):
 
 def send_comment(request):
     if request.method == 'POST':
-        form = CommentForm(request.POST)
+        # Check which type of form to use
+        if request.POST['is_rating'] == 'false':
+            Form = CommentForm
+        else: 
+            Form = ReviewForm
+
+        form = Form(request.POST)
         if form.is_valid():
             # Update comment counter
             url = request.POST['url']
@@ -149,7 +155,7 @@ def send_comment(request):
             comment.interaction = interaction
             comment.save()
             # Render empty form
-            context = {'comment_form': CommentForm()}
+            context = {'comment_form': Form()}
             loaded_template = loader.get_template(f'Engagement/comment_form.html')
             comment_form = loaded_template.render(context, request)
             # Render a comment

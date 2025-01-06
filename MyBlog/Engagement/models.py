@@ -3,6 +3,7 @@ from django.db.models.signals import post_delete, post_save
 from django.dispatch import receiver
 from MyBlog.settings import LANGUAGES
 from Post.models import Post
+from django.utils.translation import gettext as _
 
 
 class Interaction(models.Model):
@@ -15,11 +16,19 @@ class Interaction(models.Model):
     time_updated = models.DateTimeField(auto_now=True, auto_created=True)
 
 class Comment(models.Model):
+    class Rating(models.IntegerChoices):
+        ONE = 1
+        TWO = 2
+        THREE = 3
+        FOUR = 4
+        FIVE = 5
+        ZERO = 0
     COMMENTS_PER_PAGE = 5
     url = models.CharField(max_length=512, blank=False)
     name = models.CharField(max_length=20, blank=False)
     time_published = models.DateTimeField(auto_now=True, auto_created=True)
     message = models.TextField(max_length=1024,blank=False)
+    rating = models.IntegerField(choices=Rating, blank=True, default=Rating.ZERO)
     interaction = models.ForeignKey(Interaction, on_delete=models.CASCADE, default=None)
 
 

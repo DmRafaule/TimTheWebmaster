@@ -2,7 +2,7 @@ from django.template.response import TemplateResponse
 from Main.forms import FeedbackForm
 from django.template import loader
 from .models import Comment, Interaction
-from .forms import CommentForm
+from .forms import CommentForm, ReviewForm
 from .utils import getSlugFromURL
 
 class EngagementMiddleware:
@@ -65,9 +65,9 @@ class EngagementMiddleware:
             interaction.views += 1
             interaction.save()
     
-    def _set_comments(self, request, response, isComments, template=None):
+    def _set_comments(self, request, response, isComments, template=None, form=CommentForm()):
         if isComments:
-            comment_form = CommentForm()
+            comment_form = form
             comments = Comment.objects.filter(url=request.path).order_by('-time_published')
             loaded_template = loader.get_template(template)
             comments_doc = loaded_template.render({
@@ -79,6 +79,7 @@ class EngagementMiddleware:
             response.context_data.update({'comments_doc': comments_doc})
         
         return isComments
+    
 
     # Updates articles + adding comments 
     def no_engagement_handler(self, request, response):
@@ -117,7 +118,7 @@ class EngagementMiddleware:
         url = f'{request.get_host()}{request.path}'
         response.context_data.update({'url_to_share': url})
         response.context_data.update({'is_likes': True})
-        response.context_data.update({'is_comments': self._set_comments(request, response, True, 'Engagement/engagement_tool_comments.html')})
+        response.context_data.update({'is_comments': self._set_comments(request, response, True, 'Engagement/engagement_tool_comments.html', ReviewForm())})
         response.context_data.update({'is_shares': True})
         response.context_data.update({'is_bookmarks': True})
         response.context_data.update({'is_feedbacks': True})
