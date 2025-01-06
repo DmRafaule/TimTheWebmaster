@@ -28,8 +28,8 @@
 		</div>
 		{% endif %}
 		<div class="home_ui_el">
-			<h2 class="" >{% trans "Лучшая статья" %}</h2>
-			<div class="post_previews--category mid_gap">
+			<h2 class="" >{% trans "Новые статьи" %}</h2>
+			<div class="post_previews--category-forNews mid_gap">
 				{% include 'Post/basic--post_preview-article.html' with posts=most_popular_article_posts %}
 			</div>
 			<div class="see_more_button button action_button">
@@ -39,7 +39,7 @@
 		<div class="home_ui_el">
 			<h2 class=""><a class="text_button" href="{% url 'articles-list' %}?page=1&type=full&is_recent=true&mode=basic&tag={{latest_news_tag}}">{% trans "Последние новости" %}</a></h2>
 			<div class="post_previews--category-forNews mid_gap">
-				{% include 'Post/simple--post_preview-article.html' with posts=latest_news_posts %}
+				{% include 'Post/basic--post_preview-article.html' with posts=latest_news_posts %}
 			</div>
 			<div class="see_more_button button action_button">
 				<a class="white_text_button " href="{% url 'articles-list' %}?page=1&type=full&is_recent=true&mode=basic&tag={{latest_news_tag}}">{% trans 'Больше ...' %}</a>

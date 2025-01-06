@@ -63,6 +63,13 @@ def countWords_f(path):
 def about(request):
     context = U.initDefaults(request)
     context.update({'me_years': U.get_how_old_human_in_years('16/07/2000', "%d/%m/%Y")})
+    more_about_me_tags = Tag.objects.filter(slug_en='gamedev')
+    if len(more_about_me_tags) > 0:
+        more_about_me_tag = more_about_me_tags[0].slug
+    else:
+        more_about_me_tag = None
+    
+    context.update({'more_about_me_tag': more_about_me_tag})
     return render(request, 'Main/about.html', context=context)
 
 def home(request):
@@ -72,7 +79,7 @@ def home(request):
     context.update({'displayTags': False})
     internal_tool_tag = Tag.objects.get(slug_en='internal-tool')
     internal_tools = website_conf.choosen_tools.all()[:website_conf.max_displayed_inner_tools_on_home]
-    most_popular_article = [U.get_most_popular_post()]
+    most_popular_article = U.get_latest_post(3, Article.objects.all())
     latest_news_tag = Tag.objects.get(slug_en='news')
     news = U.get_posts_by_tag('News', Article)
     latest_news = U.get_latest_post(website_conf.max_displayed_news_on_home, news)

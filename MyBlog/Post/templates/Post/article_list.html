@@ -49,7 +49,7 @@
 			{% else %}
 				<img id="onBasicView" width="32" height="32" class="filter_button hat_button icon dynamic_image bordered_button button squered_button " src="{% static 'placeholder.svg'%}" data-src="{% static 'Post/img/basic_view.svg' %}" alt="{% trans 'Значок базового представления' %}">
 			{% endif %}
-			<div>{% trans "Отображение постов с превьюшкой и прочими данными"%}</div>
+			<div>{% trans "Полное отображение постов"%}</div>
 		</div>
 		<div class="row mid_gap in_middle no_wrap">
 			{% if mode == 'simple' %}
@@ -57,7 +57,7 @@
 			{% else %}
 				<img id="onSimpleView" width="32" height="32" class="filter_button hat_button icon dynamic_image bordered_button button squered_button" src="{% static 'placeholder.svg'%}" data-src="{% static 'Post/img/simple_view.svg' %}" alt="{% trans 'Значок упрощённого представления' %}">
 			{% endif %}
-			<div>{% trans "Отображение постов без превьюшек"%}</div>
+			<div>{% trans "Упрощённое отображение постов"%}</div>
 		</div>
 	</div>
 </fieldset>
