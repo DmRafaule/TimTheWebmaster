@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-01-03 10:32+0300\n"
+"POT-Creation-Date: 2025-01-06 08:50+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -154,8 +154,7 @@ msgstr ""
 msgid ""
 "\n"
 "\t\t\t\tВпрочем, об учёбе. Да я учусь, постоянно и самостоятельно. То есть, "
-"нет я не студент. Меня скорее лучше опишет слово Маргинал, Хастлер или "
-"Суетолог. Вот.\n"
+"нет я не студент. Меня скорее лучше опишет слово Маргинал или Хастлер. Вот.\n"
 "\t\t\t\t"
 msgstr ""
 "\n"
@@ -240,14 +239,43 @@ msgstr ""
 "\t\t<li>Archives, scripts, programs and other files for downloading</li>\n"
 "\t\t"
 
-#: .\Main\templates\Main\about.html:130
+#: .\Main\templates\Main\about.html:131
 msgid ""
 "\n"
 "\t\tВот, собственно говоря, всё что я хотел сказать про себя и сайт. Если "
-"хочешь узнать больше, милости прошу почитать соответствующие статьи. Кстати, "
-"где-то здесь будет облако тегов всего моего сайта, каждое слово будет "
-"представлять из себя ссылку на соответствующую страницу пагинации. (Если его "
-"нет, то прости, ещё в процессе)\n"
+"хочешь узнать больше обо мне и моём прошлом, милости прошу \n"
+"\t\t"
+msgstr "" 
+"\n"
+"That's basically all I wanted to say about myself and the site. If you want to know more, please \n"
+"\t\t"
+
+#: .\Main\templates\Main\about.html:134
+msgid "почитать соответствующие статьи"
+msgstr "read the relevant articles"
+
+#: .\Main\templates\Main\about.html:135
+msgid ""
+"\n"
+"\t\tКстати, где-то здесь будет облако тегов всего моего сайта, каждое слово "
+"будет представлять из себя ссылку на соответствующую страницу пагинации. "
+"(Если его нет, то прости, ещё в процессе)\n"
+"\t\t"
+msgstr ""
+"\n"
+"By the way, somewhere here "
+"there will be a tag cloud of my entire site; each word will be a link to the "
+"corresponding pagination page. (If it's not there, then forgive me; it's "
+"still in progress.)"
+
+#: .\Main\templates\Main\about.html:141
+msgid ""
+"\n"
+"\t\tВот, собственно говоря, всё что я хотел сказать про себя и сайт. Если "
+"хочешь узнать больше обо мне и моём прошлом, милости прошу почитать "
+"соответствующие статьи. Кстати, где-то здесь будет облако тегов всего моего "
+"сайта, каждое слово будет представлять из себя ссылку на соответствующую "
+"страницу пагинации. (Если его нет, то прости, ещё в процессе)\n"
 "\t\t"
 msgstr ""
 "\n"
@@ -257,11 +285,11 @@ msgstr ""
 "corresponding pagination page. (If it's not there, then forgive me; it's "
 "still in progress.)"
 
-#: .\Main\templates\Main\about.html:136
+#: .\Main\templates\Main\about.html:148
 msgid "Ещё одно красивое фото, где я когда-то жил."
 msgstr "Yet another beautiful photo."
 
-#: .\Main\templates\Main\about.html:139
+#: .\Main\templates\Main\about.html:151
 msgid ""
 "\n"
 "\t\tНа момент прочтения данной страницы тобой, мне \n"
@@ -270,7 +298,7 @@ msgstr ""
 "\n"
 "At the time you read this page, I am"
 
-#: .\Main\templates\Main\about.html:143
+#: .\Main\templates\Main\about.html:155
 msgid ""
 "\n"
 "\t\tгода. И моему сайту 1 год.\n"
@@ -385,8 +413,8 @@ msgid "Больше ..."
 msgstr "See more ..."
 
 #: .\Main\templates\Main\home.html:31
-msgid "Лучшая статья"
-msgstr "The best article"
+msgid "Новые статьи"
+msgstr "New articles"
 
 #: .\Main\templates\Main\home.html:40
 msgid "Последние новости"
@@ -423,3 +451,6 @@ msgstr "✔ You have successfully sent a message"
 #: .\Main\views.py:39
 msgid "✗ Возникла ошибка при отправке формы"
 msgstr "✗ An error occurred while sending a form."
+
+#~ msgid "Лучшая статья"
+#~ msgstr "The best article"

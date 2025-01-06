@@ -8,10 +8,6 @@
 	<div class=" post_preview_header row min_col_gap">
 		<div class="column min_row_gap">
 			<h2 class="post_preview_title"><a class="text_button" href="{{ a.get_absolute_url }}">{{a.title}}</a></h2>
-			<div class="row min_col_gap">
-				<img class="in_middle-self icon_small dynamic_image" width="32" height="32" src="{% static 'placeholder.svg' %}" data-src='{% static "Post/img/calendar.svg" %}' alt="{% trans "Часы" %}">
-				<div>{{a.timeCreated|date:"d.m.Y"}}</div>
-			</div>
 		</div>
 	</div>
 	<span class="post_preview_body">

@@ -7,25 +7,6 @@
 	<title>{{ post.title }}</title>
 	<meta name="description" content="{{ post.description }}">
 	<meta name="keywords" content="{{ post.meta_keywords }}" />
-    <script type="application/ld+json">
-    {
-		"@context": "https://schema.org",
-		"@type": "Article",
-		"headline": "{{post.title}}",
-		{% if post.preview %}
-		"image": [
-			"https://{{domain_name}}{% get_media_prefix %}{{post.preview}}"
-		],
-		{% endif %}
-		"datePublished": "{{post.timeCreated}}+03:00",
-		"dateModified": "{{post.timeUpdated}}+03:00",
-		"author": [{
-			"@type": "Person",
-			"name": "{% trans 'Тима Чудук' %}",
-			"url": "https://{{domain_name}}{% url 'about' %}"
-		}]
-    }
-    </script>
 	{% if post.tds.all|length != 0 or tds|length != 0 or post.qas.all|length != 0 or qas|length != 0 %}
 	<script type="application/ld+json">
 		{
@@ -168,9 +149,11 @@
 	<div id="table_of_content_groups_container">
 	</div>
 	
+	{% comment %}
 	{% if post.preview %}
 		<img class="image dynamic_image" src="{% static 'placeholder.svg' %}" data-src="{% get_media_prefix %}{{post.preview}}" alt="{{post.name}}">
 	{% endif %}
+	{% endcomment %}
 	<h1 class="title">{{post.h1}}</h1>
 
 	{% block content_post_before-article %}
