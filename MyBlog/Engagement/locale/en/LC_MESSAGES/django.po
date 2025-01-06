@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-12-19 21:17+0300\n"
+"POT-Creation-Date: 2025-01-06 20:43+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,13 +18,17 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: .\Engagement\forms.py:14
+#: .\Engagement\forms.py:15 .\Engagement\forms.py:27
 msgid "Твоё имя"
 msgstr "Your name"
 
-#: .\Engagement\forms.py:15
+#: .\Engagement\forms.py:16 .\Engagement\forms.py:28
 msgid "Твоё сообщение"
 msgstr "Your message"
+
+#: .\Engagement\forms.py:25
+msgid "Пожалуйста оцени мой инструмент (ಥ _ ಥ)"
+msgstr "Please gimme a star's rating (ಥ _ ಥ)"
 
 #: .\Engagement\templates\Engagement\comment_form.html:17
 msgid "Отправить"
@@ -118,7 +122,7 @@ msgstr ""
 "to create a bookmark, press ctrl+d"
 
 #: .\Engagement\views.py:31 .\Engagement\views.py:59 .\Engagement\views.py:80
-#: .\Engagement\views.py:135 .\Engagement\views.py:178
+#: .\Engagement\views.py:135 .\Engagement\views.py:184
 msgid "Только POST запросы (╬▔皿▔)╯"
 msgstr "Only POST request (╬▔皿▔)╯"
 
@@ -134,7 +138,7 @@ msgstr "A big thanks, but you already did like me (*￣3￣)╭"
 msgid "Большое спасибо что поделился \\(￣︶￣*\\))"
 msgstr "Thanks for share, \\(￣︶￣*\\))"
 
-#: .\Engagement\views.py:96 .\Engagement\views.py:160
+#: .\Engagement\views.py:96 .\Engagement\views.py:166
 msgid "✔ Вы успешно отправили сообщение (＠＾０＾)"
 msgstr "✔ You have successfully sent your message (＠＾０＾)"
 
@@ -146,6 +150,6 @@ msgstr "✗ There was an error submitting the form ＼（〇_ｏ）／"
 msgid "Чувак, используй UI ┗( T﹏T )┛"
 msgstr "Dude, use UI ┗( T﹏T )┛"
 
-#: .\Engagement\views.py:172
+#: .\Engagement\views.py:178
 msgid "✗ Возникла ошибка при отправке комментария ＼（〇_ｏ）／"
 msgstr "✗ There was an error sending your comment ＼（〇_ｏ）／"

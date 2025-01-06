@@ -8,8 +8,21 @@ from .models import Comment
 class CommentForm(ModelForm):
     class Meta:
         model = Comment
-        fields = ["url", "name", "message"]
+        fields = ["url", "name", "rating", "message"]
         widgets = {
+            'url': forms.HiddenInput,
+            'rating': forms.HiddenInput,
+            'name': forms.TextInput(attrs={'placeholder': _('Твоё имя')}),
+            'message': forms.Textarea(attrs={'placeholder': _('Твоё сообщение')}),
+        }
+    captcha = CaptchaField()
+
+class ReviewForm(ModelForm):
+    class Meta:
+        model = Comment
+        fields = ["rating", "url", "name", "message"]
+        widgets = {
+            'rating': forms.RadioSelect(attrs={'class': 'rating_radiobtn', 'data-msg': _('Пожалуйста оцени мой инструмент (ಥ _ ಥ)')}),
             'url': forms.HiddenInput,
             'name': forms.TextInput(attrs={'placeholder': _('Твоё имя')}),
             'message': forms.Textarea(attrs={'placeholder': _('Твоё сообщение')}),

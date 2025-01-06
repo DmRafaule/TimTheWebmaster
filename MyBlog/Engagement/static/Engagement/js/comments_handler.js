@@ -43,11 +43,28 @@ function loadComments(){
 
 function sendComment(){
     var url = `${window.location.pathname}`
+    var rating_cont = document.querySelector('#id_rating')
+    var rating = 0
+    var is_rating = false
+    if (rating_cont.getAttribute('type') != 'hidden'){
+        is_rating = true
+        rating_check = rating_cont.querySelector('input[name="rating"]:checked')
+        if (rating_check)
+            rating = rating_check.value;
+
+        if (rating == 0){
+            var rating_msg = document.querySelector('#id_rating_0').dataset.msg
+            notificator.notify(`${rating_msg}`, 'error')
+            return
+        }
+    }
     var form_doc = document.querySelector('#toSendCommentContainer')
     var form_data = new FormData();
 	form_data.append("csrfmiddlewaretoken", csrftoken);
 	form_data.append("name", form_doc.querySelector("#id_name").value)
 	form_data.append("url", url)
+    form_data.append("rating", rating)
+    form_data.append("is_rating", is_rating)
 	form_data.append("message", form_doc.querySelector("#id_message").value)
 	form_data.append("captcha_0", form_doc.querySelector("#id_captcha_0").value)
 	form_data.append("captcha_1", form_doc.querySelector("#id_captcha_1").value)
@@ -88,6 +105,46 @@ function sendComment(){
     })
 }
 
+function emptyStars(){
+    document.querySelectorAll("#id_rating > * > label").forEach((star) => {
+        star.classList.remove('selected_star')
+        star.classList.add('not_selected_star')
+    })
+}
+
+function onStar(value){
+    emptyStars()
+    for (var i = 1; i <= value; i++){
+        var star = document.getElementById(`id_rating_${i}`)
+        star.parentElement.classList.add('selected_star')
+        star.parentElement.classList.remove('not_selected_star')
+    }
+}
+
+function initStars(){
+    document.querySelectorAll("#id_rating > * > label").forEach((star, num, stars) => {
+        star.firstChild.nextSibling.textContent = ""
+        star.classList.add('not_selected_star')
+        star.addEventListener('click', ()=>onStar(num))
+    })
+}
+
+function initStarRating(){
+    const config = { childList: true };
+    const observer = new MutationObserver((mutationList, observer) =>{
+        for (const mutation of mutationList) {
+            if (mutation.addedNodes.length > 0){ 
+                initStars()
+            }
+          }
+    });
+    var comments_limiter = document.getElementById('comments_limiter') 
+    if (comments_limiter){
+        observer.observe(comments_limiter, config);
+        initStars()
+    }
+}
+
 function onReady(){
     document.querySelectorAll('#onComment').forEach( (onComment) => {
 		onComment.addEventListener('click', goToCommentForm)
@@ -100,6 +157,7 @@ function onReady(){
     if (onCommentSend){
         onCommentSend.addEventListener('click', sendComment)
     }
+    initStarRating()
 }
 
 if (document.readyState === "loading") {
