@@ -38,6 +38,9 @@ class TDTranslationOptions(TranslationOptions):
 class NoteTranslationOptions(TranslationOptions):
     fields = ('title', 'description',)
 
+class PlatformTranslationOptions(TranslationOptions):
+    fields = ('name',)
+
 class ToolTranslationOptions(TranslationOptions):
     fields = ('name', 'description')
 
@@ -55,6 +58,7 @@ translator.register(Post_M.TD, TDTranslationOptions)
 translator.register(Post_M.Note, NoteTranslationOptions)
 translator.register(Post_M.Tag, TagTranslationOptions)
 translator.register(Post_M.Tool, ToolTranslationOptions)
+translator.register(Post_M.Platform, PlatformTranslationOptions)
 translator.register(Main_M.Image, ImageTranslationOptions)
 translator.register(Main_M.Downloadable, DownloadableTranslationOptions)
 translator.register(Main_M.Contact, ContactTranslationOptions)

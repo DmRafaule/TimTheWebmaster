@@ -6,14 +6,12 @@ from django.conf.urls.i18n import i18n_patterns
 # For sitemap
 from django.contrib.sitemaps.views import sitemap
 from Post.models import PostSitemap
-from Main.models import StaticSitemap, VideosSitemap
+from Main.models import StaticSitemap
 #from Gallery.models import ImagesSitemap
 
 sitemaps = {
     "articles": PostSitemap,
     "static": StaticSitemap,
-    #"images": ImagesSitemap,
-    "videos": VideosSitemap,
 }
 
 urlpatterns = [
@@ -30,17 +28,16 @@ urlpatterns = [
 
 urlpatterns += i18n_patterns(
     path('', include('Main.urls')),
-    path('', include('Post.urls')),
     path('', include('Admin.urls')),
     path('', include('Engagement.urls')),
     path('', include('Breadcrumbs.urls')),
-    #path('', include('Gallery.urls')),
     path('tools/', include('PostEditor.urls')),
     path('tools/', include('PostFilterEditor.urls')),
     path('tools/', include('ImageThief.urls')),
     path('tools/', include('WebGLEngine.urls')),
     path('tools/', include('RSSAggregator.urls')),
     path('tools/', include('ShaderToy.urls')),
+    path('', include('Post.urls')),
 )
 
 handler404 = "Main.views.page_not_found"

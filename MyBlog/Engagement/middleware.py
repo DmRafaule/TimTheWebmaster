@@ -17,7 +17,7 @@ class EngagementMiddleware:
         # If no comments needed include view funcions here
         self.allowed_func_posts_with_no_comments = ('td','qa')
         # All tools main view functions must be called tool_main
-        self.allowed_func_tools = ('tool_main',)
+        self.allowed_func_tools = ('tool_main', 'tool')
         self.allowed_func_lists = ('article_list', 'td_list', 'qa_list', 'tools_list', 'notes_list')
         self.form = FeedbackForm()
         # One-time configuration and initialization.

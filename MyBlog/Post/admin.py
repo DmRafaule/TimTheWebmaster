@@ -187,9 +187,36 @@ class TDAdmin(admin.ModelAdmin):
     list_filter = ('isPublished', 'timeCreated')
 
 
+class PlatformAdmin(admin.ModelAdmin):
+    exclude = ('name',)
+    fieldsets = [
+        (
+            None,
+            {
+                'fields': ['icon', ('name_ru', 'name_en')]
+            }
+        ),
+    ]
+    list_display = (
+        'name_ru',
+        'name_en',
+        'icon'
+    )
+    list_display_links = (
+        'name_en',
+    )
+    list_editable = (
+        'name_ru',
+        'icon'
+    )
+    search_fields = (
+        'name_ru',
+        'name_en',
+    )
+
 class ToolAdmin(admin.ModelAdmin):
-    exclude = ('category','name', 'description', 'likes', 'shares', 'viewed')
-    filter_horizontal = ('tags',)
+    exclude = ('category','name', 'description')
+    filter_horizontal = ('tags', 'platforms')
     ordering = ['-timeCreated']
     fieldsets = [
         (
@@ -201,7 +228,7 @@ class ToolAdmin(admin.ModelAdmin):
         (
             'Advanced options',
             {
-                'fields': ['type', ('icon', 'archive', 'url'), 'tags', 'timeCreated'],
+                'fields': ['icon', 'tags', 'platforms', 'template', 'timeCreated'],
                 'classes': ['collapse'],
                 'description': 'In this fieldset you can switch type of tool and configure other options.'
             }
@@ -210,7 +237,6 @@ class ToolAdmin(admin.ModelAdmin):
     list_display = (
         'slug',
         'isPublished',
-        'type',
         'name_ru',
         'name_en',
         'description_ru',
@@ -227,15 +253,13 @@ class ToolAdmin(admin.ModelAdmin):
         'description_ru',
         'description_en',
         'timeCreated',
-        'type',
     )
     search_fields = (
         'name_ru',
         'name_en',
         'tags'
     )
-    radio_fields = {'type': admin.HORIZONTAL}
-    list_filter = ('isPublished', 'type', 'timeCreated')
+    list_filter = ('isPublished', 'timeCreated', 'platforms')
 
 class NoteAdmin(admin.ModelAdmin):
     exclude = ('category','title', 'description')
@@ -291,4 +315,5 @@ admin.site.register(M.Article, ArticleAdmin)
 admin.site.register(M.QA, QAAdmin)
 admin.site.register(M.TD, TDAdmin)
 admin.site.register(M.Tool, ToolAdmin)
+admin.site.register(M.Platform, PlatformAdmin)
 admin.site.register(M.Note, NoteAdmin)

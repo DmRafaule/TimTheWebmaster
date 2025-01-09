@@ -9,6 +9,7 @@ urlpatterns = [
     path('articles/<slug:post_slug>/', V.article, name="article"),
     path('qa/<slug:post_slug>/', V.qa, name="qa"),
     path('td/<slug:post_slug>/', V.td, name="td"),
+    path('tools/<slug:post_slug>/', V.tool, name="tool"),
 ]
 
 urlpatterns += [
