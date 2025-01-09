@@ -2,7 +2,7 @@ from django.db import models
 from django.db.models.signals import post_delete, post_save
 from django.dispatch import receiver
 from MyBlog.settings import LANGUAGES
-from Post.models import Post
+from Post.models import Post, Tool, Article
 from django.utils.translation import gettext as _
 
 
@@ -30,6 +30,30 @@ class Comment(models.Model):
     message = models.TextField(max_length=1024,blank=False)
     rating = models.IntegerField(choices=Rating, blank=True, default=Rating.ZERO)
     interaction = models.ForeignKey(Interaction, on_delete=models.CASCADE, default=None)
+
+    def get_score(_url):
+        scores = Comment.objects.filter(url=_url).exclude(rating=Comment.Rating.ZERO).values_list('rating',flat=True)
+        number_of_scores = len(scores)
+        common_score = 0 
+        for score in scores:
+            common_score += score
+        result = common_score/number_of_scores
+        # Replace , to . because it will break Rich markup
+        result = str(result).replace(',','.')
+        return result
+
+    def get_tool(_url):
+        urlList = _url.split('/')
+        # Clean up after slplit function
+        c = urlList.count('') 
+        for i in range(c): 
+            urlList.remove('') 
+        slug = urlList[-1]
+        tool_qs = Tool.objects.filter(slug=slug)
+        if len(tool_qs) > 0:
+            return tool_qs[0]
+        else:
+            return None
 
 
 # Update a number of comments in Interaction 

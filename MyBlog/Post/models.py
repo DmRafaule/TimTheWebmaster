@@ -141,6 +141,35 @@ class Tool(Post):
             default=os.path.join(S.BASE_DIR,"Post","templates","Post","tool.html")
     )
     platforms = models.ManyToManyField(Platform, blank=True)
+    price = models.IntegerField(blank=True, default=0)
+
+    class ToolType(models.TextChoices):
+        GameApplication = "GameApplication"
+        SocialNetworkingApplication = "SocialNetworkingApplication"
+        TravelApplication = "TravelApplication"
+        ShoppingApplication = "ShoppingApplication"
+        SportsApplication = "SportsApplication"
+        LifestyleApplication = "LifestyleApplication"
+        BusinessApplication = "BusinessApplication"
+        DesignApplication = "DesignApplication"
+        DeveloperApplication = "DeveloperApplication"
+        DriverApplication = "DriverApplication"
+        EducationalApplication = "EducationalApplication"
+        HealthApplication = "HealthApplication"
+        FinanceApplication = "FinanceApplication"
+        SecurityApplication = "SecurityApplication"
+        BrowserApplication = "BrowserApplication"
+        CommunicationApplication = "CommunicationApplication"
+        DesktopEnhancementApplication = "DesktopEnhancementApplication"
+        EntertainmentApplication = "EntertainmentApplication"
+        MultimediaApplication = "MultimediaApplication"
+        HomeApplication = "HomeApplication"
+        UtilitiesApplication = "UtilitiesApplication"
+        ReferenceApplication = "ReferenceApplication"
+        VideoGame = "VideoGame"
+        MobileApplication = "MobileApplication"
+        WebApplication = "WebApplication"
+    type = models.CharField(max_length=100, choices=ToolType, default=ToolType.WebApplication)
 
     def save(self, *args, **kwargs):
         self.category = Category.objects.get(slug="tools")

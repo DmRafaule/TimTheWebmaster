@@ -125,6 +125,16 @@ class EngagementMiddleware:
         response.context_data.update({'form': self.form})
         response.context_data.update({'isBottomEngagementBody': True})
         response.context_data.update({'isDisplayingActualAvailableInteractions': True})
+        # THis is all for Google Rich Results, SoftwareApplication
+        comments = Comment.objects.filter(url=request.path).order_by('-time_published')
+        response.context_data.update({'comments_number': len(comments)})
+        if len(comments) > 0:
+            response.context_data.update({'comments_score': Comment.get_score(request.path)})
+        tool = Comment.get_tool(request.path)
+        if tool:
+            response.context_data.update({'page_tool': tool})
+        ##
+
         self._update_views_counter(request.path)
 
    # Updates pages of paginator 
