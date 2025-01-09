@@ -5,6 +5,30 @@
 {% block head %}
 	{% block head_tool %}
 	{% endblock %}
+
+    {% if isEngagementMiddlewareConnected and comments_number > 0%}
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "SoftwareApplication",
+            "name": "{{ page_tool.name }}",
+            "applicationCategory": "{{page_tool.type}}",
+            "aggregateRating": {
+                "@type": "AggregateRating",
+                "ratingValue": {{comments_score}},
+                "reviewCount": {{comments_number}},
+                "bestRating": 5,
+                "worstRating": 1
+            },
+            "offers": {
+                "@type": "Offer",
+                "price": {{page_tool.price}},
+                "priceCurrency": "USD"
+            }
+        }
+    </script>
+    {% endif %}
+
 {% endblock %}
 
 {% block hat %}

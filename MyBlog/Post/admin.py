@@ -228,7 +228,7 @@ class ToolAdmin(admin.ModelAdmin):
         (
             'Advanced options',
             {
-                'fields': ['icon', 'tags', 'platforms', 'template', 'timeCreated'],
+                'fields': ['icon', 'tags', 'platforms', 'price', 'type', 'template', 'timeCreated'],
                 'classes': ['collapse'],
                 'description': 'In this fieldset you can switch type of tool and configure other options.'
             }
@@ -237,6 +237,7 @@ class ToolAdmin(admin.ModelAdmin):
     list_display = (
         'slug',
         'isPublished',
+        'type',
         'name_ru',
         'name_en',
         'description_ru',
@@ -248,6 +249,7 @@ class ToolAdmin(admin.ModelAdmin):
     )
     list_editable = (
         'isPublished',
+        'type',
         'name_ru',
         'name_en',
         'description_ru',
@@ -259,7 +261,7 @@ class ToolAdmin(admin.ModelAdmin):
         'name_en',
         'tags'
     )
-    list_filter = ('isPublished', 'timeCreated', 'platforms')
+    list_filter = ('isPublished', 'timeCreated', 'platforms', 'type')
 
 class NoteAdmin(admin.ModelAdmin):
     exclude = ('category','title', 'description')
