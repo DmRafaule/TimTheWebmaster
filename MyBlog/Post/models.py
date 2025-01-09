@@ -122,22 +122,25 @@ class Article(Post):
         return self.title
 
 
+class Platform(models.Model):
+    name = models.CharField(max_length=256, blank=False)
+    icon = models.FileField(blank=False)
+
+    def __str__(self):
+        return self.name
+
+
 class Tool(Post):
     view_name = "tool"
-    INTERNAL = 'In'
-    EXTERNAL = 'Ex'
-    ARCHIVE = 'Ac'
-    TOOL_CATEGORIES = {
-        INTERNAL:   'Internal',
-        EXTERNAL:   'External',
-        ARCHIVE:    'Archive',
-    }
     name = models.CharField(max_length=256, blank=False)
     description = models.TextField(blank=False)
     icon = models.FileField(max_length=300, upload_to=user_directory_path, blank=True)
-    url  = models.URLField(max_length=300, blank=True, help_text='Use only if it is External type')
-    archive = models.FileField(upload_to=user_directory_path, blank=True, help_text='Use only if it is Archive type')
-    type = models.CharField(max_length=2, choices=TOOL_CATEGORIES, default=ARCHIVE, blank=False)
+    template = models.FileField(max_length=300, upload_to=user_directory_path, blank=True, help_text="If provided, default template not in use. Use only if it is Internal default type")
+    default_template = models.FilePathField(
+            path=os.path.join(S.BASE_DIR,"Post","templates","Post"),
+            default=os.path.join(S.BASE_DIR,"Post","templates","Post","tool.html")
+    )
+    platforms = models.ManyToManyField(Platform, blank=True)
 
     def save(self, *args, **kwargs):
         self.category = Category.objects.get(slug="tools")
@@ -148,16 +151,7 @@ class Tool(Post):
         return self.name
 
     def get_absolute_url(self):
-        url = ''
-        match self.type:
-            case self.ARCHIVE:
-                url = f'/media/{self.archive}'
-            case self.INTERNAL:
-                url = f'/{get_language()}/tools/{self.slug}/'
-            case self.EXTERNAL:
-                url = self.url
-
-        return url
+        return f'/{get_language()}/tools/{self.slug}/'
 
 
 class Note(models.Model):
@@ -185,7 +179,7 @@ class PostSitemap(Sitemap):
         articles = Article.objects.filter(isPublished=True)
         qa = QA.objects.filter(isPublished=True)
         td = TD.objects.filter(isPublished=True)
-        tools = Tool.objects.filter(isPublished=True, type=Tool.INTERNAL)
+        tools = Tool.objects.filter(isPublished=True)
         items = list(chain(articles, qa, td, tools))
         return items
 

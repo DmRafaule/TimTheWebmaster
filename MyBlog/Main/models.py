@@ -135,14 +135,6 @@ class Downloadable(models.Model):
     def get_absolute_url(self):
         return '/media/{0}'.format(self.file)
 
-class VideosSitemap(Sitemap):
-    def items(self):
-        videos = Downloadable.objects.filter(category=Downloadable.VIDEO)
-        return list(videos)
-
-    def lastmod(self, obj):
-        return obj.timeUpdated
-
 class StaticSitemap(Sitemap):
     i18n = True
 

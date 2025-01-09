@@ -1,0 +1,107 @@
+{% verbatim %}
+{% extends 'Post/base_tool.html' %}
+{% load static %}
+{% load i18n %}
+{% endverbatim %}
+
+
+{% verbatim %}
+{% block head_tool %}
+    <title>{{post.name}} | {% trans 'Инструмент' %}</title>
+    <meta name="description" content="{{post.description}}">
+    <link rel="canonical" href="https://{{domain_name}}{{post.get_absolute_url}}" />
+{% endblock %}
+{% endverbatim %}
+
+{% verbatim %}
+{% block content_tool %}
+<div class="limiter in_middle-self">
+    <h1 class="title">{{ post.name }}</h1>
+	<div class="marger_top_min marger_bottom_max"> 
+		<div class="row max_col_gap">
+            <div class="row min_gap no_wrap">
+                <img class="in_middle-self icon_small dynamic_image" width="32" height="32" src="{% static 'placeholder.svg' %}" data-src='{% static "Post/img/calendar.svg" %}' alt="{% trans "Часы" %}">
+                <div>{{post.timeCreated|date:"d.m.Y"}}</div>
+            </div>
+            <div class="row min_gap no_wrap">
+                <img class="in_middle-self icon_small dynamic_image" width="32" height="32" src="{% static 'placeholder.svg' %}" data-src='{% static "Post/img/update.svg" %}' alt="{% trans "Часы" %}">
+                <div>{{post.timeUpdated|date:"d.m.Y"}}</div>
+            </div>
+		</div>
+		{% if isEngagementMiddlewareConnected %}
+			{% include 'Engagement/interaction.html' with path=post.get_absolute_url %}
+		{% endif %}
+		{% if isBreadcrumbsMiddlewareConnected %}
+			{% include 'Breadcrumbs/breadcrumbs.html' with path=request.META.HTTP_REFERER %}
+		{% endif %}
+        {% if platforms %}
+        <div class="marger_top_min row mid_gap">
+            {% for platform in platforms %}
+            <div class="row min_gap no_wrap on_middle_other">
+                <img class="in_middle-self icon dynamic_image" width="32" height="32" src="{% static 'placeholder.svg' %}" data-src='{% get_media_prefix %}{{platform.icon}}' alt="{{platform.name}}">
+                <div>{{platform.name}}</div>
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+	</div>
+	<hr>
+    <h2 class="paragraph">{% trans 'Описание' %}</h2>
+    <div class="text">
+        {{post.description}}
+    </div>
+{% endverbatim %}
+
+        {{ content|safe }}
+
+{% verbatim %}
+    {% if downloadables %}
+	<h2 class="paragraph">{% trans 'Медиа файлы' %}</h2>
+    <ol>
+        {% for res in downloadables %}
+        <li class="ref_downloadables"><a href="{% get_media_prefix %}{{res.file}}" download>{{res.text}}</a></li>
+        {% endfor %}
+    </ol>
+    {% endif %}
+    {% if latest_notes %}
+		<div class="home_ui_el text">
+			<h2 class="">{% trans "Рабочие заметки об инструменте" %}</h2>
+			<div class="post_previews--category mid_gap">
+				{{latest_notes|safe}}
+			</div>
+			<div class="see_more_button button action_button">
+				<a class="white_text_button " href="{% url 'notes-list' %}?page=1&type=full&is_recent=true&mode=basic&tag={{tool_tag}}">{% trans 'Показать все ...' %}</a>
+			</div>
+		</div>
+    {% endif %}
+    {% if related_tools %}
+    <div class="column max_gap">
+	    <h2 class="paragraph">{% trans 'Похожие инструменты' %}</h2>
+        {{related_tools}}
+    </div>
+    {% endif %}
+</div>
+{% endblock %}
+{% endverbatim %}
+
+{% verbatim %}
+{% block styles_tool %}
+
+    <link type="text/css" rel="stylesheet" href="{% static 'Post/css/tool.css' %}"/>
+{% endverbatim %}
+
+    {{styles|safe}}
+
+{% verbatim %}
+{% endblock %}
+{% endverbatim %}
+
+{% verbatim %}
+{% block scripts_tool %}
+{% endverbatim %}
+
+    {{scripts|safe}}
+
+{% verbatim %}
+{% endblock %}
+{% endverbatim %}

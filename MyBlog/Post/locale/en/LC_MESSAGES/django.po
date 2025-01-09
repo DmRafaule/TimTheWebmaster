@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-01-06 09:03+0300\n"
+"POT-Creation-Date: 2025-01-09 09:26+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -294,6 +294,7 @@ msgstr "Similar articles"
 #: .\Post\templates\Post\base_post.html:26
 #: .\Post\templates\Post\basic--post_preview-article.html:30
 #: .\Post\templates\Post\basic--post_preview-note.html:12
+#: .\Post\templates\Post\tool.html:21 .\Post\templates\Post\tool.html:25
 msgid "Часы"
 msgstr "Clock"
 
@@ -327,30 +328,40 @@ msgstr "Used in"
 msgid "Узнать больше"
 msgstr "See more"
 
-#: .\Post\templates\Post\grid--post_preview-tool.html:12
-#: .\Post\templates\Post\grid--post_preview-tool.html:16
-#: .\Post\templates\Post\grid--post_preview-tool.html:22
-#: .\Post\templates\Post\grid--post_preview-tool.html:28
-#: .\Post\templates\Post\grid--post_preview-tool.html:32
-#: .\Post\templates\Post\grid--post_preview-tool.html:38
-#: .\Post\templates\Post\grid--post_preview-tool.html:44
-#: .\Post\templates\Post\grid--post_preview-tool.html:48
-#: .\Post\templates\Post\grid--post_preview-tool.html:54
-#: .\Post\templates\Post\list--post_preview-tool.html:11
-#: .\Post\templates\Post\list--post_preview-tool.html:15
-#: .\Post\templates\Post\list--post_preview-tool.html:21
-#: .\Post\templates\Post\list--post_preview-tool.html:27
-#: .\Post\templates\Post\list--post_preview-tool.html:31
-#: .\Post\templates\Post\list--post_preview-tool.html:37
-#: .\Post\templates\Post\list--post_preview-tool.html:43
-#: .\Post\templates\Post\list--post_preview-tool.html:47
-#: .\Post\templates\Post\list--post_preview-tool.html:53
+#: .\Post\templates\Post\grid--post_preview-tool.html:14
+#: .\Post\templates\Post\grid--post_preview-tool.html:20
+#: .\Post\templates\Post\list--post_preview-tool.html:13
+#: .\Post\templates\Post\list--post_preview-tool.html:19
 msgid "Превью статьи"
 msgstr "Article preview"
 
 #: .\Post\templates\Post\termin_list.html:81
 msgid "Сортировка постов по алфавиту"
 msgstr "Sort a posts by alphabet"
+
+#: .\Post\templates\Post\tool.html:7
+msgid "Инструмент"
+msgstr "Tool"
+
+#: .\Post\templates\Post\tool.html:47
+msgid "Описание"
+msgstr "Description"
+
+#: .\Post\templates\Post\tool.html:52
+msgid "Медиа файлы"
+msgstr "Media files"
+
+#: .\Post\templates\Post\tool.html:61
+msgid "Рабочие заметки об инструменте"
+msgstr "A notes about this tool, devnotes"
+
+#: .\Post\templates\Post\tool.html:66
+msgid "Показать все ..."
+msgstr "See all ..."
+
+#: .\Post\templates\Post\tool.html:72
+msgid "Похожие инструменты"
+msgstr "Similar tools"
 
 #: .\Post\templates\Post\tool_list.html:59
 #: .\Post\templates\Post\tool_list.html:61

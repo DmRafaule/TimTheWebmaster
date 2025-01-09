@@ -257,3 +257,38 @@ def td(request, post_slug):
         return TemplateResponse(request, post.template.path, context=context)
     else:
         return TemplateResponse(request, post.default_template, context=context)
+
+def tool(request, post_slug):
+    website_conf = Main_M.Website.objects.get(is_current=True)
+    post = get_object_or_404(Post_M.Tool, slug=post_slug)
+    downloadables = Main_M.Downloadable.objects.filter(type=post)
+    images = Main_M.Image.objects.filter(type=post)
+    context = U.initDefaults(request)
+    context.update({'post': post})
+    context.update({'downloadables': downloadables})
+    context.update({'images': images})
+
+    sim_post_doc = None
+    related_tools = filterByTag(Post_M.Tool.objects.filter(Q(isPublished=True) & Q(tags__in=post.tags.all())).exclude(slug=post_slug), post.tags.all(), 3)
+    if related_tools is not None:
+        context.update({'posts': related_tools[:3]})
+        loaded_template = loader.get_template(f'Post/list--post_preview-tool.html')
+        sim_post_doc = loaded_template.render(context, request) 
+    context.update({'related_tools': sim_post_doc})
+
+    # Get latest notes about this tool
+    tool_tags = Post_M.Tag.objects.filter(slug_en=post_slug)
+    if len(tool_tags) > 0:
+        posts = filterByTag(Post_M.Note.objects.filter(isPublished=True), [tool_tags[0]])[:3]
+        context.update({'tool_tag': tool_tags[0].slug})
+        context.update({'posts': posts})
+        loaded_template = loader.get_template(f'Post/basic--post_preview-note.html')
+        context.update({'latest_notes': loaded_template.render(context, request)})
+    
+    # Get used platforms
+    context.update({'platforms': post.platforms.all()})
+
+    if post.template:
+        return TemplateResponse(request, post.template.path, context=context)
+    else:
+        return TemplateResponse(request, post.default_template, context=context)
