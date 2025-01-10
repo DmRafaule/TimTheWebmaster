@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-01-03 10:38+0300\n"
+"POT-Creation-Date: 2025-01-10 08:35+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -26,21 +26,25 @@ msgstr "How to save result"
 msgid "Название файла"
 msgstr "Filename"
 
-#: .\PostEditor\models.py:17
+#: .\PostEditor\models.py:18
 msgid "Чистый HTML"
 msgstr "Raw HTML"
 
-#: .\PostEditor\models.py:18
+#: .\PostEditor\models.py:19
 msgid "Для статей"
 msgstr "For articles"
 
-#: .\PostEditor\models.py:19
+#: .\PostEditor\models.py:20
 msgid "Для определений"
 msgstr "For definitions"
 
-#: .\PostEditor\models.py:20
+#: .\PostEditor\models.py:21
 msgid "Для вопросов"
 msgstr "For questions"
+
+#: .\PostEditor\models.py:22
+msgid "Для инструментов"
+msgstr "For tools"
 
 #: .\PostEditor\templates\PostEditor\editor_home.html:7
 msgid "Редактор постов"
@@ -233,11 +237,11 @@ msgid ""
 "      "
 msgstr ""
 "\n"
-" This editor was developed for entertainment and "
-"general educational purposes only. It can and should be used only as an "
-"example of the editor implementation using <b>quilljs</b>. With its help, "
-"you will be able to prepare and create an <i>html page</i>, which you can then "
-"insert where you need it.\n"
+" This editor was developed for entertainment and general educational "
+"purposes only. It can and should be used only as an example of the editor "
+"implementation using <b>quilljs</b>. With its help, you will be able to "
+"prepare and create an <i>html page</i>, which you can then insert where you "
+"need it.\n"
 " "
 
 #: .\PostEditor\templates\PostEditor\editor_home.html:301
@@ -305,10 +309,10 @@ msgstr "✗ Such file no longer exist"
 msgid "✗ Возникла ошибка при сохранении"
 msgstr "✗ An error occure while saving"
 
-#: .\PostEditor\views.py:153
+#: .\PostEditor\views.py:157
 msgid "✔ Успешное сохранение"
 msgstr "✔ Saved successfully"
 
-#: .\PostEditor\views.py:156
+#: .\PostEditor\views.py:160
 msgid "✗ Форма не валидна"
 msgstr "✗ Form isn't valid"

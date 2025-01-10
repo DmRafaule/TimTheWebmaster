@@ -150,6 +150,10 @@ def save_template(request):
             case PostTemplate.QUESTION_POST:
                 _update_record_raw(record)
                 _update_record_template(request, record, 'Post/qa_exmpl.html')
+            case PostTemplate.TOOL_POST:
+                _update_record_raw(record)
+                _update_record_template(request, record, 'Post/tool_exmpl.html')
+
         msg = _('✔ Успешное сохранение')
         status = 200
     else:
