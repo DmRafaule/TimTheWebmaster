@@ -42,7 +42,7 @@ class PlatformTranslationOptions(TranslationOptions):
     fields = ('name',)
 
 class ToolTranslationOptions(TranslationOptions):
-    fields = ('name', 'description')
+    fields = ('name', 'description', 'template')
 
 class ImageTranslationOptions(TranslationOptions):
     fields = ('text',)
