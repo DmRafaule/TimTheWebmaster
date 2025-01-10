@@ -215,7 +215,7 @@ class PlatformAdmin(admin.ModelAdmin):
     )
 
 class ToolAdmin(admin.ModelAdmin):
-    exclude = ('category','name', 'description')
+    exclude = ('category','name', 'description', 'template')
     filter_horizontal = ('tags', 'platforms')
     ordering = ['-timeCreated']
     fieldsets = [
@@ -228,7 +228,7 @@ class ToolAdmin(admin.ModelAdmin):
         (
             'Advanced options',
             {
-                'fields': ['icon', 'tags', 'platforms', 'price', 'type', 'template', 'timeCreated'],
+                'fields': ['icon', 'tags', 'platforms', 'price', 'type', ('template_ru', 'template_en'), 'timeCreated'],
                 'classes': ['collapse'],
                 'description': 'In this fieldset you can switch type of tool and configure other options.'
             }
