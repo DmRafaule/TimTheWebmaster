@@ -13,11 +13,13 @@ class PostTemplate(models.Model):
     ARTICLE_POST = 1
     TERMIN_POST = 2
     QUESTION_POST = 3
+    TOOL_POST = 4
     OPTIONS = {
         RAW: _('Чистый HTML'),
         ARTICLE_POST: _('Для статей'),
         TERMIN_POST: _('Для определений'),
         QUESTION_POST: _('Для вопросов'),
+        TOOL_POST: _('Для инструментов'),
     }
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     template = models.FilePathField(
