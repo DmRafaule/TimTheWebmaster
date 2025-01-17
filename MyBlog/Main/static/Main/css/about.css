@@ -19,6 +19,7 @@
 	height: 100%;
 	padding: var(--mid_pm);
 	border-width: 0;
+	background-color: var(--upper_bg);
 }
 .home_title{
 	flex: 0 1 auto;
