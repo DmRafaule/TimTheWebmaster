@@ -27,7 +27,7 @@
 }
 .home_art_cas_news{
 	column-gap: var(--big_space);
-	row-gap: 100px;
+	row-gap: 10px;
 }
 .home_buttons{
 	position: absolute;
@@ -139,7 +139,7 @@
 
 
 .post_previews--category>.post_preview--tool, .post_previews--category-forNews>.post_preview{
-	flex: 0 0 300px;
+	flex: 1 0 300px;
 }
 .post_previews--category-forSeries>.post_preview{
 	flex: 0 1 600px;
