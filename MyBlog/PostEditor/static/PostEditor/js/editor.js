@@ -1,9 +1,23 @@
 
 function updateCodeBlock(scope){
-	scope.querySelectorAll('.ql-code-block-container').forEach( (el) => {
+    scope.querySelectorAll('.verbatim_tag').forEach(verbatim => {verbatim.remove()})
+	
+    scope.querySelectorAll('.ql-code-block-container').forEach( (el) => {
 		el.querySelector('select.ql-ui').style.display = 'none'
-	})
+
+        
+        var inv_cont_start = document.createElement('div')
+        inv_cont_start.classList.add('is_none')
+        inv_cont_start.classList.add('verbatim_tag')
+        var inv_cont_end = inv_cont_start.cloneNode(false)
+        inv_cont_start.innerText = '{% verbatim %}'
+        inv_cont_end.innerText = '{% endverbatim %}'
+        el.insertAdjacentElement('afterbegin', inv_cont_start)
+        el.insertAdjacentElement('beforeend', inv_cont_end)
+    })
+
 }
+
 
 function updateImagesForServer(){
 	var scope = document.querySelector('#editor')
@@ -146,10 +160,11 @@ function saveQuill( event ){
         scripts_string += script.outerHTML + '\n'
     })
 
-    updateImagesForServerClearSRC(scope)
-    updateCodeBlock(scope)
+    var new_scope = scope.cloneNode(true)
+    updateImagesForServerClearSRC(new_scope)
+    updateCodeBlock(new_scope)
     
-    var content = scope.innerHTML
+    var content = new_scope.innerHTML
     var form = document.querySelector('#toSave')
     form.setAttribute('action', 'save/')
     form.querySelector('#id_content').value = content
@@ -282,6 +297,10 @@ function loadQuill( content ){
     if (table_of_content){
         table_of_content.remove()
     }
+
+    scope.querySelectorAll('.ql-code-block-container').forEach( (el) => {
+        el.querySelectorAll('.verbatim_tag').forEach(verbatim => {verbatim.remove()})
+    })
 }
 
 // Will download current content in ql-editor element and send it back as file
