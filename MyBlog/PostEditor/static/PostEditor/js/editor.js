@@ -36,15 +36,16 @@ function updateImagesForServerClearSRC(scope){
 
 function updateDownloadablesForServer(){
 	var scope = document.querySelector('#editor')
-	var downloadables = scope.querySelectorAll('a.ref-downloadable,video.my-video')
+    // WIll not select those downloadables links and videos which is saved via input
+	var downloadables = scope.querySelectorAll('a.ref-downloadable:not(.do_not_updateDownloadablesForServer),video.my-video:not(.do_not_updateDownloadablesForServer)')
 	downloadables.forEach( (down, indx) => {
-		if (down.classList.contains('ref-downloadable')){
-			down.setAttribute('href', `{% get_media_prefix %}{{downloadables.${indx}.file}}`)
-		}
-		else{
-			down.dataset.src = `{% get_media_prefix %}{{downloadables.${indx}.file}}`
-			down.dataset.text = `{{downloadables.${indx}.text}}`
-		}
+        if (down.classList.contains('ref-downloadable')){
+            down.setAttribute('href', `{% get_media_prefix %}{{downloadables.${indx}.file}}`)
+        }
+        else{
+            down.dataset.src = `{% get_media_prefix %}{{downloadables.${indx}.file}}`
+            down.dataset.text = `{{downloadables.${indx}.text}}`
+        }
 	})
 }
 

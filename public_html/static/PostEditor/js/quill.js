@@ -8,6 +8,7 @@ icons["italic"] = null
 icons["strike"] = null
 icons["underline"] = null
 icons["image"] = null 
+icons["video"] = null 
 //icons["list-decimal"] = readFile(`${PATH}PostEditor/img/list-decimal.svg`)
 
 let List = Quill.import('formats/list')
@@ -145,10 +146,15 @@ quill.on('selection-change', (range, oldRange, source) => {
                 break
             case 'A':
                 break
+            case 'VIDEO':
+                var tooltip = new VideoTooltip(quill, blot.domNode)
+                tooltip.show()
+                break
             default:
                 TableTooltip.remove()
                 AbbrTooltip.remove()
                 LinkTooltip.remove()
+                VideoTooltip.remove()
         }
         if (blot.domNode.classList.contains('ql-code-block') || blot.domNode.classList.contains('ql-token')){
             var cBlock = blot.domNode

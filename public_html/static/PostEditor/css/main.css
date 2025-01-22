@@ -96,6 +96,22 @@
     content: "" !important;
 }
 
+
+.video-tooltip{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--min_pm);
+    position: fixed  !important;
+    bottom: 0;
+    left: 0;
+    background-color: var(--main_color) !important;
+    width: 100%;
+    color: white !important;
+    transform: translateY(0px) !important;
+    z-index: 3;
+}
+
 /* Headers */
 .ql-editor h1.title, .ql-editor h1.title_in_middle{
     margin-top: 5svh;

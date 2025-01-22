@@ -71,6 +71,7 @@ class LinkTooltip extends Quill.import('ui/tooltip'){
         let value = tooltip.textbox.value;
         if (value.length > 0){
             tooltip.boundsContainer.parentElement.classList.add('ref')
+            tooltip.boundsContainer.classList.add('do_not_updateDownloadablesForServer')
             tooltip.boundsContainer.setAttribute('href', value)
         }
         LinkTooltip.remove();
@@ -112,8 +113,6 @@ class DownloadableLink extends Quill.import('blots/inline'){
             let tooltip = new LinkTooltip(quill, this.domNode, '?')
             tooltip.setHeight(document.querySelector('footer').getBoundingClientRect().height)
             tooltip.show()
-            tooltip.root.querySelector('input').remove()
-            tooltip.root.querySelector('.add_button').remove( )
         })
     }
 
