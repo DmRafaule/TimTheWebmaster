@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-01-10 08:35+0300\n"
+"POT-Creation-Date: 2025-01-22 15:51+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -67,8 +67,8 @@ msgid "Содержание"
 msgstr "Table of contents"
 
 #: .\PostEditor\templates\PostEditor\editor_home.html:54
-#: .\PostEditor\templates\PostEditor\editor_home.html:316
-#: .\PostEditor\templates\PostEditor\editor_home.html:317
+#: .\PostEditor\templates\PostEditor\editor_home.html:322
+#: .\PostEditor\templates\PostEditor\editor_home.html:323
 msgid "Сохранить"
 msgstr "Save"
 
@@ -125,8 +125,8 @@ msgstr "Enter an abbreviation"
 #: .\PostEditor\templates\PostEditor\editor_home.html:107
 #: .\PostEditor\templates\PostEditor\editor_home.html:123
 #: .\PostEditor\templates\PostEditor\editor_home.html:124
-#: .\PostEditor\templates\PostEditor\editor_home.html:324
-#: .\PostEditor\templates\PostEditor\editor_home.html:329
+#: .\PostEditor\templates\PostEditor\editor_home.html:330
+#: .\PostEditor\templates\PostEditor\editor_home.html:335
 msgid "Крестик"
 msgstr "Cross"
 
@@ -215,18 +215,22 @@ msgid "Ссылка на скачиваеммый контент"
 msgstr "A link to downloadable content"
 
 #: .\PostEditor\templates\PostEditor\editor_home.html:276
+msgid "Видео"
+msgstr "Video"
+
+#: .\PostEditor\templates\PostEditor\editor_home.html:282
 msgid "Изображение"
 msgstr "Image"
 
-#: .\PostEditor\templates\PostEditor\editor_home.html:282
+#: .\PostEditor\templates\PostEditor\editor_home.html:288
 msgid "Текст под изображением"
 msgstr "Text under image"
 
-#: .\PostEditor\templates\PostEditor\editor_home.html:294
+#: .\PostEditor\templates\PostEditor\editor_home.html:300
 msgid "WYSIWYG онлайн редактор на quilljs"
 msgstr "An online WYSIWYG editor using quilljs"
 
-#: .\PostEditor\templates\PostEditor\editor_home.html:296
+#: .\PostEditor\templates\PostEditor\editor_home.html:302
 msgid ""
 "\n"
 "        Данный редактор был разработан только в развлекательных и "
@@ -244,28 +248,28 @@ msgstr ""
 "need it.\n"
 " "
 
-#: .\PostEditor\templates\PostEditor\editor_home.html:301
+#: .\PostEditor\templates\PostEditor\editor_home.html:307
 msgid "Все обучающиеся материалы:"
 msgstr "All learning resources:"
 
-#: .\PostEditor\templates\PostEditor\editor_home.html:304
+#: .\PostEditor\templates\PostEditor\editor_home.html:310
 msgid "По разработке модулей для редактора на quilljs"
 msgstr "To develop quill modules for editor"
 
-#: .\PostEditor\templates\PostEditor\editor_home.html:305
+#: .\PostEditor\templates\PostEditor\editor_home.html:311
 msgid "По редактированию и кастомизации редактора на quilljs"
 msgstr "To develop and customize an quilljs editor"
 
-#: .\PostEditor\templates\PostEditor\editor_home.html:319
-#: .\PostEditor\templates\PostEditor\editor_home.html:320
+#: .\PostEditor\templates\PostEditor\editor_home.html:325
+#: .\PostEditor\templates\PostEditor\editor_home.html:326
 msgid "Загрузить"
 msgstr "Load"
 
-#: .\PostEditor\templates\PostEditor\editor_home.html:322
+#: .\PostEditor\templates\PostEditor\editor_home.html:328
 msgid "Скачать всё"
 msgstr "Download all"
 
-#: .\PostEditor\templates\PostEditor\editor_home.html:328
+#: .\PostEditor\templates\PostEditor\editor_home.html:334
 msgid "Скачать содержимое"
 msgstr "Download content"
 

@@ -270,6 +270,12 @@
         <img class="quill-drop-down-button icon button squered_button action_button_black" src="{% static "PostEditor/img/common/media.svg" %}" data-src="{% static "PostEditor/img/common/media.svg" %}" data-close-btn="{% static 'close_white.svg' %}">
         <div class="quill-drop-down-container quill-drop-down-container_notactive">
           <div class="row min_gap no_wrap on_middle_other">
+            <button class="ql-my-video" type="button">
+              <img class="icon button squered_button action_button_black" src="{% static "PostEditor/img/common/video.svg" %}">
+            </button>
+            <div>{% trans 'Видео'%}</div>
+          </div>
+          <div class="row min_gap no_wrap on_middle_other">
             <button class="ql-image" type="button">
               <img class="icon button squered_button action_button_black" src="{% static "PostEditor/img/common/img.svg" %}">
             </button>
@@ -361,8 +367,8 @@
     <script id='post_script_exporter_bottom_line' src="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.js"></script>
     <script src="{% static 'PostEditor/js/side_menu.js' %}"></script>
     <script src="{% static 'PostEditor/js/quill_images.js' %}"></script>
-    <script src="{% static 'PostEditor/js/quill_videos.js' %}"></script>
     <script src="{% static 'PostEditor/js/quill_blocks.js' %}"></script>
+    <script src="{% static 'PostEditor/js/quill_videos.js' %}"></script>
     <script src="{% static 'PostEditor/js/quill_codeblock.js' %}"></script>
     <script src="{% static 'PostEditor/js/quill_abbr.js' %}"></script>
     <script src="{% static 'PostEditor/js/quill_links.js' %}"></script>

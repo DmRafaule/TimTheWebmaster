@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-01-06 08:50+0300\n"
+"POT-Creation-Date: 2025-01-22 15:51+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -245,9 +245,10 @@ msgid ""
 "\t\tВот, собственно говоря, всё что я хотел сказать про себя и сайт. Если "
 "хочешь узнать больше обо мне и моём прошлом, милости прошу \n"
 "\t\t"
-msgstr "" 
+msgstr ""
 "\n"
-"That's basically all I wanted to say about myself and the site. If you want to know more, please \n"
+"That's basically all I wanted to say about myself and the site. If you want "
+"to know more, please \n"
 "\t\t"
 
 #: .\Main\templates\Main\about.html:134
@@ -263,10 +264,9 @@ msgid ""
 "\t\t"
 msgstr ""
 "\n"
-"By the way, somewhere here "
-"there will be a tag cloud of my entire site; each word will be a link to the "
-"corresponding pagination page. (If it's not there, then forgive me; it's "
-"still in progress.)"
+"By the way, somewhere here there will be a tag cloud of my entire site; each "
+"word will be a link to the corresponding pagination page. (If it's not "
+"there, then forgive me; it's still in progress.)"
 
 #: .\Main\templates\Main\about.html:141
 msgid ""
@@ -407,8 +407,8 @@ msgstr "Tools"
 #: .\Main\templates\Main\home.html:26 .\Main\templates\Main\home.html:36
 #: .\Main\templates\Main\home.html:45 .\Main\templates\Main\home.html:56
 #: .\Main\templates\Main\home.html:65 .\Main\templates\Main\home.html:75
-#: .\Main\templates\Main\home.html:117 .\Main\templates\Main\home.html:124
-#: .\Main\templates\Main\home.html:155 .\Main\templates\Main\home.html:162
+#: .\Main\templates\Main\home.html:101 .\Main\templates\Main\home.html:108
+#: .\Main\templates\Main\home.html:138 .\Main\templates\Main\home.html:145
 msgid "Больше ..."
 msgstr "See more ..."
 
@@ -432,11 +432,11 @@ msgstr "Questions"
 msgid "Заметки"
 msgstr "Notes"
 
-#: .\Main\templates\Main\home.html:96
+#: .\Main\templates\Main\home.html:80
 msgid "Другие ресурсы"
 msgstr "Other resources"
 
-#: .\Main\templates\Main\home.html:134
+#: .\Main\templates\Main\home.html:117
 msgid "Другие статьи (по темам)"
 msgstr "Other articles (by topic)"
 

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-01-09 09:26+0300\n"
+"POT-Creation-Date: 2025-01-22 15:51+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -323,8 +323,8 @@ msgstr "Tim the Webmaster"
 msgid "Использованно в"
 msgstr "Used in"
 
-#: .\Post\templates\Post\basic--post_preview-qa.html:13
-#: .\Post\templates\Post\basic--post_preview-td.html:13
+#: .\Post\templates\Post\basic--post_preview-qa.html:10
+#: .\Post\templates\Post\basic--post_preview-td.html:10
 msgid "Узнать больше"
 msgstr "See more"
 
