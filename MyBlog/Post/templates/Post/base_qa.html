@@ -15,12 +15,14 @@
 
 {% block content_post %}
 
+	<div id="content_post_article">
 	<div class="text">
 		{{post.answer}}
 	</div>
 	{% block content_post_qa %}
 	{% endblock %}
     <div class="answer_pusher"></div>
+	</div>
 	
 {% endblock %}
 
