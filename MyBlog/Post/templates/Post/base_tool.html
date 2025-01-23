@@ -46,9 +46,10 @@
 		{% include 'Breadcrumbs/breadcrumbs.html' with path=request.META.HTTP_REFERER%}
 	{% endif %}
     </div>
-	
+
     {% block content_tool %}
 	{% endblock %}
+
     <hr class="limiter in_middle-self" style="border-top: 2px solid black;">
     {% if isEngagementMiddlewareConnected %}
 	    {% include 'Engagement/engagement_options.html' %}

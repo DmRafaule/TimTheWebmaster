@@ -58,9 +58,12 @@
 	margin-top: var(--text_block_margin-top);
 	background: rgb(140, 225, 94, 0.185);
 	border: 2px solid black;
-	border-radius: 10px;
-	gap: var(--mid_pm);
+	border-radius: 4px;
+	gap: var(--min_pm);
 	display: flex;
+}
+.code.padder{
+	padding: 4px;
 }
 .ql-code-block-container{
 	white-space: pre-wrap;
