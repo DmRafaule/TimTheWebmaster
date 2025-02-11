@@ -3,6 +3,7 @@ from Post.models import Category, Tag, Article, TD, QA, Tool
 from django.utils.translation import gettext as _
 from django.db.models import Q
 from urllib.parse import urlsplit
+from django.shortcuts import get_object_or_404
 
 register = template.Library()
 
@@ -72,7 +73,7 @@ def urlToBreadcrumbs(url: str):
                     if tag_counter >= 1:
                         name += ', '
                         for i in range(tag_counter):
-                            tag = Tag.objects.get(Q(slug_en=args['tag' + str(i)]) | Q(slug_ru=args['tag' + str(i)]))
+                            tag = get_object_or_404(Tag, Q(slug_en=args['tag' + str(i)]) | Q(slug_ru=args['tag' + str(i)]))
                             name += ','.join([tag.name, ' ' ])
                     result_list.append({
                         'name': name,

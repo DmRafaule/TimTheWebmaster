@@ -8,6 +8,7 @@ from django.db.models import Q
 import math
 from itertools import chain
 from bs4 import BeautifulSoup
+from itertools import chain
 
     
 def page_to_string(html):
@@ -71,6 +72,33 @@ def get_posts_by_years(years, queryset):
     else:
         return queryset
 
+def get_posts_by_letters(letters, queryset):
+    if len(letters) > 0:
+        trms = queryset.none()
+        for letter in letters:
+            trms = list(chain(trms, queryset.filter(termin__istartswith=letter)))
+        return queryset.filter(termin__in=trms)
+    else:
+        return queryset
+
+def get_posts_by_platforms(platforms, queryset):
+    for platform in platforms:
+        queryset = queryset.filter(platforms=platform)
+
+    if len(queryset) == 0:
+        return []
+    else:
+        return queryset 
+
+# Return only those elements which has all tags in them
+def getAllWithTags(queryset, tags, threshold = None):
+    for tag in tags:
+        queryset = queryset.filter(tags=tag)
+
+    if len(queryset) == 0:
+        return []
+    else:
+        return queryset 
 
 def get_latest_post(number: int, queryset):
     new_posts = list()

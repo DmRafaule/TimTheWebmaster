@@ -1,0 +1,12 @@
+{% load static %}
+
+<script src="{% static 'PostFilter/js/filtering.js' %}"></script>
+{% if isTimeFilter %}
+    <script src="{% static 'PostFilter/js/time_filtering.js' %}"></script>
+{% endif %}
+{% if isTooltypesFilter %}
+    <script src="{% static 'PostFilter/js/tooltype_filtering.js' %}"></script>
+{% endif %}
+{% if isAlphabetFilter %}
+    <script src="{% static 'PostFilter/js/alphabet_filtering.js' %}"></script>
+{% endif %}

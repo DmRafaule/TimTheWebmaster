@@ -307,8 +307,8 @@
         {% trans 'Все обучающиеся материалы:' %}
       </div>
       <ol class="numeric_list">
-        <li class="ref" ><a href="{% url 'articles-list' %}?page=1&type=full&is_recent=true&mode=basic&tag={{quilljs_module_tag}}&tag={{quilljs_tag}}">{% trans 'По разработке модулей для редактора на quilljs' %}</a></li>
-        <li class="ref"><a href="{% url 'articles-list' %}?page=1&type=full&is_recent=true&mode=basic&tag={{quilljs_tag}}">{% trans 'По редактированию и кастомизации редактора на quilljs' %}</a></li>
+        <li class="ref" ><a href="{% url 'articles-list' %}?page=1&tag={{quilljs_module_tag}}&tag={{quilljs_tag}}">{% trans 'По разработке модулей для редактора на quilljs' %}</a></li>
+        <li class="ref"><a href="{% url 'articles-list' %}?page=1&tag={{quilljs_tag}}">{% trans 'По редактированию и кастомизации редактора на quilljs' %}</a></li>
       </ol>
   </div>
   {% endif %}

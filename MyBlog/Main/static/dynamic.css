@@ -4,6 +4,12 @@
 .active_nav{
 	width: 300px !important;
 }
+.active_filter{
+	height: 0;
+}
+.active_filter-out{
+	display: none;
+}
 .active_toggle_button{
 }
 .active_toggle_button_image{

@@ -1,3 +1,6 @@
+.paginator_container > .engagement_body_mobile{
+    position: unset;
+}
 .engagement_body{
     position: fixed;
     display: flex;
@@ -6,6 +9,7 @@
     bottom: 0;
     left: 0;
 }
+
 .engagement_body_body{
     color: var(--ui_text_color);
     background-color: var(--secondary_color);

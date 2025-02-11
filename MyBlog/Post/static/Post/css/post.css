@@ -6,6 +6,13 @@
 	flex-direction: column;
 	margin-bottom: 100px;
 }
+.empty_post_placeholder{
+	display: flex;
+    min-height: 300px;
+    background-color: #ffffff73;
+    border-radius: var(--post_preview_border-radius);
+    position: relative;
+}
 .selected_view, .selected_order{
 	background-color: var(--acent_color);
 }

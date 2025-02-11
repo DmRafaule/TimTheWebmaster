@@ -10,7 +10,7 @@
           <div class="row mid_gap on_end_other">
             <form class="vertical" action='' id="toSendFeedback"  method="post">
               {% csrf_token %}
-              {% for field in form %}
+              {% for field in feedback_form %}
                 <div>
                   {{ field }}
                 </div>

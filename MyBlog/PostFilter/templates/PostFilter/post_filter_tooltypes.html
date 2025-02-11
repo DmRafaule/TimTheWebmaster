@@ -1,0 +1,19 @@
+{% load i18n %}
+{% load static %}
+
+<fieldset class="el-expandable el-shrinkable el-300-min-basis">
+    <legend>
+        <div class="row mid_gap in_middle on_start no_wrap" >
+            <div>{% trans "Платформы" %}</div>
+        </div>
+    </legend>
+    <div class="row min_gap">
+        {% for platform in platforms %}
+            <div id="platform-{{platform.id}}" data-platform='{{platform.id}}' class='row on_middle_other el-expandable el-shrinkable min_gap platform_button button action_button_white squered_button bordered_button'>
+                <img class="in_middle-self icon_small dynamic_image" width="32" height="32" src="{% static 'placeholder.svg' %}" data-src='{% get_media_prefix %}{{platform.icon}}' alt="{{platform.name}}">
+                <div>|</div>
+                <div>{{platform.name}}</div>
+            </div>
+        {% endfor %}
+    </div>
+</fieldset>

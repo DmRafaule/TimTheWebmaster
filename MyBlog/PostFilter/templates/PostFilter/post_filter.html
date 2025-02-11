@@ -1,0 +1,26 @@
+{% load static %}
+{% load i18n %}
+
+<fieldset id="filters" class="row mid_gap full_width  padder fieldset_filter_toggled marger_top_mid">
+    <legend class="row min_gap on_middle_other">
+        <div id="filter_main_button" class="bordered_button button squered_button filter_button"  data-body="filters_body"  data-close-btn="{% static 'close.svg' %}">
+            <img  data-sort="true" width="32" height="32" class="svg_icon_inverted_black dynamic_image " src="{% static 'placeholder.svg' %}" data-src="{% static 'filter.svg' %}" alt="{% trans 'one layer on top of anothe' %}">
+        </div>
+        <div id="onFilterOut" class="button bordered_button squered_button padder active_filter-out filter_button">{% trans 'Фильтровать' %}</div>
+        {% if isTimeFilter %}
+        <div class="hat_button bordered_button button squered_button" >
+            <img id="onSort" width="32" height="32" class="icon dynamic_image filter_button" src="{% static 'placeholder.svg'%}" data-src="{% static 'Post/img/sort.svg' %}" alt="{% trans 'Значок сортировки' %}">
+        </div>
+        {% endif %}
+        {% if isAlphabetFilter %}
+        <div id="onAlphabet" data-sort='ignore' class="bordered_button button squered_button filter_button" data-close-btn="{% static 'PostFilter/img/sort-alphabetically.svg' %}" >
+            <img width="32" height="32" style="padding: 4px" class="icon dynamic_image" src="{% static 'placeholder.svg'%}" data-src="{% static 'PostFilter/img/sort-reverse-alphabetically.svg' %}" alt="{% trans 'Значок сортировки' %}">
+        </div>
+        {% endif %}
+    </legend>
+    <div id="filters_body" class="active_filter row mid_gap full_width " style="overflow: hidden;">
+        {% for filter in filters_doc %}
+            {{filter}}
+        {% endfor %}
+    </div>
+</fieldset>

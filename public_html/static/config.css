@@ -92,6 +92,7 @@
 	--devider_margin: 16px;
 	/*Post preview*/
 	--post_preview_margin-top: 40px;
+	--post_preview_border-radius: 5px;
 	/*Video player*/
 	--video-player_border-radius: 10px;
 	/*Modal window radius*/

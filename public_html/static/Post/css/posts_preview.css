@@ -3,7 +3,7 @@
 	padding: var(--min_pm);
 	margin-top: var(--post_preview_margin-top);
 	background-color: var(--upper_bg);
-	border-radius: 10px;
+	border-radius: var(--post_preview_border-radius);
 	padding: 5px;
 	box-shadow: 4px 10px 12px 0px rgba(0,0,0,0.75);
 	-webkit-box-shadow: 4px 10px 12px 0px rgba(0,0,0,0.75);

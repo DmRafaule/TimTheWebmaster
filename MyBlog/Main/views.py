@@ -140,7 +140,7 @@ def home(request):
     return TemplateResponse(request, 'Main/home.html', context=context)
 
 
-def page_not_found(request, exception):
+def page_not_found(request, exception=None):
     context = U.initDefaults(request)
     return render(request, 'Main/404.html', context=context, status=404)
 
