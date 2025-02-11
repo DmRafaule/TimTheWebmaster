@@ -3,6 +3,7 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 from django.conf.urls.i18n import i18n_patterns
+from django.views.i18n import JavaScriptCatalog
 # For sitemap
 from django.contrib.sitemaps.views import sitemap
 from Post.models import PostSitemap
@@ -27,17 +28,19 @@ urlpatterns = [
 
 
 urlpatterns += i18n_patterns(
+    path("jsi18n/", JavaScriptCatalog.as_view(), name="javascript-catalog"),
     path('', include('Main.urls')),
     path('', include('Admin.urls')),
     path('', include('Engagement.urls')),
     path('', include('Breadcrumbs.urls')),
     path('tools/', include('PostEditor.urls')),
-    path('tools/', include('PostFilterEditor.urls')),
+    path('tools/', include('PagiScrollEditor.urls')),
     path('tools/', include('ImageThief.urls')),
     path('tools/', include('WebGLEngine.urls')),
     path('tools/', include('RSSAggregator.urls')),
     path('tools/', include('ShaderToy.urls')),
     path('', include('Post.urls')),
+    path('', include('PagiScroll.urls')),
 )
 
 handler404 = "Main.views.page_not_found"

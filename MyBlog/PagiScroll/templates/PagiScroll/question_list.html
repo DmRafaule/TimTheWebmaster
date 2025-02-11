@@ -1,0 +1,49 @@
+{% extends 'PagiScroll/base_post_list.html' %}
+{% load static%}
+{% load i18n %}
+{% load listToURL %}
+
+{% block head_body %}
+	<script type="application/ld+json">
+		{
+			"@context": "https://schema.org",
+			"@type": "FAQPage",
+			"mainEntity": [
+			{% for qa in posts %}
+			{% if forloop.counter == posts|length%}
+				{
+					"@type": "Question",
+					"name": "{{qa.question}}",
+					"acceptedAnswer": {
+						"@type": "Answer",
+						"text": "{{qa.answer}}"
+					}
+				} 
+			{% else %}
+				{
+					"@type": "Question",
+					"name": "{{qa.question}}",
+					"acceptedAnswer": {
+						"@type": "Answer",
+						"text": "{{qa.answer}}"
+					}
+				},
+			{% endif%}
+			{% endfor %}
+			]
+		}
+	</script>
+{% endblock %}
+
+
+{% block content_list %}
+	<div id="page" class="page toObserve">
+		{% include 'Post/basic--post_preview-qa.html' %}
+	</div>
+{% endblock %}
+
+{% block styles_list %}
+{% endblock %}
+
+{% block scripts_list %}
+{% endblock %}

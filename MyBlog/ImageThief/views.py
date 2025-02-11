@@ -36,7 +36,7 @@ def tool_main(request):
     # Get latest notes about ImageThief
     imageThief_tags = Tag.objects.filter(slug_en='imagethief')
     if len(imageThief_tags) > 0:
-        posts = P.filterByTag(Note.objects.filter(isPublished=True), [imageThief_tags[0]])[:MAX_NOTES_ON_TOOL]
+        posts = U.getAllWithTags(Note.objects.filter(isPublished=True), [imageThief_tags[0]])[:MAX_NOTES_ON_TOOL]
         context.update({'imageThief_tag': imageThief_tags[0].slug})
         context.update({'posts': posts})
         loaded_template = loader.get_template(f'Post/basic--post_preview-note.html')

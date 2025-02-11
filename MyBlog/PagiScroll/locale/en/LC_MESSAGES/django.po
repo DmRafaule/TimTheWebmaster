@@ -1,0 +1,76 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-02-11 14:25+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+#: .\PagiScroll\templates\PagiScroll\base_post_list.html:11
+msgid "cтраница "
+msgstr "page "
+
+#: .\PagiScroll\templates\PagiScroll\base_post_list.html:45
+#: .\PagiScroll\templates\PagiScroll\base_post_list.html:113
+#: .\PagiScroll\templates\PagiScroll\base_post_list.html:133
+msgid "страница "
+msgstr "page "
+
+#: .\PagiScroll\templates\PagiScroll\base_post_list.html:64
+msgid "с тегами:"
+msgstr "with tags: "
+
+#: .\PagiScroll\templates\PagiScroll\base_post_list.html:64
+#: .\PagiScroll\templates\PagiScroll\base_post_list.html:136
+msgid "Страница "
+msgstr "Page "
+
+#: .\PagiScroll\templates\PagiScroll\base_post_list.html:66
+#: .\PagiScroll\templates\PagiScroll\base_post_list.html:145
+msgid " Они были связаны и сгруппированы по следующим тегам: "
+msgstr " They were linked and grouped under the following tags: "
+
+#: .\PagiScroll\templates\PagiScroll\base_post_list.html:66
+#: .\PagiScroll\templates\PagiScroll\base_post_list.html:145
+msgid " Страница "
+msgstr " Page "
+
+#: .\PagiScroll\templates\PagiScroll\base_post_list.html:115
+msgid " начиная с "
+msgstr " staring with "
+
+#: .\PagiScroll\templates\PagiScroll\base_post_list.html:115
+msgid " страницы"
+msgstr " page"
+
+#: .\PagiScroll\templates\PagiScroll\base_post_list.html:136
+msgid "связанные со следующими тегами: "
+msgstr "related to the following tags: "
+
+#: .\PagiScroll\templates\PagiScroll\base_post_list.html:179
+#: .\PagiScroll\templates\PagiScroll\base_post_list.html:185
+msgid "Шеврон"
+msgstr "Chevron"
+
+#: .\PagiScroll\views.py:97 .\PagiScroll\views.py:126
+msgid "Ничего не нашёл."
+msgstr "Did not find anything"
+
+#: .\PagiScroll\views.py:112 .\PagiScroll\views.py:114
+msgid "Такого тега не существует, или он введён с ошибкой"
+msgstr "There is no such tag, or mistyped"
+
+#: .\PagiScroll\views.py:132 .\PagiScroll\views.py:134
+msgid "Так много страниц у меня нет."
+msgstr "I do not have so many pages."

@@ -11,6 +11,7 @@ class BreadcrumbsMiddleware:
         self.allowed_func_posts = ('article','td','qa')
         self.allowed_func_tools = ('tool_main',)
         self.allowed_func_lists = ('article_list', 'td_list', 'qa_list', 'tools_list', 'notes_list')
+        self.allowed_templates_pagination = ('PagiScroll/article_list.html', 'PagiScroll/termin_list.html', 'PagiScroll/question_list.html', 'PagiScroll/tool_list.html', 'PagiScroll/note_list.html')
 
     def __call__(self, request):
         # Code to be executed for each request before
@@ -30,8 +31,6 @@ class BreadcrumbsMiddleware:
         elif view_func.__name__ in self.allowed_func_tools:
             self.handler = self.tool_handler
             self.slug = self._remove_items(request.path.split('/'),'')[-1]
-        elif view_func.__name__ in self.allowed_func_lists:
-            self.handler = self.list_handler
         
         return None
 
@@ -42,6 +41,9 @@ class BreadcrumbsMiddleware:
         response.context_data.update({'isBreadcrumbsMiddlewareConnected': True})
         if self.handler is not None:
             self.handler(request, response)
+        elif response.template_name in self.allowed_templates_pagination:
+            self.list_handler(request, response)
+
         return response
 
     def _remove_items(self, list, item): 

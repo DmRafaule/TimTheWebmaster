@@ -1,0 +1,12 @@
+.not_found{
+    width: 100%;
+    text-align: center;
+    margin-top: 45svh;
+    margin-bottom: 45svh;
+    word-wrap: break-word;
+    padding: 4px;
+}
+.error_code{
+    font-size: 120px;
+    font-weight: bold;
+}

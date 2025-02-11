@@ -1,4 +1,4 @@
-{% extends 'Main/base.html' %}
+{% extends 'Main/base_status_code.html' %}
 {% load static %}
 {% load i18n %}
 
@@ -9,7 +9,8 @@
 {% endblock %}
 
 {% block content %}
-	<div class="title_in_middle">
+	<div class="not_found">
+		<div class="error_code">404</div>
 		<h1>{% trans "Страница не найдена" %}</h1>
 	</div>
 {% endblock %}
@@ -21,4 +22,6 @@
 {% endblock %}
 
 {% block styles %}
+	<link type="text/css" rel="stylesheet" href="{% static 'blocks.css' %}"/>
+	<link type="text/css" rel="stylesheet" href="{% static 'status_codes.css' %}"/>
 {% endblock %}

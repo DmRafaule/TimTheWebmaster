@@ -1,0 +1,159 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-02-11 14:25+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+#: .\PostFilter\middleware.py:58
+msgid "АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЬ"
+msgstr "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+
+#: .\PostFilter\templates\PostFilter\post_filter.html:7
+msgid "one layer on top of anothe"
+msgstr ""
+
+#: .\PostFilter\templates\PostFilter\post_filter.html:9
+msgid "Фильтровать"
+msgstr "Filter out"
+
+#: .\PostFilter\templates\PostFilter\post_filter.html:12
+#: .\PostFilter\templates\PostFilter\post_filter.html:17
+msgid "Значок сортировки"
+msgstr "Sign of sorting"
+
+#: .\PostFilter\templates\PostFilter\post_filter_alphabet.html:7
+msgid "Сортировка постов по алфавиту"
+msgstr "Sorting posts by alphabet"
+
+#: .\PostFilter\templates\PostFilter\post_filter_times.html:7
+msgid "Сортировка постов относительно сегодня"
+msgstr "Sorting posts relative today"
+
+#: .\PostFilter\templates\PostFilter\post_filter_times.html:13
+msgid "Не сортировать относительно сегодня"
+msgstr "Do not sort posts by today"
+
+#: .\PostFilter\templates\PostFilter\post_filter_times.html:17
+msgid "За этот день"
+msgstr "During this day"
+
+#: .\PostFilter\templates\PostFilter\post_filter_times.html:21
+msgid "За эту неделю"
+msgstr "During this week"
+
+#: .\PostFilter\templates\PostFilter\post_filter_times.html:25
+msgid "За этот месяц"
+msgstr "During this month"
+
+#: .\PostFilter\templates\PostFilter\post_filter_times.html:29
+msgid "За этот год"
+msgstr "During this year"
+
+#: .\PostFilter\templates\PostFilter\post_filter_times.html:36
+msgid "Сортировка постов по дню недели"
+msgstr "Sorting posts by day of week"
+
+#: .\PostFilter\templates\PostFilter\post_filter_times.html:40
+msgid "Пон"
+msgstr "Mon"
+
+#: .\PostFilter\templates\PostFilter\post_filter_times.html:41
+msgid "Вто"
+msgstr "Tue"
+
+#: .\PostFilter\templates\PostFilter\post_filter_times.html:42
+msgid "Сре"
+msgstr "Wen"
+
+#: .\PostFilter\templates\PostFilter\post_filter_times.html:43
+msgid "Чет"
+msgstr "Thu"
+
+#: .\PostFilter\templates\PostFilter\post_filter_times.html:44
+msgid "Пят"
+msgstr "Fri"
+
+#: .\PostFilter\templates\PostFilter\post_filter_times.html:45
+msgid "Суб"
+msgstr "Sat"
+
+#: .\PostFilter\templates\PostFilter\post_filter_times.html:46
+msgid "Вос"
+msgstr "Sun"
+
+#: .\PostFilter\templates\PostFilter\post_filter_times.html:52
+msgid "Сортировка постов по дню месяца"
+msgstr "Sorting posts by day of month"
+
+#: .\PostFilter\templates\PostFilter\post_filter_times.html:92
+msgid "Сортировка постов по месяцу"
+msgstr "Sorting posts by month"
+
+#: .\PostFilter\templates\PostFilter\post_filter_times.html:96
+msgid "Янв"
+msgstr "Jan"
+
+#: .\PostFilter\templates\PostFilter\post_filter_times.html:97
+msgid "Фев"
+msgstr "Feb"
+
+#: .\PostFilter\templates\PostFilter\post_filter_times.html:98
+msgid "Мар"
+msgstr "Mar"
+
+#: .\PostFilter\templates\PostFilter\post_filter_times.html:99
+msgid "Апр"
+msgstr "Apr"
+
+#: .\PostFilter\templates\PostFilter\post_filter_times.html:100
+msgid "Май"
+msgstr "May"
+
+#: .\PostFilter\templates\PostFilter\post_filter_times.html:101
+msgid "Июн"
+msgstr "Jun"
+
+#: .\PostFilter\templates\PostFilter\post_filter_times.html:102
+msgid "Июл"
+msgstr "Jul"
+
+#: .\PostFilter\templates\PostFilter\post_filter_times.html:103
+msgid "Ауг"
+msgstr "Aug"
+
+#: .\PostFilter\templates\PostFilter\post_filter_times.html:104
+msgid "Сен"
+msgstr "Sep"
+
+#: .\PostFilter\templates\PostFilter\post_filter_times.html:105
+msgid "Окт"
+msgstr "Oct"
+
+#: .\PostFilter\templates\PostFilter\post_filter_times.html:106
+msgid "Ноя"
+msgstr "Nov"
+
+#: .\PostFilter\templates\PostFilter\post_filter_times.html:107
+msgid "Дек"
+msgstr "Dec"
+
+#: .\PostFilter\templates\PostFilter\post_filter_times.html:113
+msgid "Сортировка постов по году"
+msgstr "Sorting posts by year"
+
+#: .\PostFilter\templates\PostFilter\post_filter_tooltypes.html:7
+msgid "Платформы"
+msgstr "Platforms"

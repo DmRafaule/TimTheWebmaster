@@ -20,10 +20,10 @@
 		<div class="home_ui_el ">
 			<h2 class=""><a class="text_button" href="{% url 'tools-list' %}">{% trans "Инструменты" %}</a></h2>
 			<div class="post_previews--category mid_gap">
-			{% include 'Post/list--post_preview-tool.html' with posts=internal_tools_posts %}
+			{% include 'Post/basic--post_preview-tool.html' with posts=internal_tools_posts %}
 			</div>
 			<div class="see_more_button button action_button">
-				<a class="white_text_button " href="{% url 'tools-list' %}?page=1&type=full&is_recent=true&mode=list&tag={{internal_tool_tag}}">{% trans 'Больше ...' %}</a>
+				<a class="white_text_button " href="{% url 'tools-list' %}?page=1&tag={{internal_tool_tag}}">{% trans 'Больше ...' %}</a>
 			</div>
 		</div>
 		{% endif %}
@@ -37,12 +37,12 @@
 			</div>
 		</div>
 		<div class="home_ui_el">
-			<h2 class=""><a class="text_button" href="{% url 'articles-list' %}?page=1&type=full&is_recent=true&mode=basic&tag={{latest_news_tag}}">{% trans "Последние новости" %}</a></h2>
+			<h2 class=""><a class="text_button" href="{% url 'articles-list' %}?page=1&tag={{latest_news_tag}}">{% trans "Последние новости" %}</a></h2>
 			<div class="post_previews--category-forNews mid_gap">
 				{% include 'Post/basic--post_preview-article.html' with posts=latest_news_posts %}
 			</div>
 			<div class="see_more_button button action_button">
-				<a class="white_text_button " href="{% url 'articles-list' %}?page=1&type=full&is_recent=true&mode=basic&tag={{latest_news_tag}}">{% trans 'Больше ...' %}</a>
+				<a class="white_text_button " href="{% url 'articles-list' %}?page=1&tag={{latest_news_tag}}">{% trans 'Больше ...' %}</a>
 			</div>
 		</div>
 		<div class="row max_gap">
@@ -96,16 +96,16 @@
 					{% for res in my_resources %}
 						{% if forloop.counter == 1 %}
 						<div id="tab_body-1" class="tab_element tab_element__active mid_gap">
-							{% include 'Post/list--post_preview-tool.html' with posts=res.objs %}
+							{% include 'Post/basic--post_preview-tool.html' with posts=res.objs %}
 							<div class="see_more_button button action_button">
-								<a class="white_text_button " href="{% url 'tools-list' %}?page=1&type=full&is_recent=true&mode=list&tag={{res.tag}}">{% trans 'Больше ...' %}</a>
+								<a class="white_text_button " href="{% url 'tools-list' %}?page=1&tag={{res.tag}}">{% trans 'Больше ...' %}</a>
 							</div>
 						</div>
 						{% else %}
 						<div id="tab_body-{{forloop.counter}}" class="tab_element  mid_gap">
-							{% include 'Post/list--post_preview-tool.html' with posts=res.objs %}
+							{% include 'Post/basic--post_preview-tool.html' with posts=res.objs %}
 							<div class="see_more_button button action_button">
-								<a class="white_text_button " href="{% url 'tools-list' %}?page=1&type=full&is_recent=true&mode=list&tag={{res.tag}}">{% trans 'Больше ...' %}</a>
+								<a class="white_text_button " href="{% url 'tools-list' %}?page=1&tag={{res.tag}}">{% trans 'Больше ...' %}</a>
 							</div>
 						</div>
 						{% endif%}
@@ -135,14 +135,14 @@
 						<div id="tab_body-1" class="tab_element tab_element__active mid_gap">
 							{% include 'Post/basic--post_preview-article.html' with posts=res.objs %}
 							<div class="see_more_button button action_button">
-								<a class="white_text_button " href="{% url 'articles-list' %}?page=1&type=full&is_recent=true&mode=basic&tag={{res.tag}}">{% trans 'Больше ...' %}</a>
+								<a class="white_text_button " href="{% url 'articles-list' %}?page=1&tag={{res.tag}}">{% trans 'Больше ...' %}</a>
 							</div>
 						</div>
 						{% else %}
 						<div id="tab_body-{{forloop.counter}}" class="tab_element mid_gap">
 							{% include 'Post/basic--post_preview-article.html' with posts=res.objs %}
 							<div class="see_more_button button action_button">
-								<a class="white_text_button " href="{% url 'articles-list' %}?page=1&type=full&is_recent=true&mode=basic&tag={{res.tag}}">{% trans 'Больше ...' %}</a>
+								<a class="white_text_button " href="{% url 'articles-list' %}?page=1&tag={{res.tag}}">{% trans 'Больше ...' %}</a>
 							</div>
 						</div>
 						{% endif%}

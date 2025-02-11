@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-01-22 15:51+0300\n"
+"POT-Creation-Date: 2025-02-11 14:25+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,260 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: .\Post\templates\Post\article_list.html:13
-#: .\Post\templates\Post\note_list.html:13
-#: .\Post\templates\Post\question_list.html:13
-#: .\Post\templates\Post\termin_list.html:13
-#: .\Post\templates\Post\tool_list.html:13
-msgid "страница "
-msgstr "page "
-
-#: .\Post\templates\Post\article_list.html:24
-#: .\Post\templates\Post\note_list.html:24
-#: .\Post\templates\Post\question_list.html:24
-#: .\Post\templates\Post\termin_list.html:24
-#: .\Post\templates\Post\tool_list.html:24
-msgid "с тегами:"
-msgstr "with tags:"
-
-#: .\Post\templates\Post\article_list.html:24
-#: .\Post\templates\Post\base_post_list.html:74
-#: .\Post\templates\Post\note_list.html:24
-#: .\Post\templates\Post\question_list.html:24
-#: .\Post\templates\Post\termin_list.html:24
-#: .\Post\templates\Post\tool_list.html:24
-#: .\Post\templatetags\urlToBreadcrumbs.py:71
-msgid "Страница "
-msgstr "Page "
-
-#: .\Post\templates\Post\article_list.html:26
-#: .\Post\templates\Post\base_post_list.html:83
-#: .\Post\templates\Post\note_list.html:26
-#: .\Post\templates\Post\question_list.html:26
-#: .\Post\templates\Post\termin_list.html:26
-#: .\Post\templates\Post\tool_list.html:26
-msgid " Они были связаны и сгруппированы по следующим тегам: "
-msgstr " They were linked and grouped under the following tags: "
-
-#: .\Post\templates\Post\article_list.html:26
-#: .\Post\templates\Post\base_post_list.html:83
-#: .\Post\templates\Post\note_list.html:26
-#: .\Post\templates\Post\question_list.html:26
-#: .\Post\templates\Post\termin_list.html:26
-#: .\Post\templates\Post\tool_list.html:26
-msgid " Страница "
-msgstr " Page "
-
-#: .\Post\templates\Post\article_list.html:42
-#: .\Post\templates\Post\tool_list.html:53
-msgid "ОТОБРАЖЕНИЕ"
-msgstr "VIEW"
-
-#: .\Post\templates\Post\article_list.html:48
-#: .\Post\templates\Post\article_list.html:50
-msgid "Значок базового представления"
-msgstr "Sign of basic view"
-
-#: .\Post\templates\Post\article_list.html:52
-msgid "Полное отображение постов"
-msgstr "Full display of post metadata"
-
-#: .\Post\templates\Post\article_list.html:56
-#: .\Post\templates\Post\article_list.html:58
-msgid "Значок упрощённого представления"
-msgstr "Sign of simplified view"
-
-#: .\Post\templates\Post\article_list.html:60
-msgid "Упрощённое отображение постов"
-msgstr "Simplified version of posts preview"
-
-#: .\Post\templates\Post\article_list.html:67
-#: .\Post\templates\Post\note_list.html:42
-#: .\Post\templates\Post\question_list.html:71
-#: .\Post\templates\Post\termin_list.html:71
-#: .\Post\templates\Post\tool_list.html:42
-msgid "ПОРЯДОК"
-msgstr "ORDER"
-
-#: .\Post\templates\Post\article_list.html:71
-#: .\Post\templates\Post\note_list.html:46
-#: .\Post\templates\Post\question_list.html:75
-#: .\Post\templates\Post\termin_list.html:75
-#: .\Post\templates\Post\tool_list.html:46
-msgid "Значок сортировки"
-msgstr "Sign of sorting"
-
-#: .\Post\templates\Post\article_list.html:72
-#: .\Post\templates\Post\note_list.html:47
-#: .\Post\templates\Post\question_list.html:76
-#: .\Post\templates\Post\termin_list.html:76
-#: .\Post\templates\Post\tool_list.html:47
-msgid "Сортировка постов по дате публикации "
-msgstr "Sort a posts by date"
-
-#: .\Post\templates\Post\article_list.html:77
-#: .\Post\templates\Post\note_list.html:52
-msgid "Сортировка постов относительно сегодня"
-msgstr "Sorting posts relative to today"
-
-#: .\Post\templates\Post\article_list.html:83
-#: .\Post\templates\Post\note_list.html:58
-msgid "Не сортировать относительно сегодня"
-msgstr "Do not sort relatively"
-
-#: .\Post\templates\Post\article_list.html:87
-#: .\Post\templates\Post\note_list.html:62
-msgid "За этот день"
-msgstr "This day"
-
-#: .\Post\templates\Post\article_list.html:91
-#: .\Post\templates\Post\note_list.html:66
-msgid "За эту неделю"
-msgstr "This week"
-
-#: .\Post\templates\Post\article_list.html:95
-#: .\Post\templates\Post\note_list.html:70
-msgid "За этот месяц"
-msgstr "This month"
-
-#: .\Post\templates\Post\article_list.html:99
-#: .\Post\templates\Post\note_list.html:74
-msgid "За этот год"
-msgstr "This year"
-
-#: .\Post\templates\Post\article_list.html:106
-#: .\Post\templates\Post\note_list.html:81
-msgid "Сортировка постов по дню недели"
-msgstr "Sorting posts by day of week"
-
-#: .\Post\templates\Post\article_list.html:110
-#: .\Post\templates\Post\note_list.html:85
-msgid "Пон"
-msgstr "Mon"
-
-#: .\Post\templates\Post\article_list.html:111
-#: .\Post\templates\Post\note_list.html:86
-msgid "Вто"
-msgstr "Tue"
-
-#: .\Post\templates\Post\article_list.html:112
-#: .\Post\templates\Post\note_list.html:87
-msgid "Сре"
-msgstr "Wen"
-
-#: .\Post\templates\Post\article_list.html:113
-#: .\Post\templates\Post\note_list.html:88
-msgid "Чет"
-msgstr "Thu"
-
-#: .\Post\templates\Post\article_list.html:114
-#: .\Post\templates\Post\note_list.html:89
-msgid "Пят"
-msgstr "Fri"
-
-#: .\Post\templates\Post\article_list.html:115
-#: .\Post\templates\Post\note_list.html:90
-msgid "Суб"
-msgstr "Sat"
-
-#: .\Post\templates\Post\article_list.html:116
-#: .\Post\templates\Post\note_list.html:91
-msgid "Вос"
-msgstr "Sun"
-
-#: .\Post\templates\Post\article_list.html:122
-#: .\Post\templates\Post\note_list.html:97
-msgid "Сортировка постов по дню месяца"
-msgstr "Sorting posts by day of month"
-
-#: .\Post\templates\Post\article_list.html:162
-#: .\Post\templates\Post\note_list.html:137
-msgid "Сортировка постов по месяцу"
-msgstr "Sorting posts by month"
-
-#: .\Post\templates\Post\article_list.html:166
-#: .\Post\templates\Post\note_list.html:141
-msgid "Янв"
-msgstr "Jan"
-
-#: .\Post\templates\Post\article_list.html:167
-#: .\Post\templates\Post\note_list.html:142
-msgid "Фев"
-msgstr "Feb"
-
-#: .\Post\templates\Post\article_list.html:168
-#: .\Post\templates\Post\note_list.html:143
-msgid "Мар"
-msgstr "Mar"
-
-#: .\Post\templates\Post\article_list.html:169
-#: .\Post\templates\Post\note_list.html:144
-msgid "Апр"
-msgstr "Apr"
-
-#: .\Post\templates\Post\article_list.html:170
-#: .\Post\templates\Post\note_list.html:145
-msgid "Май"
-msgstr "May"
-
-#: .\Post\templates\Post\article_list.html:171
-#: .\Post\templates\Post\note_list.html:146
-msgid "Июн"
-msgstr "Jun"
-
-#: .\Post\templates\Post\article_list.html:172
-#: .\Post\templates\Post\note_list.html:147
-msgid "Июл"
-msgstr "Jul"
-
-#: .\Post\templates\Post\article_list.html:173
-#: .\Post\templates\Post\note_list.html:148
-msgid "Ауг"
-msgstr "Aug"
-
-#: .\Post\templates\Post\article_list.html:174
-#: .\Post\templates\Post\note_list.html:149
-msgid "Сен"
-msgstr "Sep"
-
-#: .\Post\templates\Post\article_list.html:175
-#: .\Post\templates\Post\note_list.html:150
-msgid "Окт"
-msgstr "Oct"
-
-#: .\Post\templates\Post\article_list.html:176
-#: .\Post\templates\Post\note_list.html:151
-msgid "Ноя"
-msgstr "Nov"
-
-#: .\Post\templates\Post\article_list.html:177
-#: .\Post\templates\Post\note_list.html:152
-msgid "Дек"
-msgstr "Dec"
-
-#: .\Post\templates\Post\article_list.html:183
-#: .\Post\templates\Post\note_list.html:158
-msgid "Сортировка постов по году"
-msgstr "Sorting posts by year"
-
-#: .\Post\templates\Post\article_list.html:196
-#: .\Post\templates\Post\note_list.html:172
-#: .\Post\templates\Post\question_list.html:83
-#: .\Post\templates\Post\termin_list.html:93
-#: .\Post\templates\Post\tool_list.html:78
-msgid "ТИП"
-msgstr "TYPE"
-
-#: .\Post\templates\Post\article_list.html:202
-#: .\Post\templates\Post\note_list.html:178
-#: .\Post\templates\Post\question_list.html:89
-#: .\Post\templates\Post\termin_list.html:99
-#: .\Post\templates\Post\tool_list.html:84
-msgid "Используемые теги для фильтрации"
-msgstr "Used tags for filtration"
-
 #: .\Post\templates\Post\base_article.html:142
-#: .\Post\templates\Post\base_post_list.html:19
 msgid "one layer on top of anothe"
 msgstr ""
 
@@ -292,52 +39,29 @@ msgid "Похожие статьи"
 msgstr "Similar articles"
 
 #: .\Post\templates\Post\base_post.html:26
-#: .\Post\templates\Post\basic--post_preview-article.html:30
-#: .\Post\templates\Post\basic--post_preview-note.html:12
+#: .\Post\templates\Post\basic--post_preview-article.html:11
+#: .\Post\templates\Post\basic--post_preview-note.html:14
 #: .\Post\templates\Post\tool.html:21 .\Post\templates\Post\tool.html:25
 msgid "Часы"
 msgstr "Clock"
-
-#: .\Post\templates\Post\base_post_list.html:57
-msgid " начиная с "
-msgstr " starting from "
-
-#: .\Post\templates\Post\base_post_list.html:57
-msgid " страницы"
-msgstr " page"
-
-#: .\Post\templates\Post\base_post_list.html:74
-msgid "связанные со следующими тегами: "
-msgstr "related to the following tags: "
-
-#: .\Post\templates\Post\base_post_list.html:110
-#: .\Post\templates\Post\base_post_list.html:116
-msgid "Шеврон"
-msgstr "Chevron"
 
 #: .\Post\templates\Post\base_qa.html:6 .\Post\templates\Post\base_td.html:6
 msgid "Тим Вебмастер"
 msgstr "Tim the Webmaster"
 
-#: .\Post\templates\Post\base_qa.html:29 .\Post\templates\Post\base_td.html:29
+#: .\Post\templates\Post\base_qa.html:31 .\Post\templates\Post\base_td.html:31
 msgid "Использованно в"
 msgstr "Used in"
 
-#: .\Post\templates\Post\basic--post_preview-qa.html:10
-#: .\Post\templates\Post\basic--post_preview-td.html:10
+#: .\Post\templates\Post\basic--post_preview-qa.html:11
+#: .\Post\templates\Post\basic--post_preview-td.html:11
 msgid "Узнать больше"
 msgstr "See more"
 
-#: .\Post\templates\Post\grid--post_preview-tool.html:14
-#: .\Post\templates\Post\grid--post_preview-tool.html:20
-#: .\Post\templates\Post\list--post_preview-tool.html:13
-#: .\Post\templates\Post\list--post_preview-tool.html:19
+#: .\Post\templates\Post\basic--post_preview-tool.html:16
+#: .\Post\templates\Post\basic--post_preview-tool.html:22
 msgid "Превью статьи"
 msgstr "Article preview"
-
-#: .\Post\templates\Post\termin_list.html:81
-msgid "Сортировка постов по алфавиту"
-msgstr "Sort a posts by alphabet"
 
 #: .\Post\templates\Post\tool.html:7
 msgid "Инструмент"
@@ -363,24 +87,6 @@ msgstr "See all ..."
 msgid "Похожие инструменты"
 msgstr "Similar tools"
 
-#: .\Post\templates\Post\tool_list.html:59
-#: .\Post\templates\Post\tool_list.html:61
-msgid "Значок показа ввиде списка"
-msgstr "Sign of list view"
-
-#: .\Post\templates\Post\tool_list.html:63
-msgid "Отобразить элементы в виде списка"
-msgstr "Display an elements in a list view"
-
-#: .\Post\templates\Post\tool_list.html:67
-#: .\Post\templates\Post\tool_list.html:69
-msgid "Значок показа ввиде плиток"
-msgstr "Sign of grid view"
-
-#: .\Post\templates\Post\tool_list.html:71
-msgid "Отобразить элементы в виде плитки"
-msgstr "Display an elements in a grid view"
-
 #: .\Post\templatetags\urlToBreadcrumbs.py:32
 msgid "На русском"
 msgstr "In russian"
@@ -400,3 +106,7 @@ msgstr "Contacts"
 #: .\Post\templatetags\urlToBreadcrumbs.py:51
 msgid "Галерея"
 msgstr "Gallery"
+
+#: .\Post\templatetags\urlToBreadcrumbs.py:71
+msgid "Страница "
+msgstr "Page "

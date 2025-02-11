@@ -1,7 +1,8 @@
 {% load static %}
 {% load i18n %}
-{% load markdown %}
 {% load addToListInURL %}
+{% load removeFromListInURL %}
+{% load hasInList %}
 
 {% for a in posts %}
 
@@ -9,11 +10,7 @@
 	<h2 style='font-size: var(--size-titleH4_font)'><a  class="text_button" href='{{a.get_absolute_url}}'>{{a.termin}}</a></h2>
 	<span class="marger_top_mid" style='display: block;'>{{a.definition}}<span class="ref"> <a href='{{a.get_absolute_url}}'>{% trans 'Узнать больше' %}</a></span></span>
 	{% if displayTags %}
-	<div class="post_preview_tags">
-		{% for tag in a.tags.all %}
-		<a href="{{ category.get_absolute_url }}?page=1&type=full&is_recent={{is_recent}}&mode={{mode}}{{tag.slug|addToListInURL:current_tag}}"><div class="tag text_button tag_add">{{tag}}</div></a>
-		{% endfor %}
-	</div>
+		{% include 'Post/tags.html' with post=a %}
 	{% endif %}
 </div>
 

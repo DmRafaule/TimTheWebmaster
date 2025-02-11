@@ -183,9 +183,9 @@ function onReady(){
 		}
 		var paginator = document.querySelector('#paginator_container')
 		if (paginator && IS_MOBILE){
-			
-			document.querySelector("#engagement_body").style.bottom = paginator.getBoundingClientRect().height + "px"
+			document.querySelector("#engagement_body").classList.add('engagement_body_mobile')
 		}
+	
 	}
 
 }

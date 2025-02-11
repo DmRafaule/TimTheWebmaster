@@ -18,7 +18,8 @@ class EngagementMiddleware:
         self.allowed_func_posts_with_no_comments = ('td','qa')
         # All tools main view functions must be called tool_main
         self.allowed_func_tools = ('tool_main', 'tool')
-        self.allowed_func_lists = ('article_list', 'td_list', 'qa_list', 'tools_list', 'notes_list')
+        # Beacause of Class base view we use templates name instead of functions
+        self.allowed_templates_pagination = ('PagiScroll/article_list.html', 'PagiScroll/termin_list.html', 'PagiScroll/question_list.html', 'PagiScroll/tool_list.html', 'PagiScroll/note_list.html')
         self.form = FeedbackForm()
         # One-time configuration and initialization.
 
@@ -44,8 +45,6 @@ class EngagementMiddleware:
             self.handler = self.tool_handler
         elif view_func.__name__ in self.allowed_func_no_engagement:
             self.handler = self.no_engagement_handler
-        elif view_func.__name__ in self.allowed_func_lists:
-            self.handler = self.list_handler
 
         return None
 
@@ -56,6 +55,11 @@ class EngagementMiddleware:
         if self.handler is not None:
             response.context_data.update({'isEngagementMiddlewareConnected': True})
             self.handler(request, response)
+
+        if response.template_name in self.allowed_templates_pagination:
+            response.context_data.update({'isEngagementMiddlewareConnected': True})
+            self.list_handler(request, response)
+
         return response
     
     def _update_views_counter(self, url):
@@ -94,7 +98,7 @@ class EngagementMiddleware:
         response.context_data.update({'is_shares': True})
         response.context_data.update({'is_bookmarks': True})
         response.context_data.update({'is_feedbacks': True})
-        response.context_data.update({'form': self.form})
+        response.context_data.update({'feedback_form': self.form})
         response.context_data.update({'isBottomEngagementBody': True})
         response.context_data.update({'isDisplayingActualAvailableInteractions': True})
         self._update_views_counter(request.path)
@@ -108,7 +112,7 @@ class EngagementMiddleware:
         response.context_data.update({'is_shares': True})
         response.context_data.update({'is_bookmarks': True})
         response.context_data.update({'is_feedbacks': True})
-        response.context_data.update({'form': self.form})
+        response.context_data.update({'feedback_form': self.form})
         response.context_data.update({'isBottomEngagementBody': True})
         response.context_data.update({'isDisplayingActualAvailableInteractions': True})
         self._update_views_counter(request.path)
@@ -122,7 +126,7 @@ class EngagementMiddleware:
         response.context_data.update({'is_shares': True})
         response.context_data.update({'is_bookmarks': True})
         response.context_data.update({'is_feedbacks': True})
-        response.context_data.update({'form': self.form})
+        response.context_data.update({'feedback_form': self.form})
         response.context_data.update({'isBottomEngagementBody': True})
         response.context_data.update({'isDisplayingActualAvailableInteractions': True})
         # THis is all for Google Rich Results, SoftwareApplication
@@ -144,7 +148,7 @@ class EngagementMiddleware:
         response.context_data.update({'is_shares': False})
         response.context_data.update({'is_bookmarks': True})
         response.context_data.update({'is_feedbacks': True})
-        response.context_data.update({'form': self.form})
+        response.context_data.update({'feedback_form': self.form})
         response.context_data.update({'isBottomEngagementBody': False})
         response.context_data.update({'isDisplayingActualAvailableInteractions': False})
         self._update_views_counter(request.path)
