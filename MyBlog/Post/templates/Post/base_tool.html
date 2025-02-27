@@ -1,6 +1,9 @@
 {% extends 'Main/base.html' %}
 {% load i18n %}
 {% load static %}
+{% comment %}
+ Used by tools created via CMS
+{% endcomment %}
 
 {% block head %}
 	{% block head_tool %}
@@ -40,11 +43,6 @@
 {% block content %}
     <div class='notificator-container'>
         <div class="notificator-blank notificator notificator-inactive"></div>
-    </div>
-    <div class="limiter in_middle-self">
-	{% if isBreadcrumbsMiddlewareConnected %}
-		{% include 'Breadcrumbs/breadcrumbs.html' with path=request.META.HTTP_REFERER%}
-	{% endif %}
     </div>
 
     <div class="limiter in_middle-self">
