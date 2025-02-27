@@ -92,10 +92,12 @@
 	--devider_margin: 16px;
 	/*Post preview*/
 	--post_preview_margin-top: 40px;
-	--post_preview_border-radius: 5px;
+	--post_preview_border-radius: 0px;
 	/*Video player*/
-	--video-player_border-radius: 10px;
+	--video-player_border-radius: 0px;
 	/*Modal window radius*/
-	--modal-radius: 10px;
+	--modal-radius: 0px;
+	/*Shadow*/
+	--box-shadow: 8px 8px 0px -1px #2D2F2F;
 }
 

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-02-11 14:25+0300\n"
+"POT-Creation-Date: 2025-02-27 06:35+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,6 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
 #: .\PagiScroll\templates\PagiScroll\base_post_list.html:11
 msgid "cтраница "
 msgstr "page "
@@ -63,14 +64,14 @@ msgstr "related to the following tags: "
 msgid "Шеврон"
 msgstr "Chevron"
 
-#: .\PagiScroll\views.py:97 .\PagiScroll\views.py:126
+#: .\PagiScroll\views.py:100 .\PagiScroll\views.py:130
 msgid "Ничего не нашёл."
 msgstr "Did not find anything"
 
-#: .\PagiScroll\views.py:112 .\PagiScroll\views.py:114
+#: .\PagiScroll\views.py:115 .\PagiScroll\views.py:117
 msgid "Такого тега не существует, или он введён с ошибкой"
 msgstr "There is no such tag, or mistyped"
 
-#: .\PagiScroll\views.py:132 .\PagiScroll\views.py:134
+#: .\PagiScroll\views.py:140 .\PagiScroll\views.py:142
 msgid "Так много страниц у меня нет."
 msgstr "I do not have so many pages."

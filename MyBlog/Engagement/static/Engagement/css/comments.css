@@ -16,10 +16,13 @@
 }
 .comment{
     background-color: #ffffff73;
-    border-radius: 10px;
+    border-radius: var(--post_preview_border-radius);
     padding: 5px;
     z-index: 0;
     position: relative;
+    box-shadow: var(--box-shadow);
+	-webkit-box-shadow: var(--box-shadow);
+	-moz-box-shadow: var(--box-shadow);
 }
 .comment_person{
     font-weight: 300;
@@ -30,9 +33,12 @@
 .add_comment_form{
     background-color: #ffffff73;
     padding: var(--button_padding_top_bot);
-    border-radius: 10px;
+    border-radius: var(--post_preview_border-radius);
     z-index: 0;
     position: relative;
+    box-shadow: var(--box-shadow);
+	-webkit-box-shadow: var(--box-shadow);
+	-moz-box-shadow: var(--box-shadow);
 }
 /* Rating stuff */
 .comment_rating{

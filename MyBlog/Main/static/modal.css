@@ -31,9 +31,9 @@
     max-height: 100dvh;
     margin: auto;
 
-    box-shadow: 10px 10px 22px 3px rgba(0,0,0,0.33);
-    -webkit-box-shadow: 10px 10px 22px 3px rgba(0,0,0,0.33);
-    -moz-box-shadow: 10px 10px 22px 3px rgba(0,0,0,0.33);
+    box-shadow: var(--box-shadow);
+	-webkit-box-shadow: var(--box-shadow);
+	-moz-box-shadow: var(--box-shadow);
   }
 .modal-content > hr{
     margin:0;

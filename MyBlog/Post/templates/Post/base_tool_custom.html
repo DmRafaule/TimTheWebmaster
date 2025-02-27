@@ -47,42 +47,8 @@
 	{% endif %}
     </div>
 
-    <div class="limiter in_middle-self">
-        <h1 class="title">{{ post.name }}</h1>
-        <div class="marger_top_min marger_bottom_max"> 
-            <div class="row max_col_gap">
-                <div class="row min_gap no_wrap">
-                    <img class="in_middle-self icon_small dynamic_image" width="32" height="32" src="{% static 'placeholder.svg' %}" data-src='{% static "Post/img/calendar.svg" %}' alt="{% trans "Часы" %}">
-                    <div>{{post.timeCreated|date:"d.m.Y"}}</div>
-                </div>
-                <div class="row min_gap no_wrap">
-                    <img class="in_middle-self icon_small dynamic_image" width="32" height="32" src="{% static 'placeholder.svg' %}" data-src='{% static "Post/img/update.svg" %}' alt="{% trans "Часы" %}">
-                    <div>{{post.timeUpdated|date:"d.m.Y"}}</div>
-                </div>
-            </div>
-            {% if isEngagementMiddlewareConnected %}
-                {% include 'Engagement/interaction.html' with path=post.get_absolute_url %}
-            {% endif %}
-            {% if isBreadcrumbsMiddlewareConnected %}
-                {% include 'Breadcrumbs/breadcrumbs.html' with path=request.META.HTTP_REFERER %}
-            {% endif %}
-            {% if platforms %}
-            <div class="marger_top_min row mid_gap">
-                {% for platform in platforms %}
-                <div class="row min_gap no_wrap on_middle_other">
-                    <img class="in_middle-self icon dynamic_image" width="32" height="32" src="{% static 'placeholder.svg' %}" data-src='{% get_media_prefix %}{{platform.icon}}' alt="{{platform.name}}">
-                    <div>{{platform.name}}</div>
-                </div>
-                {% endfor %}
-            </div>
-            {% endif %}
-        </div>
-        <hr>
-        <div id="content_post_article">
-            {% block content_tool %}
-            {% endblock %}
-        </div>
-    </div>
+    {% block content_tool %}
+	{% endblock %}
 
     <hr class="limiter in_middle-self" style="border-top: 2px solid black;">
     {% if isEngagementMiddlewareConnected %}
