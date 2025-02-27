@@ -41,11 +41,6 @@
     <div class='notificator-container'>
         <div class="notificator-blank notificator notificator-inactive"></div>
     </div>
-    <div class="limiter in_middle-self">
-	{% if isBreadcrumbsMiddlewareConnected %}
-		{% include 'Breadcrumbs/breadcrumbs.html' with path=request.META.HTTP_REFERER%}
-	{% endif %}
-    </div>
 
     <div class="limiter in_middle-self">
         <h1 class="title">{{ post.name }}</h1>
