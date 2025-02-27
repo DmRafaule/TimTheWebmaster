@@ -1,4 +1,4 @@
-{% extends 'Post/base_tool.html' %}
+{% extends 'Post/base_tool_custom.html' %}
 {% load static %}
 {% load i18n %}
 
@@ -364,7 +364,7 @@
       <script data-special='tabs' src="{% static 'Post/js/tabs.js' %}"></script>
       <script data-special='code' src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
     {# Need for html_media_checker, which script to check, end point #}
-    <script id='post_script_exporter_bottom_line' src="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.js"></script>
+    <script id='post_script_exporter_bottom_line' src="{% static 'PostEditor/js/quill-engine.js' %}"></script>
     <script src="{% static 'PostEditor/js/side_menu.js' %}"></script>
     <script src="{% static 'PostEditor/js/quill_images.js' %}"></script>
     <script src="{% static 'PostEditor/js/quill_blocks.js' %}"></script>

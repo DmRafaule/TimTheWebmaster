@@ -112,7 +112,7 @@ def tool(request, post_slug):
     context.update({'images': images})
 
     sim_post_doc = None
-    related_tools = U.getAllWithTags(Post_M.Tool.objects.filter(Q(isPublished=True) & Q(tags__in=post.tags.all())).exclude(slug=post_slug), post.tags.all(), 3)
+    related_tools = list(set(U.getAllWithTags(Post_M.Tool.objects.filter(Q(isPublished=True) & Q(tags__in=post.tags.all())).exclude(slug=post_slug), post.tags.all(), 3)))
     if len(related_tools) > 0:
         context.update({'posts': related_tools[:3]})
         loaded_template = loader.get_template(f'Post/basic--post_preview-tool.html')
