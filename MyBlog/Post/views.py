@@ -18,7 +18,7 @@ def article(request, post_slug):
 
     sim_post_doc = None
     # Post model's records must have at least 3 similar tags with this post
-    sim_post = U.getAllWithTags(Post_M.Article.objects.filter(Q(isPublished=True) & Q(tags__in=post.tags.all())).exclude(slug=post_slug), post.tags.all(), website_conf.threshold_similar_articles)
+    sim_post = list(set(U.getAllWithTags(Post_M.Article.objects.filter(Q(isPublished=True) & Q(tags__in=post.tags.all())).exclude(slug=post_slug), post.tags.all(), website_conf.threshold_similar_articles)))
     if len(sim_post) > 0:
         context.update({'posts': sim_post[:website_conf.max_displayed_similar_articles]})
         loaded_template = loader.get_template(f'Post/basic--post_preview-article.html')
@@ -51,55 +51,9 @@ def article(request, post_slug):
     # QA model's record must have at leas 3 similar tags with post tags and be published
     qas =  U.getAllWithTags(Post_M.QA.objects.filter(Q(isPublished=True) & Q(tags__in=post.tags.all())), post.tags.all(), website_conf.threshold_related_questions)
     if len(qas) > 0:
-        context.update({'qas': qas[:website_conf.max_displayed_questions]})
+        context.update({'qas': list(set(qas[:website_conf.max_displayed_questions]))})
 
     return TemplateResponse(request, post.template.path, context=context)
-
-def qa(request, post_slug):
-    website_conf = Main_M.Website.objects.get(is_current=True)
-    post = get_object_or_404(Post_M.QA, slug=post_slug)
-    downloadables = Main_M.Downloadable.objects.filter(type=post)
-    images = Main_M.Image.objects.filter(type=post)
-    context = U.initDefaults(request)
-    context.update({'post': post})
-    context.update({'downloadables': downloadables})
-    context.update({'images': images})
-
-    sim_post_doc = None
-    related_articles = U.getAllWithTags(Post_M.Article.objects.filter(Q(isPublished=True) & Q(tags__in=post.tags.all())), post.tags.all(), website_conf.threshold_related_questions)
-    if len(related_articles) > 0:
-        context.update({'posts': related_articles[:website_conf.max_displayed_questions]})
-        loaded_template = loader.get_template(f'Post/simple--post_preview-article.html')
-        sim_post_doc = loaded_template.render(context, request)
-    context.update({'related_articles': sim_post_doc})
-
-    if post.template:
-        return TemplateResponse(request, post.template.path, context=context)
-    else:
-        return TemplateResponse(request, post.default_template, context=context)
-
-def td(request, post_slug):
-    website_conf = Main_M.Website.objects.get(is_current=True)
-    post = get_object_or_404(Post_M.TD, slug=post_slug)
-    downloadables = Main_M.Downloadable.objects.filter(type=post)
-    images = Main_M.Image.objects.filter(type=post)
-    context = U.initDefaults(request)
-    context.update({'post': post})
-    context.update({'downloadables': downloadables})
-    context.update({'images': images})
-
-    sim_post_doc = None
-    related_articles = U.getAllWithTags(Post_M.Article.objects.filter(Q(isPublished=True) & Q(tags__in=post.tags.all())), post.tags.all(), website_conf.threshold_related_termins)
-    if len(related_articles) > 0:
-        context.update({'posts': related_articles[:website_conf.max_displayed_termins]})
-        loaded_template = loader.get_template(f'Post/simple--post_preview-article.html')
-        sim_post_doc = loaded_template.render(context, request) 
-    context.update({'related_articles': sim_post_doc})
-
-    if post.template:
-        return TemplateResponse(request, post.template.path, context=context)
-    else:
-        return TemplateResponse(request, post.default_template, context=context)
 
 def tool(request, post_slug):
     website_conf = Main_M.Website.objects.get(is_current=True)

@@ -23,7 +23,6 @@ class QATranslationOptions(TranslationOptions):
             'question',
             'description',
             'answer',
-            'template',
     )
 
 class TDTranslationOptions(TranslationOptions):
@@ -32,7 +31,6 @@ class TDTranslationOptions(TranslationOptions):
             'description',
             'key_phrases',
             'definition',
-            'template',
     )
 
 class NoteTranslationOptions(TranslationOptions):

@@ -71,11 +71,6 @@ class QA(Post):
     question = models.CharField(max_length=250, blank=False)
     description = models.TextField(max_length=360, blank=False, help_text="To be used in meta tag - description")
     answer = models.TextField(max_length=360, blank=False)
-    template = models.FileField(max_length=300, upload_to=user_directory_path, blank=True, help_text="If provided, default template not in use")
-    default_template = models.FilePathField(
-            path=os.path.join(S.BASE_DIR,"Post","templates","Post"),
-            default=os.path.join(S.BASE_DIR,"Post","templates","Post","qa.html")
-    )
 
     def save(self, *args, **kwargs):
         self.category = Category.objects.get(slug="qa")
@@ -91,11 +86,6 @@ class TD(Post):
     key_phrases = models.CharField(max_length=254, blank=True, help_text="To be used to search place for inserting a link. Use , as separator.")
     description = models.TextField(max_length=360, blank=False, help_text="To be used in meta tag - description")
     definition = models.TextField(max_length=360,blank=False)
-    template = models.FileField(max_length=300, upload_to=user_directory_path, blank=True, help_text="If provided, default template not in use")
-    default_template = models.FilePathField(
-            path=os.path.join(S.BASE_DIR,"Post","templates","Post"),
-            default=os.path.join(S.BASE_DIR,"Post","templates","Post","td.html")
-    )
 
     def save(self, *args, **kwargs):
         self.category = Category.objects.get(slug="td")
@@ -208,10 +198,8 @@ class PostSitemap(Sitemap):
 
     def items(self):
         articles = Article.objects.filter(isPublished=True)
-        qa = QA.objects.filter(isPublished=True)
-        td = TD.objects.filter(isPublished=True)
         tools = Tool.objects.filter(isPublished=True)
-        items = list(chain(articles, qa, td, tools))
+        items = list(chain(articles, tools))
         return items
 
     def lastmod(self, obj):

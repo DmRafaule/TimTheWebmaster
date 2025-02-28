@@ -8,11 +8,16 @@ from django.views.i18n import JavaScriptCatalog
 from django.contrib.sitemaps.views import sitemap
 from Post.models import PostSitemap
 from Main.models import StaticSitemap
+from PagiScroll.models import PaginationSitemap
 #from Gallery.models import ImagesSitemap
 
 sitemaps = {
     "articles": PostSitemap,
     "static": StaticSitemap,
+}
+
+sitemaps_pagination = {
+    "pagination": PaginationSitemap
 }
 
 urlpatterns = [
@@ -22,6 +27,12 @@ urlpatterns = [
         "sitemap.xml",
         sitemap,
         {"sitemaps": sitemaps},
+        name="django.contrib.sitemaps.views.sitemap",
+    ),
+    path(
+        "sitemap-pagination.xml",
+        sitemap,
+        {"sitemaps": sitemaps_pagination},
         name="django.contrib.sitemaps.views.sitemap",
     ),
 ]

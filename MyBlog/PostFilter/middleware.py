@@ -8,7 +8,7 @@ class PostFilterMiddleware:
     def __init__(self, get_response):
         self.get_response = get_response
         self.filter_list = [] 
-        self.allowed_templates = ('PagiScroll/article_list.html', 'PagiScroll/termin_list.html', 'PagiScroll/question_list.html', 'PagiScroll/tool_list.html', 'PagiScroll/note_list.html')
+        self.allowed_templates = ('PagiScroll/article_list.html', 'PagiScroll/tool_list.html', 'PagiScroll/note_list.html')
         self.years = None
 
     def __call__(self, request):
@@ -28,10 +28,6 @@ class PostFilterMiddleware:
                     self.filter_list = [{'template': 'PostFilter/post_filter_times.html', 'verified': 'isTimeFilter'}]
                 case 'PagiScroll/note_list.html':
                     self.filter_list = [{'template': 'PostFilter/post_filter_times.html', 'verified': 'isTimeFilter'}]
-                case 'PagiScroll/termin_list.html':
-                    self.filter_list = [{'template': 'PostFilter/post_filter_alphabet.html', 'verified': 'isAlphabetFilter'}]
-                case 'PagiScroll/question_list.html':
-                    pass
                 case 'PagiScroll/tool_list.html':
                     self.filter_list = [{'template': 'PostFilter/post_filter_tooltypes.html', 'verified': 'isTooltypesFilter'}]
                     
