@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-02-27 06:35+0300\n"
+"POT-Creation-Date: 2025-02-28 19:01+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -62,7 +62,11 @@ msgstr "Dima Chuduk"
 msgid "О Тиме Вебмастере"
 msgstr "About Tim"
 
-#: .\Main\templates\Main\about.html:47
+#: .\Main\templates\Main\about.html:45
+msgid "Вступление"
+msgstr "Introduction"
+
+#: .\Main\templates\Main\about.html:50
 msgid ""
 "\n"
 "\t\t\t\tЗнаешь, я эту страницу 10й переписываю. Мне это “немножко” надоело, "
@@ -82,7 +86,7 @@ msgstr ""
 "start by editing one sentence and end up completely rewriting the entire "
 "page."
 
-#: .\Main\templates\Main\about.html:52
+#: .\Main\templates\Main\about.html:55
 msgid ""
 "\n"
 "\t\t\t\tНо не в этот раз. На этот раз, эта страница должна продержаться "
@@ -95,7 +99,15 @@ msgstr ""
 "am I so sure about this? Well, simply because I will write as briefly as "
 "possible. Who am I, why am I, and for what reason am I?"
 
-#: .\Main\templates\Main\about.html:57
+#: .\Main\templates\Main\about.html:63
+msgid "Обо мне"
+msgstr "About me"
+
+#: .\Main\templates\Main\about.html:68
+msgid "А это я."
+msgstr "It is me btw"
+
+#: .\Main\templates\Main\about.html:73
 msgid ""
 "\n"
 "\t\t\t\tНачну с себя. Я Дима, приятно познакомиться. Теперь ты знаешь почему "
@@ -111,14 +123,6 @@ msgstr ""
 "name Dima has a synonymous form, Tim.) My last name is Chuduk. A cool last "
 "name, I'll tell you; I haven't met anyone with the same last name yet, only "
 "relatives ;)."
-
-#: .\Main\templates\Main\about.html:65
-msgid "А это я."
-msgstr "It is me btw"
-
-#: .\Main\templates\Main\about.html:73
-msgid "Просто красивый вид. Где я живу."
-msgstr "Just a beautiful view."
 
 #: .\Main\templates\Main\about.html:78
 msgid ""
@@ -162,49 +166,56 @@ msgstr ""
 "no, I am not a student. The words marginal or hustler would describe me "
 "better. That's it."
 
-#: .\Main\templates\Main\about.html:96
+#: .\Main\templates\Main\about.html:95
+msgid "О сайте, его идея"
+msgstr "About website, it's idea"
+
+#: .\Main\templates\Main\about.html:98
+#, python-format
 msgid ""
-"\n"
-"\t\tТеперь, напишу о чём этот сайт и что тут можно найти. Вообще, у этого "
-"сайта нет какой-то определённой цели или направленности. Это сайт обо всём "
-"что мне интересно и скорее существует с той целью, чтобы обозначить моё "
-"присутствие в интернете. А вот темы которые меня интересуют: \n"
-"\t\t"
+"Теперь, напишу о чём этот сайт и что тут можно найти. Создавая данный сайт "
+"или добавляя к нему новое приложение, я хочу показать другим людям, чо им не "
+"обязательно платить 130 Баксов в месяц за инструмент или расширение в "
+"котором 90%% функционала им не потребуется. Вместо этого можно потратить "
+"немного своего времени и сделать такой интсрумент, который подходит именно "
+"тебе. Да ещё словить немного фана в процессе."
 msgstr ""
-"\n"
-"Now, I'll write what this site is about and what you can find here. In "
-"general, this site does not have any specific goal or focus. This site is "
-"about everything that is interesting for me and rather exists for the "
-"purpose of indicating my presence on the Internet. But here are the topics "
-"that are interesting for me:"
+"Now, I'll write what this site is about and what you can find here. By creating this site "
+"or adding a new app to it, I want to show other people that they don't "
+"necessarily have to pay $130 a month for a tool or extension in "
+"which they won't need 90%% of the functionality. Instead, they can spend "
+"a little of their time and make a tool that suits "
+"you. And even have some fun in the process."
 
 #: .\Main\templates\Main\about.html:101
 msgid ""
 "\n"
-"\t\t<li>Разработка телеграм ботов</li>\n"
-"\t\t<li>Разработка и продвижение сайтов</li>\n"
-"\t\t<li>Копирайтинг (писательское искуство)</li>\n"
-"\t\t<li>Маркетинг (SEO, SEM, SMM)</li>\n"
-"\t\t<li>Создание парсеров и их поддержка</li>\n"
-"\t\t<li>Сетевое администрирование</li>\n"
-"\t\t<li>3D рендеринг и математика</li>\n"
-"\t\t<li>Разработка игр и сервисов</li>\n"
-"\t\t<li>История</li>\n"
+"\t\tКонкретной направленности в созданных инструментах нет. Просто "
+"появляется необходимость, например, \n"
 "\t\t"
 msgstr ""
 "\n"
-"\t\t<li>Telegram bot development</li>\n"
-"\t\t<li>Website development and promotion</li>\n"
-"\t\t<li>Copywriting</li>\n"
-"\t\t<li>Marketing (SEO, SEM, SMM)</li>\n"
-"\t\t<li>Scrapping and maintenance</li>\n"
-"\t\t<li>Server administration and maintenance</li>\n"
-"\t\t<li>3D rendering and mathematics</li>\n"
-"\t\t<li>Game development and SAAS</li>\n"
-"\t\t<li>History</li>\n"
+"\t\tThere is no specific focus in the created tools. There is simply a need "
+"for example, \n"
 "\t\t"
 
-#: .\Main\templates\Main\about.html:114
+#: .\Main\templates\Main\about.html:104
+msgid "спарсить все изображения с сайта"
+msgstr "scrape all images from a website"
+
+#: .\Main\templates\Main\about.html:105
+msgid ""
+"\n"
+"\t\t, бам ... И у меня уже готовый инструмент или <a href=\"#\">получить "
+"SERP результаты из google</a> бам и он готов. Думаю ты понял идею.\n"
+"\t\t"
+msgstr ""
+"\n"
+"\t\t, bam... And I have a ready-made tool or <a href=\"#\">get SERP results "
+"from google</a> bam and it's done. I think you get the idea.\n"
+"\t\t"
+
+#: .\Main\templates\Main\about.html:111
 msgid ""
 "\n"
 "\t\tЕсли тебя также интересуют такие вещи, то рад знакомству). Если нет, то "
@@ -216,12 +227,11 @@ msgstr ""
 "not, then I am still glad to meet you. Also on the site, you can find such "
 "things as:"
 
-#: .\Main\templates\Main\about.html:119
+#: .\Main\templates\Main\about.html:116
 msgid ""
 "\n"
 "\t\t<li>Статьи на <u>интересующие меня темы</u></li>\n"
 "\t\t<li>Статьи личного характера</li>\n"
-"\t\t<li>Кейсы связанные с моей работай</li>\n"
 "\t\t<li>Инструменты и вебсервисы под различные нужды и потребности</li>\n"
 "\t\t<li>Новости касающиеся меня лично, либо <u>интересных мне тем</u></li>\n"
 "\t\t<li>Авторские изображения/карикатуры ( т.е. мои)</li>\n"
@@ -231,7 +241,6 @@ msgstr ""
 "\n"
 "\t\t<li>Articles on <u>topics that are interesting for me</u></li>\n"
 "\t\t<li>Personal articles</li>\n"
-"\t\t<li>Cases related to my work</li>\n"
 "\t\t<li>Tools and web services for various needs and purposes</li>\n"
 "\t\t<li>News concerning me personally, or <u>topics that are interesting for "
 "me</u></li>\n"
@@ -239,7 +248,7 @@ msgstr ""
 "\t\t<li>Archives, scripts, programs and other files for downloading</li>\n"
 "\t\t"
 
-#: .\Main\templates\Main\about.html:131
+#: .\Main\templates\Main\about.html:127
 msgid ""
 "\n"
 "\t\tВот, собственно говоря, всё что я хотел сказать про себя и сайт. Если "
@@ -251,11 +260,11 @@ msgstr ""
 "to know more, please \n"
 "\t\t"
 
-#: .\Main\templates\Main\about.html:134
+#: .\Main\templates\Main\about.html:130
 msgid "почитать соответствующие статьи"
 msgstr "read the relevant articles"
 
-#: .\Main\templates\Main\about.html:135
+#: .\Main\templates\Main\about.html:131
 msgid ""
 "\n"
 "\t\tКстати, где-то здесь будет облако тегов всего моего сайта, каждое слово "
@@ -268,7 +277,7 @@ msgstr ""
 "word will be a link to the corresponding pagination page. (If it's not "
 "there, then forgive me; it's still in progress.)"
 
-#: .\Main\templates\Main\about.html:141
+#: .\Main\templates\Main\about.html:137
 msgid ""
 "\n"
 "\t\tВот, собственно говоря, всё что я хотел сказать про себя и сайт. Если "
@@ -285,11 +294,7 @@ msgstr ""
 "corresponding pagination page. (If it's not there, then forgive me; it's "
 "still in progress.)"
 
-#: .\Main\templates\Main\about.html:148
-msgid "Ещё одно красивое фото, где я когда-то жил."
-msgstr "Yet another beautiful photo."
-
-#: .\Main\templates\Main\about.html:151
+#: .\Main\templates\Main\about.html:143
 msgid ""
 "\n"
 "\t\tНа момент прочтения данной страницы тобой, мне \n"
@@ -298,7 +303,7 @@ msgstr ""
 "\n"
 "At the time you read this page, I am"
 
-#: .\Main\templates\Main\about.html:155
+#: .\Main\templates\Main\about.html:147
 msgid ""
 "\n"
 "\t\tгода. И моему сайту 1 год.\n"
@@ -418,39 +423,30 @@ msgstr "Tim the Webmaster"
 msgid "Инструменты"
 msgstr "Tools"
 
-#: .\Main\templates\Main\home.html:26 .\Main\templates\Main\home.html:36
-#: .\Main\templates\Main\home.html:45 .\Main\templates\Main\home.html:56
-#: .\Main\templates\Main\home.html:65 .\Main\templates\Main\home.html:75
-#: .\Main\templates\Main\home.html:101 .\Main\templates\Main\home.html:108
-#: .\Main\templates\Main\home.html:138 .\Main\templates\Main\home.html:145
+#: .\Main\templates\Main\home.html:27 .\Main\templates\Main\home.html:39
+#: .\Main\templates\Main\home.html:51 .\Main\templates\Main\home.html:62
+#: .\Main\templates\Main\home.html:90 .\Main\templates\Main\home.html:99
+#: .\Main\templates\Main\home.html:131 .\Main\templates\Main\home.html:140
 msgid "Больше ..."
 msgstr "See more ..."
 
-#: .\Main\templates\Main\home.html:31
+#: .\Main\templates\Main\home.html:33
 msgid "Новые статьи"
 msgstr "New articles"
 
-#: .\Main\templates\Main\home.html:40
+#: .\Main\templates\Main\home.html:45
 msgid "Последние новости"
 msgstr "Latest news"
 
-#: .\Main\templates\Main\home.html:51
-msgid "Словарь"
-msgstr "Glossary"
-
-#: .\Main\templates\Main\home.html:60
-msgid "Вопросы"
-msgstr "Questions"
-
-#: .\Main\templates\Main\home.html:70
+#: .\Main\templates\Main\home.html:56
 msgid "Заметки"
 msgstr "Notes"
 
-#: .\Main\templates\Main\home.html:80
+#: .\Main\templates\Main\home.html:68
 msgid "Другие ресурсы"
 msgstr "Other resources"
 
-#: .\Main\templates\Main\home.html:117
+#: .\Main\templates\Main\home.html:109
 msgid "Другие статьи (по темам)"
 msgstr "Other articles (by topic)"
 
