@@ -118,7 +118,11 @@
 	border-top: 2px solid var(--main_color);
 	border-right: 2px solid var(--main_color);
 	padding: 8px;
-	border-top-right-radius: 10px;
+}
+
+.post_previews--category-forSeries{
+	height: 600px;
+	overflow: auto;
 }
 .post_previews--category-forResources{
 	display: flex;
@@ -127,7 +131,6 @@
 	justify-content: space-between;
 	border-top: 2px solid var(--main_color);
 	border-right: 2px solid var(--main_color);
-	border-top-right-radius: 10px;
 }
 .post_previews--category-forResources>.tabs{
 	border-bottom: 2px solid var(--main_color);

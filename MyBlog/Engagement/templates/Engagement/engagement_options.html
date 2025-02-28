@@ -5,7 +5,7 @@
 <div id="engagement_body" class="engagement_body padder mid_gap in_start-self">
     <div id="engagement_body_body" class="column squered_button in_middle max_gap engagement_body_body active_engagement_body_body padder " >
         {% if is_likes %}
-        <div id="onLike" class="row min_gap in_middle">
+        <div id="onLike" class="row min_gap in_middle" onclick="yaCounter95199635.reachGoal('onLike')">
             <img class="icon button squered_button dynamic_image" width="32" height="32" src="{% static 'placeholder.svg' %}" data-src="{% static 'Engagement/img/like.svg' %}" alt="{% trans "сердце" %}">
         </div>
         {% endif %}
@@ -14,22 +14,22 @@
             <img  class="icon button squered_button dynamic_image" width="32" height="32" src="{% static 'placeholder.svg' %}" data-src="{% static 'Engagement/img/share.svg' %}" data-close-btn="{% static 'close.svg' %}" alt="{% trans "3 соединённые точки" %}">
             <div id="share_options" class=" row squered_button  mid_gap share_options active_share_options">
                 <div class="padder column mid_gap">
-                    <a target="_blank" href="http://vk.com/share.php?url={{ url_to_share }}&title={{ title_to_share }}&description={{ description_to_share }}">
+                    <a onclick="yaCounter95199635.reachGoal('onShare')" target="_blank" href="http://vk.com/share.php?url={{ url_to_share }}&title={{ title_to_share }}&description={{ description_to_share }}">
                         <div class="share_button">
                             <img class="icon button squered_button dynamic_image" width="32" height="32" src="{% static 'placeholder.svg' %}" data-src="{% static 'vk.svg' %}" alt="{% trans "vk иконка" %}">
                         </div>
                     </a>
-                    <a target="_blank"  href="https://www.reddit.com/submit?url={{ url_to_share }}&title={{ title_to_share }}">
+                    <a onclick="yaCounter95199635.reachGoal('onShare')" target="_blank"  href="https://www.reddit.com/submit?url={{ url_to_share }}&title={{ title_to_share }}">
                         <div class="share_button">
                             <img class="icon button squered_button dynamic_image" width="32" height="32" src="{% static 'placeholder.svg' %}" data-src="{% static 'reddit.svg' %}" alt="{% trans "reddit иконка" %}">
                         </div>
                     </a>
-                    <a target="_blank"  href="https://twitter.com/intent/tweet?url={{ url_to_share }}&text={{ description_to_share }}">
+                    <a onclick="yaCounter95199635.reachGoal('onShare')" target="_blank"  href="https://twitter.com/intent/tweet?url={{ url_to_share }}&text={{ description_to_share }}">
                         <div class="share_button">
                             <img class="icon button squered_button dynamic_image" width="32" height="32" src="{% static 'placeholder.svg' %}" data-src="{% static 'twitter.svg' %}" alt="{% trans "twitter иконка" %}">
                         </div>
                     </a>
-                    <a target="_blank"  href="https://telegram.me/share/url?url={{ url_to_share }}&text={{ description_to_share }}">
+                    <a onclick="yaCounter95199635.reachGoal('onShare')" target="_blank"  href="https://telegram.me/share/url?url={{ url_to_share }}&text={{ description_to_share }}">
                         <div class="share_button">
                             <img class="icon button squered_button dynamic_image" width="32" height="32" src="{% static 'placeholder.svg' %}" data-src="{% static 'telegram.svg' %}" alt="{% trans "telegram иконка" %}">
                         </div>
@@ -44,7 +44,7 @@
         </div>
         {% endif %}
         {% if is_bookmarks %}
-        <div id="onBookmark" class="row min_gap in_middle">
+        <div id="onBookmark" class="row min_gap in_middle"  onclick="yaCounter95199635.reachGoal('onBookmark')">
             <img  class="icon button squered_button dynamic_image" width="32" height="32" src="{% static 'placeholder.svg' %}" data-src="{% static 'Engagement/img/bookmark.svg' %}" alt="{% trans "облачко" %}">
         </div>
         {% endif %}
@@ -63,7 +63,7 @@
 {% if isBottomEngagementBody %}
 <div class="row in_middle max_gap padder " >
     {% if is_likes %}
-    <div id="onLike" class="row min_gap in_middle">
+    <div id="onLike" class="row min_gap in_middle"  onclick="yaCounter95199635.reachGoal('onLike')">
         <img class="icon svg_icon_inverted_black  button squered_button dynamic_image" width="32" height="32" src="{% static 'placeholder.svg' %}" data-src="{% static 'Engagement/img/like.svg' %}" alt="{% trans "сердце" %}">
     </div>
     {% endif %}
@@ -72,22 +72,22 @@
         <img  class="icon svg_icon_inverted_black  button squered_button dynamic_image" width="32" height="32" src="{% static 'placeholder.svg' %}" data-src="{% static 'Engagement/img/share.svg' %}" data-close-btn="{% static 'close.svg' %}" alt="{% trans "3 соединённые точки" %}">
         <div id="share_options" class="zIndPl1 row squered_button  mid_gap share_options active_share_options">
             <div class="padder row mid_gap">
-                <a target="_blank" href="http://vk.com/share.php?url={{ url_to_share }}&title={{ title_to_share }}&description={{ description_to_share }}">
+                <a onclick="yaCounter95199635.reachGoal('onShare')" target="_blank" href="http://vk.com/share.php?url={{ url_to_share }}&title={{ title_to_share }}&description={{ description_to_share }}">
                     <div class="share_button">
                         <img class="icon  button squered_button dynamic_image" width="31" height="32" src="{% static 'placeholder.svg' %}" data-src="{% static 'vk.svg' %}" alt="{% trans "vk иконка" %}">
                     </div>
                 </a>
-                <a target="_blank"  href="https://www.reddit.com/submit?url={{ url_to_share }}&title={{ title_to_share }}">
+                <a onclick="yaCounter95199635.reachGoal('onShare')" target="_blank"  href="https://www.reddit.com/submit?url={{ url_to_share }}&title={{ title_to_share }}">
                     <div class="share_button">
                         <img class="icon   button squered_button dynamic_image" width="31" height="32" src="{% static 'placeholder.svg' %}" data-src="{% static 'reddit.svg' %}" alt="{% trans "reddit иконка" %}">
                     </div>
                 </a>
-                <a target="_blank"  href="https://twitter.com/intent/tweet?url={{ url_to_share }}&text={{ description_to_share }}">
+                <a onclick="yaCounter95199635.reachGoal('onShare')" target="_blank"  href="https://twitter.com/intent/tweet?url={{ url_to_share }}&text={{ description_to_share }}">
                     <div class="share_button">
                         <img class="icon   button squered_button dynamic_image" width="31" height="32" src="{% static 'placeholder.svg' %}" data-src="{% static 'twitter.svg' %}" alt="{% trans "twitter иконка" %}">
                     </div>
                 </a>
-                <a target="_blank"  href="https://telegram.me/share/url?url={{ url_to_share }}&text={{ description_to_share }}">
+                <a onclick="yaCounter95199635.reachGoal('onShare')" target="_blank"  href="https://telegram.me/share/url?url={{ url_to_share }}&text={{ description_to_share }}">
                     <div class="share_button">
                         <img class="icon   button squered_button dynamic_image" width="31" height="32" src="{% static 'placeholder.svg' %}" data-src="{% static 'telegram.svg' %}" alt="{% trans "telegram иконка" %}">
                     </div>
@@ -102,7 +102,7 @@
     </div>
     {% endif %}
     {% if is_bookmarks %}
-    <div id="onBookmark" class="row min_gap in_middle">
+    <div id="onBookmark" class="row min_gap in_middle"  onclick="yaCounter95199635.reachGoal('onBookmark')">
         <img  class="icon svg_icon_inverted_black button squered_button dynamic_image" width="32" height="32" src="{% static 'placeholder.svg' %}" data-src="{% static 'Engagement/img/bookmark.svg' %}" alt="{% trans "облачко" %}">
     </div>
     {% endif %}

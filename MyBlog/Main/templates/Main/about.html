@@ -41,6 +41,9 @@
 		<h1 class="home_title" >{% trans "О Тиме Вебмастере" %}</h1>
 		<canvas id='canvas' class="canvas_as_element" data-vertex-shader="{% static "WebGLEngine/shaders/home_gik.vert" %}" data-fragment-shader="{% static "WebGLEngine/shaders/home_gik.frag" %}"></canvas>
 	</div>
+
+	<h2 class="paragraph">{% trans "Вступление" %}</h2>
+
 	<div class="text row max_gap">
 		<div class="column el-expandable el-no_shrinkable el-300-min-basis">
 			<div class="text" style='margin: 0'>
@@ -53,27 +56,24 @@
 				Но не в этот раз. На этот раз, эта страница должна продержаться очень долго). Отчего же я так в этом уверен ? Ну просто потому, что я напишу максимально кратко и ёмко. Кто я, зачем я и почему я.
 				{% endblocktrans %}
 			</div>
-			<div class="text">
-				{% blocktrans %}
-				Начну с себя. Я Дима, приятно познакомиться. Теперь ты знаешь почему timthewebmaster. (Тим это одна из форм имени Димы, ну если ты не догадался или не знал). Фамилия моя Чудук. Прикольная фамилия, скажу я тебе, однофамильцев пока не встречал, только родственников).
-				{% endblocktrans %}
-			</div>
 		</div>
-		<div>	
+	</div>
+	
+
+	<h2 class="paragraph">{% trans "Обо мне" %}</h2>
+	<div class="text row max_gap" style='flex-wrap: wrap-reverse;'>
+		<div style="align-content: center;">	
 			<img src="placeholder.svg" data-src="{% static '/Main/img/me1.jpg' %}" class=" dynamic_image " style="border-radius: 10px; max-width: 300px; max-height: 400px;">
 			<div class="under_image">
 				{% trans 'А это я.' %}
 			</div>
 		</div>
-	</div>
-	<div class="text row max_gap" style='flex-wrap: wrap-reverse;'>
-		<div>
-			<img src="placeholder.svg" data-src="{% static '/Main/img/sity1.jpg' %}" class=" dynamic_image " style="border-radius: 10px; max-width: 300px; max-height: 400px;">
-			<div class="under_image">
-				{% trans 'Просто красивый вид. Где я живу.' %}
-			</div>
-		</div>
 		<div class="column el-expandable el-no_shrinkable el-300-min-basis">
+			<div class="text">
+				{% blocktrans %}
+				Начну с себя. Я Дима, приятно познакомиться. Теперь ты знаешь почему timthewebmaster. (Тим это одна из форм имени Димы, ну если ты не догадался или не знал). Фамилия моя Чудук. Прикольная фамилия, скажу я тебе, однофамильцев пока не встречал, только родственников).
+				{% endblocktrans %}
+			</div>
 			<div class="text">
 				{% blocktrans %}
 				Кем работаю, учусь ли я и какое вообще у меня образование? Во всех гайдах и рекомендациях указывается, что такие данные нужно обязательно указывать, чтобы вызвать доверие и показать что ты реальный ЧЕЛОВЕК. Ну хорошо, что ещё паспортные данные не рекомендуют указывать)
@@ -91,25 +91,22 @@
 			</div>
 		</div>
 	</div>
+
+	<h2 class="paragraph">{% trans "О сайте, его идея" %}</h2>
 	
 	<div class="text">
+		{% blocktrans %}Теперь, напишу о чём этот сайт и что тут можно найти. Создавая данный сайт или добавляя к нему новое приложение, я хочу показать другим людям, чо им не обязательно платить 130 Баксов в месяц за инструмент или расширение в котором 90% функционала им не потребуется. Вместо этого можно потратить немного своего времени и сделать такой интсрумент, который подходит именно тебе. Да ещё словить немного фана в процессе.{% endblocktrans %}
+	</div>
+	<div class="text ref">
 		{% blocktrans %}
-		Теперь, напишу о чём этот сайт и что тут можно найти. Вообще, у этого сайта нет какой-то определённой цели или направленности. Это сайт обо всём что мне интересно и скорее существует с той целью, чтобы обозначить моё присутствие в интернете. А вот темы которые меня интересуют: 
+		Конкретной направленности в созданных инструментах нет. Просто появляется необходимость, например, 
+		{% endblocktrans %}
+		<a href="{% url "image_thief" %}">{% trans "спарсить все изображения с сайта" %}</a>
+		{% blocktrans %}
+		, бам ... И у меня уже готовый инструмент или <a href="#">получить SERP результаты из google</a> бам и он готов. Думаю ты понял идею.
 		{% endblocktrans %}
 	</div>
-	<ul class="list">
-		{% blocktrans %}
-		<li>Разработка телеграм ботов</li>
-		<li>Разработка и продвижение сайтов</li>
-		<li>Копирайтинг (писательское искуство)</li>
-		<li>Маркетинг (SEO, SEM, SMM)</li>
-		<li>Создание парсеров и их поддержка</li>
-		<li>Сетевое администрирование</li>
-		<li>3D рендеринг и математика</li>
-		<li>Разработка игр и сервисов</li>
-		<li>История</li>
-		{% endblocktrans %}
-	</ul>
+
 	<div class="text">
 		{% blocktrans %}
 		Если тебя также интересуют такие вещи, то рад знакомству). Если нет, то всё равно рад встрече). Так же на сайте ты сможешь найти, такие штуки как: 
@@ -119,7 +116,6 @@
 		{% blocktrans %}
 		<li>Статьи на <u>интересующие меня темы</u></li>
 		<li>Статьи личного характера</li>
-		<li>Кейсы связанные с моей работай</li>
 		<li>Инструменты и вебсервисы под различные нужды и потребности</li>
 		<li>Новости касающиеся меня лично, либо <u>интересных мне тем</u></li>
 		<li>Авторские изображения/карикатуры ( т.е. мои)</li>
@@ -143,10 +139,6 @@
 		{% endblocktrans %}
 	</div>
 	{% endif %}
-	<img src="placeholder.svg" data-src="{% static '/Main/img/sity2.jpg' %}" class="marger_top_mid dynamic_image full_width" style="border-radius: 10px; ">
-	<div class="under_image">
-        {% trans 'Ещё одно красивое фото, где я когда-то жил.' %}
-    </div>
 	<div class="text">
 		{% blocktrans %}
 		На момент прочтения данной страницы тобой, мне 
