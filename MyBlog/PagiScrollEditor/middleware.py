@@ -5,7 +5,7 @@ from .utils import GetCustomFilterPage
 class PagiScrollEditorMiddleware:
     def __init__(self, get_response):
         self.get_response = get_response
-        self.allowed_templates = ('PagiScroll/article_list.html', 'PagiScroll/termin_list.html', 'PagiScroll/question_list.html', 'PagiScroll/tool_list.html', 'PagiScroll/note_list.html')
+        self.allowed_templates = ('PagiScroll/article_list.html', 'PagiScroll/tool_list.html', 'PagiScroll/note_list.html')
 
     def __call__(self, request):
         response = self.get_response(request)

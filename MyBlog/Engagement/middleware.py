@@ -14,12 +14,10 @@ class EngagementMiddleware:
         self.allowed_func_no_engagement = ('home',)
         # If comments needed include view funcions here
         self.allowed_func_posts_with_comments = ('article',)
-        # If no comments needed include view funcions here
-        self.allowed_func_posts_with_no_comments = ('td','qa')
         # All tools main view functions must be called tool_main
         self.allowed_func_tools = ('tool_main', 'tool')
         # Beacause of Class base view we use templates name instead of functions
-        self.allowed_templates_pagination = ('PagiScroll/article_list.html', 'PagiScroll/termin_list.html', 'PagiScroll/question_list.html', 'PagiScroll/tool_list.html', 'PagiScroll/note_list.html')
+        self.allowed_templates_pagination = ('PagiScroll/article_list.html', 'PagiScroll/tool_list.html', 'PagiScroll/note_list.html')
         self.form = FeedbackForm()
         # One-time configuration and initialization.
 
@@ -37,9 +35,6 @@ class EngagementMiddleware:
     def process_view(self, request, view_func, view_args, view_kwargs):
         if view_func.__name__ in self.allowed_func_posts_with_comments:
             self.handler = self.post_handler
-            self.slug = view_kwargs['post_slug']
-        elif view_func.__name__ in self.allowed_func_posts_with_no_comments:
-            self.handler = self.post_no_comment_handler
             self.slug = view_kwargs['post_slug']
         elif view_func.__name__ in self.allowed_func_tools:
             self.handler = self.tool_handler
@@ -95,20 +90,6 @@ class EngagementMiddleware:
         response.context_data.update({'url_to_share': url})
         response.context_data.update({'is_likes': True})
         response.context_data.update({'is_comments': self._set_comments(request, response, True, 'Engagement/engagement_post_comments.html')})
-        response.context_data.update({'is_shares': True})
-        response.context_data.update({'is_bookmarks': True})
-        response.context_data.update({'is_feedbacks': True})
-        response.context_data.update({'feedback_form': self.form})
-        response.context_data.update({'isBottomEngagementBody': True})
-        response.context_data.update({'isDisplayingActualAvailableInteractions': True})
-        self._update_views_counter(request.path)
-
-    # Updates td and qa types of posts withour commentst
-    def post_no_comment_handler(self, request, response):
-        url = f'{request.get_host()}{request.path}'
-        response.context_data.update({'url_to_share': url})
-        response.context_data.update({'is_likes': True})
-        response.context_data.update({'is_comments': self._set_comments(request, response, False)})
         response.context_data.update({'is_shares': True})
         response.context_data.update({'is_bookmarks': True})
         response.context_data.update({'is_feedbacks': True})

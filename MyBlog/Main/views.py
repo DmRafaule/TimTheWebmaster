@@ -83,10 +83,7 @@ def home(request):
     latest_news_tag = Tag.objects.get(slug_en='news')
     news = U.get_posts_by_tag('News', Article)
     latest_news = U.get_latest_post(website_conf.max_displayed_news_on_home, news)
-    latest_termins = U.get_latest_post(website_conf.max_displayed_td_on_home, TD.objects.all())
-    latest_questions = U.get_latest_post(website_conf.max_displayed_qa_on_home, QA.objects.all())
     latest_notes = U.get_latest_post(website_conf.max_displayed_notes_on_home, Note.objects.all())
-    #latest_images = GU.getLatesImagesAll()[:website_conf.max_displayed_images_on_home]
 
     my_resources = []
     for tag in website_conf.my_resources_choosen_tags_on_home.all():
@@ -115,11 +112,6 @@ def home(request):
 
     context.update({'latest_news_posts': latest_news})
     context.update({'latest_news_tag': latest_news_tag.slug})
-
-    context.update({'latest_termins_posts': latest_termins})
-    
-    context.update({'latest_questions_posts': latest_questions})
-    
     context.update({'latest_notes_posts': latest_notes})
 
 

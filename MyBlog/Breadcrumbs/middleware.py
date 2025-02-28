@@ -8,10 +8,10 @@ class BreadcrumbsMiddleware:
         self.get_response = get_response
         self.handler = None
         self.slug = None
-        self.allowed_func_posts = ('article','td','qa')
+        self.allowed_func_posts = ('article')
         self.allowed_func_tools = ('tool_main',)
-        self.allowed_func_lists = ('article_list', 'td_list', 'qa_list', 'tools_list', 'notes_list')
-        self.allowed_templates_pagination = ('PagiScroll/article_list.html', 'PagiScroll/termin_list.html', 'PagiScroll/question_list.html', 'PagiScroll/tool_list.html', 'PagiScroll/note_list.html')
+        self.allowed_func_lists = ('article_list', 'tools_list', 'notes_list')
+        self.allowed_templates_pagination = ('PagiScroll/article_list.html', 'PagiScroll/tool_list.html', 'PagiScroll/note_list.html')
 
     def __call__(self, request):
         # Code to be executed for each request before

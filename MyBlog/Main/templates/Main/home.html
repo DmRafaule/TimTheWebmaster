@@ -36,34 +36,14 @@
 				<a class="white_text_button " href="{% url 'articles-list' %}">{% trans 'Больше ...' %}</a>
 			</div>
 		</div>
-		<div class="home_ui_el">
-			<h2 class=""><a class="text_button" href="{% url 'articles-list' %}?page=1&tag={{latest_news_tag}}">{% trans "Последние новости" %}</a></h2>
-			<div class="post_previews--category-forNews mid_gap">
-				{% include 'Post/basic--post_preview-article.html' with posts=latest_news_posts %}
-			</div>
-			<div class="see_more_button button action_button">
-				<a class="white_text_button " href="{% url 'articles-list' %}?page=1&tag={{latest_news_tag}}">{% trans 'Больше ...' %}</a>
-			</div>
-		</div>
 		<div class="row max_gap">
 			<div class="home_ui_el">
-				<div class="home_ui_el">
-					<h2 class="">{% trans "Словарь" %}</h2>
-					<div class="post_previews--category-forSeries mid_gap">
-						{% include 'Post/basic--post_preview-td.html' with posts=latest_termins_posts %}
-					</div>
-					<div class="see_more_button button action_button">
-						<a class="white_text_button " href="{% url 'td-list' %}">{% trans 'Больше ...' %}</a>
-					</div>
+				<h2 class=""><a class="text_button" href="{% url 'articles-list' %}?page=1&tag={{latest_news_tag}}">{% trans "Последние новости" %}</a></h2>
+				<div class="post_previews--category-forSeries mid_gap">
+					{% include 'Post/basic--post_preview-article.html' with posts=latest_news_posts %}
 				</div>
-				<div class="home_ui_el">
-					<h2 class="">{% trans "Вопросы" %}</h2>
-					<div class="post_previews--category-forSeries mid_gap">
-						{% include 'Post/basic--post_preview-qa.html' with posts=latest_questions_posts %}
-					</div>
-					<div class="see_more_button button action_button">
-						<a class="white_text_button " href="{% url 'qa-list' %}">{% trans 'Больше ...' %}</a>
-					</div>
+				<div class="see_more_button button action_button">
+					<a class="white_text_button " href="{% url 'articles-list' %}?page=1&tag={{latest_news_tag}}">{% trans 'Больше ...' %}</a>
 				</div>
 			</div>
 			<div class="home_ui_el">
