@@ -17,6 +17,13 @@
             <img width="32" height="32" style="padding: 4px" class="icon dynamic_image" src="{% static 'placeholder.svg'%}" data-src="{% static 'PostFilter/img/sort-reverse-alphabetically.svg' %}" alt="{% trans 'Значок сортировки' %}">
         </div>
         {% endif %}
+        {% with category.slug|add:'-rss' as rss_feed_path %}
+        <a href="{% url rss_feed_path %}" onClick="yaCounter95199635.reachGoal('onRSS')">
+            <div id="onRSS" class="bordered_button button squered_button" >
+                <img width="32" height="32" style="padding: 4px" class="icon dynamic_image" src="{% static 'placeholder.svg'%}" data-src="{% static 'PostFilter/img/rss.svg' %}" alt="{% trans 'Значок сортировки' %}">
+            </div>
+        </a>
+        {% endwith %}
     </legend>
     <div id="filters_body" class="active_filter row mid_gap full_width " style="overflow: hidden;">
         {% for filter in filters_doc %}
