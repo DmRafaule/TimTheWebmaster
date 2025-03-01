@@ -33,14 +33,16 @@ class EngagementMiddleware:
         return response
     
     def process_view(self, request, view_func, view_args, view_kwargs):
-        if view_func.__name__ in self.allowed_func_posts_with_comments:
-            self.handler = self.post_handler
-            self.slug = view_kwargs['post_slug']
-        elif view_func.__name__ in self.allowed_func_tools:
-            self.handler = self.tool_handler
-        elif view_func.__name__ in self.allowed_func_no_engagement:
-            self.handler = self.no_engagement_handler
-
+        try:
+            if view_func.__name__ in self.allowed_func_posts_with_comments:
+                self.handler = self.post_handler
+                self.slug = view_kwargs['post_slug']
+            elif view_func.__name__ in self.allowed_func_tools:
+                self.handler = self.tool_handler
+            elif view_func.__name__ in self.allowed_func_no_engagement:
+                self.handler = self.no_engagement_handler
+        except:
+            pass
         return None
 
     def process_exception(self, request, exception):

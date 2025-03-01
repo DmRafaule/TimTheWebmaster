@@ -52,6 +52,7 @@ urlpatterns += i18n_patterns(
     path('tools/', include('ShaderToy.urls')),
     path('', include('Post.urls')),
     path('', include('PagiScroll.urls')),
+    path('', include('PostFilter.urls')),
 )
 
 handler404 = "Main.views.page_not_found"
