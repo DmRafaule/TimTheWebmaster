@@ -2,8 +2,17 @@ from django import forms
 from django.forms import ModelForm
 from django.utils.translation import gettext_lazy as _
 from captcha.fields import CaptchaField
-from .models import Comment
+from .models import Comment, Email
 
+
+class EmailForm(ModelForm):
+    class Meta:
+        model = Email
+        fields = ['email']
+        widgets = {
+            'email': forms.EmailInput(attrs={'placeholder': _('Твой Email адрес')}),
+        }
+    captcha = CaptchaField()
 
 class CommentForm(ModelForm):
     class Meta:

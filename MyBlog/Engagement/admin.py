@@ -1,6 +1,10 @@
 from django.contrib import admin
-from .models import Comment, Interaction
+from .models import Comment, Interaction, Email
 
+class EmailAdmin(admin.ModelAdmin):
+    list_display = ('email',)
+    list_display_links = ('email',)
+    search_fields = ('email',)
 
 class CommentAdmin(admin.ModelAdmin):
     list_display = ('url', 'name', 'time_published')
@@ -33,5 +37,6 @@ class InteractionAdmin(admin.ModelAdmin):
     ]
 
 
+admin.site.register(Email, EmailAdmin)
 admin.site.register(Comment, CommentAdmin)
 admin.site.register(Interaction, InteractionAdmin)
