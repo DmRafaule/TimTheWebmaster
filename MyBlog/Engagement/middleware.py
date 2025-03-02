@@ -2,7 +2,7 @@ from django.template.response import TemplateResponse
 from Main.forms import FeedbackForm
 from django.template import loader
 from .models import Comment, Interaction
-from .forms import CommentForm, ReviewForm
+from .forms import CommentForm, ReviewForm, EmailForm
 from .utils import getSlugFromURL
 
 class EngagementMiddleware:
@@ -19,6 +19,7 @@ class EngagementMiddleware:
         # Beacause of Class base view we use templates name instead of functions
         self.allowed_templates_pagination = ('PagiScroll/article_list.html', 'PagiScroll/tool_list.html', 'PagiScroll/note_list.html')
         self.form = FeedbackForm()
+        self.email_form = EmailForm()
         # One-time configuration and initialization.
 
     def __call__(self, request):
@@ -96,6 +97,8 @@ class EngagementMiddleware:
         response.context_data.update({'is_bookmarks': True})
         response.context_data.update({'is_feedbacks': True})
         response.context_data.update({'feedback_form': self.form})
+        response.context_data.update({'is_email': True})
+        response.context_data.update({'email_subscription_form': self.email_form})
         response.context_data.update({'isBottomEngagementBody': True})
         response.context_data.update({'isDisplayingActualAvailableInteractions': True})
         self._update_views_counter(request.path)
@@ -110,6 +113,8 @@ class EngagementMiddleware:
         response.context_data.update({'is_bookmarks': True})
         response.context_data.update({'is_feedbacks': True})
         response.context_data.update({'feedback_form': self.form})
+        response.context_data.update({'is_email': True})
+        response.context_data.update({'email_subscription_form': self.email_form})
         response.context_data.update({'isBottomEngagementBody': True})
         response.context_data.update({'isDisplayingActualAvailableInteractions': True})
         # THis is all for Google Rich Results, SoftwareApplication
@@ -132,6 +137,8 @@ class EngagementMiddleware:
         response.context_data.update({'is_bookmarks': True})
         response.context_data.update({'is_feedbacks': True})
         response.context_data.update({'feedback_form': self.form})
+        response.context_data.update({'is_email': True})
+        response.context_data.update({'email_subscription_form': self.email_form})
         response.context_data.update({'isBottomEngagementBody': False})
         response.context_data.update({'isDisplayingActualAvailableInteractions': False})
         self._update_views_counter(request.path)

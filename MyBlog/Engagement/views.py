@@ -3,8 +3,8 @@ from django.template import loader
 from django.utils.translation import gettext as _
 from Main.forms import FeedbackForm
 from django.core.mail import send_mail
-from .models import Comment, Interaction
-from .forms import CommentForm, ReviewForm
+from .models import Comment, Interaction, Email
+from .forms import CommentForm, ReviewForm, EmailForm
 from .utils import getSlugFromURL
 from MyBlog.settings import DEFAULT_FROM_EMAIL, DEFAULT_TO_EMAIL
 from django.core.paginator import Paginator
@@ -83,13 +83,44 @@ def share_post(request):
 
     return JsonResponse(data, status=status)
 
+def email_post(request):
+    form = EmailForm(request.POST)
+    if form.is_valid():
+        msg = _('✔ Вы успешно подписались на рассылку (＠＾０＾)')
+        email = form.cleaned_data.get("email")
+        record, isCreated = Email.objects.get_or_create(email=email)
+        if isCreated:
+            record.save()
+            status = 200
+        else:
+            msg = _('! Такая почта уже зарегистрированна')
+            status = 503
+        context = {'email_subscription_form': EmailForm()}
+        loaded_template = loader.get_template(f'Engagement/engagement_email_subscription_form.html')
+        email_form_doc = loaded_template.render(context, request)
+        data = {
+            'msg': msg,
+            'form': email_form_doc
+        }
+    else:
+        context = {'email_subscription_form': form}
+        loaded_template = loader.get_template(f'Engagement/engagement_email_subscription_form.html')
+        email_form_doc = loaded_template.render(context, request)
+        data = {
+            'msg': _('✗ Возникла ошибка при отправке формы ＼（〇_ｏ）／'),
+            'form': email_form_doc
+        }
+        status = 503
+
+    return JsonResponse(data,status=status)
+
 def feedback_post(request):
     form = FeedbackForm(request.POST)
     if form.is_valid():
         subject = f'{form.cleaned_data.get("username")} | {form.cleaned_data.get("email")}'
         message = f'{form.cleaned_data.get("message")}'
         send_mail(subject=subject, message=message, from_email=DEFAULT_FROM_EMAIL, recipient_list=[DEFAULT_TO_EMAIL])
-        context = {'form': FeedbackForm()}
+        context = {'feedback_form': FeedbackForm()}
         loaded_template = loader.get_template(f'Engagement/engagement_feedback_form.html')
         feedback_doc = loaded_template.render(context, request)
         data = {
@@ -98,7 +129,7 @@ def feedback_post(request):
         }
         status = 200
     else:
-        context = {'form': form}
+        context = {'feedback_form': form}
         loaded_template = loader.get_template(f'Engagement/engagement_feedback_form.html')
         feedback_doc = loaded_template.render(context, request)
         data = {

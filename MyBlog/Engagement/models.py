@@ -15,6 +15,9 @@ class Interaction(models.Model):
     bookmarks = models.IntegerField(default=0)
     time_updated = models.DateTimeField(auto_now=True, auto_created=True)
 
+class Email(models.Model):
+    email = models.EmailField()
+
 class Comment(models.Model):
     class Rating(models.IntegerChoices):
         ONE = 1

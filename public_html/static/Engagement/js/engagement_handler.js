@@ -109,6 +109,40 @@ function feedbackPost(){
     })
 }
 
+function emailPost(){
+	var sendEmailModal = document.querySelector('#toSendEmailModal')
+	var form_data = new FormData();
+	form_data.append("csrfmiddlewaretoken", csrftoken);
+	form_data.append("email", sendEmailModal.querySelector("#id_email").value)
+	form_data.append("captcha_0", sendEmailModal.querySelector("#id_captcha_0").value)
+	form_data.append("captcha_1", sendEmailModal.querySelector("#id_captcha_1").value)
+	fetch('/' + language_code + "/email_post/", {
+		method: 'POST',
+		body: form_data
+	})
+    .then( response => {
+        if (!response.ok)
+            return response.json().then( response => {
+                notificator.notify(response['msg'],'error')  
+				// Order is matter, since we replace old toSendFeedbackModal, we need to get
+				// A new version of this node
+				document.querySelector('#toSendEmailModal').outerHTML = response['form'] 
+				var sendEmailModal = document.querySelector('#toSendEmailModal')
+				openModal(sendEmailModal)
+				initModals()
+				document.querySelector('#send_email_subscription').addEventListener('click', emailPost)
+            })
+        else
+            return response.json().then( response =>{
+                notificator.notify(response['msg'],'success')
+				document.querySelector('#toSendEmailModal').outerHTML = response['form'] 
+				initModals()
+				document.querySelector('#send_email_subscription').addEventListener('click', emailPost)
+				closeModal(document.querySelector('#toSendEmailModal'))
+            })
+    })
+}
+
 function closeShareForm(){
 	var share_button = document.querySelector('#onShare')
 	if (share_button){
@@ -160,12 +194,23 @@ function onReady(){
 			btn.addEventListener('click', sharePost)
 		})
 	})
+	document.querySelectorAll('#onShareCopyLink').forEach( (el) => {
+		el.addEventListener('click', (event) => {
+			link = event.currentTarget.dataset.link
+			navigator.clipboard.writeText(link);
+		})
+	})
 	document.querySelectorAll('#onLike').forEach( (onLike) => {
 		onLike.addEventListener('click', likePost)
 	})
 	document.querySelectorAll('#onFeedback').forEach( (onFeedback) => {
 		document.querySelectorAll('#send_feedback_submit').forEach((send_feedback_submit) => {
 			send_feedback_submit.addEventListener('click', feedbackPost)
+		})
+	})
+	document.querySelectorAll('#onEmail').forEach( (onEmail) => {
+		document.querySelectorAll('#send_email_subscription').forEach((send_email_subscription) => {
+			send_email_subscription.addEventListener('click', emailPost)
 		})
 	})
 

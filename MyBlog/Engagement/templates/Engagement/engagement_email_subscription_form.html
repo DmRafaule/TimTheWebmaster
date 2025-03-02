@@ -1,0 +1,31 @@
+{% load i18n %}
+{% load static %}
+
+<div id='toSendEmailModal' class="modal modal-window" data-btn-id="onEmail" data-btn-close-id='close_btn'>
+    <div class="modal-content">
+      <div style="padding: 20px">{% trans 'Подписка на рассылку' %}</div>
+      <hr>
+      <div class="modal_body">
+        <div class="row in_middle">
+          <div class="row mid_gap on_end_other">
+            <form class="vertical" action='' id="toSendEmail"  method="post">
+              {% csrf_token %}
+              {% for field in email_subscription_form %}
+                <div>
+                  {{ field }}
+                </div>
+                {% for error in field.errors %}
+                <p class="form_error">{{ error }}</p>
+                {% endfor %}	
+              {% endfor %}
+            </form>
+          </div>
+        </div>
+      </div>
+      <hr>
+      <div class="modal_actions">
+        <img id="send_email_subscription" width="32" height="32" class="close_modal svg_icon_inverted icon dynamic_image bordered_button button" src="{% static 'placeholder.svg'%}" data-src="{% static 'ok.svg' %}" alt="{% trans 'Крестик' %}"  style='border-bottom-left-radius: var(--modal-radius)'>
+        <img id='close_btn' width="32" height="32" class="close_modal svg_icon_inverted icon dynamic_image bordered_button button" src="{% static 'placeholder.svg'%}" data-src="{% static 'close.svg' %}" alt="{% trans 'Крестик' %}" style='border-bottom-right-radius: var(--modal-radius)'>
+      </div>
+    </div>
+</div>

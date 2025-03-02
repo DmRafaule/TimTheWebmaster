@@ -34,6 +34,11 @@
                             <img class="icon button squered_button dynamic_image" width="32" height="32" src="{% static 'placeholder.svg' %}" data-src="{% static 'telegram.svg' %}" alt="{% trans "telegram иконка" %}">
                         </div>
                     </a>
+                    <div id="onShareCopyLink" onclick="yaCounter95199635.reachGoal('onShare')"  data-link="{{ url_to_share }}">
+                        <div class="share_button">
+                            <img class="icon   button squered_button dynamic_image" width="31" height="32" src="{% static 'placeholder.svg' %}" data-src="{% static 'Engagement/img/link.svg' %}" alt="{% trans "telegram иконка" %}">
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -51,6 +56,11 @@
         {% if is_feedbacks %}
         <div id="onFeedback" class="row min_gap in_middle">
             <img  class="icon button squered_button dynamic_image" width="32" height="32" src="{% static 'placeholder.svg' %}" data-src="{% static 'Engagement/img/feedback.svg' %}" alt="{% trans "облачко" %}">
+        </div>
+        {% endif %}
+        {% if is_email %}
+        <div id="onEmail" class="row min_gap in_middle">
+            <img  class="icon button squered_button dynamic_image" width="32" height="32" src="{% static 'placeholder.svg' %}" data-src="{% static 'Engagement/img/email.svg' %}" alt="{% trans "письмо" %}">
         </div>
         {% endif %}
     </div>
@@ -92,6 +102,11 @@
                         <img class="icon   button squered_button dynamic_image" width="31" height="32" src="{% static 'placeholder.svg' %}" data-src="{% static 'telegram.svg' %}" alt="{% trans "telegram иконка" %}">
                     </div>
                 </a>
+                <div id="onShareCopyLink" onclick="yaCounter95199635.reachGoal('onShare')"  data-link="{{ url_to_share }}">
+                    <div class="share_button">
+                        <img class="icon   button squered_button dynamic_image" width="31" height="32" src="{% static 'placeholder.svg' %}" data-src="{% static 'Engagement/img/link.svg' %}" alt="{% trans "иконка копирования ссылки" %}">
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -111,11 +126,18 @@
         <img  class="icon svg_icon_inverted_black button squered_button dynamic_image" width="32" height="32" src="{% static 'placeholder.svg' %}" data-src="{% static 'Engagement/img/feedback.svg' %}" alt="{% trans "облачко" %}">
     </div>
     {% endif %}
+    {% if is_email %}
+    <div id="onEmail" class="row min_gap in_middle">
+        <img  class="icon svg_icon_inverted_black button squered_button dynamic_image" width="32" height="32" src="{% static 'placeholder.svg' %}" data-src="{% static 'Engagement/img/email.svg' %}" alt="{% trans "письмо" %}">
+    </div>
+    {% endif %}
 </div>
 {% endif %}
 
 {# Feedback form, hidden #}
 {% include 'Engagement/engagement_feedback_form.html' %}
+{# Email subsription form, hidden #}
+{% include 'Engagement/engagement_email_subscription_form.html' %}
 
 {# Comment form and all related comments #}
 {% if is_comments %}
