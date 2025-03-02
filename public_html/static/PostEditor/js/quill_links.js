@@ -20,6 +20,7 @@ class LinkTooltip extends Quill.import('ui/tooltip'){
         this.root.classList.add('link-tooltip')
         this.insertTextInput(placeholder)
         this.insertAddBtn()
+        this.insertCopyBtn()
         this.insertRemoveBtn()
     }
     insertTextInput(placeholder){
@@ -49,6 +50,18 @@ class LinkTooltip extends Quill.import('ui/tooltip'){
         add.classList.add('text_button')
         add.innerText = document.querySelector('#save_text').innerText
         add.addEventListener('click', () => {this.save(this)})
+        this.root.insertAdjacentElement('beforeend', add)
+    }
+    insertCopyBtn(){
+        let add = document.createElement('div')
+        add.classList.add('add_button')
+        add.classList.add('text_button')
+        add.innerText = document.querySelector('#copy_text').innerText
+        add.addEventListener('click', () => {
+            var link = this.boundsContainer.getAttribute('href')
+			navigator.clipboard.writeText(link);
+            LinkTooltip.remove();
+        })
         this.root.insertAdjacentElement('beforeend', add)
     }
     insertRemoveBtn(){

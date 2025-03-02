@@ -263,21 +263,21 @@ footer{
     font-size: var(--size-mini_font) !important;
 }
 /* Font and size common */
-.ql-font , .ql-size, .ql-color, .ql-background, .ql-list, .ql-header{
+.ql-font , .ql-size, .ql-color, .ql-background, .ql-list, .ql-header, .ql-kaomodji{
     display: block !important;
     max-width: 150px;
     
 }
-.ql-font.ql-picker, .ql-size.ql-picker, .ql-color.ql-picker, .ql-background.ql-picker, .ql-header.ql-picker{
+.ql-font.ql-picker, .ql-size.ql-picker, .ql-color.ql-picker, .ql-background.ql-picker, .ql-header.ql-picker, .ql-kaomodji.ql-picker{
     display: none !important;
 }
-select.ql-font, select.ql-size, select.ql-color, select.ql-background, select.ql-list, select.ql-header{
+select.ql-font, select.ql-size, select.ql-color, select.ql-background, select.ql-list, select.ql-header, select.ql-kaomodji{
     background-color: var(--big_space);
     border: 2px solid var(--main_color);
     padding: 5px;
     color: var(--main_text_color);
 }
-select.ql-font>option, select.ql-size>option, select.ql-list>option, select.ql-header>option{
+select.ql-font>option, select.ql-size>option, select.ql-list>option, select.ql-header>option, select.ql-kaomodji>option{
     background-color: var(--bg_color);
 }
 

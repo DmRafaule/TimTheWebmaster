@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-01-22 15:51+0300\n"
+"POT-Creation-Date: 2025-03-02 11:48+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -67,170 +67,202 @@ msgid "Содержание"
 msgstr "Table of contents"
 
 #: .\PostEditor\templates\PostEditor\editor_home.html:54
-#: .\PostEditor\templates\PostEditor\editor_home.html:322
-#: .\PostEditor\templates\PostEditor\editor_home.html:323
+#: .\PostEditor\templates\PostEditor\editor_home.html:580
+#: .\PostEditor\templates\PostEditor\editor_home.html:581
 msgid "Сохранить"
 msgstr "Save"
 
 #: .\PostEditor\templates\PostEditor\editor_home.html:55
+msgid "Копировать"
+msgstr "Copy"
+
+#: .\PostEditor\templates\PostEditor\editor_home.html:56
 msgid "Удалить"
 msgstr "Remove"
 
-#: .\PostEditor\templates\PostEditor\editor_home.html:56
+#: .\PostEditor\templates\PostEditor\editor_home.html:57
 msgid "Вставка ряда выше"
 msgstr "Insert a row above"
 
-#: .\PostEditor\templates\PostEditor\editor_home.html:57
+#: .\PostEditor\templates\PostEditor\editor_home.html:58
 msgid "Вставка ряда ниже"
 msgstr "Insert a row below"
 
-#: .\PostEditor\templates\PostEditor\editor_home.html:58
+#: .\PostEditor\templates\PostEditor\editor_home.html:59
 msgid "Вставка колонки после"
 msgstr "Insert a column after"
 
-#: .\PostEditor\templates\PostEditor\editor_home.html:59
+#: .\PostEditor\templates\PostEditor\editor_home.html:60
 msgid "Вставка колонки перед"
 msgstr "Insert a column before"
 
-#: .\PostEditor\templates\PostEditor\editor_home.html:60
+#: .\PostEditor\templates\PostEditor\editor_home.html:61
 msgid "Вставка верхнего хедера"
 msgstr "Insert a headers"
 
-#: .\PostEditor\templates\PostEditor\editor_home.html:61
+#: .\PostEditor\templates\PostEditor\editor_home.html:62
 msgid "Вставка левого хедера"
 msgstr "Insert a left headers"
 
-#: .\PostEditor\templates\PostEditor\editor_home.html:62
+#: .\PostEditor\templates\PostEditor\editor_home.html:63
 msgid "Удалить ряд"
 msgstr "Remove a row"
 
-#: .\PostEditor\templates\PostEditor\editor_home.html:63
+#: .\PostEditor\templates\PostEditor\editor_home.html:64
 msgid "Удалить колонку"
 msgstr "Remove a column"
 
-#: .\PostEditor\templates\PostEditor\editor_home.html:64
+#: .\PostEditor\templates\PostEditor\editor_home.html:65
 msgid "Удалить таблицу"
 msgstr "Delete a table"
 
-#: .\PostEditor\templates\PostEditor\editor_home.html:65
+#: .\PostEditor\templates\PostEditor\editor_home.html:66
 msgid "Да начни творить"
 msgstr "Let's start creating"
 
-#: .\PostEditor\templates\PostEditor\editor_home.html:66
+#: .\PostEditor\templates\PostEditor\editor_home.html:67
 msgid "Введи аббревиатуру"
 msgstr "Enter an abbreviation"
 
-#: .\PostEditor\templates\PostEditor\editor_home.html:89
 #: .\PostEditor\templates\PostEditor\editor_home.html:90
-#: .\PostEditor\templates\PostEditor\editor_home.html:107
-#: .\PostEditor\templates\PostEditor\editor_home.html:123
+#: .\PostEditor\templates\PostEditor\editor_home.html:91
+#: .\PostEditor\templates\PostEditor\editor_home.html:108
 #: .\PostEditor\templates\PostEditor\editor_home.html:124
-#: .\PostEditor\templates\PostEditor\editor_home.html:330
-#: .\PostEditor\templates\PostEditor\editor_home.html:335
+#: .\PostEditor\templates\PostEditor\editor_home.html:125
+#: .\PostEditor\templates\PostEditor\editor_home.html:588
+#: .\PostEditor\templates\PostEditor\editor_home.html:593
 msgid "Крестик"
 msgstr "Cross"
 
-#: .\PostEditor\templates\PostEditor\editor_home.html:117
+#: .\PostEditor\templates\PostEditor\editor_home.html:118
 msgid "Ты уверен в том, что хочешь удалить этот шаблон ?"
 msgstr "Are you sure, you want to delete this template ?"
 
-#: .\PostEditor\templates\PostEditor\editor_home.html:166
+#: .\PostEditor\templates\PostEditor\editor_home.html:167
 msgid "Жирный"
 msgstr "Bold"
 
-#: .\PostEditor\templates\PostEditor\editor_home.html:170
+#: .\PostEditor\templates\PostEditor\editor_home.html:171
 msgid "Скошеный"
 msgstr "Italic"
 
-#: .\PostEditor\templates\PostEditor\editor_home.html:174
+#: .\PostEditor\templates\PostEditor\editor_home.html:175
 msgid "Подчёркнутый"
 msgstr "Underline"
 
-#: .\PostEditor\templates\PostEditor\editor_home.html:178
+#: .\PostEditor\templates\PostEditor\editor_home.html:179
 msgid "Перечёркнутый"
 msgstr "Crossed out"
 
-#: .\PostEditor\templates\PostEditor\editor_home.html:182
+#: .\PostEditor\templates\PostEditor\editor_home.html:183
 msgid "Аббревиатура"
 msgstr "Abbreviation"
 
-#: .\PostEditor\templates\PostEditor\editor_home.html:199
+#: .\PostEditor\templates\PostEditor\editor_home.html:200
 msgid "Цитата"
 msgstr "Quote"
 
-#: .\PostEditor\templates\PostEditor\editor_home.html:203
+#: .\PostEditor\templates\PostEditor\editor_home.html:204
 msgid "Внимание"
 msgstr "Attention"
 
-#: .\PostEditor\templates\PostEditor\editor_home.html:207
+#: .\PostEditor\templates\PostEditor\editor_home.html:208
 msgid "Опасно"
 msgstr "Danger"
 
-#: .\PostEditor\templates\PostEditor\editor_home.html:211
+#: .\PostEditor\templates\PostEditor\editor_home.html:212
 msgid "Это интересно"
 msgstr "This is interesting"
 
-#: .\PostEditor\templates\PostEditor\editor_home.html:215
+#: .\PostEditor\templates\PostEditor\editor_home.html:216
 msgid "Вопрос"
 msgstr "Question"
 
-#: .\PostEditor\templates\PostEditor\editor_home.html:219
+#: .\PostEditor\templates\PostEditor\editor_home.html:220
 msgid "Определение"
 msgstr "Definition"
 
-#: .\PostEditor\templates\PostEditor\editor_home.html:223
+#: .\PostEditor\templates\PostEditor\editor_home.html:224
 msgid "Блок кода"
 msgstr "A block of code"
 
-#: .\PostEditor\templates\PostEditor\editor_home.html:232
+#: .\PostEditor\templates\PostEditor\editor_home.html:233
 msgid "Список нумерованный"
 msgstr "Numeric list"
 
-#: .\PostEditor\templates\PostEditor\editor_home.html:236
+#: .\PostEditor\templates\PostEditor\editor_home.html:237
 msgid "Список ненумерованный"
 msgstr "Bullet list"
 
-#: .\PostEditor\templates\PostEditor\editor_home.html:240
+#: .\PostEditor\templates\PostEditor\editor_home.html:241
 msgid "Список латиницей"
 msgstr "Latin list"
 
-#: .\PostEditor\templates\PostEditor\editor_home.html:244
+#: .\PostEditor\templates\PostEditor\editor_home.html:245
 msgid "Таблица"
 msgstr "Table"
 
-#: .\PostEditor\templates\PostEditor\editor_home.html:248
+#: .\PostEditor\templates\PostEditor\editor_home.html:249
 msgid "Горизонтальная линия"
 msgstr "Horizontal line"
 
-#: .\PostEditor\templates\PostEditor\editor_home.html:257
+#: .\PostEditor\templates\PostEditor\editor_home.html:258
 msgid "Ссылка на внешний рессурс"
 msgstr "A link to outside a site"
 
-#: .\PostEditor\templates\PostEditor\editor_home.html:261
+#: .\PostEditor\templates\PostEditor\editor_home.html:262
 msgid "Ссылка на часть статьи"
 msgstr "A link to a part of article"
 
-#: .\PostEditor\templates\PostEditor\editor_home.html:265
+#: .\PostEditor\templates\PostEditor\editor_home.html:266
 msgid "Ссылка на скачиваеммый контент"
 msgstr "A link to downloadable content"
 
-#: .\PostEditor\templates\PostEditor\editor_home.html:276
+#: .\PostEditor\templates\PostEditor\editor_home.html:277
 msgid "Видео"
 msgstr "Video"
 
-#: .\PostEditor\templates\PostEditor\editor_home.html:282
+#: .\PostEditor\templates\PostEditor\editor_home.html:283
 msgid "Изображение"
 msgstr "Image"
 
-#: .\PostEditor\templates\PostEditor\editor_home.html:288
+#: .\PostEditor\templates\PostEditor\editor_home.html:289
 msgid "Текст под изображением"
 msgstr "Text under image"
 
-#: .\PostEditor\templates\PostEditor\editor_home.html:300
+#: .\PostEditor\templates\PostEditor\editor_home.html:370
+msgid "Радость"
+msgstr "Happiness"
+
+#: .\PostEditor\templates\PostEditor\editor_home.html:404
+msgid "Приветствие"
+msgstr "Introduction"
+
+#: .\PostEditor\templates\PostEditor\editor_home.html:426
+msgid "Обнимашки"
+msgstr "Hugs"
+
+#: .\PostEditor\templates\PostEditor\editor_home.html:450
+msgid "Безразличие"
+msgstr "Apathy"
+
+#: .\PostEditor\templates\PostEditor\editor_home.html:490
+msgid "Грусть"
+msgstr "Sadness"
+
+#: .\PostEditor\templates\PostEditor\editor_home.html:526
+msgid "Злость"
+msgstr "Angry"
+
+#: .\PostEditor\templates\PostEditor\editor_home.html:546
+msgid "Удивление"
+msgstr "Surprised"
+
+#: .\PostEditor\templates\PostEditor\editor_home.html:558
 msgid "WYSIWYG онлайн редактор на quilljs"
 msgstr "An online WYSIWYG editor using quilljs"
 
-#: .\PostEditor\templates\PostEditor\editor_home.html:302
+#: .\PostEditor\templates\PostEditor\editor_home.html:560
 msgid ""
 "\n"
 "        Данный редактор был разработан только в развлекательных и "
@@ -248,28 +280,28 @@ msgstr ""
 "need it.\n"
 " "
 
-#: .\PostEditor\templates\PostEditor\editor_home.html:307
+#: .\PostEditor\templates\PostEditor\editor_home.html:565
 msgid "Все обучающиеся материалы:"
 msgstr "All learning resources:"
 
-#: .\PostEditor\templates\PostEditor\editor_home.html:310
+#: .\PostEditor\templates\PostEditor\editor_home.html:568
 msgid "По разработке модулей для редактора на quilljs"
 msgstr "To develop quill modules for editor"
 
-#: .\PostEditor\templates\PostEditor\editor_home.html:311
+#: .\PostEditor\templates\PostEditor\editor_home.html:569
 msgid "По редактированию и кастомизации редактора на quilljs"
 msgstr "To develop and customize an quilljs editor"
 
-#: .\PostEditor\templates\PostEditor\editor_home.html:325
-#: .\PostEditor\templates\PostEditor\editor_home.html:326
+#: .\PostEditor\templates\PostEditor\editor_home.html:583
+#: .\PostEditor\templates\PostEditor\editor_home.html:584
 msgid "Загрузить"
 msgstr "Load"
 
-#: .\PostEditor\templates\PostEditor\editor_home.html:328
+#: .\PostEditor\templates\PostEditor\editor_home.html:586
 msgid "Скачать всё"
 msgstr "Download all"
 
-#: .\PostEditor\templates\PostEditor\editor_home.html:334
+#: .\PostEditor\templates\PostEditor\editor_home.html:592
 msgid "Скачать содержимое"
 msgstr "Download content"
 

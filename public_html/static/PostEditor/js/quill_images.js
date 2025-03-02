@@ -1,4 +1,3 @@
-// Images
 class CustomImage extends Quill.import('formats/image'){
     constructor(scroll, domNode){
         super(scroll, domNode);
