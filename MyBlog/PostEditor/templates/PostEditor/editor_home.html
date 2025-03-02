@@ -52,6 +52,7 @@
   <div style="display: none">
     <div id='table_of_content_text'>{% trans 'Содержание' %}</div>
     <div id='save_text'>{% trans 'Сохранить' %}</div>
+    <div id='copy_text'>{% trans 'Копировать' %}</div>
     <div id='remove_text'>{% trans 'Удалить' %}</div>
     <div id='insertRowAbove_text'>{% trans 'Вставка ряда выше' %}</div>
     <div id='insertRowBelow_text'>{% trans 'Вставка ряда ниже' %}</div>
@@ -286,6 +287,263 @@
               <img class="icon button squered_button action_button_black" src="{% static "PostEditor/img/text_under_img.svg" %}">
             </button>
             <div>{% trans 'Текст под изображением'%}</div>
+          </div>
+        </div>
+      </div>
+      <div class="quill-drop-down-list">
+        <img class="quill-drop-down-button icon button squered_button action_button_black" src="{% static "PostEditor/img/emodji.svg" %}" data-src="{% static "PostEditor/img/emodji.svg" %}" data-close-btn="{% static 'close_white.svg' %}">
+        <div class="quill-drop-down-container quill-drop-down-container_notactive">
+          <div class="row min_gap no_wrap on_middle_other">
+            <select class="ql-kaomodji">
+              <option selected value="=)">=)</option>
+              <option value="(* ^ ω ^) 	">(* ^ ω ^) 	</option>
+              <option value="(´ ∀ ` *) 	">(´ ∀ ` *) 	</option>
+              <option value="٩(◕‿◕｡)۶ 	">٩(◕‿◕｡)۶ 	</option>
+              <option value="(o^▽^o) 	">(o^▽^o) 	</option>
+              <option value="(⌒▽⌒)☆ 	">(⌒▽⌒)☆ 	</option>
+              <option value="<(￣︶￣)> 	"><(￣︶￣)> 	</option>
+              <option value="ヽ(・∀・)ﾉ 	">ヽ(・∀・)ﾉ 	</option>
+              <option value="(´｡• ω •｡`) 	">(´｡• ω •｡`) 	</option>
+              <option value="(￣ω￣) 	">(￣ω￣) 	</option>
+              <option value="(o･ω･o) 	">(o･ω･o) 	</option>
+              <option value="(＠＾◡＾) 	">(＠＾◡＾) 	</option>
+              <option value="ヽ(*・ω・)ﾉ 	">ヽ(*・ω・)ﾉ 	</option>
+              <option value="( ´ ω ` ) 	">( ´ ω ` ) 	</option>
+              <option value="(((o(*°▽°*)o))) 	">(((o(*°▽°*)o))) 	</option>
+              <option value="(´• ω •`) 	">(´• ω •`) 	</option>
+              <option value="(＾▽＾) 	">(＾▽＾) 	</option>
+              <option value="(⌒ω⌒) 	">(⌒ω⌒) 	</option>
+              <option value="╰(▔∀▔)╯ 	">╰(▔∀▔)╯ 	</option>
+              <option value="(─‿‿─) 	">(─‿‿─) 	</option>
+              <option value="(*^‿^*) 	">(*^‿^*) 	</option>
+              <option value="(◕‿◕) 	">(◕‿◕) 	</option>
+              <option value="(⌒‿⌒) 	">(⌒‿⌒) 	</option>
+              <option value="＼(≧▽≦)／ 	">＼(≧▽≦)／ 	</option>
+              <option value="ヽ(o＾▽＾o)ノ 	">ヽ(o＾▽＾o)ノ 	</option>
+              <option value="☆ ～('▽^人)">☆ ～('▽^人)</option>
+              <option value="(*°▽°*) 	">(*°▽°*) 	</option>
+              <option value="٩(｡•́‿•̀｡)۶ 	">٩(｡•́‿•̀｡)۶ 	</option>
+              <option value="(✧ω✧) 	">(✧ω✧) 	</option>
+              <option value="ヽ(*⌒▽⌒*)ﾉ">ヽ(*⌒▽⌒*)ﾉ</option>
+              <option value="(´｡• ᵕ •｡`) 	">(´｡• ᵕ •｡`) 	</option>
+              <option value="( ´ ▽ ` ) 	">( ´ ▽ ` ) 	</option>
+              <option value="(￣▽￣) 	">(￣▽￣) 	</option>
+              <option value="╰(*´︶`*)╯">╰(*´︶`*)╯</option>
+              <option value="(o˘◡˘o) 	">(o˘◡˘o) 	</option>
+              <option value="\(★ω★)/ 	">\(★ω★)/ 	</option>
+              <option value="\(^ヮ^)/ 	">\(^ヮ^)/ 	</option>
+              <option value="(〃＾▽＾〃)">(〃＾▽＾〃)</option>
+              <option value="(╯✧▽✧)╯ 	">(╯✧▽✧)╯ 	</option>
+              <option value="o(>ω<)o 	">o(>ω<)o 	</option>
+              <option value="( ‾́ ◡ ‾́ ) 	">( ‾́ ◡ ‾́ ) 	</option>
+              <option value="(ﾉ´ヮ`)ﾉ*: ･ﾟ 	">(ﾉ´ヮ`)ﾉ*: ･ﾟ 	</option>
+              <option value="(b ᵔ▽ᵔ)b 	">(b ᵔ▽ᵔ)b 	</option>
+              <option value="(๑˃ᴗ˂)ﻭ">(๑˃ᴗ˂)ﻭ</option>
+              <option value="( ˙꒳​˙ ) 	">( ˙꒳​˙ ) 	</option>
+              <option value="(*꒦ິ꒳꒦ີ) 	">(*꒦ິ꒳꒦ີ) 	</option>
+              <option value="(´･ᴗ･ ` ) 	">(´･ᴗ･ ` ) 	</option>
+              <option value="(ﾉ◕ヮ◕)ﾉ*:･ﾟ✧ 	">(ﾉ◕ヮ◕)ﾉ*:･ﾟ✧ 	</option>
+              <option value="(„• ֊ •„) 	">(„• ֊ •„) 	</option>
+              <option value="(.❛ ᴗ ❛.)">(.❛ ᴗ ❛.)</option>
+              <option value="(⁀ᗢ⁀) 	">(⁀ᗢ⁀) 	</option>
+              <option value="(￢‿￢ ) 	">(￢‿￢ ) 	</option>
+              <option value="(¬‿¬ ) 	">(¬‿¬ ) 	</option>
+              <option value="(*￣▽￣)b">(*￣▽￣)b</option>
+              <option value="( ˙▿˙ ) 	">( ˙▿˙ ) 	</option>
+              <option value="(¯▿¯) 	">(¯▿¯) 	</option>
+              <option value="( ◕▿◕ ) 	">( ◕▿◕ ) 	</option>
+              <option value="＼(٥⁀▽⁀ )／">＼(٥⁀▽⁀ )／</option>
+              <option value="(„• ᴗ •„) 	">(„• ᴗ •„) 	</option>
+              <option value="(ᵔ◡ᵔ) 	">(ᵔ◡ᵔ) 	</option>
+              <option value="( ´ ▿ ` ) 	">( ´ ▿ ` ) 	</option>
+              <option value="(๑>◡<๑)">(๑>◡<๑)</option>
+              <option value="( = ⩊ = ) 	">( = ⩊ = ) 	</option>
+              <option value="( ´ ꒳ ` ) 	">( ´ ꒳ ` ) 	</option>
+              <option value="⸜( ´ ꒳ ` )⸝ 	">⸜( ´ ꒳ ` )⸝ 	</option>
+              <option value="⸜(⸝⸝⸝´꒳`⸝⸝⸝)⸝">⸜(⸝⸝⸝´꒳`⸝⸝⸝)⸝</option>
+              <option value="⸜(*ˊᗜˋ*)⸝ 	">⸜(*ˊᗜˋ*)⸝ 	</option>
+              <option value="⸜( *ˊᵕˋ* )⸝ 	">⸜( *ˊᵕˋ* )⸝ 	</option>
+              <option value="(ᗒ⩊ᗕ)">(ᗒ⩊ᗕ)</option>
+              <option value="(•⩊•) 	">(•⩊•) 	</option>
+              <option value="( • ⩊ • )">( • ⩊ • )</option>
+            </select>
+            <div>{% trans 'Радость'%}</div>
+          </div>
+          <div class="row min_gap no_wrap on_middle_other">
+            <select class="ql-kaomodji">
+              <option selected value=":D">:D</option>
+              <option value="(*・ω・)ﾉ 	">(*・ω・)ﾉ 	</option>
+              <option value="(￣▽￣)ノ 	">(￣▽￣)ノ 	</option>
+              <option value="(°▽°)/ 	">(°▽°)/ 	</option>
+              <option value="( ´ ∀ ` )ﾉ">( ´ ∀ ` )ﾉ</option>
+              <option value="(^-^*)/ 	">(^-^*)/ 	</option>
+              <option value="(＠´ー`)ﾉﾞ 	">(＠´ー`)ﾉﾞ 	</option>
+              <option value="(´• ω •`)ﾉ 	">(´• ω •`)ﾉ 	</option>
+              <option value="( ° ∀ ° )ﾉﾞ">( ° ∀ ° )ﾉﾞ</option>
+              <option value="ヾ(*'▽'*) 	">ヾ(*'▽'*) 	</option>
+              <option value="＼(⌒▽⌒) 	">＼(⌒▽⌒) 	</option>
+              <option value="ヾ(☆▽☆) 	">ヾ(☆▽☆) 	</option>
+              <option value="( ´ ▽ ` )ﾉ">( ´ ▽ ` )ﾉ</option>
+              <option value="(^０^)ノ 	">(^０^)ノ 	</option>
+              <option value="~ヾ(・ω・) 	">~ヾ(・ω・) 	</option>
+              <option value="(・∀・)ノ 	">(・∀・)ノ 	</option>
+              <option value="ヾ(・ω・*)">ヾ(・ω・*)</option>
+              <option value="(*°ｰ°)ﾉ 	">(*°ｰ°)ﾉ 	</option>
+              <option value="(・_・)ノ 	">(・_・)ノ 	</option>
+              <option value="(o´ω`o)ﾉ 	">(o´ω`o)ﾉ 	</option>
+              <option value="( ´ ▽ ` )/">( ´ ▽ ` )/</option>
+              <option value="(￣ω￣)/ 	">(￣ω￣)/ 	</option>
+              <option value="( ´ ω ` )ノﾞ 	">( ´ ω ` )ノﾞ 	</option>
+              <option value="(⌒ω⌒)ﾉ 	">(⌒ω⌒)ﾉ 	</option>
+              <option value="(o^ ^o)/">(o^ ^o)/</option>
+              <option value="(≧▽≦)/ 	">(≧▽≦)/ 	</option>
+              <option value="(✧∀✧)/ 	">(✧∀✧)/ 	</option>
+              <option value="(o´▽`o)ﾉ 	">(o´▽`o)ﾉ 	</option>
+              <option value="(￣▽￣)/">(￣▽￣)/</option>
+            </select>
+            <div>{% trans 'Приветствие'%}</div>
+          </div>
+          <div class="row min_gap no_wrap on_middle_other">
+            <select class="ql-kaomodji">
+              <option selected value=";P">;P</option>
+              <option value="(づ￣ ³￣)づ 	">(づ￣ ³￣)づ 	</option>
+              <option value="(つ≧▽≦)つ 	">(つ≧▽≦)つ 	</option>
+              <option value="(つ✧ω✧)つ 	">(つ✧ω✧)つ 	</option>
+              <option value="(づ ◕‿◕ )づ">(づ ◕‿◕ )づ</option>
+              <option value="(⊃｡•́‿•̀｡)⊃ 	">(⊃｡•́‿•̀｡)⊃ 	</option>
+              <option value="(つ . •́ _ʖ •̀ .)つ 	">(つ . •́ _ʖ •̀ .)つ 	</option>
+              <option value="(っಠ‿ಠ)っ 	">(っಠ‿ಠ)っ 	</option>
+              <option value="(づ◡﹏◡)づ">(づ◡﹏◡)づ</option>
+              <option value="⊂(´• ω •`⊂) 	">⊂(´• ω •`⊂) 	</option>
+              <option value="⊂(･ω･*⊂) 	">⊂(･ω･*⊂) 	</option>
+              <option value="⊂(￣▽￣)⊃">⊂(￣▽￣)⊃</option>
+              <option value="⊂( ´ ▽ ` )⊃">⊂( ´ ▽ ` )⊃</option>
+              <option value="( ~*-*)~ 	">( ~*-*)~ 	</option>
+              <option value="(ノ= ⩊ = )ノ">(ノ= ⩊ = )ノ</option>
+              <option value="(っ ᵔ◡ᵔ)っ">(っ ᵔ◡ᵔ)っ</option>
+              <option value="(っ╹ᆺ╹)っ">(っ╹ᆺ╹)っ</option>
+            </select>
+            <div>{% trans 'Обнимашки'%}</div>
+          </div>
+          <div class="row min_gap no_wrap on_middle_other">
+            <select class="ql-kaomodji">
+              <option selected value="┐(シ)┌">┐(シ)┌</option>
+              <option value="ヽ(ー_ー )ノ">ヽ(ー_ー )ノ</option>
+              <option value="ヽ(´ー` )┌">ヽ(´ー` )┌</option>
+              <option value="ヽ(　￣д￣)ノ">ヽ(　￣д￣)ノ</option>
+              <option value="┐(￣ヘ￣)┌">┐(￣ヘ￣)┌</option>
+              <option value="ヽ(￣～￣　)ノ">ヽ(￣～￣　)ノ</option>
+              <option value="╮(￣_￣)╭">╮(￣_￣)╭</option>
+              <option value="ヽ(ˇヘˇ)ノ">ヽ(ˇヘˇ)ノ</option>
+              <option value="┐(￣～￣)┌">┐(￣～￣)┌</option>
+              <option value="┐(︶▽︶)┌">┐(︶▽︶)┌</option>
+              <option value="╮(￣～￣)╭">╮(￣～￣)╭</option>
+              <option value="¯\_(ツ)_/¯">¯\_(ツ)_/¯</option>
+              <option value="┐( ´ д ` )┌">┐( ´ д ` )┌</option>
+              <option value="╮(︶︿︶)╭">╮(︶︿︶)╭</option>
+              <option value="┐(￣∀￣)┌">┐(￣∀￣)┌</option>
+              <option value="┐( ˘ ､ ˘ )┌">┐( ˘ ､ ˘ )┌</option>
+              <option value="╮(︶▽︶)╭">╮(︶▽︶)╭</option>
+              <option value="┐(￣ヮ￣)┌ 	">┐(￣ヮ￣)┌ 	</option>
+              <option value="┐(シ)┌">┐(シ)┌</option>
+            </select>
+            <div>{% trans 'Безразличие'%}</div>
+          </div>
+          <div class="row min_gap no_wrap on_middle_other">
+            <select class="ql-kaomodji">
+              <option selected value=":-(">:-(</option>
+              <option value="(ノ_<。)">(ノ_<。)</option>
+              <option value="(-_-)">(-_-)</option>
+              <option value="(´-ω-`)">(´-ω-`)</option>
+              <option value=".･ﾟﾟ･(／ω＼)･ﾟﾟ･.">.･ﾟﾟ･(／ω＼)･ﾟﾟ･.</option>
+              <option value="(μ_μ)">(μ_μ)</option>
+              <option value="(ﾉД`)">(ﾉД`)</option>
+              <option value="(-ω-、)">(-ω-、)</option>
+              <option value="。゜゜(´Ｏ`) ゜゜。">。゜゜(´Ｏ`) ゜゜。</option>
+              <option value="o(TヘTo)">o(TヘTo)</option>
+              <option value="( ; ω ; )">( ; ω ; )</option>
+              <option value="(｡╯︵╰｡)">(｡╯︵╰｡)</option>
+              <option value="( ﾟ，_ゝ｀)">( ﾟ，_ゝ｀)</option>
+              <option value="(个_个)">(个_个)</option>
+              <option value="(╯︵╰,)">(╯︵╰,)</option>
+              <option value="｡･ﾟ(ﾟ><ﾟ)ﾟ･｡">｡･ﾟ(ﾟ><ﾟ)ﾟ･｡</option>
+              <option value="( ╥ω╥ )">( ╥ω╥ )</option>
+              <option value="(╯_╰)">(╯_╰)</option>
+              <option value="(╥_╥)">(╥_╥)</option>
+              <option value="(／ˍ・、)">(／ˍ・、)</option>
+              <option value="(ノ_<、)">(ノ_<、)</option>
+              <option value="(╥﹏╥)">(╥﹏╥)</option>
+              <option value="｡ﾟ(｡ﾉωヽ｡)ﾟ｡">｡ﾟ(｡ﾉωヽ｡)ﾟ｡</option>
+              <option value="(つω`｡)">(つω`｡)</option>
+              <option value="(｡T ω T｡)">(｡T ω T｡)</option>
+              <option value="(ﾉω･､)">(ﾉω･､)</option>
+              <option value="･ﾟ･(｡>ω<｡)･ﾟ･">･ﾟ･(｡>ω<｡)･ﾟ･</option>
+              <option value="(T_T)">(T_T)</option>
+              <option value="(>_<)">(>_<)</option>
+              <option value="(っ˘̩╭╮˘̩)っ">(っ˘̩╭╮˘̩)っ</option>
+              <option value="｡ﾟ･ (>﹏<) ･ﾟ｡">｡ﾟ･ (>﹏<) ･ﾟ｡</option>
+              <option value="o(〒﹏〒)o">o(〒﹏〒)o</option>
+              <option value="(｡•́︿•̀｡)">(｡•́︿•̀｡)</option>
+              <option value="(ಥ﹏ಥ)">(ಥ﹏ಥ)</option>
+              <option value="(ಡ‸ಡ)">(ಡ‸ಡ)</option>
+            </select>
+            <div>{% trans 'Грусть'%}</div>
+          </div>
+          <div class="row min_gap no_wrap on_middle_other">
+            <select class="ql-kaomodji">
+              <option selected value=">:(">>:(</option>
+              <option value="(＃`Д´)">(＃`Д´)</option>
+              <option value="(`皿´＃) 	">(`皿´＃) 	</option>
+              <option value="( ` ω ´ )">( ` ω ´ )</option>
+              <option value="ヽ( `д´*)ノ">ヽ( `д´*)ノ</option>
+              <option value="(・`ω´・)">(・`ω´・)</option>
+              <option value="(`ー´)">(`ー´)</option>
+              <option value="ヽ(`⌒´メ)ノ">ヽ(`⌒´メ)ノ</option>
+              <option value="凸(`△´＃)">凸(`△´＃)</option>
+              <option value="( `ε´ )">( `ε´ )</option>
+              <option value="ψ( ` ∇ ´ )ψ">ψ( ` ∇ ´ )ψ</option>
+              <option value="ヾ(`ヘ´)ﾉﾞ">ヾ(`ヘ´)ﾉﾞ</option>
+              <option value="ヽ(‵﹏´)ノ">ヽ(‵﹏´)ノ</option>
+              <option value="(ﾒ` ﾛ ´)">(ﾒ` ﾛ ´)</option>
+              <option value="(╬`益´)">(╬`益´)</option>
+              <option value="┌∩┐(◣_◢)┌∩┐">┌∩┐(◣_◢)┌∩┐</option>
+              <option value="凸( ` ﾛ ´ )凸">凸( ` ﾛ ´ )凸</option>
+              <option value="Σ(▼□▼メ)">Σ(▼□▼メ)</option>
+              <option value="(°ㅂ°╬)">(°ㅂ°╬)</option>
+              <option value="ψ(▼へ▼メ)～→">ψ(▼へ▼メ)～→</option>
+              <option value="(ノ°益°)ノ">(ノ°益°)ノ</option>
+              <option value="(҂ `з´ )">(҂ `з´ )</option>
+              <option value="(‡▼益▼)">(‡▼益▼)</option>
+              <option value="(҂` ﾛ ´)凸">(҂` ﾛ ´)凸</option>
+              <option value="((╬◣﹏◢))">((╬◣﹏◢))</option>
+              <option value="٩(╬ʘ益ʘ╬)۶">٩(╬ʘ益ʘ╬)۶</option>
+              <option value="(╬ Ò﹏Ó)">(╬ Ò﹏Ó)</option>
+              <option value="(凸ಠ益ಠ)凸">(凸ಠ益ಠ)凸</option>
+              <option value="୧((#Φ益Φ#))୨">୧((#Φ益Φ#))୨</option>
+              <option value="٩(ఠ益ఠ)۶">٩(ఠ益ఠ)۶</option>
+              <option value="(ﾉಥ益ಥ)ﾉ">(ﾉಥ益ಥ)ﾉ</option>
+            </select>
+            <div>{% trans 'Злость'%}</div>
+          </div>
+          <div class="row min_gap no_wrap on_middle_other">
+            <select class="ql-kaomodji">
+              <option selected>:O</option>
+              <option value="w(°ｏ°)w">w(°ｏ°)w</option>
+              <option value="ヽ(°〇°)ﾉ">ヽ(°〇°)ﾉ</option>
+              <option value="Σ(O_O)">Σ(O_O)</option>
+              <option value="Σ(°ロ°)">Σ(°ロ°)</option>
+              <option value="(⊙_⊙)">(⊙_⊙)</option>
+              <option value="(o_O)">(o_O)</option>
+              <option value="(O_O;) ">(O_O;) </option>
+              <option value="(O.O)">(O.O)</option>
+              <option value="(°ロ°) !">(°ロ°) !</option>
+              <option value="(o_O) !">(o_O) !</option>
+              <option value="(□_□) ">(□_□) </option>
+              <option value="Σ(□_□)">Σ(□_□)</option>
+              <option value="∑(O_O;)">∑(O_O;)</option>
+              <option value="( : ౦ ‸ ౦ : )">( : ౦ ‸ ౦ : )</option>
+            </select>
+            <div>{% trans 'Удивление'%}</div>
           </div>
         </div>
       </div>

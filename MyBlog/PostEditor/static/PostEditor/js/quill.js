@@ -60,6 +60,22 @@ HorizontalLine.tagName = 'hr'
 HorizontalLine.blotName = 'horizontal-line'
 Quill.register({'formats/horizontal-line': HorizontalLine})
 
+class Kaomodji extends Quill.import('blots/inline'){
+    static create(value){
+        let node = super.create(value);
+        node.classList.add('kaomodji')
+        node.innerText = value
+        return node
+    }
+    constructor(scroll, domNode){
+        super(scroll, domNode);
+    }
+}
+Kaomodji.tagName = "kaomodji"
+Kaomodji.blotName = "kaomodji"
+Quill.register({'formats/kaomodji': Kaomodji})
+
+
 const bindings = {
     indent: {
         key: 'Tab',
