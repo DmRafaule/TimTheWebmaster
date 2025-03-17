@@ -79,13 +79,11 @@ class Website(models.Model):
     max_displayed_notes_on_home = models.IntegerField(verbose_name='Limit to display notes', default=5, blank=False)
     articles_post_preview = models.FileField(upload_to='articles', blank=True)
     tools_post_preview = models.FileField(upload_to='tools', blank=True)
-    qas_post_preview = models.FileField(upload_to='qa', blank=True)
-    tds_post_preview = models.FileField(upload_to='td', blank=True)
-    notes_post_preview = models.FileField(blank=True)
-    default_image_preview = models.FileField(blank=True)
+    notes_post_preview = models.FileField(upload_to='notes', blank=True)
+    default_image_preview = models.FileField(upload_to='common', blank=True)
 
 class Contact(models.Model):
-    icon = models.FileField(blank=False)
+    icon = models.FileField(upload_to='common/contacts', blank=False)
     name = models.CharField(max_length=64, blank=False)
     description = models.TextField(blank=True)
     url = models.URLField(max_length=512, blank=False)
@@ -144,6 +142,10 @@ class StaticSitemap(Sitemap):
     def location(self, item):
         return reverse(item)
 
+# Remove loaded file before deleting on database
+@receiver(pre_delete, sender=Contact)
+def deleteImage(sender, instance, **kwargs):
+    instance.icon.delete()
 
 # Remove loaded file before deleting on database
 @receiver(pre_delete, sender=Image)
@@ -154,5 +156,4 @@ def deleteImage(sender, instance, **kwargs):
 # Remove loaded file before deleting on database
 @receiver(pre_delete, sender=Downloadable)
 def deleteDownloadable(sender, instance, **kwargs):
-
     os.remove(os.path.join(MEDIA_ROOT, f"{instance.file}"))

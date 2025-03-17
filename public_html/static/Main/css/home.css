@@ -115,13 +115,10 @@
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-between;
-	border-top: 2px solid var(--main_color);
-	border-right: 2px solid var(--main_color);
 	padding: 8px;
 }
 
 .post_previews--category-forSeries{
-	height: 600px;
 	overflow: auto;
 }
 .post_previews--category-forResources{
@@ -145,7 +142,7 @@
 	flex: 1 0 300px;
 }
 .post_previews--category-forSeries>.post_preview{
-	flex: 0 1 600px;
+	flex: 1 1 300px;
 }
 .post_previews--category-forNews>div>div>div>h2{
 	font-size: var(--size-titleH4_font);

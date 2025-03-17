@@ -6,7 +6,7 @@ class PagiScrollEditorAdmin(admin.ModelAdmin):
         (
             None,
             {
-                'fields': ['regex_slug', 'title', 'description', 'h1', 'lead', 'preview']
+                'fields': ['regex_slug', 'title', 'description', 'h1', 'lead']
             }
         ),
     ]

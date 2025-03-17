@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-02-28 19:01+0300\n"
+"POT-Creation-Date: 2025-03-17 20:25+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -180,12 +180,12 @@ msgid ""
 "немного своего времени и сделать такой интсрумент, который подходит именно "
 "тебе. Да ещё словить немного фана в процессе."
 msgstr ""
-"Now, I'll write what this site is about and what you can find here. By creating this site "
-"or adding a new app to it, I want to show other people that they don't "
-"necessarily have to pay $130 a month for a tool or extension in "
-"which they won't need 90%% of the functionality. Instead, they can spend "
-"a little of their time and make a tool that suits "
-"you. And even have some fun in the process."
+"Now, I'll write what this site is about and what you can find here. By "
+"creating this site or adding a new app to it, I want to show other people "
+"that they don't necessarily have to pay $130 a month for a tool or extension "
+"in which they won't need 90%% of the functionality. Instead, they can spend "
+"a little of their time and make a tool that suits you. And even have some "
+"fun in the process."
 
 #: .\Main\templates\Main\about.html:101
 msgid ""
@@ -423,32 +423,18 @@ msgstr "Tim the Webmaster"
 msgid "Инструменты"
 msgstr "Tools"
 
-#: .\Main\templates\Main\home.html:27 .\Main\templates\Main\home.html:39
-#: .\Main\templates\Main\home.html:51 .\Main\templates\Main\home.html:62
-#: .\Main\templates\Main\home.html:90 .\Main\templates\Main\home.html:99
-#: .\Main\templates\Main\home.html:131 .\Main\templates\Main\home.html:140
+#: .\Main\templates\Main\home.html:33 .\Main\templates\Main\home.html:55
+#: .\Main\templates\Main\home.html:70
 msgid "Больше ..."
 msgstr "See more ..."
 
-#: .\Main\templates\Main\home.html:33
-msgid "Новые статьи"
-msgstr "New articles"
+#: .\Main\templates\Main\home.html:39
+msgid "Cтатьи"
+msgstr "Articles"
 
-#: .\Main\templates\Main\home.html:45
-msgid "Последние новости"
-msgstr "Latest news"
-
-#: .\Main\templates\Main\home.html:56
+#: .\Main\templates\Main\home.html:60
 msgid "Заметки"
 msgstr "Notes"
-
-#: .\Main\templates\Main\home.html:68
-msgid "Другие ресурсы"
-msgstr "Other resources"
-
-#: .\Main\templates\Main\home.html:109
-msgid "Другие статьи (по темам)"
-msgstr "Other articles (by topic)"
 
 #: .\Main\templates\Main\table_of_content.html:5
 msgid "Содержание"
