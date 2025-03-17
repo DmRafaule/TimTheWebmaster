@@ -80,7 +80,7 @@ def home(request):
     internal_tool_tag = Tag.objects.get(slug_en='internal-tool')
     internal_tools = website_conf.choosen_tools.all()[:website_conf.max_displayed_inner_tools_on_home]
     most_popular_article = U.get_latest_post(3, Article.objects.all())
-    latest_news_tag = Tag.objects.get(slug_en='news')
+
     news = U.get_posts_by_tag('News', Article)
     latest_news = U.get_latest_post(website_conf.max_displayed_news_on_home, news)
     latest_notes = U.get_latest_post(website_conf.max_displayed_notes_on_home, Note.objects.all())
@@ -104,14 +104,17 @@ def home(request):
         })
     
     context.update({'internal_tool_tag': internal_tool_tag.slug})
+    context.update({'internal_tools_preview': website_conf.tools_post_preview})
     context.update({'internal_tools_posts': internal_tools})
     context.update({'internal_tools_length': len(internal_tools)})
     context.update({'current_tag': ''})
     
+    context.update({'articles_preview': website_conf.articles_post_preview})
     context.update({'most_popular_article_posts': most_popular_article})
 
     context.update({'latest_news_posts': latest_news})
-    context.update({'latest_news_tag': latest_news_tag.slug})
+
+    context.update({'notes_preview': website_conf.notes_post_preview})
     context.update({'latest_notes_posts': latest_notes})
 
 

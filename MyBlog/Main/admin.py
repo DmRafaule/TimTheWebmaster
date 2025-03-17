@@ -63,8 +63,6 @@ class WebsiteAdmin(admin.ModelAdmin):
                     'paginator_per_page_gallery_columns',
                     'articles_post_preview',
                     'tools_post_preview',
-                    'qas_post_preview',
-                    'tds_post_preview',
                     'notes_post_preview',
                 ],
                 'classes': ['collapsed'],

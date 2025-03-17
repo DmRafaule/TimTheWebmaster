@@ -13,9 +13,6 @@
 			<h2 class="post_preview_title"><a class="text_button" href="{{ a.get_absolute_url }}">{{a.title}}</a></h2>
 		</div>
 	</div>
-	<span class="post_preview_body">
-		{{a.description|truncatewords:40}} 	
-	</span>
 	{% if displayTags %}
 		{% include 'Post/tags.html' with post=a %}
 	{% endif %}
