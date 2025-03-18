@@ -124,8 +124,5 @@ footer{
 	padding: 10px;
 	z-index: 0;
 	position: relative;
-	box-shadow: var(--box-shadow);
-	-webkit-box-shadow: var(--box-shadow);
-	-moz-box-shadow: var(--box-shadow);
 	padding-bottom: var(--text_block_margin-top);
 }

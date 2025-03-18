@@ -8,21 +8,18 @@
     display: flex;
     width: 100%;
     min-height: 200px;
-    background-color: #ffffff73;
-    border-radius: var(--post_preview_border-radius);
+    background-color: #ffd240cf;
+    border-radius: 5px;
     padding: 5px;
     z-index: 0;
     position: relative;
 }
 .comment{
-    background-color: #ffffff73;
-    border-radius: var(--post_preview_border-radius);
+    background-color: #ffd240cf;
+    border-radius: 5px;
     padding: 5px;
     z-index: 0;
     position: relative;
-    box-shadow: var(--box-shadow);
-	-webkit-box-shadow: var(--box-shadow);
-	-moz-box-shadow: var(--box-shadow);
 }
 .comment_person{
     font-weight: 300;
@@ -36,9 +33,6 @@
     border-radius: var(--post_preview_border-radius);
     z-index: 0;
     position: relative;
-    box-shadow: var(--box-shadow);
-	-webkit-box-shadow: var(--box-shadow);
-	-moz-box-shadow: var(--box-shadow);
 }
 /* Rating stuff */
 .comment_rating{
