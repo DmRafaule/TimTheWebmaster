@@ -22,7 +22,7 @@ def article(request, post_slug):
     sim_post = list(set(U.getAllWithTags(Post_M.Article.objects.filter(Q(isPublished=True) & Q(tags__in=post.tags.all())).exclude(slug=post_slug), post.tags.all(), website_conf.threshold_similar_articles)))
     if len(sim_post) > 0:
         context.update({'posts': sim_post[:website_conf.max_displayed_similar_articles]})
-        loaded_template = loader.get_template(f'Post/basic--post_preview-article.html')
+        loaded_template = loader.get_template(f'Post/embeded--post_preview-article.html')
         sim_post_doc = loaded_template.render(context, request)
 
     context.update({'post': post})

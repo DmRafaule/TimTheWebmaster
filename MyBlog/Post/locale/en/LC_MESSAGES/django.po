@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-03-18 07:05+0300\n"
+"POT-Creation-Date: 2025-03-18 22:46+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,19 +22,23 @@ msgstr ""
 msgid "one layer on top of anothe"
 msgstr ""
 
-#: .\Post\templates\Post\base_article.html:177
+#: .\Post\templates\Post\base_article.html:175
+msgid "Другое"
+msgstr "Other"
+
+#: .\Post\templates\Post\base_article.html:178
 msgid "Внешние ссылки"
 msgstr "External links"
 
-#: .\Post\templates\Post\base_article.html:185
+#: .\Post\templates\Post\base_article.html:186
 msgid "Использованные термины"
 msgstr "Used termins"
 
-#: .\Post\templates\Post\base_article.html:200
+#: .\Post\templates\Post\base_article.html:201
 msgid "Релевантные вопросы"
 msgstr "Related questions"
 
-#: .\Post\templates\Post\base_article.html:223
+#: .\Post\templates\Post\base_article.html:224
 msgid "Похожие статьи"
 msgstr "Similar articles"
 
@@ -45,6 +49,7 @@ msgstr "Similar articles"
 #: .\Post\templates\Post\base_tool.html:57
 #: .\Post\templates\Post\basic--post_preview-article.html:11
 #: .\Post\templates\Post\basic--post_preview-note.html:14
+#: .\Post\templates\Post\embeded--post_preview-article.html:11
 msgid "Часы"
 msgstr "Clock"
 
