@@ -57,7 +57,7 @@
 		{% if next_post %}
 		<a href="{{next_post.get_absolute_url}}"><div class="next_post_pager column mid_gap text_button padder">
 			<div>{{next_post.title}}</div>
-			<div class="post_pager_text">{% trans 'Следующая статья' %}</div>
+			<div class="post_pager_text"><b>{% trans 'Следующая статья' %}</b></div>
 		</div></a>
 		{% else %}
 		<div></div>
@@ -65,13 +65,14 @@
 		{% if prev_post %}
 		<a href="{{prev_post.get_absolute_url}}"><div  style="text-align: right;" class="prev_post_pager column mid_gap text_button padder">
 			<div>{{prev_post.title}}</div>
-			<div class="post_pager_text">{% trans 'Предыдущая статья' %}</div>
+			<div class="post_pager_text"><b>{% trans 'Предыдущая статья' %}</b></div>
 		</div></a>
 		{% else %}
 		<div></div>
 		{% endif %}
 	</div>
 	<hr>
+
 	{% if isEngagementMiddlewareConnected %}
 		{% include 'Engagement/engagement_options.html' %}
 	{% endif %}
