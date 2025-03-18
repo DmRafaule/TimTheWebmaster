@@ -22,3 +22,17 @@
 #sort_actions{
 	margin-bottom: 90px;
 }
+
+.in_post_pager{
+	flex-wrap: nowrap;
+}
+.next_post_pager {
+	border-left: 2px solid var(--main_color);
+	
+}
+.prev_post_pager {
+	border-right: 2px solid var(--main_color);
+}
+.post_pager_text{
+	border-top: 2px solid var(--main_color);
+}

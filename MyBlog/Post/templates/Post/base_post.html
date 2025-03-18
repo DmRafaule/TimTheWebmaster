@@ -22,10 +22,27 @@
 	{% block content_post-before %}
 	{% endblock %}
 	<div class="marger_top_min marger_bottom_max"> 
-		<div class="row min_col_gap">
-			<img class="in_middle-self icon_small dynamic_image" width="32" height="32" src="{% static 'placeholder.svg' %}" data-src='{% static "Post/img/calendar.svg" %}' alt="{% trans "Часы" %}">
-			<div>{{post.timeCreated|date:"d.m.Y"}}</div>
+		<div class="row mid_gap">
+			<div class="row min_gap no_wrap">
+				<img class="in_middle-self icon_small dynamic_image" width="32" height="32" src="{% static 'placeholder.svg' %}" data-src='{% static "Post/img/calendar.svg" %}' alt="{% trans "Часы" %}">
+				<div>{{post.timeCreated|date:"d.m.Y"}}</div>
+			</div>
+			<div class="row min_gap no_wrap">
+				<img class="in_middle-self icon_small dynamic_image" width="32" height="32" src="{% static 'placeholder.svg' %}" data-src='{% static "Post/img/update.svg" %}' alt="{% trans "Часы" %}">
+				<div>{{post.timeUpdated|date:"d.m.Y"}}</div>
+			</div>
+			<div class="row min_gap no_wrap">
+				<img class="in_middle-self icon_small dynamic_image" width="32" height="32" src="{% static 'placeholder.svg' %}" data-src='{% static "Post/img/hourglass.svg" %}' alt="{% trans "Часы" %}">
+				{% if time_to_read == 1 %}
+				<div>{{time_to_read}} {% trans "минуту" %}</div>
+				{% elif time_to_read > 1 and time_to_read < 5 %}
+				<div>{{time_to_read}} {% trans "минуты" %}</div>
+				{% else %}
+				<div>{{time_to_read}} {% trans "минут" %}</div>
+				{% endif %}
+			</div>
 		</div>
+		
 		{% if isEngagementMiddlewareConnected %}
 			{% include 'Engagement/interaction.html' with path=post.get_absolute_url %}
 		{% endif %}
@@ -36,6 +53,24 @@
 	<hr>
 	{% block content_post %}
 	{% endblock %}
+	<div class="in_post_pager row in_middle-farapart marger_min">
+		{% if next_post %}
+		<a href="{{next_post.get_absolute_url}}"><div class="next_post_pager column mid_gap text_button padder">
+			<div>{{next_post.title}}</div>
+			<div class="post_pager_text">{% trans 'Следующая статья' %}</div>
+		</div></a>
+		{% else %}
+		<div></div>
+		{% endif %}
+		{% if prev_post %}
+		<a href="{{prev_post.get_absolute_url}}"><div  style="text-align: right;" class="prev_post_pager column mid_gap text_button padder">
+			<div>{{prev_post.title}}</div>
+			<div class="post_pager_text">{% trans 'Предыдущая статья' %}</div>
+		</div></a>
+		{% else %}
+		<div></div>
+		{% endif %}
+	</div>
 	<hr>
 	{% if isEngagementMiddlewareConnected %}
 		{% include 'Engagement/engagement_options.html' %}

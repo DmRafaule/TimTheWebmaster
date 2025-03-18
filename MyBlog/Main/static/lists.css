@@ -1,9 +1,17 @@
 .list, .blank_list, .list_without_sign, .numeric_list, ul, ol{
 	margin-top: var(--list_margin-top);
 }
-.list > li, .numeric_list > li, ul > li, ol > li{
+.list > li, ul > li{
 	list-style-position: inside;
 	list-style-type: disc;
+	margin-top: var(--min_pm);
+	margin-left: var(--mid_pm);
+	word-wrap: anywhere;
+}
+
+.numeric_list > li, ol > li{
+	list-style-position: inside;
+	list-style-type: decimal;
 	margin-top: var(--min_pm);
 	margin-left: var(--mid_pm);
 	word-wrap: anywhere;

@@ -19,6 +19,7 @@
     </div>
     {% if downloadables %}
     <h2 class="paragraph">{% trans 'Медиа файлы' %}</h2>
+	<hr>
     <ol>
         {% for res in downloadables %}
         <li class="ref_downloadables"><a href="{% get_media_prefix %}{{res.file}}" download>{{res.text}}</a></li>
@@ -37,8 +38,9 @@
         </div>
     {% endif %}
     {% if related_tools %}
+    <h2 class="paragraph">{% trans 'Похожие инструменты' %}</h2>
+    <hr>
     <div class="column max_gap">
-        <h2 class="paragraph">{% trans 'Похожие инструменты' %}</h2>
         {{related_tools}}
     </div>
     {% endif %}
