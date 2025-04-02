@@ -1,7 +1,6 @@
 from django.shortcuts import render
 import Main.utils as U
 from .models import Website
-#import Gallery.utils as GU
 import json
 from django.utils.translation import gettext as _
 from django.views.generic import TemplateView
@@ -12,6 +11,7 @@ from django.core.mail import send_mail
 from Post.models import Tool, Article, Tag, TD, QA, Note
 from django.template import loader
 from bs4 import BeautifulSoup
+from Engagement.models import Comment
 
 
 class MainView(TemplateView):
@@ -88,6 +88,7 @@ def home(request):
     my_resources = []
     for tag in website_conf.my_resources_choosen_tags_on_home.all():
         objs = U.get_posts_by_tag(tag.name, Tool)
+        print(objs)
         my_resources.append({
             'tag': tag.slug,
             'title': tag.name,
@@ -130,7 +131,7 @@ def home(request):
             oth_art.append(res)
     context.update({'other_articles': oth_art})
 
-    #context.update({'latest_images': latest_images})
+    context.update({'comments': Comment.objects.all()[:10]})
 
     return TemplateResponse(request, 'Main/home.html', context=context)
 

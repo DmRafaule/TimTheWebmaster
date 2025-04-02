@@ -16,60 +16,140 @@
 		<canvas id='canvas' class="canvas_as_element" data-vertex-shader="{% static "WebGLEngine/shaders/home_gik.vert" %}" data-fragment-shader="{% static "WebGLEngine/shaders/home_gik.frag" %}"></canvas>
 	</div>
 	<div class="column in_middle-even home_art_cas_news">
-		{% if internal_tools_length > 0 %}
-		<div class="home_ui_el ">
-			<h2 class=""><a class="text_button" href="{% url 'tools-list' %}">{% trans "Инструменты" %}</a></h2>
-			<hr>
-			<div class="column">
+
+		<div class="tabs tabs-full-width">
+			{% if internal_tools_length > 0 %}
+			<div class="tab_button tab_active" data-bodyid="1">
+				<h2>{% trans "Внутренние инструменты" %}</h2>
+			</div>
+			{% endif %}
+			<div class="tab_button" data-bodyid="2">
+				<h2>{% trans "Инструменты по тегам" %}</h2>
+			</div>
+		</div>
+		<div class="tab_body">
+			<div id="tab_body-1" class="tab_element tab_element__active">
 				<div class="row ">
 					<img width="300px" height="100%" class="el-expandable el-no_shrinkable el-300-min-basis" src="{% get_media_prefix %}{{ internal_tools_preview}}">
 					<div class="post_previews--category mid_gap el-expandable el-no_shrinkable el-half">
 					{% include 'Post/basic--post_preview-tool.html' with posts=internal_tools_posts %}
 					</div>
 				</div>
+				<a class="see_more_button white_text_button " href="{% url 'tools-list' %}?page=1&tag={{internal_tool_tag}}">
+					<div class="button action_button">
+						{% trans 'Больше ...' %}
+					</div>
+				</a>
 			</div>
-			<a class="see_more_button white_text_button " href="{% url 'tools-list' %}?page=1&tag={{internal_tool_tag}}">
-				<div class="button action_button">
-					{% trans 'Больше ...' %}
+			<div id="tab_body-2" class="tab_element">
+
+				
+				<div class="tabs tabs-full-width">
+					{% for res in my_resources %}
+						<div class="tab_button" data-bodyid="{{forloop.counter}}">
+							<h3>{{res.title}}</h3>
+						</div>
+					{% endfor %}
 				</div>
-			</a>
+				<div class="tab_body">
+					{% for res in my_resources %}
+						<div id="tab_body-{{forloop.counter}}" class="tab_element">
+							<div class="post_previews--category mid_gap el-expandable el-no_shrinkable el-half">
+							{% include 'Post/basic--post_preview-tool.html' with posts=res.objs %}
+							</div>
+							<a class="see_more_button white_text_button " href="{% url 'tools-list' %}?page=1&tag={{res.tag}}">
+								<div class="button action_button">
+									{% trans 'Больше ...' %}
+								</div>
+							</a>
+						</div>
+					{% endfor %}
+				</div>
+
+			</div>
 		</div>
-		{% endif %}
-		<div class="home_ui_el">
-			<h2 class="" style="text-align: right;" >{% trans "Cтатьи" %}</h2>
-			<hr>
-			<div class="column">
+
+
+		<div class="tabs tabs-full-width">
+			<div class="tab_button tab_active" data-bodyid="1">
+				<h2>{% trans "Последние статьи" %}</h2>
+			</div>
+			<div class="tab_button" data-bodyid="2">
+				<h2>{% trans "Статьи по тегам" %}</h2>
+			</div>
+		</div>
+		<div class="tab_body">
+			<div id="tab_body-1" class="tab_element tab_element__active">
 				<div class="row " style="flex-wrap: wrap-reverse;">
 					<div class="post_previews--category-forNews mid_gap  el-expandable el-no_shrinkable el-half">
 						{% include 'Post/basic--post_preview-article.html' with posts=most_popular_article_posts %}
 					</div>
 					<img width="300px" height="100%" class="el-expandable el-no_shrinkable el-300-min-basis" src="{% get_media_prefix %}{{ articles_preview}}">
 				</div>
-				<div class="row post_previews--category-forSeries mid_gap in_middle-farapart">
-					{% include 'Post/simple--post_preview-article.html' with posts=latest_news_posts %}
+				<a class="see_more_button white_text_button " href="{% url 'articles-list' %}">
+					<div class="button action_button">
+						{% trans 'Больше ...' %}
+					</div>
+				</a>
+			</div>
+			<div id="tab_body-2" class="tab_element">
+
+				<div class="tabs tabs-full-width">
+					{% for oth in other_articles %}
+						<div class="tab_button" data-bodyid="{{forloop.counter}}">
+							<h3>{{oth.title}}</h3>
+						</div>
+					{% endfor %}
+				</div>
+				<div class="tab_body">
+					{% for oth in other_articles %}
+						<div id="tab_body-{{forloop.counter}}" class="tab_element">
+							<div class="post_previews--category row mid_gap el-expandable el-no_shrinkable el-half">
+							{% include 'Post/basic--post_preview-article.html' with posts=oth.objs %}
+							</div>
+							<a class="see_more_button white_text_button " href="{% url 'articles-list' %}?page=1&tag={{oth.tag}}">
+								<div class="button action_button">
+									{% trans 'Больше ...' %}
+								</div>
+							</a>
+						</div>
+					{% endfor %}
+				</div>
+
+			</div>
+		</div>
+
+
+		<div class="tabs tabs-full-width">
+			{% if isEngagementMiddlewareConnected %}
+			<div class="tab_button tab_active" data-bodyid="1">
+				<h2 class="">{% trans "Комментарии" %}</h2>
+			</div>
+			{% endif %}
+			<div class="tab_button" data-bodyid="2">
+				<h2 class="">{% trans "Заметки" %}</h2>
+			</div>
+		</div>
+		<div class="tab_body">
+			{% if isEngagementMiddlewareConnected %}
+			<div id="tab_body-1" class="tab_element tab_element__active">
+				<div class="row max_gap">
+					<div class="post_previews--category-forSeries mid_gap  el-expandable el-no_shrinkable el-half">
+						{% include 'Engagement/comments.html'%}
+					</div>
 				</div>
 			</div>
-			
-			<a class="see_more_button white_text_button " href="{% url 'articles-list' %}">
-				<div class="button action_button">
-					{% trans 'Больше ...' %}
-				</div>
-			</a>
-		</div>
-		<div class="home_ui_el">
-			<h2 class="">{% trans "Заметки" %}</h2>
-			<hr>
-			<div class="row max_gap">
-				<img width="300px" height="100%" class="el-expandable el-no_shrinkable el-300-min-basis" src="{% get_media_prefix %}{{ notes_preview }}">
+			{% endif %}
+			<div id="tab_body-2" class="tab_element">
 				<div class="post_previews--category-forSeries mid_gap  el-expandable el-no_shrinkable el-half">
 					{% include 'Post/basic--post_preview-note.html' with posts=latest_notes_posts %}
 				</div>
+				<a class="see_more_button white_text_button " href="{% url 'notes-list' %}">
+					<div class="button action_button">
+						{% trans 'Больше ...' %}
+					</div>
+				</a>
 			</div>
-			<a class="see_more_button white_text_button " href="{% url 'notes-list' %}">
-				<div class=" button action_button">
-					{% trans 'Больше ...' %}
-				</div>
-			</a>
 		</div>
 	</div>
 </div>
@@ -87,6 +167,9 @@
     <link type="text/css" rel="stylesheet" href="{% static 'Post/css/tabs.css' %}"/>
 	<link type="text/css" rel="stylesheet" href="{% static 'Post/css/posts_preview.css' %}"/>
     <link type="text/css" rel="stylesheet" href="{% static 'Main/css/home.css' %}"/>
+	{% if isEngagementMiddlewareConnected %}
+		<link type="text/css" rel="stylesheet" href="{% static 'Engagement/css/comments.css' %}"/>
+	{% endif %}
 {% endblock %}
 
 {% block scripts %}
