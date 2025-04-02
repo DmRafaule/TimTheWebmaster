@@ -1,7 +1,7 @@
 .tabs{
 	display: flex;
 	flex-wrap: wrap;
-	max-width: 75%;
+	border-bottom: 2px solid var(--secondary_color);
 }
 .tab_active{
 	background-color: var(--secondary_color);
@@ -9,7 +9,6 @@
 }
 .tab_button{
 	transition: 0.2s;
-	border-bottom: 2px solid var(--secondary_color);
 	padding: var(--min_pm);
 }
 .tab_button:hover{

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-03-17 20:25+0300\n"
+"POT-Creation-Date: 2025-04-02 16:17+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -419,20 +419,33 @@ msgstr ""
 msgid "Тим Вебмастер"
 msgstr "Tim the Webmaster"
 
-#: .\Main\templates\Main\home.html:21
-msgid "Инструменты"
-msgstr "Tools"
+#: .\Main\templates\Main\home.html:23
+msgid "Внутренние инструменты"
+msgstr "Internal tools"
 
-#: .\Main\templates\Main\home.html:33 .\Main\templates\Main\home.html:55
-#: .\Main\templates\Main\home.html:70
+#: .\Main\templates\Main\home.html:27
+msgid "Инструменты по тегам"
+msgstr "Tools by tag"
+
+#: .\Main\templates\Main\home.html:40 .\Main\templates\Main\home.html:62
+#: .\Main\templates\Main\home.html:91 .\Main\templates\Main\home.html:112
+#: .\Main\templates\Main\home.html:149
 msgid "Больше ..."
 msgstr "See more ..."
 
-#: .\Main\templates\Main\home.html:39
-msgid "Cтатьи"
-msgstr "Articles"
+#: .\Main\templates\Main\home.html:75
+msgid "Последние статьи"
+msgstr "Latest articles"
 
-#: .\Main\templates\Main\home.html:60
+#: .\Main\templates\Main\home.html:78
+msgid "Статьи по тегам"
+msgstr "Articles by tag"
+
+#: .\Main\templates\Main\home.html:126
+msgid "Комментарии"
+msgstr "Comments"
+
+#: .\Main\templates\Main\home.html:130
 msgid "Заметки"
 msgstr "Notes"
 
