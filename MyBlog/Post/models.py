@@ -1,12 +1,9 @@
-from itertools import chain
+import os
 
 from django.db import models
 from django.urls import reverse
-from django.contrib.sitemaps import Sitemap
-import os, shutil
-from django.db.models.signals import pre_delete, pre_save
-from django.dispatch import receiver
 from django.utils.translation import get_language
+
 from MyBlog import settings as S
 from django.utils import timezone
 
@@ -191,24 +188,3 @@ class Note(models.Model):
 
     def __str__(self):
         return self.title
-
-
-class PostSitemap(Sitemap):
-    i18n = True
-
-    def items(self):
-        articles = Article.objects.filter(isPublished=True)
-        tools = Tool.objects.filter(isPublished=True)
-        items = list(chain(articles, tools))
-        return items
-
-    def lastmod(self, obj):
-        return obj.timeUpdated
-
-
-# Remove all loaded files before deleting on database
-@receiver(pre_delete, sender=Post)
-def cleanupPost(sender, instance, **kwargs):
-    path = os.path.join(S.MEDIA_ROOT, f"{instance.category.slug}", f"{instance.slug}")
-    if os.path.exists(path):
-        shutil.rmtree(path)

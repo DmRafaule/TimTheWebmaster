@@ -3,8 +3,6 @@ from django.db import models
 from django.contrib.auth.models import User
 from MyBlog import settings as S
 from django.utils.translation import gettext_lazy as _
-from django.db.models.signals import pre_delete, pre_save
-from django.dispatch import receiver
 
 
 class PostTemplate(models.Model):
@@ -32,11 +30,3 @@ class PostTemplate(models.Model):
     content = models.TextField(blank=True)
     used_styles = models.TextField(blank=True)
     used_scripts = models.TextField(blank=True)
-
-
-# Remove all loaded files before deleting on database
-@receiver(pre_delete, sender=PostTemplate)
-def cleanupPost(sender, instance, **kwargs):
-    path = os.path.join(S.MEDIA_ROOT, "tools", PostTemplate.ROOT_DIR, f"{instance.filename}")
-    if os.path.exists(path):
-        os.remove(path)

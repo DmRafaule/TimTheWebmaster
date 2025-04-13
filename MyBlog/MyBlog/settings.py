@@ -35,7 +35,7 @@ ALLOWED_HOSTS = ['timthewebmaster.com', 'www.timthewebmaster.com']
 INSTALLED_APPS = [
     # model translation
     'modeltranslation',
-    #
+    ###
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -43,7 +43,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sitemaps',
+    # captcha checks
     'captcha',
+    ###
     'Main.apps.MainConfig',
     'Admin.apps.AdminConfig',
     'WebGLEngine.apps.WebglengineConfig',
@@ -57,6 +59,8 @@ INSTALLED_APPS = [
     'ImageThief.apps.ImagethiefConfig',
     'RSSAggregator.apps.RssaggregatorConfig',
     'ShaderToy.apps.ShadertoyConfig',
+    # Auto remove files
+    'django_cleanup.apps.CleanupConfig',
 ]
 
 MIDDLEWARE = [

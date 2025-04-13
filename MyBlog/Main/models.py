@@ -1,11 +1,6 @@
 from django.db import models
-from django.urls import reverse
-from django.contrib.sitemaps import Sitemap
+
 from Post.models import Post
-import os, shutil
-from django.db.models.signals import pre_delete
-from django.dispatch import receiver
-from MyBlog.settings import MEDIA_ROOT
 
 
 def user_directory_path_forImageAndDownloadabel(instance, filename):
@@ -88,7 +83,6 @@ class Contact(models.Model):
     description = models.TextField(blank=True)
     url = models.URLField(max_length=512, blank=False)
 
-
 class Image(models.Model):
     ART = 'Ar'
     RESOURCE = 'Re'
@@ -107,7 +101,6 @@ class Image(models.Model):
 
     def get_absolute_url(self):
         return '/media/{0}'.format(self.file)
-
 
 class Downloadable(models.Model):
     VIDEO = 'Vi'
@@ -132,28 +125,3 @@ class Downloadable(models.Model):
 
     def get_absolute_url(self):
         return '/media/{0}'.format(self.file)
-
-class StaticSitemap(Sitemap):
-    i18n = True
-
-    def items(self):
-        return ["about", "contacts", "home"]
-
-    def location(self, item):
-        return reverse(item)
-
-# Remove loaded file before deleting on database
-@receiver(pre_delete, sender=Contact)
-def deleteImage(sender, instance, **kwargs):
-    instance.icon.delete()
-
-# Remove loaded file before deleting on database
-@receiver(pre_delete, sender=Image)
-def deleteImage(sender, instance, **kwargs):
-    os.remove(os.path.join(MEDIA_ROOT, f"{instance.file}"))
-
-
-# Remove loaded file before deleting on database
-@receiver(pre_delete, sender=Downloadable)
-def deleteDownloadable(sender, instance, **kwargs):
-    os.remove(os.path.join(MEDIA_ROOT, f"{instance.file}"))
