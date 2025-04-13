@@ -35,7 +35,6 @@ def submitFeed(request):
             return JsonResponse({'common': f"Error: {feed['bozo_exception']}"}, status=500)
         
         # Check if feed is already in database
-        print(request.POST['feedname'])
         if Feed.objects.filter(source=request.POST['feedname'], user_id=request.session.session_key).exists():
             return JsonResponse({'common': "Error: This feed already in database."}, status=500)
 

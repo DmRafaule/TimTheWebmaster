@@ -6,10 +6,7 @@ from django.conf.urls.i18n import i18n_patterns
 from django.views.i18n import JavaScriptCatalog
 # For sitemap
 from django.contrib.sitemaps.views import sitemap
-from Post.models import PostSitemap
-from Main.models import StaticSitemap
-from PagiScroll.models import PaginationSitemap
-#from Gallery.models import ImagesSitemap
+from Main.sitemaps import StaticSitemap, PostSitemap, PaginationSitemap
 
 sitemaps = {
     "articles": PostSitemap,
