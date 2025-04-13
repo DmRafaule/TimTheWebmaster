@@ -32,7 +32,7 @@ class CategoryAdmin(admin.ModelAdmin):
 
 class ArticleAdmin(admin.ModelAdmin):
     exclude = ('category', 'template', 'description', 'title', 'h1', 'meta_keywords')
-    filter_horizontal = ('tags', 'tds', 'qas' )
+    filter_horizontal = ('tags', 'termins', 'questions' )
     ordering = ['-timeCreated']
     fieldsets = [
         (
@@ -52,9 +52,9 @@ class ArticleAdmin(admin.ModelAdmin):
         (
             'Relations',
             {
-                'fields': ['tags', 'tds', 'qas'],
+                'fields': ['tags', 'termins', 'questions'],
                 'classes': ['collapse'],
-                'description': 'In this fieldset you can link this article to others post models (TD, QA, Tags)'
+                'description': 'In this fieldset you can link this article to others post models (Termin, Question, Tags)'
             }
         )
     ]
@@ -92,99 +92,63 @@ class ArticleAdmin(admin.ModelAdmin):
 
 
 class QAAdmin(admin.ModelAdmin):
-    exclude = ('category', 'question', 'answer', 'description', 'template')
-    ordering = ['-timeCreated']
-    filter_horizontal = ('tags',)
+    exclude = ('question', 'answer', 'description')
     fieldsets = [
         (
             None,
             {
-                'fields': ['slug', 'isPublished', ('question_ru', 'question_en'),('answer_ru', 'answer_en')]
+                'fields': [('question_ru', 'question_en'), ('description_ru', 'description_en'),('answer_ru', 'answer_en')]
             }
         ),
-        (
-            'Advanced options',
-            {
-                'fields': [('template_ru', 'template_en'), 'description_ru', 'description_en', 'tags', 'timeCreated'],
-                'classes': ['collapse']
-            }
-        )
     ]
     list_display = (
-        'isPublished',
-        'slug',
         'question_ru',
         'question_en',
         'answer_ru',
         'answer_en',
-        'timeCreated',
     )
     list_display_links = (
-        'slug',
+        'question_ru',
     )
     list_editable = (
-        'question_ru',
         'question_en',
         'answer_ru',
         'answer_en',
-        'isPublished',
-        'timeCreated',
     )
     search_fields = (
         'question_ru',
         'question_en',
     )
-    list_filter = ('isPublished', 'timeCreated')
 
 
 class TDAdmin(admin.ModelAdmin):
-    exclude = ('category', 'termin', 'description', 'definition', 'template', 'key_phrases',)
-    ordering = ['-timeCreated']
-    filter_horizontal = ('tags',)
+    exclude = ('termin', 'description', 'definition',)
     fieldsets = [
         (
             None,
             {
-                'fields': ['slug', 'isPublished', ('termin_ru', 'termin_en'),('definition_ru', 'definition_en'), ('key_phrases_ru', 'key_phrases_en')]
+                'fields': [('termin_ru', 'termin_en'), ('definition_ru', 'definition_en'), ('description_ru', 'description_en'),]
             }
         ),
-        (
-            'Advanced options',
-            {
-                'fields': [('template_ru', 'template_en'), 'description_ru', 'description_en', 'tags', 'timeCreated'],
-                'classes': ['collapse']
-            }
-        )
     ]
     list_display = (
-        'isPublished',
-        'slug',
         'termin_ru',
         'termin_en',
         'definition_ru',
         'definition_en',
-        'key_phrases_ru',
-        'key_phrases_en',
-        'timeCreated',
     )
     list_display_links = (
-        'slug',
+        'termin_ru',
     )
     list_editable = (
-        'termin_ru',
         'termin_en',
         'definition_ru',
         'definition_en',
-        'key_phrases_ru',
-        'key_phrases_en',
-        'isPublished',
-        'timeCreated',
     )
     search_fields = (
         'termin_ru',
         'termin_en',
     )
-    list_filter = ('isPublished', 'timeCreated')
 
 
 class PlatformAdmin(admin.ModelAdmin):
@@ -314,8 +278,8 @@ class NoteAdmin(admin.ModelAdmin):
 admin.site.register(M.Tag, TagAdmin)
 admin.site.register(M.Category, CategoryAdmin)
 admin.site.register(M.Article, ArticleAdmin)
-admin.site.register(M.QA, QAAdmin)
-admin.site.register(M.TD, TDAdmin)
+admin.site.register(M.Question, QAAdmin)
+admin.site.register(M.Termin, TDAdmin)
 admin.site.register(M.Tool, ToolAdmin)
 admin.site.register(M.Platform, PlatformAdmin)
 admin.site.register(M.Note, NoteAdmin)

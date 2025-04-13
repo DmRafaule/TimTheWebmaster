@@ -1,6 +1,5 @@
 from django.template.response import TemplateResponse
-from django.template import loader
-from Post.models import Tool, Article, TD, QA
+from Post.models import Tool, Article, Termin, Question
 
 
 class BreadcrumbsMiddleware:
@@ -58,10 +57,10 @@ class BreadcrumbsMiddleware:
     def post_handler(self, request, response):
         if len(Article.objects.filter(slug=self.slug)) == 1:
             name = Article.objects.filter(slug=self.slug)[0].title
-        elif len(QA.objects.filter(slug=self.slug)) == 1:
-            name = QA.objects.filter(slug=self.slug)[0].question
-        elif len(TD.objects.filter(slug=self.slug)) == 1:
-            name = TD.objects.filter(slug=self.slug)[0].termin
+        elif len(Question.objects.filter(slug=self.slug)) == 1:
+            name = Question.objects.filter(slug=self.slug)[0].question
+        elif len(Termin.objects.filter(slug=self.slug)) == 1:
+            name = Termin.objects.filter(slug=self.slug)[0].termin
         response.context_data.update({'post_title': name})
     
     def tool_handler(self, request, response):

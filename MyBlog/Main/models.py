@@ -83,6 +83,9 @@ class Contact(models.Model):
     description = models.TextField(blank=True)
     url = models.URLField(max_length=512, blank=False)
 
+class Media(models.Model):
+    file = models.ImageField(upload_to=user_directory_path_forImageAndDownloadabel, blank=False)
+
 class Image(models.Model):
     ART = 'Ar'
     RESOURCE = 'Re'

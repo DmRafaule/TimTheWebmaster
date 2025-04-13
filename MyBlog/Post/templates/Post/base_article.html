@@ -7,15 +7,15 @@
 	<title>{{ post.title }}</title>
 	<meta name="description" content="{{ post.description }}">
 	<meta name="keywords" content="{{ post.meta_keywords }}" />
-	{% if post.tds.all|length != 0 or tds|length != 0 or post.qas.all|length != 0 or qas|length != 0 %}
+	{% if post.termins.all|length != 0 or post.questions.all|length != 0 %}
 	<script type="application/ld+json">
 		{
 			"@context": "https://schema.org",
 			"@type": "FAQPage",
 			"mainEntity": [
-				{% for td in post.tds.all %}
-					{% if forloop.counter == post.tds.all|length %}
-						{% if tds|length > 0 or post.qas.all|length > 0 or qas|length > 0 %}
+				{% for td in post.termins.all %}
+					{% if forloop.counter == post.termins.all|length %}
+						{% if post.questions.all|length > 0 %}
 							{
 								"@type": "Question",
 								"name": "{{td.termin}}",
@@ -45,40 +45,8 @@
 						}, 
 					{% endif %}
 				{% endfor %}
-				{% for td in tds %}
-					{% if forloop.counter == tds|length %}
-						{% if post.qas.all|length > 0 or qas|length > 0 %}
-							{
-								"@type": "Question",
-								"name": "{{td.termin}}",
-								"acceptedAnswer": {
-									"@type": "Answer",
-									"text": "{{td.definition}}"
-								}
-							},
-						{% else %}
-							{
-								"@type": "Question",
-								"name": "{{td.termin}}",
-								"acceptedAnswer": {
-									"@type": "Answer",
-									"text": "{{td.definition}}"
-								}
-							}
-						{% endif %}
-					{% else %}
-						{
-							"@type": "Question",
-							"name": "{{td.termin}}",
-							"acceptedAnswer": {
-								"@type": "Answer",
-								"text": "{{td.definition}}"
-							}
-						},
-					{% endif %}
-				{% endfor %}
-				{% for qa in post.qas.all %}
-					{% if forloop.counter == post.qas.all|length %}
+				{% for qa in post.questions.all %}
+					{% if forloop.counter == post.questions.all|length %}
 						{% if qas|length > 0 %}
 							{
 								"@type": "Question",
@@ -107,27 +75,6 @@
 								"text": "{{qa.answer}}"
 							}
 						}, 
-					{% endif %}
-				{% endfor %}
-				{% for qa in qas %}
-					{% if forloop.counter == qas|length %}
-						{
-							"@type": "Question",
-							"name": "{{qa.question}}",
-							"acceptedAnswer": {
-								"@type": "Answer",
-								"text": "{{qa.answer}}"
-							}
-						}
-					{% else %}
-						{
-							"@type": "Question",
-							"name": "{{qa.question}}",
-							"acceptedAnswer": {
-								"@type": "Answer",
-								"text": "{{qa.answer}}"
-							}
-						},
 					{% endif %}
 				{% endfor %}
 			]
@@ -171,59 +118,49 @@
 {% endblock %}
 
 {% block content_post-after %}
-	<h2>{% trans "Другое" %}</h2>
+	{% if sim_post_doc or post.termins.all|length > 0 or post.questions.all|length > 0  %}
+		<h2>{% trans "Другое" %}</h2>
 
-	<div id="ex_links">
-		<h3 class="paragraph" >{% trans 'Внешние ссылки' %}</h3>
-		<hr>
-		<li id='list_el_exmpl_cont' class="is_none" ><a href=""></a></li>
-		<ul id="ex_links_list" class="numeric_list">
-		</ul>
-	</div>
+		<div id="ex_links">
+			<h3 class="paragraph" >{% trans 'Внешние ссылки' %}</h3>
+			<hr>
+			<li id='list_el_exmpl_cont' class="is_none" ><a href=""></a></li>
+			<ul id="ex_links_list" class="numeric_list">
+			</ul>
+		</div>
 
-	{% if tds|length > 0 or post.tds.all|length > 0%}
-	<h3 class="paragraph">{% trans 'Использованные термины' %}</h3>
-	<hr>
-	<ul class="list_without_sign">
-	{% for td in post.tds.all %}
-		<li><span><b>{{td.termin}}</b> ⟶ {{td.definition}}
-		</span></li>
-	{% endfor %}
-	{% for td in tds %}
-		<li><span><b>{{td.termin}}</b> ⟶ {{td.definition}}
-		</span></li>
-	{% endfor %}
-	</ul>
+		{% if post.termins.all|length > 0 %}
+			<h3 class="paragraph">{% trans 'Использованные термины' %}</h3>
+			<hr>
+			<ul class="list_without_sign">
+			{% for td in post.termins.all %}
+				<li><span><b>{{td.termin}}</b> ⟶ {{td.definition}}
+				</span></li>
+			{% endfor %}
+			</ul>
+		{% endif %}
+
+		{% if post.questions.all|length > 0%}
+			<h3 class="paragraph">{% trans 'Релевантные вопросы' %}</h3>
+			<hr>
+			<ul class="list_without_sign">
+			{% for qa in post.questions.all %}
+				<li>
+					<b>{{qa.question}}</b>
+					<span class='padder'>
+						{{qa.answer}}
+					</span>
+				</li>
+			{% endfor %}
+			</ul>
+		{% endif %}
+
+		{% if sim_post_doc %}
+			<h3 class="paragraph">{% trans 'Похожие статьи' %}</h3>
+			<hr>
+			{{sim_post_doc|safe}}
+		{% endif%}
 	{% endif %}
-
-	{% if qas|length > 0 or post.qas.all|length > 0%}
-	<h3 class="paragraph">{% trans 'Релевантные вопросы' %}</h3>
-	<hr>
-	<ul class="list_without_sign">
-	{% for qa in post.qas.all %}
-		<li>
-			<b>{{qa.question}}</b>
-			<span class='padder'>
-				{{qa.answer}}
-			</span>
-		</li>
-	{% endfor %}
-	{% for qa in qas %}
-		<li>
-			<b>{{qa.question}}</b>
-			<span class='padder'>
-				{{qa.answer}}
-			</span>
-		</li>
-	{% endfor %}
-	</ul>
-	{% endif %}
-
-	{% if sim_post_doc %}
-	<h3 class="paragraph">{% trans 'Похожие статьи' %}</h3>
-	<hr>
-	{{sim_post_doc|safe}}
-	{% endif%}
 
 	{% block content_post_after-article %}
 	{% endblock %}
