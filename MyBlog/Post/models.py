@@ -52,7 +52,7 @@ class Post(models.Model):
     isPublished = models.BooleanField(default=True)
     tags = models.ManyToManyField(Tag, blank=True)
     #media = models.ManyToManyField(Media, blank=True, null=True)
-    similar = models.ManyToManyField('self', blank=True)
+
 
     def save(self, *args, **kwargs):
         self.timeUpdated = timezone.now()
@@ -93,6 +93,7 @@ class Article(Post):
     template = models.FileField(max_length=300, upload_to=user_directory_path, blank=False)  # page to display
     questions = models.ManyToManyField(Question, blank=True, help_text='You only use this field to pin actualy needed qas. Other will come automatically')
     termins = models.ManyToManyField(Termin, blank=True, help_text='You only use this field to pin actualy needed tds. Other will come automatically')
+    similar = models.ManyToManyField('self', blank=True)
 
     def save(self, *args, **kwargs):
         self.category = Category.objects.get(slug="articles")

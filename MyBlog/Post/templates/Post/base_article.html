@@ -118,16 +118,23 @@
 {% endblock %}
 
 {% block content_post-after %}
-	{% if sim_post_doc or post.termins.all|length > 0 or post.questions.all|length > 0  %}
-		<h2>{% trans "Другое" %}</h2>
 
-		<div id="ex_links">
-			<h3 class="paragraph" >{% trans 'Внешние ссылки' %}</h3>
+	<div id="ex_links">
+		<h2 class="paragraph" >{% trans 'Внешние ссылки' %}</h2>
+		<hr>
+		<li id='list_el_exmpl_cont' class="is_none" ><a href=""></a></li>
+		<ul id="ex_links_list" class="numeric_list">
+		</ul>
+	</div>
+
+	{% if post.similar.all|length > 0 or post.termins.all|length > 0 or post.questions.all|length > 0  %}
+		<h2 class="paragraph">{% trans "Другое" %}</h2>
+
+		{% if post.similar.all|length > 0 %}
+			<h3 class="paragraph">{% trans 'Похожие статьи' %}</h3>
 			<hr>
-			<li id='list_el_exmpl_cont' class="is_none" ><a href=""></a></li>
-			<ul id="ex_links_list" class="numeric_list">
-			</ul>
-		</div>
+			{% include 'Post/embeded--post_preview-article.html' with sim_post=post.similar.all %}
+		{% endif%}
 
 		{% if post.termins.all|length > 0 %}
 			<h3 class="paragraph">{% trans 'Использованные термины' %}</h3>
@@ -155,11 +162,6 @@
 			</ul>
 		{% endif %}
 
-		{% if sim_post_doc %}
-			<h3 class="paragraph">{% trans 'Похожие статьи' %}</h3>
-			<hr>
-			{{sim_post_doc|safe}}
-		{% endif%}
 	{% endif %}
 
 	{% block content_post_after-article %}

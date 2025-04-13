@@ -31,6 +31,14 @@ class CategoryAdmin(admin.ModelAdmin):
 
 
 class ArticleAdmin(admin.ModelAdmin):
+
+    #def formfield_for_manytomany(self, db_field, request, **kwargs):     
+    #    if db_field.name == "similar":
+    #        id = int(request.resolver_match.kwargs['object_id'])
+    #        category_id = db_field.model.objects.get(id=id).category.id
+    #        kwargs["queryset"] = M.Article.objects.filter(category=category_id)
+    #    return super(ArticleAdmin, self).formfield_for_manytomany(db_field, request, **kwargs)
+        
     exclude = ('category', 'template', 'description', 'title', 'h1', 'meta_keywords')
     filter_horizontal = ('tags', 'termins', 'questions' )
     ordering = ['-timeCreated']
@@ -52,7 +60,7 @@ class ArticleAdmin(admin.ModelAdmin):
         (
             'Relations',
             {
-                'fields': ['tags', 'termins', 'questions'],
+                'fields': ['tags', 'similar', 'termins', 'questions'],
                 'classes': ['collapse'],
                 'description': 'In this fieldset you can link this article to others post models (Termin, Question, Tags)'
             }
