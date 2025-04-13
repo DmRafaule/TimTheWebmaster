@@ -12,20 +12,12 @@ import Main.utils as U
 
 
 def article(request, post_slug):
-    website_conf = Main_M.Website.objects.get(is_current=True)
     post = get_object_or_404(Post_M.Article, slug=post_slug)
     downloadables = Main_M.Downloadable.objects.filter(type=post)
     images = Main_M.Image.objects.filter(type=post)
 
     context = U.initDefaults(request)
-
-    sim_post_doc = None
-    # Post model's records must have at least 3 similar tags with this post
-    sim_post = list(set(U.getAllWithTags(Post_M.Article.objects.filter(Q(isPublished=True) & Q(tags__in=post.tags.all())).exclude(slug=post_slug), post.tags.all(), website_conf.threshold_similar_articles)))
-    if len(sim_post) > 0:
-        context.update({'posts': sim_post[:website_conf.max_displayed_similar_articles]})
-        loaded_template = loader.get_template(f'Post/embeded--post_preview-article.html')
-        sim_post_doc = loaded_template.render(context, request)
+    print(post.similar.all())
 
     context.update({'post': post})
     # Get time to read
@@ -55,7 +47,6 @@ def article(request, post_slug):
         context.update({'prev_post': prev_post})
     ###
     
-    context.update({'sim_post_doc': sim_post_doc})
     context.update({'downloadables': downloadables})
     context.update({'images': images})
 
