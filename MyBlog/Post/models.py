@@ -2,10 +2,11 @@ import os
 
 from django.db import models
 from django.urls import reverse
+from django.utils import timezone
 from django.utils.translation import get_language
 
 from MyBlog import settings as S
-from django.utils import timezone
+#from Main.models import Media
 
 
 def user_directory_path(instance, filename):
@@ -50,6 +51,8 @@ class Post(models.Model):
     timeUpdated = models.DateTimeField(auto_now=True)
     isPublished = models.BooleanField(default=True)
     tags = models.ManyToManyField(Tag, blank=True)
+    #media = models.ManyToManyField(Media, blank=True, null=True)
+    similar = models.ManyToManyField('self', blank=True)
 
     def save(self, *args, **kwargs):
         self.timeUpdated = timezone.now()
@@ -63,30 +66,18 @@ class Post(models.Model):
     def __str__(self):
         return self.slug
 
-class QA(Post):
-    view_name = "qa"
+class Question(models.Model):
     question = models.CharField(max_length=250, blank=False)
     description = models.TextField(max_length=360, blank=False, help_text="To be used in meta tag - description")
     answer = models.TextField(max_length=360, blank=False)
 
-    def save(self, *args, **kwargs):
-        self.category = Category.objects.get(slug="qa")
-        super(QA, self).save(*args, **kwargs)
-
     def __str__(self):
         return self.question
 
-
-class TD(Post):
-    view_name = "td"
+class Termin(models.Model):
     termin = models.CharField(max_length=60, blank=False)
-    key_phrases = models.CharField(max_length=254, blank=True, help_text="To be used to search place for inserting a link. Use , as separator.")
     description = models.TextField(max_length=360, blank=False, help_text="To be used in meta tag - description")
     definition = models.TextField(max_length=360,blank=False)
-
-    def save(self, *args, **kwargs):
-        self.category = Category.objects.get(slug="td")
-        super(TD, self).save(*args, **kwargs)
 
     def __str__(self):
         return self.termin
@@ -100,8 +91,8 @@ class Article(Post):
     meta_keywords = models.CharField(max_length=256, blank=True, default='')
     preview = models.ImageField(max_length=300, upload_to=user_directory_path, blank=True)
     template = models.FileField(max_length=300, upload_to=user_directory_path, blank=False)  # page to display
-    qas = models.ManyToManyField(QA, blank=True, help_text='You only use this field to pin actualy needed qas. Other will come automatically')
-    tds = models.ManyToManyField(TD, blank=True, help_text='You only use this field to pin actualy needed tds. Other will come automatically')
+    questions = models.ManyToManyField(Question, blank=True, help_text='You only use this field to pin actualy needed qas. Other will come automatically')
+    termins = models.ManyToManyField(Termin, blank=True, help_text='You only use this field to pin actualy needed tds. Other will come automatically')
 
     def save(self, *args, **kwargs):
         self.category = Category.objects.get(slug="articles")

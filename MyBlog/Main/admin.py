@@ -51,7 +51,7 @@ class WebsiteAdmin(admin.ModelAdmin):
                     'max_displayed_termins',
                     'max_displayed_questions'],
                 'classes': ['collapsed'],
-                'description': 'In this section you could change and edit options related to every Post object on website(Tool, Article, Category, TD, QA)'
+                'description': 'In this section you could change and edit options related to every Post object on website(Tool, Article, Category, Termin, Question)'
             }
         ),
         (
@@ -66,7 +66,7 @@ class WebsiteAdmin(admin.ModelAdmin):
                     'notes_post_preview',
                 ],
                 'classes': ['collapsed'],
-                'description': 'In this section you could change and edit options related to every paginator page, where you can find all of the Post object like: (Tool, Article, Category, TD, QA)'
+                'description': 'In this section you could change and edit options related to every paginator page, where you can find all of the Post object like: (Tool, Article, Category, Termin, Question)'
             }
         ),
         (

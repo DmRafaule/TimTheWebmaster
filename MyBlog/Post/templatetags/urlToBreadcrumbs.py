@@ -1,5 +1,5 @@
 from django import template
-from Post.models import Category, Tag, Article, TD, QA, Tool
+from Post.models import Category, Tag, Article, Termin, Question, Tool
 from django.utils.translation import gettext as _
 from django.db.models import Q
 from urllib.parse import urlsplit
@@ -85,10 +85,6 @@ def urlToBreadcrumbs(url: str):
                     name = None
                     if len(Article.objects.filter(slug=url)) == 1:
                         name = Article.objects.filter(slug=url)[0].title
-                    elif len(QA.objects.filter(slug=url)) == 1:
-                        name = QA.objects.filter(slug=url)[0].question
-                    elif len(TD.objects.filter(slug=url)) == 1:
-                        name = TD.objects.filter(slug=url)[0].termin
                     elif len(Tool.objects.filter(slug=url)) == 1:
                         name = Tool.objects.filter(slug=url)[0].name
                         

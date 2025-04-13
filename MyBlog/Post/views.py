@@ -1,12 +1,14 @@
-import Post.models as Post_M
-import Main.models as Main_M
-import Main.utils as U
+from bs4 import BeautifulSoup
+
 from django.template import loader
 from django.db.models import Q
 from django.shortcuts import get_object_or_404
 from django.utils.translation import gettext as _
 from django.template.response import TemplateResponse
-from bs4 import BeautifulSoup
+
+import Post.models as Post_M
+import Main.models as Main_M
+import Main.utils as U
 
 
 def article(request, post_slug):
@@ -34,7 +36,7 @@ def article(request, post_slug):
         time_to_read = round(words_in_text/240)
     context.update({'time_to_read': time_to_read})
     
-    # Get next and previos posts
+    ### Get next and previos posts
     previous_id=Post_M.Article.objects.filter(
          id__lt=post.id,
      ).order_by("-id").values_list("id")[:1],
@@ -51,34 +53,13 @@ def article(request, post_slug):
         id = previous_id[0][0][0]
         prev_post = Post_M.Article.objects.get(id=id)
         context.update({'prev_post': prev_post})
+    ###
     
     context.update({'sim_post_doc': sim_post_doc})
     context.update({'downloadables': downloadables})
     context.update({'images': images})
-    
 
-    with open(post.template.path, 'r', encoding='utf-8') as file:
-        html_str = U.page_to_string(file.read()).lower()
-    
-    # TD model's record must have at leas 2 similar tags with post tags and be published
-    tds = U.getAllWithTags(Post_M.TD.objects.filter(Q(isPublished=True) & Q(tags__in=post.tags.all())), post.tags.all(), website_conf.threshold_related_termins)
-    if len(tds) > 0:
-        tds_to_use = []
-        for td in tds:
-            phrases = td.key_phrases.split(',')
-            # Procceed next if only key_phrased field is not empty
-            if phrases[0] != '':
-                for phrase in phrases:
-                    # If occurence in text was found the propagate this TD record
-                    if html_str.find(phrase) != -1:
-                        tds_to_use.append(td)
-
-        context.update({'tds': list(set(tds_to_use))[:website_conf.max_displayed_termins]})
-
-    # QA model's record must have at leas 3 similar tags with post tags and be published
-    qas =  U.getAllWithTags(Post_M.QA.objects.filter(Q(isPublished=True) & Q(tags__in=post.tags.all())), post.tags.all(), website_conf.threshold_related_questions)
-    if len(qas) > 0:
-        context.update({'qas': list(set(qas[:website_conf.max_displayed_questions]))})
+    print(post)
 
     return TemplateResponse(request, post.template.path, context=context)
 
