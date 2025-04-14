@@ -4,6 +4,7 @@ from django.template import loader
 from django.db.models import Q
 from django.shortcuts import get_object_or_404
 from django.utils.translation import gettext as _
+from django.utils.translation import get_language
 from django.template.response import TemplateResponse
 
 import Post.models as Post_M
@@ -13,11 +14,13 @@ import Main.utils as U
 
 def article(request, post_slug):
     post = get_object_or_404(Post_M.Article, slug=post_slug)
-    downloadables = Main_M.Downloadable.objects.filter(type=post)
-    images = Main_M.Image.objects.filter(type=post)
+    downloadables = post.media.filter_by_lang().filter(type=Main_M.Media.RAW_FILE).order_by('timeCreated')
+    images = post.media.filter_by_lang().filter(type=Main_M.Media.IMAGE).order_by('timeCreated')
+    videos = post.media.filter_by_lang().filter(type=Main_M.Media.VIDEO).order_by('timeCreated')
+    pdfs = post.media.filter_by_lang().filter(type=Main_M.Media.PDF).order_by('timeCreated')
+    audios = post.media.filter_by_lang().filter(type=Main_M.Media.PDF).order_by('timeCreated')
 
     context = U.initDefaults(request)
-    print(post.similar.all())
 
     context.update({'post': post})
     # Get time to read
@@ -49,20 +52,27 @@ def article(request, post_slug):
     
     context.update({'downloadables': downloadables})
     context.update({'images': images})
-
-    print(post)
+    context.update({'videos': videos})
+    context.update({'pdfs': pdfs})
+    context.update({'audios': audios})
 
     return TemplateResponse(request, post.template.path, context=context)
 
 def tool(request, post_slug):
-    website_conf = Main_M.Website.objects.get(is_current=True)
     post = get_object_or_404(Post_M.Tool, slug=post_slug)
-    downloadables = Main_M.Downloadable.objects.filter(type=post)
-    images = Main_M.Image.objects.filter(type=post)
+    downloadables = post.media.filter_by_lang().filter(type=Main_M.Media.RAW_FILE).order_by('timeCreated')
+    images = post.media.filter_by_lang().filter(type=Main_M.Media.IMAGE).order_by('timeCreated')
+    videos = post.media.filter_by_lang().filter(type=Main_M.Media.VIDEO).order_by('timeCreated')
+    pdfs = post.media.filter_by_lang().filter(type=Main_M.Media.PDF).order_by('timeCreated')
+    audios = post.media.filter_by_lang().filter(type=Main_M.Media.PDF).order_by('timeCreated')
+
     context = U.initDefaults(request)
     context.update({'post': post})
     context.update({'downloadables': downloadables})
     context.update({'images': images})
+    context.update({'videos': videos})
+    context.update({'pdfs': pdfs})
+    context.update({'audios': audios})
 
     sim_post_doc = None
     related_tools = list(set(U.getAllWithTags(Post_M.Tool.objects.filter(Q(isPublished=True) & Q(tags__in=post.tags.all())).exclude(slug=post_slug), post.tags.all(), 3)))

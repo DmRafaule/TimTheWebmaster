@@ -40,7 +40,7 @@ class ArticleAdmin(admin.ModelAdmin):
     #    return super(ArticleAdmin, self).formfield_for_manytomany(db_field, request, **kwargs)
         
     exclude = ('category', 'template', 'description', 'title', 'h1', 'meta_keywords')
-    filter_horizontal = ('tags', 'termins', 'questions' )
+    filter_horizontal = ('tags', 'termins', 'questions', 'similar', 'media' )
     ordering = ['-timeCreated']
     fieldsets = [
         (
@@ -52,7 +52,7 @@ class ArticleAdmin(admin.ModelAdmin):
         (
             'Advanced options',
             {
-                'fields': ['preview', 'timeCreated'],
+                'fields': ['media', ('preview', 'timeCreated')],
                 'classes': ['collapse'],
                 'description': 'In this fieldset you can switch type of tool and configure other options.'
             }
@@ -188,7 +188,7 @@ class PlatformAdmin(admin.ModelAdmin):
 
 class ToolAdmin(admin.ModelAdmin):
     exclude = ('category','name', 'description', 'template')
-    filter_horizontal = ('tags', 'platforms')
+    filter_horizontal = ('tags', 'platforms', 'media', 'similar')
     ordering = ['-timeCreated']
     fieldsets = [
         (
@@ -200,9 +200,17 @@ class ToolAdmin(admin.ModelAdmin):
         (
             'Advanced options',
             {
-                'fields': ['icon', 'tags', 'platforms', 'price', 'type', ('template_ru', 'template_en'), 'timeCreated'],
+                'fields': ['icon', 'price', 'type', 'media', ('template_ru', 'template_en'), 'timeCreated'],
                 'classes': ['collapse'],
                 'description': 'In this fieldset you can switch type of tool and configure other options.'
+            }
+        ),
+        (
+            'Relations',
+            {
+                'fields': ['tags', 'platforms', 'similar'],
+                'classes': ['collapse'],
+                'description': 'Fieldset for setting up relationship'
             }
         )
     ]

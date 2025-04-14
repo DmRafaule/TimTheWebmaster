@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Website, Contact, Image, Downloadable
+from .models import Website, Contact, Media#, Image, Downloadable
 
 
 class ContactAdmin(admin.ModelAdmin):
@@ -17,7 +17,6 @@ class ContactAdmin(admin.ModelAdmin):
             }
         )
     ]
-
 
 class WebsiteAdmin(admin.ModelAdmin):
     list_display = ('is_current', 'name')
@@ -107,24 +106,28 @@ class WebsiteAdmin(admin.ModelAdmin):
         )
     ]
 
-class ImageAdmin(admin.ModelAdmin):
-    exclude = ('text',)
-    filter_horizontal = ('tags',)
-    radio_fields = {'category': admin.VERTICAL, 'type': admin.HORIZONTAL}
-    list_display = ('id', 'type', 'file', 'category', 'timeCreated', 'timeUpdated')
-    list_display_links = ('type',)
-    list_editable = ('file', 'category')
+class MediaAdmin(admin.ModelAdmin):
+    filter_horizontal = (
+        'langs',
+    )
+    search_fields = (
+        'file',
+    )
+    list_filter = ('lang_type', 'type')
+    list_display = ('id', 'lang_type', 'type', 'file', 'timeCreated', 'timeUpdated')
+    list_display_links = ('file',)
+    list_editable = ('lang_type','type', 'timeCreated')
+    fieldsets = [
+        (
+            None,
+            {
+                'fields': [('lang_type', 'type'), 'langs', 'file', 'text', 'timeCreated']
+            }
+        ),
+    ]
 
-
-class DownloadableAdmin(admin.ModelAdmin):
-    exclude = ('text',)
-    radio_fields = {'category': admin.VERTICAL, 'type': admin.HORIZONTAL}
-    list_display = ('id', 'type', 'file', 'category', 'timeCreated', 'timeUpdated')
-    list_display_links = ('type',)
-    list_editable = ('file','category')
 
 
 admin.site.register(Website, WebsiteAdmin)
 admin.site.register(Contact, ContactAdmin)
-admin.site.register(Downloadable, DownloadableAdmin)
-admin.site.register(Image, ImageAdmin)
+admin.site.register(Media, MediaAdmin)
