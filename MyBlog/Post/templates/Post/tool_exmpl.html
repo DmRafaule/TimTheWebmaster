@@ -29,7 +29,11 @@
 	<hr>
     <ol>
         {% for res in downloadables %}
-        <li class="ref_downloadables"><a href="{% get_media_prefix %}{{res.file}}" download>{{res.text}}</a></li>
+            {% if res.text %}
+            <li class="ref_downloadables"><a href="{% get_media_prefix %}{{res.file}}" download>{{res.text}}</a></li>
+            {% else %}
+            <li class="ref_downloadables"><a href="{% get_media_prefix %}{{res.file}}" download>{{res.file}}</a></li>
+            {% endif %}
         {% endfor %}
     </ol>
     {% endif %}

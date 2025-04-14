@@ -13,14 +13,11 @@
 }
 .tab_button:hover{
 	cursor: pointer;
-	border-top: 1px solid var(--acent_color);
-	border-right: 2px solid var(--acent_color);
-	border-left: 2px solid var(--acent_color);
-	border-bottom: 3px solid var(--acent_color);
+	background-color: var(--button_active_bg);
 }
 .tab_button:active{
-	transform: translateY(5px);
 	cursor: pointer;
+	background-color: var(--button_active_bg);
 }
 .tab_action_button{
 	background-color: var(--button_action_bg);

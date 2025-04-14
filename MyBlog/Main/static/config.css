@@ -79,6 +79,7 @@
 	--list_indent-step: 16px;
 	/*Buttons*/
 	--button_action_bg: #D78C4f;
+	--button_active_bg: #e09b63;
 	--button_link_bg: #b7ccee;
 	--button_danger_action_bg: #c40e0e;
 	--button_padding_side: 16px;

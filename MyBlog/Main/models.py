@@ -1,6 +1,6 @@
+from itertools import chain
 from django.db import models
-
-from Post.models import Post
+from django.utils.translation import get_language
 
 
 def user_directory_path_forImageAndDownloadabel(instance, filename):
@@ -72,9 +72,9 @@ class Website(models.Model):
     max_displayed_qa_on_home = models.IntegerField(verbose_name='Limit to display termins', default=2, blank=False)
     max_displayed_td_on_home = models.IntegerField(verbose_name='Limit to display questions', default=2, blank=False)
     max_displayed_notes_on_home = models.IntegerField(verbose_name='Limit to display notes', default=5, blank=False)
-    articles_post_preview = models.FileField(upload_to='articles', blank=True)
-    tools_post_preview = models.FileField(upload_to='tools', blank=True)
-    notes_post_preview = models.FileField(upload_to='notes', blank=True)
+    articles_post_preview = models.FileField(upload_to='common', blank=True)
+    tools_post_preview = models.FileField(upload_to='common', blank=True)
+    notes_post_preview = models.FileField(upload_to='common', blank=True)
     default_image_preview = models.FileField(upload_to='common', blank=True)
 
 class Contact(models.Model):
@@ -83,48 +83,91 @@ class Contact(models.Model):
     description = models.TextField(blank=True)
     url = models.URLField(max_length=512, blank=False)
 
+class LanguageType(models.TextChoices):
+    LANG_TYPE_RU = 'ru'
+    LANG_TYPE_EN = 'en'
+    LANG_TYPE_UNI = 'XX' # Special type to mark bilingual files
+
+class LangManager(models.Manager):
+    def filter_by_lang(self):
+        uni_records = self.filter(lang_type=LanguageType.LANG_TYPE_UNI)
+        cur_lang_records = self.filter(lang_type=get_language())
+        return uni_records | cur_lang_records
+
 class Media(models.Model):
-    file = models.ImageField(upload_to=user_directory_path_forImageAndDownloadabel, blank=False)
-
-class Image(models.Model):
-    ART = 'Ar'
-    RESOURCE = 'Re'
-    IMAGE_CATEGORIES = {
-        ART: "Art",
-        RESOURCE: "Resource"
+    objects = LangManager()
+    RAW_FILE = 1
+    PDF = 2
+    IMAGE = 3
+    AUDIO = 4
+    VIDEO = 5
+    FILE_TYPE = {
+        RAW_FILE: 'files',
+        PDF: 'pdfs',
+        IMAGE: 'images',
+        AUDIO: 'audios',
+        VIDEO: 'videos',
     }
-    type = models.ForeignKey(Post, on_delete=models.CASCADE)  # Which category this have to be put in
-    file = models.ImageField(upload_to=user_directory_path_forImageAndDownloadabel, blank=False)
+
+    def media_save_to(instance, filename):
+        return f"{Media.FILE_TYPE[instance.type]}/{instance.lang_type}/{filename}"
+    
+    lang_type = models.CharField(max_length=2, choices=LanguageType, null=True, default=LanguageType.LANG_TYPE_UNI)
+    langs = models.ManyToManyField('self', blank=True)
+    type = models.IntegerField(choices=FILE_TYPE, default=RAW_FILE, blank=False )
+    file = models.FileField(upload_to=media_save_to, blank=False)
     text = models.CharField(max_length=250, blank=True)
-    # disable related name for tag field by setting related_name field to '+'
-    tags = models.ManyToManyField('Post.Tag', blank=True, related_name='+')
-    category = models.CharField(max_length=2, choices=IMAGE_CATEGORIES, default=RESOURCE, blank=True)
-    timeCreated = models.DateTimeField(auto_now=True)
+    timeCreated = models.DateTimeField(default=None, null=True)
     timeUpdated = models.DateTimeField(auto_now=True)
 
     def get_absolute_url(self):
         return '/media/{0}'.format(self.file)
+    
+    def __str__(self):
+        also_in = ""
+        for rel in self.langs.all():
+            also_in += rel.lang_type + ','
+        return f"({also_in})[{Media.FILE_TYPE[self.type].capitalize()}]{self.lang_type} -> {self.file}"
 
-class Downloadable(models.Model):
-    VIDEO = 'Vi'
-    SCRIPT = 'Sc'
-    ARCHIVE = 'Ac'
-    TG_BOT = 'Tb'
-    PARSER = 'Pr'
-    DOWNLOADABLE_CATEGORIES = {
-        VIDEO: "Video",
-        SCRIPT: "Script",
-        ARCHIVE: "Archive",
-        TG_BOT: "Telegram bot",
-        PARSER: "Parser",
-    }
+#class Image(models.Model):
+#    ART = 'Ar'
+#    RESOURCE = 'Re'
+#    IMAGE_CATEGORIES = {
+#        ART: "Art",
+#        RESOURCE: "Resource"
+#    }
+#    type = models.ForeignKey('Post', on_delete=models.CASCADE)  # Which category this have to be put in
+#    file = models.ImageField(upload_to=user_directory_path_forImageAndDownloadabel, blank=False)
+#    text = models.CharField(max_length=250, blank=True)
+#    # disable related name for tag field by setting related_name field to '+'
+#    tags = models.ManyToManyField('Post.Tag', blank=True, related_name='+')
+#    category = models.CharField(max_length=2, choices=IMAGE_CATEGORIES, default=RESOURCE, blank=True)
+#    timeCreated = models.DateTimeField(auto_now=True)
+#    timeUpdated = models.DateTimeField(auto_now=True)
+#
+#    def get_absolute_url(self):
+#        return '/media/{0}'.format(self.file)
 
-    type = models.ForeignKey(Post, on_delete=models.CASCADE)  # Which category this have to be put in
-    file = models.FileField(upload_to=user_directory_path_forImageAndDownloadabel, blank=False)
-    text = models.CharField(max_length=250, blank=True)
-    category = models.CharField(max_length=2, choices=DOWNLOADABLE_CATEGORIES, default=ARCHIVE, blank=True)
-    timeCreated = models.DateTimeField(auto_now=True)
-    timeUpdated = models.DateTimeField(auto_now=True)
-
-    def get_absolute_url(self):
-        return '/media/{0}'.format(self.file)
+#class Downloadable(models.Model):
+#    VIDEO = 'Vi'
+#    SCRIPT = 'Sc'
+#    ARCHIVE = 'Ac'
+#    TG_BOT = 'Tb'
+#    PARSER = 'Pr'
+#    DOWNLOADABLE_CATEGORIES = {
+#        VIDEO: "Video",
+#        SCRIPT: "Script",
+#        ARCHIVE: "Archive",
+#        TG_BOT: "Telegram bot",
+#        PARSER: "Parser",
+#    }
+#
+#    type = models.ForeignKey('Post', on_delete=models.CASCADE)  # Which category this have to be put in
+#    file = models.FileField(upload_to=user_directory_path_forImageAndDownloadabel, blank=False)
+#    text = models.CharField(max_length=250, blank=True)
+#    category = models.CharField(max_length=2, choices=DOWNLOADABLE_CATEGORIES, default=ARCHIVE, blank=True)
+#    timeCreated = models.DateTimeField(auto_now=True)
+#    timeUpdated = models.DateTimeField(auto_now=True)
+#
+#    def get_absolute_url(self):
+#        return '/media/{0}'.format(self.file)

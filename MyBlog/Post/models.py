@@ -6,7 +6,7 @@ from django.utils import timezone
 from django.utils.translation import get_language
 
 from MyBlog import settings as S
-#from Main.models import Media
+from Main.models import Media
 
 
 def user_directory_path(instance, filename):
@@ -25,7 +25,6 @@ class Tag(models.Model):
     def get_absolute_url(self, *args, **kwargs):
         return reverse(f'articles-list')
 
-
 class Category(models.Model):
     name = models.CharField(max_length=50, unique=True, blank=False)
     description = models.TextField(blank=False)
@@ -42,7 +41,6 @@ class Category(models.Model):
     def get_absolute_url(self):
         return reverse(f'{self.slug}-list')
 
-
 class Post(models.Model):
     view_name = "post"
     category = models.ForeignKey(Category, on_delete=models.CASCADE, blank=False)
@@ -51,7 +49,7 @@ class Post(models.Model):
     timeUpdated = models.DateTimeField(auto_now=True)
     isPublished = models.BooleanField(default=True)
     tags = models.ManyToManyField(Tag, blank=True)
-    #media = models.ManyToManyField(Media, blank=True, null=True)
+    media = models.ManyToManyField(Media, blank=True)
 
 
     def save(self, *args, **kwargs):
@@ -82,7 +80,6 @@ class Termin(models.Model):
     def __str__(self):
         return self.termin
     
-
 class Article(Post):
     view_name = "article"
     title = models.CharField(max_length=256, blank=False, default='')
@@ -102,14 +99,12 @@ class Article(Post):
     def __str__(self):
         return self.title
 
-
 class Platform(models.Model):
     name = models.CharField(max_length=256, blank=False)
-    icon = models.FileField(blank=False)
+    icon = models.FileField(blank=False, upload_to="common")
 
     def __str__(self):
         return self.name
-
 
 class Tool(Post):
     view_name = "tool"
@@ -123,6 +118,7 @@ class Tool(Post):
     )
     platforms = models.ManyToManyField(Platform, blank=True)
     price = models.IntegerField(blank=True, default=0)
+    similar = models.ManyToManyField('self', blank=True)
 
     class ToolType(models.TextChoices):
         GameApplication = "GameApplication"
@@ -162,7 +158,6 @@ class Tool(Post):
 
     def get_absolute_url(self):
         return f'/{get_language()}/tools/{self.slug}/'
-
 
 class Note(models.Model):
     view_name = "note"

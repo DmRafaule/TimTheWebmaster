@@ -5,14 +5,11 @@
 	height: fit-content;
 }
 .button:hover{
+	background-color: var(--button_active_bg);
 	cursor: pointer;
-	border-top: 1px solid var(--acent_color);
-	border-right: 2px solid var(--acent_color);
-	border-left: 2px solid var(--acent_color);
-	border-bottom: 3px solid var(--acent_color);
 }
 .button:active{
-	transform: translateY(5px);
+	background-color: var(--button_active_bg);
 	cursor: pointer;
 }
 
