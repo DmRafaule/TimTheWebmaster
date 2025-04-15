@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-03-02 11:48+0300\n"
+"POT-Creation-Date: 2025-04-15 14:14+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -26,23 +26,23 @@ msgstr "How to save result"
 msgid "Название файла"
 msgstr "Filename"
 
-#: .\PostEditor\models.py:18
+#: .\PostEditor\models.py:16
 msgid "Чистый HTML"
 msgstr "Raw HTML"
 
-#: .\PostEditor\models.py:19
+#: .\PostEditor\models.py:17
 msgid "Для статей"
 msgstr "For articles"
 
-#: .\PostEditor\models.py:20
+#: .\PostEditor\models.py:18
 msgid "Для определений"
 msgstr "For definitions"
 
-#: .\PostEditor\models.py:21
+#: .\PostEditor\models.py:19
 msgid "Для вопросов"
 msgstr "For questions"
 
-#: .\PostEditor\models.py:22
+#: .\PostEditor\models.py:20
 msgid "Для инструментов"
 msgstr "For tools"
 

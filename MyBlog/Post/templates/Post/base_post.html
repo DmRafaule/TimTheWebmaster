@@ -49,6 +49,34 @@
 		{% if isBreadcrumbsMiddlewareConnected %}
 			{% include 'Breadcrumbs/breadcrumbs.html' with path=request.META.HTTP_REFERER %}
 		{% endif %}
+
+		{% if audios|length > 0 or pdfs|length > 0 %}
+
+			<div class="text" style="text-align:left;"><b>{% trans 'Так же доступно в следующих форматах:' %}</b></div>
+			<ul>
+			{% if audios|length > 0 %}
+			<li class="flex row min_gap no_wrap text on_middle_other">
+					<img class=" icon_small dynamic_image" width="32" height="32" src="{% static 'placeholder.svg' %}" data-src='{% static "Post/img/podcast.svg" %}' alt="{% trans "Микрофон" %}">
+					<div style="word-wrap: normal"><b>PODCAST</b></div>
+					<audio controls class="full_width squered_button" >
+                        <source src="{% get_media_prefix %}{{audios.0.file}}" type="audio/mpeg">
+                    	{% trans 'Твой браузер не подерживает audio тег.' %}
+                	</audio> 
+			</li>
+			{% endif %}
+			{% if pdfs|length > 0 %}
+			<li class="flex row min_gap no_wrap text on_middle_other">
+					<img class="icon_small dynamic_image" width="32" height="32" src="{% static 'placeholder.svg' %}" data-src='{% static "Post/img/pdf.svg" %}' alt="{% trans "PDF иконка" %}">
+					<div style="word-wrap: normal"><b>PDF</b></div>
+					<div class="ref_downloadables">
+						<a href="{% get_media_prefix %}{{pdfs.0.file}}" download>{{pdfs.0.get_filename}}</a>
+					</div>
+			</li>
+			{% endif %}
+			</ul>
+
+		{% endif %}
+
 	</div>
 	<hr>
 	{% block content_post %}
