@@ -4,6 +4,8 @@ from django.db import models
 from django.urls import reverse
 from django.utils import timezone
 from django.utils.translation import get_language
+from django.db.models.signals import m2m_changed
+from django.core.exceptions import ValidationError
 
 from MyBlog import settings as S
 from Main.models import Media
@@ -49,7 +51,7 @@ class Post(models.Model):
     timeUpdated = models.DateTimeField(auto_now=True)
     isPublished = models.BooleanField(default=True)
     tags = models.ManyToManyField(Tag, blank=True)
-    media = models.ManyToManyField(Media, blank=True)
+    media = models.ManyToManyField(Media, blank=True, help_text="Will be procceed only First ones added video, pdf, audio files. On Tool model audio and pdf files has no effect.")
 
 
     def save(self, *args, **kwargs):
@@ -82,6 +84,7 @@ class Termin(models.Model):
     
 class Article(Post):
     view_name = "article"
+    max_similar = 3
     title = models.CharField(max_length=256, blank=False, default='')
     h1 = models.CharField(max_length=256, blank=False, default='')
     description = models.TextField(max_length=256, blank=True)
@@ -90,7 +93,7 @@ class Article(Post):
     template = models.FileField(max_length=300, upload_to=user_directory_path, blank=False)  # page to display
     questions = models.ManyToManyField(Question, blank=True, help_text='You only use this field to pin actualy needed qas. Other will come automatically')
     termins = models.ManyToManyField(Termin, blank=True, help_text='You only use this field to pin actualy needed tds. Other will come automatically')
-    similar = models.ManyToManyField('self', blank=True)
+    similar = models.ManyToManyField('self', blank=True, help_text="Up to 3 choises")
 
     def save(self, *args, **kwargs):
         self.category = Category.objects.get(slug="articles")
@@ -108,6 +111,7 @@ class Platform(models.Model):
 
 class Tool(Post):
     view_name = "tool"
+    max_similar = 3
     name = models.CharField(max_length=256, blank=False)
     description = models.TextField(blank=False)
     icon = models.FileField(max_length=300, upload_to=user_directory_path, blank=True)
@@ -118,7 +122,7 @@ class Tool(Post):
     )
     platforms = models.ManyToManyField(Platform, blank=True)
     price = models.IntegerField(blank=True, default=0)
-    similar = models.ManyToManyField('self', blank=True)
+    similar = models.ManyToManyField('self', blank=True, help_text="Up to 3 choises")
 
     class ToolType(models.TextChoices):
         GameApplication = "GameApplication"
@@ -158,6 +162,17 @@ class Tool(Post):
 
     def get_absolute_url(self):
         return f'/{get_language()}/tools/{self.slug}/'
+
+def similar_articles_changed(sender, **kwargs):
+    if kwargs['instance'].similar.count() > Article.max_similar:
+        raise ValidationError("You can't assign more than three articles", code="invalid")
+
+def similar_tools_changed(sender, **kwargs):
+    if kwargs['instance'].similar.count() > Tool.max_similar:
+        raise ValidationError("You can't assign more than three tools", code="invalid")
+
+m2m_changed.connect(similar_articles_changed, sender=Article.similar.through)
+m2m_changed.connect(similar_tools_changed, sender=Tool.similar.through)
 
 class Note(models.Model):
     view_name = "note"

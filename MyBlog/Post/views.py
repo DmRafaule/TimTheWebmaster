@@ -18,7 +18,7 @@ def article(request, post_slug):
     images = post.media.filter_by_lang().filter(type=Main_M.Media.IMAGE).order_by('timeCreated')
     videos = post.media.filter_by_lang().filter(type=Main_M.Media.VIDEO).order_by('timeCreated')
     pdfs = post.media.filter_by_lang().filter(type=Main_M.Media.PDF).order_by('timeCreated')
-    audios = post.media.filter_by_lang().filter(type=Main_M.Media.PDF).order_by('timeCreated')
+    audios = post.media.filter_by_lang().filter(type=Main_M.Media.AUDIO).order_by('timeCreated')
 
     context = U.initDefaults(request)
 
@@ -64,7 +64,7 @@ def tool(request, post_slug):
     images = post.media.filter_by_lang().filter(type=Main_M.Media.IMAGE).order_by('timeCreated')
     videos = post.media.filter_by_lang().filter(type=Main_M.Media.VIDEO).order_by('timeCreated')
     pdfs = post.media.filter_by_lang().filter(type=Main_M.Media.PDF).order_by('timeCreated')
-    audios = post.media.filter_by_lang().filter(type=Main_M.Media.PDF).order_by('timeCreated')
+    audios = post.media.filter_by_lang().filter(type=Main_M.Media.AUDIO).order_by('timeCreated')
 
     context = U.initDefaults(request)
     context.update({'post': post})
@@ -73,14 +73,6 @@ def tool(request, post_slug):
     context.update({'videos': videos})
     context.update({'pdfs': pdfs})
     context.update({'audios': audios})
-
-    sim_post_doc = None
-    related_tools = list(set(U.getAllWithTags(Post_M.Tool.objects.filter(Q(isPublished=True) & Q(tags__in=post.tags.all())).exclude(slug=post_slug), post.tags.all(), 3)))
-    if len(related_tools) > 0:
-        context.update({'posts': related_tools[:3]})
-        loaded_template = loader.get_template(f'Post/basic--post_preview-tool.html')
-        sim_post_doc = loaded_template.render(context, request) 
-    context.update({'related_tools': sim_post_doc})
 
     # Get latest notes about this tool
     tool_tags = Post_M.Tag.objects.filter(slug_en=post_slug)

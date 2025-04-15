@@ -48,11 +48,11 @@
 			</div>
 		</div>
     {% endif %}
-    {% if related_tools %}
-	<h2 class="paragraph">{% trans 'Похожие инструменты' %}</h2>
-	<hr>
+    {% if post.similar.all|length > 0 %}
+    <h2 class="paragraph">{% trans 'Похожие инструменты' %}</h2>
+    <hr>
     <div class="column max_gap">
-        {{related_tools}}
+        {% include 'Post/basic--post_preview-tool.html' with posts=post.similar.all %}
     </div>
     {% endif %}
 {% endblock %}

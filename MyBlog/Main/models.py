@@ -1,4 +1,4 @@
-from itertools import chain
+import os
 from django.db import models
 from django.utils.translation import get_language
 
@@ -122,6 +122,9 @@ class Media(models.Model):
 
     def get_absolute_url(self):
         return '/media/{0}'.format(self.file)
+    
+    def get_filename(self):
+        return os.path.basename(self.file.name)
     
     def __str__(self):
         also_in = ""
