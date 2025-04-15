@@ -22,7 +22,6 @@
 }
 .text_button:active{
 	color: var(--acent_color);
-	padding: var(--indent_min);
 }
 
 .link_text_button{
@@ -34,7 +33,6 @@
 }
 .link_text_button:active{
 	color: var(--link_color);
-	padding: var(--indent_min);
 }
 
 .download_text_button{
@@ -46,7 +44,6 @@
 }
 .download_text_button:active{
 	color: var(--link-downloadable_color);
-	padding: var(--indent_min);
 }
 .white_text_button{
 	color: var(--ui_text_color)
