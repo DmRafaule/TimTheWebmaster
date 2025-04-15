@@ -88,12 +88,8 @@
 		<div class="notificator-blank notificator notificator-inactive"></div>
 	</div>
 	
-	{% if cfp_preview %}
-		<div class="post_image_container" style="background-image: url({% get_media_prefix %}{{cfp_preview}});"></div>
-	{% else %}
-		{% if post_list_preview %}
-		<div class="post_image_container" style="background-image: url({% get_media_prefix %}{{post_list_preview}});"></div>
-		{% endif %}
+	{% if post_list_preview %}
+	<div class="post_image_container" style="background-image: url({% get_media_prefix %}{{post_list_preview}});"></div>
 	{% endif %}
 
 	<div class="limiter_list in_middle in_middle-self no_wrap padder">

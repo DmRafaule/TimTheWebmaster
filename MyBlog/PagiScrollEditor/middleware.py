@@ -26,6 +26,5 @@ class PagiScrollEditorMiddleware:
                 response.context_data.update({'cfp_description': filter_page.description})
                 response.context_data.update({'cfp_h1': filter_page.h1})
                 response.context_data.update({'cfp_lead': filter_page.lead})
-                response.context_data.update({'cfp_preview': filter_page.preview})
 
         return response
