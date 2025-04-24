@@ -36,3 +36,7 @@
 .post_pager_text{
 	border-top: 2px solid var(--main_color);
 }
+
+.tags-in-post > span{
+	margin-right: 5px;
+}
