@@ -1,0 +1,38 @@
+{% load i18n %}
+
+{% for field in form %}
+    {% if field.name == "urls" %}
+    <fieldset class="flex flex-row gap-[10px]">  
+        <legend><h1 class="title_link_thief">{% trans 'ВорСсылок' %}</h1></legend>
+        <div class="flex flex-col w-full">
+        {{ field }}
+        {{ field.errors }}
+        </div>
+        <input hx-post="" hx-target="#link-thief-form-container" hx-swap="innerHTML" hx-indicator="#loader" id="feedback" class="button squered_button" type="submit" value="{% trans "Начать" %}">
+    </fieldset>
+    {% endif %}
+{% endfor %}
+
+<div class="flex flex-row gap-[10px] flex-wrap">
+    
+{% for field in form %}
+    {% if field.name != "urls" %}
+    <fieldset class="grow">
+        <legend><b>{{ field.label_tag }}</b></legend>
+        {{ field }}
+        {{ field.errors }}
+    </fieldset>
+    {% endif %}
+{% endfor %}
+
+    <fieldset class="grow">
+        <legend><b>{% trans 'Правила' %}</b></legend>
+        <div class="rules">
+            <ul class="list_without_sign">
+                <li>{% trans "Указывать список УРЛов через обычный пробел" %}</li>
+                <li>{% trans "Максимальное количество УРЛов для обхода по списку - 100" %}</li>
+                <li>{% trans "Результаты парсинга будут храниться только до 0 часов следующих суток, после успешного парсинга." %}</li>
+            </ul>
+        </div>
+    </fieldset>
+</div>

@@ -51,11 +51,13 @@ class EngagementMiddleware:
 
     def process_template_response(self, request, response: TemplateResponse):
         if self.handler is not None:
-            response.context_data.update({'isEngagementMiddlewareConnected': True})
+            if response.context_data:
+                response.context_data.update({'isEngagementMiddlewareConnected': True})
             self.handler(request, response)
 
         if response.template_name in self.allowed_templates_pagination:
-            response.context_data.update({'isEngagementMiddlewareConnected': True})
+            if response.context_data:
+                response.context_data.update({'isEngagementMiddlewareConnected': True})
             self.list_handler(request, response)
 
         return response

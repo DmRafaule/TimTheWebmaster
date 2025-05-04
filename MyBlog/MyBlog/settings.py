@@ -45,6 +45,9 @@ INSTALLED_APPS = [
     'django.contrib.sitemaps',
     # captcha
     'captcha',
+    # Django REST framework
+    'corsheaders',
+    'rest_framework',
     ###
     'Main.apps.MainConfig',
     'Admin.apps.AdminConfig',
@@ -59,6 +62,7 @@ INSTALLED_APPS = [
     'ImageThief.apps.ImagethiefConfig',
     'RSSAggregator.apps.RssaggregatorConfig',
     'ShaderToy.apps.ShadertoyConfig',
+    'LinkThief.apps.LinkthiefConfig',
     # Django-Cleanup
     'django_cleanup.apps.CleanupConfig',
 ]
@@ -76,6 +80,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    # REST framework
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'MyBlog.urls'
@@ -173,3 +179,11 @@ EMAIL_HOST = 'smtp.beget.com'
 EMAIL_PORT = 25 
 EMAIL_HOST_USER = 'timachuduk@timthewebmaster.com' # Maybe change to timachuduk@timthewebmaster.com
 EMAIL_HOST_PASSWORD = 'EXNIkq1&yfOx'
+
+if not DEBUG:
+    REST_FRAMEWORK = {
+        # Need to be specified explicitly, otherwise for everyone will be available HTML version of REST framework
+        'DEFAULT_RENDERER_CLASSES': [
+            'rest_framework.renderers.JSONRenderer',
+        ]
+    }

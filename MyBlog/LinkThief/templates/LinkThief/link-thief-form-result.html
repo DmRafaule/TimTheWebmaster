@@ -1,0 +1,100 @@
+{% load i18n %}
+{% load static %}
+
+{% include 'Post/tool-notificator-bar.html' with messages=messages%}
+<form id="link-thief-form">
+    {% csrf_token %}
+    {{link_thief_form}}
+</form> 
+<div id="loader" class="htmx-indicator min-h-[40px]">
+    {% include 'Post/tool-status-bar.html' with statustext="loading" %}
+</div>
+<div id="link-thief-results">
+    {% if links %}
+        <div class="paragraph flex flex-row gap-[10px] items-center">
+            <h2>{% trans 'Результаты' %}</h2>
+            <a href="{{file_path}}" download><img class="icon dynamic_image bordered_button button download_button" src="{% static 'LinkThief/images/download.svg' %}"></a>
+        </div>
+        <h3 class="paragraph">{% trans 'Общее' %}</h3>
+        <ul>
+        {% for key, value in links.items %}
+            <li class="flex flex-row gap-[10px]">
+                
+                {% if key == 'total-links' %}
+                <div>{% trans 'Всего ссылок:' %}</div>
+                <div>{{value}}</div>
+                {% endif %}
+
+                {% if key == 'total-internal-links' %}
+                <div>{% trans 'Всего внутренних ссылок:' %}</div>
+                <div>{{value}}</div>
+                {% endif %}
+
+                {% if key == 'total-external-links' %}
+                <div>{% trans 'Всего внешних ссылок:' %}</div>
+                <div>{{value}}</div>
+                {% endif %}
+
+                {% if key == 'total-crawlable-links' %}
+                <div>{% trans 'Всего проходимых краулером ссылок:' %}</div>
+                <div>{{value}}</div>
+                {% endif %}
+
+                {% if key == 'total-not-crawlable-links' %}
+                <div>{% trans 'Всего непроходимых краулером ссылок:' %}</div>
+                <div>{{value}}</div>
+                {% endif %}
+
+                {% if key == 'total-anchor-links' %}
+                <div>{% trans 'Всего ссылок с анкором:' %}</div>
+                <div>{{value}}</div>
+                {% endif %}
+
+                {% if key == 'total-not-anchor-links' %}
+                <div>{% trans 'Всего ссылок без анкора:' %}</div>
+                <div>{{value}}</div>
+                {% endif %}
+            </li>
+        {% endfor %}
+        </ul>
+        {% if is_table_on_page %}
+            {% for key, value in links.items %}
+            <div class="flex flex-row gap-[10px]">
+                {% if key == 'links' %}
+                <div>
+                    <h3 class="paragraph">{% trans 'Ссылки' %}</h3>
+                    <table style="word-wrap: anywhere;">
+                        <thead>
+                            <tr>
+                                <th>{% trans 'Ссылка' %}</th>
+                                <th>{% trans 'Анкор' %}</th>
+                                <th>{% trans 'Тип ссылки' %}</th>
+                                <th>{% trans 'Проходима краулером' %}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for key in value %}
+                            <tr>
+                                <td>{{key.href}}</td>
+                                <td>{{key.anchor}}</td>
+                                {% if key.type == 1 %}
+                                    <td>{% trans 'Внутренняя ссылка' %}</td>
+                                {% elif key.type == 2 %}
+                                    <td>{% trans 'Внешняя ссылка' %}</td>
+                                {% endif %}
+                                {% if key.crawlable == True %}
+                                    <td>{% trans 'Да' %}</td>
+                                {% else %}
+                                    <td>{% trans 'Нет' %}</td>
+                                {% endif %}
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                {% endif %}
+            </div>
+            {% endfor %}
+        {% endif %}
+    {% endif %}
+</div>

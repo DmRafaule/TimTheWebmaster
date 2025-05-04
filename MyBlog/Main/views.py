@@ -10,7 +10,6 @@ from .forms import FeedbackForm
 from MyBlog.settings import DEFAULT_FROM_EMAIL, DEFAULT_TO_EMAIL
 from django.core.mail import send_mail
 from Post.models import Tool, Article, Tag, Note
-from django.template import loader
 from bs4 import BeautifulSoup
 from Engagement.models import Comment
 
