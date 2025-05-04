@@ -39,7 +39,8 @@ class BreadcrumbsMiddleware:
         pass
 
     def process_template_response(self, request, response: TemplateResponse):
-        response.context_data.update({'isBreadcrumbsMiddlewareConnected': True})
+        if response.context_data:
+            response.context_data.update({'isBreadcrumbsMiddlewareConnected': True})
         if self.handler is not None:
             self.handler(request, response)
         elif response.template_name in self.allowed_templates_pagination:

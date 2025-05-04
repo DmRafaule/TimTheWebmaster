@@ -1,0 +1,76 @@
+{% extends 'Post/base_tool_custom.html' %}
+{% load static%}
+{% load i18n %}
+
+{% block head_tool %}
+	<title>{{post.name}}</title>
+	<meta name="description" content="{{post.description}}">
+	<link rel="canonical" href="https://{{domain_name}}{{post.get_absolute_url}}" />
+{% endblock %}
+
+
+{% block hat_tool %}
+{% endblock%}
+
+{% block content_tool %}
+<div class="limiter in_middle-self">
+    <div id="link-thief-form-container">
+    {% include 'LinkThief/link-thief-form-result.html' %}
+    </div>
+    <h2>{% trans 'О парсере ссылок' %}</h2>
+    <div class="text">
+        {{post.description}}
+    </div>
+    <div class="text">
+        {% blocktrans %}
+        Данный инструмент работает в 3-х режимах. В режиме парсинга с одной страницы, со списка страниц и с целого сайта. Хотяб я не могу гарантировать, что найду все ссылки на сайте, или смогу найти все страницы во время обхода. Ибо существует множества методик сокрытия страниц от краулера.
+        {% endblocktrans %}
+    </div>
+    {% if downloadables %}
+    <h2 class="paragraph">{% trans 'Медиа файлы' %}</h2>
+	<hr>
+    <ol>
+        {% for res in downloadables %}
+            {% if res.text %}
+            <li class="ref_downloadables"><a href="{% get_media_prefix %}{{res.file}}" download>{{res.text}}</a></li>
+            {% else %}
+            <li class="ref_downloadables"><a href="{% get_media_prefix %}{{res.file}}" download>{{res.file}}</a></li>
+            {% endif %}
+        {% endfor %}
+    </ol>
+    {% endif %}
+    {% if latest_notes %}
+        <div class="home_ui_el text">
+            <h2 class="">{% trans "Рабочие заметки об инструменте" %}</h2>
+            <hr>
+            <div class="post_previews--category mid_gap flex flex-col">
+                {{latest_notes|safe}}
+            </div>
+            <div class="see_more_button button action_button">
+                <a class="white_text_button " href="{% url 'notes-list' %}?page=1&tag=link-thief">{% trans 'Показать все ...' %}</a>
+            </div>
+        </div>
+    {% endif %}
+    {% if post.similar.all|length > 0 %}
+    <h2 class="paragraph">{% trans 'Похожие инструменты' %}</h2>
+    <hr>
+    <div class="column max_gap">
+        {% include 'Post/basic--post_preview-tool.html' with posts=post.similar.all %}
+    </div>
+    {% endif %}
+
+</div>
+{% endblock %}
+
+{% block footer_tool %}
+{% endblock %}
+
+{% block scripts_tool %}
+    <script src="{% static 'LinkThief/scripts/main.js' %}"></script>
+{% endblock %}
+
+{% block styles_tool %}
+	<link type="text/css" rel="stylesheet" href="{% static 'tables.css' %}"/>
+    <link type="text/css" rel="stylesheet" href="{% static 'loader.css' %}"/>
+	<link type="text/css" rel="stylesheet" href="{% static 'LinkThief/styles/zero.css' %}"/>
+{% endblock %}

@@ -85,8 +85,11 @@ target/
 __pycache__/
 local_settings.py
 
+.venv
 venv_new
 db.sqlite3
 media
 Docs
 manage.py
+node_modules
+package-lock.json

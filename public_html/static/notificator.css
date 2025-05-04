@@ -37,6 +37,7 @@
     flex-direction: column;
     gap: var(--mid_pm);
 	right: 0;
+	top: 48px;
     margin: var(--min_pm);
 	max-width: 300px;
 	z-index: 3;

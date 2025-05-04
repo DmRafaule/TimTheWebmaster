@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-04-15 14:14+0300\n"
+"POT-Creation-Date: 2025-05-03 21:13+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -66,26 +66,31 @@ msgid "минут"
 msgstr "minutes"
 
 #: .\Post\templates\Post\base_post.html:55
+#: .\Post\templates\Post\base_tool.html:70
+msgid "Теги: "
+msgstr "Теги: "
+
+#: .\Post\templates\Post\base_post.html:66
 msgid "Так же доступно в следующих форматах:"
 msgstr "Also available as:"
 
-#: .\Post\templates\Post\base_post.html:59
+#: .\Post\templates\Post\base_post.html:70
 msgid "Микрофон"
 msgstr "Microphone"
 
-#: .\Post\templates\Post\base_post.html:63
+#: .\Post\templates\Post\base_post.html:74
 msgid "Твой браузер не подерживает audio тег."
 msgstr "Your browser does not support audio tag"
 
-#: .\Post\templates\Post\base_post.html:69
+#: .\Post\templates\Post\base_post.html:80
 msgid "PDF иконка"
 msgstr "PDF icon"
 
-#: .\Post\templates\Post\base_post.html:88
+#: .\Post\templates\Post\base_post.html:99
 msgid "Следующая статья"
 msgstr "Next article"
 
-#: .\Post\templates\Post\base_post.html:96
+#: .\Post\templates\Post\base_post.html:107
 msgid "Предыдущая статья"
 msgstr "Previous article"
 

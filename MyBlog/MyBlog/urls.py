@@ -44,6 +44,7 @@ urlpatterns += i18n_patterns(
     path('tools/', include('PostEditor.urls')),
     path('tools/', include('PagiScrollEditor.urls')),
     path('tools/', include('ImageThief.urls')),
+    path('tools/', include('LinkThief.urls')),
     path('tools/', include('WebGLEngine.urls')),
     path('tools/', include('RSSAggregator.urls')),
     path('tools/', include('ShaderToy.urls')),

@@ -1,0 +1,30 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@tailwind variants;
+
+.custom-choise-link-thief>div>label{
+    display: flex;
+    gap: var(--small_space)
+}
+input{
+    max-width: unset;
+    border-bottom: none;
+}
+.title_link_thief{
+    background-color: var(--secondary_color);
+    border-radius:20px;
+    color: white;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+.errorlist>li{
+	color: var(--error);
+    list-style: none;
+}
+
+.limiter {
+    max-width: var(--limiter-width-big);
+}
