@@ -13,7 +13,30 @@
             {% endfor %}	
         {% endfor %}
     </form>
-    <div id="onCommentSend" class="zIndZero button action_button squered_button"  onclick="yaCounter95199635.reachGoal('onCommentSend')">
-        {% trans "Отправить" %}
+    <div class="row max_gap">
+        <div id="onCommentSend" class=" on_middle_other row mid_gap zIndZero button action_button squered_button"  onclick="yaCounter95199635.reachGoal('onCommentSend')">
+            <div class="button squered_button">
+                <img src="{% static 'ok.svg' %}">
+            </div>
+            <div>
+            {% trans "Отправить" %}
+            </div>
+        </div>
+        <div id="onReplyRemove" class="is_none button squered_button action_button">
+            <div class="row mid_gap on_middle_other">
+                <div class="button squered_button">
+                    <img src="{% static 'close.svg' %}">
+                </div>
+                <div>
+                    {% trans 'Ответ для' %}
+                </div>
+                <div>></div>
+                <b>
+                    <label for="comment_reply_to">
+                    </label>
+                </b>
+            </div>
+            <input id="comment_reply_to" class="is_none" name="comment_reply_to" value="false">
+        </div>
     </div>
 </div>

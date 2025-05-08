@@ -114,7 +114,6 @@
 .post_previews--category, .post_previews--category-forNews, .post_previews--category-forSeries{
 	display: flex;
 	flex-wrap: wrap;
-	justify-content: space-between;
 	padding: 8px;
 }
 
@@ -166,6 +165,25 @@
   	border-radius: 10px;
 	overflow: auto;
 }
-.comment:nth-child(even){
-	flex: 1 0 auto;
+
+.comment{
+    display: flex;
+    flex-direction: column;
+    flex: 1 0 auto;
+    max-width: 300px;
+    background-color: #ffd240cf;
+    border-radius: 5px;
+    padding: 5px;
+    z-index: 0;
+    position: relative;
+    width: fit-content !important;
+    word-break: break-all;
+    word-wrap: break-word;
+    max-height: 300px;
+    overflow-y: auto;
+}
+.source_on_comment_button{
+	background-color: var(--bg_color);
+	color: var(--main_text_color);
+	border-bottom-left-radius: 8px;
 }

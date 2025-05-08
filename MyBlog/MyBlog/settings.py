@@ -72,6 +72,7 @@ MIDDLEWARE = [
     'Breadcrumbs.middleware.BreadcrumbsMiddleware',
     'PostFilter.middleware.PostFilterMiddleware',
     'PagiScrollEditor.middleware.PagiScrollEditorMiddleware',
+    'Post.middleware.ToolMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.locale.LocaleMiddleware',

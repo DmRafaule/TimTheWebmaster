@@ -286,6 +286,7 @@
 }
 
 .hat_body{
+	left: 0px;
     display: flex;
 	position: fixed;
 	overflow-x: hidden;

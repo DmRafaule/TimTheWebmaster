@@ -130,6 +130,18 @@ def get_most_popular_post() -> Post_M.Article:
     #most_popular_interaction_data = min(scores, key=lambda x:x['score'])['article']
     return Post_M.Article.objects.all().order_by('-timeCreated')[0]
 
+def get_tool(_url):
+    urlList = _url.split('/')
+    # Clean up after slplit function
+    c = urlList.count('') 
+    for i in range(c): 
+        urlList.remove('') 
+    slug = urlList[-1]
+    tool_qs = Post_M.Tool.objects.filter(slug=slug)
+    if len(tool_qs) > 0:
+        return tool_qs[0]
+    else:
+        return None
     
 
 # Filtering out all empty categories

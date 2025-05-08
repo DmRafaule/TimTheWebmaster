@@ -3,7 +3,7 @@
 {% for field in form %}
     {% if field.name == "urls" %}
     <fieldset class="flex flex-row gap-[10px]">  
-        <legend><h1 class="title_link_thief">{% trans 'ВорСсылок' %}</h1></legend>
+        <legend><h2 class="title_link_thief">{% trans 'ВорСсылок' %}</h2></legend>
         <div class="flex flex-col w-full">
         {{ field }}
         {{ field.errors }}

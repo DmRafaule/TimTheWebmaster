@@ -1,9 +1,11 @@
 from django.template.response import TemplateResponse
 from Main.forms import FeedbackForm
+from Main.models import Media
+from Main.utils import get_tool
 from django.template import loader
 from .models import Comment, Interaction
 from .forms import CommentForm, ReviewForm, EmailForm
-from .utils import getSlugFromURL
+from .utils import get_root_comments
 
 class EngagementMiddleware:
     def __init__(self, get_response):
@@ -72,7 +74,7 @@ class EngagementMiddleware:
     def _set_comments(self, request, response, isComments, template=None, form=CommentForm()):
         if isComments:
             comment_form = form
-            comments = Comment.objects.filter(url=request.path).order_by('-time_published')
+            comments = Comment.objects.filter(url=request.path).filter(is_root=True).order_by('-time_published')
             loaded_template = loader.get_template(template)
             comments_doc = loaded_template.render({
                 'comment_form': comment_form,
@@ -124,10 +126,9 @@ class EngagementMiddleware:
         response.context_data.update({'comments_number': len(comments)})
         if len(comments) > 0:
             response.context_data.update({'comments_score': Comment.get_score(request.path)})
-        tool = Comment.get_tool(request.path)
+        tool = get_tool(request.path)
         if tool:
             response.context_data.update({'page_tool': tool})
-        ##
 
         self._update_views_counter(request.path)
 

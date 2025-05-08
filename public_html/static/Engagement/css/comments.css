@@ -15,12 +15,17 @@
     position: relative;
 }
 .comment{
+    display: flex;
+    flex-direction: column;
+    flex: 1 0 auto;
     background-color: #ffd240cf;
     border-radius: 5px;
     padding: 5px;
     z-index: 0;
     position: relative;
-    width: fit-content;
+    width: 100%;
+    word-break: break-all;
+    word-wrap: break-word;
 }
 .comment_person{
     font-weight: 300;
@@ -65,4 +70,17 @@
 }
 .not_selected_star::after{
     content: '✰';
+}
+.response_on_comment_button{
+	background-color: var(--bg_color);
+	color: var(--main_text_color);
+	border-top-left-radius: 8px;
+	border-bottom-right-radius: 8px;
+}
+.comment_reply{
+    padding-left: 20px;
+    border-left: 1px solid var(--secondary_color);
+    border-bottom-left-radius: 10px;
+    border-bottom: 1px solid var(--secondary_color); 
+    padding-bottom: var(--min_pm);
 }

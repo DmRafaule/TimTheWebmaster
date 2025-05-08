@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-03-02 08:57+0300\n"
+"POT-Creation-Date: 2025-05-08 13:33+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -34,17 +34,34 @@ msgstr "Your message"
 msgid "Пожалуйста оцени мой инструмент (ಥ _ ಥ)"
 msgstr "Please gimme a star's rating (ಥ _ ಥ)"
 
-#: .\Engagement\templates\Engagement\comment_form.html:17
+#: .\Engagement\templates\Engagement\comment_form.html:22
 msgid "Отправить"
 msgstr "Send"
+
+#: .\Engagement\templates\Engagement\comment_form.html:31
+msgid "Ответ для"
+msgstr "Response for"
+
+#: .\Engagement\templates\Engagement\comments.html:31
+msgid "Источник"
+msgstr "Source"
+
+#: .\Engagement\templates\Engagement\comments.html:40
+msgid "Все ответы "
+msgstr "All replies "
+
+#: .\Engagement\templates\Engagement\comments.html:44
+msgid "Ответить"
+msgstr "Reply"
+
+#: .\Engagement\templates\Engagement\comments.html:57
+#: .\Engagement\templates\Engagement\engagement_comments.html:17
+msgid "Больше ..."
+msgstr "More ..."
 
 #: .\Engagement\templates\Engagement\engagement_comments.html:10
 msgid "Сейчас тут пусто. Буть первым (oﾟvﾟ)ノ"
 msgstr "It's empty now. Be the first (oﾟvﾟ)ノ"
-
-#: .\Engagement\templates\Engagement\engagement_comments.html:17
-msgid "Больше ..."
-msgstr "More ..."
 
 #: .\Engagement\templates\Engagement\engagement_email_subscription_form.html:6
 msgid "Подписка на рассылку"
@@ -142,7 +159,8 @@ msgstr ""
 "to create a bookmark, press ctrl+d"
 
 #: .\Engagement\views.py:31 .\Engagement\views.py:59 .\Engagement\views.py:80
-#: .\Engagement\views.py:166 .\Engagement\views.py:215
+#: .\Engagement\views.py:168 .\Engagement\views.py:192
+#: .\Engagement\views.py:255
 msgid "Только POST запросы (╬▔皿▔)╯"
 msgstr "Only POST request (╬▔皿▔)╯"
 
@@ -170,14 +188,14 @@ msgstr "! This email already submitted"
 msgid "✗ Возникла ошибка при отправке формы ＼（〇_ｏ）／"
 msgstr "✗ There was an error submitting the form ＼（〇_ｏ）／"
 
-#: .\Engagement\views.py:127 .\Engagement\views.py:197
+#: .\Engagement\views.py:127 .\Engagement\views.py:236
 msgid "✔ Вы успешно отправили сообщение (＠＾０＾)"
 msgstr "✔ You have successfully sent your message (＠＾０＾)"
 
-#: .\Engagement\views.py:163
+#: .\Engagement\views.py:165 .\Engagement\views.py:189
 msgid "Чувак, используй UI ┗( T﹏T )┛"
 msgstr "Dude, use UI ┗( T﹏T )┛"
 
-#: .\Engagement\views.py:209
+#: .\Engagement\views.py:249
 msgid "✗ Возникла ошибка при отправке комментария ＼（〇_ｏ）／"
 msgstr "✗ There was an error sending your comment ＼（〇_ｏ）／"

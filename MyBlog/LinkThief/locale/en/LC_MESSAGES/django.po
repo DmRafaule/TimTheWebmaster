@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-05-04 08:45+0300\n"
+"POT-Creation-Date: 2025-05-08 13:33+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -170,11 +170,11 @@ msgstr ""
 "Parsing results will be stored only until 00:00 the following day, after "
 "successful parsing."
 
-#: .\LinkThief\templates\LinkThief\links-scraper-main.html:17
+#: .\LinkThief\templates\LinkThief\links-scraper-main.html:13
 msgid "О парсере ссылок"
 msgstr "About the links scraper"
 
-#: .\LinkThief\templates\LinkThief\links-scraper-main.html:22
+#: .\LinkThief\templates\LinkThief\links-scraper-main.html:18
 msgid ""
 "\n"
 "        Данный инструмент работает в 3-х режимах. В режиме парсинга с одной "
@@ -190,22 +190,6 @@ msgstr ""
 "crawling. Because there are many methods of hiding pages from the crawler.\n"
 " "
 
-#: .\LinkThief\templates\LinkThief\links-scraper-main.html:27
-msgid "Медиа файлы"
-msgstr "Media files"
-
-#: .\LinkThief\templates\LinkThief\links-scraper-main.html:41
-msgid "Рабочие заметки об инструменте"
-msgstr "A notes about this tool, devnotes"
-
-#: .\LinkThief\templates\LinkThief\links-scraper-main.html:47
-msgid "Показать все ..."
-msgstr "See all ..."
-
-#: .\LinkThief\templates\LinkThief\links-scraper-main.html:52
-msgid "Похожие инструменты"
-msgstr "Similar tools"
-
 #: .\LinkThief\views.py:92
 msgid "Некоректный адрес"
 msgstr "Wrong URL"
@@ -218,10 +202,10 @@ msgstr "Too many URLs provided"
 msgid "Пожалуйста, укажи только один адресс"
 msgstr "Please, only one URL"
 
-#: .\LinkThief\views.py:166
+#: .\LinkThief\views.py:153
 msgid "✔ Вы успешно спарсили ссылки"
 msgstr "✔ You have successfully parsed the links"
 
-#: .\LinkThief\views.py:172
+#: .\LinkThief\views.py:159
 msgid "✗ Возникла ошибка при отправке формы"
 msgstr "✗ There was an error submitting the form"

@@ -8,5 +8,6 @@ urlpatterns = [
     path('feedback_post/', V.feedback_post),
     path('email_post/', V.email_post),
     path('load_comments/', V.load_comments),
+    path('load_replies/', V.load_replies),
     path('send_comment/', V.send_comment),
 ]

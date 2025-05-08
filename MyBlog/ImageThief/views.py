@@ -30,17 +30,6 @@ def tool_main(request):
     request.session[f"inWork_{request.session.session_key}"] = False
 
     context = initDefaults(request)
-    context.update({'archive': os.path.join('tools', C.SLUG, 'archive.zip') })
-    context.update({'proxies_example': os.path.join('tools', C.SLUG, 'proxies.json') })
-
-    # Get latest notes about ImageThief
-    imageThief_tags = Tag.objects.filter(slug_en='imagethief')
-    if len(imageThief_tags) > 0:
-        posts = U.getAllWithTags(Note.objects.filter(isPublished=True), [imageThief_tags[0]])[:MAX_NOTES_ON_TOOL]
-        context.update({'imageThief_tag': imageThief_tags[0].slug})
-        context.update({'posts': posts})
-        loaded_template = loader.get_template(f'Post/basic--post_preview-note.html')
-        context.update({'latest_notes': loaded_template.render(context, request)})
 
     return TemplateResponse(request, 'ImageThief/image_thief.html', context=context)
 

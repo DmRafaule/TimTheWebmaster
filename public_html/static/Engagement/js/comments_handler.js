@@ -5,6 +5,26 @@ function goToCommentForm(){
     document.querySelector('#id_name').focus()
 }
 
+function openReplyContainer(id){
+    document.querySelector(`#comment-replies-${id}`).classList.remove('is_none')
+}
+
+function commentReply(container){
+    goToCommentForm()
+    var target_comment_id = container.dataset.commentReplyTo
+    var form_input = document.querySelector('#comment_reply_to') 
+    form_input.value = target_comment_id
+    form_input.dataset.from = container.dataset.from
+    form_input.parentElement.classList.remove('is_none')
+    form_input.parentElement.querySelector('label').innerText = form_input.dataset.from
+}
+
+function removeReply(){
+    var form_input = document.querySelector('#comment_reply_to') 
+    form_input.value = "false"
+    form_input.parentElement.classList.add('is_none')
+}
+
 function loadComments(){
     var url = `${window.location.pathname}`
     var load_comments_btn = document.querySelector('#onCommentLoad')
@@ -33,6 +53,62 @@ function loadComments(){
                 var comments_doc = response['comments_doc']
                 var comments_container = document.querySelector('#comments_container')
                 comments_container.insertAdjacentHTML('beforeend', comments_doc)
+                comments_container.querySelectorAll(".reply-to-this-comment").forEach((comment_reply)=>{
+                    comment_reply.addEventListener('click', ()=>commentReply(comment_reply))
+                })
+                comments_container.querySelectorAll(".comment_reply_init").forEach( (reply_show_all) => {
+                    var new_reply_show_all = reply_show_all.cloneNode(true)
+                    reply_show_all.replaceWith(new_reply_show_all);
+                    new_reply_show_all.addEventListener('click', ()=>loadReplies(null, reply_show_all.dataset.commentId))
+                })
+            })
+    })
+    .catch(error => {
+        notificator.notify(error,'error')
+        console.error('There was a problem with your fetch operation:', error);
+    });
+}
+
+function loadReplies(parent_comment_id, this_comment_id, page_number = 1){
+    var form_data = new FormData()
+    form_data.append('csrfmiddlewaretoken', csrftoken)
+    form_data.append('comment_root_id', this_comment_id)
+    form_data.append('page_number', page_number)
+    form_data.append('posted_comments', POSTED_COMMENTS)
+    fetch(`/${language_code}/load_replies/`,{
+        method: 'POST',
+        body: form_data,
+    })
+    .then( response => {
+        if (!response.ok)
+            return response.json().then( response => {
+                notificator.notify(response['msg'],'error')   
+            })
+        else
+            return response.json().then( response =>{
+                if (parent_comment_id == null){
+                    document.querySelector(`#show-all-replies-${this_comment_id}>div>.comment_reply_init`).remove()
+                }
+                var is_next_page = Boolean(response['is_next_page'])
+                document.querySelector(`#comment-replies-${this_comment_id}`).dataset.pageNumber = response['next_page_number']
+                openReplyContainer(this_comment_id)
+                if (!is_next_page){
+                    document.querySelector(`#comment-replies-next-${this_comment_id}`).remove()
+                }
+                else{
+                    document.querySelector(`#comment-replies-next-${this_comment_id}`).addEventListener('click', (ev)=>{
+                        loadReplies(ev.currentTarget.dataset.parentCommentId, this_comment_id, response['next_page_number'])
+                    })
+                }
+                var comments_doc = response['comments_doc']
+                var comments_container = document.querySelector(`#comment-replies-body-${this_comment_id}`)
+                comments_container.insertAdjacentHTML('beforeend', comments_doc)
+                comments_container.querySelectorAll(".comment_reply_init").forEach( (reply_show_all) => {
+                    reply_show_all.addEventListener('click', ()=>loadReplies(null, reply_show_all.dataset.commentId))
+                })
+                comments_container.querySelectorAll(".reply-to-this-comment").forEach((comment_reply)=>{
+                    comment_reply.addEventListener('click', ()=>commentReply(comment_reply))
+                })
             })
     })
     .catch(error => {
@@ -65,6 +141,7 @@ function sendComment(){
 	form_data.append("url", url)
     form_data.append("rating", rating)
     form_data.append("is_rating", is_rating)
+	form_data.append("comment_reply_to", form_doc.querySelector("#comment_reply_to").value)
 	form_data.append("message", form_doc.querySelector("#id_message").value)
 	form_data.append("captcha_0", form_doc.querySelector("#id_captcha_0").value)
 	form_data.append("captcha_1", form_doc.querySelector("#id_captcha_1").value)
@@ -86,21 +163,8 @@ function sendComment(){
         else
             return response.json().then( response =>{
                 POSTED_COMMENTS += 1
-                // Send feedback msg
-                notificator.notify(response['msg'],'success')
-                // Update comment form
-				document.querySelector('#toSendCommentContainer').outerHTML = response['form'] 
-				document.querySelector('#onCommentSend').addEventListener('click', sendComment)
-                // Insert a new comment
-                var new_comment = response['new_comment']
-                var comments_container = document.querySelector('#comments_container')
-                comments_container.insertAdjacentHTML('afterbegin', new_comment)
-                document.querySelector('#comments_counter_header').innerText = `(${response['new_comments_length']})`
-                // Insert first comment 
-                var empty_comments_container =  document.querySelector('#empty_comments_container')
-                if (empty_comments_container){
-                    empty_comments_container.remove()
-                }
+                history.pushState(null, '', '#comments_limiter')
+                location.reload()
             })
     })
 }
@@ -149,6 +213,16 @@ function onReady(){
     document.querySelectorAll('#onComment').forEach( (onComment) => {
 		onComment.addEventListener('click', goToCommentForm)
     })
+    document.querySelectorAll(".comment_reply_init").forEach( (reply_show_all) => {
+        reply_show_all.addEventListener('click', ()=>loadReplies(null, reply_show_all.dataset.commentId))
+    })
+    document.querySelectorAll(".reply-to-this-comment").forEach((comment_reply)=>{
+        comment_reply.addEventListener('click', ()=>commentReply(comment_reply))
+    })
+    var onReplyRemove = document.querySelector('#onReplyRemove')
+    if (onReplyRemove){
+        onReplyRemove.addEventListener('click', removeReply)
+    }
     var onCommentLoad = document.querySelector('#onCommentLoad')
     if (onCommentLoad){
         onCommentLoad.addEventListener('click', loadComments)

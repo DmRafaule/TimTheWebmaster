@@ -1,14 +1,6 @@
-{% extends 'Post/base_tool_custom.html' %}
+{% extends 'Post/base_tool.html' %}
 {% load static%}
 {% load i18n %}
-
-{% block head_tool %}
-	<title>{% trans "RSS Лента и агрегатор | Тим зе вебмастер" %}</title>
-	<meta name="description" content="{% trans "Данный инструмент позволит просматривать и подписываться на интерерующие тебя rss фиды и каналы бесплатно и в неограниченом количестве." %}">
-	<meta name="keywords" content="{% trans 'rss поток, добавление rss, rss приложение, регистрация rss, чтение rss, подключение rss, добавить rss ленту, rss фильтр, мобильные rss, веб rss, rss лента онлайн, сортировка rss ленты' %}">
-	<link rel="canonical" href="https://{{domain_name}}{%url 'rss_aggregator'%}" />
-{% endblock %}
-
 
 {% block hat_tool %}
 	<div class="header_button"  data-body="rss_aggregator_mobile_groups_container">
@@ -45,7 +37,7 @@
 		</div>
 	</div>
 	<div class="limiter in_middle in_middle-self no_wrap padder">
-		<h1 class="paragraph">{% trans 'RSS Лента и агрегатор' %}</h1>
+		<h2 class="paragraph">{% trans 'RSS Лента и агрегатор' %}</h2>
 		<div id="rss_aggregator_main" class="row in_middle-farapart mid_gap">
 			<div id="rss_aggregator_feed" class="el-40-half column el-expandable  mid_row_gap">
 				<div class="row in_middle-farapart in_middle">

@@ -137,19 +137,6 @@ def tool_start(urls, ways_to_crawl, ways_to_save):
 def tool_main(request):
     context = initDefaults(request)
 
-    post = get_object_or_404(Tool, slug='link-thief')
-    context.update({'post': post})
-
-    downloadables = post.media.filter_by_lang().filter(type=Media.RAW_FILE).order_by('timeCreated')
-    context.update({'downloadables': downloadables})
-
-    tags = Tag.objects.filter(slug_en='linkthief')
-    if len(tags) > 0:
-        posts = getAllWithTags(Note.objects.filter(isPublished=True), [tags[0]])[:MAX_NOTES_ON_TOOL]
-        context.update({'posts': posts})
-        loaded_template = loader.get_template(f'Post/basic--post_preview-note.html')
-        context.update({'latest_notes': loaded_template.render(context, request)})
-
     if request.method == "GET":
         form = LinkThiefForm()
         context.update({'link_thief_form': form})

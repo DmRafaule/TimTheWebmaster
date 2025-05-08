@@ -60,32 +60,7 @@ def article(request, post_slug):
 
 def tool(request, post_slug):
     post = get_object_or_404(Post_M.Tool, slug=post_slug)
-    downloadables = post.media.filter_by_lang().filter(type=Main_M.Media.RAW_FILE).order_by('timeCreated')
-    images = post.media.filter_by_lang().filter(type=Main_M.Media.IMAGE).order_by('timeCreated')
-    videos = post.media.filter_by_lang().filter(type=Main_M.Media.VIDEO).order_by('timeCreated')
-    pdfs = post.media.filter_by_lang().filter(type=Main_M.Media.PDF).order_by('timeCreated')
-    audios = post.media.filter_by_lang().filter(type=Main_M.Media.AUDIO).order_by('timeCreated')
-
     context = U.initDefaults(request)
-    context.update({'post': post})
-    context.update({'downloadables': downloadables})
-    context.update({'images': images})
-    context.update({'videos': videos})
-    context.update({'pdfs': pdfs})
-    context.update({'audios': audios})
-
-    # Get latest notes about this tool
-    tool_tags = Post_M.Tag.objects.filter(slug_en=post_slug)
-    if len(tool_tags) > 0:
-        posts = U.getAllWithTags(Post_M.Note.objects.filter(isPublished=True), [tool_tags[0]])[:3]
-        context.update({'tool_tag': tool_tags[0].slug})
-        context.update({'posts': posts})
-        loaded_template = loader.get_template(f'Post/basic--post_preview-note.html')
-        context.update({'latest_notes': loaded_template.render(context, request)})
-    
-    # Get used platforms
-    context.update({'platforms': post.platforms.all()})
-
     if post.template:
         return TemplateResponse(request, post.template.path, context=context)
     else:

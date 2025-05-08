@@ -144,12 +144,6 @@ def save_template(request):
             case PostTemplate.ARTICLE_POST:
                 _update_record_raw(record)
                 _update_record_template(request, record, 'Post/article_exmpl.html')
-            case PostTemplate.TERMIN_POST:
-                _update_record_raw(record)
-                _update_record_template(request, record, 'Post/td_exmpl.html')
-            case PostTemplate.QUESTION_POST:
-                _update_record_raw(record)
-                _update_record_template(request, record, 'Post/qa_exmpl.html')
             case PostTemplate.TOOL_POST:
                 _update_record_raw(record)
                 _update_record_template(request, record, 'Post/tool_exmpl.html')

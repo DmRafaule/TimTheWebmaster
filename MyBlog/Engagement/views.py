@@ -5,7 +5,7 @@ from Main.forms import FeedbackForm
 from django.core.mail import send_mail
 from .models import Comment, Interaction, Email
 from .forms import CommentForm, ReviewForm, EmailForm
-from .utils import getSlugFromURL
+from .utils import get_root_comments
 from MyBlog.settings import DEFAULT_FROM_EMAIL, DEFAULT_TO_EMAIL
 from django.core.paginator import Paginator
 
@@ -140,19 +140,21 @@ def feedback_post(request):
 
     return JsonResponse(data,status=status)
 
+
 def load_comments(request):
+        
     if request.method == 'POST':
         url = request.POST['url']
         page_number = int(request.POST['page_number'])
         comments_already_posted = int(request.POST['posted_comments'])
 
-        comments = Comment.objects.filter(url=url).order_by('-time_published')[comments_already_posted:]
+        comments = Comment.objects.filter(url=url).filter(is_root=True).order_by('-time_published')[comments_already_posted:]
 
         paginator = Paginator(comments, Comment.COMMENTS_PER_PAGE)
         if paginator.num_pages >= page_number:
             next_page = paginator.page(page_number)
             loaded_template = loader.get_template(f'Engagement/comments.html')
-            comments_doc = loaded_template.render({'comments': next_page.object_list}, request)
+            comments_doc = loaded_template.render({'comments': next_page.object_list, 'from': "post"}, request)
             data = {
                 'next_page_number': page_number + 1,
                 'comments_doc': comments_doc,
@@ -167,6 +169,31 @@ def load_comments(request):
         status = 503
     return JsonResponse(data, status=status)
 
+def load_replies(request):
+    if request.method == 'POST':
+        comment_root_id = int(request.POST['comment_root_id'])
+        page_number = int(request.POST['page_number'])
+        comments = Comment.objects.get(id=comment_root_id).replies.all()
+        paginator = Paginator(comments, Comment.COMMENTS_PER_PAGE)
+        if paginator.num_pages >= page_number:
+            next_page = paginator.page(page_number)
+            loaded_template = loader.get_template(f'Engagement/comments.html')
+            comments_doc = loaded_template.render({'comments': next_page.object_list, 'from': "post"}, request)
+            data = {
+                'next_page_number': page_number + 1,
+                'comments_doc': comments_doc,
+                'is_next_page': next_page.has_next()
+            }
+            status = 200
+        else:
+            data = {'msg': _('Чувак, используй UI ┗( T﹏T )┛'),}
+            status = 503
+    else:
+        data = {'msg': _('Только POST запросы (╬▔皿▔)╯'),}
+        status = 503
+    return JsonResponse(data, status=status)
+
+
 def send_comment(request):
     if request.method == 'POST':
         # Check which type of form to use
@@ -176,7 +203,7 @@ def send_comment(request):
             Form = ReviewForm
 
         form = Form(request.POST)
-        if form.is_valid():
+        if form.is_valid() and (form.cleaned_data['name'] != 'timthewebmaster' or request.user.is_superuser ):
             # Update comment counter
             url = request.POST['url']
             interaction_tulpe = Interaction.objects.get_or_create(url=url)
@@ -185,6 +212,18 @@ def send_comment(request):
             comment = form.save(commit=False)
             comment.interaction = interaction
             comment.save()
+            # Check if it is response
+            comment_reply_to_id = request.POST['comment_reply_to']
+            if comment_reply_to_id == 'false' or comment_reply_to_id == 'False'  :
+                comment_reply_to_id = False
+            else:
+                comment_reply_to_id = int(comment_reply_to_id)
+                # Save replies to comment
+                comment_reply_to = Comment.objects.get(id=comment_reply_to_id)
+                comment_reply_to.replies.add(comment)
+                comment_reply_to.save()
+                comment.is_root = False
+                comment.save()
             # Render empty form
             context = {'comment_form': Form()}
             loaded_template = loader.get_template(f'Engagement/comment_form.html')
@@ -195,6 +234,7 @@ def send_comment(request):
             comment_doc = loaded_template.render(context, request)
             data = {
                 'msg': _('✔ Вы успешно отправили сообщение (＠＾０＾)'),
+                'reply_id': comment_reply_to_id,
                 'form': comment_form,
                 'new_comment': comment_doc,
                 'new_comments_length': len(Comment.objects.filter(url=comment.url))
