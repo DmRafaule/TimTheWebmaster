@@ -7,7 +7,8 @@ class EmailAdmin(admin.ModelAdmin):
     search_fields = ('email',)
 
 class CommentAdmin(admin.ModelAdmin):
-    list_display = ('url', 'name', 'time_published')
+    list_display = ('is_root', 'url', 'name', 'time_published')
+    filter_horizontal = ('replies',)
     list_display_links = ('url',)
     list_editable = ('name',)
     search_fields = ('url', 'name')
@@ -16,7 +17,7 @@ class CommentAdmin(admin.ModelAdmin):
         (
             None,
             {
-                'fields': ['url', 'rating', 'name', 'message', 'interaction']
+                'fields': ['url', 'rating', 'name', 'message', 'interaction', 'is_root', 'replies']
             }
         ),
     ]

@@ -27,12 +27,6 @@
 	padding-left: 30px;
 	padding-right: 30px;
 }
-#toSteal{
-	margin-top: 15svh;
-}
-#toSteal{
-	margin-top: 15svh;
-}
 .hint-container{
 	color: red;
 }
@@ -42,7 +36,4 @@
 	height: 100%;
 	padding: var(--mid_pm);
 	border: none;
-}
-.post_preview{
-	flex: 1 1 300px;
 }

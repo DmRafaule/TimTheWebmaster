@@ -3,12 +3,6 @@
 {% load i18n %}
 
 
-{% block head_tool %}
-    <title>{{post.name}} | {% trans 'Инструмент' %}</title>
-    <meta name="description" content="{{post.description}}">
-    <link rel="canonical" href="https://{{domain_name}}{{post.get_absolute_url}}" />
-{% endblock %}
-
 {% block hat_tool %}
 {% endblock %}
 
@@ -17,37 +11,6 @@
     <div class="text">
         {{post.description}}
     </div>
-    {% if downloadables %}
-    <h2 class="paragraph">{% trans 'Медиа файлы' %}</h2>
-	<hr>
-    <ol>
-        {% for res in downloadables %}
-            {% if res.text %}
-            <li class="ref_downloadables"><a href="{% get_media_prefix %}{{res.file}}" download>{{res.text}}</a></li>
-            {% else %}
-            <li class="ref_downloadables"><a href="{% get_media_prefix %}{{res.file}}" download>{{res.file}}</a></li>
-            {% endif %}
-        {% endfor %}
-    </ol>
-    {% endif %}
-    {% if latest_notes %}
-        <div class="home_ui_el text">
-            <h2 class="">{% trans "Рабочие заметки об инструменте" %}</h2>
-            <div class="post_previews--category mid_gap">
-                {{latest_notes|safe}}
-            </div>
-            <div class="see_more_button button action_button">
-                <a class="white_text_button " href="{% url 'notes-list' %}?page=1&tag={{tool_tag}}">{% trans 'Показать все ...' %}</a>
-            </div>
-        </div>
-    {% endif %}
-    {% if post.similar.all|length > 0 %}
-    <h2 class="paragraph">{% trans 'Похожие инструменты' %}</h2>
-    <hr>
-    <div class="column max_gap">
-        {% include 'Post/basic--post_preview-tool.html' with posts=post.similar.all %}
-    </div>
-    {% endif %}
 {% endblock %}
 
 {% block footer_tool %}

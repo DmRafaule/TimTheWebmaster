@@ -1,19 +1,6 @@
-{% extends 'Post/base_tool_custom.html' %}
+{% extends 'Post/base_tool.html' %}
 {% load static %}
 {% load i18n %}
-
-{% block head_tool %}
-    {% if request.user.is_authenticated %}
-      <title>{% trans 'Редактор постов'%}</title>
-      <meta name="description" content="">
-      <meta name="keywords" content="">
-    {% else %}
-      <title>{% trans 'Онлайн, WYSIWYG редактор '%}</title>
-      <meta name="description" content=" Это онлайн, WYSIWYG редактор созданный в качестве примера того, как можно использовать quilljs библиотеку. Содержит несколько модулей имеет простое разделение кода.">
-      <meta name="keywords" content="WYSIWYG, quilljs, редактор">
-    {% endif %}
-    <link rel="canonical" href="https://{{domain_name}}{%url 'editor_home'%}" />
-{% endblock %}
 
 {% block hat_tool %}
   <div class="header_button  button squered_button"  data-body="toolbar_settings_body">

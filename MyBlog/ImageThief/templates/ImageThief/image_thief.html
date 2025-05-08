@@ -1,12 +1,6 @@
-{% extends 'Post/base_tool_custom.html' %}
+{% extends 'Post/base_tool.html' %}
 {% load static%}
 {% load i18n %}
-
-{% block head_tool %}
-	<title>{% trans "Бесплатный, онлайн парсер картинок с сайта ImageScraper | Тим зе Вебмастер" %}</title>
-	<meta name="description" content="{% trans "Парсер картинок, который можно скачать в виде скрипта или опробывать онлайн на сайте. Работает в режиме парсинга целого сайта или отдельных страниц." %}">
-	<link rel="canonical" href="https://{{domain_name}}{%url 'image_thief'%}" />
-{% endblock %}
 
 {% block hat_tool %}
 {% endblock%}
@@ -18,7 +12,7 @@
 		<form id="toSteal" enctype="multipart/form-data">
 			<fieldset class="full_width">
 				<legend>
-					<h1 class="title_image_thief">ImageThief</h1>
+					<h2 class="title_image_thief">ImageThief</h2>
 				</legend>
 				<div class="column">
 					<div class="row in_middle-farapart mid_gap marger_min">
@@ -188,15 +182,6 @@
 			Так же автор данного инструмента не несёт никакой ответственности за то, что парсят посетители. Он создан исключительно в целях экономии времени и нервов тех, кому просто нужно собрать все изображения с сайта.
 			{% endblocktrans %}
 		</div>
-		<div class="home_ui_el text">
-			<h2 class="">{% trans "Рабочие заметки об инструменте" %}</h2>
-			<div class="post_previews--category mid_gap">
-				{{latest_notes|safe}}
-			</div>
-			<div class="see_more_button button action_button">
-				<a class="white_text_button " href="{% url 'notes-list' %}?page=1&tag={{imageThief_tag}}">{% trans 'Показать все ...' %}</a>
-			</div>
-		</div>
 	</div>
 {% endblock %}
 
@@ -210,7 +195,6 @@
 {% endblock %}
 
 {% block styles_tool %}
-	<link type="text/css" rel="stylesheet" href="{% static 'Main/css/home.css' %}"/>
     <link type="text/css" rel="stylesheet" href="{% static 'ImageThief/css/codeblock.css' %}"/>
     <link type="text/css" rel="stylesheet" href="{% static 'ImageThief/css/prism.css' %}"/>
     <link type="text/css" rel="stylesheet" href="{% static 'ImageThief/css/image_thief.css' %}"/>

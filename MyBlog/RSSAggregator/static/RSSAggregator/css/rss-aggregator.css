@@ -19,6 +19,7 @@
 
 
 #rss_aggregator_mobile_groups_container{
+	left: 0px;
 	display: flex;
 	position: fixed;
 	overflow-x: hidden;

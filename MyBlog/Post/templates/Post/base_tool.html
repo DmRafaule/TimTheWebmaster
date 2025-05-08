@@ -6,10 +6,13 @@
 {% endcomment %}
 
 {% block head %}
-	{% block head_tool %}
-	{% endblock %}
 
-    {% if isEngagementMiddlewareConnected and comments_number > 0%}
+    <title>{{post.name}} | {% trans 'Инструмент' %}</title>
+    <link rel="canonical" href="https://{{domain_name}}{{post.get_absolute_url}}" />
+    <meta name="description" content="{{post.description}}">
+    <meta name="keywords" content="{{post.meta_keywords}}">
+
+    {% if isEngagementMiddlewareConnected and comments_number > 0 %}
     <script type="application/ld+json">
         {
             "@context": "https://schema.org",
@@ -92,6 +95,41 @@
             {% block content_tool %}
             {% endblock %}
         </div>
+        {% if downloadables %}
+        <div class="home_ui_el text">
+            <h2 class="">{% trans 'Медиа файлы' %}</h2>
+            <div class="post_previews--category mid_gap">
+                <ol>
+                    {% for res in downloadables %}
+                        {% if res.text %}
+                        <li class="ref_downloadables"><a href="{% get_media_prefix %}{{res.file}}" download>{{res.text}}</a></li>
+                        {% else %}
+                        <li class="ref_downloadables"><a href="{% get_media_prefix %}{{res.file}}" download>{{res.file}}</a></li>
+                        {% endif %}
+                    {% endfor %}
+                </ol>
+            </div>
+        </div>
+        {% endif %}
+        {% if latest_notes %}
+            <div class="home_ui_el text">
+                <h2 class="">{% trans "Рабочие заметки об инструменте" %}</h2>
+                <div class="post_previews--category mid_gap">
+                    {{latest_notes|safe}}
+                </div>
+                <div class="see_more_button button action_button">
+                    <a class="white_text_button " href="{% url 'notes-list' %}?page=1&tag={{tool_tag}}">{% trans 'Показать все ...' %}</a>
+                </div>
+            </div>
+        {% endif %}
+        {% if post.similar.all|length > 0 %}
+        <div class="home_ui_el text">
+            <h2 class="">{% trans 'Похожие инструменты' %}</h2>
+            <div class="post_previews--category max_gap">
+                {% include 'Post/basic--post_preview-tool.html' with posts=post.similar.all %}
+            </div>
+        </div>
+        {% endif %}
     </div>
 
     <hr class="limiter in_middle-self" style="border-top: 2px solid black;">
@@ -116,6 +154,7 @@
 	<link type="text/css" rel="stylesheet" href="{% static 'dynamic.css' %}"/>
     <link type="text/css" rel="stylesheet" href="{% static 'footer-tool.css' %}"/>
     <link type="text/css" rel="stylesheet" href="{% static 'notificator.css' %}"/>
+    <link type="text/css" rel="stylesheet" href="{% static 'Post/css/tool.css' %}"/>
 
     {% if isEngagementMiddlewareConnected %}
         {% include 'Engagement/engagement_styles.html' %}

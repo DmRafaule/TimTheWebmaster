@@ -1,14 +1,6 @@
-{% extends 'Post/base_tool_custom.html' %}
+{% extends 'Post/base_tool.html' %}
 {% load i18n %}
 {% load static %}
-
-
-{% block head_tool %}
-	<link rel="canonical" href="https://{{domain_name}}{% url 'shader-toy' %}" />
-	<title>{% trans "Редактор шейдеров на glsl" %} | ShaderToy | Tim the webmaster</title>
-	<meta name="description" content="{% trans "Это инструмент, который позволяет создать, отредактировать, настроить и скачать вершинный и фрагментный шейдер написанные на glsl." %}">
-	<meta name="keywords" content"webgl2 shader, glsl, glsl es 3.0, редактор шейдеров">
-{% endblock %}
 
 
 {% block content_tool %}
@@ -16,7 +8,7 @@
 		<canvas  id='canvas' class="canvas_flex canvas_bordered" data-vertex-shader="{% static "ShaderToy/shaders/default.vert" %}" data-fragment-shader="{% static "ShaderToy/shaders/default.frag" %}">
 		</canvas>
 		<div id="canvas-editor" class="canvas_editor">
-			<h1>{% trans "Редактор шейдеров" %} | ShaderToy</h1>
+			<h2>{% trans "Редактор шейдеров" %} | ShaderToy</h2>
 			<div class="tabs">
 				<div class="tab_button tab_active" data-bodyid="1">
 					<abbr title="{% trans "Фрагментный шейдер" %}"><img width="32" height="32" class="icon bordered_button button dynamic_image squered_button" src="{% static 'placeholder.svg' %}" data-src="{% static 'ShaderToy/img/fragment_shader.svg' %}" alt="{% trans "Иконка тюнинга" %}"></abbr>	
@@ -157,7 +149,7 @@
 					<h2 class="padder">{% trans "Сохранения" %}</h2>
 				</div>
 			</div>
-		<div>
+		</div>
 		<div class="row mid_gap">
 			<div class="buttons_group padder">
 				<abbr title="{% trans "Приостановить отрисовку" %}"><img id="pause_shader" width="32" height="32" class="icon bordered_button button dynamic_image squered_button switch_action" src="{% static 'placeholder.svg' %}" data-src="{% static 'ShaderToy/img/pause_the_shader.svg' %}" alt="{% trans "Иконка паузы" %}" data-seted-status="{% trans "Отрисовка приостановленна"%}"></abbr>
@@ -169,6 +161,8 @@
 			<div id="render-status" class="in_middle-self">
 			</div>
 		</div>
+	</div>
+	<div class="text">
 		<h2 class="">{% trans "Об редакторе" %}</h2>
 		<div class="text">
 			{% blocktrans %}

@@ -114,6 +114,7 @@ class Tool(Post):
     max_similar = 3
     name = models.CharField(max_length=256, blank=False)
     description = models.TextField(blank=False)
+    meta_keywords = models.CharField(max_length=256, blank=True, default='')
     icon = models.FileField(max_length=300, upload_to=user_directory_path, blank=True)
     template = models.FileField(max_length=300, upload_to=user_directory_path, blank=True, help_text="If provided, default template not in use. Use only if it is Internal default type")
     default_template = models.FilePathField(

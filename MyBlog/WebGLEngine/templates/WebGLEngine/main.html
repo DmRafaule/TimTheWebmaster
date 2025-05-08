@@ -1,12 +1,6 @@
-{% extends 'Post/base_tool_custom.html' %}
+{% extends 'Post/base_tool.html' %}
 {% load i18n %}
 {% load static %}
-
-{% block head_tool %}
-	<link rel="canonical" href="https://{{domain_name}}{% url 'webgl-engine' %}" />
-	<title>{% trans "Движок отрисовки | WebDI" %}</title>
-	<meta name="description" content="">
-{% endblock %}
 
 
 {% block content_tool %}
