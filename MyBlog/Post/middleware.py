@@ -54,10 +54,14 @@ class ToolMiddleware:
             tool_tags = Tag.objects.filter(slug_en=tool.slug)
             if len(tool_tags) > 0:
                 posts = getAllWithTags(Note.objects.filter(isPublished=True), [tool_tags[0]])[:3]
+                if len(posts) > 0:
+                    is_notes = True
+                else:
+                    is_notes = False
                 response.context_data.update({'tool_tag': tool_tags[0].slug})
                 response.context_data.update({'posts': posts})
                 loaded_template = loader.get_template(f'Post/basic--post_preview-note.html')
-                response.context_data.update({'latest_notes': loaded_template.render(response.context_data, request)})
+                response.context_data.update({'latest_notes': loaded_template.render(response.context_data, request), 'is_notes': is_notes})
             
             # Get used platforms
             response.context_data.update({'platforms': tool.platforms.all()})

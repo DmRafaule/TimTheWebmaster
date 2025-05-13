@@ -1,0 +1,60 @@
+{% load i18n %}
+{% load static %}
+
+{% include 'Post/tool-notificator-bar.html' with messages=messages%}
+<form id="text-thief-form">
+    {% csrf_token %}
+    {{text_thief_form}}
+</form> 
+<div id="loader" class="htmx-indicator min-h-[40px]">
+    {% include 'Post/tool-status-bar.html' with statustext="loading" %}
+</div>
+<div id="text-thief-results">
+    {% if data %}
+        <div class="paragraph flex flex-row gap-[10px] items-center">
+            <h2>{% trans 'Результаты' %}</h2>
+            <a href="{{file_path}}" download><img class="icon dynamic_image bordered_button button download_button" src="{% static 'TextThief/images/download.svg' %}"></a>
+        </div>
+        <h3 class="paragraph">{% trans 'Общее' %}</h3>
+        <ul>
+        {% for key, value in data.items %}
+            {% if key == "length" or key == "length-without-spaces" or key == "words-length" or key == "unique-words-length" or key == "tags-length" %}
+            <li class="flex flex-row gap-[10px] justify-between">
+                <div><b>{{value.name}}</b></div>
+                <div class="text-nowrap">{{value.data}}</div>
+            </li>
+            {% endif %}
+            {% if key == 'text' %}
+            <li class="flex flex-col gap-[10px]">
+                <div><b>{{value.name}}</b></div>
+                <span>
+                    {{value.data}}
+                </span>
+            </li>
+            {% endif %}
+            {% if key == 'words' or key == 'unique-words' %}
+                {% if value.data|length > 0 %}
+                    <li class="flex flex-col gap-[10px]">
+                        <div><b>{{value.name}}</b></div>
+                        <span>
+                        {% for word in value.data %}
+                        <span class="word_container">{{word}}</span>
+                        {% endfor %}
+                        </span>
+                    </li>
+                {% endif %}
+            {% endif %}
+            {% if key == 'tags' and value.data|length > 0 %}
+                    <li class="flex flex-col gap-[10px]">
+                        <div><b>{{value.name}}</b></div>
+                        <span>
+                        {% for word_key, word_count in value.data.items %}
+                        <span class="word_tag">{{word_key}} <span class="word_tag_count">{{word_count}}</span></span>
+                        {% endfor %}
+                        </span>
+                    </li>
+            {% endif %}
+        {% endfor %}
+        </ul>
+    {% endif %}
+</div>

@@ -119,6 +119,7 @@
 
 .post_previews--category-forSeries{
 	overflow: auto;
+	justify-content: center;
 }
 .post_previews--category-forResources{
 	display: flex;
