@@ -2,13 +2,13 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-05-08 13:33+0300\n"
+"POT-Creation-Date: 2025-05-13 08:05+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,59 +18,59 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: .\RSSAggregator\templates\RSSAggregator\rss-aggregator.html:7
+#: RSSAggregator/templates/RSSAggregator/rss-aggregator.html:7
 msgid "one layer on top of anothe"
 msgstr "one layer on top of another"
 
-#: .\RSSAggregator\templates\RSSAggregator\rss-aggregator.html:20
+#: RSSAggregator/templates/RSSAggregator/rss-aggregator.html:20
 msgid "Введи URL RSS канала"
 msgstr "Enter URL RSS channel"
 
-#: .\RSSAggregator\templates\RSSAggregator\rss-aggregator.html:22
+#: RSSAggregator/templates/RSSAggregator/rss-aggregator.html:22
 msgid "http(s)://domain.com/file.rss"
 msgstr "http(s)://domain.com/file.rss"
 
-#: .\RSSAggregator\templates\RSSAggregator\rss-aggregator.html:29
-#: .\RSSAggregator\templates\RSSAggregator\rss-aggregator.html:30
+#: RSSAggregator/templates/RSSAggregator/rss-aggregator.html:29
+#: RSSAggregator/templates/RSSAggregator/rss-aggregator.html:30
 msgid "Крестик"
 msgstr "Cross"
 
-#: .\RSSAggregator\templates\RSSAggregator\rss-aggregator.html:40
+#: RSSAggregator/templates/RSSAggregator/rss-aggregator.html:40
 msgid "RSS Лента и агрегатор"
 msgstr "RSS Feed aggregator"
 
-#: .\RSSAggregator\templates\RSSAggregator\rss-aggregator.html:44
+#: RSSAggregator/templates/RSSAggregator/rss-aggregator.html:44
 msgid "Просмотр фидов"
 msgstr "Feed reader"
 
-#: .\RSSAggregator\templates\RSSAggregator\rss-aggregator.html:46
+#: RSSAggregator/templates/RSSAggregator/rss-aggregator.html:46
 msgid "Сортировка по времени"
 msgstr "Sorting by time"
 
-#: .\RSSAggregator\templates\RSSAggregator\rss-aggregator.html:47
+#: RSSAggregator/templates/RSSAggregator/rss-aggregator.html:47
 msgid "Значок сортировки"
 msgstr "Sign of sorting"
 
-#: .\RSSAggregator\templates\RSSAggregator\rss-aggregator.html:61
-#: .\RSSAggregator\templates\RSSAggregator\rss-aggregator.html:67
+#: RSSAggregator/templates/RSSAggregator/rss-aggregator.html:61
+#: RSSAggregator/templates/RSSAggregator/rss-aggregator.html:67
 msgid "Шеврон"
 msgstr "Chevron"
 
-#: .\RSSAggregator\templates\RSSAggregator\rss-aggregator.html:73
+#: RSSAggregator/templates/RSSAggregator/rss-aggregator.html:73
 msgid "Подписки на rss каналы/фиды"
 msgstr "Subscription on RSS channels/feeds "
 
-#: .\RSSAggregator\templates\RSSAggregator\rss-aggregator.html:81
-#: .\RSSAggregator\templates\RSSAggregator\rss-feed-group.html:13
-#: .\RSSAggregator\templates\RSSAggregator\rss-feed-group.html:14
+#: RSSAggregator/templates/RSSAggregator/rss-aggregator.html:81
+#: RSSAggregator/templates/RSSAggregator/rss-feed-group.html:13
+#: RSSAggregator/templates/RSSAggregator/rss-feed-group.html:14
 msgid "Иконка корзины"
 msgstr "Trash bin"
 
-#: .\RSSAggregator\templates\RSSAggregator\rss-aggregator.html:86
+#: RSSAggregator/templates/RSSAggregator/rss-aggregator.html:86
 msgid "О данном RSS сервисе"
 msgstr "About this RSS app"
 
-#: .\RSSAggregator\templates\RSSAggregator\rss-aggregator.html:88
+#: RSSAggregator/templates/RSSAggregator/rss-aggregator.html:88
 msgid ""
 "\n"
 "\t\t\tЭтот онлайн агрегатор лент позволяет добавлять, регистрировать и "
@@ -85,7 +85,7 @@ msgstr ""
 "RSS technology or Atom. атоме.\n"
 "\t\t\t"
 
-#: .\RSSAggregator\templates\RSSAggregator\rss-aggregator.html:93
+#: RSSAggregator/templates/RSSAggregator/rss-aggregator.html:93
 msgid ""
 "\n"
 "\t\t\tОн доступен как на десктопах, так и на мобильных устройствах.\n"
@@ -94,3 +94,7 @@ msgstr ""
 "\n"
 "\t\t\tThere are no limits to how many feeds you can read.\n"
 "\t\t\t"
+
+#: RSSAggregator/templates/RSSAggregator/rss-feed-post.html:9
+msgid "Часы"
+msgstr ""

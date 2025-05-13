@@ -2,13 +2,13 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-05-03 21:13+0300\n"
+"POT-Creation-Date: 2025-05-13 08:05+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,35 +18,47 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: .\Main\forms.py:7
+#: Main/forms.py:7
 msgid "Имя"
 msgstr "Name"
 
-#: .\Main\forms.py:8
+#: Main/forms.py:8
 msgid "Почта"
 msgstr "Email"
 
-#: .\Main\forms.py:9
+#: Main/forms.py:9
 msgid "Твоё сообщение"
 msgstr "Your message"
 
-#: .\Main\templates\Main\404.html:7
+#: Main/templates/Main/404.html:7
 msgid "Страница не найдена на сайте Тим вебмастер"
 msgstr "Page not found on the website Tim  Webmaster"
 
-#: .\Main\templates\Main\404.html:8
+#: Main/templates/Main/404.html:8
 msgid "Тим вебмастер. Страница не найдена"
 msgstr "Tim the Webmaster. Page not found"
 
-#: .\Main\templates\Main\404.html:14
+#: Main/templates/Main/404.html:14
 msgid "Страница не найдена"
 msgstr "Page not found"
 
-#: .\Main\templates\Main\about.html:6
+#: Main/templates/Main/InProccess.html:7 Main/templates/Main/InProccess.html:19
+#, fuzzy
+#| msgid "Страница не найдена"
+msgid "Страница в разработке"
+msgstr "Page not found"
+
+#: Main/templates/Main/InProccess.html:8
+#, fuzzy
+#| msgid "Тим вебмастер. Страница не найдена"
+msgid "Тим вебмастер. Страница в разработке"
+msgstr "Tim the Webmaster. Page not found"
+
+#: Main/templates/Main/about.html:6
 msgid "Тим, Вебмастер. Всё об авторе и его деятельности."
 msgstr "Tim the Webmaster. All about him and his passion."
 
-#: .\Main\templates\Main\about.html:7
+#: Main/templates/Main/about.html:7
 msgid ""
 "О вебмастере Тиме Чудуке. Его истории, интересах и оказываемых услугах "
 "разработки сайтов, тг ботов, скриптов, парсеров и копирайта"
@@ -54,19 +66,19 @@ msgstr ""
 "About webmaster Tim Chuduk. His history, interests and services "
 "providedwebsite development, telegram bots, scripts, parsers and copywriting"
 
-#: .\Main\templates\Main\about.html:17
+#: Main/templates/Main/about.html:17
 msgid "Тима Чудук"
 msgstr "Dima Chuduk"
 
-#: .\Main\templates\Main\about.html:41
+#: Main/templates/Main/about.html:41
 msgid "О Тиме Вебмастере"
 msgstr "About Tim"
 
-#: .\Main\templates\Main\about.html:45
+#: Main/templates/Main/about.html:45
 msgid "Вступление"
 msgstr "Introduction"
 
-#: .\Main\templates\Main\about.html:50
+#: Main/templates/Main/about.html:50
 msgid ""
 "\n"
 "\t\t\t\tЗнаешь, я эту страницу 10й переписываю. Мне это “немножко” надоело, "
@@ -86,7 +98,7 @@ msgstr ""
 "start by editing one sentence and end up completely rewriting the entire "
 "page."
 
-#: .\Main\templates\Main\about.html:55
+#: Main/templates/Main/about.html:55
 msgid ""
 "\n"
 "\t\t\t\tНо не в этот раз. На этот раз, эта страница должна продержаться "
@@ -99,15 +111,15 @@ msgstr ""
 "am I so sure about this? Well, simply because I will write as briefly as "
 "possible. Who am I, why am I, and for what reason am I?"
 
-#: .\Main\templates\Main\about.html:63
+#: Main/templates/Main/about.html:63
 msgid "Обо мне"
 msgstr "About me"
 
-#: .\Main\templates\Main\about.html:68
+#: Main/templates/Main/about.html:68
 msgid "А это я."
 msgstr "It is me btw"
 
-#: .\Main\templates\Main\about.html:73
+#: Main/templates/Main/about.html:73
 msgid ""
 "\n"
 "\t\t\t\tНачну с себя. Я Дима, приятно познакомиться. Теперь ты знаешь почему "
@@ -124,7 +136,7 @@ msgstr ""
 "name, I'll tell you; I haven't met anyone with the same last name yet, only "
 "relatives ;)."
 
-#: .\Main\templates\Main\about.html:78
+#: Main/templates/Main/about.html:78
 msgid ""
 "\n"
 "\t\t\t\tКем работаю, учусь ли я и какое вообще у меня образование? Во всех "
@@ -139,7 +151,7 @@ msgstr ""
 "to increase trust and show that you are a real PERSON. Well, it's good that "
 "they also do not recommend providing passport data, at least for now ;)"
 
-#: .\Main\templates\Main\about.html:83
+#: Main/templates/Main/about.html:83
 msgid ""
 "\n"
 "\t\t\t\tНу а если серьёзно, то я не очень люблю рассказывать такие детали. "
@@ -154,7 +166,7 @@ msgstr ""
 "someone hires me. Whether it's freelancing or real physical work. Well, I'm "
 "not a careerist)."
 
-#: .\Main\templates\Main\about.html:88
+#: Main/templates/Main/about.html:88
 msgid ""
 "\n"
 "\t\t\t\tВпрочем, об учёбе. Да я учусь, постоянно и самостоятельно. То есть, "
@@ -166,11 +178,11 @@ msgstr ""
 "no, I am not a student. The words marginal or hustler would describe me "
 "better. That's it."
 
-#: .\Main\templates\Main\about.html:95
+#: Main/templates/Main/about.html:95
 msgid "О сайте, его идея"
 msgstr "About website, it's idea"
 
-#: .\Main\templates\Main\about.html:98
+#: Main/templates/Main/about.html:98
 #, python-format
 msgid ""
 "Теперь, напишу о чём этот сайт и что тут можно найти. Создавая данный сайт "
@@ -187,7 +199,7 @@ msgstr ""
 "a little of their time and make a tool that suits you. And even have some "
 "fun in the process."
 
-#: .\Main\templates\Main\about.html:101
+#: Main/templates/Main/about.html:101
 msgid ""
 "\n"
 "\t\tКонкретной направленности в созданных инструментах нет. Просто "
@@ -199,11 +211,11 @@ msgstr ""
 "for example, \n"
 "\t\t"
 
-#: .\Main\templates\Main\about.html:104
+#: Main/templates/Main/about.html:104
 msgid "спарсить все изображения с сайта"
 msgstr "scrape all images from a website"
 
-#: .\Main\templates\Main\about.html:105
+#: Main/templates/Main/about.html:105
 msgid ""
 "\n"
 "\t\t, бам ... И у меня уже готовый инструмент или <a href=\"#\">получить "
@@ -215,7 +227,7 @@ msgstr ""
 "from google</a> bam and it's done. I think you get the idea.\n"
 "\t\t"
 
-#: .\Main\templates\Main\about.html:111
+#: Main/templates/Main/about.html:111
 msgid ""
 "\n"
 "\t\tЕсли тебя также интересуют такие вещи, то рад знакомству). Если нет, то "
@@ -227,7 +239,7 @@ msgstr ""
 "not, then I am still glad to meet you. Also on the site, you can find such "
 "things as:"
 
-#: .\Main\templates\Main\about.html:116
+#: Main/templates/Main/about.html:116
 msgid ""
 "\n"
 "\t\t<li>Статьи на <u>интересующие меня темы</u></li>\n"
@@ -248,7 +260,7 @@ msgstr ""
 "\t\t<li>Archives, scripts, programs and other files for downloading</li>\n"
 "\t\t"
 
-#: .\Main\templates\Main\about.html:127
+#: Main/templates/Main/about.html:127
 msgid ""
 "\n"
 "\t\tВот, собственно говоря, всё что я хотел сказать про себя и сайт. Если "
@@ -260,11 +272,11 @@ msgstr ""
 "to know more, please \n"
 "\t\t"
 
-#: .\Main\templates\Main\about.html:130
+#: Main/templates/Main/about.html:130
 msgid "почитать соответствующие статьи"
 msgstr "read the relevant articles"
 
-#: .\Main\templates\Main\about.html:131
+#: Main/templates/Main/about.html:131
 msgid ""
 "\n"
 "\t\tКстати, где-то здесь будет облако тегов всего моего сайта, каждое слово "
@@ -277,7 +289,7 @@ msgstr ""
 "word will be a link to the corresponding pagination page. (If it's not "
 "there, then forgive me; it's still in progress.)"
 
-#: .\Main\templates\Main\about.html:137
+#: Main/templates/Main/about.html:137
 msgid ""
 "\n"
 "\t\tВот, собственно говоря, всё что я хотел сказать про себя и сайт. Если "
@@ -294,7 +306,7 @@ msgstr ""
 "corresponding pagination page. (If it's not there, then forgive me; it's "
 "still in progress.)"
 
-#: .\Main\templates\Main\about.html:143
+#: Main/templates/Main/about.html:143
 msgid ""
 "\n"
 "\t\tНа момент прочтения данной страницы тобой, мне \n"
@@ -303,7 +315,7 @@ msgstr ""
 "\n"
 "At the time you read this page, I am"
 
-#: .\Main\templates\Main\about.html:147
+#: Main/templates/Main/about.html:147
 msgid ""
 "\n"
 "\t\tгода. И моему сайту 1 год.\n"
@@ -312,66 +324,66 @@ msgstr ""
 "\n"
 "years old. And my site is 1 years old"
 
-#: .\Main\templates\Main\base.html:98
-#: .\Main\templates\Main\base_status_code.html:30
+#: Main/templates/Main/base.html:98
+#: Main/templates/Main/base_status_code.html:30
 msgid "3 горизонтальные линии, бургер"
 msgstr "3 horizontal lines, burger"
 
-#: .\Main\templates\Main\base.html:106
-#: .\Main\templates\Main\base_status_code.html:36
+#: Main/templates/Main/base.html:106
+#: Main/templates/Main/base_status_code.html:36
 msgid "Главная иконка сайта"
 msgstr "Main icon of the website"
 
-#: .\Main\templates\Main\base.html:114
-#: .\Main\templates\Main\base_status_code.html:44
+#: Main/templates/Main/base.html:114
+#: Main/templates/Main/base_status_code.html:44
 msgid "Домашняя"
 msgstr "Home"
 
-#: .\Main\templates\Main\base.html:115 .\Main\templates\Main\base.html:148
-#: .\Main\templates\Main\base_status_code.html:45
-#: .\Main\templates\Main\base_status_code.html:73
+#: Main/templates/Main/base.html:115 Main/templates/Main/base.html:148
+#: Main/templates/Main/base_status_code.html:45
+#: Main/templates/Main/base_status_code.html:73
 msgid "Об авторе"
 msgstr "About"
 
-#: .\Main\templates\Main\base.html:116 .\Main\templates\Main\base.html:149
-#: .\Main\templates\Main\base.html:163
-#: .\Main\templates\Main\base_status_code.html:46
-#: .\Main\templates\Main\base_status_code.html:74
-#: .\Main\templates\Main\base_status_code.html:88
+#: Main/templates/Main/base.html:116 Main/templates/Main/base.html:149
+#: Main/templates/Main/base.html:163
+#: Main/templates/Main/base_status_code.html:46
+#: Main/templates/Main/base_status_code.html:74
+#: Main/templates/Main/base_status_code.html:88
 msgid "Контакты"
 msgstr "Contacts"
 
-#: .\Main\templates\Main\base.html:118
-#: .\Main\templates\Main\base_status_code.html:48
+#: Main/templates/Main/base.html:118
+#: Main/templates/Main/base_status_code.html:48
 msgid "Админка"
 msgstr "Admin"
 
-#: .\Main\templates\Main\base.html:144
-#: .\Main\templates\Main\base_status_code.html:69
+#: Main/templates/Main/base.html:144
+#: Main/templates/Main/base_status_code.html:69
 msgid "Другие ссылки"
 msgstr "Other links"
 
-#: .\Main\templates\Main\base.html:147
-#: .\Main\templates\Main\base_status_code.html:72
+#: Main/templates/Main/base.html:147
+#: Main/templates/Main/base_status_code.html:72
 msgid "Карта сайта"
 msgstr "Sitemap"
 
-#: .\Main\templates\Main\base.html:154
-#: .\Main\templates\Main\base_status_code.html:79
+#: Main/templates/Main/base.html:154
+#: Main/templates/Main/base_status_code.html:79
 msgid "Популярные ссылки"
 msgstr "Popular links"
 
-#: .\Main\templates\Main\base.html:169
-#: .\Main\templates\Main\base_status_code.html:94
-#: .\Main\templates\Main\contacts.html:27
+#: Main/templates/Main/base.html:169
+#: Main/templates/Main/base_status_code.html:94
+#: Main/templates/Main/contacts.html:27
 msgid "иконка"
 msgstr "icon"
 
-#: .\Main\templates\Main\contacts.html:6
+#: Main/templates/Main/contacts.html:6
 msgid "Тим, Вебмастер и его контакты"
 msgstr "Tim the Webmaster and his contacts"
 
-#: .\Main\templates\Main\contacts.html:7
+#: Main/templates/Main/contacts.html:7
 msgid ""
 "Тим, Вебмастер. Его контактные данные, ссылки на соцсети, почта и форма "
 "обратной связи"
@@ -379,35 +391,35 @@ msgstr ""
 "Tim the Webmaster. His contact details, links to social networks, mail and "
 "formfeedback"
 
-#: .\Main\templates\Main\contacts.html:18
+#: Main/templates/Main/contacts.html:18
 msgid "Тим Вебмастер, его контакты и обратная связь"
 msgstr "Tim the Webmaster and his contacts"
 
-#: .\Main\templates\Main\contacts.html:21
+#: Main/templates/Main/contacts.html:21
 msgid "Я в социальных сетях"
 msgstr "I'm on social networks"
 
-#: .\Main\templates\Main\contacts.html:36
+#: Main/templates/Main/contacts.html:36
 msgid "Форма для обратной связи"
 msgstr "Form for feedback"
 
-#: .\Main\templates\Main\contacts.html:49
+#: Main/templates/Main/contacts.html:49
 msgid "Имя должно состоять от 3 до 25 букв"
 msgstr "The name must be between 3 and 25 letters"
 
-#: .\Main\templates\Main\contacts.html:50
+#: Main/templates/Main/contacts.html:50
 msgid "Email должен быть настоящим"
 msgstr "The email should be real"
 
-#: .\Main\templates\Main\contacts.html:53
+#: Main/templates/Main/contacts.html:53
 msgid "Отправить"
 msgstr "Send"
 
-#: .\Main\templates\Main\home.html:7
+#: Main/templates/Main/home.html:7
 msgid "Тим, вебмастер"
 msgstr "Tim the Webmaster"
 
-#: .\Main\templates\Main\home.html:8
+#: Main/templates/Main/home.html:8
 msgid ""
 "Вебмастер Тим, он занимается разработкой сайтов на django, написанием тг "
 "ботов, скриптов и парсеров, а также выполняет заказы по копирайту"
@@ -415,48 +427,48 @@ msgstr ""
 "Webmaster Tim, he develops websites using django and writes tgbots, scripts "
 "and parsers, and also fulfills copyright orders"
 
-#: .\Main\templates\Main\home.html:15
+#: Main/templates/Main/home.html:15
 msgid "Тим Вебмастер"
 msgstr "Tim the Webmaster"
 
-#: .\Main\templates\Main\home.html:23
+#: Main/templates/Main/home.html:23
 msgid "Внутренние инструменты"
 msgstr "Internal tools"
 
-#: .\Main\templates\Main\home.html:27
+#: Main/templates/Main/home.html:27
 msgid "Инструменты по тегам"
 msgstr "Tools by tag"
 
-#: .\Main\templates\Main\home.html:40 .\Main\templates\Main\home.html:62
-#: .\Main\templates\Main\home.html:91 .\Main\templates\Main\home.html:112
-#: .\Main\templates\Main\home.html:149
+#: Main/templates/Main/home.html:40 Main/templates/Main/home.html:62
+#: Main/templates/Main/home.html:91 Main/templates/Main/home.html:112
+#: Main/templates/Main/home.html:149
 msgid "Больше ..."
 msgstr "See more ..."
 
-#: .\Main\templates\Main\home.html:75
+#: Main/templates/Main/home.html:75
 msgid "Последние статьи"
 msgstr "Latest articles"
 
-#: .\Main\templates\Main\home.html:78
+#: Main/templates/Main/home.html:78
 msgid "Статьи по тегам"
 msgstr "Articles by tag"
 
-#: .\Main\templates\Main\home.html:126
+#: Main/templates/Main/home.html:126
 msgid "Комментарии"
 msgstr "Comments"
 
-#: .\Main\templates\Main\home.html:130
+#: Main/templates/Main/home.html:130
 msgid "Заметки"
 msgstr "Notes"
 
-#: .\Main\templates\Main\table_of_content.html:5
+#: Main/templates/Main/table_of_content.html:5
 msgid "Содержание"
 msgstr "Content"
 
-#: .\Main\views.py:37
+#: Main/views.py:37
 msgid "✔ Вы успешно отправили сообщение"
 msgstr "✔ You have successfully sent a message"
 
-#: .\Main\views.py:39
+#: Main/views.py:39
 msgid "✗ Возникла ошибка при отправке формы"
 msgstr "✗ An error occurred while sending a form."

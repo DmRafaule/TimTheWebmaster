@@ -2,13 +2,13 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-05-08 13:33+0300\n"
+"POT-Creation-Date: 2025-05-13 08:05+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,136 +18,133 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: .\Post\templates\Post\base_article.html:89
+#: Post/templates/Post/base_article.html:89
 msgid "one layer on top of anothe"
 msgstr ""
 
-#: .\Post\templates\Post\base_article.html:124
+#: Post/templates/Post/base_article.html:124
 msgid "Внешние ссылки"
 msgstr "External links"
 
-#: .\Post\templates\Post\base_article.html:132
+#: Post/templates/Post/base_article.html:132
 msgid "Другое"
 msgstr "Other"
 
-#: .\Post\templates\Post\base_article.html:135
+#: Post/templates/Post/base_article.html:135
 msgid "Похожие статьи"
 msgstr "Similar articles"
 
-#: .\Post\templates\Post\base_article.html:141
+#: Post/templates/Post/base_article.html:141
 msgid "Использованные термины"
 msgstr "Used termins"
 
-#: .\Post\templates\Post\base_article.html:152
+#: Post/templates/Post/base_article.html:152
 msgid "Релевантные вопросы"
 msgstr "Related questions"
 
-#: .\Post\templates\Post\base_post.html:27
-#: .\Post\templates\Post\base_post.html:31
-#: .\Post\templates\Post\base_post.html:35
-#: .\Post\templates\Post\base_tool.html:56
-#: .\Post\templates\Post\base_tool.html:60
-#: .\Post\templates\Post\basic--post_preview-article.html:11
-#: .\Post\templates\Post\basic--post_preview-note.html:14
-#: .\Post\templates\Post\embeded--post_preview-article.html:11
+#: Post/templates/Post/base_post.html:27 Post/templates/Post/base_post.html:31
+#: Post/templates/Post/base_post.html:35 Post/templates/Post/base_tool.html:56
+#: Post/templates/Post/base_tool.html:60
+#: Post/templates/Post/basic--post_preview-article.html:11
+#: Post/templates/Post/basic--post_preview-note.html:14
+#: Post/templates/Post/embeded--post_preview-article.html:11
 msgid "Часы"
 msgstr "Clock"
 
-#: .\Post\templates\Post\base_post.html:37
+#: Post/templates/Post/base_post.html:37
 msgid "минуту"
 msgstr "minute"
 
-#: .\Post\templates\Post\base_post.html:39
+#: Post/templates/Post/base_post.html:39
 msgid "минуты"
 msgstr "minutes"
 
-#: .\Post\templates\Post\base_post.html:41
+#: Post/templates/Post/base_post.html:41
 msgid "минут"
 msgstr "minutes"
 
-#: .\Post\templates\Post\base_post.html:55
-#: .\Post\templates\Post\base_tool.html:73
+#: Post/templates/Post/base_post.html:55 Post/templates/Post/base_tool.html:73
 msgid "Теги: "
 msgstr "Теги: "
 
-#: .\Post\templates\Post\base_post.html:66
+#: Post/templates/Post/base_post.html:66
 msgid "Так же доступно в следующих форматах:"
 msgstr "Also available as:"
 
-#: .\Post\templates\Post\base_post.html:70
+#: Post/templates/Post/base_post.html:70
 msgid "Микрофон"
 msgstr "Microphone"
 
-#: .\Post\templates\Post\base_post.html:74
+#: Post/templates/Post/base_post.html:74
 msgid "Твой браузер не подерживает audio тег."
 msgstr "Your browser does not support audio tag"
 
-#: .\Post\templates\Post\base_post.html:80
+#: Post/templates/Post/base_post.html:80
 msgid "PDF иконка"
 msgstr "PDF icon"
 
-#: .\Post\templates\Post\base_post.html:99
+#: Post/templates/Post/base_post.html:99
 msgid "Следующая статья"
 msgstr "Next article"
 
-#: .\Post\templates\Post\base_post.html:107
+#: Post/templates/Post/base_post.html:107
 msgid "Предыдущая статья"
 msgstr "Previous article"
 
-#: .\Post\templates\Post\base_tool.html:10
+#: Post/templates/Post/base_tool.html:10
 msgid "Инструмент"
 msgstr "Tool"
 
-#: .\Post\templates\Post\base_tool.html:100
+#: Post/templates/Post/base_tool.html:100
 msgid "Медиа файлы"
 msgstr "Media files"
 
-#: .\Post\templates\Post\base_tool.html:116
+#: Post/templates/Post/base_tool.html:116
 msgid "Рабочие заметки об инструменте"
 msgstr "A notes about this tool, devnotes"
 
-#: .\Post\templates\Post\base_tool.html:121
+#: Post/templates/Post/base_tool.html:121
 msgid "Показать все ..."
 msgstr "See all ..."
 
-#: .\Post\templates\Post\base_tool.html:127
+#: Post/templates/Post/base_tool.html:127
 msgid "Похожие инструменты"
 msgstr "Similar tools"
 
-#: .\Post\templates\Post\basic--post_preview-qa.html:11
-#: .\Post\templates\Post\basic--post_preview-td.html:11
+#: Post/templates/Post/basic--post_preview-qa.html:11
+#: Post/templates/Post/basic--post_preview-td.html:11
 msgid "Узнать больше"
 msgstr "See more"
 
-#: .\Post\templates\Post\basic--post_preview-tool.html:16
-#: .\Post\templates\Post\basic--post_preview-tool.html:22
+#: Post/templates/Post/basic--post_preview-tool.html:16
+#: Post/templates/Post/basic--post_preview-tool.html:22
 msgid "Превью статьи"
 msgstr "Article preview"
 
-#: .\Post\templates\Post\tool.html:10
+#: Post/templates/Post/tool.html:10
 msgid "Описание"
 msgstr "Description"
 
-#: .\Post\templatetags\urlToBreadcrumbs.py:33
+#: Post/templatetags/urlToBreadcrumbs.py:33
 msgid "На русском"
 msgstr "In russian"
 
-#: .\Post\templatetags\urlToBreadcrumbs.py:35
+#: Post/templatetags/urlToBreadcrumbs.py:35
 msgid "На английском"
 msgstr "In english"
 
-#: .\Post\templatetags\urlToBreadcrumbs.py:48
+#: Post/templatetags/urlToBreadcrumbs.py:48
 msgid "Об авторе"
 msgstr "About author"
 
-#: .\Post\templatetags\urlToBreadcrumbs.py:50
+#: Post/templatetags/urlToBreadcrumbs.py:50
 msgid "Контакты"
 msgstr "Contacts"
 
-#: .\Post\templatetags\urlToBreadcrumbs.py:52
+#: Post/templatetags/urlToBreadcrumbs.py:52
 msgid "Галерея"
 msgstr "Gallery"
 
-#: .\Post\templatetags\urlToBreadcrumbs.py:72
+#: Post/templatetags/urlToBreadcrumbs.py:72
 msgid "Страница "
 msgstr "Page "

@@ -93,7 +93,7 @@ class Article(Post):
     template = models.FileField(max_length=300, upload_to=user_directory_path, blank=False)  # page to display
     questions = models.ManyToManyField(Question, blank=True, help_text='You only use this field to pin actualy needed qas. Other will come automatically')
     termins = models.ManyToManyField(Termin, blank=True, help_text='You only use this field to pin actualy needed tds. Other will come automatically')
-    similar = models.ManyToManyField('self', blank=True, help_text="Up to 3 choises")
+    similar = models.ManyToManyField('self', blank=True, help_text="Up to 3 choises", symmetrical=False)
 
     def save(self, *args, **kwargs):
         self.category = Category.objects.get(slug="articles")
@@ -123,7 +123,7 @@ class Tool(Post):
     )
     platforms = models.ManyToManyField(Platform, blank=True)
     price = models.IntegerField(blank=True, default=0)
-    similar = models.ManyToManyField('self', blank=True, help_text="Up to 3 choises")
+    similar = models.ManyToManyField('self', blank=True, help_text="Up to 3 choises", symmetrical=False)
 
     class ToolType(models.TextChoices):
         GameApplication = "GameApplication"

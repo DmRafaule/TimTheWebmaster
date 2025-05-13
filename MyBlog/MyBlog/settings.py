@@ -63,6 +63,7 @@ INSTALLED_APPS = [
     'RSSAggregator.apps.RssaggregatorConfig',
     'ShaderToy.apps.ShadertoyConfig',
     'LinkThief.apps.LinkthiefConfig',
+    'TextThief.apps.TextthiefConfig',    
     # Auto remove files
     'django_cleanup.apps.CleanupConfig',
 ]

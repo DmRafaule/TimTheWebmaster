@@ -1,0 +1,41 @@
+{% extends 'Post/base_tool.html' %}
+{% load static%}
+{% load i18n %}
+
+{% block hat_tool %}
+{% endblock%}
+
+{% block content_tool %}
+<div class="limiter in_middle-self">
+    <div id="text-thief-form-container">
+    {% include 'TextThief/text-thief-form-result.html' %}
+    </div>
+    <h2>{% trans 'О парсере текста с сайта' %}</h2>
+    <div class="text">
+        {{post.description}}
+    </div>
+    <div class="text">
+        {% blocktrans %}
+        Данный инструмент работает в 3-х режимах. В режиме парсинга с одной страницы, со списка страниц и с целого сайта.
+        {% endblocktrans %}
+    </div>
+    <div>
+        {% blocktrans %}
+        Ещё этот парсер текста с веб страниц, представляет из себя веб-реализацию python-библиотеи <b>text-thief</b>. Которая предоставляет общий функционла для работы с текстом. Ещё есть реализация ввиде инструмента командной строки, которая гораздо легче для понимания и изучения. Эта библиотека доступна через PiPI, или можно установить её исходники прямо отсюда.
+        {% endblocktrans %}
+    </div>
+</div>
+{% endblock %}
+
+{% block footer_tool %}
+{% endblock %}
+
+{% block scripts_tool %}
+    <script src="{% static 'TextThief/scripts/main.js' %}"></script>
+{% endblock %}
+
+{% block styles_tool %}
+	<link type="text/css" rel="stylesheet" href="{% static 'tables.css' %}"/>
+    <link type="text/css" rel="stylesheet" href="{% static 'loader.css' %}"/>
+	<link type="text/css" rel="stylesheet" href="{% static 'TextThief/styles/zero.css' %}"/>
+{% endblock %}
