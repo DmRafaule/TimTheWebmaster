@@ -71,6 +71,8 @@ class ArticleAdmin(admin.ModelAdmin):
         'isPublished',
         'title_ru',
         'title_en',
+        'h1_ru',
+        'h1_en',
         'description_ru',
         'description_en',
         'meta_keywords_ru',
@@ -84,6 +86,8 @@ class ArticleAdmin(admin.ModelAdmin):
         'isPublished',
         'title_ru',
         'title_en',
+        'h1_ru',
+        'h1_en',
         'description_ru',
         'description_en',
         'meta_keywords_ru',
@@ -187,14 +191,14 @@ class PlatformAdmin(admin.ModelAdmin):
     )
 
 class ToolAdmin(admin.ModelAdmin):
-    exclude = ('category','name', 'description', 'template')
+    exclude = ('category','name', 'description', 'template', 'h1', 'meta_keywords')
     filter_horizontal = ('tags', 'platforms', 'media', 'similar')
     ordering = ['-timeCreated']
     fieldsets = [
         (
             None,
             {
-                'fields': ['slug', 'isPublished', ('name_ru', 'name_en'), ('description_ru', 'description_en')]
+                'fields': ['slug', 'isPublished', ('name_ru', 'name_en'), ('h1_ru', 'h1_en'), ('description_ru', 'description_en'), ('meta_keywords_ru', 'meta_keywords_en')]
             }
         ),
         (
@@ -220,8 +224,12 @@ class ToolAdmin(admin.ModelAdmin):
         'type',
         'name_ru',
         'name_en',
+        'h1_ru',
+        'h1_en',
         'description_ru',
         'description_en',
+        'meta_keywords_ru',
+        'meta_keywords_en',
         'timeCreated',
     )
     list_display_links = (
@@ -232,8 +240,12 @@ class ToolAdmin(admin.ModelAdmin):
         'type',
         'name_ru',
         'name_en',
+        'h1_ru',
+        'h1_en',
         'description_ru',
         'description_en',
+        'meta_keywords_ru',
+        'meta_keywords_en',
         'timeCreated',
     )
     search_fields = (
