@@ -38,7 +38,7 @@ class PlatformTranslationOptions(TranslationOptions):
     fields = ('name',)
 
 class ToolTranslationOptions(TranslationOptions):
-    fields = ('name', 'description', 'template')
+    fields = ('name', 'h1', 'description', 'meta_keywords', 'template')
 
 
 

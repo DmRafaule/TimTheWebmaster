@@ -113,6 +113,7 @@ class Tool(Post):
     view_name = "tool"
     max_similar = 3
     name = models.CharField(max_length=256, blank=False)
+    h1 = models.CharField(max_length=256, blank=False, default='')
     description = models.TextField(blank=False)
     meta_keywords = models.CharField(max_length=256, blank=True, default='')
     icon = models.FileField(max_length=300, upload_to=user_directory_path, blank=True)
