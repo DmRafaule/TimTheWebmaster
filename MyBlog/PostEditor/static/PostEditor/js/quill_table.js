@@ -22,6 +22,7 @@ class TableTooltip extends Quill.import('ui/tooltip'){
         this.insertSep()
         this.insertBtn(`${PATH}PostEditor/img/table-delete.svg`, document.querySelector('#removeTable_text').innerText, this.removeTable)
         this.setHeight(document.querySelector('footer').getBoundingClientRect().height)
+        document.querySelector('footer').classList.add('active')
     }
 
     insertSep(){
@@ -99,6 +100,7 @@ class TableTooltip extends Quill.import('ui/tooltip'){
         if (prev){
             prev.remove()
         }
+        document.querySelector('footer').classList.remove('active')
     }
 
     cancel() {
@@ -192,7 +194,8 @@ class CustomTable extends Quill.import('modules/table'){
         if (value){
             table.insertTable(1,1)
             let tooltip = new TableTooltip(quill, table.getTable()[0], '')
-            tooltip.setHeight(document.querySelector('footer').getBoundingClientRect().height)
+            //tooltip.setHeight(document.querySelector('footer').getBoundingClientRect().height)
+            tooltip.setHeight(48)
             tooltip.show()
         }else{
             TableTooltip.remove()

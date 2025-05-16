@@ -10,6 +10,7 @@ class AbbrTooltip extends Quill.import('ui/tooltip'){
         if (prev){
             prev.remove()
         }
+        document.querySelector('footer').classList.remove('active')
     }
     constructor(scroll, domNode ){
         let prev = document.querySelector('.abbr-tooltip')
@@ -23,6 +24,7 @@ class AbbrTooltip extends Quill.import('ui/tooltip'){
         this.insertTextInput()
         this.insertAddBtn()
         this.insertRemoveBtn()
+        document.querySelector('footer').classList.add('active')
     }
     insertTextInput(){
         this.textbox = document.createElement('input')
@@ -98,7 +100,8 @@ class Abbr extends Quill.import('blots/inline'){
         super(scroll, domNode);
         domNode.addEventListener('click', (ev) => { 
             let abbrTooltip = new AbbrTooltip(quill, this.domNode)
-            abbrTooltip.setHeight(document.querySelector('footer').getBoundingClientRect().height)
+            //abbrTooltip.setHeight(document.querySelector('footer').getBoundingClientRect().height)
+            abbrTooltip.setHeight(48)
             abbrTooltip.show()
         })
     }

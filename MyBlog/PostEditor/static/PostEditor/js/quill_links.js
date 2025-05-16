@@ -8,6 +8,7 @@ class LinkTooltip extends Quill.import('ui/tooltip'){
         if (prev){
             prev.remove()
         }
+        document.querySelector('footer').classList.remove('active')
     }
     constructor(scroll, domNode, placeholder = ''){
         let prev = document.querySelector('.link-tooltip')
@@ -22,6 +23,7 @@ class LinkTooltip extends Quill.import('ui/tooltip'){
         this.insertAddBtn()
         this.insertCopyBtn()
         this.insertRemoveBtn()
+        document.querySelector('footer').classList.add('active')
     }
     insertTextInput(placeholder){
         this.textbox = document.createElement('input')
@@ -107,7 +109,8 @@ class InternalLink extends Quill.import('blots/inline'){
         domNode.addEventListener('click', (ev) => { 
             domNode.setAttribute('ref', 'me')
             let tooltip = new LinkTooltip(quill, this.domNode, '#ID_SOME')
-            tooltip.setHeight(document.querySelector('footer').getBoundingClientRect().height)
+            //tooltip.setHeight(document.querySelector('footer').getBoundingClientRect().height)
+            tooltip.setHeight(48)
             tooltip.show()
         })
     }
@@ -124,7 +127,8 @@ class DownloadableLink extends Quill.import('blots/inline'){
         domNode.setAttribute('ref', 'me')
         domNode.addEventListener('click', (ev) => { 
             let tooltip = new LinkTooltip(quill, this.domNode, '?')
-            tooltip.setHeight(document.querySelector('footer').getBoundingClientRect().height)
+            //tooltip.setHeight(document.querySelector('footer').getBoundingClientRect().height)
+            tooltip.setHeight(48)
             tooltip.show()
         })
     }
@@ -143,7 +147,8 @@ class ExternalLink extends Quill.import('blots/inline'){
         domNode.setAttribute('ref', 'noreferrer nofollow external')
         domNode.addEventListener('click', (ev) => { 
             let tooltip = new LinkTooltip(quill, this.domNode, 'http(s)://website.com')
-            tooltip.setHeight(document.querySelector('footer').getBoundingClientRect().height)
+            //tooltip.setHeight(document.querySelector('footer').getBoundingClientRect().height)
+            tooltip.setHeight(48)
             tooltip.show()
         })
     }
