@@ -8,6 +8,7 @@ class VideoTooltip extends Quill.import('ui/tooltip'){
         if (prev){
             prev.remove()
         }
+        document.querySelector('footer').classList.remove('active')
     }
     constructor(scroll, domNode, placeholder = ''){
         let prev = document.querySelector('.video-tooltip')
@@ -21,6 +22,7 @@ class VideoTooltip extends Quill.import('ui/tooltip'){
         this.insertTextInput(placeholder)
         this.insertAddBtn()
         this.insertRemoveBtn()
+        document.querySelector('footer').classList.add('active')
     }
     insertTextInput(placeholder){
         this.textbox = document.createElement('input')
@@ -100,7 +102,8 @@ class CustomVideo extends TextBlock{
         domNode.controls = 'true'
         domNode.preload = 'metadata'
         let tooltip = new VideoTooltip(quill, domNode, 'video URL or #')
-        tooltip.setHeight(document.querySelector('footer').getBoundingClientRect().height)
+        //tooltip.setHeight(document.querySelector('footer').getBoundingClientRect().height)
+        tooltip.setHeight(48)
         tooltip.show()
     }
 }
