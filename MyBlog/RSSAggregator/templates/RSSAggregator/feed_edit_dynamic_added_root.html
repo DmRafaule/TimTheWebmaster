@@ -1,0 +1,4 @@
+{% if not is_delete %}
+    <div id="new_added_feed"></div>
+    {% include 'RSSAggregator/feed_edit.html' with feed_form=feed_form data=data feed_id=id feed_urls=''|make_list %}
+{% endif %}

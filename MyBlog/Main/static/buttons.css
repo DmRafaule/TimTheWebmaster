@@ -167,3 +167,7 @@
 	background-color: var(--secondary_color);
 	color: var(--ui_text_color);
 }
+
+.disabled_button{
+	background-color: rgb(172, 167, 167);
+}

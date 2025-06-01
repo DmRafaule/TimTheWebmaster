@@ -82,66 +82,71 @@ class EngagementMiddleware:
                 'comments': comments[:Comment.COMMENTS_PER_PAGE],
                 'per_page_comments': Comment.COMMENTS_PER_PAGE
             }, request)
-            response.context_data.update({'comments_doc': comments_doc})
+            if response.context_data:
+                response.context_data.update({'comments_doc': comments_doc})
         
         return isComments
     
 
     # Updates articles + adding comments 
     def no_engagement_handler(self, request, response):
-        response.context_data.update({'isDisplayingActualAvailableInteractions': False})
+        if response.context_data:
+            response.context_data.update({'isDisplayingActualAvailableInteractions': False})
 
     # Updates articles + adding comments 
     def post_handler(self, request, response):
         url = f'{request.get_host()}{request.path}'
-        response.context_data.update({'url_to_share': url})
-        response.context_data.update({'is_likes': True})
-        response.context_data.update({'is_comments': self._set_comments(request, response, True, 'Engagement/engagement_post_comments.html')})
-        response.context_data.update({'is_shares': True})
-        response.context_data.update({'is_bookmarks': True})
-        response.context_data.update({'is_feedbacks': True})
-        response.context_data.update({'feedback_form': self.form})
-        response.context_data.update({'is_email': True})
-        response.context_data.update({'email_subscription_form': self.email_form})
-        response.context_data.update({'isBottomEngagementBody': True})
-        response.context_data.update({'isDisplayingActualAvailableInteractions': True})
-        self._update_views_counter(request.path)
+        if response.context_data:
+            response.context_data.update({'url_to_share': url})
+            response.context_data.update({'is_likes': True})
+            response.context_data.update({'is_comments': self._set_comments(request, response, True, 'Engagement/engagement_post_comments.html')})
+            response.context_data.update({'is_shares': True})
+            response.context_data.update({'is_bookmarks': True})
+            response.context_data.update({'is_feedbacks': True})
+            response.context_data.update({'feedback_form': self.form})
+            response.context_data.update({'is_email': True})
+            response.context_data.update({'email_subscription_form': self.email_form})
+            response.context_data.update({'isBottomEngagementBody': True})
+            response.context_data.update({'isDisplayingActualAvailableInteractions': True})
+            self._update_views_counter(request.path)
 
     # Updates internal tools + comments
     def tool_handler(self, request, response):
         url = f'{request.get_host()}{request.path}'
-        response.context_data.update({'url_to_share': url})
-        response.context_data.update({'is_likes': True})
-        response.context_data.update({'is_comments': self._set_comments(request, response, True, 'Engagement/engagement_tool_comments.html', ReviewForm())})
-        response.context_data.update({'is_shares': True})
-        response.context_data.update({'is_bookmarks': True})
-        response.context_data.update({'is_feedbacks': True})
-        response.context_data.update({'feedback_form': self.form})
-        response.context_data.update({'is_email': True})
-        response.context_data.update({'email_subscription_form': self.email_form})
-        response.context_data.update({'isBottomEngagementBody': True})
-        response.context_data.update({'isDisplayingActualAvailableInteractions': True})
-        # THis is all for Google Rich Results, SoftwareApplication
-        comments = Comment.objects.filter(url=request.path).order_by('-time_published')
-        response.context_data.update({'comments_number': len(comments)})
-        if len(comments) > 0:
-            response.context_data.update({'comments_score': Comment.get_score(request.path)})
-        tool = get_tool(request.path)
-        if tool:
-            response.context_data.update({'page_tool': tool})
+        if response.context_data:
+            response.context_data.update({'url_to_share': url})
+            response.context_data.update({'is_likes': True})
+            response.context_data.update({'is_comments': self._set_comments(request, response, True, 'Engagement/engagement_tool_comments.html', ReviewForm())})
+            response.context_data.update({'is_shares': True})
+            response.context_data.update({'is_bookmarks': True})
+            response.context_data.update({'is_feedbacks': True})
+            response.context_data.update({'feedback_form': self.form})
+            response.context_data.update({'is_email': True})
+            response.context_data.update({'email_subscription_form': self.email_form})
+            response.context_data.update({'isBottomEngagementBody': True})
+            response.context_data.update({'isDisplayingActualAvailableInteractions': True})
+            # THis is all for Google Rich Results, SoftwareApplication
+            comments = Comment.objects.filter(url=request.path).order_by('-time_published')
+            response.context_data.update({'comments_number': len(comments)})
+            if len(comments) > 0:
+                response.context_data.update({'comments_score': Comment.get_score(request.path)})
+            tool = get_tool(request.path)
+            if tool:
+                response.context_data.update({'page_tool': tool})
 
-        self._update_views_counter(request.path)
+            self._update_views_counter(request.path)
 
    # Updates pages of paginator 
     def list_handler(self, request, response):
-        response.context_data.update({'is_likes': True})
-        response.context_data.update({'is_comments': self._set_comments(request, response, False)})
-        response.context_data.update({'is_shares': False})
-        response.context_data.update({'is_bookmarks': True})
-        response.context_data.update({'is_feedbacks': True})
-        response.context_data.update({'feedback_form': self.form})
-        response.context_data.update({'is_email': True})
-        response.context_data.update({'email_subscription_form': self.email_form})
-        response.context_data.update({'isBottomEngagementBody': False})
-        response.context_data.update({'isDisplayingActualAvailableInteractions': False})
-        self._update_views_counter(request.path)
+        if response.context_data:
+            response.context_data.update({'is_likes': True})
+            response.context_data.update({'is_comments': self._set_comments(request, response, False)})
+            response.context_data.update({'is_shares': False})
+            response.context_data.update({'is_bookmarks': True})
+            response.context_data.update({'is_feedbacks': True})
+            response.context_data.update({'feedback_form': self.form})
+            response.context_data.update({'is_email': True})
+            response.context_data.update({'email_subscription_form': self.email_form})
+            response.context_data.update({'isBottomEngagementBody': False})
+            response.context_data.update({'isDisplayingActualAvailableInteractions': False})
+            self._update_views_counter(request.path)

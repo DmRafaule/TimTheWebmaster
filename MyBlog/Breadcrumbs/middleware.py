@@ -56,21 +56,23 @@ class BreadcrumbsMiddleware:
         return list 
     
     def post_handler(self, request, response):
-        if len(Article.objects.filter(slug=self.slug)) == 1:
-            name = Article.objects.filter(slug=self.slug)[0].title
-        elif len(Question.objects.filter(slug=self.slug)) == 1:
-            name = Question.objects.filter(slug=self.slug)[0].question
-        elif len(Termin.objects.filter(slug=self.slug)) == 1:
-            name = Termin.objects.filter(slug=self.slug)[0].termin
-        response.context_data.update({'post_title': name})
+        if response.context_data:
+            if len(Article.objects.filter(slug=self.slug)) == 1:
+                name = Article.objects.filter(slug=self.slug)[0].title
+            elif len(Question.objects.filter(slug=self.slug)) == 1:
+                name = Question.objects.filter(slug=self.slug)[0].question
+            elif len(Termin.objects.filter(slug=self.slug)) == 1:
+                name = Termin.objects.filter(slug=self.slug)[0].termin
+            response.context_data.update({'post_title': name})
     
     def tool_handler(self, request, response):
-        title_qs = Tool.objects.filter(slug=self.slug)
-        if len(title_qs) > 0:
-            title = title_qs[0]
-        else:
-            title = self.slug
-        response.context_data.update({'post_title': title.name})
+        if response.context_data:
+            title_qs = Tool.objects.filter(slug=self.slug)
+            if len(title_qs) > 0:
+                title = title_qs[0]
+            else:
+                title = self.slug
+            response.context_data.update({'post_title': title.name})
     
     def list_handler(self, request, response):
         pass
