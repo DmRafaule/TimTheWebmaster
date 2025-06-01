@@ -68,7 +68,7 @@ msgstr "minutes"
 #: .\Post\templates\Post\base_post.html:55
 #: .\Post\templates\Post\base_tool.html:73
 msgid "Теги: "
-msgstr "Теги: "
+msgstr "Tags: "
 
 #: .\Post\templates\Post\base_post.html:66
 msgid "Так же доступно в следующих форматах:"

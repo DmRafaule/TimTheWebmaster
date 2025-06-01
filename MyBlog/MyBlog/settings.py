@@ -187,5 +187,5 @@ if not DEBUG:
         # Need to be specified explicitly, otherwise for everyone will be available HTML version of REST framework
         'DEFAULT_RENDERER_CLASSES': [
             'rest_framework.renderers.JSONRenderer',
-        ]
+        ],
     }

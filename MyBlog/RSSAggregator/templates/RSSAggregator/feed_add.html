@@ -1,0 +1,33 @@
+{% load static %}
+{% load i18n %}
+{% load RSSA_removeFromListInURL %}
+{% load RSSA_addToListInURL %}
+
+
+{% for field in feed_form %}
+    {% if not field.is_hidden %}
+    <fieldset class="flex flex-row gap-[10px]">  
+        <legend><div>{% trans 'Путь RSS фида' %}</div></legend>
+        <div class="flex flex-col w-full">
+        {{ field }}
+        </div>
+        {% if not field.value or not feed_form.is_valid %}
+            <button type="submit">
+                <img class="icon button action_button squered_button padder" src="{% static 'RSSAggregator/img/add_feed.svg' %}">
+            </button>
+        {% else %}
+            <div class="flex flex-row gap-[10px] flex-wrap basis-[100px]">
+                {% if to_add_ness %}
+                    <img hx-post="feeds/" hx-target="#new_added_feed" hx-swap="outerHTML" hx-vals='js:{csrfmiddlewaretoken: csrftoken, "feed": "{{field.value}}"}' class="icon button action_button squered_button padder" src="{% static 'RSSAggregator/img/save.svg' %}">
+                {% else %}
+                    <img class="icon disabled_button squered_button padder" src="{% static 'RSSAggregator/img/save.svg' %}">
+                {% endif %}
+                <a href="{% url 'rss-reader' %}{{field.value|RSSA_removeFromListInURL:feed_urls}}">
+                    <img class="icon button action_button squered_button padder" src="{% static 'RSSAggregator/img/delete.svg' %}">
+                </a>
+            </div>
+        {% endif %}
+    </fieldset>
+    <div class="form_error">{{ field.errors }}</div>
+    {% endif %}
+{% endfor %}

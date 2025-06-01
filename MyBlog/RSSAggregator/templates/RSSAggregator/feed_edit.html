@@ -1,0 +1,44 @@
+{% load static %}
+{% load i18n %}
+{% load RSSA_removeFromListInURL %}
+{% load RSSA_addToListInURL %}
+
+{% include 'Post/tool-notificator-bar.html' with messages=messages%}
+<form id="feed-form-container-{{feed_id}}" class="flex flex-row-reverse gap-[10px] w-full items-center">
+{% for field in feed_form %}
+    {% if not field.is_hidden %}
+    {% if field.name == 'feed' %}
+        <fieldset class="flex flex-row gap-[10px] flex-auto">  
+            <legend><div>{% trans 'Путь к RSS фиду' %}</div></legend>
+    {% else %}
+        <fieldset class="flex flex-row gap-[10px]">  
+            <legend><div>{% trans 'Название для RSS фида' %}</div></legend>
+    {% endif %}
+            <div class="flex flex-col w-full">
+            {{ field }}
+            </div>
+            <div class="form_error">{{ field.errors }}</div>
+        </fieldset>
+    {% else %}
+    <div class="hidden">{{field}}</div>
+    {% endif %}
+
+    {% if forloop.counter0 == feed_form|length %}
+        <div class="flex flex-row gap-[10px] flex-wrap">
+            <img hx-put="feeds/{{feed_id}}/" hx-target="#feed-form-container-{{feed_id}}" hx-swap="outerHTML" hx-headers='js:{"X-CSRFTOKEN": csrftoken}' class="icon button action_button squered_button padder" src="{% static 'RSSAggregator/img/save.svg' %}">
+            {% if to_add_ness %}
+            {% for field in feed_form %}
+                {% if field.name == 'feed'%}
+                    <a href="{% url 'rss-reader' %}{{field.value|RSSA_addToListInURL:feed_urls}}">
+                        <img class="icon button action_button squered_button padder" src="{% static 'RSSAggregator/img/display_feed.svg' %}">
+                    </a>
+                {% endif %}
+            {% endfor %}
+            {% else %}
+                <img class="icon disabled_button squered_button padder" src="{% static 'RSSAggregator/img/display_feed.svg' %}">
+            {% endif %}
+            <img hx-delete="feeds/{{feed_id}}/" hx-target="#feed-form-container-{{feed_id}}" hx-params="none" hx-swap="outerHTML" hx-headers='js:{"X-CSRFTOKEN": csrftoken}' class="icon button action_button squered_button padder" src="{% static 'RSSAggregator/img/delete.svg' %}">
+        </div>
+    {% endif %}
+{% endfor %}
+</form>

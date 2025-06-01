@@ -1,87 +1,167 @@
 {% extends 'Post/base_tool.html' %}
+
 {% load static%}
 {% load i18n %}
+{% load RSSA_addToListInURL %}
+{% load RSSA_removeFromListInURL %}
 
 {% block hat_tool %}
-	<div class="header_button"  data-body="rss_aggregator_mobile_groups_container">
-		<img id="feeds_group" width="32" height="32" class="icon button dynamic_image squered_button active_group_button" src="{% static 'placeholder.svg' %}" data-src="{% static 'RSSAggregator/img/groups.svg' %}" alt="{% trans 'one layer on top of anothe' %}">
-	</div>
 {% endblock %}
 
 {% block content_tool %}
-	<div id="rss_aggregator_mobile_groups_container">
-	</div>
-	<div class="modal modal-window" data-btn-id="onAddFeed" data-btn-close-id="onCloseModal">
-		<div class="modal-content">
-			<div class="modal_body">
-				<div class="row in_middle">
-					<div class="row mid_gap on_end_other">
-						<form id="toAddFeed column">
-							<div>{% trans "Введи URL RSS канала" %}</div>
-							<p id="feedurl-error" class="hint-required"></p>
-							<input placeholder="{% trans "http(s)://domain.com/file.rss" %}" type="text" name="feedname" autocomplete="off" id="feedname">						
-						</form>
-					</div>
-				</div>
-			</div>
-			<hr>
-			<div class="modal_actions">
-				<img id="onAddFeedSubmit" width="32" height="32" class="close_modal svg_icon_inverted icon dynamic_image bordered_button button" src="{% static 'placeholder.svg'%}" data-src="{% static 'ok.svg' %}" alt="{% trans 'Крестик' %}" style='border-bottom-left-radius: var(--modal-radius)'>	
-				<img id='onCloseModal' width="32" height="32" class="close_modal svg_icon_inverted icon dynamic_image bordered_button button" src="{% static 'placeholder.svg'%}" data-src="{% static 'close.svg' %}" alt="{% trans 'Крестик' %}" style='border-bottom-right-radius: var(--modal-radius)'>
-			</div>
-		</div>
-	</div>
-	<div id="progressbar" class="marger in_middle" >
+	<div id="loader" class="marger in_middle" >
 		<div class="progressbar-container">
 			<div class="progress-loader"></div>
 		</div>
 	</div>
 	<div class="limiter in_middle in_middle-self no_wrap padder">
-		<h2 class="paragraph">{% trans 'RSS Лента и агрегатор' %}</h2>
-		<div id="rss_aggregator_main" class="row in_middle-farapart mid_gap">
-			<div id="rss_aggregator_feed" class="el-40-half column el-expandable  mid_row_gap">
-				<div class="row in_middle-farapart in_middle">
-					<h2>{% trans 'Просмотр фидов' %}</h2>
-					<div class="tooltip">
-						<span class="tooltiptext">{% trans 'Сортировка по времени'%}</span>
-						<img id="onSort" data-sort="true" width="32" height="32" class="icon dynamic_image bordered_button button squered_button loader" src="{% static 'placeholder.svg'%}" data-src="{% static 'Post/img/sort.svg' %}" alt="{% trans 'Значок сортировки' %}">
+		<div class="tabs tabs-full-width">
+			<div class="tab_button tab_active" data-bodyid="1">
+            	<img class="icon button action_button squered_button padder" src="{% static 'RSSAggregator/img/home.svg' %}">
+			</div>
+			<div class="tab_button" data-bodyid="2">
+            	<img class="icon button action_button squered_button padder" src="{% static 'RSSAggregator/img/groups.svg' %}">
+			</div>
+			<div class="tab_button" data-bodyid="3">
+            	<img class="icon button action_button squered_button padder" src="{% static 'RSSAggregator/img/question_mark.svg' %}">
+			</div>
+			<div class="tab_button" data-bodyid="4">
+            	<img class="icon button action_button squered_button padder" src="{% static 'RSSAggregator/img/settings.svg' %}">
+			</div>
+		</div>
+		<div class="tab_body">
+			<div id="tab_body-1" class="tab_element tab_element__active">
+				<form id="update_feed_form">
+					{% for feed in feed_add_not_empty_list %}
+						{% include 'RSSAggregator/feed_add.html' with feed_form=feed.form feed_id=feed.id to_add_ness=feed.to_add%}
+					{% endfor %}
+					{% include 'RSSAggregator/feed_add.html' with feed_form=feed_add_empty %}
+					<div id="common_feed_container"></div>
+				</form>
+				<hr>
+				{% if feed_urls %}
+				<div class="flex flex-row gap-[10px]">
+					<div class="flex-auto"></div>
+					<a href="{% url 'rss-reader' %}">
+						<div class="button action_button padder">{% trans 'Удалить все' %}</div>
+					</a>
+				</div>
+				{% endif %}
+			</div>
+			<div id="tab_body-2" class="tab_element">
+    			<div id="new_added_feed"></div>
+				{% for feed in user_feeds %}
+					{% include 'RSSAggregator/feed_edit.html' with feed_form=feed.form feed_id=feed.id to_add_ness=feed.to_add%}
+				{% endfor %}
+				<hr>
+			</div>
+			<div id="tab_body-3" class="tab_element">
+				<div class="table_of_contents">
+					<h2 style="margin-top: 0px; border-bottom: 2px solid gray; margin-bottom: 0px;">{% trans 'Содержание' %}</h2>
+					<div class="padder-5" style="display: flex; gap: 8px; align-items: center; margin-top: 10px;">
+						<p style="border: 1px solid grey; border-radius: 50%; padding: 5px; color: grey; font-size: 10px;">h2</p>
+						<p>{% trans 'Как использовать инструмент' %}</p>
 					</div>
+					<div class="padder-5" style="display: flex; gap: 8px; align-items: center; margin-top: 10px;">
+						<p style="border: 1px solid grey; border-radius: 50%; padding: 5px; color: grey; font-size: 10px;">h2</p>
+						<p>{% trans 'Про библиотеку RSS-каналов' %}</p>
+					</div>
+					<div class="padder-5" style="display: flex; gap: 8px; align-items: center; margin-top: 10px;">
+						<p style="border: 1px solid grey; border-radius: 50%; padding: 5px; color: grey; font-size: 10px;">h2</p>
+						<p>{% trans 'Про настройки' %}</p>
+					</div>
+					<div class="padder-5" style="display: flex; gap: 8px; align-items: center; margin-top: 10px;">
+						<p style="border: 1px solid grey; border-radius: 50%; padding: 5px; color: grey; font-size: 10px;">h2</p>
+						<p>{% trans 'Важные особенности' %}</p>
+					</div>
+					<br>
+				</div>
+				<h2 class="paragraph">{% trans 'Как использовать инструмент' %}</h2>
+				<div class="text">{% trans 'Для того чтобы использовать данный инструмент тебе потребуются ссылки на нужные тебе RSS-фиды (RSS-каналы). Просто найди такие RSS и вставь в соответствующее поле, нажми <b>ENTER </b>или знак "<b>+</b>".' %}</div>
+				<div class="text"><img src="/static/image-not-found.webp" class="image dynamic_image image-bordered" data-src="{% get_media_prefix %}{{images.0.file}}" alt="{{images.0.text}}"></div>
+				<div class="text">{% trans 'Где цифрами представлены следующие элементы:' %}</div>
+				<ol>
+					<li data-list="undefined" style="list-style-type: decimal;"><span class="ql-ui" contenteditable="false"></span>{% trans 'Иконка главной рабочей области. Здесь будут отображены все подгружаемые и отображаемые rss-каналы соответственно' %}</li>
+					<li data-list="undefined" style="list-style-type: decimal;"><span class="ql-ui" contenteditable="false"></span>{% trans 'Поле ввода rss-канала' %}</li>
+					<li data-list="undefined" style="list-style-type: decimal;"><span class="ql-ui" contenteditable="false"></span>{% trans 'Кнопка загрузки и отображения rss-каналов по ссылке' %}</li>
+				</ol>
+				<h2 class="paragraph">{% trans 'Про библиотеку RSS-каналов' %}</h2>
+				<div class="text">{% trans 'После того как ты добавил очередной фид, ты можешь:' %}</div>
+				<ol>
+					<li data-list="undefined" style="list-style-type: decimal;"><span class="ql-ui" contenteditable="false"></span>{% trans 'Убрать его' %}</li>
+					<li data-list="undefined" style="list-style-type: decimal;"><span class="ql-ui" contenteditable="false"></span>{% trans 'Сохранить в библиотеку' %}</li>
+				</ol>
+				<div class="text"><img src="/static/image-not-found.webp" class="image dynamic_image image-bordered" data-src="{% get_media_prefix %}{{images.1.file}}" alt="{{images.1.text}}"></div>
+				<div class="text">{% trans 'Перейдя по вкладке 1 - "<b>Библиотеки</b>" ты сможешь посмотреть на все свои сохранённые фиды и их названия.' %}</div>
+				<div class="text"><img src="/static/image-not-found.webp" class="image dynamic_image image-bordered" data-src="{% get_media_prefix %}{{images.2.file}}" alt="{{images.2.text}}"></div>
+				<div class="text">{% trans 'И тебе доступны следующие кнопки и операции:' %}</div>
+				<ol>
+					<li data-list="undefined" style="list-style-type: decimal;"><span class="ql-ui" contenteditable="false"></span>{% trans 'Вкладка твоей библиотеки rss-каналов' %}</li>
+					<li data-list="undefined" style="list-style-type: decimal;"><span class="ql-ui" contenteditable="false"></span>{% trans 'Удаление rss-канала из библиотеки' %}</li>
+					<li data-list="undefined" style="list-style-type: decimal;"><span class="ql-ui" contenteditable="false"></span>{% trans 'Сохранение или обновление данных об rss-канале' %}</li>
+					<li data-list="undefined" style="list-style-type: decimal;"><span class="ql-ui" contenteditable="false"></span>{% trans 'Кнопка отображения rss-канала на главной ленте' %}</li>
+					<li data-list="undefined" style="list-style-type: decimal;"><span class="ql-ui" contenteditable="false"></span>{% trans 'Так выглядит кнопка после нажатия, то есть этот канал сейчас отображается' %}</li>
+				</ol>
+				<h2 class="paragraph">{% trans 'Про настройки' %}</h2>
+				<div class="text">{% trans 'Теперь поговорим про настройки. Ты можешь:' %}</div>
+				<ol>
+					<li data-list="undefined" style="list-style-type: disc;"><span class="ql-ui" contenteditable="false"></span>{% trans 'Указать количество подгружаемых постов в rss-фидах за раз' %}</li>
+					<li data-list="undefined" style="list-style-type: disc;"><span class="ql-ui" contenteditable="false"></span>{% trans 'Указать порядок отображения данных постов' %}</li>
+					<li data-list="undefined" style="list-style-type: disc;"><span class="ql-ui" contenteditable="false"></span>{% trans 'Указать отображать ли при это превьюшки для данных постов' %}</li>
+					<li data-list="undefined" style="list-style-type: disc;"><span class="ql-ui" contenteditable="false"></span>{% trans 'Связать различные браузеры для использования одних и тех же фидов' %}</li>
+				</ol>
+				<div class="text"><img src="/static/image-not-found.webp" class="image dynamic_image image-bordered" data-src="{% get_media_prefix %}{{images.3.file}}" alt="{{images.3.text}}"></div>
+				<ol>
+					<li data-list="undefined" style="list-style-type: decimal;"><span class="ql-ui" contenteditable="false"></span>{% trans 'Вкладка с настройками' %}</li>
+					<li data-list="undefined" style="list-style-type: decimal;"><span class="ql-ui" contenteditable="false"></span>{% trans 'Поле текущего ID пользователя (сохрани его)' %}</li>
+					<li data-list="undefined" style="list-style-type: decimal;"><span class="ql-ui" contenteditable="false"></span>{% trans 'Поле предыдущего ID пользователя (другой браузер или устройство)' %}</li>
+					<li data-list="undefined" style="list-style-type: decimal;"><span class="ql-ui" contenteditable="false"></span>{% trans 'Кнопка пересохранения твоих настроек' %}</li>
+				</ol>
+				<div class="text">
+					<br>
+				</div>
+				<h2 class="paragraph">{% trans 'Важные особенности' %}</h2>
+				<div class="text">{% trans 'Перед разработкой данного инструмента было решено, что он будет использовать как классические методы работы, так более новые динамические технологии работы с веб страницей. ' %}</div>
+				<div class="text">{% trans 'Твоя адресная строка будет меняться в зависимости от введённых rss-каналов и может выглядеть как-то так:' %}</div>
+				<div class="text"><img src="/static/image-not-found.webp" class="image dynamic_image image-bordered" data-src="{% get_media_prefix %}{{images.4.file}}" alt="{{images.4.text}}"></div>
+				<div class="under_image">{% trans 'Как верхняя, так и нижняя строка содержат адрес фида.' %}</div>
+				<div class="text">{% trans 'Почему это важно? Ну, ты можешь сохранить страницу в закладки и потом заново её открыть.' %}</div>
+				<div class="text">
+					<br>
 				</div>
 				<hr>
-				<div id="rss_posts" class="toObserve column max_gap">
-				
-				</div>
-				<hr class="hr_paginator">
-				<div id="rss-paginator" class="full_width no_wrap row in_middle max_col_gap">
-					<div id="rss-paginator_first_page_example" data-feed-id="" data-offset="" class="example_pagin_button pagin_button first_pagin_button button bordered_button squered_button"></div>
-					<div id="rss-paginator_dots_example" data-feed-id="" data-offset=""  class="example_pagin_button pagin_dots">...</div>
-					<div id="rss-paginator_default_page_example" data-feed-id="" data-offset=""  class="example_pagin_button pagin_button button bordered_button squered_button"></div>
-					<div id="rss-paginator_last_page_example" data-feed-id="" data-offset=""  class="example_pagin_button pagin_button last_pagin_button  button bordered_button squered_button"></div>
-					<div id="prev_pagin_button" data-feed-id="" data-offset=""  class=" button  squered_button  action_button">
-						<img width="32" height="32" class="icon flip_vert" src="{% static "chevron.svg" %}" alt="{% trans "Шеврон"%}">
-					</div>
-					<div id="paginator_body" class="row no_wrap full_width in_middle min_col_gap">
-						{# Place to insert buttons #}
-					</div>
-					<div id="next_pagin_button" data-feed-id="" data-offset="" class=" button  squered_button  action_button">
-						<img width="32" height="32" class="icon" src="{% static "chevron.svg" %}" alt="{% trans "Шеврон"%}">
-					</div>
-				</div>
 			</div>
-			<div id="rss_aggregator_groups" class="el-40-half column el-expandable mid_row_gap">
-				<div class="row in_middle-farapart in_middle">
-					<h2>{% trans 'Подписки на rss каналы/фиды' %}</h2>
+			<div id="tab_body-4" class="tab_element">
+				<div id="user_settings_container">
+				{% include 'RSSAggregator/feedId_settings_form.html' with feed_form=feedId_form user_id=user_id %}
 				</div>
 				<hr>
-				<div id="rss_feeds" class="toObserve min_gap">
-					
-				</div>
-				<div id="feeds_actions" class="row">
-					<div class="row el-expandable" >
-						<img id="onAddFeed" width="32" height="32" class="icon dynamic_image bordered_button button squered_button" src="{% static 'placeholder.svg'%}" data-src="{% static 'RSSAggregator/img/add_feed.svg' %}" alt="{% trans 'Иконка корзины' %}">
+			</div>
+		</div>
+		<div id="rss-pagination" class="toObserve">
+			{% include 'RSSAggregator/rss-pagination.html' with posts=posts %}
+			{% if feed_urls|length > 0 %}
+				<div id="rss-pagination-container">
+					<hr>
+					<div class="flex flex-row justify-center">
+						<div 
+						hx-get="{% url 'rss-reader-posts'%}{{""|RSSA_removeFromListInURL:feed_urls}}&{{page_size_query_param}}=10&{{page_query_param}}=2"
+						hx-target="#rss-pagination-container"
+						hx-swap="outerHTML"
+						hx-indicator="#loader"
+						class="button action_button padder">{% trans 'Загрузить ещё ...' %}</div>
+					</div>
+					<div id="loader" class="htmx-indicator min-h-[40px]">
+						{% include 'Post/tool-status-bar.html' with statustext="loading" %}
 					</div>
 				</div>
-			</div>
+			{% else %}
+				<div>
+				{% blocktrans %}
+				У тебя не выбран ни один фид. Начни с ввода первого или с выбора уже сохранённых!
+				{% endblocktrans %}
+				</div>
+			{% endif %}
 		</div>
 		<h2 class="paragraph">{% trans 'О данном RSS сервисе' %}</h2>
 		<div class="text">
@@ -101,13 +181,14 @@
 {% endblock %}
 
 {% block styles_tool %}
-	<link type="text/css" rel="stylesheet" href="{% static 'RSSAggregator/css/paginator.css' %}"/>
-    <link type="text/css" rel="stylesheet" href="{% static 'RSSAggregator/css/rss-aggregator.css' %}"/>
+	<link type="text/css" rel="stylesheet" href="{% static 'RSSAggregator/css/zero.css' %}"/>
+    <link type="text/css" rel="stylesheet" href="{% static 'loader.css' %}"/>
+	<link type="text/css" rel="stylesheet" href="{% static 'images.css' %}">
+	<link data-special="table_of_content" type="text/css" rel="stylesheet" href="{% static 'table_of_content.css' %}">
 {% endblock %}
 
 {% block scripts_tool %}
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="{% static 'RSSAggregator/js/paginator.js' %}"></script>
-	<script src="{% static 'RSSAggregator/js/rss-aggregator.js' %}"></script>
+	<script data-special="image_previewer" src="{% static 'image_previewer.js' %}"></script>
+    <script src="{% static 'RSSAggregator/js/main.js' %}"></script>
 {% endblock %}
 

@@ -34,34 +34,35 @@ class ToolMiddleware:
     
     def tool_handler(self, request, response):
         url = f'{request.get_host()}{request.path}'
-        response.context_data.update({'url_to_share': url})
-        tool = get_tool(request.path)
-        if tool:
-            downloadables = tool.media.filter_by_lang().filter(type=Media.RAW_FILE).order_by('timeCreated')
-            images = tool.media.filter_by_lang().filter(type=Media.IMAGE).order_by('timeCreated')
-            videos = tool.media.filter_by_lang().filter(type=Media.VIDEO).order_by('timeCreated')
-            pdfs = tool.media.filter_by_lang().filter(type=Media.PDF).order_by('timeCreated')
-            audios = tool.media.filter_by_lang().filter(type=Media.AUDIO).order_by('timeCreated')
+        if response.context_data:
+            response.context_data.update({'url_to_share': url})
+            tool = get_tool(request.path)
+            if tool:
+                downloadables = tool.media.filter_by_lang().filter(type=Media.RAW_FILE).order_by('timeCreated')
+                images = tool.media.filter_by_lang().filter(type=Media.IMAGE).order_by('timeCreated')
+                videos = tool.media.filter_by_lang().filter(type=Media.VIDEO).order_by('timeCreated')
+                pdfs = tool.media.filter_by_lang().filter(type=Media.PDF).order_by('timeCreated')
+                audios = tool.media.filter_by_lang().filter(type=Media.AUDIO).order_by('timeCreated')
 
-            response.context_data.update({'post': tool})
-            response.context_data.update({'downloadables': downloadables})
-            response.context_data.update({'images': images})
-            response.context_data.update({'videos': videos})
-            response.context_data.update({'pdfs': pdfs})
-            response.context_data.update({'audios': audios})
+                response.context_data.update({'post': tool})
+                response.context_data.update({'downloadables': downloadables})
+                response.context_data.update({'images': images})
+                response.context_data.update({'videos': videos})
+                response.context_data.update({'pdfs': pdfs})
+                response.context_data.update({'audios': audios})
 
-            # Get latest notes about this tool
-            tool_tags = Tag.objects.filter(slug_en=tool.slug)
-            if len(tool_tags) > 0:
-                posts = getAllWithTags(Note.objects.filter(isPublished=True), [tool_tags[0]])[:3]
-                if len(posts) > 0:
-                    is_notes = True
-                else:
-                    is_notes = False
-                response.context_data.update({'tool_tag': tool_tags[0].slug})
-                response.context_data.update({'posts': posts})
-                loaded_template = loader.get_template(f'Post/basic--post_preview-note.html')
-                response.context_data.update({'latest_notes': loaded_template.render(response.context_data, request), 'is_notes': is_notes})
-            
-            # Get used platforms
-            response.context_data.update({'platforms': tool.platforms.all()})
+                # Get latest notes about this tool
+                tool_tags = Tag.objects.filter(slug_en=tool.slug)
+                if len(tool_tags) > 0:
+                    posts = getAllWithTags(Note.objects.filter(isPublished=True), [tool_tags[0]])[:3]
+                    if len(posts) > 0:
+                        is_notes = True
+                    else:
+                        is_notes = False
+                    response.context_data.update({'tool_tag': tool_tags[0].slug})
+                    response.context_data.update({'posts': posts})
+                    loaded_template = loader.get_template(f'Post/basic--post_preview-note.html')
+                    response.context_data.update({'latest_notes': loaded_template.render(response.context_data, request), 'is_notes': is_notes})
+                
+                # Get used platforms
+                response.context_data.update({'platforms': tool.platforms.all()})
