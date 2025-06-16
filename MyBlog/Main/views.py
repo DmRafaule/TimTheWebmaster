@@ -81,8 +81,6 @@ def home(request):
     internal_tools = website_conf.choosen_tools.all()[:website_conf.max_displayed_inner_tools_on_home]
     most_popular_article = U.get_latest_post(3, Article.objects.all())
 
-    news = U.get_posts_by_tag('News', Article)
-    latest_news = U.get_latest_post(website_conf.max_displayed_news_on_home, news)
     latest_notes = U.get_latest_post(website_conf.max_displayed_notes_on_home, Note.objects.all())
 
     my_resources = []
@@ -91,7 +89,7 @@ def home(request):
         my_resources.append({
             'tag': tag.slug,
             'title': tag.name,
-            'objs': U.get_latest_post(website_conf.min_displayed_my_resources, objs)
+            'objs': U.get_latest_post(website_conf.min_displayed_my_resources, objs),
         })
 
     other_articles = []
@@ -100,7 +98,7 @@ def home(request):
         other_articles.append({
             'tag': tag.slug,
             'title': tag.name,
-            'objs': U.get_latest_post(website_conf.min_displayed_other_articles, objs)
+            'objs': U.get_latest_post(website_conf.min_displayed_other_articles, objs),
         })
     
     context.update({'internal_tool_tag': internal_tool_tag.slug})
@@ -112,7 +110,6 @@ def home(request):
     context.update({'articles_preview': website_conf.articles_post_preview})
     context.update({'most_popular_article_posts': most_popular_article})
 
-    context.update({'latest_news_posts': latest_news})
 
     context.update({'notes_preview': website_conf.notes_post_preview})
     context.update({'latest_notes_posts': latest_notes})
@@ -130,7 +127,7 @@ def home(request):
             oth_art.append(res)
     context.update({'other_articles': oth_art})
 
-    context.update({'comments': Comment.objects.filter(url__startswith=f"/{get_language()}/")[:10]})
+    context.update({'comments': Comment.objects.filter(url__startswith=f"/{get_language()}/").order_by('-time_published')[:10]})
 
     return TemplateResponse(request, 'Main/home.html', context=context)
 

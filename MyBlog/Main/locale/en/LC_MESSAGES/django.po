@@ -2,13 +2,13 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-05-13 08:05+0000\n"
+"POT-Creation-Date: 2025-06-16 08:43+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,47 +18,35 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: Main/forms.py:7
+#: .\Main\forms.py:7
 msgid "Имя"
 msgstr "Name"
 
-#: Main/forms.py:8
+#: .\Main\forms.py:8
 msgid "Почта"
 msgstr "Email"
 
-#: Main/forms.py:9
+#: .\Main\forms.py:9
 msgid "Твоё сообщение"
 msgstr "Your message"
 
-#: Main/templates/Main/404.html:7
+#: .\Main\templates\Main\404.html:7
 msgid "Страница не найдена на сайте Тим вебмастер"
 msgstr "Page not found on the website Tim  Webmaster"
 
-#: Main/templates/Main/404.html:8
+#: .\Main\templates\Main\404.html:8
 msgid "Тим вебмастер. Страница не найдена"
 msgstr "Tim the Webmaster. Page not found"
 
-#: Main/templates/Main/404.html:14
+#: .\Main\templates\Main\404.html:14
 msgid "Страница не найдена"
 msgstr "Page not found"
 
-#: Main/templates/Main/InProccess.html:7 Main/templates/Main/InProccess.html:19
-#, fuzzy
-#| msgid "Страница не найдена"
-msgid "Страница в разработке"
-msgstr "Page not found"
-
-#: Main/templates/Main/InProccess.html:8
-#, fuzzy
-#| msgid "Тим вебмастер. Страница не найдена"
-msgid "Тим вебмастер. Страница в разработке"
-msgstr "Tim the Webmaster. Page not found"
-
-#: Main/templates/Main/about.html:6
+#: .\Main\templates\Main\about.html:6
 msgid "Тим, Вебмастер. Всё об авторе и его деятельности."
 msgstr "Tim the Webmaster. All about him and his passion."
 
-#: Main/templates/Main/about.html:7
+#: .\Main\templates\Main\about.html:7
 msgid ""
 "О вебмастере Тиме Чудуке. Его истории, интересах и оказываемых услугах "
 "разработки сайтов, тг ботов, скриптов, парсеров и копирайта"
@@ -66,123 +54,225 @@ msgstr ""
 "About webmaster Tim Chuduk. His history, interests and services "
 "providedwebsite development, telegram bots, scripts, parsers and copywriting"
 
-#: Main/templates/Main/about.html:17
+#: .\Main\templates\Main\about.html:17
 msgid "Тима Чудук"
 msgstr "Dima Chuduk"
 
-#: Main/templates/Main/about.html:41
-msgid "О Тиме Вебмастере"
-msgstr "About Tim"
+#: .\Main\templates\Main\about.html:41
+msgid "О Тиме Вебмастере, или Дмитрие Чудуке"
+msgstr "About Tim the Webmaster, or Dmitry Chuduk"
 
-#: Main/templates/Main/about.html:45
-msgid "Вступление"
-msgstr "Introduction"
+#: .\Main\templates\Main\about.html:47
+msgid "Кратко для гостей"
+msgstr "In short for guests"
 
-#: Main/templates/Main/about.html:50
+#: .\Main\templates\Main\about.html:49
 msgid ""
 "\n"
-"\t\t\t\tЗнаешь, я эту страницу 10й переписываю. Мне это “немножко” надоело, "
-"хочу рассказать и то и сё и хочется о своей боли рассказать, и о том почему "
-"я занялся этим, и вообще, кто я такой. Но слов всегда не достаточно и "
-"всегда, что-нибудь перечитывая, я натыкаюсь на какую-нибудь неточность или "
-"недосказанность и понеслась … Начинаю с редактирования одного предложения, а "
-"заканчиваю полной переделкой всей страницы.\n"
+"\t\t\t\tОчередной Блог/SAAS/сайт портфолио, где я пишу о чём хочу и о чём "
+"могу. Пытаюсь привнести нечто новое и интересное, разбираясь в уже давно не "
+"актуальных технологиях и темах - изобретаю свои колёса и велосипеды. Так же "
+"много пишу об истории программирования - люблю это дело.\n"
 "\t\t\t\t"
 msgstr ""
 "\n"
-"You know, I'm rewriting this page for the 10th time. I'm tired of this \"a "
-"little bit.\". You know, I just want to tell a bunch of stuff on different "
-"topics, like why I’ve started running this website or what the end goal is "
-"here. But words are never enough, and always, every time I’m rereading this "
-"page, I may stumble upon some inaccuracy or omission, and off I go... I "
-"start by editing one sentence and end up completely rewriting the entire "
-"page."
+"\t\t\t\tYet another Blog/SAAS/portfolio site where I write about what I want "
+"and what I can. I'm trying to bring something new and interesting, studying "
+"technologies and topics that are no longer relevant - Iэь reinventing my own "
+"wheels too. I also write a lot about the history of programming - I love "
+"this.\n"
+"\t\t\t\t"
 
-#: Main/templates/Main/about.html:55
+#: .\Main\templates\Main\about.html:59
+msgid "Кратко для разработчиков"
+msgstr "In short for developers"
+
+#: .\Main\templates\Main\about.html:61
 msgid ""
 "\n"
-"\t\t\t\tНо не в этот раз. На этот раз, эта страница должна продержаться "
-"очень долго). Отчего же я так в этом уверен ? Ну просто потому, что я напишу "
-"максимально кратко и ёмко. Кто я, зачем я и почему я.\n"
+"\t\t\t\tЯ самопровозглашённый full-стек разработчик. Разрабатываю сайты с "
+"использованием Python/Django, плюс один из этих frontend фреймворков: "
+"(React, HTMx, или JS/CSS(TailwindCSS)/HTML)\n"
 "\t\t\t\t"
 msgstr ""
 "\n"
-"But not this time. This time, this page should last a very long time ;). Why "
-"am I so sure about this? Well, simply because I will write as briefly as "
-"possible. Who am I, why am I, and for what reason am I?"
+"\t\t\t\tI am a self-proclaimed full-stack developer. I develop websites "
+"using Python/Django, plus one of these frontend frameworks: (React, HTMx, or "
+"JS/CSS(TailwindCSS)/HTML)\n"
+"\t\t\t\t"
 
-#: Main/templates/Main/about.html:63
-msgid "Обо мне"
-msgstr "About me"
+#: .\Main\templates\Main\about.html:66
+msgid ""
+"\n"
+"\t\t\t\tТак же обожал, в недавнем времени, \t\n"
+"\t\t\t\t"
+msgstr ""
+"\n"
+"\t\t\t\tI also loved, recently, \t\n"
+"\t\t\t\t"
 
-#: Main/templates/Main/about.html:68
+#: .\Main\templates\Main\about.html:69
+msgid "делать игры"
+msgstr "making games"
+
+#: .\Main\templates\Main\about.html:70
+msgid ""
+"\n"
+"\t\t\t\t- забросил. Telegram боты, скрипты и парсеры, это то же про меня.\n"
+"\t\t\t\t"
+msgstr ""
+"\n"
+"\t\t\t\t- abandoned. Telegram bots, scripts and parsers, that's also about me.\n"
+"\t\t\t\t"
+
+#: .\Main\templates\Main\about.html:76
+msgid "Обо мне, чуть более развёрнуто"
+msgstr "About me, a little bit longer"
+
+#: .\Main\templates\Main\about.html:81
 msgid "А это я."
 msgstr "It is me btw"
 
-#: Main/templates/Main/about.html:73
+#: .\Main\templates\Main\about.html:86
 msgid ""
 "\n"
-"\t\t\t\tНачну с себя. Я Дима, приятно познакомиться. Теперь ты знаешь почему "
-"timthewebmaster. (Тим это одна из форм имени Димы, ну если ты не догадался "
-"или не знал). Фамилия моя Чудук. Прикольная фамилия, скажу я тебе, "
-"однофамильцев пока не встречал, только родственников).\n"
+"\t\t\t\tНачну с того, что я родился в Барановичах, Беларусь. Барановичи - "
+"это город аккурат между Минском и Брестом, главной достопримечательностью "
+"которого является железнодорожный вокзал.\n"
 "\t\t\t\t"
 msgstr ""
 "\n"
-"I'll start with the question, Who am I? My real name is Dima; nice to meet "
-"you. Now you know why, TimThewebmaster. (Well, if you are an are an English-"
-"speaking person, you will not get it, but long story short, in Russian, the "
-"name Dima has a synonymous form, Tim.) My last name is Chuduk. A cool last "
-"name, I'll tell you; I haven't met anyone with the same last name yet, only "
-"relatives ;)."
+"\t\t\t\tI'll start with the fact that I was born in Baranovichi, Belarus. Baranovichi is "
+"a city right between Minsk and Brest, the main attraction of which is the railway station.\n"
+"\t\t\t\t"
 
-#: Main/templates/Main/about.html:78
+#: .\Main\templates\Main\about.html:94
 msgid ""
 "\n"
-"\t\t\t\tКем работаю, учусь ли я и какое вообще у меня образование? Во всех "
-"гайдах и рекомендациях указывается, что такие данные нужно обязательно "
-"указывать, чтобы вызвать доверие и показать что ты реальный ЧЕЛОВЕК. Ну "
-"хорошо, что ещё паспортные данные не рекомендуют указывать)\n"
+"\t\t\t\tХоть родился я в Барановичах, жил я всё время в деревне. Уже сейчас "
+"мне трудно вспомнить о чём я думал, или к чему стремился, или кем хотел "
+"быть. Наверное, я об этом не думал вообще, а просто был тогда в моменте.\n"
 "\t\t\t\t"
 msgstr ""
 "\n"
-"What do I do for a living, do I study, and what education do I have? All "
-"guides and recommendations indicate that such data must be provided in order "
-"to increase trust and show that you are a real PERSON. Well, it's good that "
-"they also do not recommend providing passport data, at least for now ;)"
+"\t\t\t\tAlthough I was born in Baranovichi, I lived all my time in the village. Even now, it's hard for me to remember what I was thinking about, or what I was striving for, or who I wanted to "
+"be. I probably didn't think about it at all, I was just in the moment.\n"
+"\t\t\t\t"
 
-#: Main/templates/Main/about.html:83
+#: .\Main\templates\Main\about.html:99
 msgid ""
 "\n"
-"\t\t\t\tНу а если серьёзно, то я не очень люблю рассказывать такие детали. "
-"Скажу лишь что моим образованием можно подтереть ****. А работаю я где "
-"придётся и где берут. Будь то фриланс или реальная физическая работа. Не "
-"карьерист я короче).\n"
+"\t\t\t\tИзначально, я решил стать следователем, но что-то пошло не так и "
+"меня не взяли. Зато в армию взяли, где я и отслужил полтора года. Не могу "
+"сказать, что там всё было плохо. Стрелять и кататься на самоходных "
+"артиллерийских установках мне нравилось. Мне не нравилось всё что было до и "
+"после боевых выездов.\n"
 "\t\t\t\t"
 msgstr ""
 "\n"
-"But seriously, I don't really like to tell such details. I'll just say that "
-"it is a useless piece of ****. And I work wherever I can and wherever "
-"someone hires me. Whether it's freelancing or real physical work. Well, I'm "
-"not a careerist)."
+"\t\t\t\tInitially, I decided to become an investigator, but something went wrong and "
+"they didn't take me. But they took me into the army, where I served for a year and a half. I can't "
+"say that everything was bad there. I liked shooting and riding self-propelled "
+"artillery units. I didn't like everything that was before and "
+"after combat missions.\n"
+"\t\t\t\t"
 
-#: Main/templates/Main/about.html:88
+#: .\Main\templates\Main\about.html:106
 msgid ""
 "\n"
-"\t\t\t\tВпрочем, об учёбе. Да я учусь, постоянно и самостоятельно. То есть, "
-"нет я не студент. Меня скорее лучше опишет слово Маргинал или Хастлер. Вот.\n"
-"\t\t\t\t"
+"\t\tИтак, вот мне 20 лет, у меня среднеспециальное юридическое, ни опыта, ни "
+"каких-либо нормальных навыков. Я начал пробовать себя в различных сферах, "
+"начиная от официанта, заканчивая фрилансом. А в свободное время я не играл, "
+"нет, (всю охоту к играм я потерял ещё до армии) я программировал, делал "
+"игры. Не очень успешно. За два года я сделал кучу демок, но выпустил \n"
+"\t\t"
 msgstr ""
 "\n"
-"Anyway, about studying. Yes, I study constantly and independently. That is, "
-"no, I am not a student. The words marginal or hustler would describe me "
-"better. That's it."
+"\t\tSo, I'm 20 years old, I have a secondary specialized law degree, no experience, no "
+"normal skills. I started trying myself in various fields, "
+"starting from being a waiter to freelancing. And in my free time, I didn't play, "
+"no, (I lost all desire for games even before the army) I programmed, made "
+"games. Not very successfully. In two years, I made a bunch of demos, but released \n"
+"\t\t"
 
-#: Main/templates/Main/about.html:95
+#: .\Main\templates\Main\about.html:109
+msgid "только одну игру"
+msgstr "only a single one game."
+
+#: .\Main\templates\Main\about.html:110
+msgid ""
+" \n"
+"\t\tна Google Play и то не очень хорошую.\n"
+"\t\t"
+msgstr ""
+" \n"
+"\t\tAnd not very good ones on Google Play.\n"
+"\t\t"
+
+#: .\Main\templates\Main\about.html:115
+msgid ""
+"\n"
+"\t\tВ 2022 году поступил в университет на инженер-программиста (это уже "
+"Минск), но очень скоро понял, что это не моё и забрал документы уже в 2023 "
+"году. Сказать, что мне тогда было плохо, ничего не сказать. Мне было очень "
+"херово тогда. Было такое чувство будто сердце заволокла, такая вязкая слизь "
+"из безысходности и горечи потери года подготовки к поступлению.\n"
+"\t\t"
+msgstr ""
+"\n"
+"\t\tIn 2022, I entered the university to become a software engineer (this is already "
+"Minsk), but I soon realized that this was not my thing and withdrew my documents in 2023. To say that I felt bad then is to say nothing. I felt very "
+"shitty then. It felt like my heart was covered with such a viscous mucus "
+"out of hopelessness and bitterness of losing a year of preparation for admission.\n"
+"\t\t"
+
+#: .\Main\templates\Main\about.html:123
+msgid ""
+"\n"
+"\t\tВ том же 2023 году я устроился машинистом сцены в Большой театр "
+"Беларуси. Хочу сказать это была моя самая интересная, и одновременно с этим, "
+"простая работа, на которой я когда-либо работал. Одновременно с работой я "
+"учился тому, как строить сайты, приложения и как их продвигать в поиске. "
+"Результат этого вы видите перед собой. \n"
+"\t\t"
+msgstr ""
+"\n"
+"\t\tIn the same 2023, I got a job as a stage machinist at the Bolshoi Theater of "
+"Belarus. I want to say that it was my most interesting, and at the same time, "
+"easiest job I've ever had. Along with my work, I "
+"learned how to build websites, applications, and how to promote them in search. "
+"You can see the result of this in front of you. \n"
+"\t\t"
+
+#: .\Main\templates\Main\about.html:128
+msgid ""
+"\n"
+"\t\tПосле театра устроился на работу SEO-специалистом, не понравилось, "
+"уволился. Это всё 2024 год.\n"
+"\t\t"
+msgstr ""
+"\n"
+"\t\tAfter the theater, I got a job as an SEO specialist, didn't like it, "
+"quit. This is all 2024.\n"
+"\t\t"
+
+#: .\Main\templates\Main\about.html:133
+msgid ""
+"\n"
+"\t\tЧто касается текущего момента, то сейчас я работаю в книжном магазине и "
+"готовлюсь к собеседованиям на python-разработчика.\n"
+"\t\t"
+msgstr ""
+"\n"
+"\t\tAs for now, I'm working at a bookstore and "
+"preparing for interviews to become a python developer.\n"
+"\t\t"
+
+#: .\Main\templates\Main\about.html:138
 msgid "О сайте, его идея"
 msgstr "About website, it's idea"
 
-#: Main/templates/Main/about.html:98
+#: .\Main\templates\Main\about.html:141
 #, python-format
 msgid ""
 "Теперь, напишу о чём этот сайт и что тут можно найти. Создавая данный сайт "
@@ -199,7 +289,7 @@ msgstr ""
 "a little of their time and make a tool that suits you. And even have some "
 "fun in the process."
 
-#: Main/templates/Main/about.html:101
+#: .\Main\templates\Main\about.html:144
 msgid ""
 "\n"
 "\t\tКонкретной направленности в созданных инструментах нет. Просто "
@@ -211,23 +301,25 @@ msgstr ""
 "for example, \n"
 "\t\t"
 
-#: Main/templates/Main/about.html:104
+#: .\Main\templates\Main\about.html:147
 msgid "спарсить все изображения с сайта"
 msgstr "scrape all images from a website"
 
-#: Main/templates/Main/about.html:105
+#: .\Main\templates\Main\about.html:148
 msgid ""
 "\n"
-"\t\t, бам ... И у меня уже готовый инструмент или <a href=\"#\">получить "
-"SERP результаты из google</a> бам и он готов. Думаю ты понял идею.\n"
+"\t\t, бам ... И у меня уже готовый инструмент или <a href=\"https://search-"
+"result-parser.site\">получить SERP результаты из google</a> бам и он готов. "
+"Думаю ты понял идею.\n"
 "\t\t"
 msgstr ""
 "\n"
-"\t\t, bam... And I have a ready-made tool or <a href=\"#\">get SERP results "
-"from google</a> bam and it's done. I think you get the idea.\n"
+"\t\t, bam... And I have a ready-made tool or <a href=\"https://search-"
+"result-parser.site\">get SERP results from google</a> bam and it's ready. "
+"I think you get the idea.\n"
 "\t\t"
 
-#: Main/templates/Main/about.html:111
+#: .\Main\templates\Main\about.html:154
 msgid ""
 "\n"
 "\t\tЕсли тебя также интересуют такие вещи, то рад знакомству). Если нет, то "
@@ -239,7 +331,7 @@ msgstr ""
 "not, then I am still glad to meet you. Also on the site, you can find such "
 "things as:"
 
-#: Main/templates/Main/about.html:116
+#: .\Main\templates\Main\about.html:159
 msgid ""
 "\n"
 "\t\t<li>Статьи на <u>интересующие меня темы</u></li>\n"
@@ -260,7 +352,7 @@ msgstr ""
 "\t\t<li>Archives, scripts, programs and other files for downloading</li>\n"
 "\t\t"
 
-#: Main/templates/Main/about.html:127
+#: .\Main\templates\Main\about.html:170
 msgid ""
 "\n"
 "\t\tВот, собственно говоря, всё что я хотел сказать про себя и сайт. Если "
@@ -272,11 +364,7 @@ msgstr ""
 "to know more, please \n"
 "\t\t"
 
-#: Main/templates/Main/about.html:130
-msgid "почитать соответствующие статьи"
-msgstr "read the relevant articles"
-
-#: Main/templates/Main/about.html:131
+#: .\Main\templates\Main\about.html:173
 msgid ""
 "\n"
 "\t\tКстати, где-то здесь будет облако тегов всего моего сайта, каждое слово "
@@ -289,24 +377,21 @@ msgstr ""
 "word will be a link to the corresponding pagination page. (If it's not "
 "there, then forgive me; it's still in progress.)"
 
-#: Main/templates/Main/about.html:137
+#: .\Main\templates\Main\about.html:179
 msgid ""
 "\n"
 "\t\tВот, собственно говоря, всё что я хотел сказать про себя и сайт. Если "
 "хочешь узнать больше обо мне и моём прошлом, милости прошу почитать "
-"соответствующие статьи. Кстати, где-то здесь будет облако тегов всего моего "
-"сайта, каждое слово будет представлять из себя ссылку на соответствующую "
-"страницу пагинации. (Если его нет, то прости, ещё в процессе)\n"
+"соответствующие статьи.\n"
 "\t\t"
 msgstr ""
 "\n"
-"That's basically all I wanted to say about myself and the site. If you want "
-"to know more, please read the relevant articles. By the way, somewhere here "
-"there will be a tag cloud of my entire site; each word will be a link to the "
-"corresponding pagination page. (If it's not there, then forgive me; it's "
-"still in progress.)"
+"\t\tThat's basically all I wanted to say about myself and the site. If you "
+"want to know more about me and my past, you are welcome to read the "
+"relevant articles.\n"
+"\t\t"
 
-#: Main/templates/Main/about.html:143
+#: .\Main\templates\Main\about.html:185
 msgid ""
 "\n"
 "\t\tНа момент прочтения данной страницы тобой, мне \n"
@@ -315,7 +400,7 @@ msgstr ""
 "\n"
 "At the time you read this page, I am"
 
-#: Main/templates/Main/about.html:147
+#: .\Main\templates\Main\about.html:189
 msgid ""
 "\n"
 "\t\tгода. И моему сайту 1 год.\n"
@@ -324,66 +409,66 @@ msgstr ""
 "\n"
 "years old. And my site is 1 years old"
 
-#: Main/templates/Main/base.html:98
-#: Main/templates/Main/base_status_code.html:30
+#: .\Main\templates\Main\base.html:98
+#: .\Main\templates\Main\base_status_code.html:30
 msgid "3 горизонтальные линии, бургер"
 msgstr "3 horizontal lines, burger"
 
-#: Main/templates/Main/base.html:106
-#: Main/templates/Main/base_status_code.html:36
+#: .\Main\templates\Main\base.html:106
+#: .\Main\templates\Main\base_status_code.html:36
 msgid "Главная иконка сайта"
 msgstr "Main icon of the website"
 
-#: Main/templates/Main/base.html:114
-#: Main/templates/Main/base_status_code.html:44
+#: .\Main\templates\Main\base.html:114
+#: .\Main\templates\Main\base_status_code.html:44
 msgid "Домашняя"
 msgstr "Home"
 
-#: Main/templates/Main/base.html:115 Main/templates/Main/base.html:148
-#: Main/templates/Main/base_status_code.html:45
-#: Main/templates/Main/base_status_code.html:73
+#: .\Main\templates\Main\base.html:115 .\Main\templates\Main\base.html:148
+#: .\Main\templates\Main\base_status_code.html:45
+#: .\Main\templates\Main\base_status_code.html:73
 msgid "Об авторе"
 msgstr "About"
 
-#: Main/templates/Main/base.html:116 Main/templates/Main/base.html:149
-#: Main/templates/Main/base.html:163
-#: Main/templates/Main/base_status_code.html:46
-#: Main/templates/Main/base_status_code.html:74
-#: Main/templates/Main/base_status_code.html:88
+#: .\Main\templates\Main\base.html:116 .\Main\templates\Main\base.html:149
+#: .\Main\templates\Main\base.html:163
+#: .\Main\templates\Main\base_status_code.html:46
+#: .\Main\templates\Main\base_status_code.html:74
+#: .\Main\templates\Main\base_status_code.html:88
 msgid "Контакты"
 msgstr "Contacts"
 
-#: Main/templates/Main/base.html:118
-#: Main/templates/Main/base_status_code.html:48
+#: .\Main\templates\Main\base.html:118
+#: .\Main\templates\Main\base_status_code.html:48
 msgid "Админка"
 msgstr "Admin"
 
-#: Main/templates/Main/base.html:144
-#: Main/templates/Main/base_status_code.html:69
+#: .\Main\templates\Main\base.html:144
+#: .\Main\templates\Main\base_status_code.html:69
 msgid "Другие ссылки"
 msgstr "Other links"
 
-#: Main/templates/Main/base.html:147
-#: Main/templates/Main/base_status_code.html:72
+#: .\Main\templates\Main\base.html:147
+#: .\Main\templates\Main\base_status_code.html:72
 msgid "Карта сайта"
 msgstr "Sitemap"
 
-#: Main/templates/Main/base.html:154
-#: Main/templates/Main/base_status_code.html:79
+#: .\Main\templates\Main\base.html:154
+#: .\Main\templates\Main\base_status_code.html:79
 msgid "Популярные ссылки"
 msgstr "Popular links"
 
-#: Main/templates/Main/base.html:169
-#: Main/templates/Main/base_status_code.html:94
-#: Main/templates/Main/contacts.html:27
+#: .\Main\templates\Main\base.html:169
+#: .\Main\templates\Main\base_status_code.html:94
+#: .\Main\templates\Main\contacts.html:27
 msgid "иконка"
 msgstr "icon"
 
-#: Main/templates/Main/contacts.html:6
+#: .\Main\templates\Main\contacts.html:6
 msgid "Тим, Вебмастер и его контакты"
 msgstr "Tim the Webmaster and his contacts"
 
-#: Main/templates/Main/contacts.html:7
+#: .\Main\templates\Main\contacts.html:7
 msgid ""
 "Тим, Вебмастер. Его контактные данные, ссылки на соцсети, почта и форма "
 "обратной связи"
@@ -391,35 +476,35 @@ msgstr ""
 "Tim the Webmaster. His contact details, links to social networks, mail and "
 "formfeedback"
 
-#: Main/templates/Main/contacts.html:18
+#: .\Main\templates\Main\contacts.html:18
 msgid "Тим Вебмастер, его контакты и обратная связь"
 msgstr "Tim the Webmaster and his contacts"
 
-#: Main/templates/Main/contacts.html:21
+#: .\Main\templates\Main\contacts.html:21
 msgid "Я в социальных сетях"
 msgstr "I'm on social networks"
 
-#: Main/templates/Main/contacts.html:36
+#: .\Main\templates\Main\contacts.html:36
 msgid "Форма для обратной связи"
 msgstr "Form for feedback"
 
-#: Main/templates/Main/contacts.html:49
+#: .\Main\templates\Main\contacts.html:49
 msgid "Имя должно состоять от 3 до 25 букв"
 msgstr "The name must be between 3 and 25 letters"
 
-#: Main/templates/Main/contacts.html:50
+#: .\Main\templates\Main\contacts.html:50
 msgid "Email должен быть настоящим"
 msgstr "The email should be real"
 
-#: Main/templates/Main/contacts.html:53
+#: .\Main\templates\Main\contacts.html:53
 msgid "Отправить"
 msgstr "Send"
 
-#: Main/templates/Main/home.html:7
+#: .\Main\templates\Main\home.html:7
 msgid "Тим, вебмастер"
 msgstr "Tim the Webmaster"
 
-#: Main/templates/Main/home.html:8
+#: .\Main\templates\Main\home.html:8
 msgid ""
 "Вебмастер Тим, он занимается разработкой сайтов на django, написанием тг "
 "ботов, скриптов и парсеров, а также выполняет заказы по копирайту"
@@ -427,48 +512,111 @@ msgstr ""
 "Webmaster Tim, he develops websites using django and writes tgbots, scripts "
 "and parsers, and also fulfills copyright orders"
 
-#: Main/templates/Main/home.html:15
+#: .\Main\templates\Main\home.html:15
 msgid "Тим Вебмастер"
 msgstr "Tim the Webmaster"
 
-#: Main/templates/Main/home.html:23
+#: .\Main\templates\Main\home.html:24
 msgid "Внутренние инструменты"
 msgstr "Internal tools"
 
-#: Main/templates/Main/home.html:27
+#: .\Main\templates\Main\home.html:28
 msgid "Инструменты по тегам"
 msgstr "Tools by tag"
 
-#: Main/templates/Main/home.html:40 Main/templates/Main/home.html:62
-#: Main/templates/Main/home.html:91 Main/templates/Main/home.html:112
-#: Main/templates/Main/home.html:149
+#: .\Main\templates\Main\home.html:34
+msgid ""
+"\n"
+"\t\t\t\t\t\tВнутренние инструменты (веб инструменты), так я называю "
+"инструменты, которые работают непосредственно на сайте и благодаря сайту.\n"
+"\t\t\t\t\t\tУ данных инструментов есть некоторые общие ограничения, "
+"связанные в основном с текущим хостингом (рессурсы, которые он может "
+"выделить на сайт) \n"
+"\t\t\t\t\t\tи общим дизайном сайта, которого я должен придерживаться.\n"
+"\t\t\t\t\t\t"
+msgstr ""
+"\n"
+"\t\t\t\t\t\tInternal tools (web tools), this is what I call "
+"tools that work directly on the site and thanks to the site.\n"
+"\t\t\t\t\t\tThese tools have some general limitations, "
+"related mainly to the current hosting (the resources it can allocate to the site) \n"
+"\t\t\t\t\t\tand the overall design of the site, which I must adhere to.\n"
+"\t\t\t\t\t\t"
+
+#: .\Main\templates\Main\home.html:48 .\Main\templates\Main\home.html:76
+#: .\Main\templates\Main\home.html:105 .\Main\templates\Main\home.html:129
+#: .\Main\templates\Main\home.html:177
 msgid "Больше ..."
 msgstr "See more ..."
 
-#: Main/templates/Main/home.html:75
+#: .\Main\templates\Main\home.html:54
+msgid ""
+"\n"
+"\t\t\t\t\t\tИнструменты отсортированные по тегам. Данные инструменты были "
+"сгрупированны по тегам в зависимости от стека необходимых технологий для их "
+"создания или платформы для которой они разрабатывались. Большинство таких "
+"инструментов требуют установки и предварительной настройки.\n"
+"\t\t\t\t\t\t"
+msgstr ""
+"\n"
+"\t\t\t\t\t\tTools sorted by tags. These tools were "
+"grouped by tags depending on the stack of technologies required to create them or the platform for which they were "
+"developed. Most of these tools require installation and preliminary configuration.\n"
+"\t\t\t\t\t\t"
+
+#: .\Main\templates\Main\home.html:89
 msgid "Последние статьи"
 msgstr "Latest articles"
 
-#: Main/templates/Main/home.html:78
+#: .\Main\templates\Main\home.html:92
 msgid "Статьи по тегам"
 msgstr "Articles by tag"
 
-#: Main/templates/Main/home.html:126
+#: .\Main\templates\Main\home.html:143
 msgid "Комментарии"
 msgstr "Comments"
 
-#: Main/templates/Main/home.html:130
+#: .\Main\templates\Main\home.html:147
 msgid "Заметки"
 msgstr "Notes"
 
-#: Main/templates/Main/table_of_content.html:5
+#: .\Main\templates\Main\home.html:154
+msgid ""
+"\n"
+"\t\t\t\t\t\tТут я собираю все последние комментарии на сайте.\n"
+"\t\t\t\t\t\t"
+msgstr ""
+"\n"
+"\t\t\t\t\t\tHere I collect all the latest comments on the site.\n"
+"\t\t\t\t\t\t"
+
+#: .\Main\templates\Main\home.html:167
+msgid ""
+"\n"
+"\t\t\t\t\t\tЭто блок всех последних заметок, написанных мной. Заметки, в "
+"моём случае можно считать неким журналом, где я могу отметить те или иные "
+"события\n"
+"\t\t\t\t\t\tпроизошедшие со мной или с сайтом. Просто, иногда хочется что-"
+"нибудь написать, но создавать для 5 строчек отдельную статью ... Я считаю "
+"это перебором.\n"
+"\t\t\t\t\t\t"
+msgstr ""
+"\n"
+"\t\t\t\t\t\tThis is a block of all the latest notes written by me. Notes, in "
+"my case, can be considered a kind of journal, where I can note certain "
+"events\n"
+"\t\t\t\t\tthat happened to me or to the site. Sometimes I just want to write something, but creating a separate article for 5 lines ... I think "
+"this is too much.\n"
+"\t\t\t\t\t\t"
+
+#: .\Main\templates\Main\table_of_content.html:5
 msgid "Содержание"
 msgstr "Content"
 
-#: Main/views.py:37
+#: .\Main\views.py:37
 msgid "✔ Вы успешно отправили сообщение"
 msgstr "✔ You have successfully sent a message"
 
-#: Main/views.py:39
+#: .\Main\views.py:39
 msgid "✗ Возникла ошибка при отправке формы"
 msgstr "✗ An error occurred while sending a form."
