@@ -1,13 +1,14 @@
 from selenium import webdriver
 from selenium.webdriver.firefox.options import Options
-from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
-import time
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions  as EC
+from selenium.common.exceptions import TimeoutException
 
 import unittest
 
 class NewVisitorTest(unittest.TestCase):
-    ''' Проверяем поведение нового пользователя на домашней странице '''    
+    ''' Проверяем поведение нового пользователя '''    
     def setUp(self):
         ''' Настраиваем браузер '''
         firefox_opt = Options()
@@ -35,6 +36,35 @@ class NewVisitorTest(unittest.TestCase):
         # Изначально на странице пользователь может увидеть только 3 кнопки табов
         active_buttons_tabs = self.browser.find_elements(By.CLASS_NAME, 'tab_active')
         self.assertEqual(len(active_buttons_tabs), 3)
+    
+    def test_visit_contacts_page_to_send_form(self):
+        # Посетитель заходит на страницу
+        self.browser.get('http://localhost:8000/en/contacts/')
+        # Посетитель заполняет форму
+        form = self.browser.find_element(By.TAG_NAME, 'form')
+        username = form.find_element(By.ID, 'id_username')
+        email = form.find_element(By.ID, 'id_email')
+        message = form.find_element(By.ID, 'id_message')
+        captcha = form.find_element(By.ID, 'id_captcha_1')
+        send = form.find_element(By.ID, 'feedback')
+        username.send_keys('selenium')
+        email.send_keys('some@gmail.com')
+        message.send_keys('This message was send by selenium')
+        captcha.send_keys('KRKDS')
+        # Посетитель отправляет заведомо неправильную форму
+        send.click()
+        # Получает соответствующий элемент с ошибкой
+        invalid = WebDriverWait(self.browser, 5).until(
+            EC.presence_of_element_located((By.CLASS_NAME, 'form_error'))
+        )
+        # Вводит правильные данные
+    
+    def test_visit_contacts_page_to_see_contacts(self):
+        # Посетитель заходит на страницу
+        self.browser.get('http://localhost:8000/en/contacts/')
+        # Смотрит варианты, как связаться с автором
+        contacts = self.browser.find_elements(By.CSS_SELECTOR, 'ul.list_without_sign>div>li')
+        self.assertGreaterEqual(len(contacts), 2)
 
 
 if __name__ == "__main__":
