@@ -188,3 +188,11 @@
 	color: var(--main_text_color);
 	border-bottom-left-radius: 8px;
 }
+
+.tab_body{
+	border-right: 2px solid;
+}
+
+.description_text{
+	text-align: justify;
+}

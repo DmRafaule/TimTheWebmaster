@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-01 18:32+0300\n"
+"POT-Creation-Date: 2025-06-16 08:33+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -258,22 +258,22 @@ msgstr "Clock"
 msgid "Успешно добавил фид"
 msgstr "Successfully update the feed"
 
-#: .\RSSAggregator\views.py:129
+#: .\RSSAggregator\views.py:133
 msgid "Что-то пошло не так. Не смог обновить фид. ＼（〇_ｏ）／"
 msgstr "Something went wrong. Could not to update the feed  ＼（〇_ｏ）／"
 
-#: .\RSSAggregator\views.py:140
+#: .\RSSAggregator\views.py:144
 msgid "Успешно обновил фид. （￣︶￣）↗　"
 msgstr "successfully update the feed  （￣︶￣）↗　"
 
-#: .\RSSAggregator\views.py:163
+#: .\RSSAggregator\views.py:167
 msgid "Что-то пошло не так. Не смог обновить настройки. ＼（〇_ｏ）／"
 msgstr "Something went wrong. Could not to update the feed ＼（〇_ｏ）／"
 
-#: .\RSSAggregator\views.py:175
+#: .\RSSAggregator\views.py:179
 msgid "Успешно обновил настройки пользователя. （￣︶￣）↗　"
 msgstr "I've successfully update the user's settings"
 
-#: .\RSSAggregator\views.py:182
+#: .\RSSAggregator\views.py:186
 msgid "Такого пользователя не существует ＞︿＜"
 msgstr "There is no such user ＞︿＜ "
