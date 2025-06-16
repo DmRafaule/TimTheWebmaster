@@ -13,7 +13,7 @@ from django.views.generic.list import ListView
 class PostListView(ListView):
     allow_empty=True
     context_object_name = "posts"
-    website_conf = Main_M.Website.objects.get(is_current=True)
+    website_conf = None
     is_recent = "true"
     is_alphabetic = "ignored"
     category = None
@@ -27,7 +27,7 @@ class PostListView(ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         # Update context data
-        context['category'] = self.category
+        context['category'] = Post_M.Category.objects.get(slug=self.category)
         context['displayTags'] = True
         context['num_pages'] = self.pages
         context['current_page'] = self.page
@@ -50,12 +50,13 @@ class PostListView(ListView):
     def post(self, request):
         error_response = self.fetch(request)
         if  error_response is None:
-            cat = "-" + self.category.categry_name.lower()
+            cat = "-" + Post_M.Category.objects.get(slug=self.category).categry_name.lower()
             return TemplateResponse(request, f'Post/basic--post_preview{cat}.html', self.context)
         else:
             return error_response
     
     def fetch(self, request):
+        self.website_conf = Main_M.Website.objects.get(is_current=True)
         if request.method == "GET":
             self.page = int(request.GET.get('page', 1))
         elif request.method == "POST":
