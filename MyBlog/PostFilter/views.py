@@ -11,7 +11,7 @@ class PostFeed(Feed):
         super().__init__()
         self.model = model
         try:
-            self.category = Category.objects.get_(slug=category_slug)
+            self.category = Category.objects.get(slug=category_slug)
         except:
             self.category = None
     

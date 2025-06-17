@@ -2,6 +2,7 @@ import json
 import Post.models as Post_M
 import Main.models as Main_M
 import Main.utils as U
+import PagiScroll.utils as PagiScroll_utils
 from django.http import Http404, HttpResponseBadRequest
 from django.db.models import Q
 from django.shortcuts import render
@@ -75,27 +76,27 @@ class PostListView(ListView):
             relative_this = request.POST.get('relative_this')
             match (relative_this):
                 case 'this_day':
-                    self.object_list = U.get_this_day_posts(self.object_list)
+                    self.object_list = PagiScroll_utils.get_this_day_posts(self.object_list)
                 case 'this_week':
-                    self.object_list = U.get_this_week_posts(self.object_list)
+                    self.object_list = PagiScroll_utils.get_this_week_posts(self.object_list)
                 case 'this_month':
-                    self.object_list = U.get_this_month_posts(self.object_list)
+                    self.object_list = PagiScroll_utils.get_this_month_posts(self.object_list)
                 case 'this_year':
-                    self.object_list = U.get_this_year_posts(self.object_list)
+                    self.object_list = PagiScroll_utils.get_this_year_posts(self.object_list)
 
             week_days = json.loads(request.POST['week_day'])
-            self.object_list = U.get_posts_by_week_days(week_days, self.object_list)
+            self.object_list = PagiScroll_utils.get_posts_by_week_days(week_days, self.object_list)
             month_days = json.loads(request.POST['month_day'])
-            self.object_list = U.get_posts_by_month_days(month_days, self.object_list)
+            self.object_list = PagiScroll_utils.get_posts_by_month_days(month_days, self.object_list)
             months = json.loads(request.POST['month'])
-            self.object_list = U.get_posts_by_months(months, self.object_list)
+            self.object_list = PagiScroll_utils.get_posts_by_months(months, self.object_list)
             years = json.loads(request.POST['year'])
-            self.object_list = U.get_posts_by_years(years, self.object_list)
+            self.object_list = PagiScroll_utils.get_posts_by_years(years, self.object_list)
             letters = json.loads(request.POST['letter'])
-            self.object_list = U.get_posts_by_letters(letters, self.object_list)
+            self.object_list = PagiScroll_utils.get_posts_by_letters(letters, self.object_list)
             platforms_id = json.loads(request.POST['platform'])
             platforms = Post_M.Platform.objects.filter(id__in=platforms_id)
-            self.object_list = U.get_posts_by_platforms(platforms, self.object_list)
+            self.object_list = PagiScroll_utils.get_posts_by_platforms(platforms, self.object_list)
 
             if len(self.object_list) == 0:
                 return render(request, 'PagiScroll/not_found_posts.html', context={'message': _('Ничего не нашёл.'), 'kaomodji': '(っ °Д °;)っ'}, status=404)
