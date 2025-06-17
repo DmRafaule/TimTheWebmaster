@@ -3,7 +3,7 @@ from django.http import HttpRequest
 from django.test import TestCase, RequestFactory
 from django.middleware.csrf import get_token
 
-from .views import home, MainView
+from Main.views import home, MainView
 
 class HomePageTest(TestCase):
     ''' Тесты для домашней страницы '''
