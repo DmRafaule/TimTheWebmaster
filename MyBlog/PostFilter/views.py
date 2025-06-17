@@ -2,13 +2,18 @@ from django.contrib.syndication.views import Feed
 from django.utils.translation import get_language
 from django.urls import reverse
 
+from Post.models import Category
+
 
 class PostFeed(Feed):
 
-    def __init__(self, model, category):
+    def __init__(self, model, category_slug):
         super().__init__()
         self.model = model
-        self.category = category
+        try:
+            self.category = Category.objects.get_(slug=category_slug)
+        except:
+            self.category = None
     
     def title(self):
         return self.category.name

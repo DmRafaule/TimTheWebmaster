@@ -93,3 +93,4 @@ Docs
 manage.py
 node_modules
 package-lock.json
+MyBlog/test-db.sqlite3
