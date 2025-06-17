@@ -63,20 +63,34 @@ def getNotEmptyCategories(categories):
 
 # Create queryset with special categories
 def getSpecialTopLevelCategories(categories):
-    website_conf = Website.objects.get(is_current=True)
-    categories_result = website_conf.categories_to_display_on_side_menu.all()
+    try:
+        website_conf = Website.objects.get(is_current=True)
+        categories_on_side = website_conf.categories_to_display_on_side_menu.all()
+    except:
+        categories_on_side = []
+
+    categories_result = categories_on_side
     categories = categories.exclude(slug__in=categories_result)
     return getNotEmptyCategories(categories_result)
 
 def initDefaults(request):
-    website_conf = Website.objects.get(is_current=True)
+    try:
+        website_conf = Website.objects.get(is_current=True)
+        popular_articles_in_footer = website_conf.popular_articles_on_footer.all()
+        popular_tools_in_footer = website_conf.popular_tools_on_footer.all()
+        image_preview = website_conf.default_image_preview
+    except:
+        popular_articles_in_footer = []
+        popular_tools_in_footer = []
+        image_preview = None
+
     categories = Post_M.Category.objects.all()
     categories_special = getSpecialTopLevelCategories(categories)
     # Categories(categories_special) that gonna appear in first level of menu
     # All other (categories) gonna be in second lever under content menu
     domain_name = ALLOWED_HOSTS[0]
-    popular_posts = list(chain(website_conf.popular_articles_on_footer.all(), website_conf.popular_tools_on_footer.all()))
-    default_post_preview = website_conf.default_image_preview
+    popular_posts = list(chain(popular_articles_in_footer, popular_tools_in_footer))
+    default_post_preview = image_preview
     contacts = Contact.objects.all()
     context = {
         'categories_special': categories_special,
