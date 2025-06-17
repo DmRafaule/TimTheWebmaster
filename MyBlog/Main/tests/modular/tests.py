@@ -1,12 +1,12 @@
 from django.urls import reverse
 from django.http import HttpRequest
-from django.test import TestCase, RequestFactory
+from django.test import TestCase, RequestFactory, LiveServerTestCase
 from django.middleware.csrf import get_token
 
 from Main.views import home, MainView
 
-class HomePageTest(TestCase):
-    ''' Тесты для домашней страницы '''
+class HomePageTest(LiveServerTestCase):
+
     def test_home_page_return_correct_html(self):
         ''' Тест на правильно возвращаемый шаблон '''
         url = reverse('home')
