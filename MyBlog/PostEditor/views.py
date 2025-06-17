@@ -9,7 +9,7 @@ from MyBlog.settings import MEDIA_ROOT, MEDIA_URL
 from django.utils.translation import gettext as _
 from django.template.response import TemplateResponse
 from Post.models import Tag
-import os
+import os, json
 from django.contrib.auth.decorators import login_required
 
 
@@ -155,3 +155,10 @@ def save_template(request):
 
 
     return JsonResponse({'msg': msg}, status=status)
+
+def load_table_of_content(request):
+    titles = json.loads(request.POST.get("titles"))
+    context = {
+        'titles': titles,
+    }
+    return render(request, "PostEditor/table_of_content.html", context=context)
