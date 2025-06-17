@@ -65,7 +65,7 @@ $(document).ready( function(){
 
 	$.ajax({
 		type: "POST",
-		url: "/" + language_code + "/load_table_of_content/",
+		url: "/" + language_code + "/tools/editor/load_table_of_content/",
 		data: {
 			'titles': JSON.stringify(titles)
 		},
