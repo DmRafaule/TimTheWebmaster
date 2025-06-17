@@ -8,18 +8,21 @@ from itertools import chain
 
     
 def get_how_old_human_in_years(birth_date: str, birth_date_str_frm: str) -> int:
+    ''' Возвращает возраст человека  '''
     day_of_birth = datetime.strptime(birth_date, birth_date_str_frm).date()
     today = datetime.today().date()
     me_years = today - day_of_birth
+    # Округляем до целого числа
     return math.trunc(me_years.days/365)
 
 def get_posts_by_tag(tag_name: str, category_queryset: Post_M.Category):
+    ''' Возвращает посты в зависимоти от наличия в них искомого тега '''
     tags = Post_M.Tag.objects.filter(Q(name_ru=tag_name) | Q(name_en=tag_name) | Q(slug_ru=tag_name) | Q(slug_en=tag_name))
     posts = category_queryset.objects.filter(isPublished=True, tags__in=tags)
     return posts
 
-# Return only those elements which has all tags in them
 def getAllWithTags(queryset, tags, threshold = None):
+    ''' Возвращает посты в зависимости от наличия в них искомых тегов '''
     for tag in tags:
         queryset = queryset.filter(tags=tag)
 
@@ -29,6 +32,7 @@ def getAllWithTags(queryset, tags, threshold = None):
         return queryset 
 
 def get_latest_post(number: int, queryset):
+    ''' Возвращает последние посты, в зависимости от того удовлетворяют ли они минимальному необходимому количеству для возврата '''
     new_posts = list()
     posts = queryset.filter(isPublished=True)
     if (len(posts) > number):
@@ -41,11 +45,14 @@ def get_latest_post(number: int, queryset):
     return new_posts
 
 def get_tool(_url):
+    ''' Возвращает инструмент по указанному адресу'''
+    # Делим строку
     urlList = _url.split('/')
-    # Clean up after slplit function
+    # Чистим не нужный мусор
     c = urlList.count('') 
     for i in range(c): 
         urlList.remove('') 
+    # Проверяем есть ли такой инструмент
     slug = urlList[-1]
     tool_qs = Post_M.Tool.objects.filter(slug=slug)
     if len(tool_qs) > 0:
@@ -53,8 +60,8 @@ def get_tool(_url):
     else:
         return None
 
-# Filtering out all empty categories
 def getNotEmptyCategories(categories):
+    ''' Отфильтровывает все категории, которые не имеют постов '''
     categories_result = []
     for category in categories:
         if Post_M.Post.objects.filter(category=category, isPublished=True):
@@ -69,9 +76,7 @@ def getSpecialTopLevelCategories(categories):
     except:
         categories_on_side = []
 
-    categories_result = categories_on_side
-    categories = categories.exclude(slug__in=categories_result)
-    return getNotEmptyCategories(categories_result)
+    return getNotEmptyCategories(categories)
 
 def initDefaults(request):
     try:
