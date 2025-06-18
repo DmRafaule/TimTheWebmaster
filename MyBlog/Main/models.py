@@ -11,7 +11,6 @@ def user_directory_path_forImageAndDownloadabel(instance, filename):
 
 class Website(models.Model):
     class Meta:
-         db_table_comment = "This is a general model of the site. It is created to manage all elements of the site, with the ability to switch between them (Different records of the model)"
          verbose_name = 'Website'
          verbose_name_plural = 'Website'
 

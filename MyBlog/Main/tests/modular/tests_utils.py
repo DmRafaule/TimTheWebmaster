@@ -38,7 +38,7 @@ class UtilsTests(TestCase):
             tool = Tool(slug=f"tool-{i}", name_ru=f"инструмент {i}", name_en=f"tool {i}", description_ru=f"описание инстр {i}", description_en=f"tool descr {i}")
             tool.save()
 
-        return Article.objects.all()
+        return Tool.objects.all()
     
     def apply_tag_to_queryset(self, tag, queryset):
         ''' Присваивается тек ко всем элементав в наборе запросов '''

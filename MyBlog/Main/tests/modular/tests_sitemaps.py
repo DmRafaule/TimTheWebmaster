@@ -42,7 +42,7 @@ class SitemapTest(TestCase):
             tool = Tool(slug=f"tool-{i}", name_ru=f"инструмент {i}", name_en=f"tool {i}", description_ru=f"описание инстр {i}", description_en=f"tool descr {i}")
             tool.save()
 
-        return Article.objects.all()
+        return Tool.objects.all()
     
     def generate_note_queryset(self, start_indx, max_el_in):
         ''' Генерирует набор инструментов в заданом количестве 
