@@ -77,6 +77,7 @@ class NewVisitorTest(unittest.TestCase):
                 f'http://localhost:8000/{lang[0]}/'
                 f'http://localhost:8000/{lang[0]}/about/'
                 f'http://localhost:8000/{lang[0]}/contacts/'
+                f'http://localhost:8000/{lang[0]}/some-not-existing-page/'
             ]
             for page in pages:
                 self.browser.get(page)
