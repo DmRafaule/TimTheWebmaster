@@ -1,11 +1,13 @@
+import unittest
+import time
+
 from selenium import webdriver
 from selenium.webdriver.firefox.options import Options
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions  as EC
 
-import unittest
-from django.test import LiveServerTestCase
+from MyBlog.settings import LANGUAGES
 
 class NewVisitorTest(unittest.TestCase):
     ''' Проверяем поведение нового пользователя '''    
@@ -38,6 +40,7 @@ class NewVisitorTest(unittest.TestCase):
         self.assertEqual(len(active_buttons_tabs), 3)
     
     def test_visit_contacts_page_to_send_form(self):
+        ''' Проверка на возможность отправки формы пользователем '''
         # Посетитель заходит на страницу
         self.browser.get('http://localhost:8000/en/contacts/')
         # Посетитель заполняет форму
@@ -60,12 +63,28 @@ class NewVisitorTest(unittest.TestCase):
         # Вводит правильные данные
     
     def test_visit_contacts_page_to_see_contacts(self):
+        ''' Проверка на минимально необходимые контакты '''
         # Посетитель заходит на страницу
         self.browser.get('http://localhost:8000/en/contacts/')
         # Смотрит варианты, как связаться с автором
         contacts = self.browser.find_elements(By.CSS_SELECTOR, 'ul.list_without_sign>div>li')
         self.assertGreaterEqual(len(contacts), 2)
-
-
-if __name__ == "__main__":
-    unittest.main(warnings='ignore')
+    
+    def test_visit_pages_mobile_friendly(self):
+        ''' Проверка на гибкость (mobile friendly) интерфейса '''
+        for lang in LANGUAGES:
+            pages = [
+                f'http://localhost:8000/{lang[0]}/'
+                f'http://localhost:8000/{lang[0]}/about/'
+                f'http://localhost:8000/{lang[0]}/contacts/'
+                f'http://localhost:8000/{lang[0]}/some-not-existing-page/'
+            ]
+            for page in pages:
+                self.browser.get(page)
+                sizes = [1600, 1200, 992, 768, 480, 300]
+                for win_size in sizes:
+                    self.browser.set_window_size(win_size, 800)
+                    win_width = self.browser.get_window_rect()['width']
+                    time.sleep(1)
+                    body_width = self.browser.find_element(By.TAG_NAME, 'body').size['width']
+                    self.assertAlmostEqual(win_width, body_width, delta=20, msg=f"In page: {page} | In size: {win_size}")

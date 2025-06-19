@@ -187,6 +187,9 @@ class Note(models.Model):
     tags = models.ManyToManyField(Tag, blank=True)
 
     def save(self, *args, **kwargs):
+        self.timeUpdated = timezone.now()
+        if not self.timeCreated:
+            self.timeCreated = timezone.now()
         self.category = Category.objects.get(slug="notes")
         super(Note, self).save(*args, **kwargs)
 

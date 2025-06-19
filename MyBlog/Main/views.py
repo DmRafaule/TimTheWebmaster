@@ -1,16 +1,15 @@
 from django.shortcuts import render
-import Main.utils as U
-from .models import Website
-import json
 from django.utils.translation import gettext as _
 from django.utils.translation import get_language
 from django.views.generic import TemplateView
 from django.template.response import TemplateResponse
-from .forms import FeedbackForm
-from MyBlog.settings import DEFAULT_FROM_EMAIL, DEFAULT_TO_EMAIL
 from django.core.mail import send_mail
+
+import Main.utils as U
+from .models import Website
+from .forms import FeedbackForm
 from Post.models import Tool, Article, Tag, Note
-from bs4 import BeautifulSoup
+from MyBlog.settings import DEFAULT_FROM_EMAIL, DEFAULT_TO_EMAIL
 from Engagement.models import Comment
 
 
@@ -55,63 +54,77 @@ def about(request):
     context.update({'more_about_me_tag': more_about_me_tag})
     return render(request, 'Main/about.html', context=context)
 
+def get_latest_post_by_tag(min, cont, Model):
+    res = []
+    for tag in cont:
+        objs = U.get_posts_by_tag(tag.name, Model)
+        latest_objs = U.get_latest_post(min, objs)
+        if len(latest_objs) > 0:
+            res.append({
+                'tag': tag.slug,
+                'title': tag.name,
+                'objs': latest_objs,
+            })
+    return res
+
 def home(request):
-    website_conf = Website.objects.get(is_current=True)
+    # Из базы данных нужно взять текущие настройки сайта
+    try:
+        website_conf = Website.objects.get(is_current=True)
+        cap_choosen_tools = website_conf.max_displayed_inner_tools_on_home
+        choosen_tools = website_conf.choosen_tools.all()[:cap_choosen_tools]
+        cap_notes = website_conf.max_displayed_notes_on_home
+        choosen_tools_by_tags = website_conf.my_resources_choosen_tags_on_home.all()
+        min_choosen_tools_by_tags = website_conf.min_displayed_my_resources
+        choosen_articles_by_tag = website_conf.other_articles_choosen_tags_on_home.all()
+        min_choosen_articles_by_tag = website_conf.min_displayed_other_articles
+        tools_post_preview = website_conf.tools_post_preview
+        articles_post_preview = website_conf.articles_post_preview
+        notes_post_preview = website_conf.notes_post_preview
+    # Если не получилось (такие настройки ещё не были добавленны) отправляем в качестве настроек
+    # пустые значения, чтобы страница не вернула 500 код ошибки (ошибка сервера)
+    except:
+        choosen_tools = []
+        cap_notes = 0
+        choosen_tools_by_tags = []
+        min_choosen_tools_by_tags = 0
+        choosen_articles_by_tag = []
+        min_choosen_articles_by_tag = 0
+        tools_post_preview = None
+        articles_post_preview = None
+        notes_post_preview = None
 
+    # Инициализируем общие для всего сайта контекстные переменные
+    # TODO: Может есть другой способ задать общие для всех представлений контекстные переменные?
     context = U.initDefaults(request)
+    # Так как теги на домашней странице не поддерживаются, пока, добавляем конт. переменную 
+    # Чтобы они неотображались при рендеренге превью постов
     context.update({'displayTags': False})
-    internal_tool_tag = Tag.objects.get(slug_en='internal-tool')
-    internal_tools = website_conf.choosen_tools.all()[:website_conf.max_displayed_inner_tools_on_home]
-    most_popular_article = U.get_latest_post(3, Article.objects.all())
-
-    latest_notes = U.get_latest_post(website_conf.max_displayed_notes_on_home, Note.objects.all())
-
-    my_resources = []
-    for tag in website_conf.my_resources_choosen_tags_on_home.all():
-        objs = U.get_posts_by_tag(tag.name, Tool)
-        my_resources.append({
-            'tag': tag.slug,
-            'title': tag.name,
-            'objs': U.get_latest_post(website_conf.min_displayed_my_resources, objs),
-        })
-
-    other_articles = []
-    for tag in website_conf.other_articles_choosen_tags_on_home.all():
-        objs = U.get_posts_by_tag(tag.name, Article)
-        other_articles.append({
-            'tag': tag.slug,
-            'title': tag.name,
-            'objs': U.get_latest_post(website_conf.min_displayed_other_articles, objs),
-        })
-    
+    # Получаем тег для внутренних инструментов, или создаём его если его нет 
+    internal_tool_tag, is_created = Tag.objects.get_or_create(slug_en='internal-tool')
+    if is_created:
+        internal_tool_tag.slug_ru = 'vnutrenij-instrument'
+        internal_tool_tag.name_ru = 'Внутренний инструмент'
+        internal_tool_tag.name_en = 'Internal tool'
+        internal_tool_tag.save()
     context.update({'internal_tool_tag': internal_tool_tag.slug})
-    context.update({'internal_tools_preview': website_conf.tools_post_preview})
-    context.update({'internal_tools_posts': internal_tools})
-    context.update({'internal_tools_length': len(internal_tools)})
-    context.update({'current_tag': ''})
-    
-    context.update({'articles_preview': website_conf.articles_post_preview})
-    context.update({'most_popular_article_posts': most_popular_article})
-
-
-    context.update({'notes_preview': website_conf.notes_post_preview})
-    context.update({'latest_notes_posts': latest_notes})
-
-
-    my_res = []
-    for res in my_resources:
-        if len(res['objs']) > 0:
-            my_res.append(res)
-    context.update({'my_resources': my_res})
-
-    oth_art = []
-    for res in other_articles:
-        if len(res['objs']) > 0:
-            oth_art.append(res)
-    context.update({'other_articles': oth_art})
-
+    # Получаем и сохраняем внутренние инструменты, которые выбираются в общей конфигурации сайта
+    context.update({'internal_tools_posts': choosen_tools})
+    context.update({'internal_tools_preview': tools_post_preview})
+    context.update({'internal_tools_length': len(choosen_tools)})
+    # Получаем самые последние статьи
+    context.update({'most_popular_article_posts': U.get_latest_post(3, Article.objects.all())})
+    context.update({'articles_preview': articles_post_preview})
+    # Получаем самые последние заметки
+    context.update({'latest_notes_posts': U.get_latest_post(cap_notes, Note.objects.all())})
+    context.update({'notes_preview': notes_post_preview})
+    # Получаем все последние Инструменты по выбранным тегам с минимальным порогом для отображения 
+    context.update({'my_resources': get_latest_post_by_tag(min_choosen_tools_by_tags, choosen_tools_by_tags, Tool)})
+    # Получаем все последние Статьи по выбранным тегам с минимальным порогом для отображения 
+    context.update({'other_articles': get_latest_post_by_tag(min_choosen_articles_by_tag, choosen_articles_by_tag, Article)})
+    # Получаем и сохраняем последние комментарии
     context.update({'comments': Comment.objects.filter(url__startswith=f"/{get_language()}/").order_by('-time_published')[:10]})
-
+    
     return TemplateResponse(request, 'Main/home.html', context=context)
 
 def page_not_found(request, exception):

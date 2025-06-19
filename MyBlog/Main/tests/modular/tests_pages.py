@@ -1,20 +1,19 @@
 from django.urls import reverse
-from django.http import HttpRequest
-from django.test import TestCase, RequestFactory
+from django.test import RequestFactory, LiveServerTestCase
 from django.middleware.csrf import get_token
 
-from Main.views import home, MainView
-
-class HomePageTest(TestCase):
+class HomePageTest(LiveServerTestCase):
     ''' Тесты для домашней страницы '''
+
     def test_home_page_return_correct_html(self):
         ''' Тест на правильно возвращаемый шаблон '''
         url = reverse('home')
         response = self.client.get(url)
         self.assertTemplateUsed(response, 'Main/home.html')
 
-class ContactsPageTest(TestCase):
+class ContactsPageTest(LiveServerTestCase):
     ''' Тесты для страницы контактов '''
+
     def test_contacts_page_return_correct_html(self):
         ''' Тест на правильно возвращаемый шаблон '''
         url = reverse('contacts')
@@ -35,3 +34,20 @@ class ContactsPageTest(TestCase):
         })
         self.assertEqual('✗ Возникла ошибка при отправке формы', response.context.get('feedback_message'))
         self.assertEqual(response.status_code, 200)
+
+class AboutPageTest(LiveServerTestCase):
+    ''' Тесты для страницы ОБ '''
+
+    def test_about_page_return_correct_html(self):
+        ''' Тест на правильно возвращаемый шаблон для страницы about'''
+        url = reverse('about')
+        response = self.client.get(url)
+        self.assertTemplateUsed(response, 'Main/about.html')
+
+class Page404Test(LiveServerTestCase):
+    ''' Тесты для страницы 404 '''
+
+    def test_404_page_return_correct_html(self):
+        ''' Тест на правильно возвращаемый шаблон '''
+        response = self.client.get('sdkfjsdfsdfoijoew')
+        self.assertTemplateUsed(response, 'Main/404.html')
