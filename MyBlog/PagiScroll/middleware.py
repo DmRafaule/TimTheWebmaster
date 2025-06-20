@@ -25,11 +25,11 @@ class PostFilterMiddleware:
         if response.template_name in self.allowed_templates:
             match response.template_name:
                 case 'PagiScroll/article_list.html':
-                    self.filter_list = [{'template': 'PostFilter/post_filter_times.html', 'verified': 'isTimeFilter'}]
+                    self.filter_list = [{'template': 'PagiScroll/post_filter_times.html', 'verified': 'isTimeFilter'}]
                 case 'PagiScroll/note_list.html':
-                    self.filter_list = [{'template': 'PostFilter/post_filter_times.html', 'verified': 'isTimeFilter'}]
+                    self.filter_list = [{'template': 'PagiScroll/post_filter_times.html', 'verified': 'isTimeFilter'}]
                 case 'PagiScroll/tool_list.html':
-                    self.filter_list = [{'template': 'PostFilter/post_filter_tooltypes.html', 'verified': 'isTooltypesFilter'}]
+                    self.filter_list = [{'template': 'PagiScroll/post_filter_tooltypes.html', 'verified': 'isTooltypesFilter'}]
                     
             if len(self.filter_list) > 0:
                 # Update how many years are

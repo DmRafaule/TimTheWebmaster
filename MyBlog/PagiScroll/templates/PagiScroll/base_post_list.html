@@ -79,7 +79,7 @@
 		{% endif %}
 
 		{% if isPostFilterMiddlewareConnected %}
-			{% include 'PostFilter/post_filter.html' %}
+			{% include 'PagiScroll/post_filter.html' %}
 		{% endif %}
 		
 		<div id="meta-data" data-sort="{{is_recent}}" data-tags="{{tags_json}}" data-view="basic" data-who="{{category.slug}}" data-numpages={{num_pages}} data-currentpage="{{current_page}}" data-url="{{category.get_absolute_url}}"></div>
@@ -133,7 +133,7 @@
     <link type="text/css" rel="stylesheet" href="{% static 'Post/css/post.css' %}"/>
     <link type="text/css" rel="stylesheet" href="{% static 'Post/css/posts_preview.css' %}"/>
 	{% if isPostFilterMiddlewareConnected %}
-		{% include 'PostFilter/post_filter_styles.html' %}
+		{% include 'PagiScroll/post_filter_styles.html' %}
 	{% endif %}
 
 	{% if isEngagementMiddlewareConnected %}
@@ -155,7 +155,7 @@
 		const category_name = "{{category.slug}}"
     </script>
 	{% if isPostFilterMiddlewareConnected %}
-		{% include 'PostFilter/post_filter_scripts.html' %}
+		{% include 'PagiScroll/post_filter_scripts.html' %}
 	{% endif %}
 
 	<script src="{% static 'PagiScroll/js/paginator.js' %}"></script>
