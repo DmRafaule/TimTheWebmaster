@@ -1,12 +1,9 @@
-import unittest
 import time
 import os
 
 from selenium import webdriver
 from selenium.webdriver.firefox.options import Options
 from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions  as EC
 
 from django.template import loader
 from django.core.files.base import ContentFile
@@ -15,7 +12,7 @@ from django.test.testcases import TestCase
 from MyBlog.settings import LANGUAGES
 from Post.models import Article, Tool, Category
 
-class NewVisitorTest(TestCase):
+class MobileFriendlyTest(TestCase):
     ''' Проверяем поведение нового пользователя '''    
     def setUp(self):
         ''' Настраиваем браузер '''
