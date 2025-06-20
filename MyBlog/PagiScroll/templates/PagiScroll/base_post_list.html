@@ -4,40 +4,6 @@
 {% load listToURL %}
 
 {% block head %}
-	{% if cfp_title and cfp_description %}
-		{% if current_page == 1 %}
-		<title>{{ cfp_title }}</title>
-		{% else %}
-		<title>{{ cfp_title }} - {% trans "cтраница " %}{{current_page}}</title>
-		{% endif %}
-		<meta name="description" content="{{cfp_description}}">
-		{% if current_tag|length == 0 %}
-			{% if current_page == 1 %}
-				<link rel="canonical" href="https://{{domain_name}}{{ category.get_absolute_url }}" />
-			{% else %}
-				<link rel="canonical" href="https://{{domain_name}}{{ category.get_absolute_url }}?page={{current_page}}" />
-			{% endif %}
-
-			{% if current_page != num_pages %}
-				<link rel='next' href="https://{{domain_name}}{{ category.get_absolute_url }}?page={{current_page|add:'1'}}">
-			{% endif %}
-			{% if current_page != 1%}
-				<link rel='prev' href="https://{{domain_name}}{{ category.get_absolute_url }}?page={{current_page|add:'-1'}}">
-			{% endif %}
-
-		{% else %}
-			<link rel="canonical" href="https://{{domain_name}}{{ category.get_absolute_url }}?page={{current_page}}{{current_tag|listToURL}}" />
-
-			{% if current_page != num_pages %}
-			<link rel='next' href="https://{{domain_name}}{{ category.get_absolute_url }}?page={{current_page|add:'1'}}{{current_tag|listToURL}}">
-			{% endif %}
-			{% if current_page != 1%}
-			<link rel='prev' href="https://{{domain_name}}{{ category.get_absolute_url }}?page={{current_page|add:'-1'}}{{current_tag|listToURL}}">
-			{% endif %}
-
-		{% endif %}
-		<meta name="keywords" content="{{current_tag_names|join:', '}}">
-	{% else %}
 		{% if current_tag|length == 0 %}
 			{% if current_page == 1 %}
 				<title>{{category.name}}</title>
@@ -47,33 +13,30 @@
 
 			<meta name="description" content="{{category.description}}">
 
-			{% if current_page == 1%}
-				<link rel="canonical" href="https://{{domain_name}}{{ category.get_absolute_url }}" />
-			{% else %}
-				<link rel="canonical" href="https://{{domain_name}}{{ category.get_absolute_url }}?page={{current_page}}" />
-			{% endif %}
-
 			{% if current_page != num_pages %}
 				<link rel='next' href="https://{{domain_name}}{{ category.get_absolute_url }}?page={{current_page|add:'1'}}">
 			{% endif %}
+
 			{% if current_page != 1%}
 				<link rel='prev' href="https://{{domain_name}}{{ category.get_absolute_url }}?page={{current_page|add:'-1'}}">
 			{% endif %}
 
 		{% else %}
 			<title>{{category.name}} {% trans 'с тегами:' %} {{current_tag_names|join:', '}}. {% trans 'Страница '%}{{current_page}}</title>
+			
 			<meta name="description" content="{{category.description}} {% trans ' Они были связаны и сгруппированы по следующим тегам: ' %}{{current_tag_names|join:', '}}.{% trans ' Страница '%}{{current_page}}">
-			<link rel="canonical" href="https://{{domain_name}}{{ category.get_absolute_url }}?page={{current_page}}{{current_tag|listToURL}}" />
+
 			{% if current_page != num_pages %}
 			<link rel='next' href="https://{{domain_name}}{{ category.get_absolute_url }}?page={{current_page|add:'1'}}{{current_tag|listToURL}}">
 			{% endif %}
+
 			{% if current_page != 1%}
 			<link rel='prev' href="https://{{domain_name}}{{ category.get_absolute_url }}?page={{current_page|add:'-1'}}{{current_tag|listToURL}}">
 			{% endif %}
 
 		{% endif %}
 		<meta name="keywords" content="{{current_tag_names|join:', '}}">
-	{% endif %}
+		<meta name="robots" content="noindex, follow">
 
 	{% block head_body %}
 	{% endblock %}
@@ -96,48 +59,19 @@
 
 		{% if current_tag|length == 0 %}
 			{% if current_page == 1%}
-				{% if cfp_h1 %}
-					<h1>{{cfp_h1}}</h1>
-				{% else %}
-					<h1>{{category.name}}</h1>
-				{% endif %}
+				<h1>{{category.name}}</h1>
 			{% else %}
-				{% if cfp_h1 %}
-					<h1>{{cfp_h1}} - {% trans "страница " %}{{current_page}}</h1>
-				{% else %}
-					<h1>{{category.name}}{% trans ' начиная с ' %}{{current_page}}{% trans ' страницы'%}</h1>
-				{% endif %}
+				<h1>{{category.name}}{% trans ' начиная с ' %}{{current_page}}{% trans ' страницы'%}</h1>
 			{% endif %}
 
-			{% if cfp_lead %}
-				<div class="text">
-					{{cfp_lead}}
-				</div>
-			{% else %}
-				<div class="text">
-					{{category.description}}
-				</div>
-			{% endif %}
+			<div class="text">
+				{{category.description}}
+			</div>
 		{% else %}
-			{% if cfp_h1 %}
-				{% if current_page == 1%}
-					<h1>{{cfp_h1}}</h1>
-				{% else %}
-					<h1>{{cfp_h1}} - {% trans "страница " %}{{current_page}}</h1>
-				{% endif %}
-			{% else %}
 				<h1>{{category.name}} {% trans 'связанные со следующими тегами: ' %} {{current_tag_names|join:', '}}. {% trans 'Страница '%}{{current_page}}</h1>
-			{% endif %}
-
-			{% if cfp_lead %}
-				<div class="text">
-					{{cfp_lead}}
-				</div>
-			{% else %}
 				<div class="text">
 					{{category.description}} {% trans ' Они были связаны и сгруппированы по следующим тегам: ' %}{{current_tag_names|join:', '}}.{% trans ' Страница '%}{{current_page}}
 				</div>
-			{% endif %}
 		{% endif %}
 
 		{% if isBreadcrumbsMiddlewareConnected %}

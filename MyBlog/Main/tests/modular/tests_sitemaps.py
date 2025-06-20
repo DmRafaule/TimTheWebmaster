@@ -4,7 +4,7 @@ from django.test import TestCase
 from django.core.files.base import ContentFile
 
 from Post.models import Article, Tool, Note, Category
-from Main.sitemaps import PostSitemap, PaginationSitemap
+from Post.sitemaps import PostSitemap
 
 class SitemapTest(TestCase):
     ''' Проверка генерации карт сайта '''
@@ -61,11 +61,3 @@ class SitemapTest(TestCase):
         self.assertEqual(len(sitemap.items()), 20)
         # Проверяем есть ли там то что нам нужно
         self.assertIn(self.articles[random.randint(0, 9)], sitemap.items())
-    
-    def test_PaginationSitemap(self):
-        ''' Проверка карты сайта, которая генерируется для страниц пагинации '''
-        sitemap = PaginationSitemap()
-        # Было сгенерированно 10 инструментов, 10 статей и 10 заметок.
-        # На одной странице вмещается 4 элемента.
-        # Соответственно имеем по три страницы на каждую модель
-        self.assertEqual(len(sitemap.items()), 9)

@@ -6,15 +6,12 @@ from django.conf.urls.i18n import i18n_patterns
 from django.views.i18n import JavaScriptCatalog
 # For sitemap
 from django.contrib.sitemaps.views import sitemap
-from Main.sitemaps import StaticSitemap, PostSitemap, PaginationSitemap
+from Main.sitemaps import StaticSitemap
+from Post.sitemaps import PostSitemap
 
 sitemaps = {
     "articles": PostSitemap,
     "static": StaticSitemap,
-}
-
-sitemaps_pagination = {
-    "pagination": PaginationSitemap
 }
 
 urlpatterns = [
@@ -24,12 +21,6 @@ urlpatterns = [
         "sitemap.xml",
         sitemap,
         {"sitemaps": sitemaps},
-        name="django.contrib.sitemaps.views.sitemap",
-    ),
-    path(
-        "sitemap-pagination.xml",
-        sitemap,
-        {"sitemaps": sitemaps_pagination},
         name="django.contrib.sitemaps.views.sitemap",
     ),
 ]
@@ -42,7 +33,6 @@ urlpatterns += i18n_patterns(
     path('', include('Engagement.urls')),
     path('', include('Breadcrumbs.urls')),
     path('tools/', include('PostEditor.urls')),
-    path('tools/', include('PagiScrollEditor.urls')),
     path('tools/', include('ImageThief.urls')),
     path('tools/', include('LinkThief.urls')),
     path('tools/', include('TextThief.urls')),
