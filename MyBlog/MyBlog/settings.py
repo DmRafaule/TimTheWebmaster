@@ -53,7 +53,6 @@ INSTALLED_APPS = [
     'Admin.apps.AdminConfig',
     'WebGLEngine.apps.WebglengineConfig',
     'Post.apps.PostConfig',
-    'PostFilter.apps.PostfilterConfig',
     'PostEditor.apps.PostEditorConfig',
     'PagiScroll.apps.PagiscrollConfig',
     'Engagement.apps.EngagementConfig',
@@ -70,7 +69,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'Engagement.middleware.EngagementMiddleware',
     'Breadcrumbs.middleware.BreadcrumbsMiddleware',
-    'PostFilter.middleware.PostFilterMiddleware',
+    'PagiScroll.middleware.PostFilterMiddleware',
     'Post.middleware.ToolMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',

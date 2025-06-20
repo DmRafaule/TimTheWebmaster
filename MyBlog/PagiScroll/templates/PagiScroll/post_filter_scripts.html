@@ -1,0 +1,12 @@
+{% load static %}
+
+<script src="{% static 'PagiScroll/js/filtering.js' %}"></script>
+{% if isTimeFilter %}
+    <script src="{% static 'PagiScroll/js/time_filtering.js' %}"></script>
+{% endif %}
+{% if isTooltypesFilter %}
+    <script src="{% static 'PagiScroll/js/tooltype_filtering.js' %}"></script>
+{% endif %}
+{% if isAlphabetFilter %}
+    <script src="{% static 'PagiScroll/js/alphabet_filtering.js' %}"></script>
+{% endif %}
