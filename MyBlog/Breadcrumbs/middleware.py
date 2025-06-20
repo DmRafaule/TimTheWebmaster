@@ -59,10 +59,7 @@ class BreadcrumbsMiddleware:
         if response.context_data:
             if len(Article.objects.filter(slug=self.slug)) == 1:
                 name = Article.objects.filter(slug=self.slug)[0].title
-            elif len(Question.objects.filter(slug=self.slug)) == 1:
-                name = Question.objects.filter(slug=self.slug)[0].question
-            elif len(Termin.objects.filter(slug=self.slug)) == 1:
-                name = Termin.objects.filter(slug=self.slug)[0].termin
+            name = None
             response.context_data.update({'post_title': name})
     
     def tool_handler(self, request, response):

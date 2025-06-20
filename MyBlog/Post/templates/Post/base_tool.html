@@ -97,7 +97,7 @@
         </div>
         {% if downloadables %}
         <div class="home_ui_el text">
-            <h2 class="">{% trans 'Медиа файлы' %}</h2>
+            <h2 class="media-files">{% trans 'Медиа файлы' %}</h2>
             <div class="post_previews--category mid_gap">
                 <ol>
                     {% for res in downloadables %}
@@ -113,7 +113,7 @@
         {% endif %}
         {% if is_notes %}
             <div class="home_ui_el text">
-                <h2 class="">{% trans "Рабочие заметки об инструменте" %}</h2>
+                <h2 class="tool-notes">{% trans "Рабочие заметки об инструменте" %}</h2>
                 <div class="post_previews--category mid_gap">
                     {{latest_notes|safe}}
                 </div>
@@ -124,7 +124,7 @@
         {% endif %}
         {% if post.similar.all|length > 0 %}
         <div class="home_ui_el text">
-            <h2 class="">{% trans 'Похожие инструменты' %}</h2>
+            <h2 class="sim-tool">{% trans 'Похожие инструменты' %}</h2>
             <div class="post_previews--category max_gap">
                 {% include 'Post/basic--post_preview-tool.html' with posts=post.similar.all %}
             </div>

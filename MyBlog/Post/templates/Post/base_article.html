@@ -131,13 +131,13 @@
 		<h2 class="paragraph">{% trans "Другое" %}</h2>
 
 		{% if post.similar.all|length > 0 %}
-			<h3 class="paragraph">{% trans 'Похожие статьи' %}</h3>
+			<h3 class="paragraph sim-art">{% trans 'Похожие статьи' %}</h3>
 			<hr>
 			{% include 'Post/embeded--post_preview-article.html' with sim_post=post.similar.all %}
 		{% endif%}
 
 		{% if post.termins.all|length > 0 %}
-			<h3 class="paragraph">{% trans 'Использованные термины' %}</h3>
+			<h3 class="paragraph used-term">{% trans 'Использованные термины' %}</h3>
 			<hr>
 			<ul class="list_without_sign">
 			{% for td in post.termins.all %}
@@ -148,7 +148,7 @@
 		{% endif %}
 
 		{% if post.questions.all|length > 0%}
-			<h3 class="paragraph">{% trans 'Релевантные вопросы' %}</h3>
+			<h3 class="paragraph rel-que">{% trans 'Релевантные вопросы' %}</h3>
 			<hr>
 			<ul class="list_without_sign">
 			{% for qa in post.questions.all %}
