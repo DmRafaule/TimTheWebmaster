@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-05-08 13:33+0300\n"
+"POT-Creation-Date: 2025-06-23 11:50+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -128,26 +128,22 @@ msgstr "Article preview"
 msgid "Описание"
 msgstr "Description"
 
-#: .\Post\templatetags\urlToBreadcrumbs.py:33
+#: .\Post\templatetags\urlToBreadcrumbs.py:36
 msgid "На русском"
 msgstr "In russian"
 
-#: .\Post\templatetags\urlToBreadcrumbs.py:35
+#: .\Post\templatetags\urlToBreadcrumbs.py:38
 msgid "На английском"
 msgstr "In english"
 
-#: .\Post\templatetags\urlToBreadcrumbs.py:48
+#: .\Post\templatetags\urlToBreadcrumbs.py:52
 msgid "Об авторе"
 msgstr "About author"
 
-#: .\Post\templatetags\urlToBreadcrumbs.py:50
+#: .\Post\templatetags\urlToBreadcrumbs.py:54
 msgid "Контакты"
 msgstr "Contacts"
 
-#: .\Post\templatetags\urlToBreadcrumbs.py:52
-msgid "Галерея"
-msgstr "Gallery"
-
-#: .\Post\templatetags\urlToBreadcrumbs.py:72
+#: .\Post\templatetags\urlToBreadcrumbs.py:78
 msgid "Страница "
 msgstr "Page "

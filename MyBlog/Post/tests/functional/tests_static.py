@@ -15,9 +15,10 @@ from MyBlog.settings import STATIC_URL, MEDIA_URL, BASE_DIR
 from Post.models import Article, Tool, Category
 
 class StaticTests(TestCase):
-    ''' Проверка на доступность статических файлов '''
+    ''' Проверка на доступность статических файлов, и правильность отрисовки для пользователя соответственно '''
+
     def setUp(self):
-        ''' Настраиваем браузер '''
+        # Настраиваем браузер 
         firefox_opt = Options()
         firefox_opt.add_argument('--headless')
         firefox_opt.add_argument("--no-sandbox")
@@ -25,12 +26,11 @@ class StaticTests(TestCase):
         self.browser = webdriver.Firefox(options=firefox_opt)
         article_cat = Category(slug='articles', name_ru="Статьи", name_en="Articles", description_ru="Описание статей", description_en="Articles\' description" )
         article_cat.save()
-
+        # Создаём соответствующую категорию
         tool_cat = Category(slug='tools', name_ru="Инструменты", name_en="Tools", description_ru="Описание инструментов", description_en="Tools\' description" )
         tool_cat.save()
     
     def tearDown(self):
-        ''' Закрываем браузер '''
         self.browser.quit()
     
     def generate_article(self, indx, content: str, styles: str, scripts: str):
@@ -70,14 +70,21 @@ class StaticTests(TestCase):
         return tool
     
     def get_static_file_sources(self, css_selector, attr_to_get):
+        ''' Занимается тем, что генерирует списки всех медиа путей:
+         
+         1) которые должны быть загружены 
+         2) которые были успешно загружены
+         3) которые не удалось загрузить
+         '''
         statics = self.browser.find_elements(By.CSS_SELECTOR, css_selector)
         statics_must_be_loaded = []
         statics_failed_to_be_loaded = []
         statics_successfully_loaded = []
-        tmp = []
         for static in statics:
             static_src = static.get_attribute(attr_to_get)
+            # Если у статического элемента есть необходимое поле
             if static_src:
+                # Если статический УРЛ в самом поле присутствует
                 if STATIC_URL in static_src:
                     statics_must_be_loaded.append(static_src)
                     if finders.find(static_src.replace(f"http://localhost:8000",'').replace(f"{STATIC_URL}",'')) is not None:
@@ -88,6 +95,7 @@ class StaticTests(TestCase):
         return statics_must_be_loaded, statics_successfully_loaded, statics_failed_to_be_loaded
 
     def check_static_files(self):
+        ''' Проверка всех возможных статических файлов '''
         # Все скрипты загрузились и доступны
         scripts_must_be_loaded, scripts_successfully_loaded, scripts_failed_to_be_loaded = self.get_static_file_sources('body>script', 'src')
         self.assertEqual(len(scripts_must_be_loaded), len(scripts_successfully_loaded))

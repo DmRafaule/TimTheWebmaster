@@ -21,14 +21,21 @@ class StaticTests(unittest.TestCase):
         self.browser.quit()
     
     def get_static_file_sources(self, css_selector, attr_to_get):
+        ''' Занимается тем, что генерирует списки всех медиа путей:
+         
+         1) которые должны быть загружены 
+         2) которые были успешно загружены
+         3) которые не удалось загрузить
+         '''
         statics = self.browser.find_elements(By.CSS_SELECTOR, css_selector)
         statics_must_be_loaded = []
         statics_failed_to_be_loaded = []
         statics_successfully_loaded = []
-        tmp = []
         for static in statics:
             static_src = static.get_attribute(attr_to_get)
+            # Если у статического элемента есть необходимое поле
             if static_src:
+                # Если статический УРЛ в самом поле присутствует
                 if STATIC_URL in static_src:
                     statics_must_be_loaded.append(static_src)
                     if finders.find(static_src.replace(f"http://localhost:8000",'').replace(f"{STATIC_URL}",'')) is not None:
@@ -39,6 +46,7 @@ class StaticTests(unittest.TestCase):
         return statics_must_be_loaded, statics_successfully_loaded, statics_failed_to_be_loaded
 
     def check_static_files(self):
+        ''' Проверка всех возможных статических файлов '''
         # Все скрипты загрузились и доступны
         scripts_must_be_loaded, scripts_successfully_loaded, scripts_failed_to_be_loaded = self.get_static_file_sources('body>script', 'src')
         self.assertEqual(len(scripts_must_be_loaded), len(scripts_successfully_loaded))
@@ -53,13 +61,16 @@ class StaticTests(unittest.TestCase):
         self.assertEqual(len(images_failed_to_be_loaded), 0)
 
     def test_static_files_on_home_page(self):
+        ''' Проверка статических файлов на домашней странице '''
         self.browser.get('http://localhost:8000')
         self.check_static_files()
 
     def test_static_files_on_contacts_page(self):
+        ''' Проверка статических файлов на странице контактов '''
         self.browser.get('http://localhost:8000/en/contacts/')
         self.check_static_files()
 
     def test_static_files_on_about_page(self):
+        ''' Проверка статических файлов на странице об авторе/сайте '''
         self.browser.get('http://localhost:8000/en/about/')
         self.check_static_files()

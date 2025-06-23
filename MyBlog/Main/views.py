@@ -12,23 +12,28 @@ from Post.models import Tool, Article, Tag, Note
 from MyBlog.settings import DEFAULT_FROM_EMAIL, DEFAULT_TO_EMAIL
 from Engagement.models import Comment
 
+#TODO: 
+# * Добавь 500 обработчик
+# * Добавь 403 обработчик
+# * Добавь 400 обработчик
 
-class MainView(TemplateView):
+class ContactsView(TemplateView):
+    ''' Специальное представление для страницы контактов '''
 
     def get_context_data(self, **kwargs):
-        context = super(MainView, self).get_context_data(**kwargs)
+        context = super(ContactsView, self).get_context_data(**kwargs)
         context = U.initDefaults(self.request)
-        
+        # Создаём и отправляем пустую форму по умолчанию, GET-запрос
         form = FeedbackForm()
         context.update({'form': form})
-        
         return context
     
     def post(self, request, *args, **kwargs):
+        # Заполняем форму из POST-запроса
         form = FeedbackForm(self.request.POST)
-        context = super(MainView, self).get_context_data(**kwargs)
+        context = super(ContactsView, self).get_context_data(**kwargs)
         context = U.initDefaults(self.request)
-
+        # Отправляем e-mail, если форма валидна + фидбэк на страницу
         if form.is_valid():
             subject = f'{form.cleaned_data.get("username")} | {form.cleaned_data.get("email")}'
             message = f'{form.cleaned_data.get("message")}'
@@ -36,25 +41,27 @@ class MainView(TemplateView):
             context.update({'feedback_message': _('✔ Вы успешно отправили сообщение')})
         else:
             context.update({'feedback_message': _('✗ Возникла ошибка при отправке формы')})
-
         
         context.update({'form': form})
     
         return render(request, self.template_name, context=context)
 
 def about(request):
+    ''' Представление для страницы об авторе/сайте '''
     context = U.initDefaults(request)
+    # Вычисляем сколько мне лет
     context.update({'me_years': U.get_how_old_human_in_years('16/07/2000', "%d/%m/%Y")})
+    # Специальный тег об моём игровом прошлом
     more_about_me_tags = Tag.objects.filter(slug_en='gamedev')
     if len(more_about_me_tags) > 0:
         more_about_me_tag = more_about_me_tags[0].slug
     else:
         more_about_me_tag = None
-    
     context.update({'more_about_me_tag': more_about_me_tag})
     return render(request, 'Main/about.html', context=context)
 
 def get_latest_post_by_tag(min, cont, Model):
+    ''' Получаем последние посты по контейнерам тегов '''
     res = []
     for tag in cont:
         objs = U.get_posts_by_tag(tag.name, Model)
@@ -69,6 +76,7 @@ def get_latest_post_by_tag(min, cont, Model):
 
 def home(request):
     # Из базы данных нужно взять текущие настройки сайта
+    # Пытаемся получить текущую конфигурацию сайта по возможности
     try:
         website_conf = Website.objects.get(is_current=True)
         cap_choosen_tools = website_conf.max_displayed_inner_tools_on_home
@@ -96,6 +104,7 @@ def home(request):
 
     # Инициализируем общие для всего сайта контекстные переменные
     # TODO: Может есть другой способ задать общие для всех представлений контекстные переменные?
+    # UPD: Возможно стоит написать соответствующую мидлвари?
     context = U.initDefaults(request)
     # Так как теги на домашней странице не поддерживаются, пока, добавляем конт. переменную 
     # Чтобы они неотображались при рендеренге превью постов
@@ -128,5 +137,6 @@ def home(request):
     return TemplateResponse(request, 'Main/home.html', context=context)
 
 def page_not_found(request, exception):
+    ''' Специальный хендлер для 404 ответов '''
     context = U.initDefaults(request)
     return render(request, 'Main/404.html', context=context, status=404)

@@ -17,19 +17,19 @@ from Post.models import Article, Tool, Category
 
 class TableOfContentTest(StaticLiveServerTestCase):
     ''' Проверяем поведение нового пользователя '''    
+
     def setUp(self):
-        ''' Настраиваем браузер '''
+        # Настраиваем браузер
         firefox_opt = Options()
         firefox_opt.add_argument('--headless')
         firefox_opt.add_argument("--no-sandbox")
         firefox_opt.add_argument("--disable-dev-shm-usage")  
         self.browser = webdriver.Firefox(options=firefox_opt)
-
+        # Создаём необходимую категорию
         article_cat = Category(slug='articles', name_ru="Статьи", name_en="Articles", description_ru="Описание статей", description_en="Articles\' description" )
         article_cat.save()
     
     def tearDown(self):
-        ''' Закрываем браузер '''
         self.browser.quit()
     
     def generate_article(self, indx, content: str, styles: str, scripts: str):
@@ -39,8 +39,10 @@ class TableOfContentTest(StaticLiveServerTestCase):
             "styles": styles,
             "scripts": scripts,
         }
+        # Предварительно нужно будет отрендерить шаблон и превратить его в строку
         template_file_not_rendered = loader.get_template(os.path.join('Post','article_exmpl.html'))
         template_file_rendered = template_file_not_rendered.render(context=context)
+        # Сохраняем статью
         file = ContentFile(template_file_rendered, name=f"index-{indx}.html")
         article = Article(slug=f"article-{indx}", template=file)
         article.save()
