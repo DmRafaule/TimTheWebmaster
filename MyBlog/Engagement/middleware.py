@@ -19,7 +19,7 @@ class EngagementMiddleware:
         # All tools main view functions must be called tool_main
         self.allowed_func_tools = ('tool_main', 'tool')
         # Beacause of Class base view we use templates name instead of functions
-        self.allowed_templates_pagination = ('PagiScroll/article_list.html', 'PagiScroll/tool_list.html', 'PagiScroll/note_list.html')
+        self.allowed_templates_pagination = ('PagiScroll/base_post_list.html',)
         self.form = FeedbackForm()
         self.email_form = EmailForm()
         # One-time configuration and initialization.

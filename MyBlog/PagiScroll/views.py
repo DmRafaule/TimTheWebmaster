@@ -27,6 +27,7 @@ class PostListView(ListView):
     tags_names = None
     image = None
     context = {}
+    post_preview_template = ''
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -41,13 +42,14 @@ class PostListView(ListView):
         context['current_tag_names'] = self.tags_names
         context['tags_json'] = json.dumps(self.tags)
         context['post_list_preview'] = self.image
+        context['post_preview_template'] = self.post_preview_template
 
         return context
 
     def get(self, request):
         error_response = self.fetch(request)
         if error_response is None:
-            return TemplateResponse(request, self.template_name, self.context)
+            return TemplateResponse(request, 'PagiScroll/base_post_list.html', self.context)
         else:
             return error_response
 
@@ -55,7 +57,7 @@ class PostListView(ListView):
         error_response = self.fetch(request)
         if  error_response is None:
             cat = "-" + Post_M.Category.objects.get(slug=self.category).categry_name.lower()
-            return TemplateResponse(request, f'Post/basic--post_preview{cat}.html', self.context)
+            return TemplateResponse(request, self.post_preview_template, self.context)
         else:
             return error_response
     

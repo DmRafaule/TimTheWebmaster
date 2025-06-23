@@ -83,8 +83,9 @@
 		{% endif %}
 		
 		<div id="meta-data" data-sort="{{is_recent}}" data-tags="{{tags_json}}" data-view="basic" data-who="{{category.slug}}" data-numpages={{num_pages}} data-currentpage="{{current_page}}" data-url="{{category.get_absolute_url}}"></div>
-		{% block content_list %}
-		{% endblock %}
+		<div id="page" class="page toObserve">
+			{% include post_preview_template %}
+		</div>
 
 		<div id="progressbar" class="marger in_middle" >
 			<div class="progressbar-container">
