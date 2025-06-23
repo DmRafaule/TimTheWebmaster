@@ -56,13 +56,17 @@ class PostListView(ListView):
     def post(self, request):
         error_response = self.fetch(request)
         if  error_response is None:
-            cat = "-" + Post_M.Category.objects.get(slug=self.category).categry_name.lower()
             return TemplateResponse(request, self.post_preview_template, self.context)
         else:
             return error_response
     
     def fetch(self, request):
-        self.website_conf = Main_M.Website.objects.get(is_current=True)
+        try:
+            self.website_conf = Main_M.Website.objects.get(is_current=True)
+            posts_per_page = self.website_conf.paginator_per_page_posts
+        except:
+            posts_per_page = 4
+
         if request.method == "GET":
             self.page = int(request.GET.get('page', 1))
         elif request.method == "POST":
@@ -141,7 +145,7 @@ class PostListView(ListView):
                 return HttpResponseBadRequest()
 
         # Create a paginator
-        self.pages = calculate_pages(len(self.object_list), self.website_conf.paginator_per_page_posts)
+        self.pages = calculate_pages(len(self.object_list), posts_per_page)
         if self.page > self.pages :
             if request.method == "GET":
                 raise Http404(_("Так много страниц у меня нет."))
@@ -151,7 +155,7 @@ class PostListView(ListView):
                 return HttpResponseBadRequest()
 
 
-        self.object_list = self.object_list[(self.page-1) * self.website_conf.paginator_per_page_posts : self.page * self.website_conf.paginator_per_page_posts]
+        self.object_list = self.object_list[(self.page-1) * posts_per_page : self.page * posts_per_page]
         self.context = self.get_context_data()
         self.context.update(U.initDefaults(request))
 

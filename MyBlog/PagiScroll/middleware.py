@@ -29,7 +29,10 @@ class PostFilterMiddleware:
                 case 'notes':
                     self.filter_list = [{'template': 'PagiScroll/post_filter_times.html', 'verified': 'isTimeFilter'}]
                 case 'tools':
-                    self.filter_list = [{'template': 'PagiScroll/post_filter_tooltypes.html', 'verified': 'isTooltypesFilter'}]
+                    self.filter_list = [
+                        {'template': 'PagiScroll/post_filter_tooltypes.html', 'verified': 'isTooltypesFilter'},
+                        {'template': 'PagiScroll/post_filter_times.html', 'verified': 'isTimeFilter'} 
+                    ]
                     
             if len(self.filter_list) > 0:
                 # Update how many years are
