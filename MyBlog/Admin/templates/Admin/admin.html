@@ -9,25 +9,21 @@
 	<link rel="canonical" href="https://{{domain_name}}{%url 'admin'%}" />
 {% endblock %}
 
+{% block hat %}
+	<div class="header_button"  data-body="models_side_bar_container">
+		<img id="models_side_bar_button" width="32" height="32" class="icon button dynamic_image squered_button active_group_button" src="{% static 'placeholder.svg' %}" data-src="{% static 'tree.png' %}" alt="{% trans 'one layer on top of anothe' %}">
+	</div>
+	<div class="header_button"  data-body="models_last_action_container">
+		<img id="models_side_bar_button" width="32" height="32" class="icon button dynamic_image squered_button active_group_button" src="{% static 'placeholder.svg' %}" data-src="{% static 'tree.png' %}" alt="{% trans 'one layer on top of anothe' %}">
+	</div>
+{% endblock %}
+
 {% block content %}
-    <div class="left-sided-button">
-        <div class="sided-button">
-            <img width="32" height="32" class="icon" src="{% static 'chevron.svg' %}" alt="Chevron">
-            <div>{% trans 'Модели' %}</div>
-        </div>
-        <div class="left-sided-button_body sided-button_body">
-
-        </div>
-    </div>
-    <div class="right-sided-button">
-        <div class="sided-button">
-            <img width="32" height="32" class="icon flip_vert" src="{% static 'chevron.svg' %}" alt="Chevron">
-            <div>{% trans 'Последние действия' %}</div>
-        </div>
-        <div class="right-sided-button_body sided-button_body">
-
-        </div>
-    </div>
+	<div id="models_side_bar_container" class="side_bar_container">
+	</div>
+	<div id="models_last_action_container" class="side_bar_container">
+	</div>
+    <h1>{% trans 'Админка' %}</h1>
 {% endblock %}
 
 {% block footer_links %}
@@ -41,6 +37,7 @@
 	<link type="text/css" rel="stylesheet" href="{% static 'lists.css' %}"/>
 	<link type="text/css" rel="stylesheet" href="{% static 'forms.css' %}"/>
     <link type="text/css" rel="stylesheet" href="{% static 'footer-tool.css' %}"/>
+    <link type="text/css" rel="stylesheet" href="{% static 'Admin/css/admin.css' %}"/>
 {% endblock %}
 
 
@@ -49,5 +46,4 @@
     <script>
         const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
     </script>
-    <script src="{% static 'sided_buttons.js' %}"></script>
 {% endblock %}
