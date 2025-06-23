@@ -7,6 +7,8 @@ from .models import Article, Tool
 
 
 class PostSitemap(Sitemap):
+    ''' Для генерации XML-карты сайта для постов типа Статей и Инструментов '''
+
     i18n = True
 
     def items(self):

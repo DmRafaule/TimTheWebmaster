@@ -3,6 +3,7 @@ from django.contrib.sitemaps import Sitemap
 
 
 class StaticSitemap(Sitemap):
+    ''' Генератор XML-карты сайта для статическх(build-in) страниц на сайте '''
     i18n = True
 
     def items(self):

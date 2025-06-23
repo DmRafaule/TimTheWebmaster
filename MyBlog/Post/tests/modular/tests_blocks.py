@@ -132,8 +132,10 @@ Nunc et sem sed turpis pharetra ullamcorper. Nam suscipit gravida tellus eget gr
             "styles": styles,
             "scripts": scripts,
         }
+        # Предварительно прорисовываем шаблон
         template_file_not_rendered = loader.get_template(os.path.join('Post','article_exmpl.html'))
         template_file_rendered = template_file_not_rendered.render(context=context)
+        # Создаём соответствующий, прорисованный шаблон и сохраняем его вместе со статьёй
         file = ContentFile(template_file_rendered, name=f"index-{indx}.html")
         article = Article(slug=f"article-{indx}", template=file)
         article.save()
@@ -155,7 +157,9 @@ Nunc et sem sed turpis pharetra ullamcorper. Nam suscipit gravida tellus eget gr
         template_file_not_rendered = loader.get_template(os.path.join('Post','tool_exmpl.html'))
         template_file_rendered = template_file_not_rendered.render(context=context)
         # Я не знаю по какой причине, но Django просто не может декодировать русские буквы
+        # По этому я просто удаляю русские буквы ??
         template_file_rendered = template_file_rendered.replace('Описание', '')
+        # Генерируем файл и сохраняем инструмент
         file = ContentFile(template_file_rendered, name=f"index-{indx}.html")
         tool = Tool(slug=f"tool-{indx}", template=file,  name_ru=f"Инструмент {indx}", name_en=f"Tool {indx}", description_ru=f"Описание {indx}", description_en=f" Descript {indx}")
         tool.save()
@@ -180,6 +184,8 @@ Nunc et sem sed turpis pharetra ullamcorper. Nam suscipit gravida tellus eget gr
         self.assertTemplateUsed(response, 'Post/base_tool.html')
     
     def test_rendered_html_for_article_with_appended_data(self):
+        ''' Тест на правильно возвращаемый шаблон для статей с предварительно 
+         подготовленной и заполненной статьёй '''
         request = RequestFactory().get(f"{self.live_server_url}{self.article1.get_absolute_url()}")
         response = article(request, self.article1.slug)
         html = response.render()
@@ -208,6 +214,8 @@ Nunc et sem sed turpis pharetra ullamcorper. Nam suscipit gravida tellus eget gr
         self.assertIsNotNone(soup_used_questions)
     
     def test_rendered_html_for_article_without_appended_data(self):
+        ''' Тест на правильно возвращаемый шаблон для статьи без
+         дополнительных данных '''
         request = RequestFactory().get(f"{self.live_server_url}{self.article2.get_absolute_url()}")
         response = article(request, self.article2.slug)
         html = response.render()

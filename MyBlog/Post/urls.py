@@ -1,10 +1,11 @@
 from django.urls import path
+
 from . import views as V
 
 
-# Patterns for displaying posts by itself
-# There is no tools because tool is a django app so it has to
-#   handle it's own urls
+# УРЛ паттерны для отображения постов типа Статей и Инструментов
+# Причём, паттерн для инструментов будет отображать только те инструменты
+# которые без шаблона, или же с шаблоно но всё ещё не отдельные Django-приложения
 urlpatterns = [
     path('articles/<slug:post_slug>/', V.article, name="article"),
     path('tools/<slug:post_slug>/', V.tool, name="tool"),

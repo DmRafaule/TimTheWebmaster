@@ -13,7 +13,8 @@ from MyBlog.settings import LANGUAGES
 from Post.models import Article, Tool, Category
 
 class MobileFriendlyTest(TestCase):
-    ''' Проверяем поведение нового пользователя '''    
+    ''' Проверяем дружелюбность мобильного интерфейса '''    
+
     def setUp(self):
         ''' Настраиваем браузер '''
         firefox_opt = Options()
@@ -21,15 +22,14 @@ class MobileFriendlyTest(TestCase):
         firefox_opt.add_argument("--no-sandbox")
         firefox_opt.add_argument("--disable-dev-shm-usage")  
         self.browser = webdriver.Firefox(options=firefox_opt)
-
+        # Создаём необходимую категорию
         article_cat = Category(slug='articles', name_ru="Статьи", name_en="Articles", description_ru="Описание статей", description_en="Articles\' description" )
         article_cat.save()
-
+        # Создаём необходимую категорию
         tool_cat = Category(slug='tools', name_ru="Инструменты", name_en="Tools", description_ru="Описание инструментов", description_en="Tools\' description" )
         tool_cat.save()
     
     def tearDown(self):
-        ''' Закрываем браузер '''
         self.browser.quit()
     
     def generate_article(self, indx, content: str, styles: str, scripts: str):
@@ -39,9 +39,11 @@ class MobileFriendlyTest(TestCase):
             "styles": styles,
             "scripts": scripts,
         }
+        # Предварительно нужно будет отрендерить шаблон и превратить его в строку
         template_file_not_rendered = loader.get_template(os.path.join('Post','article_exmpl.html'))
         template_file_rendered = template_file_not_rendered.render(context=context)
         file = ContentFile(template_file_rendered, name=f"index-{indx}.html")
+        # Сохраняем статью
         article = Article(slug=f"article-{indx}", template=file)
         article.save()
         return article
@@ -59,10 +61,13 @@ class MobileFriendlyTest(TestCase):
             "styles": styles,
             "scripts": scripts,
         }
+        # Предварительно нужно будет отрендерить шаблон и превратить его в строку
         template_file_not_rendered = loader.get_template(os.path.join('Post','tool_exmpl.html'))
         template_file_rendered = template_file_not_rendered.render(context=context)
         # Я не знаю по какой причине, но Django просто не может декодировать русские буквы
+        # По этому просто удаляю их
         template_file_rendered = template_file_rendered.replace('Описание', '')
+        # Сохраняем инструмент
         file = ContentFile(template_file_rendered, name=f"index-{indx}.html")
         tool = Tool(slug=f"tool-{indx}", template=file,  name_ru=f"Инструмент {indx}", name_en=f"Tool {indx}", description_ru=f"Описание {indx}", description_en=f" Descript {indx}")
         tool.save()
@@ -81,6 +86,7 @@ class MobileFriendlyTest(TestCase):
             ]
             for page in pages:
                 self.browser.get(page)
+                # Разрешение экранов, которые я бы хотел поддерживать
                 sizes = [1600, 1200, 992, 768, 480, 300]
                 for win_size in sizes:
                     self.browser.set_window_size(win_size, 800)

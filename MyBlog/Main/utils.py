@@ -68,8 +68,8 @@ def getNotEmptyCategories(categories):
             categories_result.append(category)
     return categories_result
 
-# Create queryset with special categories
 def getSpecialTopLevelCategories(categories):
+    ''' Возвращает либо список всех категорий для отображения, либо пустой список '''
     try:
         website_conf = Website.objects.get(is_current=True)
         categories_on_side = website_conf.categories_to_display_on_side_menu.all()
@@ -79,6 +79,8 @@ def getSpecialTopLevelCategories(categories):
     return getNotEmptyCategories(categories)
 
 def initDefaults(request):
+    ''' Инициализирует общие для всех контекстные переменные '''
+    # Пытаемся получить текущие настройки сайта
     try:
         website_conf = Website.objects.get(is_current=True)
         popular_articles_in_footer = website_conf.popular_articles_on_footer.all()
@@ -88,14 +90,16 @@ def initDefaults(request):
         popular_articles_in_footer = []
         popular_tools_in_footer = []
         image_preview = None
-
+    # Получаем категории для отображения в боковом меню
     categories = Post_M.Category.objects.all()
     categories_special = getSpecialTopLevelCategories(categories)
-    # Categories(categories_special) that gonna appear in first level of menu
-    # All other (categories) gonna be in second lever under content menu
+    # Сохраняем доменное имя
     domain_name = ALLOWED_HOSTS[0]
+    # Сохраняем популярные посты (статьи + инструменты)
     popular_posts = list(chain(popular_articles_in_footer, popular_tools_in_footer))
+    # Обозначаем дефолтное изображени
     default_post_preview = image_preview
+    # Получаем все контакты
     contacts = Contact.objects.all()
     context = {
         'categories_special': categories_special,
@@ -104,5 +108,4 @@ def initDefaults(request):
         'popular_posts': popular_posts,
         'default_post_preview': default_post_preview,
     }
-    
     return context

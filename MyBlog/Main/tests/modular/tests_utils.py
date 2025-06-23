@@ -15,12 +15,11 @@ class UtilsTests(TestCase):
     ''' Проверка функций-утилит '''
 
     def setUp(self):
+        # Создаём необходимые категории
         article_cat = Category(slug='articles', name_ru="Статьи", name_en="Articles", description_ru="Описание статей", description_en="Articles\' description" )
         article_cat.save()
-
         tool_cat = Category(slug='tools', name_ru="Инструменты", name_en="Tools", description_ru="Описание инструментов", description_en="Tools\' description" )
         tool_cat.save()
-
         self.categories = Category.objects.all()
 
     def generate_article_queryset(self, max_el_in):

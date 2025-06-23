@@ -4,22 +4,22 @@ from django.core.files.base import ContentFile
 from Main.models import Website, Contact, Media
 from Post.models import Article, Tool, Note, Category, Tag
 
-
+#TODO: Доделай тестирование моделей:
+# * Проверку валидации полей
+# * Проверку кастомной логики в моделях
 class ModelsTest(TestCase):
     ''' Тесты для тестирования моделей приложения '''
 
     def setUp(self):
-        
+        # Создаём необходимые категории
         article_cat = Category(slug='articles', name_ru="Статьи", name_en="Articles", description_ru="Описание статей", description_en="Articles\' description" )
         article_cat.save()
-
         tool_cat = Category(slug='tools', name_ru="Инструменты", name_en="Tools", description_ru="Описание инструментов", description_en="Tools\' description" )
         tool_cat.save()
-
         note_cat = Category(slug='notes', name_ru="Заметки", name_en="Notes", description_ru="Описание заметок", description_en="Notes\' description" )
         note_cat.save()
-
         self.categories = Category.objects.all()
+        # Генерируем группы объектов в БД
         self.articles = self.generate_article_queryset(0,10)
         self.tools = self.generate_tool_queryset(0,10)
         self.notes = self.generate_note_queryset(0,10)

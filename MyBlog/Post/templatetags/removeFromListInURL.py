@@ -7,6 +7,7 @@ register = template.Library()
 @register.filter(name='removeFromListInURL')
 @stringfilter
 def removeFromListInURL(value, arg):
+    ''' Удаляет тег из УРЛа '''
     path = ''
     for item in arg:
         if item != value:
