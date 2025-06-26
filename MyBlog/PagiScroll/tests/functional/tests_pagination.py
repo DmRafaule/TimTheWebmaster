@@ -81,6 +81,7 @@ class PaginationTests(StaticLiveServerTestCase):
         for i in range(start_indx, start_indx + max_el_in):
             file = ContentFile('TEXT', name=f"index-{i}.html")
             article = Article(slug=f"article-{i}", template=file, title_ru=f"Article {i}", title_en=f"Article {i}")
+            time.sleep(0.1)
             article.save()
 
         return Article.objects.all()
@@ -90,6 +91,7 @@ class PaginationTests(StaticLiveServerTestCase):
             с заданного индекса'''
         for i in range(start_indx, start_indx + max_el_in):
             tool = Tool(slug=f"tool-{i}", name_ru=f"инструмент {i}", name_en=f"tool {i}", description_ru=f"описание инстр {i}", description_en=f"tool descr {i}", h1_ru=f"Tool {i}", h1_en=f"Tool {i}")
+            time.sleep(0.1)
             tool.save()
 
         return Tool.objects.all()
@@ -99,6 +101,7 @@ class PaginationTests(StaticLiveServerTestCase):
             с заданного индекса'''
         for i in range(start_indx, start_indx + max_el_in):
             note = Note(title_ru=f"Note {i}", title_en=f"Note {i}")
+            time.sleep(0.1)
             note.save()
         
         return Note.objects.all()

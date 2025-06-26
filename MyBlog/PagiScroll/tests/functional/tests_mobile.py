@@ -8,11 +8,12 @@ from selenium.webdriver.common.by import By
 from django.template import loader
 from django.core.files.base import ContentFile
 from django.test.testcases import TestCase
+from django.contrib.staticfiles.testing import StaticLiveServerTestCase
 
 from MyBlog.settings import LANGUAGES
 from Post.models import Article, Tool, Note, Category
 
-class MobileFriendlyTest(TestCase):
+class MobileFriendlyTest(StaticLiveServerTestCase):
     ''' Проверяем дружелюбность мобильного интерфейса '''    
 
     def setUp(self):
@@ -71,7 +72,7 @@ class MobileFriendlyTest(TestCase):
         for lang in LANGUAGES:
             pages = []
             for cat in Category.objects.all():
-                pages.append(f'http://localhost:8000/{lang[0]}/{cat.slug}/')
+                pages.append(f'{self.live_server_url}/{lang[0]}/{cat.slug}/')
 
             for page in pages:
                 self.browser.get(page)
