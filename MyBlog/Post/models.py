@@ -126,8 +126,12 @@ class Article(Post):
 @receiver(pre_save, sender=Article)
 def _post_save_category_article(sender, instance, **kwargs): 
     # Задаём соответствующую категорию, а если её нет, то создаём основу
-    category, is_created = Category.objects.get_or_create(slug="articles", name_ru="Статьи", name_en="Articles", description_ru="Описание статей", description_en="Articles\' description")
+    category, is_created = Category.objects.get_or_create(slug="articles")
     if is_created:
+        category.name_ru = "Статьи"
+        category.name_en = "Articles"
+        category.description_ru = "Описание статей"
+        category.description_en = "Articles\' description"
         category.categry_name = "Article"
         category.save()
     instance.category = category
@@ -210,8 +214,12 @@ class Tool(Post):
 @receiver(pre_save, sender=Tool)
 def _post_save_category_tool(sender, instance, **kwargs): 
     # Задаём соответствующую категорию, а если её нет, то создаём основу
-    category, is_created = Category.objects.get_or_create(slug="tools", name_ru="Инструменты", name_en="Tools", description_ru="Описание инструментов", description_en="Tools\' description" )
+    category, is_created = Category.objects.get_or_create(slug="tools")
     if is_created:
+        category.name_ru = "Инструменты"
+        category.name_en = "Tools"
+        category.description_ru = "Описание инструментов"
+        category.description_en = "Tools\' description"
         category.categry_name = "Tool"
         category.save()
     instance.category = category
@@ -248,8 +256,12 @@ class Note(models.Model):
 @receiver(pre_save, sender=Note)
 def _post_save_category_note(sender, instance, **kwargs): 
     # Задаём соответствующую категорию, а если её нет, то создаём основу
-    category, is_created = Category.objects.get_or_create(slug="notes", name_ru="Заметки", name_en="Notes", description_ru="Описание заметок", description_en="Notes\' description" )
+    category, is_created = Category.objects.get_or_create(slug="notes")
     if is_created:
+        category.name_ru = "Заметки"
+        category.name_en = "Notes"
+        category.description_ru = "Описание заметок"
+        category.description_en = "Notes\' description"
         category.categry_name = "Note"
         category.save()
     instance.category = category
