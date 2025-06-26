@@ -10,4 +10,3 @@ Disallow: /ru/profile/*
 
 Host: https://timthewebmaster.com
 Sitemap: https://timthewebmaster.com/sitemap.xml
-Sitemap: https://timthewebmaster.com/sitemap-pagination.xml

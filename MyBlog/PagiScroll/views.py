@@ -1,8 +1,4 @@
 import json
-import Post.models as Post_M
-import Main.models as Main_M
-import Main.utils as U
-import PagiScroll.utils as PagiScroll_utils
 from django.http import Http404, HttpResponseBadRequest
 from django.db.models import Q
 from django.shortcuts import render
@@ -13,20 +9,39 @@ from django.contrib.syndication.views import Feed
 from django.utils.translation import get_language
 from django.urls import reverse
 
+import Post.models as Post_M
+import Main.models as Main_M
+import Main.utils as U
+import PagiScroll.utils as PagiScroll_utils
+
 
 class PostListView(ListView):
+    ''' Класс представлени списков постов и заметок'''
+
     allow_empty=True
     context_object_name = "posts"
+    # Текущая конфигурация сайта
     website_conf = None
+    # Для сортировки по времени создания
     is_recent = "true"
+    # Для сортировки по алфавиту
     is_alphabetic = "ignored"
+    # Используемая категория для отображения пагинации
     category = None
+    # Сколько страниц для пагинации использовать
     pages = 0
+    # Стартовая страница
     page = 1
+    # Теги используемые для фильтрации
     tags = None
+    # Используемые теги, их имена
     tags_names = None
+    # Превью вверху для страницы пагинации
     image = None
+    # Контекстная переменная для хранения переменных используемых в отрисовке шаблонов
     context = {}
+    # Какой шаблон используется для отрисовки блоко постов
+    post_preview_template = ''
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -41,26 +56,32 @@ class PostListView(ListView):
         context['current_tag_names'] = self.tags_names
         context['tags_json'] = json.dumps(self.tags)
         context['post_list_preview'] = self.image
+        context['post_preview_template'] = self.post_preview_template
 
         return context
 
     def get(self, request):
         error_response = self.fetch(request)
         if error_response is None:
-            return TemplateResponse(request, self.template_name, self.context)
+            return TemplateResponse(request, 'PagiScroll/base_post_list.html', self.context)
         else:
             return error_response
 
     def post(self, request):
         error_response = self.fetch(request)
         if  error_response is None:
-            cat = "-" + Post_M.Category.objects.get(slug=self.category).categry_name.lower()
-            return TemplateResponse(request, f'Post/basic--post_preview{cat}.html', self.context)
+            return TemplateResponse(request, self.post_preview_template, self.context)
         else:
             return error_response
     
     def fetch(self, request):
-        self.website_conf = Main_M.Website.objects.get(is_current=True)
+        # Пытаемся получить текущую конфигурацию сайта
+        try:
+            self.website_conf = Main_M.Website.objects.get(is_current=True)
+            posts_per_page = self.website_conf.paginator_per_page_posts
+        except:
+            posts_per_page = 4
+        # Допустимы запросы GET, POST
         if request.method == "GET":
             self.page = int(request.GET.get('page', 1))
         elif request.method == "POST":
@@ -70,12 +91,15 @@ class PostListView(ListView):
         else:
             return HttpResponseBadRequest()
 
+        # Фильтруем по опубликованности
         self.object_list =  self.model.objects.filter(isPublished=True)
-        self.object_list = in_order(self.object_list, self.is_recent)
-        self.object_list = in_alphabetic(self.object_list, self.is_alphabetic)
+        # Фильтруем по порядку создания
+        self.object_list = PagiScroll_utils.in_order(self.object_list, self.is_recent)
+        # Фильтруем по алфавиту
+        self.object_list = PagiScroll_utils.in_alphabetic(self.object_list, self.is_alphabetic)
 
         if request.method == "POST":
-            # Filter posts by date filters specified
+            # Фильтруем посты относительно текущего времени
             relative_this = request.POST.get('relative_this')
             match (relative_this):
                 case 'this_day':
@@ -86,7 +110,7 @@ class PostListView(ListView):
                     self.object_list = PagiScroll_utils.get_this_month_posts(self.object_list)
                 case 'this_year':
                     self.object_list = PagiScroll_utils.get_this_year_posts(self.object_list)
-
+            # Фильтруем посты по выбраным временым промежуткам
             week_days = json.loads(request.POST['week_day'])
             self.object_list = PagiScroll_utils.get_posts_by_week_days(week_days, self.object_list)
             month_days = json.loads(request.POST['month_day'])
@@ -100,10 +124,10 @@ class PostListView(ListView):
             platforms_id = json.loads(request.POST['platform'])
             platforms = Post_M.Platform.objects.filter(id__in=platforms_id)
             self.object_list = PagiScroll_utils.get_posts_by_platforms(platforms, self.object_list)
-
+            # Если объекты не были найдены, возвращаем соответствующий шаблон
             if len(self.object_list) == 0:
                 return render(request, 'PagiScroll/not_found_posts.html', context={'message': _('Ничего не нашёл.'), 'kaomodji': '(っ °Д °;)っ'}, status=404)
-
+        # Получаем теги из запроса
         self.tags_names = []
         if request.method == "GET":
             self.tags = request.GET.getlist('tag', [])
@@ -111,9 +135,8 @@ class PostListView(ListView):
             self.tags = json.loads(request.POST['tag'])
         else: 
             return HttpResponseBadRequest()
-        
+        # Фильтруем посты по тегам
         if len(self.tags) > 0:
-            # Search everywhere !!!
             tag_obj = Post_M.Tag.objects.filter(Q(name_ru__in=self.tags) | Q(name_en__in=self.tags) | Q(slug_ru__in=self.tags)  | Q(slug_en__in=self.tags))
             if (len(self.tags) != len(tag_obj)) or tag_obj is None:
                 if request.method == "GET":
@@ -122,12 +145,12 @@ class PostListView(ListView):
                     return render(request, 'PagiScroll/not_found_posts.html', context={'message': _('Такого тега не существует, или он введён с ошибкой'), 'kaomodji': '(っ °Д °;)っ'}, status=404)
                 else:
                     return HttpResponseBadRequest()
-
+            # Сохраняем для рендеринга в шаблоне
             for key, tag in enumerate(tag_obj):
                 self.tags[key] = tag.slug
             for key, tag in enumerate(tag_obj):
                 self.tags_names.append(tag.name)
-
+            # Получаем все посты в которых присутствуют все требуемые теги 
             self.object_list = U.getAllWithTags(self.object_list, tag_obj)
 
         if len(self.object_list) == 0:
@@ -137,9 +160,8 @@ class PostListView(ListView):
                 raise Http404()
             else:
                 return HttpResponseBadRequest()
-
-        # Create a paginator
-        self.pages = calculate_pages(len(self.object_list), self.website_conf.paginator_per_page_posts)
+        # Создаём пагинатор
+        self.pages = PagiScroll_utils.calculate_pages(len(self.object_list), posts_per_page)
         if self.page > self.pages :
             if request.method == "GET":
                 raise Http404(_("Так много страниц у меня нет."))
@@ -147,40 +169,15 @@ class PostListView(ListView):
                 return render(request, 'PagiScroll/not_found_posts.html', context={'message': _('Так много страниц у меня нет.'), 'kaomodji': '(っ °Д °;)っ'}, status=404)
             else:
                 return HttpResponseBadRequest()
-
-
-        self.object_list = self.object_list[(self.page-1) * self.website_conf.paginator_per_page_posts : self.page * self.website_conf.paginator_per_page_posts]
+        # Пагинируемся)
+        self.object_list = self.object_list[(self.page-1) * posts_per_page : self.page * posts_per_page]
         self.context = self.get_context_data()
         self.context.update(U.initDefaults(request))
 
         return None
 
-def calculate_pages(total_items, items_per_page):
-    if total_items <= 0 or items_per_page <= 0:
-        return 1
-    
-    return -(-total_items // items_per_page)  # Using ceiling division
-
-def in_order(queryset, is_recent):
-    if is_recent == 'true':
-        order = '-timeCreated'
-    else:
-        order = 'timeCreated'
-    # Resort posts by time of creation
-    return queryset.order_by(order)
-
-def in_alphabetic(queryset, is_alphabetic):
-    if is_alphabetic != 'ignored':
-        if is_alphabetic == 'true':
-            order = '-termin'
-        else:
-            order = 'termin'
-        # Resort posts by alphabet
-        return queryset.order_by(order)
-    else:
-        return queryset
-
 class PostFeed(Feed):
+    ''' Генератор RSS фидов '''
 
     def __init__(self, model, category_slug):
         super().__init__()
