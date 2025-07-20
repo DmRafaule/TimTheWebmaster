@@ -1,1 +1,18 @@
-class InputValueButton{constructor(e,t){this.elements=document.querySelectorAll(e),this.elements.forEach(e=>{e.addEventListener("change",function(e){var n=e.target.value,s=e.target.dataset.field;t(n,s)})})}update(e){for(var t=0;t<this.elements.length;t++)this.elements[t].value=e[t]}}
+class InputValueButton{
+	constructor(id, callback){
+		
+		this.elements = document.querySelectorAll(id)
+		this.elements.forEach((element) => {
+			element.addEventListener('change', function(event){
+				var data = event.target.value
+				var field = event.target.dataset.field
+				callback(data, field)
+			})
+		})
+	}
+	update(data){
+		for (var i = 0; i < this.elements.length; i++){
+			this.elements[i].value = data[i] 
+		}
+	}
+}

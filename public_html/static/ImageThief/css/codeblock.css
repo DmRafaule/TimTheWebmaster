@@ -1,1 +1,11 @@
-.content_body__codeblock{position:relative;border:2px solid grey;margin:10px;overflow:scroll;max-height:600px;z-index:0}.content_body__codeblock_inner{position:absolute}
+.content_body__codeblock{
+	position: relative;
+	border: 2px solid grey;	
+	margin: 10px;
+	overflow: scroll;
+	max-height: 600px;
+	z-index: 0;
+}
+.content_body__codeblock_inner{
+	position: absolute;
+}

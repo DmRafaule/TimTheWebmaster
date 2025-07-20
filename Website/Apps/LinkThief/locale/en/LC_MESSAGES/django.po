@@ -1,0 +1,231 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-05-13 10:36+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: .\LinkThief\forms.py:6
+msgid "Один УРЛ"
+msgstr "A single URL"
+
+#: .\LinkThief\forms.py:6
+msgid "Список УРЛов"
+msgstr "A list of URLs"
+
+#: .\LinkThief\forms.py:6
+msgid "Целый сайт"
+msgstr "Whole website"
+
+#: .\LinkThief\forms.py:7
+msgid "Все ссылки"
+msgstr "All links"
+
+#: .\LinkThief\forms.py:7
+msgid "Только внутренние ссылки"
+msgstr "Only internal links"
+
+#: .\LinkThief\forms.py:7
+msgid "Только внешние ссылки"
+msgstr "Only external links"
+
+#: .\LinkThief\forms.py:7
+msgid "Только ссылки с анкорами"
+msgstr "Links with anchor text"
+
+#: .\LinkThief\forms.py:7
+msgid "Только ссылки без анкоров"
+msgstr "Links without anchor text"
+
+#: .\LinkThief\forms.py:7
+msgid "Только те, которые можно пройти"
+msgstr "The crawlable links"
+
+#: .\LinkThief\forms.py:7
+msgid "Только те, которые не поддаются обходу"
+msgstr "Not so crawlable links"
+
+#: .\LinkThief\forms.py:9
+msgid "Показать таблицу на этой странице"
+msgstr "Show an on-page table"
+
+#: .\LinkThief\forms.py:10
+msgid "Способ обхода"
+msgstr "How to crawl a website"
+
+#: .\LinkThief\forms.py:11
+msgid "Как сохранить результат"
+msgstr "How to save the result"
+
+#: .\LinkThief\templates\LinkThief\link-thief-form-result.html:15
+msgid "Результаты"
+msgstr "Results"
+
+#: .\LinkThief\templates\LinkThief\link-thief-form-result.html:18
+msgid "Общее"
+msgstr "Common"
+
+#: .\LinkThief\templates\LinkThief\link-thief-form-result.html:24
+msgid "Всего ссылок:"
+msgstr "Total links:"
+
+#: .\LinkThief\templates\LinkThief\link-thief-form-result.html:29
+msgid "Всего внутренних ссылок:"
+msgstr "The total of internal links:"
+
+#: .\LinkThief\templates\LinkThief\link-thief-form-result.html:34
+msgid "Всего внешних ссылок:"
+msgstr "The total of external links:"
+
+#: .\LinkThief\templates\LinkThief\link-thief-form-result.html:39
+msgid "Всего проходимых краулером ссылок:"
+msgstr "The total of crawlable links"
+
+#: .\LinkThief\templates\LinkThief\link-thief-form-result.html:44
+msgid "Всего непроходимых краулером ссылок:"
+msgstr "The total of not so crawlable links"
+
+#: .\LinkThief\templates\LinkThief\link-thief-form-result.html:49
+msgid "Всего ссылок с анкором:"
+msgstr "The total of links with an anchor text"
+
+#: .\LinkThief\templates\LinkThief\link-thief-form-result.html:54
+msgid "Всего ссылок без анкора:"
+msgstr "The total of links without an anchor text"
+
+#: .\LinkThief\templates\LinkThief\link-thief-form-result.html:65
+msgid "Ссылки"
+msgstr "Links"
+
+#: .\LinkThief\templates\LinkThief\link-thief-form-result.html:69
+msgid "Ссылка"
+msgstr "Link"
+
+#: .\LinkThief\templates\LinkThief\link-thief-form-result.html:70
+msgid "Анкор"
+msgstr "Anchor"
+
+#: .\LinkThief\templates\LinkThief\link-thief-form-result.html:71
+msgid "Тип ссылки"
+msgstr "Type of link"
+
+#: .\LinkThief\templates\LinkThief\link-thief-form-result.html:72
+msgid "Проходима краулером"
+msgstr "Crawlable"
+
+#: .\LinkThief\templates\LinkThief\link-thief-form-result.html:81
+msgid "Внутренняя ссылка"
+msgstr "Internal link"
+
+#: .\LinkThief\templates\LinkThief\link-thief-form-result.html:83
+msgid "Внешняя ссылка"
+msgstr "External link"
+
+#: .\LinkThief\templates\LinkThief\link-thief-form-result.html:86
+msgid "Да"
+msgstr "Yes"
+
+#: .\LinkThief\templates\LinkThief\link-thief-form-result.html:88
+msgid "Нет"
+msgstr "No"
+
+#: .\LinkThief\templates\LinkThief\link-thief-form.html:6
+msgid "ВорСсылок"
+msgstr "LinkThief"
+
+#: .\LinkThief\templates\LinkThief\link-thief-form.html:11
+msgid "Начать"
+msgstr "Start"
+
+#: .\LinkThief\templates\LinkThief\link-thief-form.html:29
+msgid "Правила"
+msgstr "Rules"
+
+#: .\LinkThief\templates\LinkThief\link-thief-form.html:32
+msgid "Указывать список УРЛов через обычный пробел"
+msgstr "Separate URLs using space"
+
+#: .\LinkThief\templates\LinkThief\link-thief-form.html:33
+msgid "Максимальное количество УРЛов для обхода по списку - 100"
+msgstr "The top limit of URLs to use while crawling via List of URLs is 100"
+
+#: .\LinkThief\templates\LinkThief\link-thief-form.html:34
+msgid ""
+"Результаты парсинга будут храниться только до 0 часов следующих суток, после "
+"успешного парсинга."
+msgstr ""
+"Parsing results will be stored only until 00:00 the following day, after "
+"successful parsing."
+
+#: .\LinkThief\templates\LinkThief\links-scraper-main.html:13
+msgid "О парсере ссылок"
+msgstr "About the links scraper"
+
+#: .\LinkThief\templates\LinkThief\links-scraper-main.html:18
+msgid ""
+"\n"
+"        Данный инструмент работает в 3-х режимах. В режиме парсинга с одной "
+"страницы, со списка страниц и с целого сайта. Хотяб я не могу гарантировать, "
+"что найду все ссылки на сайте, или смогу найти все страницы во время обхода. "
+"Ибо существует множества методик сокрытия страниц от краулера.\n"
+"        "
+msgstr ""
+"\n"
+" This tool works in 3 modes. In parsing mode from one page, from a list of "
+"pages and from the whole site. Although I can't guarantee that I will find "
+"all the links on the site, or will be able to find all the pages during "
+"crawling. Because there are many methods of hiding pages from the crawler.\n"
+" "
+
+#: .\LinkThief\templates\LinkThief\links-scraper-main.html:23
+msgid ""
+"\n"
+"        Ещё этот парсер ссылок с веб страниц, представляет из себя веб-"
+"реализацию python-библиотеи <b>link-thief</b>. Которая предоставляет общий "
+"функционла для работы с сылками и их извлечение с сайтов. Ещё есть "
+"реализация ввиде инструмента командной строки, которая гораздо легче для "
+"понимания и изучения. Плюс телеграм бот <b>@LinkThief_bot</b>. Эта "
+"библиотека доступна для установки через PiPI, или через мой сайт.\n"
+"        "
+msgstr ""
+"\n"
+" This web page link parser is also a web"
+"implementation of the <b>link-thief</b> python library. Which provides general "
+"functionality for working with links and extracting them from sites. There is also an "
+"implementation in the form of a command line tool, which is much easier to "
+"understand and study. Plus the <b>@LinkThief_bot</b> telegram bot. This "
+"library is available for installation via PiPI, or via my site.\n"
+" "
+
+#: .\LinkThief\views.py:92
+msgid "Некоректный адрес"
+msgstr "Wrong URL"
+
+#: .\LinkThief\views.py:97
+msgid "Слишком много адресов"
+msgstr "Too many URLs provided"
+
+#: .\LinkThief\views.py:100
+msgid "Пожалуйста, укажи только один адресс"
+msgstr "Please, only one URL"
+
+#: .\LinkThief\views.py:153
+msgid "✔ Вы успешно спарсили ссылки"
+msgstr "✔ You have successfully parsed the links"
+
+#: .\LinkThief\views.py:159
+msgid "✗ Возникла ошибка при отправке формы"
+msgstr "✗ There was an error submitting the form"

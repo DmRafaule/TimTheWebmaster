@@ -1,0 +1,213 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-06-20 20:22+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: .\PagiScroll\middleware.py:54
+msgid "АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЬ"
+msgstr "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+
+#: .\PagiScroll\templates\PagiScroll\base_post_list.html:11
+msgid "страница "
+msgstr "page "
+
+#: .\PagiScroll\templates\PagiScroll\base_post_list.html:25
+msgid "с тегами:"
+msgstr "with tags: "
+
+#: .\PagiScroll\templates\PagiScroll\base_post_list.html:25
+#: .\PagiScroll\templates\PagiScroll\base_post_list.html:71
+msgid "Страница "
+msgstr "Page "
+
+#: .\PagiScroll\templates\PagiScroll\base_post_list.html:27
+#: .\PagiScroll\templates\PagiScroll\base_post_list.html:73
+msgid " Они были связаны и сгруппированы по следующим тегам: "
+msgstr " They were linked and grouped under the following tags: "
+
+#: .\PagiScroll\templates\PagiScroll\base_post_list.html:27
+#: .\PagiScroll\templates\PagiScroll\base_post_list.html:73
+msgid " Страница "
+msgstr " Page "
+
+#: .\PagiScroll\templates\PagiScroll\base_post_list.html:64
+msgid " начиная с "
+msgstr " staring with "
+
+#: .\PagiScroll\templates\PagiScroll\base_post_list.html:64
+msgid " страницы"
+msgstr " page"
+
+#: .\PagiScroll\templates\PagiScroll\base_post_list.html:71
+msgid "связанные со следующими тегами: "
+msgstr "related to the following tags: "
+
+#: .\PagiScroll\templates\PagiScroll\base_post_list.html:106
+#: .\PagiScroll\templates\PagiScroll\base_post_list.html:112
+msgid "Шеврон"
+msgstr "Chevron"
+
+#: .\PagiScroll\templates\PagiScroll\post_filter.html:7
+msgid "one layer on top of anothe"
+msgstr ""
+
+#: .\PagiScroll\templates\PagiScroll\post_filter.html:9
+msgid "Фильтровать"
+msgstr "Filter out"
+
+#: .\PagiScroll\templates\PagiScroll\post_filter.html:12
+#: .\PagiScroll\templates\PagiScroll\post_filter.html:17
+#: .\PagiScroll\templates\PagiScroll\post_filter.html:23
+msgid "Значок сортировки"
+msgstr "Sign of sorting"
+
+#: .\PagiScroll\templates\PagiScroll\post_filter_alphabet.html:7
+msgid "Сортировка постов по алфавиту"
+msgstr "Sorting posts by alphabet"
+
+#: .\PagiScroll\templates\PagiScroll\post_filter_times.html:7
+msgid "Сортировка постов относительно сегодня"
+msgstr "Sorting posts relative today"
+
+#: .\PagiScroll\templates\PagiScroll\post_filter_times.html:13
+msgid "Не сортировать относительно сегодня"
+msgstr "Do not sort posts by today"
+
+#: .\PagiScroll\templates\PagiScroll\post_filter_times.html:17
+msgid "За этот день"
+msgstr "During this day"
+
+#: .\PagiScroll\templates\PagiScroll\post_filter_times.html:21
+msgid "За эту неделю"
+msgstr "During this week"
+
+#: .\PagiScroll\templates\PagiScroll\post_filter_times.html:25
+msgid "За этот месяц"
+msgstr "During this month"
+
+#: .\PagiScroll\templates\PagiScroll\post_filter_times.html:29
+msgid "За этот год"
+msgstr "During this year"
+
+#: .\PagiScroll\templates\PagiScroll\post_filter_times.html:36
+msgid "Сортировка постов по дню недели"
+msgstr "Sorting posts by day of week"
+
+#: .\PagiScroll\templates\PagiScroll\post_filter_times.html:40
+msgid "Пон"
+msgstr "Mon"
+
+#: .\PagiScroll\templates\PagiScroll\post_filter_times.html:41
+msgid "Вто"
+msgstr "Tue"
+
+#: .\PagiScroll\templates\PagiScroll\post_filter_times.html:42
+msgid "Сре"
+msgstr "Wen"
+
+#: .\PagiScroll\templates\PagiScroll\post_filter_times.html:43
+msgid "Чет"
+msgstr "Thu"
+
+#: .\PagiScroll\templates\PagiScroll\post_filter_times.html:44
+msgid "Пят"
+msgstr "Fri"
+
+#: .\PagiScroll\templates\PagiScroll\post_filter_times.html:45
+msgid "Суб"
+msgstr "Sat"
+
+#: .\PagiScroll\templates\PagiScroll\post_filter_times.html:46
+msgid "Вос"
+msgstr "Sun"
+
+#: .\PagiScroll\templates\PagiScroll\post_filter_times.html:52
+msgid "Сортировка постов по дню месяца"
+msgstr "Sorting posts by day of month"
+
+#: .\PagiScroll\templates\PagiScroll\post_filter_times.html:92
+msgid "Сортировка постов по месяцу"
+msgstr "Sorting posts by month"
+
+#: .\PagiScroll\templates\PagiScroll\post_filter_times.html:96
+msgid "Янв"
+msgstr "Jan"
+
+#: .\PagiScroll\templates\PagiScroll\post_filter_times.html:97
+msgid "Фев"
+msgstr "Feb"
+
+#: .\PagiScroll\templates\PagiScroll\post_filter_times.html:98
+msgid "Мар"
+msgstr "Mar"
+
+#: .\PagiScroll\templates\PagiScroll\post_filter_times.html:99
+msgid "Апр"
+msgstr "Apr"
+
+#: .\PagiScroll\templates\PagiScroll\post_filter_times.html:100
+msgid "Май"
+msgstr "May"
+
+#: .\PagiScroll\templates\PagiScroll\post_filter_times.html:101
+msgid "Июн"
+msgstr "Jun"
+
+#: .\PagiScroll\templates\PagiScroll\post_filter_times.html:102
+msgid "Июл"
+msgstr "Jul"
+
+#: .\PagiScroll\templates\PagiScroll\post_filter_times.html:103
+msgid "Ауг"
+msgstr "Aug"
+
+#: .\PagiScroll\templates\PagiScroll\post_filter_times.html:104
+msgid "Сен"
+msgstr "Sep"
+
+#: .\PagiScroll\templates\PagiScroll\post_filter_times.html:105
+msgid "Окт"
+msgstr "Oct"
+
+#: .\PagiScroll\templates\PagiScroll\post_filter_times.html:106
+msgid "Ноя"
+msgstr "Nov"
+
+#: .\PagiScroll\templates\PagiScroll\post_filter_times.html:107
+msgid "Дек"
+msgstr "Dec"
+
+#: .\PagiScroll\templates\PagiScroll\post_filter_times.html:113
+msgid "Сортировка постов по году"
+msgstr "Sorting posts by year"
+
+#: .\PagiScroll\templates\PagiScroll\post_filter_tooltypes.html:7
+msgid "Платформы"
+msgstr "Platforms"
+
+#: .\PagiScroll\views.py:105 .\PagiScroll\views.py:135
+msgid "Ничего не нашёл."
+msgstr "Did not find anything"
+
+#: .\PagiScroll\views.py:120 .\PagiScroll\views.py:122
+msgid "Такого тега не существует, или он введён с ошибкой"
+msgstr "There is no such tag, or mistyped"
+
+#: .\PagiScroll\views.py:145 .\PagiScroll\views.py:147
+msgid "Так много страниц у меня нет."
+msgstr "I do not have so many pages."

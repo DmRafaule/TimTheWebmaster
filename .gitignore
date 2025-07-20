@@ -89,8 +89,7 @@ local_settings.py
 venv_new
 db.sqlite3
 media
-Docs
-manage.py
 node_modules
 package-lock.json
-MyBlog/test-db.sqlite3
+Website/test-db.sqlite3
+Website/settings.json

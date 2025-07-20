@@ -1,1 +1,105 @@
-function CreateTriangle(e,t){var n=t[0],s=t[1],o=t[2],i=t[3],a=t[4],r=t[5];e.bufferData(e.ARRAY_BUFFER,new Float32Array([n,s,o,i,a,r]),e.STATIC_DRAW)}function createShader(e,t,n){var o,s=e.createShader(t);if(e.shaderSource(s,n),e.compileShader(s),o=e.getShaderParameter(s,e.COMPILE_STATUS),o)return s;console.log(e.getShaderInfoLog(s)),e.deleteShader(s)}function readTextFile(e){var t=new XMLHttpRequest,n="";return t.open("GET",e,!1),t.onreadystatechange=function(){t.readyState===4&&(t.status===200||t.status==0)&&(n=t.responseText)},t.send(null),n}function createProgram(e,t,n){var o,s=e.createProgram();if(e.attachShader(s,t),e.attachShader(s,n),e.linkProgram(s),o=e.getProgramParameter(s,e.LINK_STATUS),o)return s;console.log(e.getProgramInfoLog(s)),e.deleteProgram(s)}var canvas=document.querySelector("#canvas"),vertexShaderPath,fragmentShaderPath,vertexShaderSource,fragmentShaderSource,vertexShader,fragmentShader,program,positionAttributeLocation,resolutionUniformLocation,positionBuffer,size,type,normalize,stride,offset,primitiveType,count,gl=canvas.getContext("webgl");gl||console.log("OpenGl is not avaiable"),vertexShaderPath=canvas.dataset.vertexShader,fragmentShaderPath=canvas.dataset.fragmentShader,vertexShaderSource=readTextFile(vertexShaderPath),fragmentShaderSource=readTextFile(fragmentShaderPath),vertexShader=createShader(gl,gl.VERTEX_SHADER,vertexShaderSource),fragmentShader=createShader(gl,gl.FRAGMENT_SHADER,fragmentShaderSource),program=createProgram(gl,vertexShader,fragmentShader),positionAttributeLocation=gl.getAttribLocation(program,"a_position"),resolutionUniformLocation=gl.getUniformLocation(program,"u_resolution"),positionBuffer=gl.createBuffer(),gl.bindBuffer(gl.ARRAY_BUFFER,positionBuffer),CreateTriangle(gl,[10,100,300,10,150,150]),gl.viewport(0,0,gl.canvas.width,gl.canvas.height),gl.clearColor(0,0,0,0),gl.clear(gl.COLOR_BUFFER_BIT),gl.useProgram(program),gl.enableVertexAttribArray(positionAttributeLocation),gl.uniform2f(resolutionUniformLocation,gl.canvas.width,gl.canvas.height),gl.bindBuffer(gl.ARRAY_BUFFER,positionBuffer),size=2,type=gl.FLOAT,normalize=!1,stride=0,offset=0,gl.vertexAttribPointer(positionAttributeLocation,size,type,normalize,stride,offset),primitiveType=gl.TRIANGLES,offset=0,count=3,gl.drawArrays(primitiveType,offset,count)
+function CreateTriangle(gl, points){
+	var x1 = points[0];
+	var y1 = points[1];
+	var x2 = points[2];
+	var y2 = points[3];
+	var x3 = points[4];
+	var y3 = points[5];
+ 
+	gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([
+	   x1, y1,
+	   x2, y2,
+	   x3, y3,
+	   ]), gl.STATIC_DRAW);
+}
+
+function createShader(gl, type, source) {
+	var shader = gl.createShader(type);   // создание шейдера
+	gl.shaderSource(shader, source);      // устанавливаем шейдеру его программный код
+	gl.compileShader(shader);             // компилируем шейдер
+	var success = gl.getShaderParameter(shader, gl.COMPILE_STATUS);
+	if (success) {                        // если компиляция прошла успешно - возвращаем шейдер
+		return shader;
+	}
+ 
+	console.log(gl.getShaderInfoLog(shader));
+	gl.deleteShader(shader);
+}
+function readTextFile(file) {
+	var rawFile = new XMLHttpRequest();
+	var result = ""
+	rawFile.open("GET", file, false);
+	rawFile.onreadystatechange = function () {
+	  if(rawFile.readyState === 4)  {
+	    if(rawFile.status === 200 || rawFile.status == 0) {
+	      result = rawFile.responseText;
+	     }
+	  }
+	}
+	rawFile.send(null);
+	return result
+}
+
+function createProgram(gl, vertexShader, fragmentShader) {
+	var program = gl.createProgram();
+    gl.attachShader(program, vertexShader);
+    gl.attachShader(program, fragmentShader);
+    gl.linkProgram(program);
+    var success = gl.getProgramParameter(program, gl.LINK_STATUS);
+    if (success) {
+      return program;
+    }
+     
+    console.log(gl.getProgramInfoLog(program));
+    gl.deleteProgram(program);
+}
+
+var canvas = document.querySelector("#canvas");
+var gl = canvas.getContext("webgl");
+
+if (!gl) {
+	console.log("OpenGl is not avaiable")
+}
+
+
+// Obtain the paths of shaders
+var vertexShaderPath = canvas.dataset.vertexShader
+var fragmentShaderPath = canvas.dataset.fragmentShader
+// Obtain the source of shaders
+var vertexShaderSource = readTextFile(vertexShaderPath)
+var fragmentShaderSource = readTextFile(fragmentShaderPath);
+// Create shader programs 
+var vertexShader = createShader(gl, gl.VERTEX_SHADER, vertexShaderSource);
+var fragmentShader = createShader(gl, gl.FRAGMENT_SHADER, fragmentShaderSource);
+// Link gl and compiled shader programs
+var program = createProgram(gl, vertexShader, fragmentShader);
+// Get position
+var positionAttributeLocation = gl.getAttribLocation(program, "a_position");
+var resolutionUniformLocation = gl.getUniformLocation(program, "u_resolution");
+var positionBuffer = gl.createBuffer();
+gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
+
+CreateTriangle(gl, [
+	10, 100,
+	300, 10,
+	150, 150
+])
+
+gl.viewport(0, 0, gl.canvas.width, gl.canvas.height);
+gl.clearColor(0, 0, 0, 0);
+gl.clear(gl.COLOR_BUFFER_BIT);
+gl.useProgram(program);
+gl.enableVertexAttribArray(positionAttributeLocation);
+gl.uniform2f(resolutionUniformLocation, gl.canvas.width, gl.canvas.height);
+gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
+ 
+var size = 2;          // 2 компоненты на итерацию
+var type = gl.FLOAT;   // наши данные - 32-битные числа с плавающей точкой
+var normalize = false; // не нормализовать данные
+var stride = 0;        // 0 = перемещаться на size * sizeof(type) каждую итерацию для получения следующего положения
+var offset = 0;        // начинать с начала буфера
+gl.vertexAttribPointer(positionAttributeLocation, size, type, normalize, stride, offset)
+var primitiveType = gl.TRIANGLES;
+var offset = 0;
+var count = 3;
+gl.drawArrays(primitiveType, offset, count);

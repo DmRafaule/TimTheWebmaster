@@ -1,1 +1,37 @@
-input[type=number]{width:100%;max-width:300px;min-width:50px;border:2px solid var(--secondary_color);border-radius:5px;padding:5px}input:invalid+span::after{content:"✖"}input:valid+span::after{content:"✓"}.input_vector{display:flex;align-items:center;column-gap:var(--min_pm);max-width:300px}.input_matrix{display:flex;flex-direction:column;align-items:center;row-gap:var(--min_pm);max-width:300px}.input_data{}
+
+input[type="number"] {
+	width: 100%;
+	max-width: 300px;
+	min-width: 50px;
+	border: 2px solid var(--secondary_color);
+	border-radius: 5px;
+	padding: 5px;
+}
+
+input:invalid + span::after {
+  content: "✖";
+}
+
+input:valid + span::after {
+  content: "✓";
+}
+
+
+.input_vector{
+	display: flex;
+	align-items: center;
+	column-gap: var(--min_pm);
+	max-width: 300px;
+}
+
+.input_matrix{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	row-gap: var(--min_pm);
+	max-width: 300px;
+}
+
+.input_data{
+
+}

@@ -1,1 +1,20 @@
-$(document).ready(function(){const e=document.querySelectorAll(".dynamic_image");e.forEach(e=>{var t={threshold:.01},n=new IntersectionObserver((t)=>{for(const n of t)n.isIntersecting&&(e.setAttribute("src",$(e).data("src")),e.classList.add("loader"))},t);n.observe(e)})})
+$(document).ready(function(){
+	const images = document.querySelectorAll(".dynamic_image");
+	images.forEach( (image) => {
+		var options = {
+			  threshold: 0.01,
+			};
+		var image_observer = new IntersectionObserver((entries, observer) => {
+		  // Loop through the entries
+		  for (const entry of entries) {
+			// Check if the entry is intersecting the viewport
+			if (entry.isIntersecting) {
+				image.setAttribute('src',$(image).data('src'))
+				image.classList.add('loader')
+			}
+		  }
+		}, options);
+		image_observer.observe(image);
+	})
+})
+
