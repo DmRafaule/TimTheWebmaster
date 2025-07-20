@@ -93,3 +93,7 @@ node_modules
 package-lock.json
 Website/test-db.sqlite3
 Website/settings.json
+public_html
+tmp
+.htaccess
+passenger_wsgi.py
