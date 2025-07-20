@@ -93,6 +93,7 @@ node_modules
 package-lock.json
 Website/test-db.sqlite3
 Website/settings.json
+Website/static
 public_html
 tmp
 .htaccess
