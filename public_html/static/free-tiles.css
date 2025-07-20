@@ -1,5 +1,0 @@
-.free-tiles{
-	display: flex;
-	flex-wrap: wrap;
-	gap: var(--usual_space);
-}

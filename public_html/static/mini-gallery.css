@@ -1,8 +1,0 @@
-.mini-gallery{
-	display: flex;
-	column-gap: var(--usual_space)
-}
-.mini-gallery_minimized{
-	display: flex;
-	flex-direction: column;
-}
