@@ -47,8 +47,8 @@ class Category(models.Model):
     description = models.TextField(blank=False)
     slug = models.SlugField(max_length=50, unique=True)
     template = models.FilePathField(
-        path=os.path.join(S.BASE_DIR,"Post","templates","Post"),
-        default=os.path.join(S.BASE_DIR,"PagiScroll","templates","PagiScroll","base_post_list.html")
+        path=os.path.join('.',"Post","templates","Post"),
+        default=os.path.join('.',"PagiScroll","templates","PagiScroll","base_post_list.html")
     )
     categry_name = models.SlugField(max_length=50, unique=False, blank=True, null=True, default='')
 
@@ -165,8 +165,8 @@ class Tool(Post):
     template = models.FileField(max_length=300, upload_to=user_directory_path, blank=True, help_text="If provided, default template not in use. Use only if it is Internal default type")
     # Шаблон который будет отрисовываться если ничего другого не предоставленно
     default_template = models.FilePathField(
-            path=os.path.join(S.BASE_DIR,"Post","templates","Post"),
-            default=os.path.join(S.BASE_DIR,"Post","templates","Post","tool.html")
+            path=os.path.join('.',"Post","templates","Post"),
+            default=os.path.join('.',"Post","templates","Post","tool.html")
     )
     # Платформы на которых работает данный инструмент
     platforms = models.ManyToManyField(Platform, blank=True)

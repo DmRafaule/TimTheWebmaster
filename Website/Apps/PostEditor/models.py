@@ -17,7 +17,7 @@ class PostTemplate(models.Model):
     }
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     template = models.FilePathField(
-        path=os.path.join(S.MEDIA_ROOT, 'tools', ROOT_DIR),
+        path=os.path.join('.','media', 'tools', ROOT_DIR),
     )
     timeCreated = models.DateTimeField(auto_created=True, auto_now_add=True)
     timeUpdated = models.DateTimeField(auto_now=True)
