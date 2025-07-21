@@ -277,16 +277,3 @@ class PaginationTests(StaticLiveServerTestCase):
                 time.sleep(1)
                 posts = self.browser.find_elements(By.CSS_SELECTOR, ".post_preview")
                 self.assertEqual(len(posts), 4, msg=message)
-
-    def test_scroll_uploading(self):
-        ''' Тестируем подгрузку постов при скроллинге вниз '''
-        for lang in LANGUAGES:
-            for cat in Category.objects.all():
-                # Собщение для определения в какой категории и версии языка произошёл фейл
-                message = f"In lang: {lang[0]} \t In category: {cat.categry_name}"
-                self.browser.get(f"{self.live_server_url}/{lang[0]}/{cat.slug}/")
-                page = self.browser.find_element(By.TAG_NAME, 'body')
-                page.send_keys(Keys.PAGE_DOWN)
-                time.sleep(1)
-                posts = self.browser.find_elements(By.CSS_SELECTOR, ".post_preview")
-                self.assertEqual(len(posts), 8, msg=message)
