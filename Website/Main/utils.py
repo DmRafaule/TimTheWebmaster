@@ -74,9 +74,9 @@ def getSpecialTopLevelCategories(categories):
         website_conf = Website.objects.get(is_current=True)
         categories_on_side = website_conf.categories_to_display_on_side_menu.all()
     except:
-        categories_on_side = []
+        categories_on_side = categories
 
-    return getNotEmptyCategories(categories)
+    return categories_on_side
 
 def initDefaults(request):
     ''' Инициализирует общие для всех контекстные переменные '''
