@@ -46,10 +46,6 @@ class Category(models.Model):
     name = models.CharField(max_length=50, unique=True, blank=False)
     description = models.TextField(blank=False)
     slug = models.SlugField(max_length=50, unique=True)
-    template = models.FilePathField(
-        path=f'./Post/templates/Post/',
-        default='./PagiScroll/templates/PagiScroll/base_post_list.html'
-    )
     categry_name = models.SlugField(max_length=50, unique=False, blank=True, null=True, default='')
 
     def __str__(self):
