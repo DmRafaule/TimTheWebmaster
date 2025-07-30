@@ -15,60 +15,50 @@
 		<h1 class="home_title" >{% trans "Тим Вебмастер" %}</h1>
 		<canvas id='canvas' class="canvas_as_element" data-vertex-shader="{% static "WebGLEngine/shaders/home_gik.vert" %}" data-fragment-shader="{% static "WebGLEngine/shaders/home_gik.frag" %}"></canvas>
 	</div>
-	<div class="column in_middle-even home_art_cas_news">
+	<div class="column in_middle-even max_gap">
 
-		<div>
-			<div class="tabs tabs-full-width">
-				{% if internal_tools_length > 0 %}
-				<div class="tab_button tab_active" data-bodyid="1">
-					<h2>{% trans "Внутренние инструменты" %}</h2>
-				</div>
-				{% endif %}
-				<div class="tab_button" data-bodyid="2">
-					<h2>{% trans "Инструменты по тегам" %}</h2>
-				</div>
-			</div>
-			<div class="tab_body">
-				<div id="tab_body-1" class="tab_element tab_element__active">
-					<div class="description_text padder">
-						{% blocktrans %}
-						Внутренние инструменты (веб инструменты), так я называю инструменты, которые работают непосредственно на сайте и благодаря сайту.
-						У данных инструментов есть некоторые общие ограничения, связанные в основном с текущим хостингом (рессурсы, которые он может выделить на сайт) 
-						и общим дизайном сайта, которого я должен придерживаться.
-						{% endblocktrans %}
-					</div>
-					<div class="row ">
-						<img width="300px" height="100%" class="el-expandable el-no_shrinkable el-300-min-basis" src="{% get_media_prefix %}{{ internal_tools_preview}}">
-						<div class="post_previews--category mid_gap el-expandable el-no_shrinkable el-half">
-						{% include 'Post/basic--post_preview-tool.html' with posts=internal_tools_posts %}
-						</div>
-					</div>
-					<a class="see_more_button white_text_button " href="{% url 'tools-list' %}?page=1&tag={{internal_tool_tag}}">
-						<div class="button action_button">
-							{% trans 'Больше ...' %}
-						</div>
-					</a>
-				</div>
-				<div id="tab_body-2" class="tab_element">
-					<div class="description_text padder">
-						{% blocktrans %}
-						Инструменты отсортированные по тегам. Данные инструменты были сгрупированны по тегам в зависимости от стека необходимых технологий для их создания или платформы для которой они разрабатывались. Большинство таких инструментов требуют установки и предварительной настройки.
-						{% endblocktrans %}
-					</div>
+		<div class="row max_gap">
+			<div class="column in_middle-farapart max_gap el-expandable el-shrinkable el-300-min-basis ">
+				<div class="home_main_block">
+					<h2>{% trans "Инструменты" %}</h2>
+					<hr class="home_hr_before_tab">
 					<div class="tabs tabs-full-width">
 						{% for res in my_resources %}
+							{% if forloop.counter == 1 %}
+							<div class="tab_button tab_active" data-bodyid="{{forloop.counter}}">
+								<h3>{{res.title}}</h3>
+							</div>
+							{% else %}
 							<div class="tab_button" data-bodyid="{{forloop.counter}}">
 								<h3>{{res.title}}</h3>
 							</div>
+							{% endif %}
 						{% endfor %}
 					</div>
 					<div class="tab_body">
 						{% for res in my_resources %}
+							{% if forloop.counter == 1 %}
+							<div id="tab_body-{{forloop.counter}}" class="tab_element  tab_element__active">
+								<div class="post_previews--category mid_gap el-expandable el-no_shrinkable el-half on_start_other">
+									<div class="post_preview row ">
+										<img class="image" src="{% get_media_prefix %}{{internal_tools_preview}}">
+									</div>
+									{% include 'Post/basic--post_preview-tool.html' with posts=res.objs %}
+								</div>
+								<a class="see_more_button white_text_button " href="{% url 'tools-list' %}?page=1&tag={{res.tag}}">
+									<div class="button action_button">
+										{% trans 'Больше ...' %}
+									</div>
+								</a>
+							</div>
+							{% else %}
 							<div id="tab_body-{{forloop.counter}}" class="tab_element">
 								<div class="row ">
-									<img width="300px" height="100%" class="el-expandable el-no_shrinkable el-300-min-basis" src="{% get_media_prefix %}{{ internal_tools_preview}}">
-									<div class="post_previews--category mid_gap el-expandable el-no_shrinkable el-half">
-									{% include 'Post/basic--post_preview-tool.html' with posts=res.objs %}
+									<div class="post_previews--category mid_gap el-expandable el-no_shrinkable el-half on_start_other">
+										<div class="post_preview row ">
+											<img class="image" src="{% get_media_prefix %}{{internal_tools_preview}}">
+										</div>
+										{% include 'Post/basic--post_preview-tool.html' with posts=res.objs %}
 									</div>
 								</div>
 								<a class="see_more_button white_text_button " href="{% url 'tools-list' %}?page=1&tag={{res.tag}}">
@@ -77,52 +67,48 @@
 									</div>
 								</a>
 							</div>
+							{% endif %}
 						{% endfor %}
 					</div>
-
 				</div>
-			</div>
-		</div>
-		<div>
-			<div class="tabs tabs-full-width">
-				<div class="tab_button tab_active" data-bodyid="1">
-					<h2>{% trans "Последние статьи" %}</h2>
-				</div>
-				<div class="tab_button" data-bodyid="2">
-					<h2>{% trans "Статьи по тегам" %}</h2>
-				</div>
-			</div>
-			<div class="tab_body">
-				<div id="tab_body-1" class="tab_element tab_element__active">
-					<div class="row " style="flex-wrap: wrap-reverse;">
-						<div class="post_previews--category-forNews mid_gap  el-expandable el-no_shrinkable el-half">
-							{% include 'Post/basic--post_preview-article.html' with posts=most_popular_article_posts %}
-						</div>
-						<img width="300px" height="100%" class="el-expandable el-no_shrinkable el-300-min-basis" src="{% get_media_prefix %}{{ articles_preview}}">
-					</div>
-					<a class="see_more_button white_text_button " href="{% url 'articles-list' %}">
-						<div class="button action_button">
-							{% trans 'Больше ...' %}
-						</div>
-					</a>
-				</div>
-				<div id="tab_body-2" class="tab_element">
-
+				<div class="home_main_block">
+					<h2>{% trans "Статьи" %}</h2>
+					<hr class="home_hr_before_tab">
 					<div class="tabs tabs-full-width">
+						<div class="tab_button tab_active" data-bodyid="1">
+							<h3>{% trans "Последние статьи" %}</h3>
+						</div>
 						{% for oth in other_articles %}
-							<div class="tab_button" data-bodyid="{{forloop.counter}}">
+							<div class="tab_button" data-bodyid="{{forloop.counter|add:1}}">
 								<h3>{{oth.title}}</h3>
 							</div>
 						{% endfor %}
 					</div>
 					<div class="tab_body">
+						<div id="tab_body-1" class="tab_element tab_element__active">
+							<div class="row " style="flex-wrap: wrap-reverse;">
+								<div class="post_previews--category-forNews mid_gap  el-expandable el-no_shrinkable el-half">
+									<div class="post_preview row ">
+										<img class="image"  src="{% get_media_prefix %}{{articles_preview}}">
+									</div>
+									{% include 'Post/basic--post_preview-article.html' with posts=most_popular_article_posts %}
+								</div>
+							</div>
+							<a class="see_more_button white_text_button " href="{% url 'articles-list' %}">
+								<div class="button action_button">
+									{% trans 'Больше ...' %}
+								</div>
+							</a>
+						</div>
 						{% for oth in other_articles %}
-							<div id="tab_body-{{forloop.counter}}" class="tab_element">
+							<div id="tab_body-{{forloop.counter|add:1}}" class="tab_element">
 								<div class="row " style="flex-wrap: wrap-reverse;">
 									<div class="post_previews--category row mid_gap el-expandable el-no_shrinkable el-half">
-									{% include 'Post/basic--post_preview-article.html' with posts=oth.objs %}
+										<div class="post_preview row ">
+											<img class="image" src="{% get_media_prefix %}{{articles_preview}}">
+										</div>
+										{% include 'Post/basic--post_preview-article.html' with posts=oth.objs %}
 									</div>
-									<img width="300px" height="100%" class="el-expandable el-no_shrinkable el-300-min-basis" src="{% get_media_prefix %}{{ articles_preview}}">
 								</div>
 								<a class="see_more_button white_text_button " href="{% url 'articles-list' %}?page=1&tag={{oth.tag}}">
 									<div class="button action_button">
@@ -132,53 +118,61 @@
 							</div>
 						{% endfor %}
 					</div>
-
 				</div>
+			</div>
+			<div class="no_wrap el-no_expandable el-no_shrinkable el-300-min-basis" style="display: flex; flex-direction: column">
+				<div class="home_main_block full_height">
+					<h2>Услуги</h2>
+					<hr>
+					<div class="post_previews--category mid_gap el-expandable el-no_shrinkable el-half on_start_other">
+					{% include 'Post/basic--post_preview-service.html' with posts=services %}
+					</div>
+				</div>
+				<a class="see_more_button white_text_button on_end" href="{% url 'services-list' %}">
+					<div class="button action_button">
+						{% trans 'Больше ...' %}
+					</div>
+				</a>
 			</div>
 		</div>
-		<div>
-			<div class="tabs tabs-full-width">
-				{% if isEngagementMiddlewareConnected %}
-				<div class="tab_button tab_active" data-bodyid="1">
-					<h2 class="">{% trans "Комментарии" %}</h2>
-				</div>
-				{% endif %}
-				<div class="tab_button" data-bodyid="2">
-					<h2 class="">{% trans "Заметки" %}</h2>
+
+		<div class="home_main_block">
+			{% if isEngagementMiddlewareConnected %}
+			<h2 class="">{% trans "Комментарии" %}</h2>
+			<hr>
+			<div class="description_text padder">
+				{% blocktrans %}
+				Тут я собираю все последние комментарии на сайте.
+				{% endblocktrans %}
+			</div>
+			<div class="row max_gap">
+				<div class="post_previews--category-forSeries mid_gap  el-expandable el-no_shrinkable el-half">
+					{% include 'Engagement/comments.html' with from="home" %}
 				</div>
 			</div>
-			<div class="tab_body">
-				{% if isEngagementMiddlewareConnected %}
-				<div id="tab_body-1" class="tab_element tab_element__active">
-					<div class="description_text padder">
-						{% blocktrans %}
-						Тут я собираю все последние комментарии на сайте.
-						{% endblocktrans %}
-					</div>
-					<div class="row max_gap">
-						<div class="post_previews--category-forSeries mid_gap  el-expandable el-no_shrinkable el-half">
-							{% include 'Engagement/comments.html' with from="home" %}
-						</div>
-					</div>
-				</div>
-				{% endif %}
-				<div id="tab_body-2" class="tab_element">
-					<div class="description_text padder">
-						{% blocktrans %}
-						Это блок всех последних заметок, написанных мной. Заметки, в моём случае можно считать неким журналом, где я могу отметить те или иные события
-						произошедшие со мной или с сайтом. Просто, иногда хочется что-нибудь написать, но создавать для 5 строчек отдельную статью ... Я считаю это перебором.
-						{% endblocktrans %}
-					</div>
-					<div class="post_previews--category-forSeries mid_gap  el-expandable el-no_shrinkable el-half">
-						{% include 'Post/basic--post_preview-note.html' with posts=latest_notes_posts %}
-					</div>
-					<a class="see_more_button white_text_button " href="{% url 'notes-list' %}">
-						<div class="button action_button">
-							{% trans 'Больше ...' %}
-						</div>
-					</a>
-				</div>
+			{% endif %}
+		</div>
+
+		<div class="home_main_block">
+			<h2 class="">{% trans "Заметки" %}</h2>
+			<hr>
+			<div class="description_text padder">
+				{% blocktrans %}
+				Это блок всех последних заметок, написанных мной. Заметки, в моём случае можно считать неким журналом, где я могу отметить те или иные события
+				произошедшие со мной или с сайтом. Просто, иногда хочется что-нибудь написать, но создавать для 5 строчек отдельную статью ... Я считаю это перебором.
+				{% endblocktrans %}
 			</div>
+			<div class="post_previews--category-forSeries mid_gap  el-expandable el-no_shrinkable el-half on_start_other">
+				<div class="post_preview row ">
+					<img class="image" src="{% get_media_prefix %}{{notes_preview}}">
+				</div>
+				{% include 'Post/basic--post_preview-note.html' with posts=latest_notes_posts %}
+			</div>
+			<a class="see_more_button white_text_button on_end" href="{% url 'notes-list' %}">
+				<div class="button action_button">
+					{% trans 'Больше ...' %}
+				</div>
+			</a>
 		</div>
 	</div>
 </div>

@@ -27,7 +27,9 @@ class WebsiteAdmin(admin.ModelAdmin):
         'popular_articles_on_footer', 
         'popular_tools_on_footer',
         'my_resources_choosen_tags_on_home', 
-        'other_articles_choosen_tags_on_home'
+        'other_articles_choosen_tags_on_home',
+        'contacts_for_orders',
+        'choosen_services'
     )
     search_fields = (
         'name',
@@ -73,6 +75,7 @@ class WebsiteAdmin(admin.ModelAdmin):
             {
                 'fields': [
                     'choosen_tools',
+                    'choosen_services',
                     'my_resources_choosen_tags_on_home',
                     'min_displayed_my_resources',
                     'other_articles_choosen_tags_on_home',
@@ -85,6 +88,7 @@ class WebsiteAdmin(admin.ModelAdmin):
                         'max_displayed_td_on_home',
                         'max_displayed_qa_on_home',
                         'max_displayed_notes_on_home',
+                        'max_displayed_services_on_home'
                     )
                 ],
                 'classes': ['collapsed'],
@@ -98,6 +102,7 @@ class WebsiteAdmin(admin.ModelAdmin):
                     'categories_to_display_on_side_menu',
                     'popular_articles_on_footer',
                     'popular_tools_on_footer',
+                    'contacts_for_orders',
                     'default_image_preview',
                 ],
                 'classes': ['collapsed'],

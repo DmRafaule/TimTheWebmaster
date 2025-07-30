@@ -27,6 +27,9 @@ def user_directory_path(instance, filename):
     '''
     return "{0}/{1}/{2}".format(instance.category.slug, instance.slug, filename)
 
+def service_path(instance, filename):
+    return "{0}/{1}".format(instance.category.slug, filename)
+
 
 class Tag(models.Model):
     ''' Модель тегов, для фильтрации других моделей у которых есть соответствующие отношения с этой моделью '''
@@ -103,7 +106,7 @@ class Article(Post):
     h1 = models.CharField(max_length=256, blank=False, default='')
     description = models.TextField(max_length=256, blank=True)
     meta_keywords = models.CharField(max_length=256, blank=True, default='')
-    preview = models.ImageField(max_length=300, upload_to=user_directory_path, blank=True)
+    preview = models.FileField(max_length=300, upload_to=user_directory_path, blank=True)
     # Шаблон для отрисовки пользователю
     template = models.FileField(max_length=300, upload_to=user_directory_path, blank=False)  # page to display
     # Относящиеся по смыслу вопросы
@@ -157,6 +160,7 @@ class Tool(Post):
     description = models.TextField(blank=False)
     meta_keywords = models.CharField(max_length=256, blank=True, default='')
     icon = models.FileField(max_length=300, upload_to=user_directory_path, blank=True)
+    preview = models.FileField(max_length=300, upload_to=user_directory_path, blank=True)
     # Шаблон который будет отрисовываться вместо шаблона по умолчанию
     template = models.FileField(max_length=300, upload_to=user_directory_path, blank=True, help_text="If provided, default template not in use. Use only if it is Internal default type")
     # Шаблон который будет отрисовываться если ничего другого не предоставленно
@@ -259,5 +263,71 @@ def _post_save_category_note(sender, instance, **kwargs):
         category.description_ru = "Описание заметок"
         category.description_en = "Notes\' description"
         category.categry_name = "Note"
+        category.save()
+    instance.category = category
+
+class Price(models.Model):
+    class PriceType(models.TextChoices):
+        FixPrice = "FixPrice"
+        RangePrice = "RangePrice"
+        BarterPrice = "BarterPrice"
+        FreePrice = "Free"
+    
+    class CurrencyType(models.TextChoices):
+        USD = "$"
+        RUB = "₽"
+        EUR = "€"
+        BTC = "₿"
+
+    type = models.CharField(max_length=100, choices=PriceType, default=PriceType.FixPrice)
+    currency = models.CharField(max_length=100, choices=CurrencyType, default=CurrencyType.USD)
+    start_price = models.FloatField(default=1.0)
+    end_price = models.FloatField(default=0.0)
+    barter_price = models.CharField(max_length=100, default=_("Что-нибудь взамен"))
+
+    def __str__(self):
+        match (self.type):
+            case Price.PriceType.FixPrice:
+                return f"{self.start_price}{self.currency}"
+            case Price.PriceType.RangePrice:
+                return f"{self.start_price}{self.currency}--{self.end_price}{self.currency}"
+            case Price.PriceType.BarterPrice:
+                return f"{self.barter_price}"
+            case Price.PriceType.FreePrice:
+                return _("Бесплатно")
+
+class Service(models.Model):
+    ''' Модель для хранения доступных услуг '''
+    view_name = "service"
+    title = models.CharField(max_length=256, blank=False, default='')
+    description = models.TextField(max_length=512, blank=False, default='')
+    preview = models.FileField(upload_to=service_path, blank=True)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, blank=False)
+    timeCreated = models.DateTimeField()
+    timeUpdated = models.DateTimeField(auto_now=True)
+    isPublished = models.BooleanField(default=True)
+    price = models.ManyToManyField(Price, blank=False)
+    duration = models.DurationField()
+    tags = models.ManyToManyField(Tag, blank=True)
+
+    def save(self, *args, **kwargs):
+        self.timeUpdated = timezone.now()
+        if not self.timeCreated:
+            self.timeCreated = timezone.now()
+        super(Service, self).save(*args, **kwargs)
+
+    def __str__(self):
+        return self.title
+
+@receiver(pre_save, sender=Service)
+def _post_save_category_service(sender, instance, **kwargs): 
+    # Задаём соответствующую категорию, а если её нет, то создаём основу
+    category, is_created = Category.objects.get_or_create(slug="services")
+    if is_created:
+        category.name_ru = "Услуги"
+        category.name_en = "Services"
+        category.description_ru = "Описание услуг"
+        category.description_en = "Services\' description"
+        category.categry_name = "Service"
         category.save()
     instance.category = category

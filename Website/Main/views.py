@@ -8,7 +8,7 @@ from django.core.mail import send_mail
 import Main.utils as U
 from .models import Website
 from .forms import FeedbackForm
-from Post.models import Tool, Article, Tag, Note
+from Post.models import Tool, Article, Tag, Note, Service
 from Website.settings import DEFAULT_FROM_EMAIL, DEFAULT_TO_EMAIL
 from Engagement.models import Comment
 
@@ -89,15 +89,19 @@ def home(request):
         tools_post_preview = website_conf.tools_post_preview
         articles_post_preview = website_conf.articles_post_preview
         notes_post_preview = website_conf.notes_post_preview
+        cap_choosen_services = website_conf.max_displayed_services_on_home
+        choosen_services = website_conf.choosen_services.all()[:cap_choosen_services]
     # Если не получилось (такие настройки ещё не были добавленны) отправляем в качестве настроек
     # пустые значения, чтобы страница не вернула 500 код ошибки (ошибка сервера)
     except:
         choosen_tools = []
-        cap_notes = 0
+        cap_notes = 3
         choosen_tools_by_tags = []
         min_choosen_tools_by_tags = 0
         choosen_articles_by_tag = []
         min_choosen_articles_by_tag = 0
+        cap_choosen_services = website_conf.max_displayed_services_on_home
+        choosen_services = Service.objects.all()[:cap_choosen_services]
         tools_post_preview = None
         articles_post_preview = None
         notes_post_preview = None
@@ -133,6 +137,8 @@ def home(request):
     context.update({'other_articles': get_latest_post_by_tag(min_choosen_articles_by_tag, choosen_articles_by_tag, Article)})
     # Получаем и сохраняем последние комментарии
     context.update({'comments': Comment.objects.filter(url__startswith=f"/{get_language()}/").order_by('-time_published')[:10]})
+    # Доступные услуги
+    context.update({'services': choosen_services})
     
     return TemplateResponse(request, 'Main/home.html', context=context)
 

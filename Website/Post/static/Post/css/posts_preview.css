@@ -5,9 +5,7 @@
 	background-color: var(--upper_bg);
 	border-radius: var(--post_preview_border-radius);
 	padding: 5px;
-	box-shadow: var(--box-shadow);
-	-webkit-box-shadow: var(--box-shadow);
-	-moz-box-shadow: var(--box-shadow);
+	justify-content: center;
 }
 .post_preview_header{
 }

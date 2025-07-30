@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-05-13 10:36+0300\n"
+"POT-Creation-Date: 2025-07-25 16:06+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,47 +18,47 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: .\TextThief\forms.py:6
+#: .\Apps\TextThief\forms.py:6
 msgid "Один УРЛ"
 msgstr "Single URL"
 
-#: .\TextThief\forms.py:6
+#: .\Apps\TextThief\forms.py:6
 msgid "Список УРЛов"
 msgstr "A list of URLs"
 
-#: .\TextThief\forms.py:6
+#: .\Apps\TextThief\forms.py:6
 msgid "Целый сайт"
 msgstr "A whole website"
 
-#: .\TextThief\forms.py:7
+#: .\Apps\TextThief\forms.py:7
 msgid "Весь текст"
 msgstr "All text"
 
-#: .\TextThief\forms.py:7
+#: .\Apps\TextThief\forms.py:7
 msgid "Все слова, списком"
 msgstr "All the words, by list"
 
-#: .\TextThief\forms.py:7
+#: .\Apps\TextThief\forms.py:7
 msgid "Все уникальные слова"
 msgstr "All the unique words, by list"
 
-#: .\TextThief\forms.py:7
+#: .\Apps\TextThief\forms.py:7
 msgid "Теги (Слова с количеством употребления в тексте"
 msgstr "Tags (Words with frequency of appearance in text)"
 
-#: .\TextThief\forms.py:10
+#: .\Apps\TextThief\forms.py:10
 msgid "Способ обхода"
 msgstr "What to crawl"
 
-#: .\TextThief\forms.py:11
+#: .\Apps\TextThief\forms.py:11
 msgid "Как сохранить результат"
 msgstr "What to save"
 
-#: .\TextThief\templates\TextThief\text-scraper-main.html:13
+#: .\Apps\TextThief\templates\TextThief\text-scraper-main.html:13
 msgid "О парсере текста с сайта"
 msgstr "About a scraper of text"
 
-#: .\TextThief\templates\TextThief\text-scraper-main.html:18
+#: .\Apps\TextThief\templates\TextThief\text-scraper-main.html:18
 msgid ""
 "\n"
 "        Данный инструмент работает в 3-х режимах. В режиме парсинга с одной "
@@ -70,7 +70,7 @@ msgstr ""
 "pages and from the entire site.\n"
 " "
 
-#: .\TextThief\templates\TextThief\text-scraper-main.html:23
+#: .\Apps\TextThief\templates\TextThief\text-scraper-main.html:23
 msgid ""
 "\n"
 "        Ещё этот парсер текста с веб страниц, представляет из себя веб-"
@@ -82,46 +82,46 @@ msgid ""
 "        "
 msgstr ""
 "\n"
-" This web page text parser is also a web"
-"implementation of the <b>text-thief</b> python library. Which provides general "
-"functionality for working with text. There is also an implementation in the form of a command line tool, which is much easier to understand and study. This "
-"library is available via PiPI, or you can install its sources directly from "
-"here.\n"
+" This web page text parser is also a webimplementation of the <b>text-thief</"
+"b> python library. Which provides general functionality for working with "
+"text. There is also an implementation in the form of a command line tool, "
+"which is much easier to understand and study. This library is available via "
+"PiPI, or you can install its sources directly from here.\n"
 " "
 
-#: .\TextThief\templates\TextThief\text-thief-form-result.html:15
+#: .\Apps\TextThief\templates\TextThief\text-thief-form-result.html:15
 msgid "Результаты"
 msgstr "Results"
 
-#: .\TextThief\templates\TextThief\text-thief-form-result.html:18
+#: .\Apps\TextThief\templates\TextThief\text-thief-form-result.html:18
 msgid "Общее"
 msgstr "Common data"
 
-#: .\TextThief\templates\TextThief\text-thief-form.html:6
+#: .\Apps\TextThief\templates\TextThief\text-thief-form.html:6
 msgid "ВорТекста"
 msgstr "TextThief"
 
-#: .\TextThief\templates\TextThief\text-thief-form.html:11
+#: .\Apps\TextThief\templates\TextThief\text-thief-form.html:11
 msgid "Начать"
 msgstr "Start"
 
-#: .\TextThief\templates\TextThief\text-thief-form.html:19
+#: .\Apps\TextThief\templates\TextThief\text-thief-form.html:19
 msgid "CSS селектор"
 msgstr "CSS selector"
 
-#: .\TextThief\templates\TextThief\text-thief-form.html:41
+#: .\Apps\TextThief\templates\TextThief\text-thief-form.html:41
 msgid "Правила"
 msgstr "Rules"
 
-#: .\TextThief\templates\TextThief\text-thief-form.html:44
+#: .\Apps\TextThief\templates\TextThief\text-thief-form.html:44
 msgid "Указывать список УРЛов через обычный пробел"
 msgstr "Specify a list of URLs separated by a regular space"
 
-#: .\TextThief\templates\TextThief\text-thief-form.html:45
+#: .\Apps\TextThief\templates\TextThief\text-thief-form.html:45
 msgid "Максимальное количество УРЛов для обхода по списку - 100"
 msgstr "The maximum number of URLs to crawl through the list is 100"
 
-#: .\TextThief\templates\TextThief\text-thief-form.html:46
+#: .\Apps\TextThief\templates\TextThief\text-thief-form.html:46
 msgid ""
 "Результаты парсинга будут храниться только до 0 часов следующих суток, после "
 "успешного парсинга."
@@ -129,58 +129,58 @@ msgstr ""
 "Parsing results will be stored only until 00:00 the following day, after "
 "successful parsing."
 
-#: .\TextThief\views.py:25
+#: .\Apps\TextThief\views.py:25
 msgid "Некоректный адрес"
 msgstr "Some address"
 
-#: .\TextThief\views.py:30
+#: .\Apps\TextThief\views.py:30
 msgid "Слишком много адресов"
 msgstr "Too many addresses"
 
-#: .\TextThief\views.py:33
+#: .\Apps\TextThief\views.py:33
 msgid "Пожалуйста, укажи только один адрес"
 msgstr "Please provide only one address."
 
-#: .\TextThief\views.py:38
+#: .\Apps\TextThief\views.py:38
 msgid "Общая длина текста с пробелами"
 msgstr "Total length of text with spaces"
 
-#: .\TextThief\views.py:39
+#: .\Apps\TextThief\views.py:39
 msgid "Общая длина текста без пробелов"
 msgstr "Total length of text without spaces"
 
-#: .\TextThief\views.py:40
+#: .\Apps\TextThief\views.py:40
 msgid "Количество слов"
 msgstr "Number of words"
 
-#: .\TextThief\views.py:41
+#: .\Apps\TextThief\views.py:41
 msgid "Количество уникальных слов"
 msgstr "Number of unique words"
 
-#: .\TextThief\views.py:42
+#: .\Apps\TextThief\views.py:42
 msgid "Количество слов с частотностью"
 msgstr "Number of words with frequency counter"
 
-#: .\TextThief\views.py:43
+#: .\Apps\TextThief\views.py:43
 msgid "Полученый текст"
 msgstr "The text"
 
-#: .\TextThief\views.py:44
+#: .\Apps\TextThief\views.py:44
 msgid "Список всех слов"
 msgstr "List of all words"
 
-#: .\TextThief\views.py:45
+#: .\Apps\TextThief\views.py:45
 msgid "Список уникальных слов"
 msgstr "List of unique words"
 
-#: .\TextThief\views.py:46
+#: .\Apps\TextThief\views.py:46
 msgid "Слова с частотностью"
 msgstr "Words with a frequency counter"
 
-#: .\TextThief\views.py:89
+#: .\Apps\TextThief\views.py:89
 msgid "✔ Вы успешно спарсили ссылки"
 msgstr "✔ You have successfully parsed the links"
 
-#: .\TextThief\views.py:95
+#: .\Apps\TextThief\views.py:95
 msgid "✗ Возникла ошибка при отправке формы"
 msgstr "✗ There was an error submitting the form"

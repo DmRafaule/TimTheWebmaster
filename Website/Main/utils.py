@@ -86,10 +86,12 @@ def initDefaults(request):
         popular_articles_in_footer = website_conf.popular_articles_on_footer.all()
         popular_tools_in_footer = website_conf.popular_tools_on_footer.all()
         image_preview = website_conf.default_image_preview
+        contacts_for_orders = website_conf.contacts_for_orders
     except:
         popular_articles_in_footer = []
         popular_tools_in_footer = []
         image_preview = None
+        contacts_for_orders = []
     # Получаем категории для отображения в боковом меню
     categories = Post_M.Category.objects.all()
     categories_special = getSpecialTopLevelCategories(categories)
@@ -101,10 +103,14 @@ def initDefaults(request):
     default_post_preview = image_preview
     # Получаем все контакты
     contacts = Contact.objects.all()
+    if not len(contacts_for_orders.all()) > 0:
+        contacts_for_orders = contacts
+
     context = {
         'categories_special': categories_special,
         'domain_name': domain_name,
         'contacts': contacts,
+        'contacts_for_orders': contacts_for_orders,
         'popular_posts': popular_posts,
         'default_post_preview': default_post_preview,
     }

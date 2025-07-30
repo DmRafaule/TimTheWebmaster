@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-05-08 13:33+0300\n"
+"POT-Creation-Date: 2025-07-25 16:06+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,17 +18,17 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: .\WebGLEngine\templates\WebGLEngine\geometry_bg.html:8
-#: .\WebGLEngine\templates\WebGLEngine\home_gik.html:8
+#: .\Apps\WebGLEngine\templates\WebGLEngine\geometry_bg.html:8
+#: .\Apps\WebGLEngine\templates\WebGLEngine\home_gik.html:8
 msgid "Пример отрисовки. Геометрический задник | WebDI"
 msgstr "An example of render. A geometric background | WebDI "
 
-#: .\WebGLEngine\templates\WebGLEngine\geometry_bg.html:9
-#: .\WebGLEngine\templates\WebGLEngine\home_gik.html:9
-#: .\WebGLEngine\templates\WebGLEngine\testing.html:9
+#: .\Apps\WebGLEngine\templates\WebGLEngine\geometry_bg.html:9
+#: .\Apps\WebGLEngine\templates\WebGLEngine\home_gik.html:9
+#: .\Apps\WebGLEngine\templates\WebGLEngine\testing.html:9
 msgid "Создание шейдеров для веба. Используя WebGL"
 msgstr "Developing shaders for a web. Using WebGL"
 
-#: .\WebGLEngine\templates\WebGLEngine\testing.html:8
+#: .\Apps\WebGLEngine\templates\WebGLEngine\testing.html:8
 msgid "Редактор и конструктор шейдеров"
 msgstr "Editor and constuctor of and for shaders"

@@ -171,3 +171,11 @@
 .disabled_button{
 	background-color: rgb(172, 167, 167);
 }
+
+.order_button{
+	padding: 10px;
+  	width: 100%;
+  	background-color: #ebaa6d;
+	color: var(--ui_text_color);
+	font-weight: bold;
+}

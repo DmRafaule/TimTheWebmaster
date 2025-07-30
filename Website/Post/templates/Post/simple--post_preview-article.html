@@ -7,15 +7,25 @@
 
 {% for a in posts %}
 
-<div class="post_preview column min_row_gap loader"  data-numpages="{{num_pages}}">
-	<div class=" post_preview_header row min_col_gap">
-		<div class="column min_row_gap">
-			<h2 class="post_preview_title"><a class="text_button" href="{{ a.get_absolute_url }}">{{a.title}}</a></h2>
+<div class="post_preview row min_gap loader" data-numpages="{{num_pages}}">
+	<div class="column min_gap el-half el-expandable">
+		<h2 class="post_preview_title"><a class="text_button" href="{{ a.get_absolute_url }}">{{a.title}}</a></h2>
+		<div class="post_preview_meta row mid_gap">
+			<div class="row min_col_gap">
+				<img class="in_middle-self icon_small dynamic_image" width="32" height="32" src="{% static 'placeholder.svg' %}" data-src='{% static "Post/img/calendar.svg" %}' alt="{% trans "Часы" %}">
+				<div>{{a.timeCreated|date:"d.m.Y"}}</div>
+			</div>
+			{% if isEngagementMiddlewareConnected %}
+				{% include 'Engagement/interaction.html' with path=a.get_absolute_url%}
+			{% endif %}
 		</div>
+		<div class="post_preview_body">
+			{{a.description|truncatewords:30}}
+		</div>
+		{% if displayTags %}
+			{% include 'Post/tags.html' with post=a %}
+		{% endif %}
 	</div>
-	{% if displayTags %}
-		{% include 'Post/tags.html' with post=a %}
-	{% endif %}
 </div>
 {% endfor %}
 

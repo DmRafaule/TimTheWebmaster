@@ -64,12 +64,14 @@ class Website(models.Model):
     categories_to_display_on_side_menu = models.ManyToManyField('Post.Category', verbose_name='Categories to display on side menu', blank=False)
     popular_articles_on_footer = models.ManyToManyField('Post.Article', verbose_name='Articles to display on footer', blank=False)
     popular_tools_on_footer = models.ManyToManyField('Post.Tool', verbose_name='Tools(Archives) to display on footer', blank=False)
+    contacts_for_orders = models.ManyToManyField('Main.Contact', verbose_name="Contacts to use for ordering", blank=True)
 
     # Домашняя часть настроек
     my_resources_choosen_tags_on_home = models.ManyToManyField('Post.Tag', verbose_name='Choosen tags for My resources part', blank=False, related_name='my_resouces')
     min_displayed_my_resources = models.IntegerField(verbose_name='Minimum el in My resources part to be displayed if present', default=3, blank=False)
     other_articles_choosen_tags_on_home = models.ManyToManyField('Post.Tag', verbose_name='Choosen tags for Other articles part', blank=False, related_name='other_articles')
     choosen_tools = models.ManyToManyField('Post.Tool', verbose_name='Tools to display at home page', blank=True, related_name="choosen_tools")
+    choosen_services = models.ManyToManyField('Post.Service', verbose_name='Services to display at home page', blank=True, related_name="choosen_services")
     min_displayed_other_articles = models.IntegerField(verbose_name='Minimum el in Other articles part to be displayed if present', default=2, blank=False)
     max_displayed_news_on_home = models.IntegerField(verbose_name='Limit to display Latest news', default=3, blank=False)
     max_displayed_postSeries_on_home = models.IntegerField(verbose_name='Limit to display post series', default=2, blank=False)
@@ -78,6 +80,7 @@ class Website(models.Model):
     max_displayed_qa_on_home = models.IntegerField(verbose_name='Limit to display termins', default=2, blank=False)
     max_displayed_td_on_home = models.IntegerField(verbose_name='Limit to display questions', default=2, blank=False)
     max_displayed_notes_on_home = models.IntegerField(verbose_name='Limit to display notes', default=5, blank=False)
+    max_displayed_services_on_home = models.IntegerField(verbose_name='Limit to display Services', default=6, blank=False)
     articles_post_preview = models.FileField(upload_to='common', blank=True)
     tools_post_preview = models.FileField(upload_to='common', blank=True)
     notes_post_preview = models.FileField(upload_to='common', blank=True)

@@ -10,9 +10,16 @@
 	<div class=" post_preview_header row min_col_gap">
 		<div class="column min_row_gap">
 			<h2 class="post_preview_title">{{a.title}}</h2>
-			<div class="row min_col_gap">
-				<img class="in_middle-self icon_small dynamic_image" width="32" height="32" src="{% static 'placeholder.svg' %}" data-src='{% static "Post/img/calendar.svg" %}' alt="{% trans "Часы" %}">
-				<div>{{a.timeCreated|date:"d.m.Y"}}</div>
+			<div class="row min_gap wrap">
+				<div class="row min_col_gap">
+					<img class="in_middle-self icon_small dynamic_image" width="32" height="32" src="{% static 'placeholder.svg' %}" data-src='{% static "Post/img/calendar.svg" %}' alt="{% trans "Часы" %}">
+					<div>{{a.timeCreated|date:"d.m.Y"}}</div>
+				</div>
+				/
+				<div class="row min_gap no_wrap">
+					<img class="in_middle-self icon_small dynamic_image" width="32" height="32" src="{% static 'placeholder.svg' %}" data-src='{% static "Post/img/update.svg" %}' alt="{% trans "Часы" %}">
+					<div>{{a.timeUpdated|date:"d.m.Y"}}</div>
+				</div>
 			</div>
 		</div>
 	</div>

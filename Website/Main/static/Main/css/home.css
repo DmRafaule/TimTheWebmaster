@@ -139,9 +139,6 @@
 }
 
 
-.post_previews--category>.post_preview--tool, .post_previews--category-forNews>.post_preview{
-	flex: 1 0 300px;
-}
 .post_previews--category-forSeries>.post_preview{
 	flex: 1 1 300px;
 }
@@ -189,10 +186,15 @@
 	border-bottom-left-radius: 8px;
 }
 
-.tab_body{
-	border-right: 2px solid;
-}
 
 .description_text{
 	text-align: justify;
+}
+
+.home_main_block{
+	border-right: 2px solid var(--secondary_color);
+}
+
+.home_hr_before_tab{
+	margin-bottom: 0;
 }

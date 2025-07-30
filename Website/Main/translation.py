@@ -40,6 +40,9 @@ class PlatformTranslationOptions(TranslationOptions):
 class ToolTranslationOptions(TranslationOptions):
     fields = ('name', 'h1', 'description', 'meta_keywords', 'template')
 
+class ServiceTranslationOptions(TranslationOptions):
+    fields = ('title', 'description')
+
 
 
 translator.register(Post_M.Category, CategoryTranslationOptions)
@@ -50,4 +53,5 @@ translator.register(Post_M.Note, NoteTranslationOptions)
 translator.register(Post_M.Tag, TagTranslationOptions)
 translator.register(Post_M.Tool, ToolTranslationOptions)
 translator.register(Post_M.Platform, PlatformTranslationOptions)
+translator.register(Post_M.Service, ServiceTranslationOptions)
 translator.register(Main_M.Contact, ContactTranslationOptions)

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-16 08:33+0300\n"
+"POT-Creation-Date: 2025-07-25 16:06+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,51 +18,51 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: .\RSSAggregator\forms.py:60
+#: .\Apps\RSSAggregator\forms.py:60
 msgid "Твой предыдущий ID. Скопируй его сюда что бы связать с текущим"
 msgstr "Your previous ID. Copy it here to link it to the current one."
 
-#: .\RSSAggregator\templates\RSSAggregator\feed_add.html:10
+#: .\Apps\RSSAggregator\templates\RSSAggregator\feed_add.html:10
 msgid "Путь RSS фида"
 msgstr "A RSS feed path"
 
-#: .\RSSAggregator\templates\RSSAggregator\feed_edit.html:12
+#: .\Apps\RSSAggregator\templates\RSSAggregator\feed_edit.html:12
 msgid "Путь к RSS фиду"
 msgstr "A RSS feed path"
 
-#: .\RSSAggregator\templates\RSSAggregator\feed_edit.html:15
+#: .\Apps\RSSAggregator\templates\RSSAggregator\feed_edit.html:15
 msgid "Название для RSS фида"
 msgstr "The title for a RSS feed"
 
-#: .\RSSAggregator\templates\RSSAggregator\rss-aggregator.html:46
+#: .\Apps\RSSAggregator\templates\RSSAggregator\rss-aggregator.html:46
 msgid "Удалить все"
 msgstr "Remove all"
 
-#: .\RSSAggregator\templates\RSSAggregator\rss-aggregator.html:60
+#: .\Apps\RSSAggregator\templates\RSSAggregator\rss-aggregator.html:60
 msgid "Содержание"
 msgstr "Content"
 
-#: .\RSSAggregator\templates\RSSAggregator\rss-aggregator.html:63
-#: .\RSSAggregator\templates\RSSAggregator\rss-aggregator.html:79
+#: .\Apps\RSSAggregator\templates\RSSAggregator\rss-aggregator.html:63
+#: .\Apps\RSSAggregator\templates\RSSAggregator\rss-aggregator.html:79
 msgid "Как использовать инструмент"
 msgstr "How ot use this tool"
 
-#: .\RSSAggregator\templates\RSSAggregator\rss-aggregator.html:67
-#: .\RSSAggregator\templates\RSSAggregator\rss-aggregator.html:88
+#: .\Apps\RSSAggregator\templates\RSSAggregator\rss-aggregator.html:67
+#: .\Apps\RSSAggregator\templates\RSSAggregator\rss-aggregator.html:88
 msgid "Про библиотеку RSS-каналов"
 msgstr "About the library of RSS channels"
 
-#: .\RSSAggregator\templates\RSSAggregator\rss-aggregator.html:71
-#: .\RSSAggregator\templates\RSSAggregator\rss-aggregator.html:105
+#: .\Apps\RSSAggregator\templates\RSSAggregator\rss-aggregator.html:71
+#: .\Apps\RSSAggregator\templates\RSSAggregator\rss-aggregator.html:105
 msgid "Про настройки"
 msgstr "About the tool's settings"
 
-#: .\RSSAggregator\templates\RSSAggregator\rss-aggregator.html:75
-#: .\RSSAggregator\templates\RSSAggregator\rss-aggregator.html:123
+#: .\Apps\RSSAggregator\templates\RSSAggregator\rss-aggregator.html:75
+#: .\Apps\RSSAggregator\templates\RSSAggregator\rss-aggregator.html:123
 msgid "Важные особенности"
 msgstr "Important"
 
-#: .\RSSAggregator\templates\RSSAggregator\rss-aggregator.html:80
+#: .\Apps\RSSAggregator\templates\RSSAggregator\rss-aggregator.html:80
 msgid ""
 "Для того чтобы использовать данный инструмент тебе потребуются ссылки на "
 "нужные тебе RSS-фиды (RSS-каналы). Просто найди такие RSS и вставь в "
@@ -72,11 +72,11 @@ msgstr ""
 "Just find such RSS channels and paste it into the corresponding field, press "
 "<b>ENTER </b> or the \"<b>+</b>\" sign."
 
-#: .\RSSAggregator\templates\RSSAggregator\rss-aggregator.html:82
+#: .\Apps\RSSAggregator\templates\RSSAggregator\rss-aggregator.html:82
 msgid "Где цифрами представлены следующие элементы:"
 msgstr "Where the following elements are represented by numbers:"
 
-#: .\RSSAggregator\templates\RSSAggregator\rss-aggregator.html:84
+#: .\Apps\RSSAggregator\templates\RSSAggregator\rss-aggregator.html:84
 msgid ""
 "Иконка главной рабочей области. Здесь будут отображены все подгружаемые и "
 "отображаемые rss-каналы соответственно"
@@ -84,27 +84,27 @@ msgstr ""
 "Main workspace icon. All loaded and displayed rss feeds will be displayed "
 "here, respectively"
 
-#: .\RSSAggregator\templates\RSSAggregator\rss-aggregator.html:85
+#: .\Apps\RSSAggregator\templates\RSSAggregator\rss-aggregator.html:85
 msgid "Поле ввода rss-канала"
 msgstr "RSS feed input field"
 
-#: .\RSSAggregator\templates\RSSAggregator\rss-aggregator.html:86
+#: .\Apps\RSSAggregator\templates\RSSAggregator\rss-aggregator.html:86
 msgid "Кнопка загрузки и отображения rss-каналов по ссылке"
 msgstr "Button for downloading and displaying rss feeds by link"
 
-#: .\RSSAggregator\templates\RSSAggregator\rss-aggregator.html:89
+#: .\Apps\RSSAggregator\templates\RSSAggregator\rss-aggregator.html:89
 msgid "После того как ты добавил очередной фид, ты можешь:"
 msgstr "Once you have added another feed, you can:"
 
-#: .\RSSAggregator\templates\RSSAggregator\rss-aggregator.html:91
+#: .\Apps\RSSAggregator\templates\RSSAggregator\rss-aggregator.html:91
 msgid "Убрать его"
 msgstr "Remove"
 
-#: .\RSSAggregator\templates\RSSAggregator\rss-aggregator.html:92
+#: .\Apps\RSSAggregator\templates\RSSAggregator\rss-aggregator.html:92
 msgid "Сохранить в библиотеку"
 msgstr "Save to library"
 
-#: .\RSSAggregator\templates\RSSAggregator\rss-aggregator.html:95
+#: .\Apps\RSSAggregator\templates\RSSAggregator\rss-aggregator.html:95
 msgid ""
 "Перейдя по вкладке 1 - \"<b>Библиотеки</b>\" ты сможешь посмотреть на все "
 "свои сохранённые фиды и их названия."
@@ -112,70 +112,70 @@ msgstr ""
 "By going to tab 1 - \"<b>Libraries</b>\" you can see all your saved feeds "
 "and their names."
 
-#: .\RSSAggregator\templates\RSSAggregator\rss-aggregator.html:97
+#: .\Apps\RSSAggregator\templates\RSSAggregator\rss-aggregator.html:97
 msgid "И тебе доступны следующие кнопки и операции:"
 msgstr "And the following buttons and operations are available to you:"
 
-#: .\RSSAggregator\templates\RSSAggregator\rss-aggregator.html:99
+#: .\Apps\RSSAggregator\templates\RSSAggregator\rss-aggregator.html:99
 msgid "Вкладка твоей библиотеки rss-каналов"
 msgstr "Your RSS Feed Library Tab"
 
-#: .\RSSAggregator\templates\RSSAggregator\rss-aggregator.html:100
+#: .\Apps\RSSAggregator\templates\RSSAggregator\rss-aggregator.html:100
 msgid "Удаление rss-канала из библиотеки"
 msgstr "Removing an RSS feed from the library"
 
-#: .\RSSAggregator\templates\RSSAggregator\rss-aggregator.html:101
+#: .\Apps\RSSAggregator\templates\RSSAggregator\rss-aggregator.html:101
 msgid "Сохранение или обновление данных об rss-канале"
 msgstr "Saving or updating rss feed data"
 
-#: .\RSSAggregator\templates\RSSAggregator\rss-aggregator.html:102
+#: .\Apps\RSSAggregator\templates\RSSAggregator\rss-aggregator.html:102
 msgid "Кнопка отображения rss-канала на главной ленте"
 msgstr ""
 
-#: .\RSSAggregator\templates\RSSAggregator\rss-aggregator.html:103
+#: .\Apps\RSSAggregator\templates\RSSAggregator\rss-aggregator.html:103
 msgid ""
 "Так выглядит кнопка после нажатия, то есть этот канал сейчас отображается"
 msgstr ""
 "This is what the button looks like after being pressed, meaning this channel "
 "is currently being displayed"
 
-#: .\RSSAggregator\templates\RSSAggregator\rss-aggregator.html:106
+#: .\Apps\RSSAggregator\templates\RSSAggregator\rss-aggregator.html:106
 msgid "Теперь поговорим про настройки. Ты можешь:"
 msgstr "Now let's talk about settings. You can:"
 
-#: .\RSSAggregator\templates\RSSAggregator\rss-aggregator.html:108
+#: .\Apps\RSSAggregator\templates\RSSAggregator\rss-aggregator.html:108
 msgid "Указать количество подгружаемых постов в rss-фидах за раз"
 msgstr "Specify the number of posts to load in rss feeds at a time"
 
-#: .\RSSAggregator\templates\RSSAggregator\rss-aggregator.html:109
+#: .\Apps\RSSAggregator\templates\RSSAggregator\rss-aggregator.html:109
 msgid "Указать порядок отображения данных постов"
 msgstr "Specify the order in which these posts are displayed"
 
-#: .\RSSAggregator\templates\RSSAggregator\rss-aggregator.html:110
+#: .\Apps\RSSAggregator\templates\RSSAggregator\rss-aggregator.html:110
 msgid "Указать отображать ли при это превьюшки для данных постов"
 msgstr "Specify whether to display previews for these posts"
 
-#: .\RSSAggregator\templates\RSSAggregator\rss-aggregator.html:111
+#: .\Apps\RSSAggregator\templates\RSSAggregator\rss-aggregator.html:111
 msgid "Связать различные браузеры для использования одних и тех же фидов"
 msgstr "Link different browsers to use the same feeds"
 
-#: .\RSSAggregator\templates\RSSAggregator\rss-aggregator.html:115
+#: .\Apps\RSSAggregator\templates\RSSAggregator\rss-aggregator.html:115
 msgid "Вкладка с настройками"
 msgstr "Settings tab"
 
-#: .\RSSAggregator\templates\RSSAggregator\rss-aggregator.html:116
+#: .\Apps\RSSAggregator\templates\RSSAggregator\rss-aggregator.html:116
 msgid "Поле текущего ID пользователя (сохрани его)"
 msgstr "Current user ID field (save it)"
 
-#: .\RSSAggregator\templates\RSSAggregator\rss-aggregator.html:117
+#: .\Apps\RSSAggregator\templates\RSSAggregator\rss-aggregator.html:117
 msgid "Поле предыдущего ID пользователя (другой браузер или устройство)"
 msgstr "Previous user ID field (other browser or device)"
 
-#: .\RSSAggregator\templates\RSSAggregator\rss-aggregator.html:118
+#: .\Apps\RSSAggregator\templates\RSSAggregator\rss-aggregator.html:118
 msgid "Кнопка пересохранения твоих настроек"
 msgstr "Resave your settings button"
 
-#: .\RSSAggregator\templates\RSSAggregator\rss-aggregator.html:124
+#: .\Apps\RSSAggregator\templates\RSSAggregator\rss-aggregator.html:124
 msgid ""
 "Перед разработкой данного инструмента было решено, что он будет использовать "
 "как классические методы работы, так более новые динамические технологии "
@@ -185,7 +185,7 @@ msgstr ""
 "methods of work, as well as newer dynamic technologies of working with a web "
 "page. "
 
-#: .\RSSAggregator\templates\RSSAggregator\rss-aggregator.html:125
+#: .\Apps\RSSAggregator\templates\RSSAggregator\rss-aggregator.html:125
 msgid ""
 "Твоя адресная строка будет меняться в зависимости от введённых rss-каналов и "
 "может выглядеть как-то так:"
@@ -193,23 +193,23 @@ msgstr ""
 "Your address bar will change depending on the rss feeds you enter and may "
 "look something like this:"
 
-#: .\RSSAggregator\templates\RSSAggregator\rss-aggregator.html:127
+#: .\Apps\RSSAggregator\templates\RSSAggregator\rss-aggregator.html:127
 msgid "Как верхняя, так и нижняя строка содержат адрес фида."
 msgstr "Both the top and bottom lines contain the feed address."
 
-#: .\RSSAggregator\templates\RSSAggregator\rss-aggregator.html:128
+#: .\Apps\RSSAggregator\templates\RSSAggregator\rss-aggregator.html:128
 msgid ""
 "Почему это важно? Ну, ты можешь сохранить страницу в закладки и потом заново "
 "её открыть."
 msgstr ""
 "Why is this important? Well, you can bookmark the page and then reopen it."
 
-#: .\RSSAggregator\templates\RSSAggregator\rss-aggregator.html:152
-#: .\RSSAggregator\templates\RSSAggregator\rss-pagination.html:32
+#: .\Apps\RSSAggregator\templates\RSSAggregator\rss-aggregator.html:152
+#: .\Apps\RSSAggregator\templates\RSSAggregator\rss-pagination.html:32
 msgid "Загрузить ещё ..."
 msgstr "More ..."
 
-#: .\RSSAggregator\templates\RSSAggregator\rss-aggregator.html:160
+#: .\Apps\RSSAggregator\templates\RSSAggregator\rss-aggregator.html:160
 msgid ""
 "\n"
 "\t\t\t\tУ тебя не выбран ни один фид. Начни с ввода первого или с выбора уже "
@@ -221,11 +221,11 @@ msgstr ""
 "or by selecting already saved ones!\n"
 "\t\t\t\t"
 
-#: .\RSSAggregator\templates\RSSAggregator\rss-aggregator.html:166
+#: .\Apps\RSSAggregator\templates\RSSAggregator\rss-aggregator.html:166
 msgid "О данном RSS сервисе"
 msgstr "About this RSS app"
 
-#: .\RSSAggregator\templates\RSSAggregator\rss-aggregator.html:168
+#: .\Apps\RSSAggregator\templates\RSSAggregator\rss-aggregator.html:168
 msgid ""
 "\n"
 "\t\t\tЭтот онлайн агрегатор лент позволяет добавлять, регистрировать и "
@@ -240,7 +240,7 @@ msgstr ""
 "RSS technology or Atom. атоме.\n"
 "\t\t\t"
 
-#: .\RSSAggregator\templates\RSSAggregator\rss-aggregator.html:173
+#: .\Apps\RSSAggregator\templates\RSSAggregator\rss-aggregator.html:173
 msgid ""
 "\n"
 "\t\t\tОн доступен как на десктопах, так и на мобильных устройствах.\n"
@@ -250,30 +250,30 @@ msgstr ""
 "\t\t\tThere are no limits to how many feeds you can read.\n"
 "\t\t\t"
 
-#: .\RSSAggregator\templates\RSSAggregator\rss-pagination.html:15
+#: .\Apps\RSSAggregator\templates\RSSAggregator\rss-pagination.html:15
 msgid "Часы"
 msgstr "Clock"
 
-#: .\RSSAggregator\views.py:64
+#: .\Apps\RSSAggregator\views.py:64
 msgid "Успешно добавил фид"
 msgstr "Successfully update the feed"
 
-#: .\RSSAggregator\views.py:133
+#: .\Apps\RSSAggregator\views.py:133
 msgid "Что-то пошло не так. Не смог обновить фид. ＼（〇_ｏ）／"
 msgstr "Something went wrong. Could not to update the feed  ＼（〇_ｏ）／"
 
-#: .\RSSAggregator\views.py:144
+#: .\Apps\RSSAggregator\views.py:144
 msgid "Успешно обновил фид. （￣︶￣）↗　"
 msgstr "successfully update the feed  （￣︶￣）↗　"
 
-#: .\RSSAggregator\views.py:167
+#: .\Apps\RSSAggregator\views.py:167
 msgid "Что-то пошло не так. Не смог обновить настройки. ＼（〇_ｏ）／"
 msgstr "Something went wrong. Could not to update the feed ＼（〇_ｏ）／"
 
-#: .\RSSAggregator\views.py:179
+#: .\Apps\RSSAggregator\views.py:179
 msgid "Успешно обновил настройки пользователя. （￣︶￣）↗　"
 msgstr "I've successfully update the user's settings"
 
-#: .\RSSAggregator\views.py:186
+#: .\Apps\RSSAggregator\views.py:186
 msgid "Такого пользователя не существует ＞︿＜"
 msgstr "There is no such user ＞︿＜ "
