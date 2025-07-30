@@ -163,8 +163,8 @@ function sendComment(){
         else
             return response.json().then( response =>{
                 POSTED_COMMENTS += 1
-                history.pushState(null, '', '#comments_limiter')
-                location.reload()
+                notificator.notify(response['msg'],'success')  
+                notificator.notify(gettext("Чтобы увидить свой коментарий обнови страницу"), 'info')  
             })
     })
 }
