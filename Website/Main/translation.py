@@ -43,6 +43,9 @@ class ToolTranslationOptions(TranslationOptions):
 class ServiceTranslationOptions(TranslationOptions):
     fields = ('title', 'description')
 
+class PriceTranslationOptions(TranslationOptions):
+    fields = ('barter_price',)
+
 
 
 translator.register(Post_M.Category, CategoryTranslationOptions)
@@ -54,4 +57,5 @@ translator.register(Post_M.Tag, TagTranslationOptions)
 translator.register(Post_M.Tool, ToolTranslationOptions)
 translator.register(Post_M.Platform, PlatformTranslationOptions)
 translator.register(Post_M.Service, ServiceTranslationOptions)
+translator.register(Post_M.Price, PriceTranslationOptions)
 translator.register(Main_M.Contact, ContactTranslationOptions)
