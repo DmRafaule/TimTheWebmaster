@@ -600,6 +600,8 @@
 {% endblock %}
 
 {% block scripts_tool %}
+    <script src="{% static 'PostEditor/js/modal.js' %}"></script>
+    <script src="{% static 'PostEditor/js/notificator.js' %}"></script>
     <script src="{% static 'PostEditor/js/editor.js' %}"></script>
     {# Need for html_media_checker, which script to check, start point #}
     <script id='post_script_exporter_top_line' src="{% static 'PostEditor/js/utils.js' %}"></script>

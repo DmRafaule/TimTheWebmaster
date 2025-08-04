@@ -38,6 +38,16 @@ function onDropDownButton(btn, container){
     }
 }
 
+const clickOutsideHatEditor = new Event('clickOutsideHatEditor')
+let onClickOutsideHat = (button, body, callback) => {
+	document.addEventListener('click', e => {
+		if (!body.contains(e.target) && !button.contains(e.target)){ 
+			document.dispatchEvent(clickOutsideHatEditor)
+			callback()
+		};
+	});
+};
+
 function onReady(){
     quill_side_menu.style.top = header.getBoundingClientRect().height + 'px'
     var quill_drop_down_buttons = document.querySelectorAll('.quill-drop-down-button')

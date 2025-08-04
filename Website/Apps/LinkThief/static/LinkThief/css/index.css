@@ -1,8 +1,5 @@
 @import "tailwindcss";
-@tailwind base;
-@tailwind components;
 @tailwind utilities;
-@tailwind variants;
 @import '../../../../../Main/static/tables.css';
 @import '../../../../../Main/static/loader.css';
 
