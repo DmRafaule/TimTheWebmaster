@@ -126,16 +126,7 @@
 {% endblock %}
 
 {% block styles %}
-	<link type="text/css" rel="stylesheet" href="{% static 'images.css' %}"/>
-	<link type="text/css" rel="stylesheet" href="{% static 'progressbar.css' %}"/>
-	<link type="text/css" rel="stylesheet" href="{% static 'blocks.css' %}"/>
-	<link type="text/css" rel="stylesheet" href="{% static 'paginator.css' %}"/>
-    <link type="text/css" rel="stylesheet" href="{% static 'lists.css' %}"/>
-    <link type="text/css" rel="stylesheet" href="{% static 'Post/css/post.css' %}"/>
-    <link type="text/css" rel="stylesheet" href="{% static 'Post/css/posts_preview.css' %}"/>
-	{% if isPostFilterMiddlewareConnected %}
-		{% include 'PagiScroll/post_filter_styles.html' %}
-	{% endif %}
+    <link type="text/css" rel="stylesheet" href="{% static 'PagiScroll/css/index.min.css' %}"/>
 
 	{% if isEngagementMiddlewareConnected %}
 		{% include 'Engagement/engagement_styles.html' %}
@@ -150,18 +141,10 @@
 {% endblock %}
 
 {% block scripts %}
-	{% csrf_token %}
     <script>
-        const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
 		const category_name = "{{category.slug}}"
     </script>
-	{% if isPostFilterMiddlewareConnected %}
-		{% include 'PagiScroll/post_filter_scripts.html' %}
-	{% endif %}
-
-	<script src="{% static 'PagiScroll/js/paginator.js' %}"></script>
-	<script src="{% static 'PagiScroll/js/infinity_scroll.js' %}"></script>
-	<script src="{% static 'PagiScroll/js/pagiscroll.js' %}"></script>
+	<script src="{% static 'PagiScroll/js/index.min.js' %}"></script>
 	
 	{% if isEngagementMiddlewareConnected %}
 		{% include 'Engagement/engagement_scripts.html' %}

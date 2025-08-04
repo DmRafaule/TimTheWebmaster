@@ -1,5 +1,5 @@
 // To use infinity load you need to be attached to specific event
-function WaitSetinelToInteract(sentinel, options = {}){
+export function WaitSetinelToInteract(sentinel, options = {}){
 	const onInfinityLoad = new CustomEvent("onInfinityLoad", {detail: {sentinel: sentinel, id: sentinel.id}});
 	const observer = new IntersectionObserver((entries, observer) => {
 	for (const entry of entries) {

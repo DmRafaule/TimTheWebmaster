@@ -1,7 +1,7 @@
 /*
  *	Simple radio button checker
  * */
-class RadioButton{
+export class RadioButton{
 	constructor(id, callback, default_to_check){
 		var def_i = default_to_check || 0
 		this.elements = document.querySelectorAll(id)
@@ -22,7 +22,7 @@ class RadioButton{
  * Create radio button via colored icons
  * 
  * */
-class ColoredRadioButton{
+export class ColoredRadioButton{
 	constructor(id, btn, selected_color, not_selected_color, callback, callbackArgs){
 		this.btn = btn
 		this.selected_color = selected_color

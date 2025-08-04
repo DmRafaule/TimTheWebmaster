@@ -1,3 +1,7 @@
+import {update_paginator} from './paginator.js';
+import {WaitSetinelToInteract} from  './infinity_scroll.js'
+import { update_time_filters } from './time_filtering.js';
+import { update_alphabet_filters } from './alphabet_filtering.js';
 let num_pages = parseInt(document.querySelector('#meta-data').dataset.numpages)
 let current_page = parseInt(document.querySelector('#meta-data').dataset.currentpage)
 let url = document.querySelector('#meta-data').dataset.url
@@ -29,7 +33,7 @@ function updateFilters(){
 }
 // To send over GET request lists, like tags
 function buildURLList(list, list_el_name){
-	url_list = ''
+	var url_list = ''
 	list.forEach( (el) => {
 		url_list += `&${list_el_name}=${el}`
 	})
@@ -46,7 +50,7 @@ function updateState(page, tags = []){
 	history.replaceState(null, '', new_url)
 }
 
-function LoadPosts(page, isUpdate=false){
+export function LoadPosts(page, isUpdate=false){
 	var progressbar = document.querySelector('#progressbar')
 	progressbar.style.display = 'block'
 	const [mode, isRecent, tags, relative_this, week_day, month_day, month, year, letters, is_alphabetic, platforms_id] = updateFilters()

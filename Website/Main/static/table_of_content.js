@@ -28,13 +28,13 @@ function CreateHeaderInterObserver(elements, element, element_indx){
 }
 
 document.addEventListener('clickOutsideHat', (ev)=>{
-	var side_menu_button_container = $("#table_of_content_groups_container")
-	if (!side_menu_button_container.hasClass('padder') && side_menu_button_container.hasClass('active_nav')){
-		side_menu_button_container.addClass('padder')
-	}
-	else{
-		side_menu_button_container.removeClass('padder')
-	}
+	//var side_menu_button_container = $("#table_of_content_groups_container")
+	//if (!side_menu_button_container.hasClass('padder') && side_menu_button_container.hasClass('active_nav')){
+	//	side_menu_button_container.addClass('padder')
+	//}
+	//else{
+	//	side_menu_button_container.removeClass('padder')
+	//}
 })
 
 

@@ -32,7 +32,7 @@ function onHeaderButton(body){
 }
 
 const clickOutsideHat = new Event('clickOutsideHat')
-let onClickOutsideHat = (button, body, callback) => {
+export let onClickOutsideHat = (button, body, callback) => {
 	document.addEventListener('click', e => {
 		if (!body.contains(e.target) && !button.contains(e.target)){ 
 			document.dispatchEvent(clickOutsideHat)
@@ -40,9 +40,26 @@ let onClickOutsideHat = (button, body, callback) => {
 		};
 	});
 };
+
+function removeAllEvents(element) {
+  // Get the parent of the element
+  const parent = element.parentNode;
+
+  // Clone the element (true for deep clone, false for shallow clone)
+  // Event listeners are NOT copied during cloning
+  const clonedElement = element.cloneNode(true);
+
+  // Replace the original element with the cloned element
+  if (parent) {
+    parent.replaceChild(clonedElement, element);
+  }
+  
+  return clonedElement
+}
   
   
 header_buttons.forEach( (header_button) => {
+	header_button = removeAllEvents(header_button)
 	header_button.addEventListener('click', (e) => {
 		var body = document.getElementById(header_button.dataset.body)
 		onHeaderButton(body)

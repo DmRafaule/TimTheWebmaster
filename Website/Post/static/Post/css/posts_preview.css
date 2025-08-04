@@ -1,7 +1,6 @@
 /*Work also as identificator for how many posts are loaded on page*/
 .post_preview{
 	padding: var(--min_pm);
-	margin-top: var(--post_preview_margin-top);
 	background-color: var(--upper_bg);
 	border-radius: var(--post_preview_border-radius);
 	padding: 5px;

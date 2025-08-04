@@ -1,8 +1,12 @@
-@import url(tabs.css);
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 @tailwind variants;
+
+@import './tabs.css';
+@import '../../../../../Main/static/loader.css';
+@import '../../../../../Main/static/images.css';
+@import '../../../../../Main/static/table_of_content.css';
 
 
 input{

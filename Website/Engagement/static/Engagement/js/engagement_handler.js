@@ -1,3 +1,7 @@
+import { onClickOutsideHat } from "../../../../Main/static/hat_buttons.js"
+import { IS_MOBILE } from "../../../../Main/static/Main/js/index.js"
+import { notificator } from "../../../../Main/static/notificator.js"
+
 function askToBookmarkIt(){
 	var url = `${window.location.pathname}${window.location.search}`
 	var formData = new FormData()

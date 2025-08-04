@@ -1,9 +1,11 @@
+import { IS_MOBILE } from "../../../../Main/static/Main/js/index.js"
+
 var paginator_buttons = document.querySelectorAll('.pagin_button')
 var next_pagin_button = document.getElementById('next_pagin_button')
 var prev_pagin_button = document.getElementById('prev_pagin_button')
 
 
-function update_paginator(num_pages, page){
+export function update_paginator(num_pages, page){
 	var paginator_body = document.getElementById('paginator_body')
 	paginator_body.innerText = ''
 	var default_page_example_in_paginator = document.getElementById('paginator_default_page_example')

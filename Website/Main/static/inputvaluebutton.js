@@ -1,4 +1,4 @@
-class InputValueButton{
+export class InputValueButton{
 	constructor(id, callback){
 		
 		this.elements = document.querySelectorAll(id)

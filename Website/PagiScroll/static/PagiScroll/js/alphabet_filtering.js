@@ -1,4 +1,6 @@
-function update_alphabet_filters(){
+import { LoadPosts } from "./pagiscroll.js"
+
+export function update_alphabet_filters(){
     var letters = []
     document.querySelectorAll('.letter_button.selected_order').forEach((el)=>{
         letters.push(el.dataset.letter)
@@ -6,7 +8,7 @@ function update_alphabet_filters(){
     return letters 
 }
 
-function update_alphabet_filters_sort(){
+export function update_alphabet_filters_sort(){
     var alphabeticContainer = document.querySelector('#onAlphabet')
     var isAlphabetic = alphabeticContainer.dataset.sort
     return isAlphabetic

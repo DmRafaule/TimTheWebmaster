@@ -64,15 +64,9 @@
 {% endblock %}
 
 {% block styles %}
-	<link type="text/css" rel="stylesheet" href="{% static 'blocks.css' %}"/>
-	<link type="text/css" rel="stylesheet" href="{% static 'lists.css' %}"/>
-	<link type="text/css" rel="stylesheet" href="{% static 'forms.css' %}"/>
+    <link type="text/css" rel="stylesheet" href="{% static 'Main/css/index.main.min.css' %}"/>
 {% endblock %}
 
 
 {% block scripts %}
-    {% csrf_token %}
-    <script>
-        const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
-    </script>
 {% endblock %}

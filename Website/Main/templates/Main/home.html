@@ -10,10 +10,9 @@
 {% endblock %}
 
 {% block content %}
-<div class="limiter in_middle in_middle-self no_wrap padder">
+<div class="home_limiter in_middle in_middle-self no_wrap padder">
 	<div class="row in_middle">
 		<h1 class="home_title" >{% trans "Тим Вебмастер" %}</h1>
-		<canvas id='canvas' class="canvas_as_element" data-vertex-shader="{% static "WebGLEngine/shaders/home_gik.vert" %}" data-fragment-shader="{% static "WebGLEngine/shaders/home_gik.frag" %}"></canvas>
 	</div>
 	<div class="column in_middle-even max_gap">
 
@@ -185,27 +184,12 @@
 {% endblock %}
 
 {% block styles %}
-    <link type="text/css" rel="stylesheet" href="{% static 'blocks.css' %}"/>
-    <link type="text/css" rel="stylesheet" href="{% static 'images.css' %}"/>
-    <link type="text/css" rel="stylesheet" href="{% static 'Post/css/tabs.css' %}"/>
-	<link type="text/css" rel="stylesheet" href="{% static 'Post/css/posts_preview.css' %}"/>
-    <link type="text/css" rel="stylesheet" href="{% static 'Main/css/home.css' %}"/>
-	{% if isEngagementMiddlewareConnected %}
-		<link type="text/css" rel="stylesheet" href="{% static 'Engagement/css/comments.css' %}"/>
-	{% endif %}
+    <link type="text/css" rel="stylesheet" href="{% static 'Main/css/index.main.min.css' %}"/>
 {% endblock %}
 
 {% block scripts %}
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    {% csrf_token %}
-    <script>
-		var STATIC = "{% static . %}"
-        const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
-    </script>
-    <script src="{% static 'Post/js/tabs.js' %}"></script>
-	<!-- Простой 3д рендерер для сайта -->
-    <script src="{% static 'WebGLEngine/js/webgl_engine_v1.js' %}"></script>
-	<script src="{% static 'WebGLEngine/shaders/shader-simple_pcp.js' %}"></script>
-	<!-- Скрипт для рендеринга на определённом канвасе -->
-    <script src="{% static 'WebGLEngine/js/home_gik.js' %}"></script>
+	<script>
+		var STATIC = "{% static '.' %}"
+	</script>
+    <script src="{% static 'Main/js/index.main.min.js' %}"></script>
 {% endblock %}

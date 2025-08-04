@@ -1,5 +1,7 @@
+import { LoadPosts } from "./pagiscroll.js"
+
 // To be used in pagiscroll
-function update_time_filters(){
+export function update_time_filters(){
     var this_time = document.querySelector('input[name="thisTime"]:checked');
     if (!this_time)
         this_time = ''

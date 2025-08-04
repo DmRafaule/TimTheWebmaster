@@ -32,4 +32,4 @@ class Notificator{
     }
 }
 
-let notificator = new Notificator()
+export let notificator = new Notificator()

@@ -1,4 +1,4 @@
-class CheckBoxButton{
+export class CheckBoxButton{
 	constructor(id, callback_on_check, callback_on_uncheck){
 		var elements = document.querySelectorAll(id)
 		elements.forEach((element) => {

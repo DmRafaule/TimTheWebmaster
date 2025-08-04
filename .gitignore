@@ -98,3 +98,6 @@ public_html
 tmp
 .htaccess
 passenger_wsgi.py
+**/css/main.js
+**/css/*.svg
+**/js/*.LICENSE.txt

@@ -1,3 +1,5 @@
+import { LoadPosts } from "./pagiscroll.js"
+
 function toggleFilters(event){
     var button = event.detail.button
     var button_img = button.firstElementChild

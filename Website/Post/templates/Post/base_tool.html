@@ -145,17 +145,7 @@
 {% endblock %}
 
 {% block styles %}
-    <link type="text/css" rel="stylesheet" href="{% static 'modal.css' %}"/>
-    <link type="text/css" rel="stylesheet" href="{% static 'blocks.css' %}"/>
-    <link type="text/css" rel="stylesheet" href="{% static 'lists.css' %}"/>
-    <link type="text/css" rel="stylesheet" href="{% static 'forms.css' %}"/>
-    <link type="text/css" rel="stylesheet" href="{% static 'images.css' %}"/>
-    <link type="text/css" rel="stylesheet" href="{% static 'tooltip.css' %}"/>
-	<link type="text/css" rel="stylesheet" href="{% static 'dynamic.css' %}"/>
-    <link type="text/css" rel="stylesheet" href="{% static 'footer-tool.css' %}"/>
-    <link type="text/css" rel="stylesheet" href="{% static 'notificator.css' %}"/>
-    <link type="text/css" rel="stylesheet" href="{% static 'Post/css/tool.css' %}"/>
-
+    <link type="text/css" rel="stylesheet" href="{% static 'post/css/index.min.css' %}"/>
     {% if isEngagementMiddlewareConnected %}
         {% include 'Engagement/engagement_styles.html' %}
     {% endif %}
@@ -169,13 +159,8 @@
 {% endblock %}
 
 {% block scripts %}
-    {% csrf_token %}
-    <script>
-        const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
-    </script>
-    <script src="{% static 'modal.js' %}"></script>
-    <script src="{% static 'notificator.js' %}"></script>
-    
+    <script src="{% static 'Post/js/index.min.js' %}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     {% if isEngagementMiddlewareConnected %}
         {% include 'Engagement/engagement_scripts.html' %}
     {% endif %}

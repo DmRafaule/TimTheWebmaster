@@ -219,20 +219,13 @@
 {% endblock %}
 
 {% block styles_tool %}
-    <link type="text/css" rel="stylesheet" href="{% static 'input.css' %}"/>
-    <link type="text/css" rel="stylesheet" href="{% static 'Post/css/tabs.css' %}"/>
-    <link type="text/css" rel="stylesheet" href="{% static 'ShaderToy/css/shader_toy.css' %}"/>
+    <link type="text/css" rel="stylesheet" href="{% static 'ShaderToy/css/index.min.css' %}"/>
 {% endblock %}
 
 {% block scripts_tool %}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="{% static 'inputvaluebutton.js' %}"></script>
-    <script src="{% static 'radiobutton.js' %}"></script>
-    <script src="{% static 'checkboxbutton.js' %}"></script>
-    <script src="{% static 'Post/js/tabs.js' %}"></script>
-	<script src="{% static 'ShaderToy/js/math.js' %}"></script>
 	{# ACE web based code editor#}
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.32.6/ace.min.js"></script>
 	{# To draw a shader on canvas. Specified webgl context, and set up everything #}
-    <script src="{% static 'ShaderToy/js/shader_toy.js' %}"></script>
+    <script src="{% static 'ShaderToy/js/index.min.js' %}"></script>
 {% endblock %}

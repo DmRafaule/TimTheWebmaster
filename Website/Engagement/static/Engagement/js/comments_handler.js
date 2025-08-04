@@ -1,3 +1,4 @@
+import { notificator } from "../../../../Main/static/notificator.js"
 let POSTED_COMMENTS = 0
 
 function goToCommentForm(){

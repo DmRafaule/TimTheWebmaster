@@ -1,3 +1,6 @@
+import { ColoredRadioButton, RadioButton } from '../../../../../Main/static/radiobutton.js';
+import { CheckBoxButton } from '../../../../../Main/static/checkboxbutton.js';
+import { InputValueButton } from '../../../../../Main/static/inputvaluebutton.js';
 /* Что добавить потом
  *	1) Добавить в настройки холста версию WebGL 1 или 2
  *	2) Обратную связь при сохранении

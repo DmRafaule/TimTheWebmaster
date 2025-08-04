@@ -52,12 +52,10 @@ INSTALLED_APPS = [
     'rest_framework',
     ###
     'Main.apps.MainConfig',
-    'Admin.apps.AdminConfig',
     'Post.apps.PostConfig',
     'PagiScroll.apps.PagiscrollConfig',
     'Engagement.apps.EngagementConfig',
     'Breadcrumbs.apps.BreadcrumbsConfig',
-    'Apps.WebGLEngine.apps.WebglengineConfig',
     'Apps.PostEditor.apps.PostEditorConfig',
     'Apps.ImageThief.apps.ImagethiefConfig',
     'Apps.RSSAggregator.apps.RssaggregatorConfig',
