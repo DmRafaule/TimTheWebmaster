@@ -50,7 +50,11 @@ INSTALLED_APPS = [
     # Django REST framework
     'corsheaders',
     'rest_framework',
-    ###
+    # Django-Cleanup
+    'django_cleanup.apps.CleanupConfig',
+]
+
+MY_INSTALLED_APPS = [
     'Main.apps.MainConfig',
     'Post.apps.PostConfig',
     'PagiScroll.apps.PagiscrollConfig',
@@ -62,9 +66,9 @@ INSTALLED_APPS = [
     'Apps.ShaderToy.apps.ShadertoyConfig',
     'Apps.LinkThief.apps.LinkthiefConfig',
     'Apps.TextThief.apps.TextthiefConfig',
-    # Django-Cleanup
-    'django_cleanup.apps.CleanupConfig',
 ]
+
+INSTALLED_APPS += MY_INSTALLED_APPS
 
 MIDDLEWARE = [
     'Engagement.middleware.EngagementMiddleware',

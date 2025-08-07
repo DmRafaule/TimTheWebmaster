@@ -1,10 +1,13 @@
-from Website.settings import  ALLOWED_HOSTS
-import Post.models as Post_M
 from datetime import datetime
-from .models import Website, Contact
-from django.db.models import Q
-import math
 from itertools import chain
+import math
+import os
+
+from django.db.models import Q
+
+from Website.settings import  ALLOWED_HOSTS, MY_INSTALLED_APPS, BASE_DIR
+from .models import Website, Contact
+import Post.models as Post_M
 
     
 def get_how_old_human_in_years(birth_date: str, birth_date_str_frm: str) -> int:
@@ -115,3 +118,18 @@ def initDefaults(request):
         'default_post_preview': default_post_preview,
     }
     return context
+
+
+def get_apps_root_dirs():
+        apps_root_dirs = []
+        # Собираю пути до корневых директорий приложений
+        for app_conf in MY_INSTALLED_APPS:
+            CWD = BASE_DIR
+            app_folders = app_conf.split('.')
+            for app_folder in app_folders:
+                if app_folder == "apps":
+                    break
+                CWD = os.path.join(CWD, app_folder)
+            apps_root_dirs.append(CWD)
+        
+        return apps_root_dirs
