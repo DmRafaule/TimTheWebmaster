@@ -13,32 +13,41 @@
 	{% endblock%}
 {% endblock %}
 
+{% block hat_body %}
+	{% block hat_body_post %}
+	{% endblock%}
+{% endblock %}
+
+
 
 {% block content %}
-<div class='notificator-container'>
-	<div class="notificator-blank notificator notificator-inactive"></div>
-</div>
-<div class="limiter in_middle in_middle-self no_wrap toObserve">
+<div class="flex flex-col gap-2 p-1 max-w-4xl justify-center self-center flex-nowrap text-wrap wrap-anywhere break-all ttw-limiter toObserve">
 	{% block content_post-before %}
 	{% endblock %}
 
 	<hr>
 	{% block content_post %}
 	{% endblock %}
-	<div class="in_post_pager row in_middle-farapart marger_min">
+	<div class="flex flex-row flex-wrap justify-between gap-3 m-1">
 		{% if next_post %}
-		<a href="{{next_post.get_absolute_url}}"><div class="next_post_pager column mid_gap text_button padder">
-			<div>{{next_post.title}}</div>
-			<div class="post_pager_text"><b>{% trans 'Следующая статья' %}</b></div>
-		</div></a>
+		<div class="ttw-button ttw-button_link ref_no-sign grow shrink-0 basis-full">
+			<a href="{{next_post.get_absolute_url}}"><div class="flex flex-col gap-2 p-2 border-l-4">
+				<div>{{next_post.title}}</div>
+				<hr>
+				<div><b>{% trans 'Следующая статья' %}</b></div>
+			</div></a>
+		</div>
 		{% else %}
 		<div></div>
 		{% endif %}
 		{% if prev_post %}
-		<a href="{{prev_post.get_absolute_url}}"><div  style="text-align: right;" class="prev_post_pager column mid_gap text_button padder">
-			<div>{{prev_post.title}}</div>
-			<div class="post_pager_text"><b>{% trans 'Предыдущая статья' %}</b></div>
-		</div></a>
+		<div class="ttw-button ttw-button_link ref_no-sign grow shrink-0 basis-full">
+			<a href="{{prev_post.get_absolute_url}}"><div class="border-r-4 text-right flex flex-col gap-2 p-2">
+				<div>{{prev_post.title}}</div>
+				<hr>
+				<div><b>{% trans 'Предыдущая статья' %}</b></div>
+			</div></a>
+		</div>
 		{% else %}
 		<div></div>
 		{% endif %}
@@ -46,7 +55,10 @@
 	<hr>
 
 	{% if isEngagementMiddlewareConnected %}
-		{% include 'Engagement/engagement_options.html' %}
+		{% include 'Engagement/Other/engagement_under_post_container.html' %}
+        {% if is_comments %}
+            {{comments_doc}}
+        {% endif %}
 	{% endif %}
 	
 	{% block content_post-after %}
@@ -54,16 +66,24 @@
 </div>
 {% endblock %}
 
+{% block dock %}
+	<div class="flex flex-row w-full justify-start p-2">
+	{% if isEngagementMiddlewareConnected %}
+		{% include 'Engagement/Other/engagement_dock_container.html' %}
+	{% endif %}
+	</div>
+{% endblock %}
+
 {% block footer_links %}
 	{% for ref in popular_posts %}
-		<li class="ref"><a href="{{ref.get_absolute_url}}">{{ref|truncatechars:15}}</a></li>
+		<li class="ref"><a href="{{ref.get_absolute_url}}">{{ref}}</a></li>
 	{% endfor %}
 	{% block footer_links_post %}
 	{% endblock %}
 {% endblock %}
 
 {% block styles %}
-    <link type="text/css" rel="stylesheet" href="{% static 'post/css/index.min.css' %}"/>
+    <link type="text/css" rel="stylesheet" href="{% static 'post/css/index.article.min.css' %}"/>
 	{% if isEngagementMiddlewareConnected %}
 		{% include 'Engagement/engagement_styles.html' %}
 	{% endif %}
@@ -80,8 +100,7 @@
     <script>
 		const post_slug = "{{post.slug}}"
     </script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="{% static 'Post/js/index.min.js' %}"></script>
+    <script src="{% static 'Post/js/index.article.min.js' %}"></script>
 	{% if isEngagementMiddlewareConnected %}
 		{% include 'Engagement/engagement_scripts.html' %}
 	{% endif %}

@@ -1,0 +1,6 @@
+.svg_icon_inverted{
+	filter: brightness(0) invert(1) ;
+}
+.svg_icon_inverted_black{
+	filter: brightness(0) invert(0) ;
+}

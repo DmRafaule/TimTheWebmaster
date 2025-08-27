@@ -1,0 +1,69 @@
+.comments_counter_header{
+    font-weight: 100;
+    font-size: 20px;
+    vertical-align: text-top;
+    font-family: initial;
+}
+.empty_comments_placeholder{
+    display: flex;
+    width: 100%;
+    min-height: 200px;
+    background-color: #ffd240cf;
+    border-radius: 5px;
+    padding: 5px;
+    z-index: 0;
+    position: relative;
+}
+.comment{
+    display: flex;
+    flex-direction: column;
+    flex: 1 0 auto;
+    background-color: #ffd240cf;
+    border-radius: 5px;
+    padding: 5px;
+    z-index: 0;
+    position: relative;
+    width: 100%;
+    word-break: break-all;
+    word-wrap: break-word;
+}
+.comment_person{
+    font-weight: 300;
+}
+.comment_time{
+    font-weight: 300;
+}
+.add_comment_form{
+    background-color: #ffffff73;
+    padding: var(--button_padding_top_bot);
+    border-radius: var(--post_preview_border-radius);
+    z-index: 0;
+    position: relative;
+}
+.response_on_comment_button{
+	background-color: var(--bg_color);
+	color: var(--main_text_color);
+	border-top-left-radius: 8px;
+	border-bottom-right-radius: 8px;
+}
+.comment_reply{
+    padding-left: 20px;
+    border-left: 1px solid var(--secondary_color);
+    border-bottom-left-radius: 10px;
+    border-bottom: 1px solid var(--secondary_color); 
+    padding-bottom: 20px;
+}
+
+ /* The animation code */
+@keyframes new_added_comment {
+  from {background-color: #ffca1ecf;}
+  to {background-color: #ffd240cf;}
+}
+
+/* The element to apply the animation to */
+.new_added_comment {
+  background-color: #ffca1ecf;
+  animation-name: new_added_comment;
+  animation-duration: 4s;
+  animation-fill-mode: forwards;
+} 

@@ -1,0 +1,8 @@
+{% load i18n %}
+{% load static %}
+
+<div id="comments_limiter" class="flex flex-col gap-2 max-w-4xl w-full justify-center">
+    <div class="flex gap-1"><h2 class="">{% trans 'Отзывы' %}</h2><span id="comments_counter_header" class="comments_counter_header">({{all_comments_length}})</span></div>
+    <hr>
+    {% include 'Engagement/Commenting/engagement_comments.html' %}
+</div>

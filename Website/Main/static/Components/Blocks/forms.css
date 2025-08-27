@@ -1,0 +1,34 @@
+input{
+	border-bottom: 2px dashed grey;
+	width: 100%;
+	padding: var(--form_el_padding);
+}
+
+textarea{
+	border: 2px dashed grey;
+	width: 100%;
+	height: 25svh;
+	padding: var(--form_el_padding);
+	resize: none;
+}
+.rules{
+	font-family: var(--family-acent_font);
+	font-size: var(--size-mini_font);
+}
+
+.form_error{
+	padding-left: 8px;
+	color: var(--error);
+}
+
+.form_success{
+	color: var(--success);
+}
+
+.form_warning{
+	color: var(--warning);
+}
+
+.form_info{
+	color: var(--info);
+}

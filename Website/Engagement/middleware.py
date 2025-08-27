@@ -99,7 +99,7 @@ class EngagementMiddleware:
         if response.context_data:
             response.context_data.update({'url_to_share': url})
             response.context_data.update({'is_likes': True})
-            response.context_data.update({'is_comments': self._set_comments(request, response, True, 'Engagement/engagement_post_comments.html')})
+            response.context_data.update({'is_comments': self._set_comments(request, response, True, 'Engagement/Commenting/engagement_post_comments.html')})
             response.context_data.update({'is_shares': True})
             response.context_data.update({'is_bookmarks': True})
             response.context_data.update({'is_feedbacks': True})
@@ -116,7 +116,7 @@ class EngagementMiddleware:
         if response.context_data:
             response.context_data.update({'url_to_share': url})
             response.context_data.update({'is_likes': True})
-            response.context_data.update({'is_comments': self._set_comments(request, response, True, 'Engagement/engagement_tool_comments.html', ReviewForm())})
+            response.context_data.update({'is_comments': self._set_comments(request, response, True, 'Engagement/Commenting/engagement_tool_comments.html', ReviewForm())})
             response.context_data.update({'is_shares': True})
             response.context_data.update({'is_bookmarks': True})
             response.context_data.update({'is_feedbacks': True})

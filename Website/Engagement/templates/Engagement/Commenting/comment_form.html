@@ -1,0 +1,20 @@
+{% load static %}
+{% load i18n %}
+
+<form class="flex flex-col gap-2 p-2 border border-t-0" action='' id="toSendComment"  method="post">
+    {% csrf_token %}
+    {% for field in comment_form %}
+        {% if field.name == 'captcha' %}
+            <div class="flex gap-2">
+                {{ field }}
+            </div>
+        {% else %}
+            <div>
+                {{ field }}
+            </div>
+        {% endif %}
+        {% for error in field.errors %}
+        <p class="form_error">{{ error }}</p>
+        {% endfor %}	
+    {% endfor %}
+</form>

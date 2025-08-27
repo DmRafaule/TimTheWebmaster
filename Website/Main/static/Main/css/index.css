@@ -1,10 +1,28 @@
-@import '../../config.css';
-@import '../../zero.css';
-@import '../../text.css';
-@import '../../layout.css';
-@import '../../buttons.css';
-@import '../../dynamic.css';
-@import '../../icons.css';
-@import '../../links.css';
-@import '../../sticky.css';
-@import '../../menu_items.css';
+@import '../../Components/config.css';
+@import '../../Components/Buttons/Action/button_action.css';
+@import '../../Components/Buttons/Link/button_link.css';
+@import '../../Components/Buttons/button.css';
+@import '../../Components/Containers/Swap/swap.css';
+@import '../../Components/Containers/Sidebar/sidebar.css';
+@import '../../Components/Containers/hat.css';
+@import '../../Components/Containers/main.css';
+@import '../../Components/Containers/footer.css';
+@import '../../Components/Containers/Modal/modal.css';
+@import '../../Components/Containers/list.css';
+@import '../../Components/Containers/dock.css';
+@import '../../Components/Feedbacks/Toaster/toaster.css';
+@import '../../Components/Feedbacks/Tooltip/tooltip.css';
+@import '../../Components/Feedbacks/Loader/loader.css';
+@import '../../Components/Blocks/header.css';
+@import '../../Components/Blocks/link.css';
+@import '../../Components/Blocks/content.css';
+@import "tailwindcss";
+@tailwind utilities;
+
+.bg-main{
+    background-color: var(--main_color);
+}
+
+.bg-accent{
+    background-color: var(--secondary_color);
+}

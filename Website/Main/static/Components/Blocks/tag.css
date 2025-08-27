@@ -1,0 +1,24 @@
+.tag{
+	color: var(--link_color)
+}
+.tag::before{
+	content: var(--tag_sign);
+}
+
+.tag_selected{
+	color: gray;
+}
+.tag_selected::before{
+	content: var(--tag_sign);
+}
+
+.tag_add:hover::before{
+	content: "+"
+}
+
+.tag_remove:hover::before{
+	content: "-"
+}
+.tag_remove:hover{
+	color: var(--button_danger_action_bg);
+}

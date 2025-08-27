@@ -1,0 +1,12 @@
+<form
+    class="flex flex-col gap-2" action='' id="toSendEmail"  method="post">
+    {% csrf_token %}
+    {% for field in email_subscription_form %}
+    <div>
+        {{ field }}
+    </div>
+    {% for error in field.errors %}
+    <p class="form_error">{{ error }}</p>
+    {% endfor %}	
+    {% endfor %}
+</form>

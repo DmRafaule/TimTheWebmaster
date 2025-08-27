@@ -1,0 +1,37 @@
+{% load static %}
+{% load i18n %}
+{% get_current_language as LC %}
+
+<div id="toSendCommentContainer" class="flex flex-col">
+    {% include "Engagement/Commenting/comment_form.html" with comment_form=comment_form %}
+    <div class="flex flex-row gap-4 relative bottom-[1px]">
+        <div 
+            id="onCommentSend" class="flex flex-row gap-2 ttw-button_action bg-white"  onclick="yaCounter95199635.reachGoal('onCommentSend')">
+            <div class="flex flex-row gap-2 border border-t-0 p-2">
+                <img width="16" height="16" src="{% static 'ok.svg' %}">
+                <div>
+                {% trans "Отправить" %}
+                </div>
+            </div>
+        </div>
+        <div id="onReplyRemove" class="hidden bg-white">
+            <div class="flex flex-row gap-2 items-center ttw-button_action">
+                <div class="flex flex-row gap-2 border border-t-0 p-2">
+                    <img width="16" height="16" src="{% static 'close.svg' %}">
+                    <div>
+                        {% trans 'Ответ для' %}
+                    </div>
+                    <div>></div>
+                    <b>
+                        <label for="comment_reply_to">
+                        </label>
+                    </b>
+                </div>
+            </div>
+            <input id="comment_reply_to" class="hidden" name="comment_reply_to" value="false">
+        </div>
+    </div>
+    <div id="context-loader-send_comment" class="context-loader">
+        {% include 'Main/loader.html'%}
+    </div>
+</div>

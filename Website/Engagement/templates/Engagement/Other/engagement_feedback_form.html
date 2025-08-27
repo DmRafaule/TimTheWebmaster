@@ -1,0 +1,11 @@
+<form class="flex flex-col gap-2" action='' id="toSendFeedback"  method="post">
+    {% csrf_token %}
+    {% for field in feedback_form %}
+    <div>
+        {{ field }}
+    </div>
+    {% for error in field.errors %}
+    <p class="form_error">{{ error }}</p>
+    {% endfor %}	
+    {% endfor %}
+</form>

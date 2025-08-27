@@ -3,11 +3,13 @@
 {% load urlToBreadcrumbs %}
 {% load urlToList %}
 
-<div class="row in_middle_other" style="gap: 4px;">
+<div class="flex flex-row items-center gap-2">
 {% for item in path|urlToBreadcrumbs%}
     {% if forloop.counter == path|urlToList|length %} {# Last element #}
         <i class="ref_no-sign"><a href="{{item.url}}">{{item.name|safe}}</a></i>/
+        {% if post_title %}
         <i>{{post_title}}</i>
+        {% endif %}
     {% else %} {# All other elements #}
         <i class="ref_no-sign"><a href="{{item.url}}">{{item.name|safe}}</a></i>/
     {% endif %}

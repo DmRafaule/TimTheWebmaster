@@ -31,8 +31,8 @@ class ReviewForm(ModelForm):
         model = Comment
         fields = ["rating", "url", "name", "message"]
         widgets = {
-            'rating': forms.RadioSelect(attrs={'class': 'rating_radiobtn', 'data-msg': _('Пожалуйста оцени мой инструмент (ಥ _ ಥ)')}),
             'url': forms.HiddenInput,
+            'rating': forms.RadioSelect(attrs={'class': 'rating_radiobtn', 'data-msg': _('Пожалуйста оцени мой инструмент (ಥ _ ಥ)')}),
             'name': forms.TextInput(attrs={'placeholder': _('Твоё имя')}),
             'message': forms.Textarea(attrs={'placeholder': _('Твоё сообщение')}),
         }

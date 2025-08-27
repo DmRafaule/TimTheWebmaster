@@ -1,0 +1,9 @@
+
+.ttw-button_internal:hover > a > img, .ttw-button_internal:hover > a > p{
+	outline: var(--button_width_hover) solid var(--button_internal_hover);
+	cursor: pointer;
+}
+.ttw-button_internal:active > a > img, .ttw-button_internal:active > a > p{
+	outline: var(--button_width_active) solid var(--button_internal_active);
+	cursor: pointer;
+}

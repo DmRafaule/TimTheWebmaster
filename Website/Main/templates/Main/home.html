@@ -10,168 +10,173 @@
 {% endblock %}
 
 {% block content %}
-<div class="home_limiter in_middle in_middle-self no_wrap padder">
-	<div class="row in_middle">
-		<h1 class="home_title" >{% trans "Тим Вебмастер" %}</h1>
-	</div>
-	<div class="column in_middle-even max_gap">
-
-		<div class="row max_gap">
-			<div class="column in_middle-farapart max_gap el-expandable el-shrinkable el-300-min-basis ">
-				<div class="home_main_block">
-					<h2>{% trans "Инструменты" %}</h2>
-					<hr class="home_hr_before_tab">
-					<div class="tabs tabs-full-width">
-						{% for res in my_resources %}
-							{% if forloop.counter == 1 %}
-							<div class="tab_button tab_active" data-bodyid="{{forloop.counter}}">
-								<h3>{{res.title}}</h3>
-							</div>
-							{% else %}
-							<div class="tab_button" data-bodyid="{{forloop.counter}}">
-								<h3>{{res.title}}</h3>
-							</div>
-							{% endif %}
-						{% endfor %}
-					</div>
-					<div class="tab_body">
-						{% for res in my_resources %}
-							{% if forloop.counter == 1 %}
-							<div id="tab_body-{{forloop.counter}}" class="tab_element  tab_element__active">
-								<div class="post_previews--category mid_gap el-expandable el-no_shrinkable el-half on_start_other">
-									<div class="post_preview row ">
-										<img class="image" src="{% get_media_prefix %}{{internal_tools_preview}}">
+<div class="justify-center flex flex-col w-full toObserve ttw-limiter">
+	<div class="max-w-7xl self-center flex flex-col ttw-content">
+		<h1 class="ttw-title" >{% trans "Тим Вебмастер" %}</h1>
+		<div class="flex flex-col gap-5">
+			<div class="flex gap-5 flex-wrap">
+				<div class="flex flex-col justify-between gap-5 grow-[7] shrink basis-2xs">
+					<div class="border-r-2 border-solid">
+						<h2>{% trans "Инструменты" %}</h2>
+						<hr>
+						<div class="tabs">
+							{% for res in my_resources %}
+								{% if forloop.counter == 1 %}
+								<div class="tab_button tab_active" data-bodyid="{{forloop.counter}}">
+									<div>
+										<h3>{{res.title}}</h3>
 									</div>
-									{% include 'Post/basic--post_preview-tool.html' with posts=res.objs %}
 								</div>
-								<a class="see_more_button white_text_button " href="{% url 'tools-list' %}?page=1&tag={{res.tag}}">
-									<div class="button action_button">
-										{% trans 'Больше ...' %}
+								{% else %}
+								<div class="tab_button" data-bodyid="{{forloop.counter}}">
+									<div>
+										<h3>{{res.title}}</h3>
 									</div>
-								</a>
-							</div>
-							{% else %}
-							<div id="tab_body-{{forloop.counter}}" class="tab_element">
-								<div class="row ">
-									<div class="post_previews--category mid_gap el-expandable el-no_shrinkable el-half on_start_other">
-										<div class="post_preview row ">
-											<img class="image" src="{% get_media_prefix %}{{internal_tools_preview}}">
+								</div>
+								{% endif %}
+							{% endfor %}
+						</div>
+						<div class="tab_body">
+							{% for res in my_resources %}
+								{% if forloop.counter == 1 %}
+								<div id="tab_body-{{forloop.counter}}" class="tab_element  tab_element__active">
+									<div class="flex flex-row items-start flex-wrap gap-5">
+										<div class="flex flex-row flex-wrap gap-5 grow basis-2xl p-2">
+											<img width="300px" class="max-w-2xs" src="{% get_media_prefix %}{{internal_tools_preview}}">
+											{% include 'Post/basic--post_preview-tool.html' with posts=res.objs %}
 										</div>
-										{% include 'Post/basic--post_preview-tool.html' with posts=res.objs %}
+									</div>
+									<div class="flex justify-end">
+										<div class="ttw-button ttw-button_link bg-main text-white rounded-tl-xl rounded-bl-xl ref_hidden_no-sign">
+											<a href="{% url 'tools-list' %}?page=1&tag={{res.tag}}">
+												<p class="rounded-tl-xl rounded-bl-xl p-2">
+												{% trans 'Больше ...' %}
+												</p>
+											</a>
+										</div>
 									</div>
 								</div>
-								<a class="see_more_button white_text_button " href="{% url 'tools-list' %}?page=1&tag={{res.tag}}">
-									<div class="button action_button">
-										{% trans 'Больше ...' %}
+								{% else %}
+								<div id="tab_body-{{forloop.counter}}" class="tab_element">
+									<div class="flex flex-row items-start flex-wrap gap-5">
+										<div class="flex flex-row p-2 flex-wrap gap-5 grow basis-2xl">
+											<img width="300px" class="max-w-2xs" src="{% get_media_prefix %}{{internal_tools_preview}}">
+											{% include 'Post/basic--post_preview-tool.html' with posts=res.objs %}
+										</div>
 									</div>
-								</a>
+									<div class="flex justify-end">
+										<div class="ttw-button ttw-button_link bg-main text-white rounded-tl-xl rounded-bl-xl ref_hidden_no-sign">
+											<a href="{% url 'tools-list' %}?page=1&tag={{res.tag}}">
+												<p class="rounded-tl-xl rounded-bl-xl p-2">
+												{% trans 'Больше ...' %}
+												</p>
+											</a>
+										</div>
+									</div>
+								</div>
+								{% endif %}
+							{% endfor %}
+						</div>
+					</div>
+					<div class="border-r-2 border-solid">
+						<h2>{% trans "Статьи" %}</h2>
+						<hr>
+						<div class="tabs">
+							<div class="tab_button tab_active" data-bodyid="1">
+								<h3>{% trans "Последние статьи" %}</h3>
 							</div>
-							{% endif %}
-						{% endfor %}
+							{% for oth in other_articles %}
+								<div class="tab_button" data-bodyid="{{forloop.counter|add:1}}">
+									<h3>{{oth.title}}</h3>
+								</div>
+							{% endfor %}
+						</div>
+						<div class="tab_body">
+							<div id="tab_body-1" class="tab_element tab_element__active">
+								<div class="flex flex-row items-start flex-wrap gap-5 " >
+									<div class="flex flex-row p-2 flex-wrap gap-5 grow basis-2xl">
+										<img width="300px" class="max-w-2xs" src="{% get_media_prefix %}{{articles_preview}}">
+										{% include 'Post/basic--post_preview-article.html' with posts=most_popular_article_posts %}
+									</div>
+								</div>
+								<div class="flex justify-end">
+									<div class="ttw-button ttw-button_link bg-main text-white rounded-tl-xl rounded-bl-xl ref_hidden_no-sign">
+										<a href="{% url 'articles-list' %}">
+											<p class="rounded-tl-xl rounded-bl-xl p-2">
+											{% trans 'Больше ...' %}
+											</p>
+										</a>
+									</div>
+								</div>
+							</div>
+							{% for oth in other_articles %}
+								<div id="tab_body-{{forloop.counter|add:1}}" class="tab_element">
+									<div class="flex flex-row items-start flex-wrap gap-5">
+										<div class="flex flex-row p-2 flex-wrap gap-5 grow basis-2xl">
+											<img width="300px" class="max-w-2xs" src="{% get_media_prefix %}{{articles_preview}}">
+											{% include 'Post/basic--post_preview-article.html' with posts=oth.objs %}
+										</div>
+									</div>
+									<div class="flex justify-end">
+										<div class="ttw-button ttw-button_link bg-main text-white rounded-tl-xl rounded-bl-xl ref_hidden_no-sign">
+											<a href="{% url 'articles-list' %}?page=1&tag={{oth.tag}}">
+												<p class="rounded-tl-xl rounded-bl-xl p-2">
+												{% trans 'Больше ...' %}
+												</p>
+											</a>
+										</div>
+									</div>
+								</div>
+							{% endfor %}
+						</div>
 					</div>
 				</div>
-				<div class="home_main_block">
-					<h2>{% trans "Статьи" %}</h2>
-					<hr class="home_hr_before_tab">
-					<div class="tabs tabs-full-width">
-						<div class="tab_button tab_active" data-bodyid="1">
-							<h3>{% trans "Последние статьи" %}</h3>
+				<div class="flex flex-col flex-nowrap grow shrink-0 basis-2xs">
+					<div class="border-r-2 border-solid h-full">
+						<h2>{% trans "Заметки" %}</h2>
+						<hr>
+						<div class="p-2">
+							{% blocktrans %}
+							Это блок всех последних заметок, написанных мной. 
+							{% endblocktrans %}
 						</div>
-						{% for oth in other_articles %}
-							<div class="tab_button" data-bodyid="{{forloop.counter|add:1}}">
-								<h3>{{oth.title}}</h3>
+						<hr>
+						<div class="flex flex-col gap-5 grow shrink-0 basis-1/2">
+							<div>
+								<img class="max-w-2xs" src="{% get_media_prefix %}{{notes_preview}}">
 							</div>
-						{% endfor %}
+							{% include 'Post/basic--post_preview-note.html' with posts=latest_notes_posts %}
+						</div>
 					</div>
-					<div class="tab_body">
-						<div id="tab_body-1" class="tab_element tab_element__active">
-							<div class="row " style="flex-wrap: wrap-reverse;">
-								<div class="post_previews--category-forNews mid_gap  el-expandable el-no_shrinkable el-half">
-									<div class="post_preview row ">
-										<img class="image"  src="{% get_media_prefix %}{{articles_preview}}">
-									</div>
-									{% include 'Post/basic--post_preview-article.html' with posts=most_popular_article_posts %}
-								</div>
-							</div>
-							<a class="see_more_button white_text_button " href="{% url 'articles-list' %}">
-								<div class="button action_button">
-									{% trans 'Больше ...' %}
-								</div>
+					<div class="flex justify-end">
+						<div class="ttw-button ttw-button_link bg-main text-white rounded-tl-xl rounded-bl-xl ref_hidden_no-sign">
+							<a href="{% url 'notes-list' %}">
+								<p class="rounded-tl-xl rounded-bl-xl p-2">
+								{% trans 'Больше ...' %}
+								</p>
 							</a>
 						</div>
-						{% for oth in other_articles %}
-							<div id="tab_body-{{forloop.counter|add:1}}" class="tab_element">
-								<div class="row " style="flex-wrap: wrap-reverse;">
-									<div class="post_previews--category row mid_gap el-expandable el-no_shrinkable el-half">
-										<div class="post_preview row ">
-											<img class="image" src="{% get_media_prefix %}{{articles_preview}}">
-										</div>
-										{% include 'Post/basic--post_preview-article.html' with posts=oth.objs %}
-									</div>
-								</div>
-								<a class="see_more_button white_text_button " href="{% url 'articles-list' %}?page=1&tag={{oth.tag}}">
-									<div class="button action_button">
-										{% trans 'Больше ...' %}
-									</div>
-								</a>
-							</div>
-						{% endfor %}
 					</div>
 				</div>
 			</div>
-			<div class="no_wrap el-no_expandable el-no_shrinkable el-300-min-basis" style="display: flex; flex-direction: column">
-				<div class="home_main_block full_height">
-					<h2>{% trans "Услуги" %}</h2>
-					<hr>
-					<div class="post_previews--category mid_gap el-expandable el-no_shrinkable el-half on_start_other">
-					{% include 'Post/basic--post_preview-service.html' with posts=services %}
-					</div>
-				</div>
-				<a class="see_more_button white_text_button on_end" href="{% url 'services-list' %}">
-					<div class="button action_button">
-						{% trans 'Больше ...' %}
-					</div>
-				</a>
-			</div>
-		</div>
 
-		<div class="home_main_block">
-			{% if isEngagementMiddlewareConnected %}
-			<h2 class="">{% trans "Комментарии" %}</h2>
-			<hr>
-			<div class="description_text padder">
-				{% blocktrans %}
-				Тут я собираю все последние комментарии на сайте.
-				{% endblocktrans %}
-			</div>
-			<div class="row max_gap">
-				<div class="post_previews--category-forSeries mid_gap  el-expandable el-no_shrinkable el-half">
-					{% include 'Engagement/comments.html' with from="home" %}
+			<div class="flex flex-col gap-3 border-r-2 border-solid">
+				{% if isEngagementMiddlewareConnected %}
+				<h2>{% trans "Комментарии" %}</h2>
+				<hr>
+				<div>
+					{% blocktrans %}
+					Тут я собираю все последние комментарии на сайте.
+					{% endblocktrans %}
 				</div>
-			</div>
-			{% endif %}
-		</div>
-
-		<div class="home_main_block">
-			<h2 class="">{% trans "Заметки" %}</h2>
-			<hr>
-			<div class="description_text padder">
-				{% blocktrans %}
-				Это блок всех последних заметок, написанных мной. Заметки, в моём случае можно считать неким журналом, где я могу отметить те или иные события
-				произошедшие со мной или с сайтом. Просто, иногда хочется что-нибудь написать, но создавать для 5 строчек отдельную статью ... Я считаю это перебором.
-				{% endblocktrans %}
-			</div>
-			<div class="post_previews--category-forSeries mid_gap  el-expandable el-no_shrinkable el-half on_start_other">
-				<div class="post_preview row ">
-					<img class="image" src="{% get_media_prefix %}{{notes_preview}}">
+				<div class="flex gap-5 p-2">
+					<div class="masonry grow shrink-0 basis-1/2">
+						{% include 'Engagement/Commenting/comments.html' with from="home" %}
+					</div>
 				</div>
-				{% include 'Post/basic--post_preview-note.html' with posts=latest_notes_posts %}
+				<div class="absolute gap-2 top-[0] right-[0] basis-1/3" style="display: none;"></div>
+				{% endif %}
 			</div>
-			<a class="see_more_button white_text_button on_end" href="{% url 'notes-list' %}">
-				<div class="button action_button">
-					{% trans 'Больше ...' %}
-				</div>
-			</a>
 		</div>
 	</div>
 </div>
@@ -179,7 +184,7 @@
 
 {% block footer_links %}
 	{% for ref in popular_posts %}
-		<li class="ref"><a href="{{ref.get_absolute_url}}">{{ref|truncatechars:15}}</a></li>
+		<li class="ref"><a href="{{ref.get_absolute_url}}">{{ref}}</a></li>
 	{% endfor %}
 {% endblock %}
 

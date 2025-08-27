@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Advent+Pro:ital,wght@0,200;0,400;0,500;0,700;1,200&family=Open+Sans:ital,wght@0,300;0,400;0,500;0,700;1,300;1,500&family=Roboto+Slab:wght@500;700&display=swap');
+
+:root{
+	/* Containers */
+	--bg_color: #FFF;
+	--main_color: #222228;
+	--secondary_color: #2D2F2F;
+	--sidebar_text_color: #fff;
+	/* Buttons */
+	--button_action_active: #e09b63;
+	--button_action_hover: #e09b63;
+	--button_width_active: 4px;
+	--button_width_hover: 2px;
+	--button_link_active: #b7ccee;
+	--button_link_hover: #b7ccee;
+	--button_link_background_comment_source: #fff;
+	--button_download_active: #6d9454;
+	--button_download_hover: #6d9454;
+	--button_internal_active: #d4755f;
+	--button_internal_hover: #d4755f;
+	/*Links*/
+	--link_color: #84a8e3;
+	--link-hover_color: #b7ccee;
+	--link-downloadable_color: #6d9454;
+	--link-hover-downloadable_color: #6d9454;
+	--link-internal_color: #d4755f;
+	--link-hover-internal_color: #e78c78;
+	--tag_sign: "#";
+	--link_sign: "➚";
+	--link-downloadable_sign: "⇣";
+	--link-internal_sign: "§";
+	/*Fonts*/
+	--family-main_font: 'Open Sans', sans-serif;
+	--family-acent_font: 'Advent Pro', sans-serif;
+	--family-header_font: 'Roboto Slab', serif;
+	--size-mini_font: 14px;
+	--size-main_font: 16px;
+	--size-acent_font: 16px;
+	--size-titleH1_font: 32px;
+	--size-titleH2_font: 28px;
+	--size-titleH3_font: 24px;
+	--size-titleH4_font: 24px;
+	--size-titleH5_font: 24px;
+	--size-titleH6_font: 24px;
+	--weight-accent_font: 300;
+	--weight-main_font: 400;
+	--weight-header_font: 700;
+	/*Lists*/
+	--list-indent-step: 5px;
+	--list-margin-top: 10px;
+	--list-margin-left: 10px;
+	/*Tabs*/
+	--tab-button-active-color: #fff;
+	--tag-button-padding: 10px;
+	/*Toaster*/
+	--error: #b63838;
+	--success: #45c94c;
+	--warning: #dfc534;
+	--info: var(--main_text_color);
+	/*Form*/
+	--form_el_padding: 4px;
+	--modal-radius: 8px;
+	/*Comment*/
+}
+

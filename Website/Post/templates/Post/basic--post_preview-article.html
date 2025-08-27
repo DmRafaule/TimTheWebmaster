@@ -3,25 +3,32 @@
 
 {% for a in posts %}
 
-<div class="post_preview row min_gap loader" data-numpages="{{num_pages}}">
-
-	<div class="column min_gap el-half el-expandable">
-		<h2 class="post_preview_title"><a class="text_button" href="{{ a.get_absolute_url }}">{{a.title}}</a></h2>
-		<div class="row wrap on_middle_other min_gap">
-			<div class="row min_col_gap">
-				<img class="in_middle-self icon_small dynamic_image" width="32" height="32" src="{% static 'placeholder.svg' %}" data-src='{% static "Post/img/calendar.svg" %}' alt="{% trans "Часы" %}">
+<div class="flex flex-col p-2 loader grow basis-1/2" data-numpages="{{num_pages}}">
+	<div class="flex flex-col gap-1 grow basis-1/2">
+		{% if in_post %}
+		<h4 class="ref_hidden">
+			<a href="{{ a.get_absolute_url }}">{{a.title}}</a>
+		</h4>
+		{% else %}
+		<h2 class="ref_hidden">
+			<a href="{{ a.get_absolute_url }}">{{a.title}}</a>
+		</h2>
+		{% endif %}
+		<div class="flex flex-wrap items-center gap-3">
+			<div class="flex gap-3">
+				<img width="16" height="16" src='{% static "Post/img/calendar.svg" %}' alt="{% trans "Часы" %}">
 				<div>{{a.timeCreated|date:"d.m.Y"}}</div>
 			</div>
 			/
-			<div class="row min_gap no_wrap">
-				<img class="in_middle-self icon_small dynamic_image" width="32" height="32" src="{% static 'placeholder.svg' %}" data-src='{% static "Post/img/update.svg" %}' alt="{% trans "Часы" %}">
+			<div class="flex flex-nowrap gap-3">
+				<img width="16" height="16" src='{% static "Post/img/update.svg" %}' alt="{% trans "Часы" %}">
 				<div>{{a.timeUpdated|date:"d.m.Y"}}</div>
 			</div>
 		</div>
 		{% if isEngagementMiddlewareConnected %}
-			{% include 'Engagement/interaction.html' with path=a.get_absolute_url%}
+			{% include 'Engagement/Other/interaction.html' with path=a.get_absolute_url%}
 		{% endif %}
-		<div class="post_preview_body">
+		<div>
 			{{a.description|truncatewords:30}}
 		</div>
 		{% if displayTags %}

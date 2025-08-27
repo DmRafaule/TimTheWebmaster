@@ -1,0 +1,53 @@
+.list, .blank_list, .list_without_sign, .numeric_list, ul, ol{
+	margin-top: var(--list-margin-top);
+}
+.list > li, ul > li{
+	list-style-position: inside;
+	list-style-type: disc;
+	margin-top: var(--list-margin-top);
+	margin-left: var(--list-margin-left);
+	word-wrap: anywhere;
+}
+
+.numeric_list > li, ol > li{
+	list-style-position: inside;
+	list-style-type: decimal;
+	margin-top: var(--list-margin-top);
+	margin-left: var(--list-margin-left);
+	word-wrap: anywhere;
+}
+
+.list_without_sign > li{
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	margin-top: var(--list-margin-top);
+}
+
+.blank_list > li{
+	list-style-position: inside;
+	list-style-type: none;
+	margin-top: 0;
+	margin-left: 0;
+	word-wrap: anywhere;
+}
+
+.indent-1{
+	padding-left: 0;
+}
+
+.indent-1{
+	padding-left: var(--list-indent-step);
+}
+.indent-2{
+	padding-left: calc(2*var(--list-indent-step));
+}
+.indent-3{
+	padding-left: calc(3*var(--list-indent-step));
+}
+.indent-4{
+	padding-left: calc(4*var(--list-indent-step));
+}
+.indent-5{
+	padding-left: calc(5*var(--list-indent-step));
+}

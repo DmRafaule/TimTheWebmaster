@@ -1,0 +1,32 @@
+.paginator_container > .engagement_body_mobile{
+    position: unset;
+}
+.engagement_body{
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    z-index: 2;
+    bottom: 0;
+    left: 0;
+}
+
+.engagement_body_body{
+    color: var(--ui_text_color);
+    background-color: var(--secondary_color);
+}
+.not_active_dropdown{
+    display: none;
+}
+.engagement_actions_button{
+    transition: transform 100ms ease-in-out;
+    color: var(--ui_text_color);
+    
+}
+
+.engagement_actions_button:active{
+	transform: scale(110%);
+}
+
+.active_engagement_button{
+    background-color: var(--main_color);
+}

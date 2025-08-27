@@ -1,0 +1,86 @@
+{% load static %}
+{% load i18n %}
+
+{% for comment in comments %}
+<div id="comment-{{comment.id}}" data-comment-id="{{comment.id}}" class="comment gap-2 flex-nowrap">
+    <div class="comment_time flex gap-2 flex-nowrap">
+        <img class="justify-self-center loader" width="16" height="16" src="{% static 'Engagement/img/calendar.svg' %}" alt="Часы">
+        <div>
+        {{comment.time_published}}
+        </div>
+    </div>
+    <div class="comment_person flex gap-2 flex-nowrap">
+        <img class="justify-self-center loader" width="16" height="16" src="{% static 'Engagement/img/person.svg' %}" alt="Человек">
+        <div>
+        {{comment.name}}
+        </div>
+    </div>
+    {% if comment.rating != 0%}
+    <div class="comment_rating">
+        {% for i in '12345'|make_list%}
+            {% if forloop.counter <= comment.rating %}
+            <div class="selected_star"></div>
+            {% else %}
+            <div class="not_selected_star"></div>
+            {% endif %}
+        {% endfor %}
+    </div>
+    {% endif %}
+    <div class="comment_message">
+        {{comment.message}}
+    </div>
+    {% if from == "home" %}
+    <div class="absolute top-[0] right-[0] source_on_comment_button">
+		<div class="ttw-button ttw-button_link ttw-button_source_comment bg-main rounded-bl-xl ref_hidden_no-sign">
+            <a href="{{comment.url}}">
+                <p class="rounded-bl-xl p-2">
+                {% trans 'Источник' %}
+                </p>
+            </a>
+        </div>
+    </div>
+    {% endif %}
+    {% if from == "post" %}
+    <div id="show-all-replies-{{comment.id}}" class="w-full flex justify-end">
+        <div class="flex flex-row gap-2">
+            {% if comment.replies.all|length > 0 %}
+
+            <div data-comment-id="{{comment.id}}" class="comment_reply_init ttw-button ttw-button_action response_on_comment_button" >
+                <div class="p-2">
+                {% trans "Все ответы " %}({{comment.replies.all|length}})
+                </div>
+            </div>
+            {% endif %}
+            <div id="reply-to-this-comment-{{comment.id}}" class=" reply-to-this-comment ttw-button ttw-button_action response_on_comment_button" data-comment-reply-to={{comment.id}} data-from={{comment.name}}>
+                <div class="p-2">
+                {% trans "Ответить" %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="context-loader-load_more_replies_{{comment.id}}" class="context-loader">
+        {% include 'Main/loader.html' %}
+    </div>
+    {% endif %}
+</div>
+{% if from == "post" %}
+    <div id="comment-replies-{{comment.id}}" data-page-number="1" class="comment_reply hidden">
+        <div id="comment-replies-body-{{comment.id}}" class="flex flex-col gap-2">
+        </div>
+
+        {% if comment.replies.all|length > 0 %}
+            <div id="context-loader-load_more_replies_{{comment.id}}" class="context-loader">
+                {% include 'Main/loader.html' %}
+            </div>
+
+            <div id="comment-replies-next-{{comment.id}}" data-parent-comment-id="{{comment.id}}" class="m-2">
+                <div  data-page-number='2' class="see_more_button ttw-button_action ttw-button_squared border">
+                    <div class="ttw-button_squared p-2">
+                    {% trans "Больше ..." %}
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+{% endif %}
+{% endfor %}

@@ -6,8 +6,9 @@ import os
 from django.db.models import Q
 
 from Website.settings import  ALLOWED_HOSTS, MY_INSTALLED_APPS, BASE_DIR
-from .models import Website, Contact
 import Post.models as Post_M
+from .models import Website, Contact
+from .forms import FeedbackForm
 
     
 def get_how_old_human_in_years(birth_date: str, birth_date_str_frm: str) -> int:
@@ -108,6 +109,8 @@ def initDefaults(request):
     contacts = Contact.objects.all()
     if not len(contacts_for_orders.all()) > 0:
         contacts_for_orders = contacts
+    # Создаём и отправляем пустую форму по умолчанию, GET-запрос
+    form = FeedbackForm()
 
     context = {
         'categories_special': categories_special,
@@ -116,6 +119,7 @@ def initDefaults(request):
         'contacts_for_orders': contacts_for_orders,
         'popular_posts': popular_posts,
         'default_post_preview': default_post_preview,
+        'feedback_form': form
     }
     return context
 

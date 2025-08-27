@@ -85,77 +85,102 @@
 {% endblock %}
 
 {% block hat_post %}
-	<div class="header_button"  data-body="table_of_content_groups_container">
-		<img id="table_of_content_group" width="32" height="32" class="icon button dynamic_image squered_button active_group_button active_more_home_button" src="{% static 'placeholder.svg' %}" data-src="{% static 'tree.png' %}" alt="{% trans 'one layer on top of anothe' %}">
+	<div class="grow-0 shrink ttw-button_swap" data-body="table_of_content_groups_container">
+		<div class="ttw-button ttw-button_action ttw-button_swap_front ttw-sidebar_button_open" data-body="table_of_content_groups_container">
+			<img class="ttw-button_squared" width="32" height="32" src="{% static 'tree.svg' %}" alt="{% trans '3 горизонтальные линии, бургер' %}">
+		</div>
+		<div class="ttw-button ttw-button_action ttw-button_swap_back ttw-sidebar_button_close ttw-button_swap_not_active" data-body="table_of_content_groups_container">
+			<img class="ttw-button_squared" width="32" height="32" src="{% static 'close_white.svg' %}" alt="{% trans '3 горизонтальные линии, бургер' %}">
+		</div>
 	</div>
 	{% block hat_post_article %}
 	{% endblock%}
 {% endblock%}
 
+{% block hat_body_post %}
+	<div id="table_of_content_groups_container" class="ttw-sidebar_body ttw-sidebar_body_left ttw-sidebar_body_not_active p-1 justify-between flex flex-col text-center">
+		<div>
+			<h2>{% trans "Содержание" %}</h2>
+			<hr>
+			<div id="current_header" data-current="0"></div>
+		</div>
+		<div class="overflow-y-scroll">
+			<li id="table_of_content_element" class="hidden flex flex-row gap-1 items-center">
+				<p class="table_of_content_sign"></p>
+				<p class="table_of_content_text" href=""></p>
+			</li>
+			<ul id="table_of_content_list" class="text-justify p-2"></ul>
+			</div>
+		<div>
+			<hr>
+			<div class="min-h-[50px]"></div>
+		</div>
+	</div>
+{% endblock %}
+
 {% block content_post-before %}
 
-	<h1 class="title">{{post.h1}}</h1>
+	<h1 class="ttw-title">{{post.h1}}</h1>
 	{% if isBreadcrumbsMiddlewareConnected %}
 		{% include 'Breadcrumbs/breadcrumbs.html' with path=request.META.HTTP_REFERER %}
 	{% endif %}
-	<div class="row wrap on_middle_other min_gap">
-		<div class="column mid_gap">
-			<div class="row min_col_gap no_wrap">
-				<img class="in_middle-self icon_small dynamic_image" width="32" height="32" src="{% static 'placeholder.svg' %}" data-src='{% static "Post/img/calendar.svg" %}' alt="{% trans "Часы" %}">
+	<div class="flex flex-wrap items-center gap-3">
+		<div class="flex flex-wrap items-center gap-3">
+			<div class="flex gap-3">
+				<img width="16" height="16" src='{% static "Post/img/calendar.svg" %}' alt="{% trans "Часы" %}">
 				<div>{{post.timeCreated|date:"d.m.Y"}}</div>
 			</div>
-		</div>
-		/
-		<div class="column mid_gap">
-			<div class="row min_gap no_wrap">
-				<img class="in_middle-self icon_small dynamic_image" width="32" height="32" src="{% static 'placeholder.svg' %}" data-src='{% static "Post/img/update.svg" %}' alt="{% trans "Часы" %}">
+			/
+			<div class="flex flex-nowrap gap-3">
+				<img width="16" height="16" src='{% static "Post/img/update.svg" %}' alt="{% trans "Часы" %}">
 				<div>{{post.timeUpdated|date:"d.m.Y"}}</div>
 			</div>
 		</div>
 		/
-		<div class="row min_gap no_wrap">
-			<img class="in_middle-self icon_small dynamic_image" width="32" height="32" src="{% static 'placeholder.svg' %}" data-src='{% static "Post/img/hourglass.svg" %}' alt="{% trans "Часы" %}">
+		<div class="flex flex-nowrap gap-3">
+			<img width="16" height="16" src='{% static "Post/img/hourglass.svg" %}' alt="{% trans "Часы" %}">
 			{% if time_to_read == 1 %}
-			<div>{{time_to_read}} {% trans "минуту" %}</div>
+				<div>{{time_to_read}} {% trans "минуту" %}</div>
 			{% elif time_to_read > 1 and time_to_read < 5 %}
-			<div>{{time_to_read}} {% trans "минуты" %}</div>
+				<div>{{time_to_read}} {% trans "минуты" %}</div>
 			{% else %}
-			<div>{{time_to_read}} {% trans "минут" %}</div>
+				<div>{{time_to_read}} {% trans "минут" %}</div>
 			{% endif %}
 		</div>
 	</div>
+
 	{% if isEngagementMiddlewareConnected %}
-		{% include 'Engagement/interaction.html' with path=post.get_absolute_url%}
+		{% include 'Engagement/Other/interaction.html' with path=post.get_absolute_url%}
 	{% endif %}
+
 	{% if post.tags.all|length > 0 %}
-	<div class="text tags-in-post" style="text-align: left;">
+	<div class="flex gap-2 ref_no-sign flex-wrap">
 		<b>{% trans "Теги: " %}</b>
-		<span class="tags-in-post">
-			{% for tag in post.tags.all %}
-			<span><a class="tag" href="{{post.category.get_absolute_url}}?page=1&tag={{tag.slug}}">{{tag.name}}</a></span>
-			{% endfor %}
-		</span>
+		{% for tag in post.tags.all %}
+		<a href="{{post.category.get_absolute_url}}?page=1&tag={{tag.slug}}&is_recent=true"><div class="tag">{{tag.name}}</div></a>
+		{% endfor %}
 	</div>
 	{% endif %}
-	<div class="marger_top_min marger_bottom_max"> 
+
+	<div class="flex flex-col gap-2"> 
 
 		{% if audios|length > 0 or pdfs|length > 0 %}
 
-			<div class="text" style="text-align:left;"><b>{% trans 'Так же доступно в следующих форматах:' %}</b></div>
+			<div><b>{% trans 'Так же доступно в следующих форматах:' %}</b></div>
 			<ul>
 			{% if audios|length > 0 %}
-			<li class="flex row min_gap no_wrap text on_middle_other">
-					<img class=" icon_small dynamic_image" width="32" height="32" src="{% static 'placeholder.svg' %}" data-src='{% static "Post/img/podcast.svg" %}' alt="{% trans "Микрофон" %}">
+			<li class="flex flex-row gap-3 flex-nowrap items-center">
+					<img width="16" height="16" src='{% static "Post/img/podcast.svg" %}' alt="{% trans "Микрофон" %}">
 					<div style="word-wrap: normal"><b>PODCAST</b></div>
-					<audio controls class="full_width squered_button" >
+					<audio controls class="w-full ttw-button_squared" >
                         <source src="{% get_media_prefix %}{{audios.0.file}}" type="audio/mpeg">
                     	{% trans 'Твой браузер не подерживает audio тег.' %}
                 	</audio> 
 			</li>
 			{% endif %}
 			{% if pdfs|length > 0 %}
-			<li class="flex row min_gap no_wrap text on_middle_other">
-					<img class="icon_small dynamic_image" width="32" height="32" src="{% static 'placeholder.svg' %}" data-src='{% static "Post/img/pdf.svg" %}' alt="{% trans "PDF иконка" %}">
+			<li class="flex flex-row gap-3 flex-nowrap items-center">
+					<img width="16" height="16" src='{% static "Post/img/pdf.svg" %}' alt="{% trans "PDF иконка" %}">
 					<div style="word-wrap: normal"><b>PDF</b></div>
 					<div class="ref_downloadables">
 						<a href="{% get_media_prefix %}{{pdfs.0.file}}" download>{{pdfs.0.get_filename}}</a>
@@ -168,9 +193,6 @@
 
 	</div>
 
-	<div id="table_of_content_groups_container">
-	</div>
-
 	{% block content_post_before-article %}
 	{% endblock %}
 
@@ -178,7 +200,7 @@
 
 {% block content_post %}
 
-	<div id="content_post_article">
+	<div id="content_post_article" >
 		{% block content_post_article %}
 		{% endblock %}
 	</div>
@@ -188,24 +210,24 @@
 {% block content_post-after %}
 
 	<div id="ex_links">
-		<h2 class="paragraph" >{% trans 'Внешние ссылки' %}</h2>
+		<h2>{% trans 'Внешние ссылки' %}</h2>
 		<hr>
-		<li id='list_el_exmpl_cont' class="is_none" ><a href=""></a></li>
+		<li id='list_el_exmpl_cont' class="hidden ref" ><a target="_blank" rel="external" href=""></a></li>
 		<ul id="ex_links_list" class="numeric_list">
 		</ul>
 	</div>
 
 	{% if post.similar.all|length > 0 or post.termins.all|length > 0 or post.questions.all|length > 0  %}
-		<h2 class="paragraph">{% trans "Другое" %}</h2>
+		<h2>{% trans "Другое" %}</h2>
 
 		{% if post.similar.all|length > 0 %}
-			<h3 class="paragraph sim-art">{% trans 'Похожие статьи' %}</h3>
+			<h3 id="sim-art">{% trans 'Похожие статьи' %}</h3>
 			<hr>
-			{% include 'Post/embeded--post_preview-article.html' with sim_post=post.similar.all %}
+			{% include 'Post/basic--post_preview-article.html' with posts=post.similar.all in_post="true" %}
 		{% endif%}
 
 		{% if post.termins.all|length > 0 %}
-			<h3 class="paragraph used-term">{% trans 'Использованные термины' %}</h3>
+			<h3 id="used-term">{% trans 'Использованные термины' %}</h3>
 			<hr>
 			<ul class="list_without_sign">
 			{% for td in post.termins.all %}
@@ -216,7 +238,7 @@
 		{% endif %}
 
 		{% if post.questions.all|length > 0%}
-			<h3 class="paragraph rel-que">{% trans 'Релевантные вопросы' %}</h3>
+			<h3 id="rel-que">{% trans 'Релевантные вопросы' %}</h3>
 			<hr>
 			<ul class="list_without_sign">
 			{% for qa in post.questions.all %}

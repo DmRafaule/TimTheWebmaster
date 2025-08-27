@@ -24,8 +24,6 @@ class PostListView(ListView):
     website_conf = None
     # Для сортировки по времени создания
     is_recent = "true"
-    # Для сортировки по алфавиту
-    is_alphabetic = "ignored"
     # Используемая категория для отображения пагинации
     category = None
     # Сколько страниц для пагинации использовать
@@ -84,10 +82,10 @@ class PostListView(ListView):
         # Допустимы запросы GET, POST
         if request.method == "GET":
             self.page = int(request.GET.get('page', 1))
+            self.is_recent = request.GET.get('is_recent', 'true')
         elif request.method == "POST":
             self.page = int(request.POST.get('page', 1))
             self.is_recent = request.POST.get('is_recent', 'true')
-            self.is_alphabetic = request.POST.get('is_alphabetic', 'ignored')
         else:
             return HttpResponseBadRequest()
 
@@ -95,38 +93,7 @@ class PostListView(ListView):
         self.object_list =  self.model.objects.filter(isPublished=True)
         # Фильтруем по порядку создания
         self.object_list = PagiScroll_utils.in_order(self.object_list, self.is_recent)
-        # Фильтруем по алфавиту
-        self.object_list = PagiScroll_utils.in_alphabetic(self.object_list, self.is_alphabetic)
 
-        if request.method == "POST":
-            # Фильтруем посты относительно текущего времени
-            relative_this = request.POST.get('relative_this')
-            match (relative_this):
-                case 'this_day':
-                    self.object_list = PagiScroll_utils.get_this_day_posts(self.object_list)
-                case 'this_week':
-                    self.object_list = PagiScroll_utils.get_this_week_posts(self.object_list)
-                case 'this_month':
-                    self.object_list = PagiScroll_utils.get_this_month_posts(self.object_list)
-                case 'this_year':
-                    self.object_list = PagiScroll_utils.get_this_year_posts(self.object_list)
-            # Фильтруем посты по выбраным временым промежуткам
-            week_days = json.loads(request.POST['week_day'])
-            self.object_list = PagiScroll_utils.get_posts_by_week_days(week_days, self.object_list)
-            month_days = json.loads(request.POST['month_day'])
-            self.object_list = PagiScroll_utils.get_posts_by_month_days(month_days, self.object_list)
-            months = json.loads(request.POST['month'])
-            self.object_list = PagiScroll_utils.get_posts_by_months(months, self.object_list)
-            years = json.loads(request.POST['year'])
-            self.object_list = PagiScroll_utils.get_posts_by_years(years, self.object_list)
-            letters = json.loads(request.POST['letter'])
-            self.object_list = PagiScroll_utils.get_posts_by_letters(letters, self.object_list)
-            platforms_id = json.loads(request.POST['platform'])
-            platforms = Post_M.Platform.objects.filter(id__in=platforms_id)
-            self.object_list = PagiScroll_utils.get_posts_by_platforms(platforms, self.object_list)
-            # Если объекты не были найдены, возвращаем соответствующий шаблон
-            if len(self.object_list) == 0:
-                return render(request, 'PagiScroll/not_found_posts.html', context={'message': _('Ничего не нашёл.'), 'kaomodji': '(っ °Д °;)っ'}, status=404)
         # Получаем теги из запроса
         self.tags_names = []
         if request.method == "GET":

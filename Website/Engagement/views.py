@@ -1,119 +1,89 @@
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponse
 from django.template import loader
 from django.utils.translation import gettext as _
-from Main.forms import FeedbackForm
 from django.core.mail import send_mail
+from django.core.paginator import Paginator
+from django.views.decorators.http import require_GET , require_POST
+
+from Main.forms import FeedbackForm
+from Website.settings import DEFAULT_FROM_EMAIL, DEFAULT_TO_EMAIL
 from .models import Comment, Interaction, Email
 from .forms import CommentForm, ReviewForm, EmailForm
 from .utils import get_root_comments
-from Website.settings import DEFAULT_FROM_EMAIL, DEFAULT_TO_EMAIL
-from django.core.paginator import Paginator
 
 
 
+@require_POST
 def bookmark_post(request):
-    if request.method == 'POST':
-        url = request.POST['url']
-        isBookmarked = request.session.get("is_bookmarked_" + url, False)
-        if not isBookmarked:
-            interaction_tulpe = Interaction.objects.get_or_create(url=url)
-            interaction = interaction_tulpe[0]
-            interaction.bookmarks += 1
-            interaction.save()
-            request.session["is_bookmarked_" + url] = True
-
-        data = {
-            'msg': _("≡[。。]≡ Извини, JS не позволяет создавать собственные кнопки создания закладок и по этому, чтобы создать закладку нажми ctrl+d"),
-        }
-        status = 200 
-    else:
-        data = {
-            'msg': _('Только POST запросы (╬▔皿▔)╯')
-        }
-        status = 503
-
-    return JsonResponse(data, status=status)
-
-# Basicaly one browser one like for one article
-def like_post(request):
-    if request.method == "POST":
-        url = request.POST['url']
-        isLiked = request.session.get("is_liked_" + url, False)
-        if not isLiked:
-            interaction_tulpe = Interaction.objects.get_or_create(url=url)
-            interaction = interaction_tulpe[0]
-            interaction.likes += 1
-            interaction.save()
-            request.session["is_liked_" + url] = True
-            data = {
-                'msg': _("Спасибо \(￣︶￣*\))"),
-            }
-            status = 200
-        else:
-            data = {
-                'msg': _('Большое спасибо, но ты уже лайкнул (*￣3￣)╭')
-            }
-            status = 200
-    else:
-        data = {
-            'msg': _('Только POST запросы (╬▔皿▔)╯')
-        }
-        status = 503
-
-    return JsonResponse(data, status=status)
-
-# No checks for multiple shares, because I do not want it.
-# I want as many as I could get
-def share_post(request):
-    if request.method == "POST":
-        url = request.POST['url']
+    url = request.POST['url']
+    isBookmarked = request.session.get("is_bookmarked_" + url, False)
+    if not isBookmarked:
         interaction_tulpe = Interaction.objects.get_or_create(url=url)
         interaction = interaction_tulpe[0]
-        interaction.shares += 1
+        interaction.bookmarks += 1
         interaction.save()
-        data = {
-            'msg': _("Большое спасибо что поделился \(￣︶￣*\))"),
-        }
+        request.session["is_bookmarked_" + url] = True
+    status = 200 
+
+    return JsonResponse({}, status=status)
+
+@require_POST
+def like_post(request):
+    url = request.POST['url']
+    isLiked = request.session.get("is_liked_" + url, False)
+    if not isLiked:
+        interaction_tulpe = Interaction.objects.get_or_create(url=url)
+        interaction = interaction_tulpe[0]
+        interaction.likes += 1
+        interaction.save()
+        request.session["is_liked_" + url] = True
         status = 200
     else:
-        data = {
-            'msg': _('Только POST запросы (╬▔皿▔)╯')
-        }
-        status = 503
+        status = 201
 
-    return JsonResponse(data, status=status)
+    return JsonResponse({}, status=status)
 
+@require_POST
+def share_post(request):
+    url = request.POST['url']
+    interaction_tulpe = Interaction.objects.get_or_create(url=url)
+    interaction = interaction_tulpe[0]
+    interaction.shares += 1
+    interaction.save()
+    status = 200
+
+    return JsonResponse({}, status=status)
+
+@require_POST
 def email_post(request):
     form = EmailForm(request.POST)
     if form.is_valid():
-        msg = _('✔ Вы успешно подписались на рассылку (＠＾０＾)')
         email = form.cleaned_data.get("email")
         record, isCreated = Email.objects.get_or_create(email=email)
         if isCreated:
             record.save()
             status = 200
         else:
-            msg = _('! Такая почта уже зарегистрированна')
             status = 503
         context = {'email_subscription_form': EmailForm()}
-        loaded_template = loader.get_template(f'Engagement/engagement_email_subscription_form.html')
+        loaded_template = loader.get_template(f'Engagement/Other/engagement_email_subscription_form.html')
         email_form_doc = loaded_template.render(context, request)
-        data = {
-            'msg': msg,
-            'form': email_form_doc
-        }
     else:
         context = {'email_subscription_form': form}
-        loaded_template = loader.get_template(f'Engagement/engagement_email_subscription_form.html')
+        loaded_template = loader.get_template(f'Engagement/Other/engagement_email_subscription_form.html')
         email_form_doc = loaded_template.render(context, request)
-        data = {
-            'msg': _('✗ Возникла ошибка при отправке формы ＼（〇_ｏ）／'),
-            'form': email_form_doc
-        }
-        status = 503
+        status = 400
 
-    return JsonResponse(data,status=status)
+    return HttpResponse(email_form_doc, status=status)
 
+@require_GET
+def email_form_get(request):
+    context = {'email_subscription_form': EmailForm()}
+    loaded_template = loader.get_template(f'Engagement/Other/engagement_email_subscription_form_container.html')
+    email_form_doc = loaded_template.render(context, request)
+    return HttpResponse(email_form_doc)
+
+@require_POST
 def feedback_post(request):
     form = FeedbackForm(request.POST)
     if form.is_valid():
@@ -121,24 +91,24 @@ def feedback_post(request):
         message = f'{form.cleaned_data.get("message")}'
         send_mail(subject=subject, message=message, from_email=DEFAULT_FROM_EMAIL, recipient_list=[DEFAULT_TO_EMAIL])
         context = {'feedback_form': FeedbackForm()}
-        loaded_template = loader.get_template(f'Engagement/engagement_feedback_form.html')
+        loaded_template = loader.get_template(f'Engagement/Other/engagement_feedback_form.html')
         feedback_doc = loaded_template.render(context, request)
-        data = {
-            'msg': _('✔ Вы успешно отправили сообщение (＠＾０＾)'),
-            'form': feedback_doc
-        }
         status = 200
     else:
         context = {'feedback_form': form}
-        loaded_template = loader.get_template(f'Engagement/engagement_feedback_form.html')
+        loaded_template = loader.get_template(f'Engagement/Other/engagement_feedback_form.html')
         feedback_doc = loaded_template.render(context, request)
-        data = {
-            'msg': _('✗ Возникла ошибка при отправке формы ＼（〇_ｏ）／'),
-            'form': feedback_doc
-        }
-        status = 503
+        status = 400
 
-    return JsonResponse(data,status=status)
+    return HttpResponse(feedback_doc, status=status)
+
+@require_GET
+def feedback_form_get(request):
+    context = {'feedback_form': FeedbackForm()}
+    loaded_template = loader.get_template(f'Engagement/Other/engagement_feedback_form_container.html')
+    feedback_form_doc = loaded_template.render(context, request)
+    return HttpResponse(feedback_form_doc)
+
 
 
 def load_comments(request):
@@ -153,7 +123,7 @@ def load_comments(request):
         paginator = Paginator(comments, Comment.COMMENTS_PER_PAGE)
         if paginator.num_pages >= page_number:
             next_page = paginator.page(page_number)
-            loaded_template = loader.get_template(f'Engagement/comments.html')
+            loaded_template = loader.get_template(f'Engagement/Commenting/comments.html')
             comments_doc = loaded_template.render({'comments': next_page.object_list, 'from': "post"}, request)
             data = {
                 'next_page_number': page_number + 1,
@@ -177,7 +147,7 @@ def load_replies(request):
         paginator = Paginator(comments, Comment.COMMENTS_PER_PAGE)
         if paginator.num_pages >= page_number:
             next_page = paginator.page(page_number)
-            loaded_template = loader.get_template(f'Engagement/comments.html')
+            loaded_template = loader.get_template(f'Engagement/Commenting/comments.html')
             comments_doc = loaded_template.render({'comments': next_page.object_list, 'from': "post"}, request)
             data = {
                 'next_page_number': page_number + 1,
@@ -192,7 +162,6 @@ def load_replies(request):
         data = {'msg': _('Только POST запросы (╬▔皿▔)╯'),}
         status = 503
     return JsonResponse(data, status=status)
-
 
 def send_comment(request):
     if request.method == 'POST':
@@ -226,15 +195,16 @@ def send_comment(request):
                 comment.save()
             # Render empty form
             context = {'comment_form': Form()}
-            loaded_template = loader.get_template(f'Engagement/comment_form.html')
+            loaded_template = loader.get_template(f'Engagement/Commenting/comment_form.html')
             comment_form = loaded_template.render(context, request)
             # Render a comment
             context = {'comments': [comment]}
-            loaded_template = loader.get_template(f'Engagement/comments.html')
+            loaded_template = loader.get_template(f'Engagement/Commenting/comments.html')
             comment_doc = loaded_template.render(context, request)
             data = {
                 'msg': _('✔ Вы успешно отправили сообщение (＠＾０＾)'),
                 'reply_id': comment_reply_to_id,
+                'comment_id': comment.id,
                 'form': comment_form,
                 'new_comment': comment_doc,
                 'new_comments_length': len(Comment.objects.filter(url=comment.url))
@@ -243,7 +213,7 @@ def send_comment(request):
             
         else:
             context = {'comment_form': form}
-            loaded_template = loader.get_template(f'Engagement/comment_form.html')
+            loaded_template = loader.get_template(f'Engagement/Commenting/comment_form.html')
             comment_form = loaded_template.render(context, request)
             data = {
                 'msg': _('✗ Возникла ошибка при отправке комментария ＼（〇_ｏ）／'),

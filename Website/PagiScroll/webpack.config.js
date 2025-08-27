@@ -42,15 +42,18 @@ module.exports = [
     module: {
       rules: [
         {
-          test: /\.s?css$/,
-          exclude: /node_modules/,
-          use: [MiniCssExtractPlugin.loader, "css-loader"],
+          test: /\.css$/,
+          use: [
+            MiniCssExtractPlugin.loader, 
+            "css-loader",
+            "postcss-loader"
+          ],
         },
       ],
     },
     plugins: [
       new MiniCssExtractPlugin({
-        filename: 'index.min.css', // Extracts CSS into separate files
+        filename: 'index.min.css',
       }),
     ],
     optimization: {
@@ -59,5 +62,5 @@ module.exports = [
         new CssMinimizerPlugin(), // Adds the CSS minifier
       ],
     },
-  },
+  }
 ];

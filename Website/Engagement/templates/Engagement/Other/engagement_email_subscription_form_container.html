@@ -1,0 +1,63 @@
+{% load i18n %}
+{% load static %}
+{% get_current_language as LC %}
+
+<div class="flex flex-col gap-5">
+    <div><b>{% trans 'Подписка на рассылку' %}</b></div>
+    <hr>
+    {% comment %}
+        Событие beforeSwap должно быть расположено на том элементе
+        где производиться свап
+    {% endcomment %}
+    <div 
+        hx-on::before-swap="
+            switch(event.detail.xhr.status){
+                case 400:
+                    event.detail.shouldSwap = true
+                    event.detail.isError = false
+                    break;
+                case 503:
+                    event.detail.shouldSwap = true
+                    event.detail.isError = false
+                    break;
+            }
+        "
+        id="modal-form">
+        {% include 'Engagement/Other/engagement_email_subscription_form.html' with email_subscription_form=email_subscription_form %}
+    </div>
+    <hr>
+    <div class="flex flex-row justify-between flex-wrap">
+        {% comment %}
+            Чтобы события after* смогли быть выполнены
+            я должен делать свап другого элемента, без кнопок по отправке 
+            данного запроса. 
+
+            Иначе событи просто будет заменено и не будет выполненно.
+        {% endcomment %}
+        <div 
+            hx-post="/{{LC}}/email_subscription/"
+            hx-include="#toSendEmail" 
+            hx-vals="js:{csrfmiddlewaretoken: csrftoken, url: '{{request.get_full_path}}'}"
+            hx-target="#modal-form"
+            hx-on::after-request="
+                switch(event.detail.xhr.status){
+                    case 200:
+                        modal.close();
+                        toaster.notify('{% trans '✔ Вы успешно подписались (＠＾０＾)' %}', 'success'); 
+                        break;
+                    case 400:
+                        toaster.notify('{% trans '✗ Возникла ошибка при отправке формы ＼（〇_ｏ）／' %}', 'error'); 
+                        break;
+                    case 503:
+                        toaster.notify('{% trans '! Такая почта уже зарегистрированна' %}', 'warning'); 
+                        break;
+                }
+            "
+            class="ttw-button ttw-button_action">
+            <p class="rounded-lg bg-main border text-white p-2">{% trans "Отправить" %}</p>
+        </div>
+        <div class="ttw-button ttw-button_action" onclick="modal.close()">
+            <p class="rounded-lg bg-main border text-white p-2">{% trans "Отмена" %}</p>
+        </div>
+    </div>
+</div>

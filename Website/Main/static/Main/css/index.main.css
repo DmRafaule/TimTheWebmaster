@@ -1,10 +1,11 @@
-@import '../../blocks.css'; 
-@import '../../images.css'; 
-@import '../../../../Post/static/Post/css/tabs.css'; 
-@import '../../../../Post/static/Post/css/posts_preview.css'; 
-@import '../css/home.css'; 
-@import '../../../../Engagement/static/Engagement/css/comments.css'; 
-@import '../../lists.css'; 
-@import '../../forms.css'; 
-@import '../css/about.css'; 
-@import '../../status_codes.css'; 
+@import '../../Components/Blocks/image.css'; 
+@import '../../Components/Blocks/icon.css'; 
+@import '../../Components/Blocks/comment.css'; 
+@import '../../Components/Containers/Tabs/tabs.css'; 
+@import '../../Components/Containers/Masonry/masonry.css'; 
+@import "tailwindcss";
+@tailwind utilities;
+
+.ttw-button_source_comment{
+    background-color: var(--button_link_background_comment_source);
+}

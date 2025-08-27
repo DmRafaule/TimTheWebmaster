@@ -1,7 +1,5 @@
-@import '../../../../Main/static/modal.css';
-@import '../../../../Main/static/forms.css';
-@import '../../../../Main/static/tooltip.css';
-@import '../../../../Main/static/notificator.css';
-@import '../../../../Post/static/Post/css/post.css';
-@import './engagement.css';
-@import './comments.css';
+@import '../../../../Main/static/Components/Blocks/forms.css';
+@import '../../../../Main/static/Components/Blocks/rating.css';
+@import '../../../../Main/static/Components/Blocks/comment.css';
+@import "tailwindcss";
+@tailwind utilities;

@@ -1,0 +1,46 @@
+.toaster_error{
+	color: var(--error);
+}
+
+.toaster_success{
+	color: var(--success);
+}
+
+.toaster_warning{
+	color: var(--warning);
+}
+
+.toaster_info{
+	color: var(--info);
+}
+
+.toaster-inactive{
+	display: none;
+}
+.toaster{
+	opacity: 100%;
+	padding: 8px 14px 8px 14px;
+	border: 3px groove grey;
+	width: 100%;
+	background-color: white;
+/*
+	animation-timing-function: ease-in;
+	animation-iteration-count: 1;
+	animation-duration: 5s;
+	animation-delay: 0s;
+	animation-fill-mode: forwards;
+	animation-name: notification_fadeout;
+	*/
+}
+.toaster-container{
+	position: fixed;
+	right: 0;
+	top: 48px;
+	max-width: 300px;
+	z-index: 3;
+}
+
+@keyframes notification_fadeout {
+	0% {opacity: 1;}
+   100% {opacity: 0;} 
+}

@@ -1,0 +1,26 @@
+{% extends 'Main/base_status_code.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block head %}
+<meta name="robots" content="noindex">
+<meta name="description" content="{% trans "Ошибка на стороне сервера, Тим вебмастер" %}">
+<title>{% trans "Тим вебмастер. Ошибка сервера" %}</title>
+{% endblock %}
+
+{% block content %}
+	<div class="w-full text-center mt-[45svh] mb-[45svh] break-words p-1">
+		<div class="text-9xl"><b>500</b></div>
+		<h1>{% trans "Ошибка сервера" %}</h1>
+	</div>
+{% endblock %}
+
+{% block footer_links %}
+	{% for ref in popular_posts %}
+		<li class="ref"><a href="{{ref.get_absolute_url}}">{{ref}}</a></li>
+	{% endfor %}
+{% endblock %}
+
+{% block styles %}
+    <link type="text/css" rel="stylesheet" href="{% static 'Main/css/index.main.min.css' %}"/>
+{% endblock %}

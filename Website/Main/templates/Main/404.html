@@ -9,15 +9,15 @@
 {% endblock %}
 
 {% block content %}
-	<div class="not_found">
-		<div class="error_code">404</div>
+	<div class="w-full text-center mt-[45svh] mb-[45svh] break-words p-1">
+		<div class="text-9xl"><b>404</b></div>
 		<h1>{% trans "Страница не найдена" %}</h1>
 	</div>
 {% endblock %}
 
 {% block footer_links %}
 	{% for ref in popular_posts %}
-		<li class="ref"><a href="{{ref.get_absolute_url}}">{{ref|truncatechars:15}}</a></li>
+		<li class="ref"><a href="{{ref.get_absolute_url}}">{{ref}}</a></li>
 	{% endfor %}
 {% endblock %}
 

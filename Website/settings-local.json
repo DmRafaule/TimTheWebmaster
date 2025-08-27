@@ -1,0 +1,18 @@
+{
+    "SECRET_KEY": "django-insecure-4#-wrp_(53^0_9$%p8lq+qf43z0dx0ji6bh!sa1mfn^l)4-lq@",
+    "DEBUG": true,
+    "ALLOWED_HOSTS": ["localhost", "127.0.0.1"],
+    "DATABASES": {
+        "default": {
+            "ENGINE": "django.db.backends.sqlite3",
+            "NAME": "db.sqlite3"
+        }
+    }, 
+
+    "DEFAULT_FROM_EMAIL": "timachuduk@timthewebmaster.com",
+    "DEFAULT_TO_EMAIL": "timachuduk@gmail.com",
+    "EMAIL_HOST": "smtp.beget.com",
+    "EMAIL_PORT": 25, 
+    "EMAIL_HOST_USER": "timachuduk@timthewebmaster.com",
+    "EMAIL_HOST_PASSWORD": "EXNIkq1&yfOx"
+}

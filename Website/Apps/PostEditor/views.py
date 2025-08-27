@@ -155,10 +155,3 @@ def save_template(request):
 
 
     return JsonResponse({'msg': msg}, status=status)
-
-def load_table_of_content(request):
-    titles = json.loads(request.POST.get("titles"))
-    context = {
-        'titles': titles,
-    }
-    return render(request, "PostEditor/table_of_content.html", context=context)

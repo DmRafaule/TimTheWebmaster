@@ -1,0 +1,100 @@
+.ref_no-sign > a, a.ref_no-sign-ext{
+	color: var(--link_color) !important;	
+	transition: 0.3s;
+	border-bottom: 1px solid var(--link_color); 
+	cursor: pointer;
+	word-wrap: anywhere;
+}
+
+.ref_no-sign > a:after, a.ref_no-sign-ext:after{
+	font-size: 120%;	
+}
+
+.ref_no-sign > a:hover, a.ref_no-sign-ext:hover{
+	color: var(--link-hover_color) !important;	
+}
+
+.ref > a, a.ref-ext{
+	color: var(--link_color) !important;	
+	transition: 0.3s;
+	border-bottom: 1px solid var(--link_color); 
+	cursor: pointer;
+	word-wrap: anywhere;
+}
+
+.ref > a:after, a.ref-ext:after{
+	content: var(--link_sign);
+	font-size: 120%;	
+}
+
+.ref > a:hover, a.ref-ext:hover{
+	color: var(--link-hover_color) !important;	
+}
+
+.ref_hidden > a, a.ref_hidden-ext, .ref_hidden_no-sign > a{
+	color: inherit;
+	transition: 0.3s;
+	border-bottom: 0px solid var(--link_color); 
+	cursor: pointer;
+	word-wrap: anywhere;
+}
+
+.ref_hidden > a:hover::after, a.ref_hidden-ext:hover::after{
+	content: var(--link_sign);
+}
+
+.ref_hidden > a:hover, a.ref_hidden-ext:hover, .ref_hidden_no-sign > a:hover{
+	color: var(--link-hover_color) !important;	
+	border-bottom: 1px solid var(--link_color); 
+}
+
+
+
+
+.ref_hidden-int > a, a.ref_hidden-int, .ref_hidden-int_no-sign > a{
+	color: inherit;
+	transition: 0.3s;
+	border-bottom: 0px solid var(--link-internal_color); 
+	cursor: pointer;
+	word-wrap: anywhere;
+}
+
+.ref_hidden-int > a:hover::after, a.ref_hidden-int:hover::after{
+	content: var(--link-internal_sign);
+}
+
+.ref_hidden-int > a:hover, a.ref_hidden-int:hover, .ref_hidden-int_no-sign > a:hover{
+	color: var(--link-hover-internal_color) !important;	
+	border-bottom: 1px solid var(--link-internal_color); 
+}
+
+
+
+
+.ref_downloadables > a, a.ref-downloadable{
+	color: var(--link-downloadable_color) !important;	
+	transition: padding 0.3s;
+	border-bottom: 1px solid var(--link-downloadable_color); 
+	cursor: pointer;
+}
+.ref_downloadables > a:after, a.ref-downloadable:after{
+	content: var(--link-downloadable_sign);
+	font-size: 120%;
+}
+.ref_downloadables > a:hover, a.ref-downloadable:hover{
+	color: var(--link-hover-downloadable_color) !important;	
+}
+
+.ref_internal > a, a.ref-int{
+	color: var(--link-internal_color) !important;	
+	transition: padding 0.3s;
+	border-bottom: 1px solid var(--link-internal_color); 
+	cursor: pointer;
+}
+.ref_internal > a:after, a.ref-int:after{
+	content: var(--link-internal_sign);
+	font-size: 120%;
+}
+.ref_internal > a:hover, a.ref-int:hover{
+	color: var(--link-hover-internal_color) !important;	
+}

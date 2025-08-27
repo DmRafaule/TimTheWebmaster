@@ -1,0 +1,41 @@
+
+function getAllExternalLinks(){
+    var list = []
+    var page = document.querySelector('#content_post_article')
+    var links = page.querySelectorAll('a')
+    links.forEach(link => {
+        var ref = link.getAttribute('href')
+        if (ref){
+            if (!(ref.startsWith(`https://${DOMAIN_NAME}`)) && (ref.startsWith(`https://`) || ref.startsWith(`http://`))){
+                list.push(ref)
+            }
+        }
+    });
+    return [...new Set(list)]
+}
+
+
+export function initLinkGather(){
+    var links = getAllExternalLinks()
+    var ex_link_list = document.querySelector('#ex_links_list')
+    var ex_link_exmpl_cont = document.querySelector('#list_el_exmpl_cont')
+    if (links.length > 0){
+        if (ex_link_exmpl_cont){
+            ex_link_exmpl_cont.classList.remove('hidden')
+            for(var i = 0; i < links.length; i++){
+                var cont = ex_link_exmpl_cont.cloneNode(true)
+                var link = cont.querySelector('a')
+                link.setAttribute('href', links[i])
+                link.innerText = links[i]
+                ex_link_list.insertAdjacentElement('beforeend', cont)
+            }
+            ex_link_exmpl_cont.classList.add('hidden')
+        }
+    }
+    else{
+        var ex_link_cont = document.querySelector('#ex_links')
+        if (ex_link_cont){
+            ex_link_cont.remove()
+        }
+    }
+}

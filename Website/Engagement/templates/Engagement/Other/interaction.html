@@ -1,0 +1,36 @@
+{% load static %}
+{% load i18n %}
+{% load getInteraction %}
+
+{% with interaction=path|getInteraction %}
+    <div class="flex gap-4">
+        <div class="flex gap-2 items-center">
+            <img width="16" height="16" src='{% static "Engagement/img/views.svg" %}' alt="{% trans "Глазик" %}">
+            <div>{{interaction.views}}</div>
+        </div>
+        {% if is_likes or not isDisplayingActualAvailableInteractions %}
+        <div class="flex gap-2 items-center">
+            <img class="svg_icon_inverted_black" width="16" height="16" src='{% static "Engagement/img/like.svg" %}' alt="{% trans "Сердечки" %}">
+            <div>{{interaction.likes}}</div>
+        </div>
+        {% endif %}
+        {% if is_shares or not isDisplayingActualAvailableInteractions  %}
+        <div class="flex gap-2 items-center">
+            <img class="svg_icon_inverted_black" width="16" height="16" src='{% static "Engagement/img/share.svg" %}' alt="{% trans "Соединённые точки" %}">
+            <div>{{interaction.shares}}</div>
+        </div>
+        {% endif %}
+        {% if is_comments or not isDisplayingActualAvailableInteractions  %}
+        <div class="flex gap-2 items-center">
+            <img class="svg_icon_inverted_black" width="16" height="16" src='{% static "Engagement/img/comments.svg" %}' alt="{% trans "Соединённые точки" %}">
+            <div>{{interaction.comments}}</div>
+        </div>
+        {% endif %}
+        {% if is_bookmarks or not isDisplayingActualAvailableInteractions  %}
+        <div class="flex gap-2 items-center">
+            <img class="svg_icon_inverted_black" width="16" height="16" src='{% static "Engagement/img/bookmark.svg" %}' alt="{% trans "Соединённые точки" %}">
+            <div>{{interaction.bookmarks}}</div>
+        </div>
+        {% endif %}
+    </div>
+{% endwith %}

@@ -41,7 +41,10 @@ urlpatterns += i18n_patterns(
     path('', include('PagiScroll.urls')),
 )
 
+handler400 = "Main.views.bad_request"
+handler403 = "Main.views.forbidden"
 handler404 = "Main.views.page_not_found"
+handler500 = "Main.views.server_error"
 
 # This is needed for displaying images media files
 if settings.DEBUG:

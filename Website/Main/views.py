@@ -1,50 +1,17 @@
 from django.shortcuts import render
 from django.utils.translation import gettext as _
 from django.utils.translation import get_language
-from django.views.generic import TemplateView
-from django.template.response import TemplateResponse
-from django.core.mail import send_mail
+from django.template.response import TemplateResponse 
 
 import Main.utils as U
 from .models import Website
-from .forms import FeedbackForm
 from Post.models import Tool, Article, Tag, Note, Service
-from Website.settings import DEFAULT_FROM_EMAIL, DEFAULT_TO_EMAIL
 from Engagement.models import Comment
 
 #TODO: 
 # * Добавь 500 обработчик
 # * Добавь 403 обработчик
 # * Добавь 400 обработчик
-
-class ContactsView(TemplateView):
-    ''' Специальное представление для страницы контактов '''
-
-    def get_context_data(self, **kwargs):
-        context = super(ContactsView, self).get_context_data(**kwargs)
-        context = U.initDefaults(self.request)
-        # Создаём и отправляем пустую форму по умолчанию, GET-запрос
-        form = FeedbackForm()
-        context.update({'form': form})
-        return context
-    
-    def post(self, request, *args, **kwargs):
-        # Заполняем форму из POST-запроса
-        form = FeedbackForm(self.request.POST)
-        context = super(ContactsView, self).get_context_data(**kwargs)
-        context = U.initDefaults(self.request)
-        # Отправляем e-mail, если форма валидна + фидбэк на страницу
-        if form.is_valid():
-            subject = f'{form.cleaned_data.get("username")} | {form.cleaned_data.get("email")}'
-            message = f'{form.cleaned_data.get("message")}'
-            send_mail(subject=subject, message=message, from_email=DEFAULT_FROM_EMAIL, recipient_list=[DEFAULT_TO_EMAIL])
-            context.update({'feedback_message': _('✔ Вы успешно отправили сообщение')})
-        else:
-            context.update({'feedback_message': _('✗ Возникла ошибка при отправке формы')})
-        
-        context.update({'form': form})
-    
-        return render(request, self.template_name, context=context)
 
 def about(request):
     ''' Представление для страницы об авторе/сайте '''
@@ -136,13 +103,29 @@ def home(request):
     # Получаем все последние Статьи по выбранным тегам с минимальным порогом для отображения 
     context.update({'other_articles': get_latest_post_by_tag(min_choosen_articles_by_tag, choosen_articles_by_tag, Article)})
     # Получаем и сохраняем последние комментарии
-    context.update({'comments': Comment.objects.filter(url__startswith=f"/{get_language()}/").order_by('-time_published')[:10]})
+    comments_all = Comment.objects.filter(url__startswith=f"/{get_language()}/").order_by('-time_published')[:10]
+    context.update({'comments': comments_all})
     # Доступные услуги
     context.update({'services': choosen_services})
     
     return TemplateResponse(request, 'Main/home.html', context=context)
 
+def bad_request(request, exception):
+    ''' Специальный хендлер для 400 ответов '''
+    context = U.initDefaults(request)
+    return render(request, 'Main/400.html', context=context, status=400)
+
+def forbidden(request, exception):
+    ''' Специальный хендлер для 403 ответов '''
+    context = U.initDefaults(request)
+    return render(request, 'Main/403.html', context=context, status=403)
+
 def page_not_found(request, exception):
     ''' Специальный хендлер для 404 ответов '''
     context = U.initDefaults(request)
     return render(request, 'Main/404.html', context=context, status=404)
+
+def server_error(request):
+    ''' Специальный хендлер для 500 ответов '''
+    context = U.initDefaults(request)
+    return render(request, 'Main/500.html', context=context, status=500)

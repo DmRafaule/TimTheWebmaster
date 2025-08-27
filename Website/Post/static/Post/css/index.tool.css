@@ -1,0 +1,21 @@
+/**/
+/*@import './posts_preview.css';*/
+/*@import '../../../../Main/static/modal.css';*/
+/*@import '../../../../Main/static/blocks.css';*/
+/*@import '../../../../Main/static/lists.css';*/
+/*@import '../../../../Main/static/forms.css';*/
+/*@import '../../../../Main/static/images.css';*/
+/*@import '../../../../Main/static/tooltip.css';*/
+/*@import '../../../../Main/static/dynamic.css';*/
+/*@import '../../../../Main/static/footer-tool.css';*/
+/*@import '../../../../Main/static/notificator.css';*/
+/*@import './tool.css';*/
+
+@import '../../../../Main/static/Components/Blocks/image.css'; 
+@import '../../../../Main/static/Components/Blocks/icon.css'; 
+@import "../../../../Main/static/Components/Blocks/tag.css";
+@import "../../../../Main/static/Components/Base/ImagePreviewer/image_previewer.css";
+@import "../../../../Main/static/Components/Containers/Dropdown/dropdown.css";
+@import "../../../../Main/static/Components/Buttons/Download/button_download.css";
+@import "tailwindcss";
+@tailwind utilities;

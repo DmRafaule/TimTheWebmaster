@@ -1,33 +1,29 @@
 {% load static %}
 {% load i18n %}
 
-<fieldset id="filters" class="row mid_gap full_width  padder fieldset_filter_toggled marger_top_mid">
-    <legend class="row min_gap on_middle_other">
-        <div id="filter_main_button" class="bordered_button button squered_button filter_button"  data-body="filters_body"  data-close-btn="{% static 'close.svg' %}">
-            <img  data-sort="true" width="32" height="32" class="svg_icon_inverted_black dynamic_image " src="{% static 'placeholder.svg' %}" data-src="{% static 'filter.svg' %}" alt="{% trans 'one layer on top of anothe' %}">
-        </div>
-        <div id="onFilterOut" class="button bordered_button squered_button padder active_filter-out filter_button">{% trans 'Фильтровать' %}</div>
-        {% if isTimeFilter %}
-        <div class="hat_button bordered_button button squered_button" >
-            <img id="onSort" width="32" height="32" class="icon dynamic_image filter_button" src="{% static 'placeholder.svg'%}" data-src="{% static 'Post/img/sort.svg' %}" alt="{% trans 'Значок сортировки' %}">
-        </div>
-        {% endif %}
-        {% if isAlphabetFilter %}
-        <div id="onAlphabet" data-sort='ignore' class="bordered_button button squered_button filter_button" data-close-btn="{% static 'PagiScroll/img/sort-alphabetically.svg' %}" >
-            <img width="32" height="32" style="padding: 4px" class="icon dynamic_image" src="{% static 'placeholder.svg'%}" data-src="{% static 'PagiScroll/img/sort-reverse-alphabetically.svg' %}" alt="{% trans 'Значок сортировки' %}">
-        </div>
-        {% endif %}
+<fieldset id="filters" class="flex p-2 border-t-2  border-solid">
+    <legend class="flex gap-2  items-center">
+
+		<div id="onSort" class="grow-0 shrink ttw-button_swap">
+			<div class="border ttw-button_action ttw-button_squared ttw-button_swap_front">
+				<img class="ttw-button_squared" width="32" height="32" src="{% static 'sort.svg' %}" alt="{% trans '3 горизонтальные линии, бургер' %}">
+			</div>
+			<div class="border ttw-button_action ttw-button_squared ttw-button_swap_back ttw-button_swap_not_active">
+				<img class="ttw-button_squared" width="32" height="32" src="{% static 'sort-reversed.svg' %}" alt="{% trans '3 горизонтальные линии, бургер' %}">
+			</div>
+		</div>
         {% with category.slug|add:'-rss' as rss_feed_path %}
-        <a href="{% url rss_feed_path %}" onClick="yaCounter95199635.reachGoal('onRSS')">
-            <div id="onRSS" class="bordered_button button squered_button" >
-                <img width="32" height="32" style="padding: 4px" class="icon dynamic_image" src="{% static 'placeholder.svg'%}" data-src="{% static 'PagiScroll/img/rss.svg' %}" alt="{% trans 'Значок сортировки' %}">
+        <div id="onRSS" class="border ttw-button_action ttw-button_squared" onclick="
+            var text = this.dataset.rss ;
+            navigator.clipboard.writeText(`${text}`); 
+            toaster.notify('{% trans 'Скопировал ссылку на RSS фид' %}','info');
+            yaCounter95199635.reachGoal('onRSS');
+        " data-rss="https://{{domain_name}}{% url rss_feed_path %}">
+            <div class="ttw-button_squared">
+                <img width="32" height="32" style="padding: 4px"  class="ttw-button_squared dynamic_image" src="{% static 'placeholder.svg'%}" data-src="{% static 'rss.svg' %}" alt="{% trans 'Значок сортировки' %}">
             </div>
-        </a>
+        </div>
+        <a class="hidden" href="{% url rss_feed_path %}"></a>
         {% endwith %}
     </legend>
-    <div id="filters_body" class="active_filter row mid_gap full_width " style="overflow: hidden;">
-        {% for filter in filters_doc %}
-            {{filter}}
-        {% endfor %}
-    </div>
 </fieldset>

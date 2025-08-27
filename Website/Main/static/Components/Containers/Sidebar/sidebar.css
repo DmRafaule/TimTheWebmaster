@@ -1,0 +1,17 @@
+.ttw-sidebar_body{
+    height: 100svh;
+    width: 300px;
+    background-color: var(--secondary_color);
+    color: var(--sidebar_text_color);
+    position: fixed;
+    z-index: 30;
+}
+.ttw-sidebar_body_left{
+    left: 0;
+}
+.ttw-sidebar_body_right{
+    right: 0;
+}
+.ttw-sidebar_body_not_active{
+    display: none !important;
+}

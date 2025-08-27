@@ -14,11 +14,11 @@
 			<meta name="description" content="{{category.description}}">
 
 			{% if current_page != num_pages %}
-				<link rel='next' href="https://{{domain_name}}{{ category.get_absolute_url }}?page={{current_page|add:'1'}}">
+				<link rel='next' href="https://{{domain_name}}{{ category.get_absolute_url }}?page={{current_page|add:'1'}}&is_recent=true">
 			{% endif %}
 
 			{% if current_page != 1%}
-				<link rel='prev' href="https://{{domain_name}}{{ category.get_absolute_url }}?page={{current_page|add:'-1'}}">
+				<link rel='prev' href="https://{{domain_name}}{{ category.get_absolute_url }}?page={{current_page|add:'-1'}}&is_recent=true">
 			{% endif %}
 
 		{% else %}
@@ -27,11 +27,11 @@
 			<meta name="description" content="{{category.description}} {% trans ' Они были связаны и сгруппированы по следующим тегам: ' %}{{current_tag_names|join:', '}}.{% trans ' Страница '%}{{current_page}}">
 
 			{% if current_page != num_pages %}
-			<link rel='next' href="https://{{domain_name}}{{ category.get_absolute_url }}?page={{current_page|add:'1'}}{{current_tag|listToURL}}">
+			<link rel='next' href="https://{{domain_name}}{{ category.get_absolute_url }}?page={{current_page|add:'1'}}{{current_tag|listToURL}}&is_recent=true">
 			{% endif %}
 
 			{% if current_page != 1%}
-			<link rel='prev' href="https://{{domain_name}}{{ category.get_absolute_url }}?page={{current_page|add:'-1'}}{{current_tag|listToURL}}">
+			<link rel='prev' href="https://{{domain_name}}{{ category.get_absolute_url }}?page={{current_page|add:'-1'}}{{current_tag|listToURL}}&is_recent=true">
 			{% endif %}
 
 		{% endif %}
@@ -43,32 +43,24 @@
 {% endblock %}
 
 {% block hat %}
-<div class="nav_menu_item in_middle" ></div>
+	<div class="nav_menu_item in_middle" ></div>
 {% endblock %}
 
 {% block content %}
-	<div class='notificator-container'>
-		<div class="notificator-blank notificator notificator-inactive"></div>
-	</div>
-	
-	{% if post_list_preview %}
-	<div class="post_image_container" style="background-image: url({% get_media_prefix %}{{post_list_preview}});"></div>
-	{% endif %}
-
-	<div class="limiter_list in_middle in_middle-self no_wrap padder">
+	<div class="flex flex-col max-w-4xl justify-center self-center p-2 gap-3">
 
 		{% if current_tag|length == 0 %}
 			{% if current_page == 1%}
-				<h1>{{category.name}}</h1>
+				<h1 class="ttw-title">{{category.name}}</h1>
 			{% else %}
-				<h1>{{category.name}}{% trans ' начиная с ' %}{{current_page}}{% trans ' страницы'%}</h1>
+				<h1 class="ttw-title">{{category.name}}{% trans ' начиная с ' %}{{current_page}}{% trans ' страницы'%}</h1>
 			{% endif %}
 
 			<div class="text">
 				{{category.description}}
 			</div>
 		{% else %}
-				<h1>{{category.name}} {% trans 'связанные со следующими тегами: ' %} {{current_tag_names|join:', '}}. {% trans 'Страница '%}{{current_page}}</h1>
+				<h1 class="ttw-title">{{category.name}} {% trans 'связанные со следующими тегами: ' %} {{current_tag_names|join:', '}}. {% trans 'Страница '%}{{current_page}}</h1>
 				<div class="text">
 					{{category.description}} {% trans ' Они были связаны и сгруппированы по следующим тегам: ' %}{{current_tag_names|join:', '}}.{% trans ' Страница '%}{{current_page}}
 				</div>
@@ -78,50 +70,51 @@
 			{% include 'Breadcrumbs/breadcrumbs_list.html' with path=request.get_full_path %}
 		{% endif %}
 
-		{% if isPostFilterMiddlewareConnected %}
-			{% include 'PagiScroll/post_filter.html' %}
-		{% endif %}
-		
+		{% include 'PagiScroll/post_filter.html' %}
+
 		<div id="meta-data" data-sort="{{is_recent}}" data-tags="{{tags_json}}" data-view="basic" data-who="{{category.slug}}" data-numpages={{num_pages}} data-currentpage="{{current_page}}" data-url="{{category.get_absolute_url}}"></div>
-		<div id="page" class="page toObserve">
+		<div id="page" class="flex flex-col gap-4 toObserve">
 			{% include post_preview_template %}
 		</div>
+        
 
-		<div id="progressbar" class="marger in_middle" >
-			<div class="progressbar-container">
-				<div class="progress-loader"></div>
-			</div>
+		<div id="context-loader-pagiscroll" class="context-loader">
+        	{% include 'Main/loader.html' %}
 		</div>
 	</div>
+{% endblock %}
 
-	<div id="paginator_container" class="paginator_container column is_sticky b-l full_width no_wrap row in_middle">
+{% block dock %}
+
+	<div id="paginator_container" class="paginator_container flex flex-row flex-wrap w-full  flex-nowrap justify-center p-2 items-end">
+		<div class="grow shrink-0">
 		{% if isEngagementMiddlewareConnected %}
-			{% include 'Engagement/engagement_options.html' %}
+			{% include 'Engagement/Other/engagement_dock_container.html' %}
 		{% endif %}
-		<div id="paginator" class="paginator_limiter no_wrap row in_middle max_col_gap">
-			<div id="paginator_first_page_example" data-page="" class="example_pagin_button pagin_button first_pagin_button button bordered_button squered_button"></div>
+		</div>
+		<div id="paginator" class="w-full max-w-4xl flex flex-nowrap justify-center gap-3 items-center pt-2">
+			<div id="paginator_first_page_example" data-page="" class="example_pagin_button pagin_button first_pagin_button  ttw-button_border ttw-button_action ttw-button_squared"></div>
 			<div id="paginator_dots_example" data-page=""  class="example_pagin_button pagin_dots">...</div>
-			<div id="paginator_default_page_example" data-page=""  class="example_pagin_button pagin_button button bordered_button squered_button"></div>
-			<div id="paginator_last_page_example" data-page=""  class="example_pagin_button pagin_button last_pagin_button  button bordered_button squered_button"></div>
-			<div id="prev_pagin_button" data-page=""  class=" button  squered_button  action_button">
-				<img width="32" height="32" class="icon flip_vert" src="{% static "chevron.svg" %}" alt="{% trans "Шеврон"%}">
+			<div id="paginator_default_page_example" data-page=""  class="example_pagin_button pagin_button  ttw-button_action ttw-button_squared ttw-button_border"></div>
+			<div id="paginator_last_page_example" data-page=""  class="example_pagin_button pagin_button last_pagin_button   ttw-button_border ttw-button_action ttw-button_squared"></div>
+			<div id="prev_pagin_button" data-page=""  class="bg-main ttw-button ttw-button_action ttw-button_squared">
+				<img width="32" height="32" class=" ttw-button_squared" src="{% static "chevron_left.svg" %}" alt="{% trans "Шеврон"%}">
 			</div>
-			<div id="paginator_body" class="row no_wrap full_width in_middle min_col_gap">
+			<div id="paginator_body" class="flex flex-nowrap w-full justify-center gap-2">
 				{# Place to insert buttons #}
 			</div>
-			<div id="next_pagin_button" data-page="" class=" button  squered_button  action_button">
-				<img width="32" height="32" class="icon" src="{% static "chevron.svg" %}" alt="{% trans "Шеврон"%}">
+			<div id="next_pagin_button" data-page="" class="bg-main ttw-button ttw-button_action ttw-button_squared">
+				<img width="32" height="32" class="ttw-button_squared" src="{% static "chevron.svg" %}" alt="{% trans "Шеврон"%}">
 			</div>
 		</div>
+		<div class="grow shrink-0 w-fit"></div>
 	</div>
-
-	
 
 {% endblock %}
 
 {% block footer_links %}
 	{% for ref in popular_posts %}
-		<li class="ref"><a href="{{ref.get_absolute_url}}">{{ref|truncatechars:15}}</a></li>
+		<li class="ref"><a href="{{ref.get_absolute_url}}">{{ref}}</a></li>
 	{% endfor %}
 {% endblock %}
 

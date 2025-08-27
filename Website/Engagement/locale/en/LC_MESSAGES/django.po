@@ -34,119 +34,119 @@ msgstr "Your message"
 msgid "Пожалуйста оцени мой инструмент (ಥ _ ಥ)"
 msgstr "Please gimme a star's rating (ಥ _ ಥ)"
 
-#: .\Engagement\templates\Engagement\comment_form.html:22
+#: .\Engagement\templates\Engagement\Commenting/comment_form.html:22
 msgid "Отправить"
 msgstr "Send"
 
-#: .\Engagement\templates\Engagement\comment_form.html:31
+#: .\Engagement\templates\Engagement\Commenting/comment_form.html:31
 msgid "Ответ для"
 msgstr "Response for"
 
-#: .\Engagement\templates\Engagement\comments.html:31
+#: .\Engagement\templates\Engagement\Commenting/comments.html:31
 msgid "Источник"
 msgstr "Source"
 
-#: .\Engagement\templates\Engagement\comments.html:40
+#: .\Engagement\templates\Engagement\Commenting/comments.html:40
 msgid "Все ответы "
 msgstr "All replies "
 
-#: .\Engagement\templates\Engagement\comments.html:44
+#: .\Engagement\templates\Engagement\Commenting/comments.html:44
 msgid "Ответить"
 msgstr "Reply"
 
-#: .\Engagement\templates\Engagement\comments.html:57
-#: .\Engagement\templates\Engagement\engagement_comments.html:17
+#: .\Engagement\templates\Engagement\Commenting/comments.html:57
+#: .\Engagement\templates\Engagement\Commenting/engagement_comments.html:17
 msgid "Больше ..."
 msgstr "More ..."
 
-#: .\Engagement\templates\Engagement\engagement_comments.html:10
+#: .\Engagement\templates\Engagement\Commenting/engagement_comments.html:10
 msgid "Сейчас тут пусто. Буть первым (oﾟvﾟ)ノ"
 msgstr "It's empty now. Be the first (oﾟvﾟ)ノ"
 
-#: .\Engagement\templates\Engagement\engagement_email_subscription_form.html:6
+#: .\Engagement\templates\Engagement\Other/engagement_email_subscription_form.html:6
 msgid "Подписка на рассылку"
 msgstr "Email subscription"
 
-#: .\Engagement\templates\Engagement\engagement_email_subscription_form.html:27
-#: .\Engagement\templates\Engagement\engagement_email_subscription_form.html:28
-#: .\Engagement\templates\Engagement\engagement_feedback_form.html:27
-#: .\Engagement\templates\Engagement\engagement_feedback_form.html:28
+#: .\Engagement\templates\Engagement\Other/engagement_email_subscription_form.html:27
+#: .\Engagement\templates\Engagement\Other/engagement_email_subscription_form.html:28
+#: .\Engagement\templates\Engagement\Other/engagement_feedback_form.html:27
+#: .\Engagement\templates\Engagement\Other/engagement_feedback_form.html:28
 msgid "Крестик"
 msgstr "Cross"
 
-#: .\Engagement\templates\Engagement\engagement_feedback_form.html:6
+#: .\Engagement\templates\Engagement\Other/engagement_feedback_form.html:6
 msgid "Форма обратной связи"
 msgstr "Feedback form"
 
-#: .\Engagement\templates\Engagement\engagement_options.html:9
-#: .\Engagement\templates\Engagement\engagement_options.html:77
+#: .\Engagement\templates\Engagement\Other/engagement_options.html:9
+#: .\Engagement\templates\Engagement\Other/engagement_options.html:77
 msgid "сердце"
 msgstr "heart"
 
-#: .\Engagement\templates\Engagement\engagement_options.html:14
-#: .\Engagement\templates\Engagement\engagement_options.html:82
+#: .\Engagement\templates\Engagement\Other/engagement_options.html:14
+#: .\Engagement\templates\Engagement\Other/engagement_options.html:82
 msgid "3 соединённые точки"
 msgstr "3 connected dots"
 
-#: .\Engagement\templates\Engagement\engagement_options.html:19
-#: .\Engagement\templates\Engagement\engagement_options.html:87
+#: .\Engagement\templates\Engagement\Other/engagement_options.html:19
+#: .\Engagement\templates\Engagement\Other/engagement_options.html:87
 msgid "vk иконка"
 msgstr "vk icon"
 
-#: .\Engagement\templates\Engagement\engagement_options.html:24
-#: .\Engagement\templates\Engagement\engagement_options.html:92
+#: .\Engagement\templates\Engagement\Other/engagement_options.html:24
+#: .\Engagement\templates\Engagement\Other/engagement_options.html:92
 msgid "reddit иконка"
 msgstr "reddit icon"
 
-#: .\Engagement\templates\Engagement\engagement_options.html:29
-#: .\Engagement\templates\Engagement\engagement_options.html:97
+#: .\Engagement\templates\Engagement\Other/engagement_options.html:29
+#: .\Engagement\templates\Engagement\Other/engagement_options.html:97
 msgid "twitter иконка"
 msgstr "twitter icon"
 
-#: .\Engagement\templates\Engagement\engagement_options.html:34
-#: .\Engagement\templates\Engagement\engagement_options.html:39
-#: .\Engagement\templates\Engagement\engagement_options.html:102
+#: .\Engagement\templates\Engagement\Other/engagement_options.html:34
+#: .\Engagement\templates\Engagement\Other/engagement_options.html:39
+#: .\Engagement\templates\Engagement\Other/engagement_options.html:102
 msgid "telegram иконка"
 msgstr "telegram icon"
 
-#: .\Engagement\templates\Engagement\engagement_options.html:48
-#: .\Engagement\templates\Engagement\engagement_options.html:53
-#: .\Engagement\templates\Engagement\engagement_options.html:58
-#: .\Engagement\templates\Engagement\engagement_options.html:68
-#: .\Engagement\templates\Engagement\engagement_options.html:116
-#: .\Engagement\templates\Engagement\engagement_options.html:121
-#: .\Engagement\templates\Engagement\engagement_options.html:126
+#: .\Engagement\templates\Engagement\Other/engagement_options.html:48
+#: .\Engagement\templates\Engagement\Other/engagement_options.html:53
+#: .\Engagement\templates\Engagement\Other/engagement_options.html:58
+#: .\Engagement\templates\Engagement\Other/engagement_options.html:68
+#: .\Engagement\templates\Engagement\Other/engagement_options.html:116
+#: .\Engagement\templates\Engagement\Other/engagement_options.html:121
+#: .\Engagement\templates\Engagement\Other/engagement_options.html:126
 msgid "облачко"
 msgstr "cloud"
 
-#: .\Engagement\templates\Engagement\engagement_options.html:63
-#: .\Engagement\templates\Engagement\engagement_options.html:131
+#: .\Engagement\templates\Engagement\Other/engagement_options.html:63
+#: .\Engagement\templates\Engagement\Other/engagement_options.html:131
 msgid "письмо"
 msgstr "message"
 
-#: .\Engagement\templates\Engagement\engagement_options.html:107
+#: .\Engagement\templates\Engagement\Other/engagement_options.html:107
 msgid "иконка копирования ссылки"
 msgstr "link copy icon"
 
-#: .\Engagement\templates\Engagement\engagement_post_comments.html:4
+#: .\Engagement\templates\Engagement\Commenting/engagement_post_comments.html:4
 msgid "Комментарии"
 msgstr "Comments"
 
-#: .\Engagement\templates\Engagement\engagement_tool_comments.html:5
+#: .\Engagement\templates\Engagement\Commenting/engagement_tool_comments.html:5
 msgid "Отзывы"
 msgstr "Reviews"
 
-#: .\Engagement\templates\Engagement\interaction.html:8
+#: .\Engagement\templates\Engagement\Other/interaction.html:8
 msgid "Глазик"
 msgstr "An eye"
 
-#: .\Engagement\templates\Engagement\interaction.html:13
+#: .\Engagement\templates\Engagement\Other/interaction.html:13
 msgid "Сердечки"
 msgstr "Hearts"
 
-#: .\Engagement\templates\Engagement\interaction.html:19
-#: .\Engagement\templates\Engagement\interaction.html:25
-#: .\Engagement\templates\Engagement\interaction.html:31
+#: .\Engagement\templates\Engagement\Other/interaction.html:19
+#: .\Engagement\templates\Engagement\Other/interaction.html:25
+#: .\Engagement\templates\Engagement\Other/interaction.html:31
 msgid "Соединённые точки"
 msgstr "Connected dots"
 

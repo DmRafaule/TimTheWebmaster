@@ -1,0 +1,11 @@
+.tww-button_action{
+    
+}
+.ttw-button_action:hover > img, .ttw-button_action:hover > div, .ttw-button_action:hover > p{
+	outline: var(--button_width_hover) solid var(--button_action_hover);
+	cursor: pointer;
+}
+.ttw-button_action:active > img, .ttw-button_action:active > div, .ttw-button_action:active > p{
+	outline: var(--button_width_active) solid  var(--button_action_active);
+	cursor: pointer;
+}

@@ -1,0 +1,23 @@
+{% load static %}
+{% load i18n %}
+
+{% include 'Engagement/Commenting/comment_form_container.html'%}
+
+<div id='comments_container' class="comments flex flex-col gap-2">
+{% if comments|length > 0 %}
+    {% include 'Engagement/Commenting/comments.html' with from="post" %}
+{% else %}
+    <div id='empty_comments_container' class="empty_comments_placeholder justify-center items-center" >{% trans 'Сейчас тут пусто. Буть первым (oﾟvﾟ)ノ' %}</div>
+{% endif %}
+</div>
+
+{% if comments|length > 0 and all_comments_length > per_page_comments%}
+<div id="context-loader-load_more" class="context-loader">
+    {% include 'Main/loader.html' %}
+</div>
+<div id="onCommentLoad" data-page-number='2' class="see_more_button ttw-button_action border ttw-button_squared">
+    <div class="ttw-button_squared p-2">
+    {% trans "Больше ..." %}
+    </div>
+</div>
+{% endif %}

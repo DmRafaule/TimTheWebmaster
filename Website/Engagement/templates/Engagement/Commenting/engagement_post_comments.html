@@ -1,0 +1,6 @@
+{% load i18n %}
+{% load static %}
+
+<div class="flex"><h2 class="">{% trans 'Комментарии' %}</h2><span id="comments_counter_header" >({{all_comments_length}})</span></div>
+<hr>
+{% include 'Engagement/Commenting/engagement_comments.html' %}

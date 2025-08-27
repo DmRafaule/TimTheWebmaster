@@ -7,7 +7,7 @@ class StaticSitemap(Sitemap):
     i18n = True
 
     def items(self):
-        return ["about", "contacts", "home"]
+        return ["about", "home"]
 
     def location(self, item):
         return reverse(item)

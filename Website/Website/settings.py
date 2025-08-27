@@ -73,7 +73,6 @@ INSTALLED_APPS += MY_INSTALLED_APPS
 MIDDLEWARE = [
     'Engagement.middleware.EngagementMiddleware',
     'Breadcrumbs.middleware.BreadcrumbsMiddleware',
-    'PagiScroll.middleware.PostFilterMiddleware',
     'Post.middleware.ToolMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',

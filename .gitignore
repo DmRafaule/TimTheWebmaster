@@ -89,6 +89,8 @@ local_settings.py
 venv_new
 db.sqlite3
 media
+media_local
+media_beget
 node_modules
 package-lock.json
 Website/test-db.sqlite3

@@ -1,1 +1,3 @@
-@import './breadcrumbs.css'
+@import './breadcrumbs.css';
+@import "tailwindcss";
+@tailwind utilities;

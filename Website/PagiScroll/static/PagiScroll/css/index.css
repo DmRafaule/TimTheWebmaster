@@ -1,7 +1,6 @@
-@import '../../../../Main/static/images.css';
-@import '../../../../Main/static/progressbar.css';
-@import '../../../../Main/static/blocks.css';
-@import '../../../../Main/static/paginator.css';
-@import '../../../../Main/static/lists.css';
-@import '../../../../Post/static/Post/css/post.css';
-@import '../../../../Post/static/Post/css/posts_preview.css';
+@import "../../../../Main/static/Components/Containers/Dropdown/dropdown.css";
+@import "../../../../Main/static/Components/Blocks/Paginator/paginator.css";
+@import "../../../../Main/static/Components/Blocks/tag.css";
+@import "../../../../Main/static/Components/Buttons/Download/button_download.css";
+@import "tailwindcss";
+@tailwind utilities;

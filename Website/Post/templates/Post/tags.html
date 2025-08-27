@@ -2,12 +2,12 @@
 {% load removeFromListInURL %}
 {% load addToListInURL %}
 
-<div class="post_preview_tags">
+<div class="flex gap-2 ref_no-sign flex-wrap">
     {% for tag in post.tags.all %}
         {% if tag.slug|hasInList:current_tag %}
-        <a rel="tag" href="{{ category.get_absolute_url }}?page=1{{tag.slug|removeFromListInURL:current_tag}}"><div class="tag_selected text_button tag_remove">{{tag}}</div></a>
+            <a rel="tag" href="{{ category.get_absolute_url }}?page=1{{tag.slug|removeFromListInURL:current_tag}}&is_recent=true"><div class="tag_selected tag_remove">{{tag}}</div></a>
         {% else %}
-        <a rel="tag" href="{{ category.get_absolute_url }}?page=1{{tag.slug|addToListInURL:current_tag}}"><div class="tag text_button tag_add">{{tag}}</div></a>
+            <a rel="tag" href="{{ category.get_absolute_url }}?page=1{{tag.slug|addToListInURL:current_tag}}&is_recent=true"><div class="tag tag_add">{{tag}}</div></a>
         {% endif %}
     {% endfor %}
 </div>

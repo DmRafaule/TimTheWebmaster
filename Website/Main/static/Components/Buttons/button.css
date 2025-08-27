@@ -1,0 +1,17 @@
+.ttw-button{
+    padding: calc(var(--spacing) * 0.5);
+	transition: 0.2s;
+	border: 0px solid black;
+}
+
+.ttw-button_circle{
+    border-radius: 50%;
+}
+
+.ttw-button_squared{
+    border-radius: 8px;
+}
+
+.ttw-button_border{
+    border: 2px solid black;
+}

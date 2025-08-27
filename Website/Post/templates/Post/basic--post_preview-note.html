@@ -6,24 +6,24 @@
 
 {% for a in posts %}
 
-<div class="post_preview column min_row_gap loader" data-numpages="{{num_pages}}">
-	<div class=" post_preview_header row min_col_gap">
-		<div class="column min_row_gap">
-			<h2 class="post_preview_title">{{a.title}}</h2>
-			<div class="row min_gap wrap">
-				<div class="row min_col_gap">
-					<img class="in_middle-self icon_small dynamic_image" width="32" height="32" src="{% static 'placeholder.svg' %}" data-src='{% static "Post/img/calendar.svg" %}' alt="{% trans "Часы" %}">
+<div class="flex flex-col gap-1 loader p-2" data-numpages="{{num_pages}}">
+	<div class="flex gap-3">
+		<div class="flex flex-col gap-1 ">
+			<h2>{{a.title}}</h2>
+			<div class="flex gap-3 flex-wrap">
+				<div class="flex gap-3">
+					<img width="16" height="16" src='{% static "Post/img/calendar.svg" %}' alt="{% trans "Часы" %}">
 					<div>{{a.timeCreated|date:"d.m.Y"}}</div>
 				</div>
 				/
-				<div class="row min_gap no_wrap">
-					<img class="in_middle-self icon_small dynamic_image" width="32" height="32" src="{% static 'placeholder.svg' %}" data-src='{% static "Post/img/update.svg" %}' alt="{% trans "Часы" %}">
+				<div class="flex gap-3 flex-nowrap">
+					<img width="16" height="16" src='{% static "Post/img/update.svg" %}' alt="{% trans "Часы" %}">
 					<div>{{a.timeUpdated|date:"d.m.Y"}}</div>
 				</div>
 			</div>
 		</div>
 	</div>
-	<span class="post_preview_body">
+	<span>
 		{{a.description}} 	
 	</span>
 	{% if displayTags %}
