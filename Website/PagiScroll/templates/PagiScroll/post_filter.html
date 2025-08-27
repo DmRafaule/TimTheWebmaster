@@ -1,5 +1,6 @@
 {% load static %}
 {% load i18n %}
+{% load listToURL %}
 
 <fieldset id="filters" class="flex p-2 border-t-2  border-solid">
     <legend class="flex gap-2  items-center">
@@ -18,12 +19,12 @@
             navigator.clipboard.writeText(`${text}`); 
             toaster.notify('{% trans 'Скопировал ссылку на RSS фид' %}','info');
             yaCounter95199635.reachGoal('onRSS');
-        " data-rss="https://{{domain_name}}{% url rss_feed_path %}">
+        " data-rss="https://{{domain_name}}{% url rss_feed_path %}?{{current_tag|listToURL}}">
             <div class="ttw-button_squared">
-                <img width="32" height="32" style="padding: 4px"  class="ttw-button_squared dynamic_image" src="{% static 'placeholder.svg'%}" data-src="{% static 'rss.svg' %}" alt="{% trans 'Значок сортировки' %}">
+                <img width="32" height="32" style="padding: 4px"  class="ttw-button_squared" src="{% static 'rss.svg' %}" alt="{% trans 'Значок сортировки' %}">
             </div>
         </div>
-        <a class="hidden" href="{% url rss_feed_path %}"></a>
+        <a class="hidden" href="{% url rss_feed_path %}?{{current_tag|listToURL}}"></a>
         {% endwith %}
     </legend>
 </fieldset>

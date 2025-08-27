@@ -153,7 +153,7 @@ class PostFeed(Feed):
             self.category = Post_M.Category.objects.get(slug=category_slug)
         except:
             self.category = None
-    
+
     def title(self):
         return self.category.name
 
@@ -163,8 +163,17 @@ class PostFeed(Feed):
     def link(self):
         return f"/{get_language()}/{self.category.slug}-rss/"
 
-    def items(self):
-        return self.model.objects.filter(isPublished=True).order_by("-timeCreated")[:50]
+    def get_object(self, request):
+        tags = request.GET.getlist('tag')
+        return Post_M.Tag.objects.filter(slug__in=tags)
+
+    def items(self, obj):
+        tags = obj
+        posts = self.model.objects.filter(isPublished=True).order_by("-timeCreated")
+        # Фильтруем посты по тегам
+        if len(tags) > 0:
+            posts = U.getAllWithTags(posts, tags)
+        return posts[:50]
 
     def item_title(self, item):
         if hasattr(item, 'title'):
