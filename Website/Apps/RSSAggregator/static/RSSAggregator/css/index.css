@@ -1,12 +1,5 @@
-@tailwind base;
-@tailwind components;
+@import "tailwindcss";
 @tailwind utilities;
-@tailwind variants;
-
-@import './tabs.css';
-@import '../../../../../Main/static/loader.css';
-@import '../../../../../Main/static/images.css';
-@import '../../../../../Main/static/table_of_content.css';
 
 
 input{
@@ -20,10 +13,11 @@ input{
 hr{
   margin-bottom: 0;
 }
-img{
-  width:100%;
-}
 
 img.captcha{
   width: unset;
+}
+
+.tab_button>img:not(.tab_button.tab_active>img){
+  filter: brightness(0) invert(0) ;
 }

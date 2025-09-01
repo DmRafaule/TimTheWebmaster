@@ -2,16 +2,16 @@
 	max-width: var(--limiter-width-big);
 	
 }
+input{
+	width:auto;
+}
 .canvas_bordered{
 	border: 2px solid grey;
 }
 
 .canvas_flex{
-	z-index: 1;
-	max-width: 600px;
-	max-height: 600px;
-	flex: 1 0 auto;
-	display: flex;
+	width: 100%;
+	aspect-ratio: 1 / 1;
 }
 
 .canvas_as_background{
@@ -25,6 +25,7 @@
 	height: 100%;
 	padding: 8px;
 	display: flex;
+	flex-direction: column;
 	flex-wrap: wrap;
 	column-gap: 16px;
 }

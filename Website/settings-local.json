@@ -4,12 +4,8 @@
     "ALLOWED_HOSTS": ["localhost", "127.0.0.1"],
     "DATABASES": {
         "default": {
-            "ENGINE": "django.db.backends.mysql",
-            "NAME": "timachuduk_blog",
-            "USER": "timachuduk_blog",
-            "PASSWORD": "tpxVv%cd5MKx",
-            "HOST": "timachuduk.beget.tech",
-            "PORT": "3306"
+            "ENGINE": "django.db.backends.sqlite3",
+            "NAME": "db.sqlite3"
         }
     }, 
 

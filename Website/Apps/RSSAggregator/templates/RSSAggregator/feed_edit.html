@@ -25,19 +25,35 @@
 
     {% if forloop.counter0 == feed_form|length %}
         <div class="flex flex-row gap-[10px] flex-wrap">
-            <img hx-put="feeds/{{feed_id}}/" hx-target="#feed-form-container-{{feed_id}}" hx-swap="outerHTML" hx-headers='js:{"X-CSRFTOKEN": csrftoken}' class="icon button action_button squered_button padder" src="{% static 'RSSAggregator/img/save.svg' %}">
+            <div class="ttw-button ttw-button_action ttw-button_squared">
+                <div class="border ttw-button_squared p-1">
+                    <img width="16px" height="16px" hx-put="feeds/{{feed_id}}/" hx-target="#feed-form-container-{{feed_id}}" hx-swap="outerHTML" hx-headers='js:{"X-CSRFTOKEN": csrftoken}' class="svg_icon_inverted_black" src="{% static 'RSSAggregator/img/save.svg' %}">
+                </div>
+            </div>
             {% if to_add_ness %}
             {% for field in feed_form %}
                 {% if field.name == 'feed'%}
-                    <a href="{% url 'rss-reader' %}{{field.value|RSSA_addToListInURL:feed_urls}}">
-                        <img class="icon button action_button squered_button padder" src="{% static 'RSSAggregator/img/display_feed.svg' %}">
-                    </a>
+                <div class="ttw-button ttw-button_link ttw-button_squared">
+                    <div class="border ttw-button_squared p-1">
+                        <a href="{% url 'rss-reader' %}{{field.value|RSSA_addToListInURL:feed_urls}}">
+                            <img width="16px" height="16px" class="svg_icon_inverted_black" src="{% static 'RSSAggregator/img/display_feed.svg' %}">
+                        </a>
+                    </div>
+                </div>
                 {% endif %}
             {% endfor %}
             {% else %}
-                <img class="icon disabled_button squered_button padder" src="{% static 'RSSAggregator/img/display_feed.svg' %}">
+            <div class="ttw-button ttw-button_link ttw-button_squared">
+                <div class="border ttw-button_squared p-1">
+                    <img width="16px" height="16px" class="svg_icon_inverted_black" src="{% static 'RSSAggregator/img/display_feed.svg' %}">
+                </div>
+            </div>
             {% endif %}
-            <img hx-delete="feeds/{{feed_id}}/" hx-target="#feed-form-container-{{feed_id}}" hx-params="none" hx-swap="outerHTML" hx-headers='js:{"X-CSRFTOKEN": csrftoken}' class="icon button action_button squered_button padder" src="{% static 'RSSAggregator/img/delete.svg' %}">
+            <div class="ttw-button ttw-button_link ttw-button_squared">
+                <div class="border ttw-button_squared p-1">
+                    <img width="16px" height="16px" hx-delete="feeds/{{feed_id}}/" hx-target="#feed-form-container-{{feed_id}}" hx-params="none" hx-swap="outerHTML" hx-headers='js:{"X-CSRFTOKEN": csrftoken}' class="svg_icon_inverted_black" src="{% static 'RSSAggregator/img/delete.svg' %}">
+                </div>
+            </div>
         </div>
     {% endif %}
 {% endfor %}

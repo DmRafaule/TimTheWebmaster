@@ -1,10 +1,5 @@
-@tailwind base;
-@tailwind components;
+@import "tailwindcss";
 @tailwind utilities;
-@tailwind variants;
-
-@import '../../../../../Main/static/tables.css';
-@import '../../../../../Main/static/loader.css';
 
 .custom-choise-link-thief>div>label{
     display: flex;
@@ -13,6 +8,7 @@
 input{
     max-width: unset;
     border-bottom: none;
+    width: auto;
 }
 .title_link_thief{
     background-color: var(--secondary_color);

@@ -1,0 +1,12 @@
+.form_error{
+    color: var(--error);
+}
+.form_warning{
+    color: var(--warning);
+}
+.form_success{
+    color: var(--success);
+}
+.form_info{
+    color: var(--info);
+}

@@ -27,8 +27,15 @@
         {% endfor %}
     </div>
     <div class="flex flex-row justify-start">
-        <button hx-put="user-id/{{user_id}}/" hx-target="#user_settings_container" hx-headers='js:{"X-CSRFTOKEN": csrftoken}' hx-vals='js:{"user_id": "{{user_id}}"}' type="submit">
-            <img class="icon button action_button squered_button padder" src="{% static 'RSSAggregator/img/update.svg' %}">
+        <button 
+            hx-put="user-id/{{user_id}}/" 
+            hx-target="#user_settings_container" 
+            hx-headers='js:{"X-CSRFTOKEN": csrftoken}' 
+            hx-vals='js:{"user_id": "{{user_id}}"}' 
+            class="ttw-button ttw-button_link ttw-button_squared" type="submit">
+            <div class="border ttw-button_squared p-1">
+                <img width="16px" height="32px" class="svg_icon_inverted_black" src="{% static 'RSSAggregator/img/update.svg' %}">
+            </div>
         </button>
     </div>
 </form>

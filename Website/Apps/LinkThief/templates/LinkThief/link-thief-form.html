@@ -8,7 +8,16 @@
         {{ field }}
         {{ field.errors }}
         </div>
-        <input hx-post="" hx-target="#link-thief-form-container" hx-swap="innerHTML" hx-indicator="#loader" id="feedback" class="button squered_button" type="submit" value="{% trans "Начать" %}">
+        <div class="ttw-button ttw-button_action ttw-button_squared">
+            <div class="border ttw-button_squared p-1">
+                <input 
+                    hx-post="" 
+                    hx-target="#link-thief-form-container" 
+                    hx-swap="innerHTML" 
+                    hx-indicator="#loader" 
+                    id="feedback" class="button squered_button" type="submit" value="{% trans "Начать" %}">
+            </div>
+        </div>
     </fieldset>
     {% endif %}
 {% endfor %}

@@ -5,8 +5,6 @@
 
 {% block content_tool %}
 	<div class="canvas_workspace">
-		<canvas  id='canvas' class="canvas_flex canvas_bordered" data-vertex-shader="{% static "ShaderToy/shaders/default.vert" %}" data-fragment-shader="{% static "ShaderToy/shaders/default.frag" %}">
-		</canvas>
 		<div id="canvas-editor" class="canvas_editor">
 			<h2>{% trans "Редактор шейдеров" %} | ShaderToy</h2>
 			<div class="tabs">
@@ -34,6 +32,9 @@
 				<div id="tab_button_for_save" class="tab_button" data-bodyid="8">
 					<abbr title="{% trans "Сохранения" %}"><img width="32" height="32" class="icon bordered_button button dynamic_image squered_button" src="{% static 'placeholder.svg' %}" data-src="{% static 'ShaderToy/img/save.svg' %}" alt="{% trans "Иконка сохранения" %}"></abbr>			
 				</div>
+				<div id="tab_button_for_view" class="tab_button" data-bodyid="9">
+					<abbr title="{% trans "Холст" %}"><img width="32" height="32" class="icon bordered_button button dynamic_image squered_button" src="{% static 'placeholder.svg' %}" data-src="{% static 'ShaderToy/img/save.svg' %}" alt="{% trans "Иконка сохранения" %}"></abbr>			
+				</div>
 			</div>
 			<div class="tab_body full_height canvas_bordered">
 				<div id="tab_body-1" class="tab_element tab_element__active">
@@ -45,85 +46,85 @@
 					</div>
 				</div>
 				<div id="tab_body-3" class="tab_element">
-					<h2 class="padder">{% trans "Настройка холста" %}</h2>
-					<div class="row mid_row_gap canvas_settings">
-						<div class="padder">
+					<h2 class="p-2">{% trans "Настройка холста" %}</h2>
+					<div class="flex flex-row gap-2 canvas_settings">
+						<div class="p-2 grow shrink-0 basis-auto">
 							<label>{% trans "Режим отрисовки" %}</label>
 							<hr>
-							<div class="column min_row_gap">
-								<div class="row in_middle-farapart">
+							<div class="flex flex-col gap-2">
+								<div class="flex flex-row justify-between">
 									<label for="geom-0">TRIANGLES</label>
 									<input id="geom-0" type="radio" class="render_mode" name="geometry" value="TRIANGLES" checked />
 								</div>
-								<div class="row in_middle-farapart">
+								<div class="flex flex-row justify-between">
 									<label for="geom-1">POINTS</label>
 									<input id="geom-1" type="radio" class="render_mode" name="geometry" value="POINTS">
 								</div>
-								<div class="row in_middle-farapart">
+								<div class="flex flex-row justify-between">
 									<label for="geom-2">LINES</label>
 									<input id="geom-2" type="radio" class="render_mode" name="geometry" value="LINES">
 								</div>
-								<div class="row in_middle-farapart">
+								<div class="flex flex-row justify-between">
 									<label for="geom-3">LINE_LOOP</label>
 									<input id="geom-3" type="radio" class="render_mode" name="geometry" value="LINE_LOOP">
 								</div>
-								<div class="row in_middle-farapart">
+								<div class="flex flex-row justify-between">
 									<label for="geom-4">LINE_STRIP</label>
 									<input id="geom-4" type="radio" class="render_mode" name="geometry" value="LINE_STRIP">
 								</div>
-								<div class="row in_middle-farapart">
+								<div class="flex flex-row justify-between">
 									<label for="geom-5">TRIANGLE_STRIP</label>
 									<input id="geom-5" type="radio" class="render_mode" name="geometry" value="TRIANGLE_STRIP">
 								</div>
-								<div class="row in_middle-farapart">
+								<div class="flex flex-row justify-between">
 									<label for="geom-6">TRIANGLE_FAN</label>
 									<input id="geom-6" type="radio" class="render_mode" name="geometry" value="TRIANGLE_FAN">
 								</div>
 							</div>
 						</div>
-						<div class="padder">
+						<div class="p-2 grow shrink-0 basis-auto">
 							<label>{% trans "Работа конвеера" %}</label>
 							<hr>
-							<div class="column min_row_gap">
-								<div class="row in_middle-farapart">
+							<div class="flex flex-col gap-2">
+								<div class="flex flex-row justify-between">
 									<label>BLEND</label>
 									<input type="checkbox" class="pipeline_work" value="BLEND">
 								</div>
-								<div class="row in_middle-farapart">
+								<div class="flex flex-row justify-between">
 									<label>CULL_FACE</label>
 									<input type="checkbox" class="pipeline_work" value="CULL_FACE">
 								</div>
-								<div class="row in_middle-farapart">
+								<div class="flex flex-row justify-between">
 									<label>DEPTH_TEST</label>
 									<input type="checkbox" class="pipeline_work" value="DEPTH_TEST">
 								</div>
-								<div class="row in_middle-farapart">
+								<div class="flex flex-row justify-between">
 									<label>DITHER</label>
 									<input type="checkbox" class="pipeline_work" value="DITHER">
 								</div>
-								<div class="row in_middle-farapart">
+								<div class="flex flex-row justify-between">
 									<label>POLYGON_OFFSET_FILL</label>
 									<input type="checkbox" class="pipeline_work" value="POLYGON_OFFSET_FILL">
 								</div>
-								<div class="row in_middle-farapart">
+								<div class="flex flex-row justify-between">
 									<label>SAMPLE_ALPHA_TO_COVERAGE</label>
 									<input type="checkbox" class="pipeline_work" value="SAMPLE_ALPHA_TO_COVERAGE">
 								</div>
-								<div class="row in_middle-farapart">
+								<div class="flex flex-row justify-between">
 									<label>SAMPLE_COVERAGE</label>
 									<input type="checkbox" class="pipeline_work" value="SAMPLE_COVERAGE">
 								</div>
-								<div class="row in_middle-farapart">
+								<div class="flex flex-row justify-between">
 									<label>SCISSOR_TEST</label>
 									<input type="checkbox" class="pipeline_work" value="SCISSOR_TEST">
 								</div>
-								<div class="row in_middle-farapart">
+								<div class="flex flex-row justify-between">
 									<label>STENCIL_TEST</label>
 									<input type="checkbox" class="pipeline_work" value="STENCIL_TEST">
 								</div>
 							</div>
 						</div>
-						<div class="padder">
+						<div class="p-2 grow-0 shrink basis-auto">
 							<label>{% trans "Цвет холста" %}</label>
 							<hr>
 							<div class="input_vector">
@@ -135,23 +136,27 @@
 						</div>
 					</div>
 				</div>
-				<div id="tab_body-4" class="tab_element column mid_row_gap toObserve">
+				<div id="tab_body-4" class="tab_element flex flex-col gap-2 p-2 toObserve">
 					<h2 class="padder">{% trans "Настройка шейдера" %}</h2>
 				</div>
-				<div id="tab_body-5" class="tab_element column on_start_other min_row_gap">
+				<div id="tab_body-5" class="tab_element flex flex-col gap-2 p-2">
 					<h2 class="padder">{% trans "Библиотека шейдеров glsl" %}</h2>
 				</div>
-				<div id="tab_body-6" class="tab_element column padder">
+				<div id="tab_body-6" class="tab_element flex flex-col gap-2 p-2">
 				</div>
-				<div id="tab_body-7" class="tab_element ">
+				<div id="tab_body-7" class="tab_element  flex flex-col gap-2 p-2">
 				</div>
-				<div id="tab_body-8" class="tab_element column on_start_other min_row_gap">
+				<div id="tab_body-8" class="tab_element  flex flex-col gap-2 p-2">
 					<h2 class="padder">{% trans "Сохранения" %}</h2>
+				</div>
+				<div id="tab_body-9" class="tab_element">
+					<canvas  id='canvas' class="canvas_flex canvas_bordered" data-vertex-shader="{% static "ShaderToy/shaders/default.vert" %}" data-fragment-shader="{% static "ShaderToy/shaders/default.frag" %}">
+					</canvas>
 				</div>
 			</div>
 		</div>
-		<div class="row mid_gap">
-			<div class="buttons_group padder">
+		<div class="flex flex-row gap-2 items-center">
+			<div class="flex gap-2 items-center p-2">
 				<abbr title="{% trans "Приостановить отрисовку" %}"><img id="pause_shader" width="32" height="32" class="icon bordered_button button dynamic_image squered_button switch_action" src="{% static 'placeholder.svg' %}" data-src="{% static 'ShaderToy/img/pause_the_shader.svg' %}" alt="{% trans "Иконка паузы" %}" data-seted-status="{% trans "Отрисовка приостановленна"%}"></abbr>
 				<abbr title="{% trans "Продолжить отрисовку" %}"><img id="resume_shader" width="32" height="32" class="icon bordered_button button dynamic_image squered_button switch_action" src="{% static 'placeholder.svg' %}" data-src="{% static 'ShaderToy/img/resume_the_shader.svg' %}" alt="{% trans "Иконка продолжения" %}" data-seted-status="{% trans "Отрисовывается"%}"></abbr>
 				<abbr title="{% trans "Обновить шейдер" %}"><img id="reload_shader" width="32" height="32" class="icon bordered_button button dynamic_image squered_button" src="{% static 'placeholder.svg' %}" data-src="{% static 'ShaderToy/img/refresh.svg' %}" alt="{% trans "Иконка старта" %}"></abbr>

@@ -1,9 +1,9 @@
 
-.ttw-button_link:hover > a > img, .ttw-button_link:hover > a > p{
+.ttw-button_link:hover > a > img, .ttw-button_link:hover > a > p, .ttw-button_link:hover > div{
 	outline: var(--button_width_hover) solid var(--button_link_hover);
 	cursor: pointer;
 }
-.ttw-button_link:active > a > img, .ttw-button_link:active > a > p{
+.ttw-button_link:active > a > img, .ttw-button_link:active > a > p, .ttw-button_link:active > div{
 	outline: var(--button_width_active) solid var(--button_link_active);
 	cursor: pointer;
 }

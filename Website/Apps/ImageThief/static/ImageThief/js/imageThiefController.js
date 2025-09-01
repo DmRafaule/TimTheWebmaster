@@ -41,7 +41,6 @@ function StartImageThief(url, mode, isDynamic){
 			$("#start").off()
 			$("#start").on('click', InitImageThief)
 			$("#imagethief_text_inButton").css("background-color", "var(--acent_color)")
-			$("#imagethief_text_inButton").addClass('button')
 		},
 		// Results of scrapping images fail 
 		error: function(jqXHR, textStatus, errorThrown){
@@ -67,7 +66,6 @@ function StartImageThief(url, mode, isDynamic){
 			$("#start").off()
 			$("#start").on('click', InitImageThief)
 			$("#imagethief_text_inButton").css("background-color", "var(--acent_color)")
-			$("#imagethief_text_inButton").addClass('button')
 		}
 	})
 }
@@ -129,7 +127,6 @@ function InitImageThief(){
 			// Clear all events handlers before seting up new one
 			$("#start").off()
 			$("#imagethief_text_inButton").css("background-color", "grey")
-			$("#imagethief_text_inButton").removeClass('button')
 			StartImageThief(result.url, result.mode, isDynamic)
 			// Make sure it is empty
 			$("#imagethief-logs").text("")

@@ -1,4 +1,2 @@
-@import './codeblock.css';
-@import './prism.css';
-@import './image_thief.css';
-@import '../../../../../Main/static/loader.css';
+@import "tailwindcss";
+@tailwind utilities;

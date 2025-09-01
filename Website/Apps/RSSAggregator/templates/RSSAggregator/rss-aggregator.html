@@ -15,18 +15,18 @@
 		</div>
 	</div>
 	<div class="limiter in_middle in_middle-self no_wrap padder">
-		<div class="tabs tabs-full-width">
+		<div class="tabs w-full">
 			<div class="tab_button tab_active" data-bodyid="1">
-            	<img class="icon button action_button squered_button padder" src="{% static 'RSSAggregator/img/home.svg' %}">
+            	<img width="16px" height="16px"class="" src="{% static 'RSSAggregator/img/home.svg' %}">
 			</div>
 			<div class="tab_button" data-bodyid="2">
-            	<img class="icon button action_button squered_button padder" src="{% static 'RSSAggregator/img/groups.svg' %}">
+            	<img width="16px" height="16px" class="" src="{% static 'RSSAggregator/img/groups.svg' %}">
 			</div>
 			<div class="tab_button" data-bodyid="3">
-            	<img class="icon button action_button squered_button padder" src="{% static 'RSSAggregator/img/question_mark.svg' %}">
+            	<img width="16px" height="16px" class="" src="{% static 'RSSAggregator/img/question_mark.svg' %}">
 			</div>
 			<div class="tab_button" data-bodyid="4">
-            	<img class="icon button action_button squered_button padder" src="{% static 'RSSAggregator/img/settings.svg' %}">
+            	<img width="16px" height="16px" class="" src="{% static 'RSSAggregator/img/settings.svg' %}">
 			</div>
 		</div>
 		<div class="tab_body">
@@ -38,13 +38,17 @@
 					{% include 'RSSAggregator/feed_add.html' with feed_form=feed_add_empty %}
 					<div id="common_feed_container"></div>
 				</form>
-				<hr>
+				<hr class="mt-3">
 				{% if feed_urls %}
 				<div class="flex flex-row gap-[10px]">
 					<div class="flex-auto"></div>
-					<a href="{% url 'rss-reader' %}">
-						<div class="button action_button padder">{% trans 'Удалить все' %}</div>
-					</a>
+					<div class="ttw-button_link ">
+						<div class="border p-1">
+						<a  href="{% url 'rss-reader' %}">
+							{% trans 'Удалить все' %}
+						</a>
+						</div>
+					</div>
 				</div>
 				{% endif %}
 			</div>
@@ -53,7 +57,7 @@
 				{% for feed in user_feeds %}
 					{% include 'RSSAggregator/feed_edit.html' with feed_form=feed.form feed_id=feed.id to_add_ness=feed.to_add%}
 				{% endfor %}
-				<hr>
+				<hr class="mt-3">
 			</div>
 			<div id="tab_body-3" class="tab_element">
 				<div class="table_of_contents">
@@ -78,7 +82,7 @@
 				</div>
 				<h2 class="paragraph">{% trans 'Как использовать инструмент' %}</h2>
 				<div class="text">{% trans 'Для того чтобы использовать данный инструмент тебе потребуются ссылки на нужные тебе RSS-фиды (RSS-каналы). Просто найди такие RSS и вставь в соответствующее поле, нажми <b>ENTER </b>или знак "<b>+</b>".' %}</div>
-				<div class="text"><img src="/static/image-not-found.webp" class="image dynamic_image image-bordered" data-src="{% get_media_prefix %}{{images.0.file}}" alt="{{images.0.text}}"></div>
+				<div class="text"><img src="{% static 'loading.svg' %}" class="image dynamic_image image-bordered" data-src="{% get_media_prefix %}{{images.0.file}}" alt="{{images.0.text}}"></div>
 				<div class="text">{% trans 'Где цифрами представлены следующие элементы:' %}</div>
 				<ol>
 					<li data-list="undefined" style="list-style-type: decimal;"><span class="ql-ui" contenteditable="false"></span>{% trans 'Иконка главной рабочей области. Здесь будут отображены все подгружаемые и отображаемые rss-каналы соответственно' %}</li>
@@ -91,9 +95,9 @@
 					<li data-list="undefined" style="list-style-type: decimal;"><span class="ql-ui" contenteditable="false"></span>{% trans 'Убрать его' %}</li>
 					<li data-list="undefined" style="list-style-type: decimal;"><span class="ql-ui" contenteditable="false"></span>{% trans 'Сохранить в библиотеку' %}</li>
 				</ol>
-				<div class="text"><img src="/static/image-not-found.webp" class="image dynamic_image image-bordered" data-src="{% get_media_prefix %}{{images.1.file}}" alt="{{images.1.text}}"></div>
+				<div class="text"><img src="{% static 'loading.svg' %}" class="image dynamic_image image-bordered" data-src="{% get_media_prefix %}{{images.1.file}}" alt="{{images.1.text}}"></div>
 				<div class="text">{% trans 'Перейдя по вкладке 1 - "<b>Библиотеки</b>" ты сможешь посмотреть на все свои сохранённые фиды и их названия.' %}</div>
-				<div class="text"><img src="/static/image-not-found.webp" class="image dynamic_image image-bordered" data-src="{% get_media_prefix %}{{images.2.file}}" alt="{{images.2.text}}"></div>
+				<div class="text"><img src="{% static 'loading.svg' %}" class="image dynamic_image image-bordered" data-src="{% get_media_prefix %}{{images.2.file}}" alt="{{images.2.text}}"></div>
 				<div class="text">{% trans 'И тебе доступны следующие кнопки и операции:' %}</div>
 				<ol>
 					<li data-list="undefined" style="list-style-type: decimal;"><span class="ql-ui" contenteditable="false"></span>{% trans 'Вкладка твоей библиотеки rss-каналов' %}</li>
@@ -110,7 +114,7 @@
 					<li data-list="undefined" style="list-style-type: disc;"><span class="ql-ui" contenteditable="false"></span>{% trans 'Указать отображать ли при это превьюшки для данных постов' %}</li>
 					<li data-list="undefined" style="list-style-type: disc;"><span class="ql-ui" contenteditable="false"></span>{% trans 'Связать различные браузеры для использования одних и тех же фидов' %}</li>
 				</ol>
-				<div class="text"><img src="/static/image-not-found.webp" class="image dynamic_image image-bordered" data-src="{% get_media_prefix %}{{images.3.file}}" alt="{{images.3.text}}"></div>
+				<div class="text"><img src="{% static 'loading.svg' %}" class="image dynamic_image image-bordered" data-src="{% get_media_prefix %}{{images.3.file}}" alt="{{images.3.text}}"></div>
 				<ol>
 					<li data-list="undefined" style="list-style-type: decimal;"><span class="ql-ui" contenteditable="false"></span>{% trans 'Вкладка с настройками' %}</li>
 					<li data-list="undefined" style="list-style-type: decimal;"><span class="ql-ui" contenteditable="false"></span>{% trans 'Поле текущего ID пользователя (сохрани его)' %}</li>
@@ -123,13 +127,13 @@
 				<h2 class="paragraph">{% trans 'Важные особенности' %}</h2>
 				<div class="text">{% trans 'Перед разработкой данного инструмента было решено, что он будет использовать как классические методы работы, так более новые динамические технологии работы с веб страницей. ' %}</div>
 				<div class="text">{% trans 'Твоя адресная строка будет меняться в зависимости от введённых rss-каналов и может выглядеть как-то так:' %}</div>
-				<div class="text"><img src="/static/image-not-found.webp" class="image dynamic_image image-bordered" data-src="{% get_media_prefix %}{{images.4.file}}" alt="{{images.4.text}}"></div>
+				<div class="text"><img src="{% static 'loading.svg' %}" class="image dynamic_image image-bordered" data-src="{% get_media_prefix %}{{images.4.file}}" alt="{{images.4.text}}"></div>
 				<div class="ttw-explain_under">{% trans 'Как верхняя, так и нижняя строка содержат адрес фида.' %}</div>
 				<div class="text">{% trans 'Почему это важно? Ну, ты можешь сохранить страницу в закладки и потом заново её открыть.' %}</div>
 				<div class="text">
 					<br>
 				</div>
-				<hr>
+				<hr class="mt-3">
 			</div>
 			<div id="tab_body-4" class="tab_element">
 				<div id="user_settings_container">
@@ -149,10 +153,14 @@
 						hx-target="#rss-pagination-container"
 						hx-swap="outerHTML"
 						hx-indicator="#loader"
-						class="button action_button padder">{% trans 'Загрузить ещё ...' %}</div>
+						class="ttw-button ttw-button_action ttw-button_squared w-full">
+							<div class=" border  text-center ttw-button_squared p-2 ">
+							{% trans 'Загрузить ещё ...' %}
+							</div>
+						</div>
 					</div>
 					<div id="loader" class="htmx-indicator min-h-[40px]">
-						{% include 'Post/tool-status-bar.html' with statustext="loading" %}
+						{% include 'Main/loader.html' %}
 					</div>
 				</div>
 			{% else %}

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-07-25 16:06+0300\n"
+"POT-Creation-Date: 2025-09-01 18:51+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -89,11 +89,11 @@ msgstr ""
 "PiPI, or you can install its sources directly from here.\n"
 " "
 
-#: .\Apps\TextThief\templates\TextThief\text-thief-form-result.html:15
+#: .\Apps\TextThief\templates\TextThief\text-thief-form-result.html:16
 msgid "Результаты"
 msgstr "Results"
 
-#: .\Apps\TextThief\templates\TextThief\text-thief-form-result.html:18
+#: .\Apps\TextThief\templates\TextThief\text-thief-form-result.html:19
 msgid "Общее"
 msgstr "Common data"
 
@@ -101,27 +101,27 @@ msgstr "Common data"
 msgid "ВорТекста"
 msgstr "TextThief"
 
-#: .\Apps\TextThief\templates\TextThief\text-thief-form.html:11
+#: .\Apps\TextThief\templates\TextThief\text-thief-form.html:13
 msgid "Начать"
 msgstr "Start"
 
-#: .\Apps\TextThief\templates\TextThief\text-thief-form.html:19
+#: .\Apps\TextThief\templates\TextThief\text-thief-form.html:23
 msgid "CSS селектор"
 msgstr "CSS selector"
 
-#: .\Apps\TextThief\templates\TextThief\text-thief-form.html:41
+#: .\Apps\TextThief\templates\TextThief\text-thief-form.html:45
 msgid "Правила"
 msgstr "Rules"
 
-#: .\Apps\TextThief\templates\TextThief\text-thief-form.html:44
+#: .\Apps\TextThief\templates\TextThief\text-thief-form.html:48
 msgid "Указывать список УРЛов через обычный пробел"
 msgstr "Specify a list of URLs separated by a regular space"
 
-#: .\Apps\TextThief\templates\TextThief\text-thief-form.html:45
+#: .\Apps\TextThief\templates\TextThief\text-thief-form.html:49
 msgid "Максимальное количество УРЛов для обхода по списку - 100"
 msgstr "The maximum number of URLs to crawl through the list is 100"
 
-#: .\Apps\TextThief\templates\TextThief\text-thief-form.html:46
+#: .\Apps\TextThief\templates\TextThief\text-thief-form.html:50
 msgid ""
 "Результаты парсинга будут храниться только до 0 часов следующих суток, после "
 "успешного парсинга."

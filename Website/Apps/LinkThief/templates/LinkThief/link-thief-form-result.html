@@ -1,14 +1,15 @@
 {% load i18n %}
 {% load static %}
 
-{% include 'Post/tool-notificator-bar.html' with messages=messages%}
 <form id="link-thief-form">
     {% csrf_token %}
     {{link_thief_form}}
 </form> 
+
 <div id="loader" class="htmx-indicator min-h-[40px]">
-    {% include 'Post/tool-status-bar.html' with statustext="loading" %}
+    {% include 'Main/loader.html' %}
 </div>
+
 <div id="link-thief-results">
     {% if links %}
         <div class="paragraph flex flex-row gap-[10px] items-center">

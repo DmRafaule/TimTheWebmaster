@@ -1,3 +1,4 @@
-@import '../../../../../Main/static/input.css';
-@import '../../../../../Post/static/Post/css/tabs.css';
 @import './shader_toy.css';
+
+@import "tailwindcss";
+@tailwind utilities;
