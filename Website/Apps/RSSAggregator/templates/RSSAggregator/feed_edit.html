@@ -3,7 +3,6 @@
 {% load RSSA_removeFromListInURL %}
 {% load RSSA_addToListInURL %}
 
-{% include 'Post/tool-notificator-bar.html' with messages=messages%}
 <form id="feed-form-container-{{feed_id}}" class="flex flex-row-reverse gap-[10px] w-full items-center">
 {% for field in feed_form %}
     {% if not field.is_hidden %}
