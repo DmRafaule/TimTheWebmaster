@@ -1,4 +1,5 @@
 @import '../../Components/Blocks/image.css'; 
 @import '../../Components/Blocks/icon.css'; 
+@import "../../Components/Blocks/attention.css";
 @import "tailwindcss";
 @tailwind utilities;

@@ -1,3 +1,4 @@
+
 export function mediaLoad() {
 	let onMediaUploaded = new CustomEvent('onMediaUploaded')
 	function WaitImageToUpload(image){
@@ -49,6 +50,10 @@ export function mediaLoad() {
 	// Observe images if they are intersecting with main viewport
 	const images = document.querySelectorAll(".dynamic_image");
 	images.forEach( (image) => {
+			image.addEventListener('error', (event)=>{
+				event.target.src = `${PATH}image-not-found.svg`
+  				event.onerror = null
+			})
 			WaitImageToUpload(image)
 	})
 

@@ -13,7 +13,6 @@
 }
 .table_of_content_text:hover {
   	color: var(--link-hover-internal_color);
-	font-weight: bold;
 }
 .table_of_content_element_selected{
 	color: var(--link-hover-internal_color);
@@ -42,4 +41,8 @@
 }
 .table_of_content_button_down:active{
 	transform: scale(110%);
+}
+.hidden_table_of_content_element{
+	top: -1000px;
+	position: absolute;
 }

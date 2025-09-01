@@ -3,7 +3,7 @@
 {% load urlToBreadcrumbs %}
 {% load urlToList %}
 
-<div class="flex flex-row items-center gap-2">
+<div class="flex flex-row items-center gap-2 flex-wrap">
 {% for item in path|urlToBreadcrumbs%}
     {% if forloop.counter == path|urlToList|length %} {# Last element #}
         <i class="ref_no-sign"><a href="{{item.url}}">{{item.name|safe}}</a></i>/

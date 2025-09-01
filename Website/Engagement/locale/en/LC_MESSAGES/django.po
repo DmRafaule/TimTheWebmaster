@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-05-08 13:33+0300\n"
+"POT-Creation-Date: 2025-09-01 07:27+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -30,172 +30,175 @@ msgstr "Your name"
 msgid "Твоё сообщение"
 msgstr "Your message"
 
-#: .\Engagement\forms.py:34
+#: .\Engagement\forms.py:35
 msgid "Пожалуйста оцени мой инструмент (ಥ _ ಥ)"
 msgstr "Please gimme a star's rating (ಥ _ ಥ)"
 
-#: .\Engagement\templates\Engagement\Commenting/comment_form.html:22
+#: .\Engagement\templates\Engagement\Commenting\comment_form_container.html:13
+#: .\Engagement\templates\Engagement\Other\engagement_email_subscription_form_container.html:60
+#: .\Engagement\templates\Engagement\Other\engagement_feedback_form_container.html:43
 msgid "Отправить"
 msgstr "Send"
 
-#: .\Engagement\templates\Engagement\Commenting/comment_form.html:31
+#: .\Engagement\templates\Engagement\Commenting\comment_form_container.html:22
 msgid "Ответ для"
 msgstr "Response for"
 
-#: .\Engagement\templates\Engagement\Commenting/comments.html:31
+#: .\Engagement\templates\Engagement\Commenting\comments.html:37
 msgid "Источник"
 msgstr "Source"
 
-#: .\Engagement\templates\Engagement\Commenting/comments.html:40
+#: .\Engagement\templates\Engagement\Commenting\comments.html:50
 msgid "Все ответы "
 msgstr "All replies "
 
-#: .\Engagement\templates\Engagement\Commenting/comments.html:44
+#: .\Engagement\templates\Engagement\Commenting\comments.html:56
 msgid "Ответить"
 msgstr "Reply"
 
-#: .\Engagement\templates\Engagement\Commenting/comments.html:57
-#: .\Engagement\templates\Engagement\Commenting/engagement_comments.html:17
+#: .\Engagement\templates\Engagement\Commenting\comments.html:79
+#: .\Engagement\templates\Engagement\Commenting\engagement_comments.html:20
 msgid "Больше ..."
 msgstr "More ..."
 
-#: .\Engagement\templates\Engagement\Commenting/engagement_comments.html:10
+#: .\Engagement\templates\Engagement\Commenting\engagement_comments.html:10
 msgid "Сейчас тут пусто. Буть первым (oﾟvﾟ)ノ"
 msgstr "It's empty now. Be the first (oﾟvﾟ)ノ"
 
-#: .\Engagement\templates\Engagement\Other/engagement_email_subscription_form.html:6
-msgid "Подписка на рассылку"
-msgstr "Email subscription"
-
-#: .\Engagement\templates\Engagement\Other/engagement_email_subscription_form.html:27
-#: .\Engagement\templates\Engagement\Other/engagement_email_subscription_form.html:28
-#: .\Engagement\templates\Engagement\Other/engagement_feedback_form.html:27
-#: .\Engagement\templates\Engagement\Other/engagement_feedback_form.html:28
-msgid "Крестик"
-msgstr "Cross"
-
-#: .\Engagement\templates\Engagement\Other/engagement_feedback_form.html:6
-msgid "Форма обратной связи"
-msgstr "Feedback form"
-
-#: .\Engagement\templates\Engagement\Other/engagement_options.html:9
-#: .\Engagement\templates\Engagement\Other/engagement_options.html:77
-msgid "сердце"
-msgstr "heart"
-
-#: .\Engagement\templates\Engagement\Other/engagement_options.html:14
-#: .\Engagement\templates\Engagement\Other/engagement_options.html:82
-msgid "3 соединённые точки"
-msgstr "3 connected dots"
-
-#: .\Engagement\templates\Engagement\Other/engagement_options.html:19
-#: .\Engagement\templates\Engagement\Other/engagement_options.html:87
-msgid "vk иконка"
-msgstr "vk icon"
-
-#: .\Engagement\templates\Engagement\Other/engagement_options.html:24
-#: .\Engagement\templates\Engagement\Other/engagement_options.html:92
-msgid "reddit иконка"
-msgstr "reddit icon"
-
-#: .\Engagement\templates\Engagement\Other/engagement_options.html:29
-#: .\Engagement\templates\Engagement\Other/engagement_options.html:97
-msgid "twitter иконка"
-msgstr "twitter icon"
-
-#: .\Engagement\templates\Engagement\Other/engagement_options.html:34
-#: .\Engagement\templates\Engagement\Other/engagement_options.html:39
-#: .\Engagement\templates\Engagement\Other/engagement_options.html:102
-msgid "telegram иконка"
-msgstr "telegram icon"
-
-#: .\Engagement\templates\Engagement\Other/engagement_options.html:48
-#: .\Engagement\templates\Engagement\Other/engagement_options.html:53
-#: .\Engagement\templates\Engagement\Other/engagement_options.html:58
-#: .\Engagement\templates\Engagement\Other/engagement_options.html:68
-#: .\Engagement\templates\Engagement\Other/engagement_options.html:116
-#: .\Engagement\templates\Engagement\Other/engagement_options.html:121
-#: .\Engagement\templates\Engagement\Other/engagement_options.html:126
-msgid "облачко"
-msgstr "cloud"
-
-#: .\Engagement\templates\Engagement\Other/engagement_options.html:63
-#: .\Engagement\templates\Engagement\Other/engagement_options.html:131
-msgid "письмо"
-msgstr "message"
-
-#: .\Engagement\templates\Engagement\Other/engagement_options.html:107
-msgid "иконка копирования ссылки"
-msgstr "link copy icon"
-
-#: .\Engagement\templates\Engagement\Commenting/engagement_post_comments.html:4
+#: .\Engagement\templates\Engagement\Commenting\engagement_post_comments.html:4
 msgid "Комментарии"
 msgstr "Comments"
 
-#: .\Engagement\templates\Engagement\Commenting/engagement_tool_comments.html:5
+#: .\Engagement\templates\Engagement\Commenting\engagement_tool_comments.html:5
 msgid "Отзывы"
 msgstr "Reviews"
 
-#: .\Engagement\templates\Engagement\Other/interaction.html:8
-msgid "Глазик"
-msgstr "An eye"
+#: .\Engagement\templates\Engagement\Other\engagement_dock_container.html:13
+#: .\Engagement\templates\Engagement\Other\engagement_options.html:80
+#: .\Engagement\templates\Engagement\Other\engagement_options.html:98
+#: .\Engagement\templates\Engagement\Other\engagement_options.html:109
+msgid "облачко"
+msgstr "cloud"
 
-#: .\Engagement\templates\Engagement\Other/interaction.html:13
-msgid "Сердечки"
-msgstr "Hearts"
+#: .\Engagement\templates\Engagement\Other\engagement_dock_container.html:16
+msgid "3 горизонтальные линии, бургер"
+msgstr ""
 
-#: .\Engagement\templates\Engagement\Other/interaction.html:19
-#: .\Engagement\templates\Engagement\Other/interaction.html:25
-#: .\Engagement\templates\Engagement\Other/interaction.html:31
-msgid "Соединённые точки"
-msgstr "Connected dots"
+#: .\Engagement\templates\Engagement\Other\engagement_email_subscription_form_container.html:6
+msgid "Подписка на рассылку"
+msgstr "Email subscription"
 
-#: .\Engagement\views.py:26
+#: .\Engagement\templates\Engagement\Other\engagement_email_subscription_form_container.html:49
+msgid "✔ Вы успешно подписались (＠＾０＾)"
+msgstr "✔ You have successfully subscribed (＠＾０＾)"
+
+#: .\Engagement\templates\Engagement\Other\engagement_email_subscription_form_container.html:52
+#: .\Engagement\templates\Engagement\Other\engagement_feedback_form_container.html:40
+msgid "✗ Возникла ошибка при отправке формы ＼（〇_ｏ）／"
+msgstr "✗ There was an error submitting the form ＼（〇_ｏ）／"
+
+#: .\Engagement\templates\Engagement\Other\engagement_email_subscription_form_container.html:55
+msgid "! Такая почта уже зарегистрированна"
+msgstr "! This email already submitted"
+
+#: .\Engagement\templates\Engagement\Other\engagement_email_subscription_form_container.html:63
+#: .\Engagement\templates\Engagement\Other\engagement_feedback_form_container.html:46
+msgid "Отмена"
+msgstr "Cancel"
+
+#: .\Engagement\templates\Engagement\Other\engagement_feedback_form_container.html:6
+msgid "Форма обратной связи"
+msgstr "Feedback form"
+
+#: .\Engagement\templates\Engagement\Other\engagement_feedback_form_container.html:38
+#: .\Engagement\views.py:205
+msgid "✔ Вы успешно отправили сообщение (＠＾０＾)"
+msgstr "✔ You have successfully sent your message (＠＾０＾)"
+
+#: .\Engagement\templates\Engagement\Other\engagement_options.html:12
+msgid "Спасибо \\(￣︶￣*\\))"
+msgstr "Thanks \\(￣︶￣*\\))"
+
+#: .\Engagement\templates\Engagement\Other\engagement_options.html:15
+msgid "Большое спасибо, но ты уже лайкнул (*￣3￣)╭"
+msgstr "A big thanks, but you already did like me (*￣3￣)╭"
+
+#: .\Engagement\templates\Engagement\Other\engagement_options.html:18
+msgid "Произошла ошибка при отправке лайка ("
+msgstr "There was an error sending your Like"
+
+#: .\Engagement\templates\Engagement\Other\engagement_options.html:23
+msgid "сердце"
+msgstr "heart"
+
+#: .\Engagement\templates\Engagement\Other\engagement_options.html:40
+msgid "Спасибо что поделился （￣︶￣）↗　"
+msgstr "Thanks for share, \\(￣︶￣*\\))"
+
+#: .\Engagement\templates\Engagement\Other\engagement_options.html:49
+msgid "vk иконка"
+msgstr "vk icon"
+
+#: .\Engagement\templates\Engagement\Other\engagement_options.html:55
+msgid "reddit иконка"
+msgstr "reddit icon"
+
+#: .\Engagement\templates\Engagement\Other\engagement_options.html:61
+msgid "twitter иконка"
+msgstr "twitter icon"
+
+#: .\Engagement\templates\Engagement\Other\engagement_options.html:67
+#: .\Engagement\templates\Engagement\Other\engagement_options.html:75
+msgid "telegram иконка"
+msgstr "telegram icon"
+
+#: .\Engagement\templates\Engagement\Other\engagement_options.html:72
+msgid "Ссылка успешно скопированна"
+msgstr "Link copied"
+
+#: .\Engagement\templates\Engagement\Other\engagement_options.html:90
 msgid ""
-"≡[。。]≡ Извини, JS не позволяет создавать собственные кнопки создания "
+"=[。。]= Извини, JS не позволяет создавать собственные кнопки создания "
 "закладок и по этому, чтобы создать закладку нажми ctrl+d"
 msgstr ""
 "≡[。。]≡ Sorry, JS doesn't allow you to create your own bookmark buttons, so "
 "to create a bookmark, press ctrl+d"
 
-#: .\Engagement\views.py:31 .\Engagement\views.py:59 .\Engagement\views.py:80
-#: .\Engagement\views.py:168 .\Engagement\views.py:192
-#: .\Engagement\views.py:255
-msgid "Только POST запросы (╬▔皿▔)╯"
-msgstr "Only POST request (╬▔皿▔)╯"
+#: .\Engagement\templates\Engagement\Other\engagement_options.html:93
+msgid "Произошла ошибка при попытке создать закладку ("
+msgstr "An error has occurred, while creating a bookmark :("
 
-#: .\Engagement\views.py:49
-msgid "Спасибо \\(￣︶￣*\\))"
-msgstr "Thanks \\(￣︶￣*\\))"
+#: .\Engagement\templates\Engagement\Other\engagement_options.html:120
+msgid "письмо"
+msgstr "message"
 
-#: .\Engagement\views.py:54
-msgid "Большое спасибо, но ты уже лайкнул (*￣3￣)╭"
-msgstr "A big thanks, but you already did like me (*￣3￣)╭"
+#: .\Engagement\templates\Engagement\Other\engagement_under_post_container.html:3
+msgid "Не забудь поделиться, лайкнуть и оставить комментарий)"
+msgstr "Do not forget to share, like and leave a comment :)"
 
-#: .\Engagement\views.py:75
-msgid "Большое спасибо что поделился \\(￣︶￣*\\))"
-msgstr "Thanks for share, \\(￣︶￣*\\))"
+#: .\Engagement\templates\Engagement\Other\interaction.html:8
+msgid "Глазик"
+msgstr "An eye"
 
-#: .\Engagement\views.py:89
-msgid "✔ Вы успешно подписались на рассылку (＠＾０＾)"
-msgstr "✔ You have successfully subscribed (＠＾０＾)"
+#: .\Engagement\templates\Engagement\Other\interaction.html:13
+msgid "Сердечки"
+msgstr "Hearts"
 
-#: .\Engagement\views.py:96
-msgid "! Такая почта уже зарегистрированна"
-msgstr "! This email already submitted"
+#: .\Engagement\templates\Engagement\Other\interaction.html:19
+#: .\Engagement\templates\Engagement\Other\interaction.html:25
+#: .\Engagement\templates\Engagement\Other\interaction.html:31
+msgid "Соединённые точки"
+msgstr "Connected dots"
 
-#: .\Engagement\views.py:110 .\Engagement\views.py:136
-msgid "✗ Возникла ошибка при отправке формы ＼（〇_ｏ）／"
-msgstr "✗ There was an error submitting the form ＼（〇_ｏ）／"
-
-#: .\Engagement\views.py:127 .\Engagement\views.py:236
-msgid "✔ Вы успешно отправили сообщение (＠＾０＾)"
-msgstr "✔ You have successfully sent your message (＠＾０＾)"
-
-#: .\Engagement\views.py:165 .\Engagement\views.py:189
+#: .\Engagement\views.py:135 .\Engagement\views.py:159
 msgid "Чувак, используй UI ┗( T﹏T )┛"
 msgstr "Dude, use UI ┗( T﹏T )┛"
 
-#: .\Engagement\views.py:249
+#: .\Engagement\views.py:138 .\Engagement\views.py:162
+#: .\Engagement\views.py:225
+msgid "Только POST запросы (╬▔皿▔)╯"
+msgstr "Only POST request (╬▔皿▔)╯"
+
+#: .\Engagement\views.py:219
 msgid "✗ Возникла ошибка при отправке комментария ＼（〇_ｏ）／"
 msgstr "✗ There was an error sending your comment ＼（〇_ｏ）／"

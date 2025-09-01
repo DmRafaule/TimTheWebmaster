@@ -61,5 +61,11 @@
 	--form_el_padding: 4px;
 	--modal-radius: 8px;
 	/*Comment*/
+	/*BackwardCompability*/
+	--text_block_margin-top: 16px;
+	--paragraph_margin-top: 60px;
+	--paragraph_margin-bottom: 10px;
+	/* Attention blocks*/
+	--attention_block-padding: 4px;
 }
 

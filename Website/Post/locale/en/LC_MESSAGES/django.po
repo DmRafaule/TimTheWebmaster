@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-07-30 11:11+0300\n"
+"POT-Creation-Date: 2025-09-01 07:27+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -26,84 +26,87 @@ msgstr "Something in return"
 msgid "Бесплатно"
 msgstr "Free"
 
-#: .\Post\templates\Post\base_article.html:89
-msgid "one layer on top of anothe"
+#: .\Post\templates\Post\base_article.html:90
+#: .\Post\templates\Post\base_article.html:93
+msgid "3 горизонтальные линии, бургер"
 msgstr ""
 
-#: .\Post\templates\Post\base_article.html:104
-#: .\Post\templates\Post\base_article.html:111
-#: .\Post\templates\Post\base_article.html:117
-#: .\Post\templates\Post\base_tool.html:56
-#: .\Post\templates\Post\base_tool.html:60
-#: .\Post\templates\Post\basic--post_preview-article.html:12
-#: .\Post\templates\Post\basic--post_preview-article.html:17
+#: .\Post\templates\Post\base_article.html:103
+msgid "Содержание"
+msgstr "Content"
+
+#: .\Post\templates\Post\base_article.html:130
+#: .\Post\templates\Post\base_article.html:135
+#: .\Post\templates\Post\base_article.html:141
+#: .\Post\templates\Post\base_tool.html:52
+#: .\Post\templates\Post\base_tool.html:57
+#: .\Post\templates\Post\basic--post_preview-article.html:19
+#: .\Post\templates\Post\basic--post_preview-article.html:24
 #: .\Post\templates\Post\basic--post_preview-note.html:15
 #: .\Post\templates\Post\basic--post_preview-note.html:20
 #: .\Post\templates\Post\basic--post_preview-tool.html:31
 #: .\Post\templates\Post\basic--post_preview-tool.html:36
-#: .\Post\templates\Post\embeded--post_preview-article.html:11
-#: .\Post\templates\Post\simple--post_preview-article.html:15
 msgid "Часы"
 msgstr "Clock"
 
-#: .\Post\templates\Post\base_article.html:119
+#: .\Post\templates\Post\base_article.html:143
 msgid "минуту"
 msgstr "minute"
 
-#: .\Post\templates\Post\base_article.html:121
+#: .\Post\templates\Post\base_article.html:145
 msgid "минуты"
 msgstr "minutes"
 
-#: .\Post\templates\Post\base_article.html:123
+#: .\Post\templates\Post\base_article.html:147
 msgid "минут"
 msgstr "minutes"
 
-#: .\Post\templates\Post\base_article.html:132
-#: .\Post\templates\Post\base_tool.html:73
+#: .\Post\templates\Post\base_article.html:158
+#: .\Post\templates\Post\base_tool.html:70
 msgid "Теги: "
 msgstr "Tags: "
 
-#: .\Post\templates\Post\base_article.html:144
+#: .\Post\templates\Post\base_article.html:169
 msgid "Так же доступно в следующих форматах:"
 msgstr "Also available as:"
 
-#: .\Post\templates\Post\base_article.html:148
+#: .\Post\templates\Post\base_article.html:173
 msgid "Микрофон"
 msgstr "Microphone"
 
-#: .\Post\templates\Post\base_article.html:152
+#: .\Post\templates\Post\base_article.html:177
 msgid "Твой браузер не подерживает audio тег."
 msgstr "Your browser does not support audio tag"
 
-#: .\Post\templates\Post\base_article.html:158
+#: .\Post\templates\Post\base_article.html:183
 msgid "PDF иконка"
 msgstr "PDF icon"
 
-#: .\Post\templates\Post\base_article.html:191
+#: .\Post\templates\Post\base_article.html:213
 msgid "Внешние ссылки"
 msgstr "External links"
 
-#: .\Post\templates\Post\base_article.html:199
+#: .\Post\templates\Post\base_article.html:221
 msgid "Другое"
 msgstr "Other"
 
-#: .\Post\templates\Post\base_article.html:202
+#: .\Post\templates\Post\base_article.html:224
 msgid "Похожие статьи"
 msgstr "Similar articles"
 
-#: .\Post\templates\Post\base_article.html:208
+#: .\Post\templates\Post\base_article.html:230
 msgid "Использованные термины"
 msgstr "Used termins"
 
-#: .\Post\templates\Post\base_article.html:219
+#: .\Post\templates\Post\base_article.html:241
 msgid "Релевантные вопросы"
 msgstr "Related questions"
 
-#: .\Post\templates\Post\base_post.html:32
+#: .\Post\templates\Post\base_post.html:37
 msgid "Следующая статья"
 msgstr "Next article"
 
-#: .\Post\templates\Post\base_post.html:40
+#: .\Post\templates\Post\base_post.html:48
 msgid "Предыдущая статья"
 msgstr "Previous article"
 
@@ -111,46 +114,21 @@ msgstr "Previous article"
 msgid "Инструмент"
 msgstr "Tool"
 
-#: .\Post\templates\Post\base_tool.html:100
+#: .\Post\templates\Post\base_tool.html:95
 msgid "Медиа файлы"
 msgstr "Media files"
 
-#: .\Post\templates\Post\base_tool.html:116
+#: .\Post\templates\Post\base_tool.html:111
 msgid "Рабочие заметки об инструменте"
 msgstr "A notes about this tool, devnotes"
 
-#: .\Post\templates\Post\base_tool.html:121
-msgid "Показать все ..."
-msgstr "See all ..."
+#: .\Post\templates\Post\base_tool.html:120
+msgid "Больше ..."
+msgstr "More ..."
 
-#: .\Post\templates\Post\base_tool.html:127
+#: .\Post\templates\Post\base_tool.html:130
 msgid "Похожие инструменты"
 msgstr "Similar tools"
-
-#: .\Post\templates\Post\basic--post_preview-qa.html:11
-#: .\Post\templates\Post\basic--post_preview-td.html:11
-msgid "Узнать больше"
-msgstr "See more"
-
-#: .\Post\templates\Post\basic--post_preview-service.html:16
-msgid "Заказать"
-msgstr "Order"
-
-#: .\Post\templates\Post\basic--post_preview-service.html:20
-msgid "иконка"
-msgstr "icon"
-
-#: .\Post\templates\Post\basic--post_preview-service.html:29
-msgid "Как долго: "
-msgstr "How long: "
-
-#: .\Post\templates\Post\basic--post_preview-service.html:36
-msgid "Как дорого:"
-msgstr "How much: "
-
-#: .\Post\templates\Post\basic--post_preview-service.html:41
-msgid "или"
-msgstr "or"
 
 #: .\Post\templates\Post\basic--post_preview-tool.html:16
 #: .\Post\templates\Post\basic--post_preview-tool.html:22

@@ -1,8 +1,8 @@
 {% load i18n %}
 {% load static %}
 
-<div id="engagement_body" class="flex flex-col gap-2 w-fit">
-    <div id="engagement_body_body" class="flex flex-col flex-wrap gap-1 items-center border-2 not_active_dropdown p-2 rounded-2xl bg-white" >
+<div id="engagement_body" class="flex flex-col gap-2 w-fit relative">
+    <div id="engagement_body_body" class="flex flex-col flex-wrap gap-1 items-center border-2 not_active_dropdown p-2 rounded-2xl bg-white absolute bottom-12 w-max" >
 
         {% include 'Engagement/Other/engagement_options.html' %}
 
@@ -10,7 +10,7 @@
     <div>
         <div class="flex grow-0 shrink ttw-button_swap w-fit">
             <div class="ttw-button ttw-button_action ttw-button_dropdown ttw-button_squared ttw-button_swap_front bg-main" data-body="engagement_body_body">
-                <img  class="dynamic_image ttw-button_squared " width="32" height="32" src="{% static 'placeholder.svg' %}" data-src="{% static 'Engagement/img/engagement_actions.svg' %}" alt="{% trans "облачко" %}">
+                <img  class="ttw-button_squared " width="32" height="32" src="{% static 'Engagement/img/engagement_actions.svg' %}" alt="{% trans "облачко" %}">
             </div>
             <div class="ttw-button ttw-button_action ttw-button_dropdown ttw-button_squared ttw-button_swap_back ttw-button_swap_not_active bg-main" data-body="engagement_body_body">
                 <img class="ttw-button_squared" width="32" height="32" src="{% static 'close_white.svg' %}" alt="{% trans '3 горизонтальные линии, бургер' %}">

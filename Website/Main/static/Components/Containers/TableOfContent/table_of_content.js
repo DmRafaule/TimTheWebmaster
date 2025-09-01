@@ -64,6 +64,7 @@ export function initTableOfContent(){
 		element.querySelector('.table_of_content_text').setAttribute('href', title['ref'])
 		headers_container_to_put_in.insertAdjacentElement('beforeend', element)
 	})
+	header_dom_element.classList.add('hidden_table_of_content_element')
 	headers_container_to_put_in.querySelectorAll('li').forEach( (list_element) => {
 		list_element.addEventListener('click', (ev)=>{
 			ev.preventDefault();

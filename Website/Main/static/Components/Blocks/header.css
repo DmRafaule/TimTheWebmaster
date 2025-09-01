@@ -26,3 +26,14 @@ h6{
 	margin-top: 48px;
 	margin-bottom: 48px;
 }
+.paragraph{
+	margin-top: var(--paragraph_margin-top);
+	margin-bottom: var(--paragraph_margin-bottom);
+	word-wrap: break-word;
+}
+.title{
+	text-align: left;
+	margin-top: 5svh;
+	margin-bottom: 5svh;
+	word-wrap: break-word;
+}

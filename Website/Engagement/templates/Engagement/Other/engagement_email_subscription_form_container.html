@@ -37,6 +37,7 @@
         <div 
             hx-post="/{{LC}}/email_subscription/"
             hx-include="#toSendEmail" 
+            hx-indicator="#context-loader-load_into_modal"
             hx-vals="js:{csrfmiddlewaretoken: csrftoken, url: '{{request.get_full_path}}'}"
             hx-target="#modal-form"
             hx-on::after-request="

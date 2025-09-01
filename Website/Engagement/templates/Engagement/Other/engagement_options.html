@@ -20,7 +20,7 @@
         }"
         hx-vals="js:{csrfmiddlewaretoken: csrftoken, url: '{{request.get_full_path}}'}"
         id="onLike" class="ttw-button ttw-button_action ttw-button_squared" onclick="yaCounter95199635.reachGoal('onLike')">
-        <img class=" ttw-button_squared dynamic_image border" width="32" height="32" src="{% static 'placeholder.svg' %}" data-src="{% static 'Engagement/img/like.svg' %}" alt="{% trans "сердце" %}">
+        <img class=" ttw-button_squared border" width="32" height="32" src="{% static 'Engagement/img/like.svg' %}" alt="{% trans "сердце" %}">
     </div>
 {% endif %}
 {% if is_shares %}
@@ -45,25 +45,25 @@
         class="ttw-button ttw-button_link">
         <a target="_blank" href="http://vk.com/share.php?url={{ url_to_share }}&title={{ title_to_share }}&description={{ description_to_share }}">
             <img 
-                class="ttw-button_squared dynamic_image" width="32" height="32" src="{% static 'placeholder.svg' %}" data-src="{% static 'vk.svg' %}" alt="{% trans "vk иконка" %}">
+                class="ttw-button_squared" width="32" height="32" src="{% static 'vk.svg' %}" alt="{% trans "vk иконка" %}">
         </a>
     </div>
     <div
         hx-on:click="document.getElementById('onShare').dispatchEvent(new Event('share_click'))" class="ttw-button ttw-button_link htmx-share_button">
         <a target="_blank"  href="https://www.reddit.com/submit?url={{ url_to_share }}&title={{ title_to_share }}">
-            <img class="ttw-button_squared dynamic_image" width="32" height="32" src="{% static 'placeholder.svg' %}" data-src="{% static 'reddit.svg' %}" alt="{% trans "reddit иконка" %}">
+            <img class="ttw-button_squared" width="32" height="32" src="{% static 'reddit.svg' %}" alt="{% trans "reddit иконка" %}">
         </a>
     </div>
     <div
         hx-on:click="document.getElementById('onShare').dispatchEvent(new Event('share_click'))" class="ttw-button ttw-button_link htmx-share_button">
         <a target="_blank"  href="https://twitter.com/intent/tweet?url={{ url_to_share }}&text={{ description_to_share }}">
-            <img class="ttw-button_squared dynamic_image" width="32" height="32" src="{% static 'placeholder.svg' %}" data-src="{% static 'twitter.svg' %}" alt="{% trans "twitter иконка" %}">
+            <img class="ttw-button_squared" width="32" height="32" src="{% static 'twitter.svg' %}" alt="{% trans "twitter иконка" %}">
         </a>
     </div>
     <div
         hx-on:click="document.getElementById('onShare').dispatchEvent(new Event('share_click'))" class="ttw-button ttw-button_link htmx-share_button">
         <a target="_blank"  href="https://telegram.me/share/url?url={{ url_to_share }}&text={{ description_to_share }}">
-            <img class="ttw-button_squared dynamic_image" width="32" height="32" src="{% static 'placeholder.svg' %}" data-src="{% static 'telegram.svg' %}" alt="{% trans "telegram иконка" %}">
+            <img class="ttw-button_squared" width="32" height="32" src="{% static 'telegram.svg' %}" alt="{% trans "telegram иконка" %}">
         </a>
     </div>
     <div class="ttw-button ttw-button_action" id="onShareCopyLink" onclick='
@@ -71,12 +71,12 @@
         toaster.notify("{% trans "Ссылка успешно скопированна" %}", "info"); 
         yaCounter95199635.reachGoal("onShare");'
     >
-        <img class="ttw-button_squared dynamic_image border" width="32" height="32" src="{% static 'placeholder.svg' %}" data-src="{% static 'Engagement/img/link.svg' %}" alt="{% trans "telegram иконка" %}">
+        <img class="ttw-button_squared border" width="32" height="32" src="{% static 'Engagement/img/link.svg' %}" alt="{% trans "telegram иконка" %}">
     </div>
 {% endif %}
 {% if is_comments %}
     <div id="onComment" class="ttw-button ttw-button_action">
-        <img  class="ttw-button_squared dynamic_image border" width="32" height="32" src="{% static 'placeholder.svg' %}" data-src="{% static 'Engagement/img/comments.svg' %}" alt="{% trans "облачко" %}">
+        <img  class="ttw-button_squared border" width="32" height="32" src="{% static 'Engagement/img/comments.svg' %}" alt="{% trans "облачко" %}">
     </div>
 {% endif %}
 {% if is_bookmarks %}
@@ -94,26 +94,28 @@
         }"
         hx-vals="js:{csrfmiddlewaretoken: csrftoken, url: '{{request.get_full_path}}'}"
         id="onBookmark" class="ttw-button ttw-button_action"  onclick="yaCounter95199635.reachGoal('onBookmark')">
-        <img  class="ttw-button_squared dynamic_image border" width="32" height="32" src="{% static 'placeholder.svg' %}" data-src="{% static 'Engagement/img/bookmark.svg' %}" alt="{% trans "облачко" %}">
+        <img  class="ttw-button_squared border" width="32" height="32" src="{% static 'Engagement/img/bookmark.svg' %}" alt="{% trans "облачко" %}">
     </div>
 {% endif %}
 {% if is_feedbacks %}
     <div 
         hx-get="/{{LC}}/feedback_form/" 
         hx-target="#modal-content"
+        hx-indicator="#context-loader-load_into_modal"
         hx-on::before-request="modal.open('');"
         hx-on::after-request="event.detail.failed && modal.close();"
         class="ttw-button ttw-button_action">
-        <img  class="ttw-button_squared dynamic_image border" width="32" height="32" src="{% static 'placeholder.svg' %}" data-src="{% static 'Engagement/img/feedback.svg' %}" alt="{% trans "облачко" %}">
+        <img  class="ttw-button_squared border" width="32" height="32" src="{% static 'Engagement/img/feedback.svg' %}" alt="{% trans "облачко" %}">
     </div>
 {% endif %}
 {% if is_email %}
     <div 
         hx-get="/{{LC}}/email_subscription_form/" 
         hx-target="#modal-content"
+        hx-indicator="#context-loader-load_into_modal"
         hx-on::before-request="modal.open('');"
         hx-on::after-request="event.detail.failed && modal.close();"
         class="ttw-button ttw-button_action">
-        <img  class="ttw-button_squared dynamic_image border" width="32" height="32" src="{% static 'placeholder.svg' %}" data-src="{% static 'Engagement/img/email.svg' %}" alt="{% trans "письмо" %}">
+        <img  class="ttw-button_squared border" width="32" height="32" src="{% static 'Engagement/img/email.svg' %}" alt="{% trans "письмо" %}">
     </div>
 {% endif %}

@@ -1,0 +1,6 @@
+video {
+    width: 100%;
+    height: auto;
+    border: 2px solid var(--secondary_color);
+    border-radius: 8px;
+}

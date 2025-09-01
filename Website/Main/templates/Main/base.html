@@ -114,7 +114,7 @@
 				<img class="ttw-button_circle" width="32" height="32" src="{% static 'close_white.svg' %}" alt="{% trans '3 горизонтальные линии, бургер' %}">
 			</div>
 		</div>
-		<div class="grow-0 shrink ttw-button_swap">
+		<div class="grow-0 shrink ttw-button_swap ttw-button_swap_not_close_on_outsite">
 			{% get_available_languages as LANGUAGES %}
 			{% get_language_info_list for LANGUAGES as languages %}
 			{% for language in languages %}
@@ -173,23 +173,75 @@
 				<div class="min-h-[50px]"></div>
 			</div>
 		</nav>
-		<div id="cookies" class="ttw-sidebar_body ttw-sidebar_body_right ttw-sidebar_body_not_active p-1 justify-between flex flex-col text-center">
-			<div>
+		<div id="cookies" class="ttw-sidebar_body ttw-sidebar_body_right ttw-sidebar_body_not_active p-1 justify-between flex flex-col">
+			<div class="text-center">
 				<h2>{% trans "Про куки" %}</h2>
 				<hr>
 			</div>
-			<div></div>
+			<div class="flex flex-col gap-4 text-justify p-2 overflow-auto">
+				<div>
+				{%    blocktrans %}
+				Все куки могут быть поделены на необходимые, без которых работа сайта невозможна, и на опциональные, которые не влияют на работу этого сайта. 
+				{% endblocktrans %}
+				</div>
+				<div>
+				{%    blocktrans %}
+				Вот все необходимые куки, которые использует мой сайт:
+				{% endblocktrans %}
+				</div>
+				<ul style="margin-top: 0;">
+				{%    blocktrans %}
+					<li><i>Аутентификационные</i> - Есть, но они только для меня ^_____^</li>
+					<li><i>Сессионные куки</i> - Так, например, RSSReader знает, кому и что отдавать</li>
+					<li><i>Куки безопастности</i> - <b>CSRF токен</b> относится к нему</li>
+				{% endblocktrans %}
+				</ul>
+				<div>
+				{%    blocktrans %}
+					А вот все опциональные куки, которые использует мой сайт:
+				{% endblocktrans %}
+				</div>
+				<ul style="margin-top: 0;">
+				{%    blocktrans %}
+					<li>Куки аналитики (Яндекс Метрика, Google Analitycs)</li>
+				{% endblocktrans %}
+				</ul>
+				<div>
+				{%    blocktrans %}
+				Продолжая использовать наш сайт, Вы соглашаетесь на обработку файлов <b>куки</b>, которые были перечислены выше.
+				{% endblocktrans %}
+				</div>
+			</div>
 			<div>
 				<hr>
 				<div class="min-h-[50px]"></div>
 			</div>
 		</div>
-		<div id="ads" class="ttw-sidebar_body ttw-sidebar_body_right ttw-sidebar_body_not_active p-1 justify-between flex flex-col text-center">
-			<div>
-				<h2>{% trans "Про рекламу" %}</h2>
+		<div id="ads" class="ttw-sidebar_body ttw-sidebar_body_right ttw-sidebar_body_not_active p-1 justify-between flex flex-col">
+			<div class="text-center">
+				<h2>{% trans "Про рекламу и монетизацию" %}</h2>
 				<hr>
 			</div>
-			<div></div>
+			<div class="flex flex-col gap-4 text-justify p-2">
+				<div>
+				{%    blocktrans %}
+					На моём сайте нет рекламы, не обещаю что в будущем она не появится в той или иной форме,
+					но что точно обещаю, она будет только контекстной и надеюсь, релевантной.	
+				{% endblocktrans %}
+				</div>
+				<div>
+				{%    blocktrans %}
+					Плюс, всякие, возможные партнёрские программы. 
+				{% endblocktrans %}
+				</div>
+				<div class="ref">
+				{%    blocktrans %}
+					Я бы хотел сделать ставку на так называемую freeminimum модель монетизации. 
+					Где платят за пользование, в той или иной форме, программным обеспечением.
+					Более подробно <a href="/ru/articles/?page=1&tag=delat-dengi">о способах монетизации сайтов</a> в общем, и моих сайтов в частности.
+				{% endblocktrans %}
+				</div>
+			</div>
 			<div>
 				<hr>
 				<div class="min-h-[50px]"></div>
@@ -201,8 +253,16 @@
 		{% endblock %}
 		<modal class="not_active_modal">
 			<div id='modal-window' class="modal-window flex flex-col gap-2">
-				<div class="p-0 ttw-button_action self-end">
-					<img id='close_modal' width="32" height="32" class="bg-main rounded-bl-lg" src="{% static 'close_white.svg' %}" alt="{% trans 'Крестик' %}">
+				<div class="flex gap-3">
+					<div id="context-loader-load_into_modal" class="context-loader">
+						{% include 'Main/loader.html'%}
+					</div>
+					<div class="grow shrink basis-3"></div>
+					<div>
+						<div class="p-0 ttw-button_action self-end">
+							<img id='close_modal' width="32" height="32" class="bg-main rounded-bl-lg" src="{% static 'close_white.svg' %}" alt="{% trans 'Крестик' %}">
+						</div>
+					</div>
 				</div>
 				<div id='modal-content' class="p-2">
 				</div>

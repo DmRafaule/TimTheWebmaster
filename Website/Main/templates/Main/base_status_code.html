@@ -30,22 +30,6 @@
 		{% endblock %}
 		<div class="grow shrink">
 		</div>
-		<div class="grow-0 shrink ttw-button_swap" data-body="ads">
-			<div class="ttw-button ttw-button_action ttw-button_swap_front ttw-sidebar_button_open" data-body="ads">
-				<img class="ttw-button_circle" width="32" height="32" src="{% static 'ads.svg' %}" alt="{% trans '3 горизонтальные линии, бургер' %}">
-			</div>
-			<div class="ttw-button ttw-button_action ttw-button_swap_back ttw-sidebar_button_close ttw-button_swap_not_active" data-body="ads">
-				<img class="ttw-button_circle" width="32" height="32" src="{% static 'close_white.svg' %}" alt="{% trans '3 горизонтальные линии, бургер' %}">
-			</div>
-		</div>
-		<div class="grow-0 shrink ttw-button_swap" data-body="cookies">
-			<div class="ttw-button ttw-button_action ttw-button_swap_front ttw-sidebar_button_open" data-body="cookies">
-				<img class="ttw-button_circle" width="32" height="32" src="{% static 'cookie.svg' %}" alt="{% trans '3 горизонтальные линии, бургер' %}">
-			</div>
-			<div class="ttw-button ttw-button_action ttw-button_swap_back ttw-sidebar_button_close ttw-button_swap_not_active" data-body="cookies">
-				<img class="ttw-button_circle" width="32" height="32" src="{% static 'close_white.svg' %}" alt="{% trans '3 горизонтальные линии, бургер' %}">
-			</div>
-		</div>
 		<div class="grow-0 shrink ttw-button_swap">
 			{% get_available_languages as LANGUAGES %}
 			{% get_language_info_list for LANGUAGES as languages %}
@@ -101,28 +85,6 @@
 				<div class="min-h-[50px]"></div>
 			</div>
 		</nav>
-		<div id="cookies" class="ttw-sidebar_body ttw-sidebar_body_right ttw-sidebar_body_not_active p-1 justify-between flex flex-col text-center">
-			<div>
-				<h2>{% trans "Про куки" %}</h2>
-				<hr>
-			</div>
-			<div></div>
-			<div>
-				<hr>
-				<div class="min-h-[50px]"></div>
-			</div>
-		</div>
-		<div id="ads" class="ttw-sidebar_body ttw-sidebar_body_right ttw-sidebar_body_not_active p-1 justify-between flex flex-col text-center">
-			<div>
-				<h2>{% trans "Про рекламу" %}</h2>
-				<hr>
-			</div>
-			<div></div>
-			<div>
-				<hr>
-				<div class="min-h-[50px]"></div>
-			</div>
-		</div>
 		{% block content %}
 		{% endblock %}
 	</main>

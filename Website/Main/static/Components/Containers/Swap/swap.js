@@ -41,5 +41,8 @@ swap_buttons.forEach( (btn) => {
     if (btn.dataset.body){
         body = document.getElementById(btn.dataset.body)
     }
-	onClickOutsideSwap(btn, body, () => swapBtn.swapOff() );
+    // Кнопка не будет выполнять "обмен" если клик был не на ней
+    if (!btn.classList.contains("ttw-button_swap_not_close_on_outsite")){
+        onClickOutsideSwap(btn, body, () => swapBtn.swapOff() );
+    }
 })

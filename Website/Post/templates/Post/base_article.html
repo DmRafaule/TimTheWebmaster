@@ -200,7 +200,7 @@
 
 {% block content_post %}
 
-	<div id="content_post_article" >
+	<div id="content_post_article"  class="post-content-root">
 		{% block content_post_article %}
 		{% endblock %}
 	</div>
@@ -210,7 +210,7 @@
 {% block content_post-after %}
 
 	<div id="ex_links">
-		<h2>{% trans 'Внешние ссылки' %}</h2>
+		<h2 class="paragraph">{% trans 'Внешние ссылки' %}</h2>
 		<hr>
 		<li id='list_el_exmpl_cont' class="hidden ref" ><a target="_blank" rel="external" href=""></a></li>
 		<ul id="ex_links_list" class="numeric_list">
@@ -218,16 +218,16 @@
 	</div>
 
 	{% if post.similar.all|length > 0 or post.termins.all|length > 0 or post.questions.all|length > 0  %}
-		<h2>{% trans "Другое" %}</h2>
+		<h2 class="paragraph">{% trans "Другое" %}</h2>
 
 		{% if post.similar.all|length > 0 %}
-			<h3 id="sim-art">{% trans 'Похожие статьи' %}</h3>
+			<h3 class="paragraph" id="sim-art">{% trans 'Похожие статьи' %}</h3>
 			<hr>
 			{% include 'Post/basic--post_preview-article.html' with posts=post.similar.all in_post="true" %}
 		{% endif%}
 
 		{% if post.termins.all|length > 0 %}
-			<h3 id="used-term">{% trans 'Использованные термины' %}</h3>
+			<h3 class="paragraph" id="used-term">{% trans 'Использованные термины' %}</h3>
 			<hr>
 			<ul class="list_without_sign">
 			{% for td in post.termins.all %}
@@ -238,7 +238,7 @@
 		{% endif %}
 
 		{% if post.questions.all|length > 0%}
-			<h3 id="rel-que">{% trans 'Релевантные вопросы' %}</h3>
+			<h3 class="paragraph" id="rel-que">{% trans 'Релевантные вопросы' %}</h3>
 			<hr>
 			<ul class="list_without_sign">
 			{% for qa in post.questions.all %}

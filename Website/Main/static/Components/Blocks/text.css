@@ -1,0 +1,10 @@
+.abbreviation{
+	font-family: var(--family-acent_font);
+	font-weight: bold;
+}
+
+.text{
+	margin-top: var(--text_block_margin-top);
+	text-align: justify;
+	word-wrap: anywhere;
+}

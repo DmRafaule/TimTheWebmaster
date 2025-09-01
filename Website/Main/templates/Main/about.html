@@ -64,8 +64,8 @@
 		<h2 class="paragraph">{% trans "Обо мне, чуть более развёрнуто" %}</h2>
 		<div class="flex gap-4 flex-wrap">
 			<div>	
-				<img width="300px" height="100%" src="{% static 'image-not-found.svg' %}" data-src="{% static '/Main/img/me1.jpg' %}" class=" dynamic_image  rounded-2xl max-w-2xs ">
-				<div class="ttw-under_image">
+				<img width="300px" height="100%" src="{% static 'loading.svg' %}" data-src="{% static '/Main/img/me1.jpg' %}" class=" dynamic_image  rounded-2xl max-w-2xs ">
+				<div class="ttw-explain_under">
 					{% trans 'А это я.' %}
 				</div>
 			</div>
@@ -76,7 +76,7 @@
 					{% endblocktrans %}
 				</div>
 				<div class="text">
-					<img width="100%" class="dynamic_image grow shrink-0 basis-2xs rounded-2xl" src="{% static 'image-not-found.svg' %}" data-src="{% static '/Main/img/baranovichi.webp' %}">
+					<img width="100%" class="dynamic_image grow shrink-0 basis-2xs rounded-2xl" src="{% static 'loading.svg' %}" data-src="{% static '/Main/img/baranovichi.webp' %}">
 				</div>
 				<div>
 					<div class="text">
@@ -107,7 +107,7 @@
 			{% endblocktrans %}
 		</div>
 		<div class="text">
-			<img width="100%" class="dynamic_image grow shrink-0 basis-2xs rounded-2xl" src="{% static 'image-not-found.svg' %}" data-src="{% static '/Main/img/theatr.webp' %}">
+			<img width="100%" class="dynamic_image image-bordered grow shrink-0 basis-2xs rounded-2xl" src="{% static 'loading.svg' %}" data-src="{% static '/Main/img/theatr.webp' %}">
 		</div>
 		<div class="text">
 			{% blocktrans %}

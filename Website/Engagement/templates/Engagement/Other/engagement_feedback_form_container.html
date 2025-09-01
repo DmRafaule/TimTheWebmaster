@@ -28,6 +28,7 @@
         <div 
             hx-post="/{{LC}}/feedback_post/"
             hx-include="#toSendFeedback" 
+            hx-indicator="#context-loader-load_into_modal"
             hx-vals="js:{csrfmiddlewaretoken: csrftoken, url: '{{request.get_full_path}}'}"
             hx-target="#modal-form"
             hx-on::after-request="

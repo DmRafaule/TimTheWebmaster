@@ -13,13 +13,13 @@
 			{% if a.icon %}
 				<div class="ttw-button ttw-button_link shrink-0">
 					<a class="ttw-button_circle" href="{{a.get_absolute_url}}">
-						<img class="dynamic_image" width="32" height="32" src="{% static 'placeholder.svg' %}" data-src="{% get_media_prefix%}{{a.icon}}" alt="{% trans "Превью статьи" %}">
+						<img width="32" height="32" src="{% get_media_prefix%}{{a.icon}}" alt="{% trans "Превью статьи" %}">
 					</a>
 				</div>
 			{% else %}
 				<div class="ttw-button ttw-button_link shrink-0">
 					<a href="{{a.get_absolute_url}}">
-						<img class="ttw-button_circle dynamic_image" width="32" height="32" src="{% static 'placeholder.svg' %}" data-src="{% static 'globe_placeholder.svg'%}" alt="{% trans "Превью статьи" %}">
+						<img class="ttw-button_circle" width="32" height="32" src="{% static 'globe_placeholder.svg'%}" alt="{% trans "Превью статьи" %}">
 					</a>
 				</div>
 			{% endif %}
@@ -28,12 +28,12 @@
 	</div>
 	<div class="flex gap-3 items-center">
 		<div class="flex gap-2 items-center">
-			<img class="dynamic_image" width="16" height="16" src="{% static 'placeholder.svg' %}" data-src='{% static "Post/img/calendar.svg" %}' alt="{% trans "Часы" %}">
+			<img width="16" height="16" src='{% static "Post/img/calendar.svg" %}' alt="{% trans "Часы" %}">
 			<div>{{a.timeCreated|date:"d.m.Y"}}</div>
 		</div>
 		/
 		<div class="flex gap-2 items-center">
-			<img class="dynamic_image" width="16" height="16" src="{% static 'placeholder.svg' %}" data-src='{% static "Post/img/update.svg" %}' alt="{% trans "Часы" %}">
+			<img width="16" height="16" src='{% static "Post/img/update.svg" %}' alt="{% trans "Часы" %}">
 			<div>{{a.timeUpdated|date:"d.m.Y"}}</div>
 		</div>
 		/
@@ -42,7 +42,7 @@
 			{% for platform in a.platforms.all %}
 			<div>
 				<abbr title="{{platform.name}}">
-					<img class="dynamic_image" width="16" height="16" src="{% static 'placeholder.svg' %}" data-src='{% get_media_prefix %}{{platform.icon}}' alt="{{platform.name}}">
+					<img width="16" height="16" src='{% get_media_prefix %}{{platform.icon}}' alt="{{platform.name}}">
 				</abbr>
 			</div>
 			{% endfor %}

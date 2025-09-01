@@ -32,6 +32,9 @@
 	animation-name: notification_fadeout;
 	*/
 }
+fieldset.toaster{
+	margin-top: 0;
+}
 .toaster-container{
 	position: fixed;
 	right: 0;
