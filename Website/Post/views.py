@@ -28,12 +28,12 @@ def article(request, post_slug):
     context.update({'pdfs': pdfs})
     context.update({'audios': audios})
     ## Определяем сколько времени необходимо для прочтения
-    #with post.template.open('r') as file:
-    #    soup = BeautifulSoup(file.read(), features="lxml")
-    #    text = soup.get_text()
-    #    words_in_text = len(text.split())
-    #    time_to_read = round(words_in_text/240)
-    #context.update({'time_to_read': time_to_read})
+    with post.template.open('r') as file:
+        soup = BeautifulSoup(file.read(), features="lxml")
+        text = soup.get_text()
+        words_in_text = len(text.split())
+        time_to_read = round(words_in_text/240)
+    context.update({'time_to_read': time_to_read})
     # Получаем предыдущую статью
     previous_id=Post_M.Article.objects.filter(
          id__lt=post.id,

@@ -28,15 +28,17 @@ function CreateHeaderInterObserver(elements, element, element_indx){
 	header_observer.observe(element);
 }
 
+export function genHeaderId(header){
+	return `ref-${header.textContent}`.replace(/[^#a-zA-Z0-9а-яА-Я]/g, '-').toLowerCase()
+}
+
 
 export function initTableOfContent(){
 	var headers = document.querySelector('#content_post_article').querySelectorAll('h2,h3,h4,h5,h6')
 	var titles = []
 	headers.forEach( (header)=>{
 		let text = header.textContent
-		let ref  = '#ref-' + text
-		// Save only alphnumeric chracters and # everything else replace with -
-		ref = ref.replace(/[^#a-zA-Z0-9а-яА-Я]/g, '-').toLowerCase();
+		let ref  = header.getAttribute('id')
 		let tag_name  = header.nodeName.toLowerCase()
 		let padding = "pl-1"
 		if( tag_name  == 'h2')
@@ -50,7 +52,6 @@ export function initTableOfContent(){
 		else if (tag_name  == 'h6')
 			padding = "pl-9"
 		titles.push({"text":text, "ref": ref, "tag_name": tag_name, "padding": padding})
-		header.setAttribute('id', ref.replace("#","") )
 	});
 	
 	var headers_container_to_put_in = document.querySelector('#table_of_content_list')
@@ -61,7 +62,7 @@ export function initTableOfContent(){
 		element.classList.remove("hidden")
 		element.querySelector('.table_of_content_sign').textContent = title['tag_name']
 		element.querySelector('.table_of_content_text').textContent = title['text']
-		element.querySelector('.table_of_content_text').setAttribute('href', title['ref'])
+		element.querySelector('.table_of_content_text').setAttribute('href', `#${title['ref']}`)
 		headers_container_to_put_in.insertAdjacentElement('beforeend', element)
 	})
 	header_dom_element.classList.add('hidden_table_of_content_element')

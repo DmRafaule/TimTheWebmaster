@@ -1,0 +1,48 @@
+{% load i18n %}
+{% load static %}
+
+<div class="modal-content">
+    <div><b>{% trans 'Имя для твоего файла' %}</b></div>
+    <p class="max-w-2xs italic">{% trans '*Что бы избежать получение одинаковых файлов я буду добалять к ним рандомно сгенерированный суффикс' %}</p>
+    <hr>
+    <div 
+        hx-on::before-swap="
+            switch(event.detail.xhr.status){
+                case 400:
+                    event.detail.shouldSwap = true
+                    event.detail.isError = false
+                    break;
+            }
+        "
+        class="row in_middle" id="modal-form">
+        {% include 'WYSIWYGEditor/save_form.html' with form_save=form_save %}
+    </div>
+    <hr>
+    <div class="flex flex-row justify-between flex-wrap">
+        <div 
+            hx-post="save/"
+            hx-include="#toSave" 
+            hx-indicator="#context-loader-load_into_modal"
+            hx-vals="js:{csrfmiddlewaretoken: csrftoken, content: document.querySelector('.ql-editor').innerHTML}"
+            hx-target="#modal-form"
+            hx-on::after-request="
+                switch(event.detail.xhr.status){
+                    case 200:
+                        var fn = document.querySelector('#id_filename').value
+                        modal.close();
+                        toaster.notify('{% trans '✔ Шаблон успешно сохранён' %}', 'success'); 
+                        window.location.replace('?filename='+fn);
+                        break;
+                    case 400:
+                        toaster.notify('{% trans '✗ Возникла ошибка при отправке формы' %}', 'error'); 
+                        break;
+                }
+            "
+            id="save_btn_submit" class="ttw-button ttw-button_action">
+            <p class="rounded-lg bg-main border text-white p-2">{% trans "Сохраниь" %}</p>
+        </div>
+        <div class="ttw-button ttw-button_action" onclick="modal.close()">
+            <p class="rounded-lg bg-main border text-white p-2">{% trans "Отмена" %}</p>
+        </div>
+    </div>
+</div>

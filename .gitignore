@@ -84,6 +84,8 @@ target/
 *.pyc
 __pycache__/
 local_settings.py
+settings.json
+settings-beget.json
 
 .venv
 venv_new

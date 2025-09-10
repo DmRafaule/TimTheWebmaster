@@ -1,0 +1,278 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-09-10 19:45+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: .\Apps\WYSIWYGEditor\forms.py:13
+msgid "Как сохранить результат"
+msgstr "How to save result"
+
+#: .\Apps\WYSIWYGEditor\forms.py:16
+msgid "Название файла"
+msgstr "Filename"
+
+#: .\Apps\WYSIWYGEditor\templates\WYSIWYGEditor\confirm_form.html:8
+msgid "Ты уверен в том, что хочешь удалить этот шаблон ?"
+msgstr "Are you sure, you want to delete this template ?"
+
+#: .\Apps\WYSIWYGEditor\templates\WYSIWYGEditor\confirm_form.html:14
+#: .\Apps\WYSIWYGEditor\templates\WYSIWYGEditor\confirm_form.html:15
+#: .\Apps\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:365
+#: .\Apps\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:374
+#: .\Apps\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:401
+msgid "Крестик"
+msgstr "Cross"
+
+#: .\Apps\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:76
+msgid "Жирный"
+msgstr "Bold"
+
+#: .\Apps\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:82
+msgid "Скошеный"
+msgstr "Italic"
+
+#: .\Apps\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:88
+msgid "Подчёркнутый"
+msgstr "Underline"
+
+#: .\Apps\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:94
+msgid "Перечёркнутый"
+msgstr "Crossed out"
+
+#: .\Apps\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:100
+msgid "Аббревиатура"
+msgstr "Abbreviation"
+
+#: .\Apps\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:129
+msgid "Цитата"
+msgstr "Quote"
+
+#: .\Apps\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:135
+msgid "Внимание"
+msgstr "Attention"
+
+#: .\Apps\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:141
+msgid "Опасно"
+msgstr "Danger"
+
+#: .\Apps\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:147
+msgid "Это интересно"
+msgstr "This is interesting"
+
+#: .\Apps\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:153
+msgid "Вопрос"
+msgstr "Question"
+
+#: .\Apps\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:159
+msgid "Определение"
+msgstr "Definition"
+
+#: .\Apps\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:165
+msgid "Блок кода"
+msgstr "A block of code"
+
+#: .\Apps\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:185
+msgid "Список нумерованный"
+msgstr "Numeric list"
+
+#: .\Apps\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:191
+msgid "Список ненумерованный"
+msgstr "Bullet list"
+
+#: .\Apps\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:197
+msgid "Список латиницей"
+msgstr "Latin list"
+
+#: .\Apps\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:203
+msgid "Таблица"
+msgstr "Table"
+
+#: .\Apps\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:209
+msgid "Горизонтальная линия"
+msgstr "Horizontal line"
+
+#: .\Apps\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:229
+msgid "Ссылка на внешний рессурс"
+msgstr "A link to outside a site"
+
+#: .\Apps\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:235
+msgid "Ссылка на часть статьи"
+msgstr "A link to a part of article"
+
+#: .\Apps\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:241
+msgid "Ссылка на скачиваеммый контент"
+msgstr "A link to downloadable content"
+
+#: .\Apps\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:261
+msgid "Видео"
+msgstr "Video"
+
+#: .\Apps\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:267
+msgid "Изображение"
+msgstr "Image"
+
+#: .\Apps\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:273
+msgid "Текст под изображением"
+msgstr "Text under image"
+
+#: .\Apps\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:298
+msgid "Помощь и ознакомление с редактором"
+msgstr "Help and tutor for an Editor"
+
+#: .\Apps\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:299
+msgid "Общий функционал"
+msgstr "Common functionality"
+
+#: .\Apps\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:301
+msgid ""
+"\n"
+"\t\t\t\tДанный редактор позволяет писать и редактировать HTML страницы, при "
+"этом возвращаясь\n"
+"\t\t\t\tк ним, предварительно сделав закладку. Для этого нужно сохранить "
+"файл:\n"
+"\t\t\t\t"
+msgstr ""
+"\n"
+"\t\t\t\tThis editor allows you to write and edit HTML pages, "
+"while returning\n"
+"\t\t\t\tto them, having previously made a bookmark. To do this, you need to save the "
+"file:\n"
+"\t\t\t\t"
+
+#: .\Apps\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:308
+msgid ""
+"\n"
+"\t\t\t\tИ сохранить получившуюся страницу в закладках, чтобы позже её "
+"открыть.\n"
+"\t\t\t\t"
+msgstr ""
+"\n"
+"\t\t\t\tAnd save the resulting page in bookmarks, so that later "
+"you can open it.\n"
+"\t\t\t\t"
+
+#: .\Apps\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:314
+msgid ""
+"\n"
+"\t\t\t\tТак же, редактор располагает следующим функционалом:\n"
+"\t\t\t\t"
+msgstr ""
+"\n"
+"\t\t\t\tAlso, the editor has the following functionality:\n"
+"\t\t\t\t"
+
+#: .\Apps\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:329
+msgid "WYSIWYG онлайн редактор на quilljs"
+msgstr "An online WYSIWYG editor using quilljs"
+
+#: .\Apps\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:331
+msgid ""
+"\n"
+"\t\t\tДанный редактор был разработан только в развлекательных и "
+"общеобразовательных целях. Он может и должен использоваться только как "
+"пример реализации редактора с использованием <b>quilljs</b>. С его помощью "
+"вы сможете подготовить и создать <i>html страничку</i>, которую после "
+"сможете вставить туда, куда вам нужно.\n"
+"\t\t"
+msgstr ""
+"\n"
+" This editor was developed for entertainment and general educational "
+"purposes only. It can and should be used only as an example of the editor "
+"implementation using <b>quilljs</b>. With its help, you will be able to "
+"prepare and create an <i>html page</i>, which you can then insert where you "
+"need it.\n"
+" "
+
+#: .\Apps\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:336
+msgid "Все обучающиеся материалы:"
+msgstr "All learning resources:"
+
+#: .\Apps\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:339
+msgid "По разработке модулей для редактора на quilljs"
+msgstr "To develop quill modules for editor"
+
+#: .\Apps\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:340
+msgid "По редактированию и кастомизации редактора на quilljs"
+msgstr "To develop and customize an quilljs editor"
+
+#: .\Apps\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:356
+msgid "Сохранить"
+msgstr "Save"
+
+#: .\Apps\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:359
+msgid "3 горизонтальные линии, бургер"
+msgstr "Horizontal line"
+
+#: .\Apps\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:385
+#: .\Apps\WYSIWYGEditor\templates\WYSIWYGEditor\list_form.html:50
+msgid "✔ Шаблон удалён"
+msgstr "✔ Templated removed"
+
+#: .\Apps\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:389
+#: .\Apps\WYSIWYGEditor\templates\WYSIWYGEditor\list_form.html:53
+msgid "✗ Запрашиваемый шаблон небыл обнаружен"
+msgstr "✗ The requested template wasn't found"
+
+#: .\Apps\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:393
+#: .\Apps\WYSIWYGEditor\templates\WYSIWYGEditor\list_form.html:56
+msgid "✗ Не получилось удалить шаблон"
+msgstr "✗ Couldn't remove a template"
+
+#: .\Apps\WYSIWYGEditor\templates\WYSIWYGEditor\list_form.html:28
+msgid "✔ Шаблон получен"
+msgstr "✔ Recieved a templated"
+
+#: .\Apps\WYSIWYGEditor\templates\WYSIWYGEditor\list_form.html:31
+msgid "✗ Не удалось найти шаблон"
+msgstr "✗ Couldn't find a template"
+
+#: .\Apps\WYSIWYGEditor\templates\WYSIWYGEditor\list_form.html:34
+msgid "✗ Что-то пошло не так с сервером"
+msgstr "✗ Something wrong on a server side"
+
+#: .\Apps\WYSIWYGEditor\templates\WYSIWYGEditor\list_form_container.html:5
+msgid "Сохранённые шаблоны"
+msgstr "Saved templates"
+
+#: .\Apps\WYSIWYGEditor\templates\WYSIWYGEditor\save_form_container.html:5
+msgid "Имя для твоего файла"
+msgstr "A name for a file"
+
+#: .\Apps\WYSIWYGEditor\templates\WYSIWYGEditor\save_form_container.html:6
+msgid ""
+"*Что бы избежать получение одинаковых файлов я буду добалять к ним рандомно "
+"сгенерированный суффикс"
+msgstr ""
+"*To avoid getting identical files I will add a randomly generated suffix to them"
+
+
+#: .\Apps\WYSIWYGEditor\templates\WYSIWYGEditor\save_form_container.html:33
+msgid "✔ Шаблон успешно сохранён"
+msgstr "✔ A template has been saved successfully"
+
+#: .\Apps\WYSIWYGEditor\templates\WYSIWYGEditor\save_form_container.html:37
+msgid "✗ Возникла ошибка при отправке формы"
+msgstr "✗ An error occure while sending form"
+
+#: .\Apps\WYSIWYGEditor\templates\WYSIWYGEditor\save_form_container.html:42
+msgid "Сохраниь"
+msgstr "Save"
+
+#: .\Apps\WYSIWYGEditor\templates\WYSIWYGEditor\save_form_container.html:45
+msgid "Отмена"
+msgstr "Cancel"

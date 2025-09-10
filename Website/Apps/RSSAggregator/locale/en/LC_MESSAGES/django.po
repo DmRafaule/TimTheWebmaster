@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-09-01 18:51+0300\n"
+"POT-Creation-Date: 2025-09-10 19:45+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -26,11 +26,11 @@ msgstr "Your previous ID. Copy it here to link it to the current one."
 msgid "Путь RSS фида"
 msgstr "A RSS feed path"
 
-#: .\Apps\RSSAggregator\templates\RSSAggregator\feed_edit.html:12
+#: .\Apps\RSSAggregator\templates\RSSAggregator\feed_edit.html:11
 msgid "Путь к RSS фиду"
 msgstr "A RSS feed path"
 
-#: .\Apps\RSSAggregator\templates\RSSAggregator\feed_edit.html:15
+#: .\Apps\RSSAggregator\templates\RSSAggregator\feed_edit.html:14
 msgid "Название для RSS фида"
 msgstr "The title for a RSS feed"
 

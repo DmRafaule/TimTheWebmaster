@@ -1,0 +1,21 @@
+{% load i18n %}
+{% load static %}
+
+<div class="modal-content">
+    <div><b>{% trans 'Сохранённые шаблоны' %}</b></div>
+    <hr>
+    <div 
+        hx-get="list/"
+        hx-on::before-swap="
+            switch(event.detail.xhr.status){
+                case 404,500:
+                    event.detail.shouldSwap = true
+                    event.detail.isError = false
+                    break;
+            }
+        "
+        hx-trigger="load"
+        id='toList' class="flex flex-col gap-2 max-h-[500px]">
+    </div>
+    <hr>
+</div>

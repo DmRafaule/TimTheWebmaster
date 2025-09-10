@@ -1,6 +1,5 @@
 input{
 	border-bottom: 2px dashed grey;
-	width: 100%;
 	padding: var(--form_el_padding);
 }
 

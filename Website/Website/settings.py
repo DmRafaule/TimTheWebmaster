@@ -60,12 +60,12 @@ MY_INSTALLED_APPS = [
     'PagiScroll.apps.PagiscrollConfig',
     'Engagement.apps.EngagementConfig',
     'Breadcrumbs.apps.BreadcrumbsConfig',
-    'Apps.PostEditor.apps.PostEditorConfig',
     'Apps.ImageThief.apps.ImagethiefConfig',
     'Apps.RSSAggregator.apps.RssaggregatorConfig',
     'Apps.ShaderToy.apps.ShadertoyConfig',
     'Apps.LinkThief.apps.LinkthiefConfig',
     'Apps.TextThief.apps.TextthiefConfig',
+    'Apps.WYSIWYGEditor.apps.WYSIWYGEditorConfig'
 ]
 
 INSTALLED_APPS += MY_INSTALLED_APPS

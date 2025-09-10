@@ -1,0 +1,65 @@
+{% load static %}
+{% load i18n %}
+
+{% for template in templates %}
+    <label id="template-n-{{template.id}}" class="flex justify-between items-center gap-2">
+        <div class="flex gap-1 items-center">
+            <div class="flex flex-nowrap gap-2 grow shrink-0 flex-auto">
+                <input name="templates" type="radio">
+                [{{template.option}}]
+            </div>
+            <div class="max-w-[200px]" style="text-wrap: balance;">
+                {{template.filename}} 
+            </div>
+        </div>
+        <div class="flex flex-row gap-2 flex-nowrap items-center grow-0 shrink-0 flex-auto justify-end">
+            <div class="ttw-button ttw-button_link ttw-button_squared bg-main">
+                <a class="ttw-button_squared" href="{{template.template}}" download="{{template.filename}}">
+                    <img class=" ttw-button_squared" width="16" height="16" src="{% static 'WYSIWYGEditor/img/download.svg' %}">
+                </a>
+            </div>
+            <div 
+                hx-get="upload/?filename={{template.filename}}&user={{request.user}}" 
+                hx-target="#editor>.ql-editor"
+                hx-indicator="#context-loader-load_into_modal"
+                hx-on::after-request="
+                    switch(event.detail.xhr.status){
+                        case 200:
+                            toaster.notify('{% trans '✔ Шаблон получен' %}', 'success');
+                            break;
+                        case 404:
+                            toaster.notify('{% trans '✗ Не удалось найти шаблон' %}', 'error'); 
+                            break;
+                        case 500:
+                            toaster.notify('{% trans '✗ Что-то пошло не так с сервером' %}', 'error'); 
+                            break;
+                    }
+                "
+                class="ttw-button ttw-button_action ttw-button_squared bg-main">
+                <img class="ttw-button_squared" width="16" height="16" src="{% static 'WYSIWYGEditor/img/upload.svg' %}" data-ref="{{template.template}}">
+            </div>
+            <div 
+                hx-post="delete/"
+                hx-target="#template-n-{{template.id}}"
+                hx-swap="outerHTML"
+                hx-indicator="#context-loader-load_into_modal"
+                hx-vals="js:{csrfmiddlewaretoken: csrftoken, filename: '{{template.filename}}'}"
+                hx-on::after-request="
+                    switch(event.detail.xhr.status){
+                        case 200:
+                            toaster.notify('{% trans '✔ Шаблон удалён' %}', 'success');
+                            break;
+                        case 404:
+                            toaster.notify('{% trans '✗ Запрашиваемый шаблон небыл обнаружен' %}', 'error'); 
+                            break;
+                        case 500:
+                            toaster.notify('{% trans '✗ Не получилось удалить шаблон' %}', 'error'); 
+                            break;
+                    }
+                "
+                class="ttw-button ttw-button_action ttw-button_squared bg-main">
+                <img class="ttw-button_squared" width="16" height="16" src="{% static 'WYSIWYGEditor/img/delete.svg' %}">
+            </div>
+        </div>
+        </label>
+{% endfor %}

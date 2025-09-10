@@ -1,0 +1,17 @@
+{% load i18n %}
+{% load static %}
+
+<div class="modal-content">
+    <div class="modal_body">
+        <div class="row in_middle">
+            <div class="row mid_gap on_end_other">
+            {% trans 'Ты уверен в том, что хочешь удалить этот шаблон ?' %}
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="modal_actions">
+        <img id="delete_btn_submit" width="32" height="32" class="close_modal svg_icon_inverted bordered_button button" src="{% static 'ok.svg' %}" alt="{% trans 'Крестик' %}"  style='border-bottom-left-radius: var(--modal-radius)'>
+        <img id='close_btn' width="32" height="32" class="close_modal svg_icon_inverted bordered_button button" src="{% static 'close.svg' %}" alt="{% trans 'Крестик' %}" style='border-bottom-right-radius: var(--modal-radius)'>
+    </div>
+</div>

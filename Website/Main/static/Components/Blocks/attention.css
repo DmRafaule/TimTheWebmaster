@@ -33,6 +33,7 @@
 	display: flex;
     align-items: center;
     gap: 10px;
+	padding: var(--attention_block-padding);
 }
 
 .attention{
