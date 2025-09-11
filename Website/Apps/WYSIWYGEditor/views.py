@@ -23,7 +23,7 @@ def _gen_uid():
 
 def _update_record_filename(record, form):
     provided_filename: str = record.filename
-    provided_filename = re.sub(r'[^a-zA-Z0-9._-]', '', provided_filename).rstrip()
+    provided_filename = re.sub(r'[^a-zA-Z0-9а-яА-Я._-]', '', provided_filename).rstrip()
     uid_pos = provided_filename.find('-uid--')
     if uid_pos == -1:
         uid = _gen_uid()
