@@ -707,7 +707,7 @@ msgstr "See more ..."
 
 #: .\Main\templates\Main\home.html:83
 msgid "Партнёры"
-msgstr "Partner"
+msgstr "Partners"
 
 #: .\Main\templates\Main\home.html:91
 msgid "Статьи"

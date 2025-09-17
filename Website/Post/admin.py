@@ -302,53 +302,6 @@ class NoteAdmin(admin.ModelAdmin):
         'tags'
     )
 
-class ServiceAdmin(admin.ModelAdmin):
-    exclude = ('category','title', 'description')
-    filter_horizontal = ('tags',)
-    ordering = ['-timeCreated']
-    fieldsets = [
-        (
-            None,
-            {
-                'fields': [('title_ru', 'title_en'), ('description_ru', 'description_en'), 'isPublished', 'duration', 'price']
-            }
-        ),
-        (
-            'Advanced options',
-            {
-                'fields': ['tags', 'timeCreated', 'preview'],
-                'classes': ['collapse'],
-            }
-        )
-    ]
-    list_display = (
-        'id',
-        'isPublished',
-        'title_ru',
-        'title_en',
-        'description_ru',
-        'description_en',
-        'timeCreated',
-    )
-    list_display_links = (
-        'id',
-    )
-    list_editable = (
-        'isPublished',
-        'title_ru',
-        'title_en',
-        'description_ru',
-        'description_en',
-        'timeCreated',
-    )
-    search_fields = (
-        'title_ru',
-        'title_en',
-        'description_ru',
-        'description_en',
-        'tags'
-    )
-
 
 admin.site.register(M.Tag, TagAdmin)
 admin.site.register(M.Category, CategoryAdmin)
@@ -358,5 +311,3 @@ admin.site.register(M.Termin, TDAdmin)
 admin.site.register(M.Tool, ToolAdmin)
 admin.site.register(M.Platform, PlatformAdmin)
 admin.site.register(M.Note, NoteAdmin)
-admin.site.register(M.Price, admin.ModelAdmin)
-admin.site.register(M.Service, ServiceAdmin)

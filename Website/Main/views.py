@@ -5,13 +5,9 @@ from django.template.response import TemplateResponse
 
 import Main.utils as U
 from .models import Website
-from Post.models import Tool, Article, Tag, Note, Service
+from Post.models import Tool, Article, Tag, Note
 from Engagement.models import Comment
 
-#TODO: 
-# * Добавь 500 обработчик
-# * Добавь 403 обработчик
-# * Добавь 400 обработчик
 
 def about(request):
     ''' Представление для страницы об авторе/сайте '''
@@ -56,8 +52,6 @@ def home(request):
         tools_post_preview = website_conf.tools_post_preview
         articles_post_preview = website_conf.articles_post_preview
         notes_post_preview = website_conf.notes_post_preview
-        cap_choosen_services = website_conf.max_displayed_services_on_home
-        choosen_services = website_conf.choosen_services.all()[:cap_choosen_services]
     # Если не получилось (такие настройки ещё не были добавленны) отправляем в качестве настроек
     # пустые значения, чтобы страница не вернула 500 код ошибки (ошибка сервера)
     except:
@@ -67,8 +61,6 @@ def home(request):
         min_choosen_tools_by_tags = 0
         choosen_articles_by_tag = []
         min_choosen_articles_by_tag = 0
-        cap_choosen_services = website_conf.max_displayed_services_on_home
-        choosen_services = Service.objects.all()[:cap_choosen_services]
         tools_post_preview = None
         articles_post_preview = None
         notes_post_preview = None
@@ -105,8 +97,6 @@ def home(request):
     # Получаем и сохраняем последние комментарии
     comments_all = Comment.objects.filter(url__startswith=f"/{get_language()}/").order_by('-time_published')[:10]
     context.update({'comments': comments_all})
-    # Доступные услуги
-    context.update({'services': choosen_services})
     
     return TemplateResponse(request, 'Main/home.html', context=context)
 

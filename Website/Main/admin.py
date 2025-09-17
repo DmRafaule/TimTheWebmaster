@@ -29,7 +29,6 @@ class WebsiteAdmin(admin.ModelAdmin):
         'my_resources_choosen_tags_on_home', 
         'other_articles_choosen_tags_on_home',
         'contacts_for_orders',
-        'choosen_services'
     )
     search_fields = (
         'name',
@@ -88,7 +87,6 @@ class WebsiteAdmin(admin.ModelAdmin):
                         'max_displayed_td_on_home',
                         'max_displayed_qa_on_home',
                         'max_displayed_notes_on_home',
-                        'max_displayed_services_on_home'
                     )
                 ],
                 'classes': ['collapsed'],
