@@ -84,6 +84,13 @@
                 {% endfor %}
             </div>
             {% endif %}
+            {% if isAffiliateLinkMiddlewareConnected and affiliates_partners|length > 0  %}
+                <b>{% trans "То, что использую я" %}:</b>
+                <hr>
+                <div class="flex flex-row p-2 gap-3 grow flex-wrap">
+                    {% include 'Affiliate/affiliate.html' with affiliates=affiliates_partners %}
+                </div>
+            {% endif %}
         </div>
         <hr>
         <div id="content_post_article" class="post-content-root">
@@ -177,6 +184,10 @@
 	{% if isBreadcrumbsMiddlewareConnected %}
 		{% include 'Breadcrumbs/breadcrumbs_styles.html' %}
 	{% endif %}
+
+	{% if isAffiliateLinkMiddlewareConnected %}
+		{% include 'Affiliate/affiliate_styles.html' %}
+	{% endif %}
 	
     {% block styles_tool %}
 	{% endblock %}
@@ -190,6 +201,10 @@
 
 	{% if isBreadcrumbsMiddlewareConnected %}
 		{% include 'Breadcrumbs/breadcrumbs_scripts.html' %}
+	{% endif %}
+
+	{% if isAffiliateLinkMiddlewareConnected %}
+		{% include 'Affiliate/affiliate_scripts.html' %}
 	{% endif %}
 
 	{% block scripts_tool %}

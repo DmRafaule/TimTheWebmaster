@@ -192,6 +192,13 @@
 		{% endif %}
 
 	</div>
+	{% if isAffiliateLinkMiddlewareConnected and affiliates_partners|length > 0  %}
+		<b>{% trans "То, что использую я" %}:</b>
+		<hr>
+		<div class="flex flex-row p-2 gap-3 grow flex-wrap">
+			{% include 'Affiliate/affiliate.html' with affiliates=affiliates_partners %}
+		</div>
+	{% endif %}
 
 	{% block content_post_before-article %}
 	{% endblock %}

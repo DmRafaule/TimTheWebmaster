@@ -92,6 +92,10 @@
 		{% include 'Breadcrumbs/breadcrumbs_styles.html' %}
 	{% endif %}
 
+	{% if isAffiliateLinkMiddlewareConnected %}
+		{% include 'Affiliate/affiliate_styles.html' %}
+	{% endif %}
+
 	{% block styles_post %}
 	{% endblock %}
 {% endblock %}
@@ -107,6 +111,10 @@
 
 	{% if isBreadcrumbsMiddlewareConnected %}
 		{% include 'Breadcrumbs/breadcrumbs_scripts.html' %}
+	{% endif %}
+
+	{% if isAffiliateLinkMiddlewareConnected %}
+		{% include 'Affiliate/affiliate_scripts.html' %}
 	{% endif %}
 	
 	{% block scripts_post %}

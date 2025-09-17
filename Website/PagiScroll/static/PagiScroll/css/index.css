@@ -4,3 +4,11 @@
 @import "../../../../Main/static/Components/Buttons/Download/button_download.css";
 @import "tailwindcss";
 @tailwind utilities;
+
+fieldset.filter_fildset{
+    border-bottom: 0;
+    border-right: 0;
+    border-left: 0;
+    border-radius: 0;
+    margin-top: 0;
+}

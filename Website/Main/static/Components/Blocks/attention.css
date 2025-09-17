@@ -63,6 +63,13 @@
 	border-radius: 4px;
 	padding: var(--attention_block-padding);
 }
+
+.affiliate{
+	background: #6bee6b;
+	border: 2px solid black;
+	border-radius: 4px;
+	padding: var(--attention_block-padding);
+}
 .code{
 	background: #8ce15e;
 	border: 2px solid black;

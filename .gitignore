@@ -86,6 +86,7 @@ __pycache__/
 local_settings.py
 settings.json
 settings-beget.json
+settings-local.json
 
 .venv
 venv_new

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-09-01 08:01+0300\n"
+"POT-Creation-Date: 2025-09-17 22:57+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -483,7 +483,7 @@ msgstr "Remove all"
 msgid "Домашняя"
 msgstr "Home"
 
-#: .\Main\templates\Main\base.html:166 .\Main\templates\Main\base.html:297
+#: .\Main\templates\Main\base.html:166 .\Main\templates\Main\base.html:303
 #: .\Main\templates\Main\base_status_code.html:78
 #: .\Main\templates\Main\base_status_code.html:113
 msgid "Об авторе"
@@ -602,6 +602,16 @@ msgstr ""
 #: .\Main\templates\Main\base.html:238
 msgid ""
 "\n"
+"\t\t\t\t\tКоторые уже реализованны и они отмечены вот такой вот иконкой\n"
+"\t\t\t\t"
+msgstr ""
+"\n"
+"\t\t\t\t\tWhich have already been implemented and are marked with this icon\n"
+"\t\t\t\t"
+
+#: .\Main\templates\Main\base.html:244
+msgid ""
+"\n"
 "\t\t\t\t\tЯ бы хотел сделать ставку на так называемую freeminimum модель "
 "монетизации. \n"
 "\t\t\t\t\tГде платят за пользование, в той или иной форме, программным "
@@ -618,41 +628,41 @@ msgstr ""
 "methods of monetizing sites</a> in general, and my sites in particular.\n"
 "\t\t\t\t"
 
-#: .\Main\templates\Main\base.html:263
+#: .\Main\templates\Main\base.html:269
 msgid "Крестик"
 msgstr "Cross"
 
-#: .\Main\templates\Main\base.html:282
+#: .\Main\templates\Main\base.html:288
 #: .\Main\templates\Main\base_status_code.html:98
 msgid "Популярные ссылки"
 msgstr "Popular links"
 
-#: .\Main\templates\Main\base.html:293
+#: .\Main\templates\Main\base.html:299
 #: .\Main\templates\Main\base_status_code.html:109
 msgid "Другие ссылки"
 msgstr "Other links"
 
-#: .\Main\templates\Main\base.html:296
+#: .\Main\templates\Main\base.html:302
 #: .\Main\templates\Main\base_status_code.html:112
 msgid "Карта сайта"
 msgstr "Sitemap"
 
-#: .\Main\templates\Main\base.html:302
+#: .\Main\templates\Main\base.html:308
 #: .\Main\templates\Main\base_status_code.html:118
 msgid "Контакты"
 msgstr "Contacts"
 
-#: .\Main\templates\Main\base.html:308
+#: .\Main\templates\Main\base.html:314
 #: .\Main\templates\Main\base_status_code.html:124
 msgid "иконка"
 msgstr "icon"
 
-#: .\Main\templates\Main\base.html:317
+#: .\Main\templates\Main\base.html:323
 #: .\Main\templates\Main\base_status_code.html:133
 msgid "Кратко о сайте"
 msgstr "In short for guests"
 
-#: .\Main\templates\Main\base.html:320
+#: .\Main\templates\Main\base.html:326
 #: .\Main\templates\Main\base_status_code.html:136
 msgid ""
 "\n"
@@ -690,24 +700,28 @@ msgid "Инструменты"
 msgstr "Tools"
 
 #: .\Main\templates\Main\home.html:53 .\Main\templates\Main\home.html:71
-#: .\Main\templates\Main\home.html:106 .\Main\templates\Main\home.html:124
-#: .\Main\templates\Main\home.html:155
+#: .\Main\templates\Main\home.html:115 .\Main\templates\Main\home.html:133
+#: .\Main\templates\Main\home.html:164
 msgid "Больше ..."
 msgstr "See more ..."
 
-#: .\Main\templates\Main\home.html:82
+#: .\Main\templates\Main\home.html:83
+msgid "Партнёры"
+msgstr "Partner"
+
+#: .\Main\templates\Main\home.html:91
 msgid "Статьи"
 msgstr "Articles"
 
-#: .\Main\templates\Main\home.html:86
+#: .\Main\templates\Main\home.html:95
 msgid "Последние статьи"
 msgstr "Latest articles"
 
-#: .\Main\templates\Main\home.html:136
+#: .\Main\templates\Main\home.html:145
 msgid "Заметки"
 msgstr "Notes"
 
-#: .\Main\templates\Main\home.html:139
+#: .\Main\templates\Main\home.html:148
 msgid ""
 "\n"
 "\t\t\t\t\t\t\tЭто блок всех последних заметок, написанных мной. \n"
@@ -717,11 +731,11 @@ msgstr ""
 "\t\t\t\t\t\tHere I collect all the latest notes.\n"
 "\t\t\t\t\t\t"
 
-#: .\Main\templates\Main\home.html:165
+#: .\Main\templates\Main\home.html:174
 msgid "Комментарии"
 msgstr "Comments"
 
-#: .\Main\templates\Main\home.html:168
+#: .\Main\templates\Main\home.html:177
 msgid ""
 "\n"
 "\t\t\t\t\tТут я собираю все последние комментарии на сайте.\n"

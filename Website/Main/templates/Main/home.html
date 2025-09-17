@@ -78,6 +78,15 @@
 							{% endfor %}
 						</div>
 					</div>
+					{% if isAffiliateLinkMiddlewareConnected and affiliates_partners|length > 0 %}
+					<div class="border-r-2 border-solid">
+						<h2>{% trans "Партнёры" %}</h2>
+						<hr>
+						<div class="flex flex-col p-2 gap-3 grow basis-2xl">
+							{% include 'Affiliate/affiliate.html' with affiliates=affiliates_partners %}
+						</div>
+					</div>
+					{% endif %}
 					<div class="border-r-2 border-solid">
 						<h2>{% trans "Статьи" %}</h2>
 						<hr>
@@ -190,6 +199,9 @@
 
 {% block styles %}
     <link type="text/css" rel="stylesheet" href="{% static 'Main/css/index.main.min.css' %}"/>
+	{% if isAffiliateLinkMiddlewareConnected %}
+		{% include 'Affiliate/affiliate_styles.html' %}
+	{% endif %}
 {% endblock %}
 
 {% block scripts %}
@@ -197,4 +209,7 @@
 		var STATIC = "{% static '.' %}"
 	</script>
     <script src="{% static 'Main/js/index.main.min.js' %}"></script>
+	{% if isAffiliateLinkMiddlewareConnected %}
+		{% include 'Affiliate/affiliate_scripts.html' %}
+	{% endif %}
 {% endblock %}

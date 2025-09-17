@@ -1,0 +1,7 @@
+{% if single_affiliate %}
+    {% include 'Affiliate/affiliate_element.html' with aff=single_affiliate %}
+{% else %}
+    {% for aff in affiliates %}
+        {% include 'Affiliate/affiliate_element.html' with aff=aff %}
+    {% endfor %}
+{% endif %}

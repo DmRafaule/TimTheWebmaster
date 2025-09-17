@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-09-01 07:27+0300\n"
+"POT-Creation-Date: 2025-09-17 22:54+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -53,8 +53,12 @@ msgstr " page"
 msgid "связанные со следующими тегами: "
 msgstr "related to the following tags: "
 
-#: .\PagiScroll\templates\PagiScroll\base_post_list.html:101
-#: .\PagiScroll\templates\PagiScroll\base_post_list.html:107
+#: .\PagiScroll\templates\PagiScroll\base_post_list.html:74
+msgid "То, что использую я"
+msgstr "What, I'm using"
+
+#: .\PagiScroll\templates\PagiScroll\base_post_list.html:109
+#: .\PagiScroll\templates\PagiScroll\base_post_list.html:115
 msgid "Шеврон"
 msgstr "Chevron"
 

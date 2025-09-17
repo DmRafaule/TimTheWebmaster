@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-09-01 07:27+0300\n"
+"POT-Creation-Date: 2025-09-17 22:54+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -82,23 +82,28 @@ msgstr "Your browser does not support audio tag"
 msgid "PDF иконка"
 msgstr "PDF icon"
 
-#: .\Post\templates\Post\base_article.html:213
+#: .\Post\templates\Post\base_article.html:196
+#: .\Post\templates\Post\base_tool.html:88
+msgid "То, что использую я"
+msgstr "What, I'm using"
+
+#: .\Post\templates\Post\base_article.html:220
 msgid "Внешние ссылки"
 msgstr "External links"
 
-#: .\Post\templates\Post\base_article.html:221
+#: .\Post\templates\Post\base_article.html:228
 msgid "Другое"
 msgstr "Other"
 
-#: .\Post\templates\Post\base_article.html:224
+#: .\Post\templates\Post\base_article.html:231
 msgid "Похожие статьи"
 msgstr "Similar articles"
 
-#: .\Post\templates\Post\base_article.html:230
+#: .\Post\templates\Post\base_article.html:237
 msgid "Использованные термины"
 msgstr "Used termins"
 
-#: .\Post\templates\Post\base_article.html:241
+#: .\Post\templates\Post\base_article.html:248
 msgid "Релевантные вопросы"
 msgstr "Related questions"
 
@@ -114,19 +119,19 @@ msgstr "Previous article"
 msgid "Инструмент"
 msgstr "Tool"
 
-#: .\Post\templates\Post\base_tool.html:95
+#: .\Post\templates\Post\base_tool.html:102
 msgid "Медиа файлы"
 msgstr "Media files"
 
-#: .\Post\templates\Post\base_tool.html:111
+#: .\Post\templates\Post\base_tool.html:118
 msgid "Рабочие заметки об инструменте"
 msgstr "A notes about this tool, devnotes"
 
-#: .\Post\templates\Post\base_tool.html:120
+#: .\Post\templates\Post\base_tool.html:127
 msgid "Больше ..."
 msgstr "More ..."
 
-#: .\Post\templates\Post\base_tool.html:130
+#: .\Post\templates\Post\base_tool.html:137
 msgid "Похожие инструменты"
 msgstr "Similar tools"
 

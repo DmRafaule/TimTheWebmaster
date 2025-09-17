@@ -1,0 +1,8 @@
+@import "../../../../Main/static/Components/Blocks/attention.css";
+@import "tailwindcss";
+@tailwind utilities;
+
+.affiliate_block{
+    max-height: 150px;
+    overflow: auto;
+}
