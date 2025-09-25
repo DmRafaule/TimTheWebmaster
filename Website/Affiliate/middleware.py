@@ -22,10 +22,13 @@ class AffiliateMiddleware:
     
     def process_view(self, request, view_func, view_args, view_kwargs):
         self.handler = None
-        if view_func.__name__ in self.home_view:
-            self.handler = self.home_handler
-        elif view_func.__name__ in self.post_view:
-            self.handler = self.post_handler
+        try:
+            if view_func.__name__ in self.home_view:
+                self.handler = self.home_handler
+            elif view_func.__name__ in self.post_view:
+                self.handler = self.post_handler
+        except:
+            pass
         return None
 
     def process_exception(self, request, exception):
