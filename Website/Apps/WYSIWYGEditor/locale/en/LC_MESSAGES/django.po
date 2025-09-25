@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-09-10 19:45+0300\n"
+"POT-Creation-Date: 2025-09-25 10:59+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -148,10 +148,10 @@ msgid ""
 "\t\t\t\t"
 msgstr ""
 "\n"
-"\t\t\t\tThis editor allows you to write and edit HTML pages, "
-"while returning\n"
-"\t\t\t\tto them, having previously made a bookmark. To do this, you need to save the "
-"file:\n"
+"\t\t\t\tThis editor allows you to write and edit HTML pages, while "
+"returning\n"
+"\t\t\t\tto them, having previously made a bookmark. To do this, you need to "
+"save the file:\n"
 "\t\t\t\t"
 
 #: .\Apps\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:308
@@ -162,8 +162,8 @@ msgid ""
 "\t\t\t\t"
 msgstr ""
 "\n"
-"\t\t\t\tAnd save the resulting page in bookmarks, so that later "
-"you can open it.\n"
+"\t\t\t\tAnd save the resulting page in bookmarks, so that later you can open "
+"it.\n"
 "\t\t\t\t"
 
 #: .\Apps\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:314
@@ -211,6 +211,7 @@ msgid "По редактированию и кастомизации редак�
 msgstr "To develop and customize an quilljs editor"
 
 #: .\Apps\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:356
+#: .\Apps\WYSIWYGEditor\templates\WYSIWYGEditor\save_form_container.html:42
 msgid "Сохранить"
 msgstr "Save"
 
@@ -258,8 +259,8 @@ msgid ""
 "*Что бы избежать получение одинаковых файлов я буду добалять к ним рандомно "
 "сгенерированный суффикс"
 msgstr ""
-"*To avoid getting identical files I will add a randomly generated suffix to them"
-
+"*To avoid getting identical files I will add a randomly generated suffix to "
+"them"
 
 #: .\Apps\WYSIWYGEditor\templates\WYSIWYGEditor\save_form_container.html:33
 msgid "✔ Шаблон успешно сохранён"
@@ -268,10 +269,6 @@ msgstr "✔ A template has been saved successfully"
 #: .\Apps\WYSIWYGEditor\templates\WYSIWYGEditor\save_form_container.html:37
 msgid "✗ Возникла ошибка при отправке формы"
 msgstr "✗ An error occure while sending form"
-
-#: .\Apps\WYSIWYGEditor\templates\WYSIWYGEditor\save_form_container.html:42
-msgid "Сохраниь"
-msgstr "Save"
 
 #: .\Apps\WYSIWYGEditor\templates\WYSIWYGEditor\save_form_container.html:45
 msgid "Отмена"
