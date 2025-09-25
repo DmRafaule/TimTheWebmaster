@@ -1,0 +1,16 @@
+{% load static %}
+
+{% if ad_manager %}
+<fieldset class="ad_block ads">
+    <legend class="ad padder flex flex-row gap-2 items-center">
+        <div>
+            <img width="16px" height="16px" src="{% static 'AdManager/img/ads.svg' %}">
+        </div>
+        <div class="border-r-[2px] h-[16px]" ></div>
+        <div>
+            <img class="ttw-button_action" width="16px" height="16px" src="{% get_media_prefix %}{{ ad_manager.brand_logo.file }}">
+        </div>
+    </legend>
+    {{ ad_block.adnetwork_block_code|safe }}
+</fieldset>
+{% endif %}

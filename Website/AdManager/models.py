@@ -1,0 +1,63 @@
+from django.db import models
+
+from Main.models import Media
+from Post.models import Tag, Post
+
+class AdBlock(models.Model):
+    class AdBlockType(models.TextChoices):
+        BANNER = "Banner"
+        FULL_SCREEN = "Full_screen"
+        FLOOR_FULL = "Floor_full"
+        TOP_FULL = "Top_full"
+        CAROUSEL = "Carousel"
+        IN_IMAGE = "In_image"
+    adblock_name = models.CharField(max_length=50, default="AdBlock name")
+    adblock_type = models.CharField(max_length=50, choices=AdBlockType, default=AdBlockType.BANNER)
+    adnetwork_block_code = models.TextField(blank=False, null=True, help_text="A part to display ad (in <body> tag)")
+
+    def __str__(self):
+        return f"({self.adblock_type}) -> {self.adblock_name}"
+
+
+class AdNetwork(models.Model):
+    brand_name = models.CharField(max_length=100, blank=False, null=True)
+    brand_logo = models.ForeignKey(Media, on_delete=models.CASCADE, blank=False)
+    adnetwork_blocks = models.ManyToManyField(AdBlock)
+    adnetwork_loader_code = models.TextField(blank=False, null=True, help_text="A part to load nessessary 3-d party libraries (in <head> tag)")
+
+    def __str__(self):
+        return self.brand_name
+
+class CurrentAdNetwork(models.Model):
+    current = models.OneToOneField(
+        AdNetwork,
+        on_delete=models.CASCADE,
+        null=True,  # Allow no item to be selected initially
+        blank=True,
+        related_name='current_ad_network' # Optional: for reverse access
+    )
+
+    def __str__(self):
+        return f"Current selection: { self.current.brand_name if self.current else 'None'}"
+
+    def save(self, *args, **kwargs):
+        # Ensure only one CurrentSelection object exists
+        if not self.pk and CurrentAdNetwork.objects.exists():
+            raise Exception("Only one CurrentAdNetwork object can exist.")
+        super().save(*args, **kwargs)
+
+    @classmethod
+    def get_current(cls):
+        # Helper method to get the single CurrentSelection instance
+        try:
+            obj = cls.objects.all()[0] # Use a fixed PK for single instance
+            print(obj)
+            return obj
+        except:
+            return None 
+
+    @classmethod
+    def set_current_item(cls, item_instance):
+        current_selection = cls.get_current()
+        current_selection.current = item_instance
+        current_selection.save()

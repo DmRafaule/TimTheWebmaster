@@ -7,6 +7,9 @@
 	<title>{% trans "Тим, вебмастер" %}</title>
 	<meta name="description" content="{% trans "Вебмастер Тим, он занимается разработкой сайтов на django, написанием тг ботов, скриптов и парсеров, а также выполняет заказы по копирайту"%}">
 	<link rel="canonical" href="https://{{domain_name}}{%url 'home'%}" />
+	{% if isAdManagerMiddlewareConnected %}
+		{% include 'AdManager/admanager_header.html' %}
+	{% endif %}
 {% endblock %}
 
 {% block content %}
@@ -44,6 +47,9 @@
 										<div class="flex flex-row flex-wrap gap-5 grow basis-2xl p-2">
 											<img width="300px" class="max-w-2xs" src="{% get_media_prefix %}{{internal_tools_preview}}">
 											{% include 'Post/basic--post_preview-tool.html' with posts=res.objs %}
+											{% if isAdManagerMiddlewareConnected %}
+												{% include 'AdManager/admanager_element.html' with ad_block=ad_block_Banner ad_manager=ad_manager %}
+											{% endif %}
 										</div>
 									</div>
 									<div class="flex justify-end">
@@ -202,6 +208,9 @@
 	{% if isAffiliateLinkMiddlewareConnected %}
 		{% include 'Affiliate/affiliate_styles.html' %}
 	{% endif %}
+	{% if isAdManagerMiddlewareConnected %}
+		{% include 'AdManager/admanager_styles.html' %}
+	{% endif %}
 {% endblock %}
 
 {% block scripts %}
@@ -211,5 +220,8 @@
     <script src="{% static 'Main/js/index.main.min.js' %}"></script>
 	{% if isAffiliateLinkMiddlewareConnected %}
 		{% include 'Affiliate/affiliate_scripts.html' %}
+	{% endif %}
+	{% if isAdManagerMiddlewareConnected %}
+		{% include 'AdManager/admanager_scripts.html' %}
 	{% endif %}
 {% endblock %}

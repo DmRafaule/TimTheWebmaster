@@ -1,0 +1,8 @@
+@import "../../../../Main/static/Components/Blocks/attention.css";
+@import "tailwindcss";
+@tailwind utilities;
+
+.ad_block{
+    width: 100%;
+    height: max-content;
+}

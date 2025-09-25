@@ -61,6 +61,7 @@ MY_INSTALLED_APPS = [
     'Engagement.apps.EngagementConfig',
     'Breadcrumbs.apps.BreadcrumbsConfig',
     'Affiliate.apps.AffiliateConfig',
+    'AdManager.apps.AdmanagerConfig',
     'Apps.ImageThief.apps.ImagethiefConfig',
     'Apps.RSSAggregator.apps.RssaggregatorConfig',
     'Apps.ShaderToy.apps.ShadertoyConfig',
@@ -72,10 +73,13 @@ MY_INSTALLED_APPS = [
 INSTALLED_APPS += MY_INSTALLED_APPS
 
 MIDDLEWARE = [
+    # Custom Middlewares
     'Engagement.middleware.EngagementMiddleware',
     'Breadcrumbs.middleware.BreadcrumbsMiddleware',
     'Post.middleware.ToolMiddleware',
     'Affiliate.middleware.AffiliateMiddleware',
+    'AdManager.middleware.AdManagerMiddleware',
+    # END Custom Middlewares
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.locale.LocaleMiddleware',
@@ -86,6 +90,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     # REST framework
     'corsheaders.middleware.CorsMiddleware',
+    # END REST framework
 ]
 
 ROOT_URLCONF = 'Website.urls'
