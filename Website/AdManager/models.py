@@ -24,7 +24,6 @@ class AdNetwork(models.Model):
     brand_logo = models.ForeignKey(Media, on_delete=models.CASCADE, blank=False)
     adnetwork_blocks = models.ManyToManyField(AdBlock)
     adnetwork_loader_code = models.TextField(blank=False, null=True, help_text="A part to load nessessary 3-d party libraries (in <head> tag)")
-    adnetwork_step_by = models.IntegerField(default=3, help_text="To display an AdBlock every N iteration")
 
     def __str__(self):
         return self.brand_name

@@ -38,10 +38,6 @@
 	<meta name="keywords" content="{{current_tag_names|join:', '}}">
 	<meta name="robots" content="noindex, follow">
 
-	{% if isAdManagerMiddlewareConnected %}
-		{% include 'AdManager/admanager_header.html' %}
-	{% endif %}
-
 	{% block head_body %}
 	{% endblock %}
 {% endblock %}
@@ -145,10 +141,6 @@
 		{% include 'Affiliate/affiliate_styles.html' %}
 	{% endif %}
 
-	{% if isAdManagerMiddlewareConnected %}
-		{% include 'AdManager/admanager_styles.html' %}
-	{% endif %}
-
 	{% block styles_list %}
 	{% endblock %}
 {% endblock %}
@@ -169,10 +161,6 @@
 
 	{% if isAffiliateLinkMiddlewareConnected %}
 		{% include 'Affiliate/affiliate_scripts.html' %}
-	{% endif %}
-
-	{% if isAdManagerMiddlewareConnected %}
-		{% include 'AdManager/admanager_scripts.html' %}
 	{% endif %}
 
 	{% block scripts_list %}
