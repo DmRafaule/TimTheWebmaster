@@ -13,6 +13,16 @@
 	{% endblock %}
 	<link rel="icon" href="https://{{domain_name}}/favicon.svg" type="image/svg+xml">
 	<link rel="icon" href="https://{{domain_name}}/favicon.ico" sizes="32x32" type="image/x-icon">
+	{% get_available_languages as LANGUAGES %}
+	{% get_language_info_list for LANGUAGES as languages %}
+	{% with LC_WITH_SLASHES_ON_EDGES="/"|add:LANGUAGE_CODE|add:"/" %}
+		{% with new_url=request.get_full_path|cut:LC_WITH_SLASHES_ON_EDGES %}
+			{% for language in languages %}
+				<link rel="alternate" href="https://{{domain_name}}/{{language.code}}/{{new_url}}"  hreflang="{{language.code}}" >
+			{% endfor %}
+			<link rel="alternate" href="https://{{domain_name}}/ru/{{new_url}}"  hreflang="x-default" >
+		{% endwith %}
+	{% endwith %}
 	<script type="application/ld+json">
 		{
 			"@context": "https://schema.org",
