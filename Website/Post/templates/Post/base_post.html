@@ -32,12 +32,13 @@
 
 	<hr>
 
+	{% block content_post %}
+	{% endblock %}
+
 	{% if isAdManagerMiddlewareConnected %}
 		{% include 'AdManager/admanager_element.html' with ad_block=ad_block_Banner ad_manager=ad_manager %}
 	{% endif %}
-
-	{% block content_post %}
-	{% endblock %}
+	
 	<div class="flex flex-row flex-wrap justify-between gap-3 m-1">
 		{% if next_post %}
 		<div class="ttw-button ttw-button_link ref_no-sign grow shrink-0 basis-full">

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-09-17 22:54+0300\n"
+"POT-Creation-Date: 2025-09-26 11:12+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -27,38 +27,38 @@ msgid "с тегами:"
 msgstr "with tags: "
 
 #: .\PagiScroll\templates\PagiScroll\base_post_list.html:25
-#: .\PagiScroll\templates\PagiScroll\base_post_list.html:63
+#: .\PagiScroll\templates\PagiScroll\base_post_list.html:67
 msgid "Страница "
 msgstr "Page "
 
 #: .\PagiScroll\templates\PagiScroll\base_post_list.html:27
-#: .\PagiScroll\templates\PagiScroll\base_post_list.html:65
+#: .\PagiScroll\templates\PagiScroll\base_post_list.html:69
 msgid " Они были связаны и сгруппированы по следующим тегам: "
 msgstr " They were linked and grouped under the following tags: "
 
 #: .\PagiScroll\templates\PagiScroll\base_post_list.html:27
-#: .\PagiScroll\templates\PagiScroll\base_post_list.html:65
+#: .\PagiScroll\templates\PagiScroll\base_post_list.html:69
 msgid " Страница "
 msgstr " Page "
 
-#: .\PagiScroll\templates\PagiScroll\base_post_list.html:56
+#: .\PagiScroll\templates\PagiScroll\base_post_list.html:60
 msgid " начиная с "
 msgstr " staring with "
 
-#: .\PagiScroll\templates\PagiScroll\base_post_list.html:56
+#: .\PagiScroll\templates\PagiScroll\base_post_list.html:60
 msgid " страницы"
 msgstr " page"
 
-#: .\PagiScroll\templates\PagiScroll\base_post_list.html:63
+#: .\PagiScroll\templates\PagiScroll\base_post_list.html:67
 msgid "связанные со следующими тегами: "
 msgstr "related to the following tags: "
 
-#: .\PagiScroll\templates\PagiScroll\base_post_list.html:74
+#: .\PagiScroll\templates\PagiScroll\base_post_list.html:78
 msgid "То, что использую я"
 msgstr "What, I'm using"
 
-#: .\PagiScroll\templates\PagiScroll\base_post_list.html:109
-#: .\PagiScroll\templates\PagiScroll\base_post_list.html:115
+#: .\PagiScroll\templates\PagiScroll\base_post_list.html:113
+#: .\PagiScroll\templates\PagiScroll\base_post_list.html:119
 msgid "Шеврон"
 msgstr "Chevron"
 

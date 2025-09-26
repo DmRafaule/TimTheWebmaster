@@ -223,23 +223,29 @@
 				<hr>
 			</div>
 			<div class="flex flex-col gap-4 text-justify p-2">
-				<div>
-				{%    blocktrans %}
-					На моём сайте нет рекламы, не обещаю что в будущем она не появится в той или иной форме,
-					но что точно обещаю, она будет только контекстной и надеюсь, релевантной.	
-				{% endblocktrans %}
-				</div>
-				<div>
-				{%    blocktrans %}
-					Плюс, всякие, возможные партнёрские программы. 
-				{% endblocktrans %}
-				</div>
-				<span>
-				{%    blocktrans %}
-					Которые уже реализованны и они отмечены вот такой вот иконкой
-				{% endblocktrans %}
-					<span><img class="svg_icon_inverted" width="16px" height="16px" src="{% static "Affiliate/img/partner.svg" %}"></span>
-				</span>
+				{% if isAdManagerMiddlewareConnected %}
+					<div>
+					{%    blocktrans %}
+						На моём сайте присутствует реклама, используется рекламная сеть Яндекс, пока в качестве эксперимента. 
+						Все рекламные блоки отмечены вот такой вот иконкой:
+					{% endblocktrans %}
+						<span><img class="svg_icon_inverted" width="16px" height="16px" src="{% static "ads.svg" %}"></span>
+					</div>
+				{% endif %}
+				{% if isAffiliateLinkMiddlewareConnected %}
+					<div>
+					{%    blocktrans %}
+						Так же на моём сайте располагаются партнёрские программы, от тех рекламодателей инструменты и сервисы 
+						которых я сам использую или опробовал, и хочу порекомендовать.
+					{% endblocktrans %}
+					</div>
+					<span>
+					{%    blocktrans %}
+						Все партнёрские ссылки отмечены вот такой вот иконкой
+					{% endblocktrans %}
+						<span><img class="svg_icon_inverted" width="16px" height="16px" src="{% static "Affiliate/img/partner.svg" %}"></span>
+					</span>
+				{% endif %}
 				<div class="ref">
 				{%    blocktrans %}
 					Я бы хотел сделать ставку на так называемую freeminimum модель монетизации. 

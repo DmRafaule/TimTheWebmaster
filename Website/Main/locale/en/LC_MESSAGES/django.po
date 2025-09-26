@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-09-17 22:57+0300\n"
+"POT-Creation-Date: 2025-09-26 11:12+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -483,7 +483,7 @@ msgstr "Remove all"
 msgid "Домашняя"
 msgstr "Home"
 
-#: .\Main\templates\Main\base.html:166 .\Main\templates\Main\base.html:303
+#: .\Main\templates\Main\base.html:166 .\Main\templates\Main\base.html:309
 #: .\Main\templates\Main\base_status_code.html:78
 #: .\Main\templates\Main\base_status_code.html:113
 msgid "Об авторе"
@@ -573,43 +573,44 @@ msgstr ""
 msgid "Про рекламу и монетизацию"
 msgstr "About advertisement and monetization"
 
-#: .\Main\templates\Main\base.html:227
+#: .\Main\templates\Main\base.html:228
 msgid ""
 "\n"
-"\t\t\t\t\tНа моём сайте нет рекламы, не обещаю что в будущем она не появится "
-"в той или иной форме,\n"
-"\t\t\t\t\tно что точно обещаю, она будет только контекстной и надеюсь, "
-"релевантной.\t\n"
-"\t\t\t\t"
+"\t\t\t\t\t\tНа моём сайте присутствует реклама, используется рекламная сеть "
+"Яндекс, пока в качестве эксперимента. \n"
+"\t\t\t\t\t\tВсе рекламные блоки отмечены вот такой вот иконкой:\n"
+"\t\t\t\t\t"
 msgstr ""
 "\n"
-"\t\t\t\t\tThere is no advertising on my site, I do not promise that in the "
-"future it will not appear in one form or another,\n"
-"\t\t\t\t\tbut what I definitely promise is that it will only be contextual "
-"and, I hope, relevant.\t\n"
-"\t\t\t\t"
+"\t\t\t\t\t\tMy site contains advertising, using the Yandex advertising network, as an experiment for now.\n"
+"\t\t\t\t\t\tAll ad blocks are marked with this icon:\n"
+"\t\t\t\t\t"
 
-#: .\Main\templates\Main\base.html:233
+#: .\Main\templates\Main\base.html:237
 msgid ""
 "\n"
-"\t\t\t\t\tПлюс, всякие, возможные партнёрские программы. \n"
-"\t\t\t\t"
+"\t\t\t\t\t\tТак же на моём сайте располагаются партнёрские программы, от тех "
+"рекламодателей инструменты и сервисы \n"
+"\t\t\t\t\t\tкоторых я сам использую или опробовал, и хочу порекомендовать.\n"
+"\t\t\t\t\t"
 msgstr ""
 "\n"
-"\t\t\t\t\tPlus, all sorts of possible affiliate programs.\n"
-"\t\t\t\t"
+"\t\t\t\t\t\tMy site also hosts affiliate programs from those "
+"advertisers, tools, and services\n"
+"\t\t\t\t\tthat I personally use or have tried, and would like to recommend.\n"
+"\t\t\t\t\t"
 
-#: .\Main\templates\Main\base.html:238
+#: .\Main\templates\Main\base.html:243
 msgid ""
 "\n"
-"\t\t\t\t\tКоторые уже реализованны и они отмечены вот такой вот иконкой\n"
-"\t\t\t\t"
+"\t\t\t\t\t\tВсе партнёрские ссылки отмечены вот такой вот иконкой\n"
+"\t\t\t\t\t"
 msgstr ""
 "\n"
-"\t\t\t\t\tWhich have already been implemented and are marked with this icon\n"
-"\t\t\t\t"
+"\t\t\t\t\t\tAll affiliate links are marked with this icon\n"
+"\t\t\t\t\t"
 
-#: .\Main\templates\Main\base.html:244
+#: .\Main\templates\Main\base.html:250
 msgid ""
 "\n"
 "\t\t\t\t\tЯ бы хотел сделать ставку на так называемую freeminimum модель "
@@ -628,41 +629,41 @@ msgstr ""
 "methods of monetizing sites</a> in general, and my sites in particular.\n"
 "\t\t\t\t"
 
-#: .\Main\templates\Main\base.html:269
+#: .\Main\templates\Main\base.html:275
 msgid "Крестик"
 msgstr "Cross"
 
-#: .\Main\templates\Main\base.html:288
+#: .\Main\templates\Main\base.html:294
 #: .\Main\templates\Main\base_status_code.html:98
 msgid "Популярные ссылки"
 msgstr "Popular links"
 
-#: .\Main\templates\Main\base.html:299
+#: .\Main\templates\Main\base.html:305
 #: .\Main\templates\Main\base_status_code.html:109
 msgid "Другие ссылки"
 msgstr "Other links"
 
-#: .\Main\templates\Main\base.html:302
+#: .\Main\templates\Main\base.html:308
 #: .\Main\templates\Main\base_status_code.html:112
 msgid "Карта сайта"
 msgstr "Sitemap"
 
-#: .\Main\templates\Main\base.html:308
+#: .\Main\templates\Main\base.html:314
 #: .\Main\templates\Main\base_status_code.html:118
 msgid "Контакты"
 msgstr "Contacts"
 
-#: .\Main\templates\Main\base.html:314
+#: .\Main\templates\Main\base.html:320
 #: .\Main\templates\Main\base_status_code.html:124
 msgid "иконка"
 msgstr "icon"
 
-#: .\Main\templates\Main\base.html:323
+#: .\Main\templates\Main\base.html:329
 #: .\Main\templates\Main\base_status_code.html:133
 msgid "Кратко о сайте"
 msgstr "In short for guests"
 
-#: .\Main\templates\Main\base.html:326
+#: .\Main\templates\Main\base.html:332
 #: .\Main\templates\Main\base_status_code.html:136
 msgid ""
 "\n"
@@ -691,37 +692,37 @@ msgstr ""
 "Webmaster Tim, he develops websites using django and writes tgbots, scripts "
 "and parsers, and also fulfills copyright orders"
 
-#: .\Main\templates\Main\home.html:15
+#: .\Main\templates\Main\home.html:18
 msgid "Тим Вебмастер"
 msgstr "Tim the Webmaster"
 
-#: .\Main\templates\Main\home.html:20
+#: .\Main\templates\Main\home.html:23
 msgid "Инструменты"
 msgstr "Tools"
 
-#: .\Main\templates\Main\home.html:53 .\Main\templates\Main\home.html:71
-#: .\Main\templates\Main\home.html:115 .\Main\templates\Main\home.html:133
-#: .\Main\templates\Main\home.html:164
+#: .\Main\templates\Main\home.html:59 .\Main\templates\Main\home.html:77
+#: .\Main\templates\Main\home.html:121 .\Main\templates\Main\home.html:139
+#: .\Main\templates\Main\home.html:170
 msgid "Больше ..."
 msgstr "See more ..."
 
-#: .\Main\templates\Main\home.html:83
+#: .\Main\templates\Main\home.html:89
 msgid "Партнёры"
 msgstr "Partners"
 
-#: .\Main\templates\Main\home.html:91
+#: .\Main\templates\Main\home.html:97
 msgid "Статьи"
 msgstr "Articles"
 
-#: .\Main\templates\Main\home.html:95
+#: .\Main\templates\Main\home.html:101
 msgid "Последние статьи"
 msgstr "Latest articles"
 
-#: .\Main\templates\Main\home.html:145
+#: .\Main\templates\Main\home.html:151
 msgid "Заметки"
 msgstr "Notes"
 
-#: .\Main\templates\Main\home.html:148
+#: .\Main\templates\Main\home.html:154
 msgid ""
 "\n"
 "\t\t\t\t\t\t\tЭто блок всех последних заметок, написанных мной. \n"
@@ -731,11 +732,11 @@ msgstr ""
 "\t\t\t\t\t\tHere I collect all the latest notes.\n"
 "\t\t\t\t\t\t"
 
-#: .\Main\templates\Main\home.html:174
+#: .\Main\templates\Main\home.html:180
 msgid "Комментарии"
 msgstr "Comments"
 
-#: .\Main\templates\Main\home.html:177
+#: .\Main\templates\Main\home.html:183
 msgid ""
 "\n"
 "\t\t\t\t\tТут я собираю все последние комментарии на сайте.\n"

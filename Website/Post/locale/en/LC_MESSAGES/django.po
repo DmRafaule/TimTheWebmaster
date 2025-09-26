@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-09-25 10:59+0300\n"
+"POT-Creation-Date: 2025-09-26 11:12+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -30,8 +30,8 @@ msgstr "Content"
 #: .\Post\templates\Post\base_article.html:130
 #: .\Post\templates\Post\base_article.html:135
 #: .\Post\templates\Post\base_article.html:141
-#: .\Post\templates\Post\base_tool.html:52
-#: .\Post\templates\Post\base_tool.html:57
+#: .\Post\templates\Post\base_tool.html:56
+#: .\Post\templates\Post\base_tool.html:61
 #: .\Post\templates\Post\basic--post_preview-article.html:19
 #: .\Post\templates\Post\basic--post_preview-article.html:24
 #: .\Post\templates\Post\basic--post_preview-note.html:15
@@ -54,7 +54,7 @@ msgid "минут"
 msgstr "minutes"
 
 #: .\Post\templates\Post\base_article.html:158
-#: .\Post\templates\Post\base_tool.html:70
+#: .\Post\templates\Post\base_tool.html:74
 msgid "Теги: "
 msgstr "Tags: "
 
@@ -75,7 +75,7 @@ msgid "PDF иконка"
 msgstr "PDF icon"
 
 #: .\Post\templates\Post\base_article.html:196
-#: .\Post\templates\Post\base_tool.html:88
+#: .\Post\templates\Post\base_tool.html:92
 msgid "То, что использую я"
 msgstr "What, I'm using"
 
@@ -99,11 +99,11 @@ msgstr "Used termins"
 msgid "Релевантные вопросы"
 msgstr "Related questions"
 
-#: .\Post\templates\Post\base_post.html:37
+#: .\Post\templates\Post\base_post.html:48
 msgid "Следующая статья"
 msgstr "Next article"
 
-#: .\Post\templates\Post\base_post.html:48
+#: .\Post\templates\Post\base_post.html:59
 msgid "Предыдущая статья"
 msgstr "Previous article"
 
@@ -111,19 +111,19 @@ msgstr "Previous article"
 msgid "Инструмент"
 msgstr "Tool"
 
-#: .\Post\templates\Post\base_tool.html:102
+#: .\Post\templates\Post\base_tool.html:107
 msgid "Медиа файлы"
 msgstr "Media files"
 
-#: .\Post\templates\Post\base_tool.html:118
+#: .\Post\templates\Post\base_tool.html:123
 msgid "Рабочие заметки об инструменте"
 msgstr "A notes about this tool, devnotes"
 
-#: .\Post\templates\Post\base_tool.html:127
+#: .\Post\templates\Post\base_tool.html:132
 msgid "Больше ..."
 msgstr "More ..."
 
-#: .\Post\templates\Post\base_tool.html:137
+#: .\Post\templates\Post\base_tool.html:142
 msgid "Похожие инструменты"
 msgstr "Similar tools"
 
