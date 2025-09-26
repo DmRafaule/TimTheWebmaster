@@ -1,3 +1,3 @@
 {% if page|divisibleby:ad_manager_show_on_page_each %}
-	{% include 'AdManager/admanager_element.html' with ad_block=ad_block_Banner ad_manager=ad_manager %}
+	{% include 'AdManager/admanager_element.html' with ad_block=ad_block_Banner ad_manager=ad_manager page=page %}
 {% endif %}
