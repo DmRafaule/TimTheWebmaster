@@ -76,7 +76,6 @@ class AffiliateMiddleware:
                 for aff_id in affiliates_context.values_list('affiliate'):
                     aff_ids.append(aff_id[0])
                 affiliates = AffiliateLink.objects.filter_by_lang().filter(id__in=aff_ids)
-            print(affiliates)
             response.context_data.update({'affiliates_partners': affiliates[:2]})
 
 

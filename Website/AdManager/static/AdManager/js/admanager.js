@@ -46,7 +46,6 @@ export function adLoad() {
 		  for (const mutation of mutationList) {
 			mutation.addedNodes.forEach(node => { 
 				if (node.nodeType === 1){
-					console.log(node)
 					if (node.classList.contains("ad_block") || node.querySelector('.ad_block')){
 						document.dispatchEvent(onAdUploaded)
 						var ad_block = node.querySelector('.ad_block_element')

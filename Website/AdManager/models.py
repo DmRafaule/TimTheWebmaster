@@ -52,7 +52,6 @@ class CurrentAdNetwork(models.Model):
         # Helper method to get the single CurrentSelection instance
         try:
             obj = cls.objects.all()[0] # Use a fixed PK for single instance
-            print(obj)
             return obj
         except:
             return None 
