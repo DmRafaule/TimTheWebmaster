@@ -12,6 +12,9 @@
 
 <div id="link-thief-results">
     {% if links %}
+        {% if isAdManagerMiddlewareConnected %}
+            {% include 'AdManager/admanager_element.html' with adblock_id=adblock_id_1 page=222 %}
+        {% endif %}
         <div class="paragraph flex flex-row gap-[10px] items-center">
             <h2>{% trans 'Результаты' %}</h2>
             <a href="{{file_path}}" download><img class="icon dynamic_image bordered_button button download_button" src="{% static 'LinkThief/images/download.svg' %}"></a>

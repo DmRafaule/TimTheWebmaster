@@ -49,11 +49,16 @@
 						<h3>ImageThief-{% trans "Результаты" %}</h3>
 					</legend>
 					<!-- Gonna showing results links and files-->
-					<div id="imagethief-results" class="flex flex-row justify-start m-1">
-						<div class="ref_downloadables flex flex-row gap-2">
-							<img class="icon" width="32px" height="32px" src="{% static 'zip.svg'%}" alt="{% trans 'Иконка zip файла' %}">
-							<a id="imagethief-results-images" href="#">{% trans "Картинки" %}</a>
+					<div id="imagethief-results" class="flex flex-row justify-between items-center gap-2 m-1">
+						<div>
+							<div class="ref_downloadables flex flex-row gap-2">
+								<img class="icon" width="32px" height="32px" src="{% static 'zip.svg'%}" alt="{% trans 'Иконка zip файла' %}">
+								<a id="imagethief-results-images" href="#">{% trans "Картинки" %}</a>
+							</div>
 						</div>
+						{% if isAdManagerMiddlewareConnected %}
+							{% include 'AdManager/admanager_element.html' with adblock_id=adblock_id_1 page=222 %}
+						{% endif %}
 					</div>
 				</fieldset>
 				<fieldset  id="container_imagethief-logs" class="hidden">
