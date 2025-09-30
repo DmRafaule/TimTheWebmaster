@@ -13,9 +13,9 @@
         </div>
     </legend>
     {% if page %}
-    <div class="ad_block_element" id="ad_block_{{adblock_id}}_{{page}}" data-ad-id="{{adblock_id}}" data-ad-page="{{page}}"></div>
+    <div class="ad_block_element" id="ad_block_{{adblock.adblock_id}}_{{page}}" data-ad-id="{{adblock.adblock_id}}" data-ad-type="{{adblock.adblock_type}}" data-ad-page="{{page}}"></div>
     {% else %}
-    <div class="ad_block_element" id="ad_block_{{adblock_id}}" data-ad-id="{{adblock_id}}"></div>
+    <div class="ad_block_element" id="ad_block_{{adblock.adblock_id}}" data-ad-id="{{adblock.adblock_id}}" data-ad-type="{{adblock.adblock_type}}"></div>
     {% endif %}
 </fieldset>
 {% endif %}

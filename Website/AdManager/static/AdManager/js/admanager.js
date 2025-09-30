@@ -1,7 +1,7 @@
 export function adLoad() {
 	let onAdUploaded = new CustomEvent('onAdUploaded')
 
-	function pushAd(ad_block_id, render_to_id){
+	function pushAd(ad_block_id, render_to_id, type){
 		if (render_to_id){
 			render_to_id = `_${render_to_id}`
 		}else{
@@ -10,7 +10,8 @@ export function adLoad() {
 		window.yaContextCb.push(() => {
 			Ya.Context.AdvManager.render({
 				"blockId": ad_block_id,
-				"renderTo": `ad_block_${ad_block_id}${render_to_id}`
+				"renderTo": `ad_block_${ad_block_id}${render_to_id}`,
+				"type": type
 			})
 		})
 	}
@@ -18,7 +19,8 @@ export function adLoad() {
 	function onNodeAppear(ad_block){
 		var ad_block_id = ad_block.dataset.adId
 		var ad_block_page_id = ad_block.dataset.adPage
-		pushAd(ad_block_id,ad_block_page_id)
+		var ad_block_type = ad_block.dataset.adType
+		pushAd(ad_block_id,ad_block_page_id, ad_block_type)
 	}
 
 	function WaitAdToUpload(adBlock){

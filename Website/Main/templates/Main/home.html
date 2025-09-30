@@ -48,7 +48,7 @@
 											<img width="300px" class="max-w-2xs" src="{% get_media_prefix %}{{internal_tools_preview}}">
 											{% include 'Post/basic--post_preview-tool.html' with posts=res.objs %}
 											{% if isAdManagerMiddlewareConnected %}
-												{% include 'AdManager/admanager_element.html' with adblock_id=adblock_id_1 page=forloop.counter%}
+												{% include 'AdManager/admanager_element.html' with adblock=adblock_1 page=forloop.counter%}
 											{% endif %}
 										</div>
 									</div>
@@ -69,7 +69,7 @@
 											<img width="300px" class="max-w-2xs" src="{% get_media_prefix %}{{internal_tools_preview}}">
 											{% include 'Post/basic--post_preview-tool.html' with posts=res.objs %}
 											{% if isAdManagerMiddlewareConnected %}
-												{% include 'AdManager/admanager_element.html' with adblock_id=adblock_id_1 page=forloop.counter %}
+												{% include 'AdManager/admanager_element.html' with adblock=adblock_1 page=forloop.counter %}
 											{% endif %}
 										</div>
 									</div>
