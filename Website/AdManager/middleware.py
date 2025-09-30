@@ -10,7 +10,7 @@ class AdManagerMiddleware:
         self.handler = None
         self.home_view = ('home',)
         self.post_view = ('article', 'tool', 'tool_main')
-        self.pagiscroll_view = ('PagiScroll/base_post_list.html', 'Post/basic--post_preview-article.html', 'Post/basic--post_preview-note.html', 'Post/basic--post_preview-tool.html', 'TextThief/text-thief-form-result.html', 'LinkThief/link-thief-form-result.html' )
+        self.pagiscroll_view = ('PagiScroll/base_post_list.html', 'Post/basic--post_preview-article.html', 'Post/basic--post_preview-note.html', 'Post/basic--post_preview-tool.html' )
 
     def __call__(self, request):
         response = self.get_response(request)

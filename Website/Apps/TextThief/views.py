@@ -95,5 +95,5 @@ def tool_main(request):
             context.update({'messages': [_('✗ Возникла ошибка при отправке формы')]})
         
         context.update({'text_thief_form': form})
-        return render(request, template_name='TextThief/text-thief-form-result.html', context=context)
+        return TemplateResponse(request, 'TextThief/text-thief-form-result.html', context=context)
 

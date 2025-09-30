@@ -159,4 +159,4 @@ def tool_main(request):
             context.update({'messages': [_('✗ Возникла ошибка при отправке формы')]})
         
         context.update({'link_thief_form': form})
-        return render(request, template_name='LinkThief/link-thief-form-result.html', context=context)
+        return TemplateResponse(request, 'LinkThief/link-thief-form-result.html', context=context)
