@@ -10,6 +10,7 @@ class AdManagerMiddleware:
         self.handler = None
         self.home_view = ('home',)
         self.post_view = ('article', 'tool', 'tool_main')
+        self.pagiscroll_view = ('PagiScroll/base_post_list.html', 'Post/basic--post_preview-article.html', 'Post/basic--post_preview-note.html', 'Post/basic--post_preview-tool.html' )
 
     def __call__(self, request):
         response = self.get_response(request)
@@ -35,6 +36,8 @@ class AdManagerMiddleware:
 
         if self.handler is not None:
             self.handler(request, response)
+        elif response.template_name in self.pagiscroll_view:
+            self.pagiscroll_handler(request, response)
 
         self.handler = None
 
@@ -45,7 +48,7 @@ class AdManagerMiddleware:
             current_ad_network = CurrentAdNetwork.get_current()
             if current_ad_network:
                 for block_pk, block_type in current_ad_network.current.adnetwork_blocks.all().values_list('pk', 'adblock_type'):
-                    response.context_data.update({f'ad_block_{block_type}': current_ad_network.current.adnetwork_blocks.get(pk=block_pk)})
+                    response.context_data.update({f'adblock_id_{block_pk}': current_ad_network.current.adnetwork_blocks.get(pk=block_pk).adblock_id})
                 response.context_data.update({'ad_loader': current_ad_network.current.adnetwork_loader_code})
                 response.context_data.update({'ad_manager': current_ad_network.current})
     
@@ -54,6 +57,17 @@ class AdManagerMiddleware:
             current_ad_network = CurrentAdNetwork.get_current()
             if current_ad_network:
                 for block_pk, block_type in current_ad_network.current.adnetwork_blocks.all().values_list('pk', 'adblock_type'):
-                    response.context_data.update({f'ad_block_{block_type}': current_ad_network.current.adnetwork_blocks.get(pk=block_pk)})
+                    response.context_data.update({f'adblock_id_{block_pk}': current_ad_network.current.adnetwork_blocks.get(pk=block_pk).adblock_id})
                 response.context_data.update({'ad_loader': current_ad_network.current.adnetwork_loader_code})
                 response.context_data.update({'ad_manager': current_ad_network.current})
+
+    # Updates  posts lists
+    def pagiscroll_handler(self, request, response):
+        if response.context_data:
+            current_ad_network = CurrentAdNetwork.get_current()
+            if current_ad_network:
+                for block_pk, block_type in current_ad_network.current.adnetwork_blocks.all().values_list('pk', 'adblock_type'):
+                    response.context_data.update({f'adblock_id_{block_pk}': current_ad_network.current.adnetwork_blocks.get(pk=block_pk).adblock_id})
+                response.context_data.update({'ad_loader': current_ad_network.current.adnetwork_loader_code})
+                response.context_data.update({'ad_manager': current_ad_network.current})
+                response.context_data.update({'ad_manager_show_on_page_each': current_ad_network.current.adnetwork_step_by})

@@ -1,7 +1,8 @@
 {% load static %}
+{% load add_with_page%}
 
 {% if ad_manager %}
-<fieldset class="ad_block ads" onload="console.log('HElllll')">
+<fieldset class="ad_block ads">
     <legend class="ad padder flex flex-row gap-2 items-center">
         <div>
             <img width="16px" height="16px" src="{% static 'AdManager/img/ads.svg' %}">
@@ -11,6 +12,10 @@
             <img class="ttw-button_action" width="16px" height="16px" src="{% get_media_prefix %}{{ ad_manager.brand_logo.file }}">
         </div>
     </legend>
-    {{ ad_block.adnetwork_block_code|safe }}
+    {% if page %}
+    <div class="ad_block_element" id="ad_block_{{adblock_id}}_{{page}}" data-ad-id="{{adblock_id}}" data-ad-page="{{page}}"></div>
+    {% else %}
+    <div class="ad_block_element" id="ad_block_{{adblock_id}}" data-ad-id="{{adblock_id}}"></div>
+    {% endif %}
 </fieldset>
 {% endif %}

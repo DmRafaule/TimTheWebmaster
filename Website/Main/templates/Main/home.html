@@ -48,7 +48,7 @@
 											<img width="300px" class="max-w-2xs" src="{% get_media_prefix %}{{internal_tools_preview}}">
 											{% include 'Post/basic--post_preview-tool.html' with posts=res.objs %}
 											{% if isAdManagerMiddlewareConnected %}
-												{% include 'AdManager/admanager_element.html' with ad_block=ad_block_Banner ad_manager=ad_manager %}
+												{% include 'AdManager/admanager_element.html' with adblock_id=adblock_id_1 page=forloop.counter%}
 											{% endif %}
 										</div>
 									</div>
@@ -68,6 +68,9 @@
 										<div class="flex flex-row p-2 flex-wrap gap-5 grow basis-2xl">
 											<img width="300px" class="max-w-2xs" src="{% get_media_prefix %}{{internal_tools_preview}}">
 											{% include 'Post/basic--post_preview-tool.html' with posts=res.objs %}
+											{% if isAdManagerMiddlewareConnected %}
+												{% include 'AdManager/admanager_element.html' with adblock_id=adblock_id_1 page=forloop.counter %}
+											{% endif %}
 										</div>
 									</div>
 									<div class="flex justify-end">
