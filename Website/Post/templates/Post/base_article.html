@@ -2,12 +2,71 @@
 {% load i18n %}
 {% load static %}
 {% load markdown %}
+{% if isEngagementMiddlewareConnected %}
+	{% load getInteraction %}
+{% endif %}
 
 {% block head_post %}
 	<title>{{ post.title }}</title>
 	<meta name="description" content="{{ post.description }}">
 	<meta name="keywords" content="{{ post.meta_keywords }}" />
+	<!-- Article -->
+	<script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "author": {
+		"@type": "Person",
+		"name": "{% trans 'Тима Чудук' %}"
+	   },
+	  "abstract": "{{ post.description }}",
+	  "datePublished": "{{post.timeCreated}}",
+	  "dateModified": "{{post.timeUpdated}}",
+      "name": "{{ post.title }}"
+    	{% if isEngagementMiddlewareConnected %}
+      ,"interactionStatistic": [
+		{% with interaction=post.get_absolute_url|getInteraction %}
+			{
+			"@type": "InteractionCounter",
+			"interactionType": "https://schema.org/ViewAction",
+			"userInteractionCount": "{{interaction.views}}"
+			}
+			{% if is_likes %}
+				,{
+				"@type": "InteractionCounter",
+				"interactionType": "https://schema.org/LikeAction",
+				"userInteractionCount": "{{interaction.likes}}"
+				}
+			{% endif %}
+			{% if is_shares %}
+				,{
+				"@type": "InteractionCounter",
+				"interactionType": "https://schema.org/ShareAction",
+				"userInteractionCount": "{{interaction.shares}}"
+				}
+			{% endif %}
+			{% if is_comments %}
+				,{
+				"@type": "InteractionCounter",
+				"interactionType": "https://schema.org/CommentAction",
+				"userInteractionCount": "{{interaction.comments}}"
+				}
+			{% endif %}
+			{% if is_bookmarks %}
+				,{
+				"@type": "InteractionCounter",
+				"interactionType": "https://schema.org/BookmarkAction",
+				"userInteractionCount": "{{interaction.bookmarks}}"
+				}
+			{% endif %}
+		{% endwith %}
+      ]
+	  {% endif %}
+    }
+    </script>
+	<!-- /Article -->
 	{% if post.termins.all|length != 0 or post.questions.all|length != 0 %}
+	<!-- FAQPage -->
 	<script type="application/ld+json">
 		{
 			"@context": "https://schema.org",
@@ -80,7 +139,9 @@
 			]
 		}
 	</script>
+	<!-- /FAQPage -->
 	{% endif %}
+
 	
 {% endblock %}
 
