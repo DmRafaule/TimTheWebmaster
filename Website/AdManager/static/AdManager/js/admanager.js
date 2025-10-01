@@ -13,9 +13,11 @@ export function adLoad() {
 		var ad_block_element = document.querySelector(`#ad_block_${ad_block_id}${render_to_id}`)
 		var ad_block_marker = document.querySelector(`#ad_block_element_marker_${ad_block_id}${render_to_id}`)
 		const observer = new MutationObserver((mutationsList) => {
-			if (!ad_block_marker){
-				ad_block_element.parentElement.classList.add('ad_block_no_background')
-				observer.disconnect();
+		  	for (const mutation of mutationsList) {
+				if (!ad_block_marker){
+					ad_block_element.parentElement.classList.add('ad_block_no_background')
+					observer.disconnect();
+				}
 			}
 		});
 		window.yaContextCb.push(() => {
