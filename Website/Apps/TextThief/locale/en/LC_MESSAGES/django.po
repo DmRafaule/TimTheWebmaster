@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-09-01 18:51+0300\n"
+"POT-Creation-Date: 2025-10-01 09:56+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -89,11 +89,11 @@ msgstr ""
 "PiPI, or you can install its sources directly from here.\n"
 " "
 
-#: .\Apps\TextThief\templates\TextThief\text-thief-form-result.html:16
+#: .\Apps\TextThief\templates\TextThief\text-thief-form-result.html:19
 msgid "Результаты"
 msgstr "Results"
 
-#: .\Apps\TextThief\templates\TextThief\text-thief-form-result.html:19
+#: .\Apps\TextThief\templates\TextThief\text-thief-form-result.html:22
 msgid "Общее"
 msgstr "Common data"
 

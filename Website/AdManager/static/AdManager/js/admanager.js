@@ -2,12 +2,22 @@ export function adLoad() {
 	let onAdUploaded = new CustomEvent('onAdUploaded')
 
 	function pushAd(ad_block_id, render_to_id, type){
-		console.log(`Pushed ${ad_block_id}`)
 		if (render_to_id){
 			render_to_id = `_${render_to_id}`
 		}else{
 			render_to_id = ''
 		}
+		
+		// Если рекламма загрузилась, то она заменит блок-маркер и он не будет существовать
+		// Если это произошло добавляем соответствующие классы для блока рекламмы
+		var ad_block_element = document.querySelector(`#ad_block_${ad_block_id}${render_to_id}`)
+		var ad_block_marker = document.querySelector(`#ad_block_element_marker_${ad_block_id}${render_to_id}`)
+		const observer = new MutationObserver((mutationsList) => {
+			if (!ad_block_marker){
+				ad_block_element.parentElement.classList.add('ad_block_no_background')
+				observer.disconnect();
+			}
+		});
 		window.yaContextCb.push(() => {
 			Ya.Context.AdvManager.render({
 				"blockId": ad_block_id,
@@ -15,6 +25,14 @@ export function adLoad() {
 				"type": type
 			})
 		})
+		// Это таймер по истечению которого мы перестаём следить за блоком
+		if (ad_block_element) {
+			observer.observe(ad_block_element, { childList: true });
+			// Можно добавить таймаут на случай, если ничего не изменилось
+			setTimeout(() => {
+				observer.disconnect();
+			}, 5000);
+		}
 	}
 
 	function onNodeAppear(ad_block){

@@ -1,3 +1,4 @@
+{% load i18n %}
 {% load static %}
 {% load add_with_page%}
 
@@ -13,9 +14,17 @@
         </div>
     </legend>
     {% if page %}
-    <div class="ad_block_element" id="ad_block_{{adblock.adblock_id}}_{{page}}" data-ad-id="{{adblock.adblock_id}}" data-ad-type="{{adblock.adblock_type}}" data-ad-page="{{page}}"></div>
+    <div class="ad_block_element" id="ad_block_{{adblock.adblock_id}}_{{page}}" data-ad-id="{{adblock.adblock_id}}" data-ad-type="{{adblock.adblock_type}}" data-ad-page="{{page}}">
+        <div id="ad_block_element_marker_{{adblock.adblock_id}}_{{page}}" class="ad_block_element_marker">
+            <div>{% trans 'Здесь могла быть ваша реклама (｡･∀･)ﾉﾞ' %}</div>
+        </div>
+    </div>
     {% else %}
-    <div class="ad_block_element" id="ad_block_{{adblock.adblock_id}}" data-ad-id="{{adblock.adblock_id}}" data-ad-type="{{adblock.adblock_type}}"></div>
+    <div class="ad_block_element" id="ad_block_{{adblock.adblock_id}}" data-ad-id="{{adblock.adblock_id}}" data-ad-type="{{adblock.adblock_type}}">
+        <div id="ad_block_element_marker_{{adblock.adblock_id}}" class="ad_block_element_marker">
+            <div>{% trans 'Здесь могла быть ваша реклама (｡･∀･)ﾉﾞ' %}</div>
+        </div>
+    </div>
     {% endif %}
 </fieldset>
 {% endif %}

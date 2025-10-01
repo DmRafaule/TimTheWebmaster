@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-09-01 18:51+0300\n"
+"POT-Creation-Date: 2025-10-01 09:56+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -31,86 +31,86 @@ msgstr "Status"
 msgid "Результаты"
 msgstr "Results"
 
-#: .\Apps\ImageThief\templates\ImageThief\image_thief.html:54
+#: .\Apps\ImageThief\templates\ImageThief\image_thief.html:55
 msgid "Иконка zip файла"
 msgstr "Zip icon"
 
-#: .\Apps\ImageThief\templates\ImageThief\image_thief.html:55
+#: .\Apps\ImageThief\templates\ImageThief\image_thief.html:56
 msgid "Картинки"
 msgstr "Images"
 
-#: .\Apps\ImageThief\templates\ImageThief\image_thief.html:61
+#: .\Apps\ImageThief\templates\ImageThief\image_thief.html:66
 msgid "Логи"
 msgstr "Logs"
 
-#: .\Apps\ImageThief\templates\ImageThief\image_thief.html:78
+#: .\Apps\ImageThief\templates\ImageThief\image_thief.html:83
 msgid "Показать работу скрипта"
 msgstr "Verbose"
 
-#: .\Apps\ImageThief\templates\ImageThief\image_thief.html:88
+#: .\Apps\ImageThief\templates\ImageThief\image_thief.html:93
 msgid "Динамический"
 msgstr "Dynamic"
 
-#: .\Apps\ImageThief\templates\ImageThief\image_thief.html:89
+#: .\Apps\ImageThief\templates\ImageThief\image_thief.html:94
 msgid "Парсит сайт которые используют JS для загрузки изображений."
 msgstr "Scrape an images from dynamic websites"
 
-#: .\Apps\ImageThief\templates\ImageThief\image_thief.html:101
+#: .\Apps\ImageThief\templates\ImageThief\image_thief.html:106
 msgid "Прокси"
 msgstr "Proxy"
 
-#: .\Apps\ImageThief\templates\ImageThief\image_thief.html:105
+#: .\Apps\ImageThief\templates\ImageThief\image_thief.html:110
 msgid "Выбрать файл с прокси:"
 msgstr "Choose a proxy file:"
 
-#: .\Apps\ImageThief\templates\ImageThief\image_thief.html:109
+#: .\Apps\ImageThief\templates\ImageThief\image_thief.html:114
 msgid "Пример файла ты можешь посмотреть внизу"
 msgstr "An example of the file you can get below"
 
-#: .\Apps\ImageThief\templates\ImageThief\image_thief.html:113
+#: .\Apps\ImageThief\templates\ImageThief\image_thief.html:118
 msgid "Или сгенерировать для целевого сайта за меня:"
 msgstr "Or auto-generate for a target website for you:"
 
-#: .\Apps\ImageThief\templates\ImageThief\image_thief.html:117
+#: .\Apps\ImageThief\templates\ImageThief\image_thief.html:122
 msgid ""
 "Инструмент по подбору прокси для конкретного сайта ещё не перенесён на сайт."
 msgstr ""
 "The tool for selecting proxies for a specific site has not yet been "
 "transferred to the site."
 
-#: .\Apps\ImageThief\templates\ImageThief\image_thief.html:121
+#: .\Apps\ImageThief\templates\ImageThief\image_thief.html:126
 msgid "Или указать самому:"
 msgstr "Or type by hand:"
 
-#: .\Apps\ImageThief\templates\ImageThief\image_thief.html:125
+#: .\Apps\ImageThief\templates\ImageThief\image_thief.html:130
 msgid "Пример: http:123.22.44.1:801"
 msgstr "An example: http:123.22.44.1:801"
 
-#: .\Apps\ImageThief\templates\ImageThief\image_thief.html:132
+#: .\Apps\ImageThief\templates\ImageThief\image_thief.html:137
 msgid "Мод"
 msgstr "Mode"
 
-#: .\Apps\ImageThief\templates\ImageThief\image_thief.html:137
+#: .\Apps\ImageThief\templates\ImageThief\image_thief.html:142
 msgid "Одну, конкретную страницу"
 msgstr "Single page"
 
-#: .\Apps\ImageThief\templates\ImageThief\image_thief.html:141
+#: .\Apps\ImageThief\templates\ImageThief\image_thief.html:146
 msgid "Несколько страниц, ссылки узазать через запятую"
 msgstr "List of pages, separate links using commas "
 
-#: .\Apps\ImageThief\templates\ImageThief\image_thief.html:145
+#: .\Apps\ImageThief\templates\ImageThief\image_thief.html:150
 msgid "Спарсить целый сайт."
 msgstr "Scrape a whole website"
 
-#: .\Apps\ImageThief\templates\ImageThief\image_thief.html:151
+#: .\Apps\ImageThief\templates\ImageThief\image_thief.html:156
 msgid "Об парсере изображений"
 msgstr "About image parser"
 
-#: .\Apps\ImageThief\templates\ImageThief\image_thief.html:152
+#: .\Apps\ImageThief\templates\ImageThief\image_thief.html:157
 msgid "Общие сведения"
 msgstr "Common"
 
-#: .\Apps\ImageThief\templates\ImageThief\image_thief.html:154
+#: .\Apps\ImageThief\templates\ImageThief\image_thief.html:159
 msgid ""
 "\n"
 "\t\t\tЭто вебпарсер, который ищет и скачивает все изображения с сайта. Может "
@@ -134,7 +134,7 @@ msgstr ""
 "address and mode and click <b>Start</b> buttons.\n"
 "\t\t\t"
 
-#: .\Apps\ImageThief\templates\ImageThief\image_thief.html:159
+#: .\Apps\ImageThief\templates\ImageThief\image_thief.html:164
 msgid ""
 "\n"
 "\t\t\tПарсинг реализован в однопоточном режиме со свопингом пользовательских "
@@ -151,7 +151,7 @@ msgstr ""
 "user-agents.\n"
 "\t\t\t"
 
-#: .\Apps\ImageThief\templates\ImageThief\image_thief.html:164
+#: .\Apps\ImageThief\templates\ImageThief\image_thief.html:169
 msgid ""
 "\n"
 "\t\t\t<i>Для экономии места на сервере, каждые сутки в 0:00 по Москве я "
@@ -163,7 +163,7 @@ msgstr ""
 "all collected parsing results.</i>\n"
 "\t\t\t"
 
-#: .\Apps\ImageThief\templates\ImageThief\image_thief.html:169
+#: .\Apps\ImageThief\templates\ImageThief\image_thief.html:174
 msgid ""
 "\n"
 "\t\t\tДанный инструмент разработан в 2х вариациях. Как django приложение и "
@@ -179,23 +179,23 @@ msgstr ""
 "mind. Here is a link to \n"
 "\t\t\t"
 
-#: .\Apps\ImageThief\templates\ImageThief\image_thief.html:172
+#: .\Apps\ImageThief\templates\ImageThief\image_thief.html:177
 msgid "Django приложение"
 msgstr "Django app"
 
-#: .\Apps\ImageThief\templates\ImageThief\image_thief.html:172
+#: .\Apps\ImageThief\templates\ImageThief\image_thief.html:177
 msgid "А вот ссылка на"
 msgstr "Here it is a link to"
 
-#: .\Apps\ImageThief\templates\ImageThief\image_thief.html:172
+#: .\Apps\ImageThief\templates\ImageThief\image_thief.html:177
 msgid "скрипт"
 msgstr "script"
 
-#: .\Apps\ImageThief\templates\ImageThief\image_thief.html:174
+#: .\Apps\ImageThief\templates\ImageThief\image_thief.html:179
 msgid "Про прокси"
 msgstr "About proxies"
 
-#: .\Apps\ImageThief\templates\ImageThief\image_thief.html:176
+#: .\Apps\ImageThief\templates\ImageThief\image_thief.html:181
 msgid ""
 "\n"
 "\t\t\tОн поддерживает прокси. Пока только общедоступные, но всё же.\n"
@@ -205,11 +205,11 @@ msgstr ""
 "\t\t\tThis tool supports proxies. Only public ones for now, but still.\n"
 "\t\t\t"
 
-#: .\Apps\ImageThief\templates\ImageThief\image_thief.html:179
+#: .\Apps\ImageThief\templates\ImageThief\image_thief.html:184
 msgid "Вот пример файла с прокси."
 msgstr "Here is an example of a file with proxies "
 
-#: .\Apps\ImageThief\templates\ImageThief\image_thief.html:180
+#: .\Apps\ImageThief\templates\ImageThief\image_thief.html:185
 msgid ""
 "\n"
 "\t\t\tМожет работать с такими прокси протоколами как http, https, socks4 "
@@ -225,11 +225,11 @@ msgstr ""
 "is not available.\n"
 "\t\t\t"
 
-#: .\Apps\ImageThief\templates\ImageThief\image_thief.html:184
+#: .\Apps\ImageThief\templates\ImageThief\image_thief.html:189
 msgid "Ограничения и дисклеймер"
 msgstr "Limitations and disclaimer"
 
-#: .\Apps\ImageThief\templates\ImageThief\image_thief.html:186
+#: .\Apps\ImageThief\templates\ImageThief\image_thief.html:191
 msgid ""
 "\n"
 "\t\t\tУ данного инструмента существует несколько ограничений по парсингу. "
@@ -248,7 +248,7 @@ msgstr ""
 "<b>bookmarks</b>, or share a link to it. Thank you.\n"
 "\t\t\t"
 
-#: .\Apps\ImageThief\templates\ImageThief\image_thief.html:191
+#: .\Apps\ImageThief\templates\ImageThief\image_thief.html:196
 msgid ""
 "\n"
 "\t\t\tТак же автор данного инструмента не несёт никакой ответственности за "
