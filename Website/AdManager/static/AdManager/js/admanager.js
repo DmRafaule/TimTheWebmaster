@@ -13,11 +13,11 @@ export function adLoad() {
 				"renderTo": `ad_block_${ad_block_id}${render_to_id}`,
 				"type": type,
 				"onRender": (data) => { 
-					var ad_marker = document.querySelector(`ad_block_element_marker_${ad_block_id}${render_to_id}`)
+					var ad_marker = document.querySelector(`#ad_block_element_marker_${ad_block_id}${render_to_id}`)
 					if (ad_marker){
 						ad_marker.remove()
 					}
-					var ad_block = document.querySelector(`ad_block_${ad_block_id}${render_to_id}`).parentElement
+					var ad_block = document.querySelector(`#ad_block_${ad_block_id}${render_to_id}`).parentElement
 					if (ad_block){
 						ad_block.classList.add('ad_block_no_background')
 					}
