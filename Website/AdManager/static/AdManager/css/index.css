@@ -11,10 +11,10 @@
 .ad_block_element{
     height: 100%;
     min-height: 300px;
+    position: relative;
 }
 .ad_block_element_marker{
     position: absolute;
-    left: 25%;
     height: 300px;
     display: flex;
     justify-content: center;
