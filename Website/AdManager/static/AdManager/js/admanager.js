@@ -27,7 +27,7 @@ export function adLoad() {
 		})
 		// Это таймер по истечению которого мы перестаём следить за блоком
 		if (ad_block_element) {
-			observer.observe(ad_block_element, { childList: true });
+			observer.observe(ad_block_element, { childList: true, subtree: true });
 			// Можно добавить таймаут на случай, если ничего не изменилось
 			setTimeout(() => {
 				observer.disconnect();
