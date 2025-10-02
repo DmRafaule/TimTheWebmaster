@@ -1,0 +1,5 @@
+{% if page %}
+	{% if page|divisibleby:ad_manager_show_on_page_each %}
+		{% include 'YandexAdManager/admanager_element.html' with  unificator=page adblock=adlocation.adblock %}
+	{% endif %}
+{% endif %}

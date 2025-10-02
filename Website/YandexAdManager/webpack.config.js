@@ -6,9 +6,9 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = [
   {
-    entry: "./static/AdManager/js/index.js",
+    entry: "./static/YandexAdManager/js/index.js",
     output: {
-      path: path.resolve(__dirname, "./static/AdManager/js"),
+      path: path.resolve(__dirname, "./static/YandexAdManager/js"),
       filename: "index.min.js",
     },
     module: {
@@ -35,9 +35,9 @@ module.exports = [
     ],
   },
   {
-    entry: "./static/AdManager/css/index.css",
+    entry: "./static/YandexAdManager/css/index.css",
     output: {
-      path: path.resolve(__dirname, "./static/AdManager/css"),
+      path: path.resolve(__dirname, "./static/YandexAdManager/css"),
     },
     module: {
       rules: [

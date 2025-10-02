@@ -28,7 +28,7 @@ export function adLoad() {
 
 	function onNodeAppear(ad_block){
 		var ad_block_id = ad_block.dataset.adId
-		var ad_block_page_id = ad_block.dataset.adPage
+		var ad_block_page_id = ad_block.dataset.adUnificator
 		var ad_block_type = ad_block.dataset.adType
 		pushAd(ad_block_id,ad_block_page_id, ad_block_type)
 	}

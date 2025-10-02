@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-10-01 09:56+0300\n"
+"POT-Creation-Date: 2025-10-02 07:12+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -70,75 +70,75 @@ msgstr "How to crawl a website"
 msgid "Как сохранить результат"
 msgstr "How to save the result"
 
-#: .\Apps\LinkThief\templates\LinkThief\link-thief-form-result.html:19
+#: .\Apps\LinkThief\templates\LinkThief\link-thief-form-result.html:23
 msgid "Результаты"
 msgstr "Results"
 
-#: .\Apps\LinkThief\templates\LinkThief\link-thief-form-result.html:22
+#: .\Apps\LinkThief\templates\LinkThief\link-thief-form-result.html:26
 msgid "Общее"
 msgstr "Common"
 
-#: .\Apps\LinkThief\templates\LinkThief\link-thief-form-result.html:28
+#: .\Apps\LinkThief\templates\LinkThief\link-thief-form-result.html:32
 msgid "Всего ссылок:"
 msgstr "Total links:"
 
-#: .\Apps\LinkThief\templates\LinkThief\link-thief-form-result.html:33
+#: .\Apps\LinkThief\templates\LinkThief\link-thief-form-result.html:37
 msgid "Всего внутренних ссылок:"
 msgstr "The total of internal links:"
 
-#: .\Apps\LinkThief\templates\LinkThief\link-thief-form-result.html:38
+#: .\Apps\LinkThief\templates\LinkThief\link-thief-form-result.html:42
 msgid "Всего внешних ссылок:"
 msgstr "The total of external links:"
 
-#: .\Apps\LinkThief\templates\LinkThief\link-thief-form-result.html:43
+#: .\Apps\LinkThief\templates\LinkThief\link-thief-form-result.html:47
 msgid "Всего проходимых краулером ссылок:"
 msgstr "The total of crawlable links"
 
-#: .\Apps\LinkThief\templates\LinkThief\link-thief-form-result.html:48
+#: .\Apps\LinkThief\templates\LinkThief\link-thief-form-result.html:52
 msgid "Всего непроходимых краулером ссылок:"
 msgstr "The total of not so crawlable links"
 
-#: .\Apps\LinkThief\templates\LinkThief\link-thief-form-result.html:53
+#: .\Apps\LinkThief\templates\LinkThief\link-thief-form-result.html:57
 msgid "Всего ссылок с анкором:"
 msgstr "The total of links with an anchor text"
 
-#: .\Apps\LinkThief\templates\LinkThief\link-thief-form-result.html:58
+#: .\Apps\LinkThief\templates\LinkThief\link-thief-form-result.html:62
 msgid "Всего ссылок без анкора:"
 msgstr "The total of links without an anchor text"
 
-#: .\Apps\LinkThief\templates\LinkThief\link-thief-form-result.html:69
+#: .\Apps\LinkThief\templates\LinkThief\link-thief-form-result.html:73
 msgid "Ссылки"
 msgstr "Links"
 
-#: .\Apps\LinkThief\templates\LinkThief\link-thief-form-result.html:73
+#: .\Apps\LinkThief\templates\LinkThief\link-thief-form-result.html:77
 msgid "Ссылка"
 msgstr "Link"
 
-#: .\Apps\LinkThief\templates\LinkThief\link-thief-form-result.html:74
+#: .\Apps\LinkThief\templates\LinkThief\link-thief-form-result.html:78
 msgid "Анкор"
 msgstr "Anchor"
 
-#: .\Apps\LinkThief\templates\LinkThief\link-thief-form-result.html:75
+#: .\Apps\LinkThief\templates\LinkThief\link-thief-form-result.html:79
 msgid "Тип ссылки"
 msgstr "Type of link"
 
-#: .\Apps\LinkThief\templates\LinkThief\link-thief-form-result.html:76
+#: .\Apps\LinkThief\templates\LinkThief\link-thief-form-result.html:80
 msgid "Проходима краулером"
 msgstr "Crawlable"
 
-#: .\Apps\LinkThief\templates\LinkThief\link-thief-form-result.html:85
+#: .\Apps\LinkThief\templates\LinkThief\link-thief-form-result.html:89
 msgid "Внутренняя ссылка"
 msgstr "Internal link"
 
-#: .\Apps\LinkThief\templates\LinkThief\link-thief-form-result.html:87
+#: .\Apps\LinkThief\templates\LinkThief\link-thief-form-result.html:91
 msgid "Внешняя ссылка"
 msgstr "External link"
 
-#: .\Apps\LinkThief\templates\LinkThief\link-thief-form-result.html:90
+#: .\Apps\LinkThief\templates\LinkThief\link-thief-form-result.html:94
 msgid "Да"
 msgstr "Yes"
 
-#: .\Apps\LinkThief\templates\LinkThief\link-thief-form-result.html:92
+#: .\Apps\LinkThief\templates\LinkThief\link-thief-form-result.html:96
 msgid "Нет"
 msgstr "No"
 

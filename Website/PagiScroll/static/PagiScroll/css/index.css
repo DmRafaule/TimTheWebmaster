@@ -1,6 +1,7 @@
 @import "../../../../Main/static/Components/Containers/Dropdown/dropdown.css";
 @import "../../../../Main/static/Components/Blocks/Paginator/paginator.css";
 @import "../../../../Main/static/Components/Blocks/tag.css";
+@import "../../../../Main/static/Components/Blocks/image.css";
 @import "../../../../Main/static/Components/Buttons/Download/button_download.css";
 @import "tailwindcss";
 @tailwind utilities;

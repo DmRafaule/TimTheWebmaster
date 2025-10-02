@@ -32,8 +32,12 @@
 </div>
 {% endfor %}
 
-{% if isAdManagerMiddlewareConnected %}
-	{% include 'AdManager/admanager_element_in_pagination.html' with page=page  adblock=adblock_2 %}
+{% if isYandexAdManagerMiddlewareConnected %}
+	{% for adlocation in adlocations %}
+		{% if adlocation.adlocation_name == "ON_PAGISCROLL_NOTES_BETWEEN_PAGES" %}
+			{% include 'YandexAdManager/admanager_element_in_pagination.html' with page=page  adblock=adlocation.adblock %}
+		{% endif %}
+	{% endfor %}
 {% endif %}
 
 {% if page <= num_pages %}

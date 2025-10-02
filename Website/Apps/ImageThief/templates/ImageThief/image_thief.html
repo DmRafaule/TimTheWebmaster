@@ -56,8 +56,12 @@
 								<a id="imagethief-results-images" href="#">{% trans "Картинки" %}</a>
 							</div>
 						</div>
-						{% if isAdManagerMiddlewareConnected %}
-							{% include 'AdManager/admanager_element.html' with adblock=adblock_4 page=222 %}
+						{% if isYandexAdManagerMiddlewareConnected %}
+							{% for adlocation in adlocations %}
+								{% if adlocation.adlocation_name == "IMAGE_THIEF_RESULTS" %}
+									{% include 'YandexAdManager/admanager_element.html' with adblock=adlocation.adblock unificator="imagethief" %}
+								{% endif %}
+							{% endfor %}
 						{% endif %}
 					</div>
 				</fieldset>

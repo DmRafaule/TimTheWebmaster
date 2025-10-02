@@ -61,7 +61,7 @@ MY_INSTALLED_APPS = [
     'Engagement.apps.EngagementConfig',
     'Breadcrumbs.apps.BreadcrumbsConfig',
     'Affiliate.apps.AffiliateConfig',
-    'AdManager.apps.AdmanagerConfig',
+    'YandexAdManager.apps.YandexadmanagerConfig',
     'Apps.ImageThief.apps.ImagethiefConfig',
     'Apps.RSSAggregator.apps.RssaggregatorConfig',
     'Apps.ShaderToy.apps.ShadertoyConfig',
@@ -78,7 +78,7 @@ MIDDLEWARE = [
     'Breadcrumbs.middleware.BreadcrumbsMiddleware',
     'Post.middleware.ToolMiddleware',
     'Affiliate.middleware.AffiliateMiddleware',
-    'AdManager.middleware.AdManagerMiddleware',
+    'YandexAdManager.middleware.AdManagerMiddleware',
     'Main.middleware.FrameAncestorsMiddleware',
     # END Custom Middlewares
     'django.middleware.security.SecurityMiddleware',

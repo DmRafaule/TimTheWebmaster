@@ -7,8 +7,8 @@
 	<title>{% trans "Тим, вебмастер" %}</title>
 	<meta name="description" content="{% trans "Вебмастер Тим, он занимается разработкой сайтов на django, написанием тг ботов, скриптов и парсеров, а также выполняет заказы по копирайту"%}">
 	<link rel="canonical" href="https://{{domain_name}}{%url 'home'%}" />
-	{% if isAdManagerMiddlewareConnected %}
-		{% include 'AdManager/admanager_header.html' %}
+	{% if isYandexAdManagerMiddlewareConnected %}
+		{% include 'YandexAdManager/admanager_header.html' %}
 	{% endif %}
 {% endblock %}
 
@@ -45,10 +45,13 @@
 								<div id="tab_body-{{forloop.counter}}" class="tab_element  tab_element__active">
 									<div class="flex flex-row items-start flex-wrap gap-5">
 										<div class="flex flex-row flex-wrap gap-5 grow basis-2xl p-2">
-											<img width="300px" class="max-w-2xs" src="{% get_media_prefix %}{{internal_tools_preview}}">
 											{% include 'Post/basic--post_preview-tool.html' with posts=res.objs %}
-											{% if isAdManagerMiddlewareConnected %}
-												{% include 'AdManager/admanager_element.html' with adblock=adblock_1 page=forloop.counter%}
+											{% if isYandexAdManagerMiddlewareConnected %}
+												{% for adlocation in adlocations %}
+													{% if adlocation.adlocation_name == "HOME_FIRST_VISIBLE" %}
+														{% include 'YandexAdManager/admanager_element.html' with adblock=adlocation.adblock unificator=forloop.counter%}
+													{% endif %}
+												{% endfor %}
 											{% endif %}
 										</div>
 									</div>
@@ -66,10 +69,13 @@
 								<div id="tab_body-{{forloop.counter}}" class="tab_element">
 									<div class="flex flex-row items-start flex-wrap gap-5">
 										<div class="flex flex-row p-2 flex-wrap gap-5 grow basis-2xl">
-											<img width="300px" class="max-w-2xs" src="{% get_media_prefix %}{{internal_tools_preview}}">
 											{% include 'Post/basic--post_preview-tool.html' with posts=res.objs %}
-											{% if isAdManagerMiddlewareConnected %}
-												{% include 'AdManager/admanager_element.html' with adblock=adblock_1 page=forloop.counter %}
+											{% if isYandexAdManagerMiddlewareConnected %}
+												{% for adlocation in adlocations %}
+													{% if adlocation.adlocation_name == "HOME_SECOND_VISIBLE" %}
+														{% include 'YandexAdManager/admanager_element.html' with adblock=adlocation.adblock unificator=forloop.counter %}
+													{% endif %}
+												{% endfor %}
 											{% endif %}
 										</div>
 									</div>
@@ -113,7 +119,6 @@
 							<div id="tab_body-1" class="tab_element tab_element__active">
 								<div class="flex flex-row items-start flex-wrap gap-5 " >
 									<div class="flex flex-row p-2 flex-wrap gap-5 grow basis-2xl">
-										<img width="300px" class="max-w-2xs" src="{% get_media_prefix %}{{articles_preview}}">
 										{% include 'Post/basic--post_preview-article.html' with posts=most_popular_article_posts %}
 									</div>
 								</div>
@@ -131,7 +136,6 @@
 								<div id="tab_body-{{forloop.counter|add:1}}" class="tab_element">
 									<div class="flex flex-row items-start flex-wrap gap-5">
 										<div class="flex flex-row p-2 flex-wrap gap-5 grow basis-2xl">
-											<img width="300px" class="max-w-2xs" src="{% get_media_prefix %}{{articles_preview}}">
 											{% include 'Post/basic--post_preview-article.html' with posts=oth.objs %}
 										</div>
 									</div>
@@ -160,8 +164,8 @@
 						</div>
 						<hr>
 						<div class="flex flex-col gap-5 grow shrink-0 basis-1/2">
-							<div>
-								<img class="max-w-2xs" src="{% get_media_prefix %}{{notes_preview}}">
+							<div class="flex items-center justify-center">
+								<img width="300px" class="max-w-2xs" src="{% get_media_prefix %}{{internal_tools_preview}}">
 							</div>
 							{% include 'Post/basic--post_preview-note.html' with posts=latest_notes_posts %}
 						</div>
@@ -211,8 +215,8 @@
 	{% if isAffiliateLinkMiddlewareConnected %}
 		{% include 'Affiliate/affiliate_styles.html' %}
 	{% endif %}
-	{% if isAdManagerMiddlewareConnected %}
-		{% include 'AdManager/admanager_styles.html' %}
+	{% if isYandexAdManagerMiddlewareConnected %}
+		{% include 'YandexAdManager/admanager_styles.html' %}
 	{% endif %}
 {% endblock %}
 
@@ -224,7 +228,7 @@
 	{% if isAffiliateLinkMiddlewareConnected %}
 		{% include 'Affiliate/affiliate_scripts.html' %}
 	{% endif %}
-	{% if isAdManagerMiddlewareConnected %}
-		{% include 'AdManager/admanager_scripts.html' %}
+	{% if isYandexAdManagerMiddlewareConnected %}
+		{% include 'YandexAdManager/admanager_scripts.html' %}
 	{% endif %}
 {% endblock %}

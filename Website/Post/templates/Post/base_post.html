@@ -5,8 +5,8 @@
 {% block head %}
 	<link rel="canonical" href="https://{{domain_name}}{{ post.get_absolute_url }}" />
 
-	{% if isAdManagerMiddlewareConnected %}
-		{% include 'AdManager/admanager_header.html' %}
+	{% if isYandexAdManagerMiddlewareConnected %}
+		{% include 'YandexAdManager/admanager_header.html' %}
 	{% endif %}
 
 	{% block head_post %}
@@ -35,8 +35,12 @@
 	{% block content_post %}
 	{% endblock %}
 
-	{% if isAdManagerMiddlewareConnected %}
-		{% include 'AdManager/admanager_element.html' with adblock=adblock_3 page=2 %}
+	{% if isYandexAdManagerMiddlewareConnected %}
+		{% for adlocation in adlocations %}
+			{% if adlocation.adlocation_name == "ON_ARTICLE_BOTTOM" %}
+				{% include 'YandexAdManager/admanager_element.html' with adblock=adlocation.adblock unificator="on_article_bottom" %}
+			{% endif %}
+		{% endfor %}
 	{% endif %}
 	
 	<div class="flex flex-row flex-wrap justify-between gap-3 m-1">
@@ -107,8 +111,8 @@
 		{% include 'Affiliate/affiliate_styles.html' %}
 	{% endif %}
 
-	{% if isAdManagerMiddlewareConnected %}
-		{% include 'AdManager/admanager_styles.html' %}
+	{% if isYandexAdManagerMiddlewareConnected %}
+		{% include 'YandexAdManager/admanager_styles.html' %}
 	{% endif %}
 
 	{% block styles_post %}
@@ -132,8 +136,8 @@
 		{% include 'Affiliate/affiliate_scripts.html' %}
 	{% endif %}
 
-	{% if isAdManagerMiddlewareConnected %}
-		{% include 'AdManager/admanager_scripts.html' %}
+	{% if isYandexAdManagerMiddlewareConnected %}
+		{% include 'YandexAdManager/admanager_scripts.html' %}
 	{% endif %}
 	
 	{% block scripts_post %}

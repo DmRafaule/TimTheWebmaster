@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-10-01 09:56+0300\n"
+"POT-Creation-Date: 2025-10-02 07:12+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -455,11 +455,11 @@ msgstr ""
 "\n"
 "years old. And my site is 1 years old"
 
-#: .\Main\templates\Main\base.html:101 .\Main\templates\Main\base.html:104
-#: .\Main\templates\Main\base.html:113 .\Main\templates\Main\base.html:116
-#: .\Main\templates\Main\base.html:121 .\Main\templates\Main\base.html:124
-#: .\Main\templates\Main\base.html:133 .\Main\templates\Main\base.html:137
-#: .\Main\templates\Main\base.html:155
+#: .\Main\templates\Main\base.html:72 .\Main\templates\Main\base.html:75
+#: .\Main\templates\Main\base.html:84 .\Main\templates\Main\base.html:87
+#: .\Main\templates\Main\base.html:92 .\Main\templates\Main\base.html:95
+#: .\Main\templates\Main\base.html:104 .\Main\templates\Main\base.html:108
+#: .\Main\templates\Main\base.html:126
 #: .\Main\templates\Main\base_status_code.html:23
 #: .\Main\templates\Main\base_status_code.html:26
 #: .\Main\templates\Main\base_status_code.html:39
@@ -468,32 +468,32 @@ msgstr ""
 msgid "3 горизонтальные линии, бургер"
 msgstr "3 horizontal lines, burger"
 
-#: .\Main\templates\Main\base.html:144
+#: .\Main\templates\Main\base.html:115
 #: .\Main\templates\Main\base_status_code.html:50
 msgid "Главная иконка сайта"
 msgstr "Main icon of the website"
 
-#: .\Main\templates\Main\base.html:159
+#: .\Main\templates\Main\base.html:130
 #: .\Main\templates\Main\base_status_code.html:65
 msgid "Удалить все"
 msgstr "Remove all"
 
-#: .\Main\templates\Main\base.html:175
+#: .\Main\templates\Main\base.html:146
 #: .\Main\templates\Main\base_status_code.html:77
 msgid "Домашняя"
 msgstr "Home"
 
-#: .\Main\templates\Main\base.html:176 .\Main\templates\Main\base.html:315
+#: .\Main\templates\Main\base.html:147 .\Main\templates\Main\base.html:286
 #: .\Main\templates\Main\base_status_code.html:78
 #: .\Main\templates\Main\base_status_code.html:113
 msgid "Об авторе"
 msgstr "About"
 
-#: .\Main\templates\Main\base.html:188
+#: .\Main\templates\Main\base.html:159
 msgid "Про куки"
 msgstr "About cookies"
 
-#: .\Main\templates\Main\base.html:193
+#: .\Main\templates\Main\base.html:164
 msgid ""
 "\n"
 "\t\t\t\tВсе куки могут быть поделены на необходимые, без которых работа "
@@ -507,7 +507,7 @@ msgstr ""
 "the operation of this site. \n"
 "\t\t\t\t"
 
-#: .\Main\templates\Main\base.html:198
+#: .\Main\templates\Main\base.html:169
 msgid ""
 "\n"
 "\t\t\t\tВот все необходимые куки, которые использует мой сайт:\n"
@@ -517,7 +517,7 @@ msgstr ""
 "\t\t\t\tHere are all the necessary cookies my site uses:\n"
 "\t\t\t\t"
 
-#: .\Main\templates\Main\base.html:203
+#: .\Main\templates\Main\base.html:174
 msgid ""
 "\n"
 "\t\t\t\t\t<li><i>Аутентификационные</i> - Есть, но они только для меня "
@@ -537,7 +537,7 @@ msgstr ""
 "li>\n"
 "\t\t\t\t"
 
-#: .\Main\templates\Main\base.html:210
+#: .\Main\templates\Main\base.html:181
 msgid ""
 "\n"
 "\t\t\t\t\tА вот все опциональные куки, которые использует мой сайт:\n"
@@ -547,7 +547,7 @@ msgstr ""
 "\t\t\t\t\tHere are all the optional cookies my site uses:\n"
 "\t\t\t\t"
 
-#: .\Main\templates\Main\base.html:215
+#: .\Main\templates\Main\base.html:186
 msgid ""
 "\n"
 "\t\t\t\t\t<li>Куки аналитики (Яндекс Метрика, Google Analitycs)</li>\n"
@@ -557,7 +557,7 @@ msgstr ""
 "\t\t\t\t\t<li>Analytics cookies (Yandex Metrica, Google Analitycs)</li>\n"
 "\t\t\t\t"
 
-#: .\Main\templates\Main\base.html:220
+#: .\Main\templates\Main\base.html:191
 msgid ""
 "\n"
 "\t\t\t\tПродолжая использовать наш сайт, Вы соглашаетесь на обработку файлов "
@@ -569,11 +569,11 @@ msgstr ""
 "files <b>cookies</b> that were listed above.\n"
 "\t\t\t\t"
 
-#: .\Main\templates\Main\base.html:232
+#: .\Main\templates\Main\base.html:203
 msgid "Про рекламу и монетизацию"
 msgstr "About advertisement and monetization"
 
-#: .\Main\templates\Main\base.html:237
+#: .\Main\templates\Main\base.html:208
 msgid ""
 "\n"
 "\t\t\t\t\tНа моём сайте присутствует реклама, используется рекламная сеть "
@@ -587,7 +587,7 @@ msgstr ""
 "\t\t\t\t\t\tAll ad blocks are marked with this icon:\n"
 "\t\t\t\t\t"
 
-#: .\Main\templates\Main\base.html:244
+#: .\Main\templates\Main\base.html:215
 msgid ""
 "\n"
 "\t\t\t\t\tТак же на моём сайте располагаются партнёрские программы, от тех "
@@ -601,7 +601,7 @@ msgstr ""
 "\t\t\t\t\tthat I personally use or have tried, and would like to recommend.\n"
 "\t\t\t\t\t"
 
-#: .\Main\templates\Main\base.html:250
+#: .\Main\templates\Main\base.html:221
 msgid ""
 "\n"
 "\t\t\t\t\tВсе партнёрские ссылки отмечены вот такой вот иконкой\n"
@@ -611,7 +611,7 @@ msgstr ""
 "\t\t\t\t\t\tAll affiliate links are marked with this icon\n"
 "\t\t\t\t\t"
 
-#: .\Main\templates\Main\base.html:256
+#: .\Main\templates\Main\base.html:227
 msgid ""
 "\n"
 "\t\t\t\t\tЯ бы хотел сделать ставку на так называемую freeminimum модель "
@@ -630,41 +630,41 @@ msgstr ""
 "methods of monetizing sites</a> in general, and my sites in particular.\n"
 "\t\t\t\t"
 
-#: .\Main\templates\Main\base.html:281
+#: .\Main\templates\Main\base.html:252
 msgid "Крестик"
 msgstr "Cross"
 
-#: .\Main\templates\Main\base.html:300
+#: .\Main\templates\Main\base.html:271
 #: .\Main\templates\Main\base_status_code.html:98
 msgid "Популярные ссылки"
 msgstr "Popular links"
 
-#: .\Main\templates\Main\base.html:311
+#: .\Main\templates\Main\base.html:282
 #: .\Main\templates\Main\base_status_code.html:109
 msgid "Другие ссылки"
 msgstr "Other links"
 
-#: .\Main\templates\Main\base.html:314
+#: .\Main\templates\Main\base.html:285
 #: .\Main\templates\Main\base_status_code.html:112
 msgid "Карта сайта"
 msgstr "Sitemap"
 
-#: .\Main\templates\Main\base.html:320
+#: .\Main\templates\Main\base.html:291
 #: .\Main\templates\Main\base_status_code.html:118
 msgid "Контакты"
 msgstr "Contacts"
 
-#: .\Main\templates\Main\base.html:326
+#: .\Main\templates\Main\base.html:297
 #: .\Main\templates\Main\base_status_code.html:124
 msgid "иконка"
 msgstr "icon"
 
-#: .\Main\templates\Main\base.html:335
+#: .\Main\templates\Main\base.html:306
 #: .\Main\templates\Main\base_status_code.html:133
 msgid "Кратко о сайте"
 msgstr "In short for guests"
 
-#: .\Main\templates\Main\base.html:338
+#: .\Main\templates\Main\base.html:309
 #: .\Main\templates\Main\base_status_code.html:136
 msgid ""
 "\n"
@@ -701,29 +701,29 @@ msgstr "Tim the Webmaster"
 msgid "Инструменты"
 msgstr "Tools"
 
-#: .\Main\templates\Main\home.html:59 .\Main\templates\Main\home.html:80
-#: .\Main\templates\Main\home.html:124 .\Main\templates\Main\home.html:142
-#: .\Main\templates\Main\home.html:173
+#: .\Main\templates\Main\home.html:62 .\Main\templates\Main\home.html:86
+#: .\Main\templates\Main\home.html:129 .\Main\templates\Main\home.html:146
+#: .\Main\templates\Main\home.html:177
 msgid "Больше ..."
 msgstr "See more ..."
 
-#: .\Main\templates\Main\home.html:92
+#: .\Main\templates\Main\home.html:98
 msgid "Партнёры"
 msgstr "Partners"
 
-#: .\Main\templates\Main\home.html:100
+#: .\Main\templates\Main\home.html:106
 msgid "Статьи"
 msgstr "Articles"
 
-#: .\Main\templates\Main\home.html:104
+#: .\Main\templates\Main\home.html:110
 msgid "Последние статьи"
 msgstr "Latest articles"
 
-#: .\Main\templates\Main\home.html:154
+#: .\Main\templates\Main\home.html:158
 msgid "Заметки"
 msgstr "Notes"
 
-#: .\Main\templates\Main\home.html:157
+#: .\Main\templates\Main\home.html:161
 msgid ""
 "\n"
 "\t\t\t\t\t\t\tЭто блок всех последних заметок, написанных мной. \n"
@@ -733,11 +733,11 @@ msgstr ""
 "\t\t\t\t\t\tHere I collect all the latest notes.\n"
 "\t\t\t\t\t\t"
 
-#: .\Main\templates\Main\home.html:183
+#: .\Main\templates\Main\home.html:187
 msgid "Комментарии"
 msgstr "Comments"
 
-#: .\Main\templates\Main\home.html:186
+#: .\Main\templates\Main\home.html:190
 msgid ""
 "\n"
 "\t\t\t\t\tТут я собираю все последние комментарии на сайте.\n"

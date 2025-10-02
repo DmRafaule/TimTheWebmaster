@@ -12,8 +12,12 @@
 
 <div id="link-thief-results">
     {% if links %}
-        {% if isAdManagerMiddlewareConnected %}
-            {% include 'AdManager/admanager_element.html' with adblock=adblock_4 page=222 %}
+        {% if isYandexAdManagerMiddlewareConnected %}
+            {% for adlocation in adlocations %}
+                {% if adlocation.adlocation_name == "LINK_THIEF_RESULTS" %}
+                    {% include 'YandexAdManager/admanager_element.html' with adblock=adlocation.adblock unificator="linkthief" %}
+                {% endif %}
+            {% endfor %}
         {% endif %}
         <div class="paragraph flex flex-row gap-[10px] items-center">
             <h2>{% trans 'Результаты' %}</h2>

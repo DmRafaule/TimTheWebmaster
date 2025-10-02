@@ -2,20 +2,20 @@
 {% load static %}
 {% load add_with_page%}
 
-{% if ad_manager %}
+{% if adblock %}
 <fieldset class="ad_block ads">
     <legend class="ad padder flex flex-row gap-2 items-center">
         <div>
-            <img width="16px" height="16px" src="{% static 'AdManager/img/ads.svg' %}">
+            <img width="16px" height="16px" src="{% static 'YandexAdManager/img/ads.svg' %}">
         </div>
         <div class="border-r-[2px] h-[16px]" ></div>
         <div>
-            <img class="ttw-button_action" width="16px" height="16px" src="{% get_media_prefix %}{{ ad_manager.brand_logo.file }}">
+            <img width="16px" height="16px" src="{% static 'YandexAdManager/img/yandex.svg' %}">
         </div>
     </legend>
-    {% if page %}
-    <div class="ad_block_element" id="ad_block_{{adblock.adblock_id}}_{{page}}" data-ad-id="{{adblock.adblock_id}}" data-ad-type="{{adblock.adblock_type}}" data-ad-page="{{page}}">
-        <div id="ad_block_element_marker_{{adblock.adblock_id}}_{{page}}" class="ad_block_element_marker">
+    {% if unificator %}
+    <div class="ad_block_element" id="ad_block_{{adblock.adblock_id}}_{{unificator}}" data-ad-id="{{adblock.adblock_id}}" data-ad-type="{{adblock.adblock_type}}" data-ad-unificator="{{unificator}}">
+        <div id="ad_block_element_marker_{{adblock.adblock_id}}_{{unificator}}" class="ad_block_element_marker">
             <div>{% trans 'Здесь могла быть ваша реклама (｡･∀･)ﾉﾞ' %}</div>
         </div>
     </div>

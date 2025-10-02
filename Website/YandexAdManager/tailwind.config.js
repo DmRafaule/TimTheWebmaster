@@ -1,8 +1,8 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
     content: [
-      "./static/AdManager/js/*.{js,jsx,ts,tsx}",
-      "./templates/AdManager/*.html",
+      "./static/YandexAdManager/js/*.{js,jsx,ts,tsx}",
+      "./templates/YandexAdManager/*.html",
     ],
     theme: {
       extend: {},

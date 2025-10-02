@@ -3,7 +3,8 @@
 
 {% for a in posts %}
 
-<div class="flex flex-col p-2 loader grow basis-1/2" data-numpages="{{num_pages}}">
+<div class="flex flex-row flex-wrap gap-2 p-2 loader grow basis-1/2" data-numpages="{{num_pages}}">
+	<img width="300px" class="image-bordered dynamic_image" src="{% static 'loading.svg' %}" data-src="{% get_media_prefix %}{{a.preview}}">
 	<div class="flex flex-col gap-1 grow basis-1/2">
 		{% if in_post %}
 		<h4 class="ref_hidden">
@@ -39,8 +40,12 @@
 
 {% endfor %}
 
-{% if isAdManagerMiddlewareConnected %}
-	{% include 'AdManager/admanager_element_in_pagination.html' with page=page  adblock=adblock_2 %}
+{% if isYandexAdManagerMiddlewareConnected %}
+	{% for adlocation in adlocations %}
+		{% if adlocation.adlocation_name == "ON_PAGISCROLL_ARTICLES_BETWEEN_PAGES" %}
+			{% include 'YandexAdManager/admanager_element_in_pagination.html' with page=page  adblock=adlocation.adblock %}
+		{% endif %}
+	{% endfor %}
 {% endif %}
 
 {% if page <= num_pages %}
