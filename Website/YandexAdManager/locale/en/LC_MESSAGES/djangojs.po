@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-10-02 21:25+0300\n"
+"POT-Creation-Date: 2025-10-02 21:26+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,8 +17,6 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-
-#: .\YandexAdManager\templates\YandexAdManager\admanager_element.html:21
-#: .\YandexAdManager\templates\YandexAdManager\admanager_element.html:27
-msgid "Здесь могла быть ваша реклама (｡･∀･)ﾉﾞ"
-msgstr "Your ad could be here (｡･∀･)ﾉﾞ"
+#: .\YandexAdManager\static\YandexAdManager\js\admanager.js:95
+msgid "Рекламная сеть Яндекса: Данный тип блока не поддерживается."
+msgstr "Yandex Advertising Network: This block type is not supported."

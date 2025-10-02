@@ -1,30 +1,46 @@
 {% load i18n %}
 {% load static %}
-{% load add_with_page%}
 
 {% if adblock %}
-<fieldset class="ad_block ads">
-    <legend class="ad padder flex flex-row gap-2 items-center">
-        <div>
-            <img width="16px" height="16px" src="{% static 'YandexAdManager/img/ads.svg' %}">
-        </div>
-        <div class="border-r-[2px] h-[16px]" ></div>
-        <div>
-            <img width="16px" height="16px" src="{% static 'YandexAdManager/img/yandex.svg' %}">
-        </div>
-    </legend>
-    {% if unificator %}
-    <div class="ad_block_element" id="ad_block_{{adblock.adblock_id}}_{{unificator}}" data-ad-id="{{adblock.adblock_id}}" data-ad-type="{{adblock.adblock_type}}" data-ad-unificator="{{unificator}}">
-        <div id="ad_block_element_marker_{{adblock.adblock_id}}_{{unificator}}" class="ad_block_element_marker">
-            <div>{% trans 'Здесь могла быть ваша реклама (｡･∀･)ﾉﾞ' %}</div>
-        </div>
-    </div>
-    {% else %}
-    <div class="ad_block_element" id="ad_block_{{adblock.adblock_id}}" data-ad-id="{{adblock.adblock_id}}" data-ad-type="{{adblock.adblock_type}}">
-        <div id="ad_block_element_marker_{{adblock.adblock_id}}" class="ad_block_element_marker">
-            <div>{% trans 'Здесь могла быть ваша реклама (｡･∀･)ﾉﾞ' %}</div>
-        </div>
-    </div>
+
+    {% if adblock.adblock_type == "banner" or adblock.adblock_type == "feed" %}
+
+        <fieldset class="ad_block ads">
+            <legend class="ad padder flex flex-row gap-2 items-center">
+                <div>
+                    <img width="16px" height="16px" src="{% static 'YandexAdManager/img/ads.svg' %}">
+                </div>
+                <div class="border-r-[2px] h-[16px]" ></div>
+                <div>
+                    <img width="16px" height="16px" src="{% static 'YandexAdManager/img/yandex.svg' %}">
+                </div>
+            </legend>
+            {% if unificator %}
+            <div class="ad_block_element" id="ad_block_{{adblock.adblock_id}}_{{unificator}}" data-ad-id="{{adblock.adblock_id}}" data-ad-type="{{adblock.adblock_type}}" data-ad-unificator="{{unificator}}">
+                <div id="ad_block_element_marker_{{adblock.adblock_id}}_{{unificator}}" class="ad_block_element_marker">
+                    <div>{% trans 'Здесь могла быть ваша реклама (｡･∀･)ﾉﾞ' %}</div>
+                </div>
+            </div>
+            {% else %}
+            <div class="ad_block_element" id="ad_block_{{adblock.adblock_id}}" data-ad-id="{{adblock.adblock_id}}" data-ad-type="{{adblock.adblock_type}}" data-ad-platform="{{adblock.adblock_platform}}">
+                <div id="ad_block_element_marker_{{adblock.adblock_id}}" class="ad_block_element_marker">
+                    <div>{% trans 'Здесь могла быть ваша реклама (｡･∀･)ﾉﾞ' %}</div>
+                </div>
+            </div>
+            {% endif %}
+        </fieldset>
+    {% comment %}
+        Прикол в том, что данные рекламные блоки (topAd, floorAd, fullscreen, inImage) не требуют контейнера
+        и хотя, контейнер всё равно создаётся он невидим
+    {% endcomment %}
+    {% elif adblock.adblock_type == "topAd" or adblock.adblock_type == "floorAd" or adblock.adblock_type == "fullscreen" or adblock.adblock_type == "inImage" %}
+
+        {% if unificator %}
+            <div class="ad_block_element hidden" id="ad_block_{{adblock.adblock_id}}_{{unificator}}" data-ad-id="{{adblock.adblock_id}}" data-ad-type="{{adblock.adblock_type}}" data-ad-unificator="{{unificator}}"></div>
+        {% else %}
+            <div class="ad_block_element hidden" id="ad_block_{{adblock.adblock_id}}" data-ad-id="{{adblock.adblock_id}}" data-ad-type="{{adblock.adblock_type}}" data-ad-platform="{{adblock.adblock_platform}}"></div>
+        {% endif %}
+
     {% endif %}
-</fieldset>
+
 {% endif %}

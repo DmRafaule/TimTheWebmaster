@@ -40,6 +40,9 @@
 			{% if adlocation.adlocation_name == "ON_ARTICLE_BOTTOM" %}
 				{% include 'YandexAdManager/admanager_element.html' with adblock=adlocation.adblock unificator="on_article_bottom" %}
 			{% endif %}
+			{% if adlocation.adlocation_name == "ON_ARTICLE_INIMAGE" %}
+				{% include 'YandexAdManager/admanager_element.html' with adblock=adlocation.adblock unificator="on_article_inimage" %}
+			{% endif %}
 		{% endfor %}
 	{% endif %}
 	

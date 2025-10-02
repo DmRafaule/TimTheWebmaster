@@ -202,6 +202,9 @@
                 {% if adlocation.adlocation_name == "ON_TOOL_BOTTOM" %}
                     {% include 'YandexAdManager/admanager_element.html' with adblock=adlocation.adblock unificator="on_tool_bottom" %}
                 {% endif %}
+                {% if adlocation.adlocation_name == "ON_TOOL_INIMAGE" %}
+                    {% include 'YandexAdManager/admanager_element.html' with adblock=adlocation.adblock unificator="on_tool_inimage" %}
+                {% endif %}
             {% endfor %}
         {% endif %}
 
