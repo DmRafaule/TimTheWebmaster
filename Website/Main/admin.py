@@ -74,7 +74,6 @@ class WebsiteAdmin(admin.ModelAdmin):
             {
                 'fields': [
                     'choosen_tools',
-                    'choosen_services',
                     'my_resources_choosen_tags_on_home',
                     'min_displayed_my_resources',
                     'other_articles_choosen_tags_on_home',
