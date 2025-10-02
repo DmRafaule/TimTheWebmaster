@@ -7,6 +7,6 @@ class FrameAncestorsMiddleware:
     def __call__(self, request):
         response = self.get_response(request)
         response['Content-Security-Policy'] = (
-            "frame-ancestors https://timthewebmaster.com https://metrika.yandex.ru https://metrika.yandex.com;"
+            "frame-ancestors timthewebmaster.com metrika.yandex.ru metrika.yandex.com metrika.yandex.by metrika.yandex.com.tr webvisor.com;"
         )
         return response
