@@ -79,6 +79,7 @@ MIDDLEWARE = [
     'Post.middleware.ToolMiddleware',
     'Affiliate.middleware.AffiliateMiddleware',
     'AdManager.middleware.AdManagerMiddleware',
+    'Main.middleware.FrameAncestorsMiddleware',
     # END Custom Middlewares
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
