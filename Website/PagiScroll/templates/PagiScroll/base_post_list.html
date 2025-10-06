@@ -98,12 +98,8 @@
 
 {% block dock %}
 
-	<div id="paginator_container" class="paginator_container flex flex-row flex-wrap w-full  flex-nowrap justify-center p-2 items-end">
-		<div class="grow shrink-0">
-		{% if isEngagementMiddlewareConnected %}
-			{% include 'Engagement/Other/engagement_dock_container.html' %}
-		{% endif %}
-		</div>
+	<div id="paginator_container" class="paginator_container flex flex-row flex-wrap-reverse w-full justify-center p-2 items-end">
+		<div class="grow shrink-0 w-fit"></div>
 		<div id="paginator" class="w-full max-w-4xl flex flex-nowrap justify-center gap-3 items-center pt-2">
 			<div id="paginator_first_page_example" data-page="" class="example_pagin_button pagin_button first_pagin_button  ttw-button_border ttw-button_action ttw-button_squared"></div>
 			<div id="paginator_dots_example" data-page=""  class="example_pagin_button pagin_dots">...</div>
@@ -119,7 +115,11 @@
 				<img width="32" height="32" class="ttw-button_squared" src="{% static "chevron.svg" %}" alt="{% trans "Шеврон"%}">
 			</div>
 		</div>
-		<div class="grow shrink-0 w-fit"></div>
+		<div class="flex grow shrink-0 justify-end">
+		{% if isEngagementMiddlewareConnected %}
+			{% include 'Engagement/Other/engagement_dock_container.html' %}
+		{% endif %}
+		</div>
 	</div>
 
 {% endblock %}

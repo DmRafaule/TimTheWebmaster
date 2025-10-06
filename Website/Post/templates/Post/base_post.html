@@ -43,6 +43,9 @@
 			{% if adlocation.adlocation_name == "ON_ARTICLE_INIMAGE" %}
 				{% include 'YandexAdManager/admanager_element.html' with adblock=adlocation.adblock unificator="on_article_inimage" %}
 			{% endif %}
+			{% if adlocation.adlocation_name == "ON_ARTICLE_FLOOR_FULL" %}
+				{% include 'YandexAdManager/admanager_element.html' with adblock=adlocation.adblock unificator="on_article_floor_full" %}
+			{% endif %}
 		{% endfor %}
 	{% endif %}
 	
@@ -85,7 +88,7 @@
 {% endblock %}
 
 {% block dock %}
-	<div class="flex flex-row w-full justify-start p-2">
+	<div class="flex flex-row w-full justify-end p-2">
 	{% if isEngagementMiddlewareConnected %}
 		{% include 'Engagement/Other/engagement_dock_container.html' %}
 	{% endif %}
