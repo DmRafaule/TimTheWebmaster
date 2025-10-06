@@ -1,0 +1,10 @@
+{% load static %}
+
+<fieldset class="ad_block ads">
+  <legend class="ad padder flex flex-row gap-2 items-center">
+    <img width="16" height="16" src="{% static 'YandexAdManager/img/ads.svg' %}">
+    <div class="border-r-[2px] h-[16px]"></div>
+    <img width="16" height="16" src="{% static 'YandexAdManager/img/yandex.svg' %}">
+  </legend>
+  {% include "YandexAdManager/admanager_element_core.html" %}
+</fieldset>

@@ -1,0 +1,29 @@
+{% load i18n %}
+
+{% if adblock %}
+
+    {% if adblock.adblock_type == "banner" or adblock.adblock_type == "feed" %}
+        {% if unificator %}
+            <div class="ad_block_element" id="ad_block_{{adblock.adblock_id}}_{{unificator}}" data-ad-id="{{adblock.adblock_id}}" data-ad-type="{{adblock.adblock_type}}" data-ad-unificator="{{unificator}}" data-ad-push-on="{{adblock.adblock_push_on}}" data-ad-placeholder-action="{{adblock.adblock_placeholder_action}}" data-ad-allowed-platform="{{adblock.adblock_platform_for_use}}">
+                <div id="ad_block_element_marker_{{adblock.adblock_id}}_{{unificator}}" class="ad_block_element_marker">
+                    <div>{% trans 'Здесь могла быть ваша реклама (｡･∀･)ﾉﾞ' %}</div>
+                </div>
+            </div>
+        {% else %}
+            <div class="ad_block_element" id="ad_block_{{adblock.adblock_id}}" data-ad-id="{{adblock.adblock_id}}" data-ad-type="{{adblock.adblock_type}}" data-ad-platform="{{adblock.adblock_platform}}" data-ad-push-on="{{adblock.adblock_push_on}}" data-ad-placeholder-action="{{adblock.adblock_placeholder_action}}" data-ad-allowed-platform="{{adblock.adblock_platform_for_use}}">
+                <div id="ad_block_element_marker_{{adblock.adblock_id}}" class="ad_block_element_marker">
+                    <div>{% trans 'Здесь могла быть ваша реклама (｡･∀･)ﾉﾞ' %}</div>
+                </div>
+            </div>
+        {% endif %}
+    {% elif adblock.adblock_type == "topAd" or adblock.adblock_type == "floorAd" or adblock.adblock_type == "fullscreen" or adblock.adblock_type == "inImage" %}
+
+        {% if unificator %}
+            <div class="ad_block_element hidden" id="ad_block_{{adblock.adblock_id}}_{{unificator}}" data-ad-id="{{adblock.adblock_id}}" data-ad-type="{{adblock.adblock_type}}" data-ad-unificator="{{unificator}}" data-ad-push-on="{{adblock.adblock_push_on}}" data-ad-placeholder-action="{{adblock.adblock_placeholder_action}}" data-ad-allowed-platform="{{adblock.adblock_platform_for_use}}"></div>
+        {% else %}
+            <div class="ad_block_element hidden" id="ad_block_{{adblock.adblock_id}}" data-ad-id="{{adblock.adblock_id}}" data-ad-type="{{adblock.adblock_type}}" data-ad-platform="{{adblock.adblock_platform}}" data-ad-push-on="{{adblock.adblock_push_on}}" data-ad-placeholder-action="{{adblock.adblock_placeholder_action}}" data-ad-allowed-platform="{{adblock.adblock_platform_for_use}}"></div>
+        {% endif %}
+
+    {% endif %}
+
+{% endif %}
