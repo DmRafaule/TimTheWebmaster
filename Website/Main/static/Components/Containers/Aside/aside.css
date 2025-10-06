@@ -1,0 +1,17 @@
+.sticky-container {
+  position: fixed;
+  top: 80px; /* отступ от шапки */
+  max-width: 300px;
+  max-height: 700px;
+  overflow: hidden;
+  z-index: 40;
+}
+.sticky-container-left {
+  left: 10px;
+}
+.sticky-container-right {
+  right: 10px;
+}
+@media (max-width: 1600px) {
+  .sticky-container { display: none; }
+}

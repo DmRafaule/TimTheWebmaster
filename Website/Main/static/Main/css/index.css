@@ -8,6 +8,7 @@
 @import '../../Components/Containers/main.css';
 @import '../../Components/Containers/footer.css';
 @import '../../Components/Containers/Modal/modal.css';
+@import '../../Components/Containers/Aside/aside.css';
 @import '../../Components/Containers/list.css';
 @import '../../Components/Containers/dock.css';
 @import '../../Components/Feedbacks/Toaster/toaster.css';
