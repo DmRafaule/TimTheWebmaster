@@ -46,7 +46,7 @@ export function adLoad() {
 		}, { once: true })
 	}
 
-	function pushAd(ad_block_id, render_to_id, type){
+	function pushAd(ad_block_id, render_to_id, type, ad_block_placeholder_action){
 		// Определяем будет ли прибавляться дополнительный идентификатор
 		if (render_to_id){
 			render_to_id = `_${render_to_id}`
@@ -75,6 +75,14 @@ export function adLoad() {
 							if (ad_block){
 								ad_block.classList.add('ad_block_no_background')
 							}
+						},
+						"onError": () => {
+							if (ad_block_placeholder_action === "delete"){
+								var ad_block = document.querySelector(`#ad_block_${ad_block_id}${render_to_id}`).parentElement
+								if (ad_block){
+									ad_block.remove()
+								}
+							}
 						}
 					});
 					break;
@@ -98,15 +106,23 @@ export function adLoad() {
 		})
 	}
 
-	function onNodeAppear(ad_block){
+	function onNodeAppear(ad_block, on_push){
 		var ad_block_id = ad_block.dataset.adId
 		var ad_block_page_id = ad_block.dataset.adUnificator
 		var ad_block_type = ad_block.dataset.adType
-		pushAd(ad_block_id,ad_block_page_id, ad_block_type)
+		var ad_block_placeholder_action = ad_block.dataset.adPlaceholderAction
+		if (on_push === "on-load" || ad_block_type === "inImage"){
+			console.log("Push on load page")
+			pushAd(ad_block_id,ad_block_page_id, ad_block_type, ad_block_placeholder_action)
+		}
+		else if (on_push === "on-intersection"){
+			console.log("Push on intersection with viewport")
+			WaitAdToBeVisible(ad_block)
+		}
 	}
 
 	// Возможно, в будущем, я захочу что-нибудь сделать с рекламными блоками, когда они появляются на экране
-	function WaitAdToUpload(adBlock){
+	function WaitAdToBeVisible(adBlock){
 		var options = {
 			  threshold: 0,
 			};
@@ -115,7 +131,8 @@ export function adLoad() {
 		  for (const entry of entries) {
 			// Check if the entry is intersecting the viewport
 			if (entry.isIntersecting) {
-
+				onNodeAppear(adBlock, "on-load")
+				adBlock_observer.disconnect()
 			}
 		  }
 		}, options);
@@ -131,7 +148,8 @@ export function adLoad() {
 					if (node.classList.contains("ad_block") || node.querySelector('.ad_block')){
 						document.dispatchEvent(onAdUploaded)
 						var ad_block = node.querySelector('.ad_block_element')
-						onNodeAppear(ad_block)
+						var on_push = ad_block.dataset.adPushOn
+						onNodeAppear(ad_block, on_push)
 					}
 				}
 			})
@@ -145,7 +163,8 @@ export function adLoad() {
 
 	const adBlocks = document.querySelectorAll(".ad_block_element");
 	adBlocks.forEach( (adBlock) => {
-		onNodeAppear(adBlock)
+		var on_push = adBlock.dataset.adPushOn
+		onNodeAppear(adBlock, on_push)
 	})
 
 }
