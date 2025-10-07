@@ -15,7 +15,6 @@
 
 .ad_block_element{
     height: 100%;
-    min-height: 300px;
     position: relative;
 }
 .ad_block_element_marker{
