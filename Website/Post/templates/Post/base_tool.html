@@ -97,6 +97,26 @@
 	{% endblock%}
 {% endblock %}
 
+{% block aside_left %}
+    {% if isYandexAdManagerMiddlewareConnected %}
+        {% for adlocation in adlocations %}
+            {% if adlocation.adlocation_name == "LEFT_STICKY_COLUMN_TOOL" %}
+                {% include 'YandexAdManager/admanager_element.html' with adblock=adlocation.adblock unificator="left-sticky-column-tool" %}
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+{% endblock %}
+
+{% block aside_right %}
+	{% if isYandexAdManagerMiddlewareConnected %}
+		{% for adlocation in adlocations %}
+			{% if adlocation.adlocation_name == "RIGHT_STICKY_COLUMN_TOOL" %}
+				{% include 'YandexAdManager/admanager_element.html' with adblock=adlocation.adblock unificator="right-sticky-column-tool" %}
+			{% endif %}
+		{% endfor %}
+	{% endif %}
+{% endblock %}
+
 
 {% block content %}
     <div class="flex flex-col gap-5 p-1 max-w-4xl justify-center self-center flex-nowrap text-wrap wrap-anywhere break-all ttw-limiter toObserve">

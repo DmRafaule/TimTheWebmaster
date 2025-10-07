@@ -239,30 +239,14 @@
 		{% block hat_body %}
 		{% endblock %}
 		<aside class="sticky-container sticky-container-left lg:block">
-			{% if isYandexAdManagerMiddlewareConnected %}
-				{% for adlocation in adlocations %}
-					{% if adlocation.adlocation_name == "LEFT_STICKY_COLUMN_ARTICLE" %}
-						{% include 'YandexAdManager/admanager_element.html' with adblock=adlocation.adblock unificator="left-sticky-column-article" %}
-					{% endif %}
-					{% if adlocation.adlocation_name == "LEFT_STICKY_COLUMN_TOOL" %}
-						{% include 'YandexAdManager/admanager_element.html' with adblock=adlocation.adblock unificator="left-sticky-column-tool" %}
-					{% endif %}
-				{% endfor %}
-			{% endif %}
+			{% block aside_left %}
+			{% endblock %}
 		</aside>
 		{% block content %}
 		{% endblock %}
 		<aside class="sticky-container sticky-container-right lg:block">
-			{% if isYandexAdManagerMiddlewareConnected %}
-				{% for adlocation in adlocations %}
-					{% if adlocation.adlocation_name == "RIGHT_STICKY_COLUMN_ARTICLE" %}
-						{% include 'YandexAdManager/admanager_element.html' with adblock=adlocation.adblock unificator="right-sticky-column-article" %}
-					{% endif %}
-					{% if adlocation.adlocation_name == "RIGHT_STICKY_COLUMN_TOOL" %}
-						{% include 'YandexAdManager/admanager_element.html' with adblock=adlocation.adblock unificator="right-sticky-column-tool" %}
-					{% endif %}
-				{% endfor %}
-			{% endif %}
+			{% block aside_right %}
+			{% endblock %}
 		</aside>
 		<modal class="not_active_modal">
 			<div id='modal-window' class="modal-window flex flex-col gap-2">
