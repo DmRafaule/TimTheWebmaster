@@ -16,6 +16,13 @@
 <div class="justify-center flex flex-col w-full toObserve ttw-limiter">
 	<div class="max-w-7xl self-center flex flex-col ttw-content">
 		<h1 class="ttw-title" >{% trans "Тим Вебмастер" %}</h1>
+		{% if isYandexAdManagerMiddlewareConnected %}
+			{% for adlocation in adlocations %}
+				{% if adlocation.adlocation_name == "HOME_FIRST_VISIBLE" %}
+					{% include 'YandexAdManager/admanager_element.html' with adblock=adlocation.adblock unificator="home_first_visible" %}
+				{% endif %}
+			{% endfor %}
+		{% endif %}
 		<div class="flex flex-col gap-5">
 			<div class="flex gap-5 flex-wrap">
 				<div class="flex flex-col justify-between gap-5 grow-[7] shrink basis-2xs">
@@ -46,13 +53,6 @@
 									<div class="flex flex-row items-start flex-wrap gap-5">
 										<div class="flex flex-row flex-wrap gap-5 grow basis-2xl p-2">
 											{% include 'Post/basic--post_preview-tool.html' with posts=res.objs %}
-											{% if isYandexAdManagerMiddlewareConnected %}
-												{% for adlocation in adlocations %}
-													{% if adlocation.adlocation_name == "HOME_FIRST_VISIBLE" %}
-														{% include 'YandexAdManager/admanager_element.html' with adblock=adlocation.adblock unificator=forloop.counter%}
-													{% endif %}
-												{% endfor %}
-											{% endif %}
 										</div>
 									</div>
 									<div class="flex justify-end">
@@ -70,13 +70,6 @@
 									<div class="flex flex-row items-start flex-wrap gap-5">
 										<div class="flex flex-row p-2 flex-wrap gap-5 grow basis-2xl">
 											{% include 'Post/basic--post_preview-tool.html' with posts=res.objs %}
-											{% if isYandexAdManagerMiddlewareConnected %}
-												{% for adlocation in adlocations %}
-													{% if adlocation.adlocation_name == "HOME_SECOND_VISIBLE" %}
-														{% include 'YandexAdManager/admanager_element.html' with adblock=adlocation.adblock unificator=forloop.counter %}
-													{% endif %}
-												{% endfor %}
-											{% endif %}
 										</div>
 									</div>
 									<div class="flex justify-end">
@@ -93,14 +86,12 @@
 							{% endfor %}
 						</div>
 					</div>
-					{% if isAffiliateLinkMiddlewareConnected and affiliates_partners|length > 0 %}
-					<div class="border-r-2 border-solid">
-						<h2>{% trans "Партнёры" %}</h2>
-						<hr>
-						<div class="flex flex-col p-2 gap-3 grow basis-2xl">
-							{% include 'Affiliate/affiliate.html' with affiliates=affiliates_partners %}
-						</div>
-					</div>
+					{% if isYandexAdManagerMiddlewareConnected %}
+						{% for adlocation in adlocations %}
+							{% if adlocation.adlocation_name == "HOME_SECOND_VISIBLE" %}
+								{% include 'YandexAdManager/admanager_element.html' with adblock=adlocation.adblock unificator="home-second-visible" %}
+							{% endif %}
+						{% endfor %}
 					{% endif %}
 					<div class="border-r-2 border-solid">
 						<h2>{% trans "Статьи" %}</h2>

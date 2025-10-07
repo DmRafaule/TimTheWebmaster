@@ -74,12 +74,12 @@
 			{% include 'Breadcrumbs/breadcrumbs_list.html' with path=request.get_full_path %}
 		{% endif %}
 		
-		{% if isAffiliateLinkMiddlewareConnected and affiliates_partners|length > 0  %}
-			<h3>{% trans "То, что использую я" %}</h3>
-			<hr>
-			<div class="flex flex-row p-2 gap-3 grow flex-wrap">
-				{% include 'Affiliate/affiliate.html' with affiliates=affiliates_partners %}
-			</div>
+		{% if isYandexAdManagerMiddlewareConnected %}
+			{% for adlocation in adlocations %}
+				{% if adlocation.adlocation_name == "ON_PAGISCROLL_TOP" %}
+					{% include 'YandexAdManager/admanager_element.html' with adblock=adlocation.adblock unificator="on_pagiscroll_top" %}
+				{% endif %}
+			{% endfor %}
 		{% endif %}
 
 		{% include 'PagiScroll/post_filter.html' %}

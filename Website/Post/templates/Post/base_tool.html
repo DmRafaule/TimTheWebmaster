@@ -159,12 +159,12 @@
                 {% endfor %}
             </div>
             {% endif %}
-            {% if isAffiliateLinkMiddlewareConnected and affiliates_partners|length > 0  %}
-                <b>{% trans "То, что использую я" %}:</b>
-                <hr>
-                <div class="flex flex-row p-2 gap-3 grow flex-wrap">
-                    {% include 'Affiliate/affiliate.html' with affiliates=affiliates_partners %}
-                </div>
+            {% if isYandexAdManagerMiddlewareConnected %}
+                {% for adlocation in adlocations %}
+                    {% if adlocation.adlocation_name == "TOOL_BEFORE_USE" %}
+                        {% include 'YandexAdManager/admanager_element.html' with adblock=adlocation.adblock unificator="tool-before-use" %}
+                    {% endif %}
+                {% endfor %}
             {% endif %}
         </div>
         <hr>

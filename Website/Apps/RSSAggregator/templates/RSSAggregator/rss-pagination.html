@@ -3,7 +3,6 @@
 
 {% for p in posts %}
     <div class="post_preview column min_row_gap mt-[20px]">
-        <img class="image dynamic_image" src="{% static 'loading.svg' %}" data-src="{{p.image_link}}">
         <h2 class="ref_hidden"><a href="{{ p.link }}">{{ p.title | safe | truncatewords:10 }}</a></h2>
         <div class="flex flex-row gap-2">
             <img width="16px" class="justify-center" src='{% static "Post/img/calendar.svg" %}' alt="{% trans "Часы" %}">
@@ -14,6 +13,13 @@
         </div>
     </div>
 {% endfor %}
+{% if isYandexAdManagerMiddlewareConnected %}
+    {% for adlocation in adlocations %}
+        {% if adlocation.adlocation_name == "TOOL_AFTER_USE" %}
+            {% include 'YandexAdManager/admanager_element.html' with adblock=adlocation.adblock unificator="tool-after-use" %}
+        {% endif %}
+    {% endfor %}
+{% endif %}
 {% if next_link %}
 <div id="rss-pagination-container">
     <hr class="mt-2">

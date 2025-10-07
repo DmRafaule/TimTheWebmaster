@@ -14,8 +14,8 @@
     {% if data %}
         {% if isYandexAdManagerMiddlewareConnected %}
             {% for adlocation in adlocations %}
-                {% if adlocation.adlocation_name == "TEXT_THIEF_RESULTS" %}
-                    {% include 'YandexAdManager/admanager_element.html' with adblock=adlocation.adblock unificator="textthief" %}
+                {% if adlocation.adlocation_name == "TOOL_AFTER_USE" %}
+                    {% include 'YandexAdManager/admanager_element.html' with adblock=adlocation.adblock unificator="tool-after-use" %}
                 {% endif %}
             {% endfor %}
         {% endif %}

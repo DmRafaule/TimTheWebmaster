@@ -49,6 +49,14 @@
 	{% block content_post-before %}
 	{% endblock %}
 
+	{% if isYandexAdManagerMiddlewareConnected %}
+		{% for adlocation in adlocations %}
+			{% if adlocation.adlocation_name == "ON_ARTICLE_TOP" %}
+				{% include 'YandexAdManager/admanager_element.html' with adblock=adlocation.adblock unificator="on_article_top" %}
+			{% endif %}
+		{% endfor %}
+	{% endif %}
+
 	<hr>
 
 	{% block content_post %}

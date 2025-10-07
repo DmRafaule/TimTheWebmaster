@@ -1,6 +1,7 @@
 from bs4 import BeautifulSoup
 
 from django.shortcuts import get_object_or_404
+from django.template.loader import render_to_string
 from django.utils.translation import gettext as _
 from django.template.response import TemplateResponse
 
@@ -50,8 +51,9 @@ def article(request, post_slug):
         id = next_id[0][0]
         next_post = Post_M.Article.objects.get(id=id)
         context.update({'next_post': next_post})
+
     # Возвращаем TemplateRespose, чтобы моим мидлвари было легче взаимодействовать и модифицировать шаблон
-    return TemplateResponse(request, post.template.path, context=context)
+    return TemplateResponse(request, post.template.path, context)
 
 def tool(request, post_slug):
     ''' Представление для отображения отдельных записей модели Tool '''
