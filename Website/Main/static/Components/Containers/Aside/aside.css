@@ -4,7 +4,6 @@
   max-width: 300px;
   max-height: 700px;
   overflow: hidden;
-  z-index: 40;
 }
 .sticky-container-left {
   left: 10px;
