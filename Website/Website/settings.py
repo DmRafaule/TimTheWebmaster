@@ -52,6 +52,8 @@ INSTALLED_APPS = [
     'rest_framework',
     # Django-Cleanup
     'django_cleanup.apps.CleanupConfig',
+    # Yandex ad support
+    'django_yandex_ad_manager.apps.YandexadmanagerConfig',
 ]
 
 MY_INSTALLED_APPS = [
@@ -61,7 +63,6 @@ MY_INSTALLED_APPS = [
     'Engagement.apps.EngagementConfig',
     'Breadcrumbs.apps.BreadcrumbsConfig',
     'Affiliate.apps.AffiliateConfig',
-    'YandexAdManager.apps.YandexadmanagerConfig',
     'Apps.ImageThief.apps.ImagethiefConfig',
     'Apps.RSSAggregator.apps.RssaggregatorConfig',
     'Apps.ShaderToy.apps.ShadertoyConfig',
@@ -78,7 +79,7 @@ MIDDLEWARE = [
     'Breadcrumbs.middleware.BreadcrumbsMiddleware',
     'Post.middleware.ToolMiddleware',
     'Affiliate.middleware.AffiliateMiddleware',
-    'YandexAdManager.middleware.AdManagerMiddleware',
+    'django_yandex_ad_manager.middleware.AdManagerMiddleware',
     'Main.middleware.FrameAncestorsMiddleware',
     # END Custom Middlewares
     'django.middleware.security.SecurityMiddleware',
@@ -190,3 +191,6 @@ if not DEBUG:
             'rest_framework.renderers.JSONRenderer',
         ],
     }
+    
+YANDEX_AD_MANAGER__ALLOWED_VIEWS = ('home', 'article', 'tool', 'tool_main')
+YANDEX_AD_MANAGER__ALLOWED_TEMPLATES = ('PagiScroll/base_post_list.html', 'Post/basic--post_preview-article.html', 'Post/basic--post_preview-note.html', 'Post/basic--post_preview-tool.html' )

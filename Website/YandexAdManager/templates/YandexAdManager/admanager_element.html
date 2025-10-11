@@ -1,7 +1,0 @@
-{% load render_adblock %}
-
-{% if adblock.adblock_type == "banner" or adblock.adblock_type == "feed" %}
-    {% render_adblock adblock=adblock unificator=unificator %}
-{% else %}
-  {% include "YandexAdManager/admanager_element_core.html" %}
-{% endif %}
