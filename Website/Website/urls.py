@@ -28,6 +28,7 @@ urlpatterns = [
 
 urlpatterns += i18n_patterns(
     path("jsi18n/", JavaScriptCatalog.as_view(), name="javascript-catalog"),
+    path('', include('Auth.urls')),
     path('', include('Main.urls')),
     path('', include('Engagement.urls')),
     path('', include('Breadcrumbs.urls')),

@@ -57,6 +57,7 @@ INSTALLED_APPS = [
 ]
 
 MY_INSTALLED_APPS = [
+    'Auth.apps.AuthConfig',
     'Main.apps.MainConfig',
     'Post.apps.PostConfig',
     'PagiScroll.apps.PagiscrollConfig',
