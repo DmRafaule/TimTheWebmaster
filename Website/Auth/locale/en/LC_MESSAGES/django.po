@@ -1,0 +1,89 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-10-17 18:36+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+#: .\Auth\forms.py:7 .\Auth\forms.py:12
+msgid "Имя пользователя"
+msgstr "Username"
+
+#: .\Auth\forms.py:8 .\Auth\forms.py:14
+msgid "Пароль пользователя"
+msgstr "Password"
+
+#: .\Auth\forms.py:13
+msgid "Твоя почта"
+msgstr "EMail"
+
+#: .\Auth\forms.py:15
+msgid "Повтори пароль пользователя"
+msgstr "Password again"
+
+#: .\Auth\templates\Auth\form_login.html:5
+msgid "Форма входа"
+msgstr "Login form"
+
+#: .\Auth\templates\Auth\form_login.html:32
+#: .\Auth\templates\Auth\form_signup.html:32
+msgid "✔ Шаблон успешно сохранён"
+msgstr "A template successfully saved"
+
+#: .\Auth\templates\Auth\form_login.html:36
+#: .\Auth\templates\Auth\form_signup.html:36
+msgid "✗ Возникла ошибка при отправке формы"
+msgstr ""
+
+#: .\Auth\templates\Auth\form_login.html:41
+#: .\Auth\templates\Auth\form_signup.html:45
+msgid "Войти"
+msgstr "Login"
+
+#: .\Auth\templates\Auth\form_login.html:45
+msgid "  Зарегистрироваться"
+msgstr "SignUp"
+
+#: .\Auth\templates\Auth\form_signup.html:5
+msgid "Форма регистрации"
+msgstr "SignUp form"
+
+#: .\Auth\templates\Auth\form_signup.html:41
+msgid "Зарегистрироваться"
+msgstr "SignUp"
+
+#: .\Auth\templates\Auth\login.html:7
+msgid "Вход | TimTheWebmaster"
+msgstr "Login | TimTheWebmaster"
+
+#: .\Auth\templates\Auth\login.html:8
+msgid "Страница входа"
+msgstr "Login page"
+
+#: .\Auth\templates\Auth\logout.html:7
+msgid "Выход | TimTheWebmaster"
+msgstr "Logout | TimTheWebmaster"
+
+#: .\Auth\templates\Auth\logout.html:8
+msgid "Страница выхода"
+msgstr "Logout page"
+
+#: .\Auth\templates\Auth\signup.html:7
+msgid "Регистрация | TimTheWebmaster"
+msgstr "SignUp | TimTheWebmaster"
+
+#: .\Auth\templates\Auth\signup.html:8
+msgid "Страница регистрации нового пользователя"
+msgstr "SignUp page for new user"

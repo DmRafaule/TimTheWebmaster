@@ -54,6 +54,12 @@ INSTALLED_APPS = [
     'django_cleanup.apps.CleanupConfig',
     # Yandex ad support
     'django_yandex_ad_manager.apps.YandexadmanagerConfig',
+    # BY ALLAUTH
+    'allauth',
+    'allauth.account',
+    'allauth.headless',
+    'allauth.mfa',
+    'allauth.usersessions',
 ]
 
 MY_INSTALLED_APPS = [
@@ -92,6 +98,8 @@ MIDDLEWARE = [
     # REST framework
     'corsheaders.middleware.CorsMiddleware',
     # END REST framework
+    # BY ALLAUTH
+    "allauth.account.middleware.AccountMiddleware",
 ]
 
 ROOT_URLCONF = 'Website.urls'
@@ -113,6 +121,24 @@ TEMPLATES = [
         },
     },
 ]
+
+AUTHENTICATION_BACKENDS = [
+ # Needed to login by username in Django admin, regardless of `allauth`
+ 'django.contrib.auth.backends.ModelBackend',
+ # `allauth` specific authentication methods, such as login by email
+ 'allauth.account.auth_backends.AuthenticationBackend',
+]
+ACCOUNT_FORMS = {
+    'login': 'Auth.forms.Login',
+    'signup': 'Auth.forms.SignUp',
+}
+
+HEADLESS_ONLY = True
+HEADLESS_FRONTEND_URLS = {
+ "account_confirm_email": "http://localhost:8000/email-verify/{key}",
+ "account_reset_password_from_key": "http://localhost:8000/password-reset/{key}",
+}
+
 
 
 WSGI_APPLICATION = 'Website.wsgi.application'

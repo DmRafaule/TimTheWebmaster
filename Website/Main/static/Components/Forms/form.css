@@ -10,3 +10,9 @@
 .form_info{
     color: var(--info);
 }
+input{
+    width: 100%;
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 16px;
+}

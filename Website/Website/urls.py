@@ -23,6 +23,11 @@ urlpatterns = [
         {"sitemaps": sitemaps},
         name="django.contrib.sitemaps.views.sitemap",
     ),
+    # BY ALLAUTH
+    path('accounts/', include('allauth.urls')),
+    ## Custom views
+    path("_allauth/", include("Auth.urls_allauth")),
+    path("_allauth/", include("allauth.headless.urls")),
 ]
 
 

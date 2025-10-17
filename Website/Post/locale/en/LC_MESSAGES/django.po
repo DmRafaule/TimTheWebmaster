@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-10-02 21:25+0300\n"
+"POT-Creation-Date: 2025-10-17 18:36+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -35,8 +35,8 @@ msgstr "Content"
 #: .\Post\templates\Post\base_article.html:195
 #: .\Post\templates\Post\base_article.html:200
 #: .\Post\templates\Post\base_article.html:206
-#: .\Post\templates\Post\base_tool.html:107
-#: .\Post\templates\Post\base_tool.html:112
+#: .\Post\templates\Post\base_tool.html:127
+#: .\Post\templates\Post\base_tool.html:132
 #: .\Post\templates\Post\basic--post_preview-article.html:20
 #: .\Post\templates\Post\basic--post_preview-article.html:25
 #: .\Post\templates\Post\basic--post_preview-note.html:15
@@ -59,7 +59,7 @@ msgid "минут"
 msgstr "minutes"
 
 #: .\Post\templates\Post\base_article.html:223
-#: .\Post\templates\Post\base_tool.html:125
+#: .\Post\templates\Post\base_tool.html:145
 msgid "Теги: "
 msgstr "Tags: "
 
@@ -79,36 +79,31 @@ msgstr "Your browser does not support audio tag"
 msgid "PDF иконка"
 msgstr "PDF icon"
 
-#: .\Post\templates\Post\base_article.html:264
-#: .\Post\templates\Post\base_tool.html:143
-msgid "То, что использую я"
-msgstr "What, I'm using"
-
-#: .\Post\templates\Post\base_article.html:288
+#: .\Post\templates\Post\base_article.html:281
 msgid "Внешние ссылки"
 msgstr "External links"
 
-#: .\Post\templates\Post\base_article.html:296
+#: .\Post\templates\Post\base_article.html:289
 msgid "Другое"
 msgstr "Other"
 
-#: .\Post\templates\Post\base_article.html:299
+#: .\Post\templates\Post\base_article.html:292
 msgid "Похожие статьи"
 msgstr "Similar articles"
 
-#: .\Post\templates\Post\base_article.html:305
+#: .\Post\templates\Post\base_article.html:298
 msgid "Использованные термины"
 msgstr "Used termins"
 
-#: .\Post\templates\Post\base_article.html:316
+#: .\Post\templates\Post\base_article.html:309
 msgid "Релевантные вопросы"
 msgstr "Related questions"
 
-#: .\Post\templates\Post\base_post.html:55
+#: .\Post\templates\Post\base_post.html:85
 msgid "Следующая статья"
 msgstr "Next article"
 
-#: .\Post\templates\Post\base_post.html:66
+#: .\Post\templates\Post\base_post.html:96
 msgid "Предыдущая статья"
 msgstr "Previous article"
 
@@ -116,19 +111,19 @@ msgstr "Previous article"
 msgid "Инструмент"
 msgstr "Tool"
 
-#: .\Post\templates\Post\base_tool.html:158
+#: .\Post\templates\Post\base_tool.html:178
 msgid "Медиа файлы"
 msgstr "Media files"
 
-#: .\Post\templates\Post\base_tool.html:174
+#: .\Post\templates\Post\base_tool.html:194
 msgid "Рабочие заметки об инструменте"
 msgstr "A notes about this tool, devnotes"
 
-#: .\Post\templates\Post\base_tool.html:183
+#: .\Post\templates\Post\base_tool.html:203
 msgid "Больше ..."
 msgstr "More ..."
 
-#: .\Post\templates\Post\base_tool.html:193
+#: .\Post\templates\Post\base_tool.html:213
 msgid "Похожие инструменты"
 msgstr "Similar tools"
 
@@ -180,3 +175,6 @@ msgstr "Contacts"
 #: .\Post\templatetags\urlToBreadcrumbs.py:78
 msgid "Страница "
 msgstr "Page "
+
+#~ msgid "То, что использую я"
+#~ msgstr "What, I'm using"

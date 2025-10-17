@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-09-26 11:12+0300\n"
+"POT-Creation-Date: 2025-10-17 18:36+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -53,12 +53,8 @@ msgstr " page"
 msgid "связанные со следующими тегами: "
 msgstr "related to the following tags: "
 
-#: .\PagiScroll\templates\PagiScroll\base_post_list.html:78
-msgid "То, что использую я"
-msgstr "What, I'm using"
-
-#: .\PagiScroll\templates\PagiScroll\base_post_list.html:113
-#: .\PagiScroll\templates\PagiScroll\base_post_list.html:119
+#: .\PagiScroll\templates\PagiScroll\base_post_list.html:109
+#: .\PagiScroll\templates\PagiScroll\base_post_list.html:115
 msgid "Шеврон"
 msgstr "Chevron"
 
@@ -86,3 +82,6 @@ msgstr "Did not find anything"
 #: .\PagiScroll\views.py:134 .\PagiScroll\views.py:136
 msgid "Так много страниц у меня нет."
 msgstr "I do not have so many pages."
+
+#~ msgid "То, что использую я"
+#~ msgstr "What, I'm using"

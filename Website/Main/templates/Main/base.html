@@ -110,6 +110,19 @@
 				{% endif %}
 			{% endfor %}
 		</div>
+		{% if request.user.is_authenticated %}
+			<div class="grow-0 shrink ttw-button ttw-button_link">
+            	<a href="{% url 'logout' %}">
+					<img class="ttw-button_circle" width="32" height="32" src="{% static 'Auth/img/logout.svg' %}" alt="{% trans '3 горизонтальные линии, бургер' %}">
+				</a>
+			</div>
+		{% else %}
+			<div class="grow-0 shrink ttw-button ttw-button_link">
+            	<a href="{% url 'login' %}">
+					<img class="ttw-button_circle" width="32" height="32" src="{% static 'Auth/img/login.svg' %}" alt="{% trans '3 горизонтальные линии, бургер' %}">
+				</a>
+			</div>
+		{% endif %}
 		<div class="grow-0 shrink ttw-button ttw-button_link">
 			<a href="{% url 'home' %}">
 				<img class="ttw-button_circle"  width="32" height="32" src="{% static 'favicon.svg' %}" alt="{% trans 'Главная иконка сайта' %}">
@@ -217,12 +230,6 @@
 					которых я сам использую или опробовал, и хочу порекомендовать.
 				{% endblocktrans %}
 				</div>
-				<span>
-				{%    blocktrans %}
-					Все партнёрские ссылки отмечены вот такой вот иконкой
-				{% endblocktrans %}
-					<span><img class="svg_icon_inverted" width="16px" height="16px" src="{% static "Affiliate/img/partner.svg" %}"></span>
-				</span>
 				<div class="ref">
 				{%    blocktrans %}
 					Я бы хотел сделать ставку на так называемую freeminimum модель монетизации. 

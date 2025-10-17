@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-09-10 19:45+0300\n"
+"POT-Creation-Date: 2025-10-17 18:36+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -205,7 +205,7 @@ msgstr ""
 "Why is this important? Well, you can bookmark the page and then reopen it."
 
 #: .\Apps\RSSAggregator\templates\RSSAggregator\rss-aggregator.html:158
-#: .\Apps\RSSAggregator\templates\RSSAggregator\rss-pagination.html:28
+#: .\Apps\RSSAggregator\templates\RSSAggregator\rss-pagination.html:34
 msgid "Загрузить ещё ..."
 msgstr "More ..."
 
@@ -250,7 +250,7 @@ msgstr ""
 "\t\t\tThere are no limits to how many feeds you can read.\n"
 "\t\t\t"
 
-#: .\Apps\RSSAggregator\templates\RSSAggregator\rss-pagination.html:9
+#: .\Apps\RSSAggregator\templates\RSSAggregator\rss-pagination.html:8
 msgid "Часы"
 msgstr "Clock"
 

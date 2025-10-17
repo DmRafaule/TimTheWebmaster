@@ -1,0 +1,11 @@
+<form class="flex flex-col gap-2" action='' id="toSend"  method="post" enctype='multipart/form-data'>
+    {% csrf_token %}
+    {% for field in form_to_render %}
+    <div>
+        {{ field }}
+    </div>
+    {% for error in field.errors %}
+    <p class="form_error">{{ error }}</p>
+    {% endfor %}	
+    {% endfor %}
+</form>
