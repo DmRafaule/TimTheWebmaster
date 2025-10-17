@@ -275,10 +275,6 @@
 		{% include 'Breadcrumbs/breadcrumbs_styles.html' %}
 	{% endif %}
 
-	{% if isAffiliateLinkMiddlewareConnected %}
-		{% include 'Affiliate/affiliate_styles.html' %}
-	{% endif %}
-
 	{% if isYandexAdManagerMiddlewareConnected %}
 		{% include 'YandexAdManager/admanager_styles.html' %}
 	{% endif %}
@@ -295,10 +291,6 @@
 
 	{% if isBreadcrumbsMiddlewareConnected %}
 		{% include 'Breadcrumbs/breadcrumbs_scripts.html' %}
-	{% endif %}
-
-	{% if isAffiliateLinkMiddlewareConnected %}
-		{% include 'Affiliate/affiliate_scripts.html' %}
 	{% endif %}
 
 	{% if isYandexAdManagerMiddlewareConnected %}

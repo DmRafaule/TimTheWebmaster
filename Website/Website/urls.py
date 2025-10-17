@@ -31,7 +31,6 @@ urlpatterns += i18n_patterns(
     path('', include('Main.urls')),
     path('', include('Engagement.urls')),
     path('', include('Breadcrumbs.urls')),
-    path('', include('Affiliate.urls')),
     path('tools/', include('Apps.WYSIWYGEditor.urls')),
     path('tools/', include('Apps.ImageThief.urls')),
     path('tools/', include('Apps.LinkThief.urls')),

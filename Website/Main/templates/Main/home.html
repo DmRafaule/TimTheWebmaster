@@ -203,9 +203,6 @@
 
 {% block styles %}
     <link type="text/css" rel="stylesheet" href="{% static 'Main/css/index.main.min.css' %}"/>
-	{% if isAffiliateLinkMiddlewareConnected %}
-		{% include 'Affiliate/affiliate_styles.html' %}
-	{% endif %}
 	{% if isYandexAdManagerMiddlewareConnected %}
 		{% include 'YandexAdManager/admanager_styles.html' %}
 	{% endif %}
@@ -216,9 +213,6 @@
 		var STATIC = "{% static '.' %}"
 	</script>
     <script src="{% static 'Main/js/index.main.min.js' %}"></script>
-	{% if isAffiliateLinkMiddlewareConnected %}
-		{% include 'Affiliate/affiliate_scripts.html' %}
-	{% endif %}
 	{% if isYandexAdManagerMiddlewareConnected %}
 		{% include 'YandexAdManager/admanager_scripts.html' %}
 	{% endif %}

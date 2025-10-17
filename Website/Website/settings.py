@@ -62,7 +62,6 @@ MY_INSTALLED_APPS = [
     'PagiScroll.apps.PagiscrollConfig',
     'Engagement.apps.EngagementConfig',
     'Breadcrumbs.apps.BreadcrumbsConfig',
-    'Affiliate.apps.AffiliateConfig',
     'Apps.ImageThief.apps.ImagethiefConfig',
     'Apps.RSSAggregator.apps.RssaggregatorConfig',
     'Apps.ShaderToy.apps.ShadertoyConfig',
@@ -78,7 +77,6 @@ MIDDLEWARE = [
     'Engagement.middleware.EngagementMiddleware',
     'Breadcrumbs.middleware.BreadcrumbsMiddleware',
     'Post.middleware.ToolMiddleware',
-    'Affiliate.middleware.AffiliateMiddleware',
     'django_yandex_ad_manager.middleware.AdManagerMiddleware',
     'Main.middleware.FrameAncestorsMiddleware',
     # END Custom Middlewares
