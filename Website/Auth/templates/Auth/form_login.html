@@ -21,6 +21,11 @@
         {% include 'Auth/form.html' with form_to_render=form_to_render %}
     </div>
     <hr>
+    <div class="ttw-button ttw-button_link">
+        <a href="{% url 'password_reset' %}">
+        <p class="rounded-lg bg-main border text-white p-2">{% trans "Забыл пароль?" %}</p>
+        </a>
+    </div>
     <div class="flex flex-row justify-between flex-wrap">
         <div 
             hx-post="{% url 'allauth_login' %}"
@@ -40,11 +45,6 @@
             "
             id="save_btn_submit" class="ttw-button ttw-button_action">
             <p class="rounded-lg bg-main border text-white p-2">{% trans "Войти" %}</p>
-        </div>
-        <div class="ttw-button ttw-button_link">
-            <a href="{% url 'signup' %}">
-            <p class="rounded-lg bg-main border text-white p-2">{% trans "Забыл пароль?" %}</p>
-            </a>
         </div>
         <div class="ttw-button ttw-button_link">
             <a href="{% url 'signup' %}">

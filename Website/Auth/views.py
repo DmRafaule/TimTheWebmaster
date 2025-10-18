@@ -4,7 +4,7 @@ from django.views.decorators.http import require_GET, require_POST
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect
 
-from allauth.account.views import SignupView, LoginView
+from allauth.account.views import SignupView, LoginView, PasswordChangeView
 from allauth.account.models import EmailAddress
 from allauth.account.internal.flows.email_verification import (
     send_verification_email_to_address,
@@ -116,6 +116,16 @@ class CustomLoginView(LoginView):
 
     def get_form_class(self):
         return Login
+    
+    def form_invalid(self, form):
+        return render(self.request, 'Auth/form.html', {'form_to_render': form}, status=400)
+
+class CustomPasswordChangeView(PasswordChangeView):
+    def get_success_url(self):
+        return reverse('profile')
+
+    def get_form_class(self):
+        return PasswordChange
     
     def form_invalid(self, form):
         return render(self.request, 'Auth/form.html', {'form_to_render': form}, status=400)
