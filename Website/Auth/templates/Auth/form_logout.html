@@ -7,7 +7,7 @@
     <hr class="grow shrink-0 basis-2xs w-full">
     <div
         hx-post="{% url 'allauth_logout' %}"	
-        hx-indicator="#context-loader-load_into_modal"
+        hx-indicator="loader"
         hx-vals="js:{csrfmiddlewaretoken: csrftoken}"
         hx-swap="none"
         hx-on::after-request="

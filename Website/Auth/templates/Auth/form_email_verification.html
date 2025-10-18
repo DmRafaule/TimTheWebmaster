@@ -1,0 +1,54 @@
+{% load i18n %}
+
+<div class="p-2 flex flex-col h-full">
+    <h1>{% trans 'Подтверждение почты' %}</h1>
+    <p>{% trans 'На адресс электронной почты' %} [<i>{{request.user.email}}</i>] {% trans 'было отправленно письмо с кодом подтверждения. Его нужно ввести в поле ниже и отправить' %}</p>
+    <hr class="grow shrink-0">
+    <div 
+        hx-on::before-swap="
+            switch(event.detail.xhr.status){
+                case 200:
+                    event.detail.shouldSwap = false 
+                    event.detail.isError = false
+                    break;
+            }
+        "
+        class="grow shrink-0" id="modal-form">
+        {% include 'Auth/form.html' with form_to_render=form_to_render %}
+    </div>
+    <hr>
+    <div class="ttw-button ttw-button_link">
+        <a href="{% url 'send_email_verify' %}">
+            <p class="rounded-lg bg-main border text-white p-2">{% trans "Не получил письмо? Отправить ещё раз" %}</p>
+        </a>
+    </div>
+    <div class="flex flex-row justify-between flex-wrap">
+        <div 
+            {% if verification_code %}
+            hx-post="{% url 'email_verify_with_code' verification_code %}"
+            {% else %}
+            hx-post="{% url 'email_verify' %}"
+            {% endif %}
+            hx-include="#toSend" 
+            hx-indicator="loader"
+            hx-target="#modal-form"
+            hx-on::after-request="
+                switch(event.detail.xhr.status){
+                    case 200:
+                        window.location.href = '{% url 'profile' %}';
+                        break;
+                    case 400:
+                        toaster.notify('{% trans '✗ Возникла ошибка при попытке подтвердить почту' %}', 'error'); 
+                        break;
+                }
+            "
+            id="save_btn_submit" class="ttw-button ttw-button_action">
+            <p class="rounded-lg bg-main border text-white p-2">{% trans "Подтвердить" %}</p>
+        </div>
+        <div class="ttw-button ttw-button_link">
+            <a href="{% url 'profile' %}">
+                <p class="rounded-lg bg-main border text-white p-2">{% trans "К профилю" %}</p>
+            </a>
+        </div>
+    </div>
+</div>

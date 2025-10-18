@@ -1,0 +1,141 @@
+{% extends "Main/base.html" %}
+{% load i18n %}
+{% load static%}
+
+
+{% block head %}
+	<title>{{username}}{% trans "| Профиль пользователя | TimTheWebmaster" %}</title>
+	<meta name="description" content="{% trans "Профиль пользователя"%}">
+	<meta name="robots" content="noindex, follow">
+{% endblock %}
+
+{% block content %}
+    <div class="h-svh">
+		<div class="flex flex-row gap-10 flex-wrap h-full overflow-hidden">
+			<div class="flex justify-center items-center grow shrink-0 basis-2xs p-2">
+				<div class="flex justify-center items-center h-[900px] max-w-[400px] w-full" 
+					style='background-image: url("{% static "Auth/img/bg-login.svg"%}");     background-repeat: no-repeat;     background-size: cover;     background-position: center center;'>
+					<div id="login-form-container" class="h-[600px] w-[300px] bg-white rounded-2xl border-1">
+						<div class="p-2 flex flex-col h-full">
+							<h1>{% trans "Профиль" %}</h1>
+							<hr class="grow shrink-0">
+							<div class="grow shrink-0">
+								<div class="flex flex-row gap-2 justify-between">
+									<b>{% trans "Ник:" %}</b>
+									<p>{{username}}</p>
+								</div>
+								<hr>
+								<div class="flex flex-row gap-2 justify-between">
+									<b>{% trans "Имя:" %}</b>
+									{% if first_name %}
+										<p>{{first_name}}</p>
+									{% else %}
+										<p>{% trans "[Не задано]" %}</p>
+									{% endif %}
+								</div>
+								<hr>
+								<div class="flex flex-row gap-2 justify-between">
+									<b>{% trans "Фамилия:" %}</b>
+									{% if last_name %}
+										<p>{{last_name}}</p>
+									{% else %}
+										<p>{% trans "[Не задано]" %}</p>
+									{% endif %}
+								</div>
+								<hr>
+								<div class="flex flex-row gap-2 justify-between">
+									<b>{% trans "Почта:" %}</b>
+									{% if email %}
+										<p>{{email}}</p>
+									{% else %}
+										<p>{% trans "[Не задано]" %}</p>
+									{% endif %}
+								</div>
+								{% if email %}
+								<div class="flex flex-row gap-2 justify-between items-center">
+									<b>{% trans "Подтверждена:" %}</b>
+									{% if is_verified %}
+										<p>✓</p>
+									{% else %}
+										<div class="ttw-button ttw-button_link">
+											<a href="{% url 'send_email_verify' %}">
+												<p class="rounded-lg bg-main border text-white p-2">{% trans "Подтвердить" %}</p>
+											</a>
+										</div>
+									{% endif %}
+								</div>
+								{% endif %}
+								<hr>
+								<div class="flex flex-row gap-2 justify-between">
+									<b>{% trans "Активен:" %}</b>
+									{% if is_active %}
+										<p>✓</p>
+									{% else %}
+										<p>✗</p>
+									{% endif %}
+								</div>
+								<hr>
+								<div class="flex flex-row gap-2 justify-between">
+									<b>{% trans "Персонал:" %}</b>
+									{% if is_stuff %}
+										<p>✓</p>
+									{% else %}
+										<p>✗</p>
+									{% endif %}
+								</div>
+								<hr>
+								<div class="flex flex-row gap-2 justify-between">
+									<b>{% trans "Админ:" %}</b>
+									{% if is_superuser %}
+										<p>✓</p>
+									{% else %}
+										<p>✗</p>
+									{% endif %}
+								</div>
+								<hr>
+								<div class="flex flex-row gap-2 justify-between">
+									<b>{% trans "Время регистрации:" %}</b>
+									<p>{{date_joined}}</p>
+								</div>
+								<hr>
+								<div class="flex flex-row gap-2 justify-between">
+									<p><b>{% trans "Время последнего входа:" %}</b></p>
+									<p>{{last_login}}</p>
+								</div>
+								<hr>
+							</div>
+							<hr>
+							<div class="ttw-button ttw-button_link">
+								<a href="{% url 'password_change' %}">
+								<p class="rounded-lg bg-main border text-white p-2">{% trans "Сменить пароль" %}</p>
+								</a>
+							</div>
+							<div class="ttw-button ttw-button_link">
+								<a href="{% url 'logout' %}">
+								<p class="rounded-lg bg-main border text-white p-2">{% trans "Выйти" %}</p>
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+    </div>
+{% endblock %}
+
+{% block footer_links %}
+	{% for ref in popular_posts %}
+		<li class="ref"><a href="{{ref.get_absolute_url}}">{{ref}}</a></li>
+	{% endfor %}
+{% endblock %}
+
+{% block styles %}
+    <link type="text/css" rel="stylesheet" href="{% static 'Auth/css/index.min.css' %}"/>
+{% endblock %}
+
+{% block scripts %}
+	<script>
+		var STATIC = "{% static '.' %}"
+	</script>
+    <script src="{% static 'Auth/js/index.min.js' %}"></script>
+{% endblock %}

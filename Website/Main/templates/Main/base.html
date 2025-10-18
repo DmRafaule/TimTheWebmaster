@@ -112,8 +112,8 @@
 		</div>
 		{% if request.user.is_authenticated %}
 			<div class="grow-0 shrink ttw-button ttw-button_link">
-            	<a href="{% url 'logout' %}">
-					<img class="ttw-button_circle" width="32" height="32" src="{% static 'Auth/img/logout.svg' %}" alt="{% trans '3 горизонтальные линии, бургер' %}">
+            	<a href="{% url 'profile' %}">
+					<img class="ttw-button_circle" width="32" height="32" src="{% static 'Auth/img/profile.svg' %}" alt="{% trans '3 горизонтальные линии, бургер' %}">
 				</a>
 			</div>
 		{% else %}

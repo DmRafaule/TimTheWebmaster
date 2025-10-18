@@ -2,7 +2,7 @@
 {% load static %}
 
 <div class="p-2 flex flex-col h-full">
-    <div><b>{% trans 'Форма входа' %}</b></div>
+    <h1>{% trans 'Форма входа' %}</h1>
     <hr class="grow shrink-0">
     <div 
         hx-on::before-swap="
@@ -25,7 +25,7 @@
         <div 
             hx-post="{% url 'allauth_login' %}"
             hx-include="#toSend" 
-            hx-indicator="#context-loader-load_into_modal"
+            hx-indicator="loader"
             hx-vals="js:{csrfmiddlewaretoken: csrftoken}"
             hx-target="#modal-form"
             hx-on::after-request="
@@ -43,7 +43,12 @@
         </div>
         <div class="ttw-button ttw-button_link">
             <a href="{% url 'signup' %}">
-            <p class="rounded-lg bg-main border text-white p-2">{% trans "  Зарегистрироваться" %}</p>
+            <p class="rounded-lg bg-main border text-white p-2">{% trans "Забыл пароль?" %}</p>
+            </a>
+        </div>
+        <div class="ttw-button ttw-button_link">
+            <a href="{% url 'signup' %}">
+            <p class="rounded-lg bg-main border text-white p-2">{% trans "Зарегистрироваться" %}</p>
             </a>
         </div>
     </div>

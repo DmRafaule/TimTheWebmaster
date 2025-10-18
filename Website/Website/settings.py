@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sitemaps',
+    'django.contrib.sites',
     # captcha
     'captcha',
     # Django REST framework
@@ -60,6 +61,7 @@ INSTALLED_APPS = [
     'allauth.headless',
     'allauth.mfa',
     'allauth.usersessions',
+    'allauth.socialaccount',
 ]
 
 MY_INSTALLED_APPS = [
@@ -132,13 +134,13 @@ ACCOUNT_FORMS = {
     'login': 'Auth.forms.Login',
     'signup': 'Auth.forms.SignUp',
 }
-
+SITE_ID = 1
+ACCOUNT_EMAIL_VERIFICATION_SUPPORTS_RESEND = True
+ACCOUNT_ADAPTER = 'Auth.adapters.MyAccountAdapter'
 HEADLESS_ONLY = True
-HEADLESS_FRONTEND_URLS = {
- "account_confirm_email": "http://localhost:8000/email-verify/{key}",
- "account_reset_password_from_key": "http://localhost:8000/password-reset/{key}",
+ACCOUNT_RATE_LIMITS = {
+    "confirm_email": "10/m/key",  # up to 10 confirmation emails per minute per key
 }
-
 
 
 WSGI_APPLICATION = 'Website.wsgi.application'
