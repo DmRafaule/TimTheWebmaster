@@ -4,6 +4,7 @@ from captcha.fields import CaptchaField
 from django.utils.translation import gettext_lazy as _
 
 class Login(LoginForm):
+    captcha = CaptchaField()
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -39,4 +40,5 @@ class EmailVerification(ConfirmEmailVerificationCodeForm):
     pass
 
 class PasswordChange(ChangePasswordForm):
+    captcha = CaptchaField()
     pass

@@ -136,8 +136,15 @@ ACCOUNT_FORMS = {
 }
 SITE_ID = 1
 ACCOUNT_EMAIL_VERIFICATION_SUPPORTS_RESEND = True
+ACCOUNT_EMAIL_UNKNOWN_ACCOUNTS = False
 ACCOUNT_ADAPTER = 'Auth.adapters.MyAccountAdapter'
 HEADLESS_ONLY = True
+HEADLESS_FRONTEND_URLS = {
+    "account_reset_password": "/password_reset/",
+    "account_reset_password_from_key": "/password_reset/key/{uidb36}-{key}/",
+    "account_reset_password_done": "/password_reset/done/",
+    "account_reset_password_from_key_done": "/password_reset/key/done/",
+}
 ACCOUNT_RATE_LIMITS = {
     "confirm_email": "10/m/key",  # up to 10 confirmation emails per minute per key
 }

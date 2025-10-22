@@ -4,7 +4,8 @@ from django.views.decorators.http import require_GET, require_POST
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect
 
-from allauth.account.views import SignupView, LoginView, PasswordChangeView
+from allauth.account.views import SignupView, LoginView, PasswordChangeView, PasswordResetView, PasswordResetFromKeyView
+from allauth.account.forms import ResetPasswordForm, ResetPasswordKeyForm, SetPasswordForm
 from allauth.account.models import EmailAddress
 from allauth.account.internal.flows.email_verification import (
     send_verification_email_to_address,
@@ -39,7 +40,6 @@ def password_change(request):
     form_password_change = PasswordChange()
     context.update({'form_password_change': form_password_change})
     return render(request, 'Auth/password_change.html', context)
-
 
 @require_GET
 def login(request):
@@ -98,8 +98,25 @@ def send_email_verify(request):
         pass
     return redirect('email_verify')
 
+@require_GET
+def password_reset(request):
+    if request.user.is_authenticated:
+        return redirect('home')
+    context = initDefaults(request)
+    form_password_reset = ResetPasswordForm()
+    context.update({'form_password_reset': form_password_reset})
+    return render(request, 'Auth/password_reset.html', context)
 
+@require_GET
+def password_reset_done(request):
+    context = initDefaults(request)
+    return render(request, 'Auth/password_reset_done.html', context)
 
+@require_GET
+def password_reset_from_key_done(request):
+    context = initDefaults(request)
+    return render(request, 'Auth/password_reset_from_key_done.html', context)
+    
 class CustomSignupView(SignupView):
     def get_success_url(self):
         return reverse('signup')
@@ -119,6 +136,9 @@ class CustomLoginView(LoginView):
     
     def form_invalid(self, form):
         return render(self.request, 'Auth/form.html', {'form_to_render': form}, status=400)
+
+class CustomPasswordResetFromKeyView(PasswordResetFromKeyView):
+    template_name = "Auth/password_reset_from_key.html"
 
 class CustomPasswordChangeView(PasswordChangeView):
     def get_success_url(self):
