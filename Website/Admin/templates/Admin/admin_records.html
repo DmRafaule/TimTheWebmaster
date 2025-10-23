@@ -1,0 +1,39 @@
+{% extends "Admin/base_admin.html" %}
+{% load i18n %}
+{% load static%}
+
+
+{% block head %}
+	<title>{% trans "Список записей в БД" %}</title>
+	<meta name="description" content="{% trans "Фильтрация и сортировка списков записей из БД"%}">
+	<meta name="robots" content="noindex, follow">
+{% endblock %}
+
+{% block content %}
+    <div class="h-full">
+		<div class="justify-center flex flex-col w-full toObserve ttw-limiter">
+			<div class="max-w-7xl self-center flex flex-col ttw-content w-full">
+				<h1 class="ttw-title" >{% trans "Записи в БД" %}</h1>
+				<hr>
+			</div>
+		</div>
+    </div>
+{% endblock %}
+
+{% block footer_links %}
+	{% for ref in popular_posts %}
+		<li class="ref"><a href="{{ref.get_absolute_url}}">{{ref}}</a></li>
+	{% endfor %}
+{% endblock %}
+
+{% block styles %}
+    <link type="text/css" rel="stylesheet" href="{% static 'Admin/css/index.min.css' %}"/>
+{% endblock %}
+
+{% block scripts %}
+	<script>
+		var STATIC = "{% static '.' %}"
+	</script>
+    <script src="{% static 'Admin/js/index.min.js' %}"></script>
+{% endblock %}
+

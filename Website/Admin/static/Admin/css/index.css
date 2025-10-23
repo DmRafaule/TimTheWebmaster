@@ -1,0 +1,4 @@
+@import '../../../../Main/static/Components/Containers/Tabs/tabs.css'; 
+@import '../../../../Main/static/Components/Containers/table.css'; 
+@import "tailwindcss";
+@tailwind utilities;

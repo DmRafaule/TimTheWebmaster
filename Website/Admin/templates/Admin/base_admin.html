@@ -1,0 +1,184 @@
+{% load static%}
+{% load i18n %}
+{% load urlToBreadcrumbs %}
+{% load urlToList %}
+
+<!DOCTYPE html>
+{% get_current_language as LANGUAGE_CODE %}
+<html lang="{{LANGUAGE_CODE}}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	{% block head %}
+	{% endblock %}
+	<link rel="icon" href="https://{{domain_name}}/favicon.svg" type="image/svg+xml">
+	<link rel="icon" href="https://{{domain_name}}/favicon.ico" sizes="32x32" type="image/x-icon">
+	{% get_available_languages as LANGUAGES %}
+	{% get_language_info_list for LANGUAGES as languages %}
+	{% with LC_WITH_SLASHES_ON_EDGES="/"|add:LANGUAGE_CODE|add:"/" %}
+		{% with new_url=request.get_full_path|cut:LC_WITH_SLASHES_ON_EDGES %}
+			{% for language in languages %}
+				<link rel="alternate" href="https://{{domain_name}}/{{language.code}}/{{new_url}}"  hreflang="{{language.code}}" >
+			{% endfor %}
+			<link rel="alternate" href="https://{{domain_name}}/ru/{{new_url}}"  hreflang="x-default" >
+		{% endwith %}
+	{% endwith %}
+    <link type="text/css" rel="stylesheet" href="{% static 'Main/css/index.min.css' %}"/>
+	{% block styles %}
+	{% endblock %}
+</head>
+<body class="flex flex-col overflow-auto h-svh">
+	<header class="sticky top-0 flex p-1 z-50">
+		<div class="grow-0 shrink ttw-button_swap" data-body="nav">
+			<div class="ttw-button ttw-button_action ttw-button_swap_front ttw-sidebar_button_open" data-body="nav">
+				<img class="ttw-button_squared" width="32" height="32" src="{% static 'menu.svg' %}" alt="{% trans '3 горизонтальные линии, бургер' %}">
+			</div>
+			<div class="ttw-button ttw-button_action ttw-button_swap_back ttw-sidebar_button_close ttw-button_swap_not_active" data-body="nav">
+				<img class="ttw-button_squared" width="32" height="32" src="{% static 'close_white.svg' %}" alt="{% trans '3 горизонтальные линии, бургер' %}">
+			</div>
+		</div>
+		{% block hat %}
+		{% endblock %}
+		<div id="header-buttons-splitter" class="grow shrink">
+		</div>
+		{% if request.user.is_authenticated %}
+			<div class="grow-0 shrink ttw-button ttw-button_link">
+            	<a href="{% url 'logout' %}">
+					<img class="ttw-button_circle" width="32" height="32" src="{% static 'Auth/img/logout.svg' %}" alt="{% trans '3 горизонтальные линии, бургер' %}">
+				</a>
+			</div>
+		{% else %}
+			<div class="grow-0 shrink ttw-button ttw-button_link">
+            	<a href="{% url 'login' %}">
+					<img class="ttw-button_circle" width="32" height="32" src="{% static 'Auth/img/login.svg' %}" alt="{% trans '3 горизонтальные линии, бургер' %}">
+				</a>
+			</div>
+		{% endif %}
+		<div class="grow-0 shrink ttw-button ttw-button_link">
+			<a href="{% url 'home' %}">
+				<img class="ttw-button_circle"  width="32" height="32" src="{% static 'favicon.svg' %}" alt="{% trans 'Главная иконка сайта' %}">
+			</a>
+		</div>
+	</header>
+	<main class="flex flex-col flex-auto grow shrink overflow-x-hidden">
+		<toaster>
+			<div class='toaster-container flex flex-col gap-2 p-2'>
+				<fieldset class="toaster-blank toaster toaster-inactive">
+					<p class="toaster_text"></p>
+					<legend class="flex gap-2 items-center">
+						<div class="ttw-button ttw-button_action ttw-button_squared bg-main remove_one_action">
+							<img class="ttw-button_squared" width="16" height="16" src="{% static 'close_white.svg' %}" alt="{% trans '3 горизонтальные линии, бургер' %}">
+						</div>
+						<div class="ttw-button ttw-button_action ttw-button_squared bg-main remove_all_action text-white">
+							<div class=" ttw-button_squared p-2">
+							{% trans "Удалить все" %}
+							</div>
+						</div>
+					</legend>
+				</fieldset>
+			</div>
+		</toaster>
+		<loader>
+			<div id="loader_overlay" class="loader_overlay"></div>
+			{% include 'Main/loader.html' %}
+		</loader>
+		<nav id="nav" class="ttw-sidebar_body ttw-sidebar_body_left ttw-sidebar_body_not_active p-1 justify-between flex flex-col text-center">
+			<div>
+				<hr>
+			</div>
+			<ul class="list_without_sign flex flex-col items-center">
+				{% if request.user.is_authenticated %}
+					{% if request.user.is_superuser %}
+						<li class="ttw-button ttw-button_link"><a class="" href="{% url 'admin'%}"><p><h3>{% trans "Админка" %}</h3></p></a></li>
+					{% endif %}
+					<li class="ttw-button ttw-button_link"><a class="" href="{% url 'profile'%}"><p><h3>{% trans "Профиль" %}</h3></p></a></li>
+				{% endif %}
+				<li class="ttw-button ttw-button_link"><a class="" href="{% url 'home'%}"><p><h3>{% trans "Домашняя" %}</h3></p></a></li>
+				<li class="ttw-button ttw-button_link"><a class="" href="{% url 'about'%}"><p><h3>{% trans "Об авторе" %}</h3></p></a></li>
+				{% for cat_spec in categories_special %}
+				<li class="ttw-button ttw-button_link"><a class="" href="{{ cat_spec.get_absolute_url }}"><p><h3>{{cat_spec.name}}</h3></p></a></li>
+				{% endfor %}
+			</ul>
+			<div>
+				<div class="grow-0 shrink ttw-button_swap ttw-button_swap_not_close_on_outsite p-2">
+					{% get_available_languages as LANGUAGES %}
+					{% get_language_info_list for LANGUAGES as languages %}
+					{% for language in languages %}
+						{% if language.code == LANGUAGE_CODE %}
+							<div class="ttw-button ttw-button_link ttw-button_swap_back ttw-button_swap_not_active">
+								<a href="/{{language.code}}{{ request.get_full_path|cut:"ru/"|cut:"en/" }}"><img class="ttw-button_circle" width="32" height="32" src="{% static '' %}{{language.code}}.svg" alt="{% trans '3 горизонтальные линии, бургер' %}"></a>
+							</div>
+						{% else %}
+							<div class="ttw-button ttw-button_link ttw-button_swap_front">
+								<a href="/{{language.code}}{{ request.get_full_path|cut:"ru/"|cut:"en/" }}"><img class="ttw-button_circle" width="32" height="32" src="{% static '' %}{{language.code}}.svg" alt="{% trans '3 горизонтальные линии, бургер' %}"></a>
+							</div>
+						{% endif %}
+					{% endfor %}
+				</div>
+				<hr>
+				<div class="min-h-[50px]"></div>
+			</div>
+		</nav>
+		{% block hat_body %}
+		{% endblock %}
+		<aside class="sticky-container sticky-container-left lg:block">
+			{% block aside_left %}
+			{% endblock %}
+		</aside>
+		{% block content %}
+		{% endblock %}
+		<aside class="sticky-container sticky-container-right lg:block">
+			{% block aside_right %}
+			{% endblock %}
+		</aside>
+		<modal class="not_active_modal">
+			<div id='modal-window' class="modal-window flex flex-col gap-2">
+				<div class="flex gap-3">
+					<div id="context-loader-load_into_modal" class="context-loader">
+						{% include 'Main/loader.html'%}
+					</div>
+					<div class="grow shrink basis-3"></div>
+					<div>
+						<div class="p-0 ttw-button_action self-end">
+							<img id='close_modal' width="32" height="32" class="bg-main rounded-bl-lg" src="{% static 'close_white.svg' %}" alt="{% trans 'Крестик' %}">
+						</div>
+					</div>
+				</div>
+				<div id='modal-content' class="p-2">
+				</div>
+			</div>
+		</modal>
+	</main>
+	<dock class="z-20">
+		{% block dock %}
+		{% endblock %}
+	</dock>
+	<footer class="p-2.5 flex flex-col items-center gap-5 z-20">
+		{% block footer %}
+		{% endblock %}
+		<div>
+			Copywrite @ {% now "Y"%} Tim the Webmaster
+		</div>
+	</footer>
+
+
+    <!-- This is for knowing where to look for an images-->
+    {% csrf_token %}
+    <script>
+		var DOMAIN_NAME = "{{domain_name}}"
+        var PATH = "{% static .%}"
+        {% get_available_languages as LANGUAGES %}
+        {% get_language_info_list for LANGUAGES as languages %}
+        {% for language in languages %}
+            {% if language.code == LANGUAGE_CODE %}
+				const language_code = "{{ language.code }}" 	
+			{% endif %}
+        {% endfor %}
+        const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+    </script>
+	<script src="{% url 'javascript-catalog' %}"></script>
+    <script src="{% static 'Main/js/index.min.js' %}"></script>
+	{% block scripts %}
+	{% endblock %}
+</body>
+</html>
