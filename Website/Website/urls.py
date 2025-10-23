@@ -9,13 +9,15 @@ from django.contrib.sitemaps.views import sitemap
 from Main.sitemaps import StaticSitemap
 from Post.sitemaps import PostSitemap
 
+from Website.api import get_dynamic_api_urls
+
+
 sitemaps = {
     "articles": PostSitemap,
     "static": StaticSitemap,
 }
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
     path('captcha/', include('captcha.urls')),
     path(
         "sitemap.xml",
@@ -25,14 +27,17 @@ urlpatterns = [
     ),
     # BY ALLAUTH
     path('accounts/', include('allauth.urls')),
-    ## Custom views
     path("_allauth/", include("Auth.urls_allauth")),
     path("_allauth/", include("allauth.headless.urls")),
+    ## Common API
+    path("api/v1/admin/", include(get_dynamic_api_urls(api_type='admin'))),
+    path("api/v1/public/", include(get_dynamic_api_urls(api_type='public'))),
 ]
 
 
 urlpatterns += i18n_patterns(
     path("jsi18n/", JavaScriptCatalog.as_view(), name="javascript-catalog"),
+    path('', include('Admin.urls')),
     path('', include('Auth.urls')),
     path('', include('Main.urls')),
     path('', include('Engagement.urls')),

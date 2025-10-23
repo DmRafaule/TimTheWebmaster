@@ -38,7 +38,6 @@ INSTALLED_APPS = [
     # model translation
     'modeltranslation',
     ###
-    'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -53,6 +52,8 @@ INSTALLED_APPS = [
     'rest_framework',
     # Django-Cleanup
     'django_cleanup.apps.CleanupConfig',
+    # Django Filters
+    'django_filters',
     # Yandex ad support
     'django_yandex_ad_manager.apps.YandexadmanagerConfig',
     # BY ALLAUTH
@@ -65,6 +66,7 @@ INSTALLED_APPS = [
 ]
 
 MY_INSTALLED_APPS = [
+    'Admin.apps.AdminConfig',
     'Auth.apps.AuthConfig',
     'Main.apps.MainConfig',
     'Post.apps.PostConfig',
