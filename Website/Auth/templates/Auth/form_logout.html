@@ -5,27 +5,30 @@
     <h1>{% trans "Ты уверен что хочешь выйти?" %}</h1>
     <p>{% trans "Ещё так много можно сделать." %}</p>
     <hr class="grow shrink-0 basis-2xs w-full">
-    <div
-        hx-post="{% url 'allauth_logout' %}"	
-        hx-indicator="loader"
-        hx-vals="js:{csrfmiddlewaretoken: csrftoken}"
-        hx-swap="none"
-        hx-on::after-request="
-            switch(event.detail.xhr.status){
-                case 200:
-                    window.location.href = '{% url 'home' %}';
-                    break;
-                case 400:
-                    toaster.notify('{% trans '✗ Возникла ошибка при попытке выхода' %}', 'error'); 
-                    break;
-            }
-        "
-        class="ttw-button ttw-button_action">
-        <p class="rounded-lg bg-main border text-white p-2">{% trans 'Да' %}</p>
-    </div>
-    <div class="ttw-button ttw-button_link">
-        <a href="{% url 'home' %}">
-            <p class="rounded-lg bg-main border text-white p-2">{% trans 'Пожалуй, поработаю ещё' %}</p>
-        </a>
+    <hr class="w-full">
+    <div class="flex flex-row gap-2">
+        <div
+            hx-post="{% url 'allauth_logout' %}"	
+            hx-indicator="loader"
+            hx-vals="js:{csrfmiddlewaretoken: csrftoken}"
+            hx-swap="none"
+            hx-on::after-request="
+                switch(event.detail.xhr.status){
+                    case 200:
+                        window.location.href = '{% url 'home' %}';
+                        break;
+                    case 400:
+                        toaster.notify('{% trans '✗ Возникла ошибка при попытке выхода' %}', 'error'); 
+                        break;
+                }
+            "
+            class="ttw-button ttw-button_action">
+            <p class="rounded-lg bg-main border text-white p-2">{% trans 'Да' %}</p>
+        </div>
+        <div class="ttw-button ttw-button_link">
+            <a href="{% url 'home' %}">
+                <p class="rounded-lg bg-main border text-white p-2">{% trans 'Пожалуй, поработаю ещё' %}</p>
+            </a>
+        </div>
     </div>
 </div>

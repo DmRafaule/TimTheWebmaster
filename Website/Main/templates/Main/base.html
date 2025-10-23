@@ -79,41 +79,10 @@
 		{% endblock %}
 		<div id="header-buttons-splitter" class="grow shrink">
 		</div>
-		<div class="grow-0 shrink ttw-button_swap" data-body="ads">
-			<div class="ttw-button ttw-button_action ttw-button_swap_front ttw-sidebar_button_open" data-body="ads">
-				<img class="ttw-button_circle" width="32" height="32" src="{% static 'ads.svg' %}" alt="{% trans '3 горизонтальные линии, бургер' %}">
-			</div>
-			<div class="ttw-button ttw-button_action ttw-button_swap_back ttw-sidebar_button_close ttw-button_swap_not_active" data-body="ads">
-				<img class="ttw-button_circle" width="32" height="32" src="{% static 'close_white.svg' %}" alt="{% trans '3 горизонтальные линии, бургер' %}">
-			</div>
-		</div>
-		<div class="grow-0 shrink ttw-button_swap" data-body="cookies">
-			<div class="ttw-button ttw-button_action ttw-button_swap_front ttw-sidebar_button_open" data-body="cookies">
-				<img class="ttw-button_circle" width="32" height="32" src="{% static 'cookie.svg' %}" alt="{% trans '3 горизонтальные линии, бургер' %}">
-			</div>
-			<div class="ttw-button ttw-button_action ttw-button_swap_back ttw-sidebar_button_close ttw-button_swap_not_active" data-body="cookies">
-				<img class="ttw-button_circle" width="32" height="32" src="{% static 'close_white.svg' %}" alt="{% trans '3 горизонтальные линии, бургер' %}">
-			</div>
-		</div>
-		<div class="grow-0 shrink ttw-button_swap ttw-button_swap_not_close_on_outsite">
-			{% get_available_languages as LANGUAGES %}
-			{% get_language_info_list for LANGUAGES as languages %}
-			{% for language in languages %}
-				{% if language.code == LANGUAGE_CODE %}
-					<div class="ttw-button ttw-button_link ttw-button_swap_back ttw-button_swap_not_active">
-						<a href="/{{language.code}}{{ request.get_full_path|cut:"ru/"|cut:"en/" }}"><img class="ttw-button_circle" width="32" height="32" src="{% static '' %}{{language.code}}.svg" alt="{% trans '3 горизонтальные линии, бургер' %}"></a>
-					</div>
-				{% else %}
-					<div class="ttw-button ttw-button_link ttw-button_swap_front">
-						<a href="/{{language.code}}{{ request.get_full_path|cut:"ru/"|cut:"en/" }}"><img class="ttw-button_circle" width="32" height="32" src="{% static '' %}{{language.code}}.svg" alt="{% trans '3 горизонтальные линии, бургер' %}"></a>
-					</div>
-				{% endif %}
-			{% endfor %}
-		</div>
 		{% if request.user.is_authenticated %}
 			<div class="grow-0 shrink ttw-button ttw-button_link">
-            	<a href="{% url 'profile' %}">
-					<img class="ttw-button_circle" width="32" height="32" src="{% static 'Auth/img/profile.svg' %}" alt="{% trans '3 горизонтальные линии, бургер' %}">
+            	<a href="{% url 'logout' %}">
+					<img class="ttw-button_circle" width="32" height="32" src="{% static 'Auth/img/logout.svg' %}" alt="{% trans '3 горизонтальные линии, бургер' %}">
 				</a>
 			</div>
 		{% else %}
@@ -156,6 +125,12 @@
 				<hr>
 			</div>
 			<ul class="list_without_sign flex flex-col items-center">
+				{% if request.user.is_authenticated %}
+					{% if request.user.is_superuser %}
+						<li class="ttw-button ttw-button_link"><a class="" href="{% url 'admin'%}"><p><h3>{% trans "Админка" %}</h3></p></a></li>
+					{% endif %}
+					<li class="ttw-button ttw-button_link"><a class="" href="{% url 'profile'%}"><p><h3>{% trans "Профиль" %}</h3></p></a></li>
+				{% endif %}
 				<li class="ttw-button ttw-button_link"><a class="" href="{% url 'home'%}"><p><h3>{% trans "Домашняя" %}</h3></p></a></li>
 				<li class="ttw-button ttw-button_link"><a class="" href="{% url 'about'%}"><p><h3>{% trans "Об авторе" %}</h3></p></a></li>
 				{% for cat_spec in categories_special %}
@@ -163,86 +138,25 @@
 				{% endfor %}
 			</ul>
 			<div>
+				<div class="grow-0 shrink ttw-button_swap ttw-button_swap_not_close_on_outsite p-2">
+					{% get_available_languages as LANGUAGES %}
+					{% get_language_info_list for LANGUAGES as languages %}
+					{% for language in languages %}
+						{% if language.code == LANGUAGE_CODE %}
+							<div class="ttw-button ttw-button_link ttw-button_swap_back ttw-button_swap_not_active">
+								<a href="/{{language.code}}{{ request.get_full_path|cut:"ru/"|cut:"en/" }}"><img class="ttw-button_circle" width="32" height="32" src="{% static '' %}{{language.code}}.svg" alt="{% trans '3 горизонтальные линии, бургер' %}"></a>
+							</div>
+						{% else %}
+							<div class="ttw-button ttw-button_link ttw-button_swap_front">
+								<a href="/{{language.code}}{{ request.get_full_path|cut:"ru/"|cut:"en/" }}"><img class="ttw-button_circle" width="32" height="32" src="{% static '' %}{{language.code}}.svg" alt="{% trans '3 горизонтальные линии, бургер' %}"></a>
+							</div>
+						{% endif %}
+					{% endfor %}
+				</div>
 				<hr>
 				<div class="min-h-[50px]"></div>
 			</div>
 		</nav>
-		<div id="cookies" class="ttw-sidebar_body ttw-sidebar_body_right ttw-sidebar_body_not_active p-1 justify-between flex flex-col">
-			<div class="text-center">
-				<h2>{% trans "Про куки" %}</h2>
-				<hr>
-			</div>
-			<div class="flex flex-col gap-4 text-justify p-2 overflow-auto">
-				<div>
-				{%    blocktrans %}
-				Все куки могут быть поделены на необходимые, без которых работа сайта невозможна, и на опциональные, которые не влияют на работу этого сайта. 
-				{% endblocktrans %}
-				</div>
-				<div>
-				{%    blocktrans %}
-				Вот все необходимые куки, которые использует мой сайт:
-				{% endblocktrans %}
-				</div>
-				<ul style="margin-top: 0;">
-				{%    blocktrans %}
-					<li><i>Аутентификационные</i> - Есть, но они только для меня ^_____^</li>
-					<li><i>Сессионные куки</i> - Так, например, RSSReader знает, кому и что отдавать</li>
-					<li><i>Куки безопастности</i> - <b>CSRF токен</b> относится к нему</li>
-				{% endblocktrans %}
-				</ul>
-				<div>
-				{%    blocktrans %}
-					А вот все опциональные куки, которые использует мой сайт:
-				{% endblocktrans %}
-				</div>
-				<ul style="margin-top: 0;">
-				{%    blocktrans %}
-					<li>Куки аналитики (Яндекс Метрика, Google Analitycs)</li>
-				{% endblocktrans %}
-				</ul>
-				<div>
-				{%    blocktrans %}
-				Продолжая использовать наш сайт, Вы соглашаетесь на обработку файлов <b>куки</b>, которые были перечислены выше.
-				{% endblocktrans %}
-				</div>
-			</div>
-			<div>
-				<hr>
-				<div class="min-h-[50px]"></div>
-			</div>
-		</div>
-		<div id="ads" class="ttw-sidebar_body ttw-sidebar_body_right ttw-sidebar_body_not_active p-1 justify-between flex flex-col">
-			<div class="text-center">
-				<h2>{% trans "Про рекламу и монетизацию" %}</h2>
-				<hr>
-			</div>
-			<div class="flex flex-col gap-4 text-justify p-2">
-				<div>
-				{%    blocktrans %}
-					На моём сайте присутствует реклама, используется рекламная сеть Яндекс, пока в качестве эксперимента. 
-					Все рекламные блоки отмечены вот такой вот иконкой:
-				{% endblocktrans %}
-					<span><img class="svg_icon_inverted" width="16px" height="16px" src="{% static "ads.svg" %}"></span>
-				</div>
-				<div>
-				{%    blocktrans %}
-					Так же на моём сайте располагаются партнёрские программы, от тех рекламодателей инструменты и сервисы 
-					которых я сам использую или опробовал, и хочу порекомендовать.
-				{% endblocktrans %}
-				</div>
-				<div class="ref">
-				{%    blocktrans %}
-					Я бы хотел сделать ставку на так называемую freeminimum модель монетизации. 
-					Где платят за пользование, в той или иной форме, программным обеспечением.
-					Более подробно <a href="/ru/articles/?page=1&tag=delat-dengi">о способах монетизации сайтов</a> в общем, и моих сайтов в частности.
-				{% endblocktrans %}
-				</div>
-			</div>
-			<div>
-				<hr>
-				<div class="min-h-[50px]"></div>
-			</div>
-		</div>
 		{% block hat_body %}
 		{% endblock %}
 		<aside class="sticky-container sticky-container-left lg:block">

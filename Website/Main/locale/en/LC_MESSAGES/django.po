@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-10-17 18:36+0300\n"
+"POT-Creation-Date: 2025-10-23 07:09+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -456,11 +456,9 @@ msgstr ""
 "years old. And my site is 1 years old"
 
 #: .\Main\templates\Main\base.html:72 .\Main\templates\Main\base.html:75
-#: .\Main\templates\Main\base.html:84 .\Main\templates\Main\base.html:87
-#: .\Main\templates\Main\base.html:92 .\Main\templates\Main\base.html:95
-#: .\Main\templates\Main\base.html:104 .\Main\templates\Main\base.html:108
-#: .\Main\templates\Main\base.html:116 .\Main\templates\Main\base.html:122
-#: .\Main\templates\Main\base.html:139
+#: .\Main\templates\Main\base.html:85 .\Main\templates\Main\base.html:91
+#: .\Main\templates\Main\base.html:108 .\Main\templates\Main\base.html:147
+#: .\Main\templates\Main\base.html:151
 #: .\Main\templates\Main\base_status_code.html:23
 #: .\Main\templates\Main\base_status_code.html:26
 #: .\Main\templates\Main\base_status_code.html:39
@@ -469,193 +467,70 @@ msgstr ""
 msgid "3 горизонтальные линии, бургер"
 msgstr "3 horizontal lines, burger"
 
-#: .\Main\templates\Main\base.html:128
+#: .\Main\templates\Main\base.html:97
 #: .\Main\templates\Main\base_status_code.html:50
 msgid "Главная иконка сайта"
 msgstr "Main icon of the website"
 
-#: .\Main\templates\Main\base.html:143
+#: .\Main\templates\Main\base.html:112
 #: .\Main\templates\Main\base_status_code.html:65
 msgid "Удалить все"
 msgstr "Remove all"
 
-#: .\Main\templates\Main\base.html:159
+#: .\Main\templates\Main\base.html:130
+msgid "Админка"
+msgstr "Admin"
+
+#: .\Main\templates\Main\base.html:132
+msgid "Профиль"
+msgstr "Profile"
+
+#: .\Main\templates\Main\base.html:134
 #: .\Main\templates\Main\base_status_code.html:77
 msgid "Домашняя"
 msgstr "Home"
 
-#: .\Main\templates\Main\base.html:160 .\Main\templates\Main\base.html:301
+#: .\Main\templates\Main\base.html:135 .\Main\templates\Main\base.html:215
 #: .\Main\templates\Main\base_status_code.html:78
 #: .\Main\templates\Main\base_status_code.html:113
 msgid "Об авторе"
 msgstr "About"
 
-#: .\Main\templates\Main\base.html:172
-msgid "Про куки"
-msgstr "About cookies"
-
-#: .\Main\templates\Main\base.html:177
-msgid ""
-"\n"
-"\t\t\t\tВсе куки могут быть поделены на необходимые, без которых работа "
-"сайта невозможна, и на опциональные, которые не влияют на работу этого "
-"сайта. \n"
-"\t\t\t\t"
-msgstr ""
-"\n"
-"\t\t\t\tAll cookies can be divided into necessary ones, without which the "
-"operation of the site is impossible, and optional ones, which do not affect "
-"the operation of this site. \n"
-"\t\t\t\t"
-
-#: .\Main\templates\Main\base.html:182
-msgid ""
-"\n"
-"\t\t\t\tВот все необходимые куки, которые использует мой сайт:\n"
-"\t\t\t\t"
-msgstr ""
-"\n"
-"\t\t\t\tHere are all the necessary cookies my site uses:\n"
-"\t\t\t\t"
-
-#: .\Main\templates\Main\base.html:187
-msgid ""
-"\n"
-"\t\t\t\t\t<li><i>Аутентификационные</i> - Есть, но они только для меня "
-"^_____^</li>\n"
-"\t\t\t\t\t<li><i>Сессионные куки</i> - Так, например, RSSReader знает, кому "
-"и что отдавать</li>\n"
-"\t\t\t\t\t<li><i>Куки безопастности</i> - <b>CSRF токен</b> относится к "
-"нему</li>\n"
-"\t\t\t\t"
-msgstr ""
-"\n"
-"\t\t\t\t\t<li><i>Authentication</i> - Yes, but they are only for me ^_____^</"
-"li>\n"
-"\t\t\t\t\t<li><i>Session cookies</i> - So, for example, RSSReader knows who "
-"to give what</li>\n"
-"\t\t\t\t\t<li><i>Security cookies</i> - <b>CSRF token</b> belongs to him</"
-"li>\n"
-"\t\t\t\t"
-
-#: .\Main\templates\Main\base.html:194
-msgid ""
-"\n"
-"\t\t\t\t\tА вот все опциональные куки, которые использует мой сайт:\n"
-"\t\t\t\t"
-msgstr ""
-"\n"
-"\t\t\t\t\tHere are all the optional cookies my site uses:\n"
-"\t\t\t\t"
-
-#: .\Main\templates\Main\base.html:199
-msgid ""
-"\n"
-"\t\t\t\t\t<li>Куки аналитики (Яндекс Метрика, Google Analitycs)</li>\n"
-"\t\t\t\t"
-msgstr ""
-"\n"
-"\t\t\t\t\t<li>Analytics cookies (Yandex Metrica, Google Analitycs)</li>\n"
-"\t\t\t\t"
-
-#: .\Main\templates\Main\base.html:204
-msgid ""
-"\n"
-"\t\t\t\tПродолжая использовать наш сайт, Вы соглашаетесь на обработку файлов "
-"<b>куки</b>, которые были перечислены выше.\n"
-"\t\t\t\t"
-msgstr ""
-"\n"
-"\t\t\t\tBy continuing to use our site, you agree to the processing of the "
-"files <b>cookies</b> that were listed above.\n"
-"\t\t\t\t"
-
-#: .\Main\templates\Main\base.html:216
-msgid "Про рекламу и монетизацию"
-msgstr "About advertisement and monetization"
-
-#: .\Main\templates\Main\base.html:221
-msgid ""
-"\n"
-"\t\t\t\t\tНа моём сайте присутствует реклама, используется рекламная сеть "
-"Яндекс, пока в качестве эксперимента. \n"
-"\t\t\t\t\tВсе рекламные блоки отмечены вот такой вот иконкой:\n"
-"\t\t\t\t"
-msgstr ""
-"\n"
-"\t\t\t\t\t\tMy site contains advertising, using the Yandex advertising "
-"network, as an experiment for now.\n"
-"\t\t\t\t\t\tAll ad blocks are marked with this icon:\n"
-"\t\t\t\t\t"
-
-#: .\Main\templates\Main\base.html:228
-msgid ""
-"\n"
-"\t\t\t\t\tТак же на моём сайте располагаются партнёрские программы, от тех "
-"рекламодателей инструменты и сервисы \n"
-"\t\t\t\t\tкоторых я сам использую или опробовал, и хочу порекомендовать.\n"
-"\t\t\t\t"
-msgstr ""
-"\n"
-"\t\t\t\t\t\tMy site also hosts affiliate programs from those advertisers, "
-"tools, and services\n"
-"\t\t\t\t\tthat I personally use or have tried, and would like to recommend.\n"
-"\t\t\t\t\t"
-
-#: .\Main\templates\Main\base.html:234
-msgid ""
-"\n"
-"\t\t\t\t\tЯ бы хотел сделать ставку на так называемую freeminimum модель "
-"монетизации. \n"
-"\t\t\t\t\tГде платят за пользование, в той или иной форме, программным "
-"обеспечением.\n"
-"\t\t\t\t\tБолее подробно <a href=\"/ru/articles/?page=1&tag=delat-dengi\">о "
-"способах монетизации сайтов</a> в общем, и моих сайтов в частности.\n"
-"\t\t\t\t"
-msgstr ""
-"\n"
-"\t\t\t\t\tI would like to bet on the so-called freeminimum model of "
-"monetization. \n"
-"\t\t\t\t\tWhere they pay for using, in one form or another the software .\n"
-"\t\t\t\t\tMore details <a href=\"/en/articles/?page=1&tag=make-money\">about "
-"methods of monetizing sites</a> in general, and my sites in particular.\n"
-"\t\t\t\t"
-
-#: .\Main\templates\Main\base.html:267
+#: .\Main\templates\Main\base.html:181
 msgid "Крестик"
 msgstr "Cross"
 
-#: .\Main\templates\Main\base.html:286
+#: .\Main\templates\Main\base.html:200
 #: .\Main\templates\Main\base_status_code.html:98
 msgid "Популярные ссылки"
 msgstr "Popular links"
 
-#: .\Main\templates\Main\base.html:297
+#: .\Main\templates\Main\base.html:211
 #: .\Main\templates\Main\base_status_code.html:109
 msgid "Другие ссылки"
 msgstr "Other links"
 
-#: .\Main\templates\Main\base.html:300
+#: .\Main\templates\Main\base.html:214
 #: .\Main\templates\Main\base_status_code.html:112
 msgid "Карта сайта"
 msgstr "Sitemap"
 
-#: .\Main\templates\Main\base.html:306
+#: .\Main\templates\Main\base.html:220
 #: .\Main\templates\Main\base_status_code.html:118
 msgid "Контакты"
 msgstr "Contacts"
 
-#: .\Main\templates\Main\base.html:312
+#: .\Main\templates\Main\base.html:226
 #: .\Main\templates\Main\base_status_code.html:124
 msgid "иконка"
 msgstr "icon"
 
-#: .\Main\templates\Main\base.html:321
+#: .\Main\templates\Main\base.html:235
 #: .\Main\templates\Main\base_status_code.html:133
 msgid "Кратко о сайте"
 msgstr "In short for guests"
 
-#: .\Main\templates\Main\base.html:324
+#: .\Main\templates\Main\base.html:238
 #: .\Main\templates\Main\base_status_code.html:136
 msgid ""
 "\n"
@@ -737,15 +612,3 @@ msgstr ""
 #: .\Main\templates\Main\loader.html:10
 msgid "ЗАГРУЗКА ..."
 msgstr "LOADING ..."
-
-#~ msgid ""
-#~ "\n"
-#~ "\t\t\t\t\tВсе партнёрские ссылки отмечены вот такой вот иконкой\n"
-#~ "\t\t\t\t"
-#~ msgstr ""
-#~ "\n"
-#~ "\t\t\t\t\t\tAll affiliate links are marked with this icon\n"
-#~ "\t\t\t\t\t"
-
-#~ msgid "Партнёры"
-#~ msgstr "Partners"
