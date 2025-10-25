@@ -38,6 +38,9 @@ INSTALLED_APPS = [
     # model translation
     'modeltranslation',
     ###
+    'jet.dashboard',
+    'jet',
+    'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -66,7 +69,6 @@ INSTALLED_APPS = [
 ]
 
 MY_INSTALLED_APPS = [
-    'Admin.apps.AdminConfig',
     'Auth.apps.AuthConfig',
     'Main.apps.MainConfig',
     'Post.apps.PostConfig',
@@ -150,7 +152,8 @@ HEADLESS_FRONTEND_URLS = {
 ACCOUNT_RATE_LIMITS = {
     "confirm_email": "10/m/key",  # up to 10 confirmation emails per minute per key
 }
-
+# Customizeable Admin
+JET_INDEX_DASHBOARD = 'Website.dashboard.CustomIndexDashboard'
 
 WSGI_APPLICATION = 'Website.wsgi.application'
 

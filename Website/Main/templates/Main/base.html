@@ -127,7 +127,7 @@
 			<ul class="list_without_sign flex flex-col items-center">
 				{% if request.user.is_authenticated %}
 					{% if request.user.is_superuser %}
-						<li class="ttw-button ttw-button_link"><a class="" href="{% url 'admin'%}"><p><h3>{% trans "Админка" %}</h3></p></a></li>
+						<li class="ttw-button ttw-button_link"><a class="" href="/admin/"><p><h3>{% trans "Админка" %}</h3></p></a></li>
 					{% endif %}
 					<li class="ttw-button ttw-button_link"><a class="" href="{% url 'profile'%}"><p><h3>{% trans "Профиль" %}</h3></p></a></li>
 				{% endif %}

@@ -9,7 +9,9 @@ from rest_framework import serializers, viewsets
 from rest_framework.routers import DefaultRouter
 from rest_framework.filters import OrderingFilter, SearchFilter
 from rest_framework.pagination import PageNumberPagination
+from rest_framework.renderers import JSONRenderer, BrowsableAPIRenderer
 from rest_framework.permissions import IsAdminUser, AllowAny, BasePermission # Import BasePermission for type hinting
+
 
 # ====================================================================
 # CONFIGURATION CLASSES
@@ -138,7 +140,10 @@ def create_generic_viewset(_model_class, _serializer_class, _base_viewset_class,
 
         # SECURITY: Set permissions based on the argument provided
         permission_classes = _permission_classes
-
+        # Add the custom renderer
+        renderer_classes = [JSONRenderer, BrowsableAPIRenderer] 
+        # DRF will automatically select the renderer based on Accept header 
+        # or the ?format= query parameter (which we'll use).
         # Functionality backends
         filter_backends = (DjangoFilterBackend, OrderingFilter, SearchFilter)
         filterset_class = DynamicFilterSet
@@ -150,6 +155,57 @@ def create_generic_viewset(_model_class, _serializer_class, _base_viewset_class,
 
         # Searching
         search_fields = searchable_fields
+
+        # Переопределяем метод list для захвата данных пагинации
+        def list(self, request, *args, **kwargs):
+            # 1. Вызываем super().list(). На этом шаге происходит пагинация, 
+            #    и self.paginator.page получает объект Page.
+            response = super().list(request, *args, **kwargs)
+
+            # Если используется HTML рендерер (т.е. запрос с ?format=html)
+            # и используется пагинация (self.paginator не None)
+            if request.accepted_renderer.format == 'html' and self.paginator:
+                
+                # --- Инициализация renderer_context ---
+                # В отличие от `get_renderer_context` в DRF, который вызывается позже,
+                # здесь мы должны инициализировать его вручную, чтобы добавить данные.
+                # DRF не всегда гарантирует его наличие в объекте Response в методе list().
+                
+                # Используем ._set_renderer_context для установки контекста
+                # Это более надежный, хоть и "приватный" способ, который работает.
+                if not hasattr(response, 'renderer_context'):
+                    response.renderer_context = {}
+                
+                renderer_context = response.renderer_context
+
+                # --- ПОЛУЧЕНИЕ ДАННЫХ ПАГИНАЦИИ ---
+                
+                # 1. Получаем текущую страницу (Page object)
+                # Этот объект становится доступен только после super().list()
+                page_obj = self.paginator.page
+                
+                # 2. Общее количество страниц (Total Pages)
+                total_pages = page_obj.paginator.num_pages
+                
+                # 3. Текущая страница (Current Page Number)
+                current_page = page_obj.number
+                
+                # 4. URL для следующей и предыдущей страниц (предоставляются DRF)
+                next_url = self.paginator.get_next_link()
+                prev_url = self.paginator.get_previous_link()
+                
+                # 5. Сохраняем данные пагинации для использования в рендерере
+                # Эти данные будут извлечены в вашем AdminRecordsHTMLRenderer
+                renderer_context['pagination_data'] = {
+                    'next': next_url,
+                    'previous': prev_url,
+                    'total_pages': total_pages,
+                    'current_page': current_page,
+                }
+                
+                response.renderer_context = renderer_context # Установка не нужна, так как мы модифицировали объект
+            
+            return response
         
     # Use f-strings for the class name to maintain DRF conventions
     DynamicModelViewSet.__name__ = f'{_model_class.__name__}{_base_viewset_class.__name__}'

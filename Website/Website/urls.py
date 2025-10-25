@@ -18,6 +18,9 @@ sitemaps = {
 }
 
 urlpatterns = [
+    path(r'jet/', include('jet.urls', 'jet')),  # Django JET URLS
+    path(r'jet/dashboard/', include('jet.dashboard.urls', 'jet-dashboard')), # Django JET dashboard URLS
+    path('admin/', admin.site.urls),
     path('captcha/', include('captcha.urls')),
     path(
         "sitemap.xml",
@@ -37,7 +40,6 @@ urlpatterns = [
 
 urlpatterns += i18n_patterns(
     path("jsi18n/", JavaScriptCatalog.as_view(), name="javascript-catalog"),
-    path('', include('Admin.urls')),
     path('', include('Auth.urls')),
     path('', include('Main.urls')),
     path('', include('Engagement.urls')),
