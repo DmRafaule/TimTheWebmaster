@@ -1,4 +1,5 @@
 @import '../../Components/config.css';
+@import '../../Components/Base/scrollbar.css';
 @import '../../Components/Buttons/Action/button_action.css';
 @import '../../Components/Buttons/Link/button_link.css';
 @import '../../Components/Buttons/button.css';
