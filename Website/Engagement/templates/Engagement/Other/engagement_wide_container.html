@@ -1,0 +1,73 @@
+{% load static %}
+{% load i18n %}
+
+<div class="flex flex-col gap-2">
+	<a class="ref_hidden-int_no-sign" href="#feedback">
+        <h2>{% trans "Обратная связь, контакты, прочее" %}</h2>
+    </a>
+    <hr>
+    <div class="flex gap-4 flex-wrap-reverse justify-between items-end">
+        <div class="flex grow basis-2xs">
+            {% include "Engagement/Other/engagement_feedback_form_container.html" with feedback_form=feedback_form %}
+        </div>
+        <div class="flex flex-col gap-4 grow basis-2xs">
+            <div class="flex flex-col gap-2 grow">
+                <h3>{% trans "Контакты" %}</h3>
+                <hr>
+                {% for contact in contacts %}
+                <div class="ttw-button ttw-button_link ttw-button_squared border w-full">
+                    <a target="_blank" rel="contact" rev="{{contact.description}}" href="{{contact.url}}"> 
+                        <p class="p-1 w-full ttw-button_squared flex gap-4 items-center justify-start" style="border:1px solid black;">
+                            <img width="32" height="32" src="{% get_media_prefix %}{{contact.icon}}" alt="{{ contact.name }} {% trans 'иконка' %}">
+                            {{contact.description}}
+                        </p>
+                    </a>
+                </div>
+                {% endfor %}
+            </div>
+            <div class="flex grow basis-2xs">
+                {% include "Engagement/Other/engagement_email_subscription_form_container.html" with email_subscription_form=email_subscription_form %}
+            </div>
+            <div class="flex flex-col gap-2 grow">
+                <h3>{% trans "RSS каналы" %}</h3>
+                <hr>
+                <div class="ttw-button ttw-button_action ttw-button_squared w-full" onclick="
+                    var text = this.dataset.rss ;
+                    navigator.clipboard.writeText(`${text}`); 
+                    toaster.notify('{% trans 'Скопировал ссылку на RSS фид' %}','info');
+                    yaCounter95199635.reachGoal('onRSS');
+                "  data-rss="https://{{domain_name}}{% url 'articles-rss' %}">
+                    <div class="ttw-button_squared flex gap-4 items-center justify-start p-1 border border-solid border-black">
+                        <img width="32" height="32" src="{% static 'rss.svg' %}" alt="{% trans 'Значок rss-фида' %}">
+                        <p>{% trans "Подписаться на выход последних статей" %}</p>
+                    </div>
+                </div>
+                <div class="ttw-button ttw-button_action  ttw-button_squared border  w-full" onclick="
+                    var text = this.dataset.rss ;
+                    navigator.clipboard.writeText(`${text}`); 
+                    toaster.notify('{% trans 'Скопировал ссылку на RSS фид' %}','info');
+                    yaCounter95199635.reachGoal('onRSS');
+                "  data-rss="https://{{domain_name}}{% url 'tools-rss' %}">
+                    <div class="ttw-button_squared flex gap-4 items-center justify-start p-1 border border-solid border-black">
+                        <img width="32" height="32" src="{% static 'rss.svg' %}" alt="{% trans 'Значок rss-фида' %}">
+                        <p>{% trans "Подписаться на выход последних инструментов" %}</p>
+                    </div>
+                </div>
+                <div class="ttw-button ttw-button_action  ttw-button_squared border  w-full" onclick="
+                    var text = this.dataset.rss ;
+                    navigator.clipboard.writeText(`${text}`); 
+                    toaster.notify('{% trans 'Скопировал ссылку на RSS фид' %}','info');
+                    yaCounter95199635.reachGoal('onRSS');
+                "  data-rss="https://{{domain_name}}{% url 'notes-rss' %}">
+                    <div class="ttw-button_squared flex gap-4 items-center justify-start p-1 border border-solid border-black">
+                        <img width="32" height="32" src="{% static 'rss.svg' %}" alt="{% trans 'Значок rss-фида' %}">
+                        <p>{% trans "Подписаться на выход последних заметок" %}</p>
+                    </div>
+                </div>
+                {% comment "" %}
+                    Кнопка доната
+                {% endcomment %}
+            </div>
+        </div>
+    </div>
+</div>

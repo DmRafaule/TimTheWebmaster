@@ -109,5 +109,5 @@ function jumpTo( target, ref ){
 	// Меняем состояние
 	history.pushState(null, '',`${ref}`)
 	// Прыгаем к цели
-	target.scrollIntoView({behavior: "smooth", block: "center", inline: "center"});
+	target.scrollIntoView({behavior: "smooth", block: "nearest", inline: "nearest"});
 }

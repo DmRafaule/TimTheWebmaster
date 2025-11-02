@@ -14,8 +14,42 @@
 
 {% block content %}
 <div class="justify-center flex flex-col w-full toObserve ttw-limiter">
-	<div class="max-w-7xl self-center flex flex-col ttw-content">
-		<h1 class="ttw-title" >{% trans "Тим Вебмастер" %}</h1>
+	<div class="max-w-7xl self-center flex flex-col ttw-content w-full">
+		<div class="flex flex-row gap-2 basis-2xs flex-wrap-reverse items-center">
+			<div class="grow shrink-0 basis-2xs">
+				<h1 class="ttw-title text-right" >{% trans "Тим Вебмастер: Бесплатные инструменты, уроки и кейсы про Django, SEO, ИИ и разработку в целом" %}</h1>
+				<div class="mb-12"><i>{% trans "Создаю собственные вебсервисы и инструменты. Делюсь кодом, опытом и разными историями пока работаю над своими проектами" %}</i></div>
+				<div class="flex flex-row gap-2 flex-wrap ref_hidden_no-sign text-white">
+					<a href="{% url 'articles-list' %}" class="grow basis-auto bg-main text-white rounded-[8px]">
+						<div class="ttw-button ttw-button_link h-full rounded-[8px]">
+							<div class="h-full flex justify-center items-center text-center rounded-[8px] pt-2 pb-2">
+								<div class="ml-5 mr-5">{% trans 'Посмотреть последние статьи' %}</div>
+							</div>
+						</div>
+					</a>
+					<a href="{% url 'tools-list' %}?page=1&tag={{internal_tool_tag}}" class="grow basis-auto bg-main text-white rounded-[8px]">
+						<div class="ttw-button ttw-button_link h-full rounded-[8px]">
+							<div class="h-full flex justify-center items-center text-center rounded-[8px] pt-2 pb-2">
+								<div class="ml-5 mr-5">{% trans 'Опробовать инструменты' %}</div>
+							</div>
+						</div>
+					</a>
+					<a href="{% url 'about' %}" class="grow bg-main text-white rounded-[8px]">
+						<div class="ttw-button ttw-button_link h-full rounded-[8px]">
+							<div class="h-full flex justify-center items-center text-center rounded-[8px] pt-2 pb-2">
+								<div class="ml-5 mr-5">{% trans 'Или ознакомиться с сайтом' %}</div>
+							</div>
+						</div>
+					</a>
+				</div>
+			</div>
+			<div class="flex basis-2xs grow">
+				<div class="flex items-center justify-center">
+					<img src="{% get_media_prefix %}{{articles_preview}}">
+				</div>
+			</div>
+		</div>
+
 		{% if isYandexAdManagerMiddlewareConnected %}
 			{% for adlocation in adlocations %}
 				{% if adlocation.adlocation_name == "HOME_FIRST_VISIBLE" %}
@@ -23,148 +57,207 @@
 				{% endif %}
 			{% endfor %}
 		{% endif %}
+
+		<h2 id="about-me-in-short"><a class="ref_hidden-int_no-sign" href="#about-me-in-short">{% trans "Обо мне (В двух словах)" %}</a></h2>
+		<hr>
+		<div class="flex gap-2 flex-wrap items-center">
+			<div class="flex flex-col gap-2 grow shrink basis-2xs">
+				<div>
+					{% blocktrans %}
+					Просто програмист-самоучка, который пишет время от времени статьи на различные темы. В <i>"различные темы"</i> входят, но не ограничиваются, <b>Разработка ПО</b>, <b>SEO</b>, <b>Анализ данных, тенденций, статистики</b> и <b>История програмирования</b>. 
+					{% endblocktrans %}
+				</div>
+				<div>
+					{% blocktrans %} 
+					Так же если прям очень много времени разрабатываю и публикую свои инструменты и веб приложения. Мои инструменты самой разной направленности, от встроенных <b>веб приложений</b> на моём сайте до <b>терминальных утилит</b> и <b>PyPI пакетов</b> на <b>Python</b>. Так как инструменты самой разной направленности, то и стеки их, соответствующе, разные. Так для разработки веб приложений использую <b>Django</b> и <b>TailwindCSS</b>, а для телеграм ботов <b>AIOgram</b>.
+					{% endblocktrans %}
+				</div>
+				<div>
+					<div><i><a  class="ref-ext" href="{% url 'about' %}">
+						{% trans 'Или если ты захочешь узнать прям "многое" то вот моя полная история' %}
+					</a></i></div>
+				</div>
+			</div>
+		</div>
 		<div class="flex flex-col gap-5">
-			<div class="flex gap-5 flex-wrap">
-				<div class="flex flex-col justify-between gap-5 grow-[7] shrink basis-2xs">
-					<div class="border-r-2 border-solid">
-						<h2>{% trans "Инструменты" %}</h2>
-						<hr>
-						<div class="tabs">
-							{% for res in my_resources %}
-								{% if forloop.counter == 1 %}
-								<div class="tab_button tab_active" data-bodyid="{{forloop.counter}}">
-									<div>
-										<h3>{{res.title}}</h3>
+			<div class="flex">
+				<div class="flex flex-col justify-between gap-5 grow-[7] shrink basis-2xs overflow-hidden">
+						<tabs>
+							<div class="ttw-tabs-headers scroll-snap-x items-start">
+								<div class="ttw-tabs-navigation gap-2 p-2 w-full">
+									<a class="ttw-tabs-navigation-tab ttw-tab_active ref-int_no-sign" href="#most-popular-tools">
+										<h2>{% trans "Топ инструментов" %}</h2>
+									</a>
+									<a class="ttw-tabs-navigation-tab" href="#most-recent-tools">
+										<h2>{% trans "Новые инструменты" %}</h2>
+									</a>
+									<div class="ttw-tabs-navigation-buttons sticky right-1 min-w-max flex gap-1 items-center w-full justify-end">
+										<div class="ttw-button ttw-button_action ttw-tabs-prev-tab">
+											<img class="ttw-button_squared bg-main" src="{% static 'chevron_left.svg' %}" width="32" height="32" alt="{% trans "Предыдущая вкладка на табуляторе" %}">
+										</div>
+										<div class="ttw-button ttw-button_action ttw-tabs-next-tab">
+											<img class="ttw-button_squared bg-main" src="{% static 'chevron.svg' %}" width="32" height="32" alt="{% trans "Следующая вкладка на табуляторе" %}">
+										</div>
 									</div>
 								</div>
-								{% else %}
-								<div class="tab_button" data-bodyid="{{forloop.counter}}">
-									<div>
-										<h3>{{res.title}}</h3>
-									</div>
-								</div>
-								{% endif %}
-							{% endfor %}
-						</div>
-						<div class="tab_body">
-							{% for res in my_resources %}
-								{% if forloop.counter == 1 %}
-								<div id="tab_body-{{forloop.counter}}" class="tab_element  tab_element__active">
-									<div class="flex flex-row items-start flex-wrap gap-5">
+							</div>
+							<hr>
+							<section class="ttw-tabs-body scroll-snap-x">
+								<article class="ttw-tabs-body-element flex flex-col justify-between" id="most-popular-tools">
+									<div id="tool_block_ref" class="flex flex-row items-start flex-wrap gap-5 p-2">
 										<div class="flex flex-row flex-wrap gap-5 grow basis-2xl p-2">
-											{% include 'Post/basic--post_preview-tool.html' with posts=res.objs %}
+											{% include 'Post/basic--post_preview-tool.html' with posts=popular_tools %}
 										</div>
 									</div>
 									<div class="flex justify-end">
-										<div class="ttw-button ttw-button_link bg-main text-white rounded-tl-xl rounded-bl-xl ref_hidden_no-sign">
-											<a href="{% url 'tools-list' %}?page=1&tag={{res.tag}}">
-												<p class="rounded-tl-xl rounded-bl-xl p-2">
+										<div class="ttw-button ttw-button_link bg-main text-white rounded-tl-xl ref_hidden_no-sign">
+											<a href="{% url 'tools-list' %}?page=1">
+												<p class="rounded-tl-xl p-2">
 												{% trans 'Больше ...' %}
 												</p>
 											</a>
 										</div>
 									</div>
-								</div>
-								{% else %}
-								<div id="tab_body-{{forloop.counter}}" class="tab_element">
-									<div class="flex flex-row items-start flex-wrap gap-5">
+								</article>
+								<article class="ttw-tabs-body-element flex flex-col justify-between" id="most-recent-tools">
+									<div class="flex flex-row items-start flex-wrap gap-5 p-2">
 										<div class="flex flex-row p-2 flex-wrap gap-5 grow basis-2xl">
-											{% include 'Post/basic--post_preview-tool.html' with posts=res.objs %}
+											{% include 'Post/basic--post_preview-tool.html' with posts=recent_tools %}
 										</div>
 									</div>
 									<div class="flex justify-end">
-										<div class="ttw-button ttw-button_link bg-main text-white rounded-tl-xl rounded-bl-xl ref_hidden_no-sign">
-											<a href="{% url 'tools-list' %}?page=1&tag={{res.tag}}">
-												<p class="rounded-tl-xl rounded-bl-xl p-2">
+										<div class="ttw-button ttw-button_link bg-main text-white rounded-tl-xl ref_hidden_no-sign">
+											<a href="{% url 'tools-list' %}?page=1">
+												<p class="rounded-tl-xl p-2">
 												{% trans 'Больше ...' %}
 												</p>
 											</a>
 										</div>
 									</div>
-								</div>
-								{% endif %}
-							{% endfor %}
+								</article>
+							</section>
+						</tabs>
+				</div>
+				<div style="writing-mode: vertical-rl;text-orientation: mixed;background-color: var(--main_color);color: var(--color-white);padding: 5px;text-transform: uppercase;display: flex;gap: 20px;">
+					<div class="ttw-button_swap resize-block" data-body="responses-tools-main" data-ref-element-id="tool_block_ref" data-ref-selector-id="tool_block">
+						<div class="ttw-button ttw-button_action ttw-button_swap_front ttw-sidebar_button_open flex gap-5" data-body="responses-tools-main">
+							<div><b>{% trans "Показать Отзывы" %}</b></div>
+						</div>
+						<div class="ttw-button ttw-button_action ttw-button_swap_back ttw-sidebar_button_close ttw-button_swap_not_active flex gap-5" data-body="responses-tools-main">
+							<div><b>{% trans "Спрятать Отзывы" %}</b></div>
 						</div>
 					</div>
-					{% if isYandexAdManagerMiddlewareConnected %}
-						{% for adlocation in adlocations %}
-							{% if adlocation.adlocation_name == "HOME_SECOND_VISIBLE" %}
-								{% include 'YandexAdManager/admanager_element.html' with adblock=adlocation.adblock unificator="home-second-visible" %}
-							{% endif %}
-						{% endfor %}
-					{% endif %}
-					<div class="border-r-2 border-solid">
-						<h2>{% trans "Статьи" %}</h2>
-						<hr>
-						<div class="tabs">
-							<div class="tab_button tab_active" data-bodyid="1">
-								<h3>{% trans "Последние статьи" %}</h3>
-							</div>
-							{% for oth in other_articles %}
-								<div class="tab_button" data-bodyid="{{forloop.counter|add:1}}">
-									<h3>{{oth.title}}</h3>
-								</div>
-							{% endfor %}
+				</div>
+				<div id="responses-tools-main" class="flex ttw-sidebar_body_not_active border-r-2 border-solid flex-col flex-nowrap grow shrink-0 basis-2xs justify-between">
+					<div>
+						<div class="text-left">
+							<h2 class="p-2">{% trans "Отзывы" %}</h2>
+							<hr>
 						</div>
-						<div class="tab_body">
-							<div id="tab_body-1" class="tab_element tab_element__active">
-								<div class="flex flex-row items-start flex-wrap gap-5 " >
-									<div class="flex flex-row p-2 flex-wrap gap-5 grow basis-2xl">
-										{% include 'Post/basic--post_preview-article.html' with posts=most_popular_article_posts %}
+						<div class="flex flex-col gap-5 grow shrink-0 basis-1/2 overflow-auto p-2" id="tool_block">
+							{% include 'Engagement/Commenting/comments.html' with from="home" comments=comments_in_tools %}
+						</div>
+					</div>
+					<div class="flex justify-end">
+						<div class="ttw-button ttw-button_link bg-main text-white rounded-tl-xl ref_hidden_no-sign">
+							<a href="{% url 'notes-list' %}">
+								<p class="rounded-tl-xl p-2">
+								{% trans 'Больше ...' %}
+								</p>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			{% if isYandexAdManagerMiddlewareConnected %}
+				{% for adlocation in adlocations %}
+					{% if adlocation.adlocation_name == "HOME_SECOND_VISIBLE" %}
+						{% include 'YandexAdManager/admanager_element.html' with adblock=adlocation.adblock unificator="home-second-visible" %}
+					{% endif %}
+				{% endfor %}
+			{% endif %}
+			<div class="flex">
+				<div class="flex flex-col justify-between gap-5 grow-[7] shrink basis-2xs overflow-hidden">
+					<tabs>
+						<div class="ttw-tabs-headers scroll-snap-x items-start">
+							<div class="ttw-tabs-navigation gap-2 p-2 w-full">
+								<a class="ttw-tabs-navigation-tab ttw-tab_active ref-int_no-sign" href="#most-popular-articles">
+									<h2>{% trans "Топ статей" %}</h2>
+								</a>
+								<a class="ttw-tabs-navigation-tab" href="#most-recent-articles">
+									<h2>{% trans "Недавние статьи" %}</h2>
+								</a>
+								<div class="ttw-tabs-navigation-buttons sticky right-1 min-w-max flex gap-1 items-center w-full justify-end">
+									<div class="ttw-button ttw-button_action ttw-tabs-prev-tab">
+										<img class="ttw-button_squared bg-main" src="{% static 'chevron_left.svg' %}" width="32" height="32" alt="{% trans "Предыдущая вкладка на табуляторе" %}">
+									</div>
+									<div class="ttw-button ttw-button_action ttw-tabs-next-tab">
+										<img class="ttw-button_squared bg-main" src="{% static 'chevron.svg' %}" width="32" height="32" alt="{% trans "Следующая вкладка на табуляторе" %}">
+									</div>
+								</div>
+							</div>
+						</div>
+						<hr>
+						<section class="ttw-tabs-body scroll-snap-x">
+							<article class="ttw-tabs-body-element flex flex-col justify-between" id="most-popular-articles">
+								<div id="article_block_ref" class="flex flex-row items-start flex-wrap gap-5 p-3">
+									<div class="flex flex-col flex-wrap gap-5 grow basis-2xl p-2">
+										{% include 'Post/basic--post_preview-article.html' with posts=popular_articles %}
 									</div>
 								</div>
 								<div class="flex justify-end">
-									<div class="ttw-button ttw-button_link bg-main text-white rounded-tl-xl rounded-bl-xl ref_hidden_no-sign">
-										<a href="{% url 'articles-list' %}">
-											<p class="rounded-tl-xl rounded-bl-xl p-2">
+									<div class="ttw-button ttw-button_link bg-main text-white rounded-tl-xl ref_hidden_no-sign">
+										<a href="{% url 'articles-list' %}?page=1">
+											<p class="rounded-tl-xl p-2">
 											{% trans 'Больше ...' %}
 											</p>
 										</a>
 									</div>
 								</div>
-							</div>
-							{% for oth in other_articles %}
-								<div id="tab_body-{{forloop.counter|add:1}}" class="tab_element">
-									<div class="flex flex-row items-start flex-wrap gap-5">
-										<div class="flex flex-row p-2 flex-wrap gap-5 grow basis-2xl">
-											{% include 'Post/basic--post_preview-article.html' with posts=oth.objs %}
-										</div>
-									</div>
-									<div class="flex justify-end">
-										<div class="ttw-button ttw-button_link bg-main text-white rounded-tl-xl rounded-bl-xl ref_hidden_no-sign">
-											<a href="{% url 'articles-list' %}?page=1&tag={{oth.tag}}">
-												<p class="rounded-tl-xl rounded-bl-xl p-2">
-												{% trans 'Больше ...' %}
-												</p>
-											</a>
-										</div>
+							</article>
+							<article class="ttw-tabs-body-element flex flex-col justify-between" id="most-recent-articles">
+								<div class="flex flex-row items-start flex-wrap gap-5 p-3">
+									<div class="flex flex-col p-2 flex-wrap gap-5 grow basis-2xl">
+										{% include 'Post/basic--post_preview-article.html' with posts=recent_articles %}
 									</div>
 								</div>
-							{% endfor %}
+								<div class="flex justify-end">
+									<div class="ttw-button ttw-button_link bg-main text-white rounded-tl-xl ref_hidden_no-sign">
+										<a href="{% url 'articles-list' %}?page=1">
+											<p class="rounded-tl-xl p-2">
+											{% trans 'Больше ...' %}
+											</p>
+										</a>
+									</div>
+								</div>
+							</article>
+						</section>
+					</tabs>
+				</div>
+				<div style="writing-mode: vertical-rl;text-orientation: mixed;background-color: var(--main_color);color: var(--color-white);padding: 5px;text-transform: uppercase;display: flex;gap: 20px;">
+					<div class="ttw-button_swap resize-block" data-body="responses-articles-main" data-ref-element-id="article_block_ref" data-ref-selector-id="article_block">
+						<div class="ttw-button ttw-button_action ttw-button_swap_front ttw-sidebar_button_open flex gap-5" data-body="responses-articles-main">
+							<div><b>{% trans "Показать Комментарии" %}</b></div>
+						</div>
+						<div class="ttw-button ttw-button_action ttw-button_swap_back ttw-sidebar_button_close ttw-button_swap_not_active flex gap-5" data-body="responses-articles-main">
+							<div><b>{% trans "Спрятать Комментарии" %}</b></div>
 						</div>
 					</div>
 				</div>
-				<div class="flex flex-col flex-nowrap grow shrink-0 basis-2xs">
-					<div class="border-r-2 border-solid h-full">
-						<h2>{% trans "Заметки" %}</h2>
-						<hr>
-						<div class="p-2">
-							{% blocktrans %}
-							Это блок всех последних заметок, написанных мной. 
-							{% endblocktrans %}
+				<div id="responses-articles-main" class="flex ttw-sidebar_body_not_active border-r-2 border-solid flex-col flex-nowrap grow shrink-0 basis-2xs justify-between">
+					<div>
+						<div class="text-left">
+							<h2 class="p-2">{% trans "Комментарии" %}</h2>
+							<hr>
 						</div>
-						<hr>
-						<div class="flex flex-col gap-5 grow shrink-0 basis-1/2">
-							<div class="flex items-center justify-center">
-								<img width="300px" class="max-w-2xs" src="{% get_media_prefix %}{{internal_tools_preview}}">
-							</div>
-							{% include 'Post/basic--post_preview-note.html' with posts=latest_notes_posts %}
+						<div id="article_block" class="flex flex-col gap-5 grow shrink-0 basis-1/2 overflow-auto p-2">
+							{% include 'Engagement/Commenting/comments.html' with from="home" comments=comments_in_articles %}
 						</div>
 					</div>
 					<div class="flex justify-end">
-						<div class="ttw-button ttw-button_link bg-main text-white rounded-tl-xl rounded-bl-xl ref_hidden_no-sign">
+						<div class="ttw-button ttw-button_link bg-main text-white rounded-tl-xl ref_hidden_no-sign">
 							<a href="{% url 'notes-list' %}">
-								<p class="rounded-tl-xl rounded-bl-xl p-2">
+								<p class="rounded-tl-xl p-2">
 								{% trans 'Больше ...' %}
 								</p>
 							</a>
@@ -174,24 +267,53 @@
 			</div>
 
 			<div class="flex flex-col gap-3 border-r-2 border-solid">
-				{% if isEngagementMiddlewareConnected %}
-				<h2>{% trans "Комментарии" %}</h2>
-				<hr>
-				<div>
-					{% blocktrans %}
-					Тут я собираю все последние комментарии на сайте.
-					{% endblocktrans %}
-				</div>
-				<div class="flex gap-5 p-2">
-					<div class="masonry grow shrink-0 basis-1/2">
-						{% include 'Engagement/Commenting/comments.html' with from="home" %}
+				<div class="flex flex-row justify-between items-center">
+					<h2 id="some-notes" class="grow shrink-0 basis-auto"><a class="ref_hidden-int_no-sign" href="#some-notes">{% trans "Заметки и записи" %}</a></h2>
+					<div class="sticky right-1 min-w-max flex gap-1 items-center w-full justify-end">
+						<div class="ttw-button ttw-button_action">
+							<img class="ttw-button_squared bg-main slider-button prev" aria-label="no previous slide available" aria-disabled="true" src="{% static 'chevron_left.svg' %}" width="32" height="32" alt="{% trans "Предыдущая вкладка на табуляторе" %}">
+						</div>
+						<div class="ttw-button ttw-button_action">
+							<img class="ttw-button_squared bg-main slider-button next" aria-label="Next slide" src="{% static 'chevron.svg' %}" width="32" height="32" alt="{% trans "Предыдущая вкладка на табуляторе" %}">
+						</div>
 					</div>
 				</div>
-				<div class="absolute gap-2 top-[0] right-[0] basis-1/3" style="display: none;"></div>
-				{% endif %}
+				<hr>
+				<div class="flex gap-2 flex-wrap items-center">
+					<img width="300px" class="max-w-2xs" src="{% get_media_prefix %}{{notes_preview}}">
+					<div class="carousel w-full overflow-y-auto grow shrink basis-2xs">
+						{% for note in recent_notes %}
+						<div class="slide" aria-label="slide one of three" 
+							{% if forloop.counter == 1 %}
+							aria-hidden="false">
+							{% else %}
+							aria-hidden="true">
+							{% endif %}
+							<h4>{{note.title}}</h4>
+							<div>
+							{{note.description}}
+							</div>
+						</div>
+						{% endfor %}
+					</div>
+				</div>
+				<div class="flex justify-end">
+					<div class="ttw-button ttw-button_link bg-main text-white rounded-tl-xl ref_hidden_no-sign">
+						<a href="{% url 'notes-list' %}?page=1">
+							<p class="rounded-tl-xl p-2">
+							{% trans 'Больше ...' %}
+							</p>
+						</a>
+					</div>
+				</div>
 			</div>
+			{% include 'Engagement/Other/engagement_wide_container.html' with feedback_form=feedback_form %}
 		</div>
 	</div>
+	{% comment %}
+		Контейнер ниже используется для выборочной загрузки стилей из TailwindCSS
+	{% endcomment %}
+	<div class="absolute hidden top-[0] right-[0] rounded-bl-xl"></div>
 </div>
 {% endblock %}
 

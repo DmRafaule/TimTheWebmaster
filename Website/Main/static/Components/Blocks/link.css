@@ -51,7 +51,7 @@
 
 
 
-.ref_hidden-int > a, a.ref_hidden-int, .ref_hidden-int_no-sign > a{
+.ref_hidden-int > a, a.ref_hidden-int, .ref_hidden-int_no-sign > a, a.ref_hidden-int_no-sign{
 	color: inherit;
 	transition: 0.3s;
 	border-bottom: 0px solid var(--link-internal_color); 
@@ -63,7 +63,7 @@
 	content: var(--link-internal_sign);
 }
 
-.ref_hidden-int > a:hover, a.ref_hidden-int:hover, .ref_hidden-int_no-sign > a:hover{
+.ref_hidden-int > a:hover, a.ref_hidden-int:hover, .ref_hidden-int_no-sign > a:hover, a.ref_hidden-int_no-sign:hover{
 	color: var(--link-hover-internal_color) !important;	
 	border-bottom: 1px solid var(--link-internal_color); 
 }
@@ -85,7 +85,7 @@
 	color: var(--link-hover-downloadable_color) !important;	
 }
 
-.ref_internal > a, a.ref-int{
+.ref_internal > a, a.ref-int, ref-int_no-sign > a, a.ref-int_no-sign{
 	color: var(--link-internal_color) !important;	
 	transition: padding 0.3s;
 	border-bottom: 1px solid var(--link-internal_color); 
@@ -95,6 +95,6 @@
 	content: var(--link-internal_sign);
 	font-size: 120%;
 }
-.ref_internal > a:hover, a.ref-int:hover{
+.ref_internal > a:hover, a.ref-int:hover, ref-int_no-sign > a:hover, a.ref-int_no-sign:hover{
 	color: var(--link-hover-internal_color) !important;	
 }

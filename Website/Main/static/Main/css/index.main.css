@@ -1,7 +1,11 @@
-@import '../../Components/Blocks/image.css'; 
 @import '../../Components/Blocks/icon.css'; 
+@import '../../Components/Blocks/image.css'; 
+@import '../../Components/Forms/form.css';
+@import '../../Components/Blocks/rating.css';
 @import '../../Components/Blocks/comment.css'; 
+@import '../../Components/Containers/Carousel/carousel.css'; 
 @import '../../Components/Containers/Tabs/tabs.css'; 
+@import '../../Components/Containers/Tabs/tabs_v2.css'; 
 @import '../../Components/Containers/Masonry/masonry.css'; 
 @import "tailwindcss";
 @tailwind utilities;

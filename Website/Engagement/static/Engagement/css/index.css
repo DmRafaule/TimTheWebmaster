@@ -1,4 +1,5 @@
-@import '../../../../Main/static/Components/Blocks/forms.css';
+@import '../../../../Main/static/Components/Forms/form.css';
+@import '../../../../Main/static/Components/Blocks/link.css';
 @import '../../../../Main/static/Components/Blocks/rating.css';
 @import '../../../../Main/static/Components/Blocks/comment.css';
 @import "tailwindcss";

@@ -2,8 +2,8 @@
 {% load static %}
 {% get_current_language as LC %}
 
-<div class="flex flex-col gap-5">
-    <div><b>{% trans 'Подписка на рассылку' %}</b></div>
+<div class="flex flex-col gap-5 w-full">
+    <h3>{% trans 'Подписка на рассылку' %}</h3>
     <hr>
     {% comment %}
         Событие beforeSwap должно быть расположено на том элементе
@@ -54,11 +54,11 @@
                         break;
                 }
             "
-            class="ttw-button ttw-button_action">
-            <p class="rounded-lg bg-main border text-white p-2">{% trans "Отправить" %}</p>
+            class="ttw-button ttw-button_action grow">
+            <p class="ttw-button_squared bg-main border text-white p-2">{% trans "Отправить" %}</p>
         </div>
-        <div class="ttw-button ttw-button_action" onclick="modal.close()">
-            <p class="rounded-lg bg-main border text-white p-2">{% trans "Отмена" %}</p>
+        <div class="ttw-button ttw-button_action grow" onclick="modal.close()">
+            <p class="ttw-button_squared bg-main border text-white p-2">{% trans "Отмена" %}</p>
         </div>
     </div>
 </div>

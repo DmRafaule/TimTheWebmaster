@@ -10,7 +10,7 @@
 .form_info{
     color: var(--info);
 }
-input{
+input, textarea{
     width: 100%;
     padding: 10px;
     border: 1px solid black;

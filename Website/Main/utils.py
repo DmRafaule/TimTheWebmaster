@@ -4,11 +4,15 @@ import math
 import os
 
 from django.db.models import Q
+from django.db.models import Case, When
+from django.utils.translation import get_language
 
 from Website.settings import  ALLOWED_HOSTS, MY_INSTALLED_APPS, BASE_DIR
 import Post.models as Post_M
+from Engagement.models import Interaction
 from .models import Website, Contact
 from .forms import FeedbackForm
+from Engagement.forms import EmailForm
 
     
 def get_how_old_human_in_years(birth_date: str, birth_date_str_frm: str) -> int:
@@ -47,6 +51,74 @@ def get_latest_post(number: int, queryset):
             post = posts.latest('timeCreated')
 
     return new_posts
+
+def calculate_popularity(views, likes, shares, bookmarks, comments, post_date, current_date=None,
+                         zero=1, alpha=2, beta=3, gamma=1.5, delta=0.1):
+    """
+    Calculate the popularity score of a post considering engagement and post age.
+    
+    Args:
+    - views (int): number of post views
+    - likes (int): number of likes
+    - shares (int): number of shares
+    - bookmarks (int): number of bookmarks
+    - comments (int): number of comments
+    - post_date (datetime): the date when the post was published
+    - current_date (datetime, optional): the date to calculate the age from; 
+      defaults to now if None
+    - alpha, beta, gamma (float): weights for comments, shares, bookmarks respectively
+    - delta (float): decay rate for post age influence
+    
+    Returns:
+    - float: popularity score
+    """
+    if current_date is None:
+        current_date = datetime.now().replace(tzinfo=None)
+        
+    age_days = (current_date - post_date.replace(tzinfo=None)).days
+    if age_days < 0:
+        age_days = 0  # just in case post_date is in the future
+    
+    total_weighted_engagements = (zero * likes + alpha * comments + beta * shares + gamma * bookmarks)
+    
+    if views == 0:
+        engagement_rate = 0
+    else:
+        engagement_rate = total_weighted_engagements / views
+    
+    # Popularity decays exponentially with age
+    popularity_score = engagement_rate * math.exp(-delta * age_days)
+    
+    return popularity_score
+
+def extract_slug(path):
+    parts = [segment for segment in path.split('/') if segment]  # Remove empty parts
+    return parts[-1]
+
+def get_posts_by_popularity(number: int, model):
+    posts_to_compare = {}
+    language_code = get_language()
+    for interaction in Interaction.objects.filter(url__startswith=f"/{language_code}/"):
+        slug = extract_slug(interaction.url)
+        post = model.objects.filter(slug=slug)
+        if len(post) > 0:
+            date = post.first().timeUpdated
+            score = calculate_popularity(
+                interaction.views,
+                interaction.likes,
+                interaction.shares,
+                interaction.bookmarks,
+                interaction.comments,
+                date
+            )
+            posts_to_compare[slug] = score
+
+    sorted_by_popularity = sorted(posts_to_compare.items(), key=lambda x: x[1], reverse=True)
+    top_slugs = [slug for slug, score in sorted_by_popularity[:number]]
+    # Вернем QuerySet постов, соответствующих top slugs, в том же порядке среза
+    preserved_order = Case(*[When(slug=slug, then=pos) for pos, slug in enumerate(top_slugs)])
+    queryset = model.objects.filter(slug__in=top_slugs).order_by(preserved_order)
+    return queryset
 
 def get_tool(_url):
     ''' Возвращает инструмент по указанному адресу'''
@@ -111,6 +183,8 @@ def initDefaults(request):
         contacts_for_orders = contacts
     # Создаём и отправляем пустую форму по умолчанию, GET-запрос
     form = FeedbackForm()
+    # Создаём и отправляем пустую форму по умолчанию, GET-запрос
+    email_form = EmailForm()
 
     context = {
         'categories_special': categories_special,
@@ -119,7 +193,8 @@ def initDefaults(request):
         'contacts_for_orders': contacts_for_orders,
         'popular_posts': popular_posts,
         'default_post_preview': default_post_preview,
-        'feedback_form': form
+        'feedback_form': form,
+        'email_subscription_form': email_form
     }
     return context
 

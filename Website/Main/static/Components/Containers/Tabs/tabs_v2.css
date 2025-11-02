@@ -1,0 +1,86 @@
+tabs{
+    display: flex;
+    flex-direction: column;
+}
+/* Navigations (Tabs) */
+.ttw-tabs-headers {
+  display: flex;
+  flex-direction: column;
+}
+.ttw-tabs-navigation{
+  display: flex;
+
+  & a {
+    scroll-snap-align: start;
+
+    display: inline-flex;
+    align-items: center;
+    white-space: nowrap;
+  }
+}
+.ttw-tab_active{
+    border-bottom: 3px solid var(--button_internal_active) !important;
+}
+.ttw-tabs-snap-indicator{
+    height: 10px;
+    background-color: var(--button_internal_active);
+}
+/* Content */
+.ttw-tabs-body {
+    block-size: 100%;
+
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: 100%;
+    scrollbar-color: #ebaa6d var(--main_color);
+}
+.ttw-tabs-body::-webkit-scrollbar-track {
+    background: var(--main_color);
+}
+.ttw-tabs-body-element {
+  scroll-snap-align: start;
+
+  overflow-y: auto;
+  overscroll-behavior-y: contain;
+}
+
+
+/* Common */
+.scroll-snap-x {
+    /* browser decide if x is ok to scroll and show bars on, y hidden */
+    overflow: auto hidden;
+    /* prevent scroll chaining on x scroll */
+    overscroll-behavior-x: contain;
+    /* scrolling should snap children on x */
+    scroll-snap-type: x mandatory;
+
+    @media (hover: none) {
+        scrollbar-width: none;
+
+        &::-webkit-scrollbar {
+        width: 0;
+        height: 0;
+        }
+    }
+    @media (prefers-reduced-motion: no-preference) {
+        .scroll-snap-x{
+            scroll-behavior: smooth;
+        }
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  tabs > .ttw-tabs-headers a {
+    border-block-end: var(--indicator-size) solid hsl(var(--accent) / 0%);
+    transition: color .7s ease, border-color .5s ease;
+
+    &:is(:target,:active,[active]) {
+      color: var(--text-active-color);
+      border-block-end-color: hsl(var(--accent));
+    }
+  }
+
+  tabs .ttw-tabs-snap-indicator {
+    visibility: hidden;
+  }
+}

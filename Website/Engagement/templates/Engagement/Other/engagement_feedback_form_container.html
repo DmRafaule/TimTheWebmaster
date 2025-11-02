@@ -2,8 +2,8 @@
 {% load static %}
 {% get_current_language as LC %}
 
-<div class="flex flex-col gap-5">
-    <div><b>{% trans 'Форма обратной связи' %}</b></div>
+<div class="flex flex-col gap-5 w-full">
+    <h3>{% trans 'Форма обратной связи' %}</h3>
     <hr>
     {% comment %}
         Событие beforeSwap должно быть расположено на том элементе
@@ -38,11 +38,11 @@
             }else{
                 toaster.notify('{% trans '✗ Возникла ошибка при отправке формы ＼（〇_ｏ）／' %}', 'error'); 
             }"
-            class="ttw-button ttw-button_action">
-            <p class="rounded-lg bg-main border text-white p-2">{% trans "Отправить" %}</p>
+            class="ttw-button ttw-button_action grow ">
+            <p class="ttw-button_squared bg-main border text-white p-2">{% trans "Отправить" %}</p>
         </div>
-        <div class="ttw-button ttw-button_action" onclick="modal.close()">
-            <p class="rounded-lg bg-main border text-white p-2">{% trans "Отмена" %}</p>
+        <div class="ttw-button ttw-button_action grow" onclick="modal.close()">
+            <p class="ttw-button_squared bg-main border text-white p-2">{% trans "Отмена" %}</p>
         </div>
     </div>
 </div>

@@ -1,0 +1,42 @@
+.carousel {
+	min-height: 20rem;
+	position: relative;
+	margin: 0 auto;
+}
+
+.slide {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	padding: 2rem 3rem;
+	box-sizing: border-box;
+	border: none;
+	border-radius: 0.5rem;
+	transition: all 300ms ease-in;
+	background-size: cover;
+	
+	&[aria-hidden="false"] {
+		opacity: 1;
+	}
+
+	&[aria-hidden="true"] {
+		opacity: 0;
+	}
+}
+
+
+.slider-button {
+	&[aria-disabled="true"] {
+		background-color: #f2f2f2;
+		box-shadow: 0px 6px 8px -2px rgba(0, 0, 0, 0);
+	}
+	
+}
+
+.visually-hidden {
+	position: absolute;
+	height: 1px;
+	width: 1px;
+	overflow: hidden;
+	clip: rect(0 0 0 0);
+}
