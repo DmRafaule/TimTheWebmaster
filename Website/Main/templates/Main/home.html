@@ -283,13 +283,24 @@
 					<img width="300px" class="max-w-2xs" src="{% get_media_prefix %}{{notes_preview}}">
 					<div class="carousel w-full overflow-y-auto grow shrink basis-2xs" data-buttons-id="carousel-buttons-1">
 						{% for note in recent_notes %}
-						<div class="slide" aria-label="slide one of three" 
+						<div class="slide flex flex-col gap-2" aria-label="slide one of three" 
 							{% if forloop.counter == 1 %}
 							aria-hidden="false">
 							{% else %}
 							aria-hidden="true">
 							{% endif %}
 							<h4>{{note.title}}</h4>
+							<div class="flex gap-3 flex-wrap">
+								<div class="flex gap-3">
+									<img width="16" height="16" src='{% static "Post/img/calendar.svg" %}' alt="{% trans "Часы" %}">
+									<div>{{note.timeCreated|date:"d.m.Y"}}</div>
+								</div>
+								/
+								<div class="flex gap-3 flex-nowrap">
+									<img width="16" height="16" src='{% static "Post/img/update.svg" %}' alt="{% trans "Часы" %}">
+									<div>{{note.timeUpdated|date:"d.m.Y"}}</div>
+								</div>
+							</div>
 							<div>
 							{{note.description}}
 							</div>
