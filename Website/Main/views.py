@@ -24,20 +24,6 @@ def about(request):
     context.update({'more_about_me_tag': more_about_me_tag})
     return render(request, 'Main/about.html', context=context)
 
-def get_latest_post_by_tag(min, cont, Model):
-    ''' Получаем последние посты по контейнерам тегов '''
-    res = []
-    for tag in cont:
-        objs = U.get_posts_by_tag(tag.name, Model)
-        latest_objs = U.get_latest_post(min, objs)
-        if len(latest_objs) > 0:
-            res.append({
-                'tag': tag.slug,
-                'title': tag.name,
-                'objs': latest_objs,
-            })
-    return res
-
 def home(request):
     # Из базы данных нужно взять текущие настройки сайта
     # Пытаемся получить текущую конфигурацию сайта по возможности
@@ -93,9 +79,26 @@ def home(request):
     
     return TemplateResponse(request, 'Main/home.html', context=context)
 
-@require_POST
-def feedback(request):
-    return render(request, 'Main/feedback.html')
+def about_website(request):
+    import django
+    import sys
+    # Из базы данных нужно взять текущие настройки сайта
+    # Пытаемся получить текущую конфигурацию сайта по возможности
+    try:
+        website_conf = Website.objects.get(is_current=True)
+        tools_post_preview = website_conf.tools_post_preview
+    # Если не получилось (такие настройки ещё не были добавленны) отправляем в качестве настроек
+    # пустые значения, чтобы страница не вернула 500 код ошибки (ошибка сервера)
+    except:
+        cap_notes = 3
+        tools_post_preview = None
+    context = U.initDefaults(request)
+    context.update({'website_years': U.get_how_old_human_in_years('09/10/2023', "%d/%m/%Y")})
+    context.update({'main_preview': tools_post_preview})
+    context.update({'django_version': django.get_version()})
+    context.update({'python_version': f"{sys.version_info.major}.{sys.version_info.minor}.{sys.version_info.micro}"})
+    return render(request, 'Main/about-website.html', context=context)
+
 
 def bad_request(request, exception):
     ''' Специальный хендлер для 400 ответов '''

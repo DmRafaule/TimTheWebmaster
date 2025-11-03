@@ -1,4 +1,6 @@
+@import '../../Components/Containers/Carousel/carousel.css'; 
 @import '../../Components/Blocks/image.css'; 
+@import '../../Components/Forms/form.css';
 @import '../../Components/Blocks/icon.css'; 
 @import "../../Components/Blocks/attention.css";
 @import "tailwindcss";

@@ -34,7 +34,7 @@
 							</div>
 						</div>
 					</a>
-					<a href="{% url 'about' %}" class="grow bg-main text-white rounded-[8px]">
+					<a href="{% url 'about-website' %}" class="grow bg-main text-white rounded-[8px]">
 						<div class="ttw-button ttw-button_link h-full rounded-[8px]">
 							<div class="h-full flex justify-center items-center text-center rounded-[8px] pt-2 pb-2">
 								<div class="ml-5 mr-5">{% trans 'Или ознакомиться с сайтом' %}</div>
@@ -269,7 +269,7 @@
 			<div class="flex flex-col gap-3 border-r-2 border-solid">
 				<div class="flex flex-row justify-between items-center">
 					<h2 id="some-notes" class="grow shrink-0 basis-auto"><a class="ref_hidden-int_no-sign" href="#some-notes">{% trans "Заметки и записи" %}</a></h2>
-					<div class="sticky right-1 min-w-max flex gap-1 items-center w-full justify-end">
+					<div id="carousel-buttons-1" class="sticky right-1 min-w-max flex gap-1 items-center w-full justify-end">
 						<div class="ttw-button ttw-button_action">
 							<img class="ttw-button_squared bg-main slider-button prev" aria-label="no previous slide available" aria-disabled="true" src="{% static 'chevron_left.svg' %}" width="32" height="32" alt="{% trans "Предыдущая вкладка на табуляторе" %}">
 						</div>
@@ -281,7 +281,7 @@
 				<hr>
 				<div class="flex gap-2 flex-wrap items-center">
 					<img width="300px" class="max-w-2xs" src="{% get_media_prefix %}{{notes_preview}}">
-					<div class="carousel w-full overflow-y-auto grow shrink basis-2xs">
+					<div class="carousel w-full overflow-y-auto grow shrink basis-2xs" data-buttons-id="carousel-buttons-1">
 						{% for note in recent_notes %}
 						<div class="slide" aria-label="slide one of three" 
 							{% if forloop.counter == 1 %}
@@ -307,7 +307,7 @@
 					</div>
 				</div>
 			</div>
-			{% include 'Engagement/Other/engagement_wide_container.html' with feedback_form=feedback_form %}
+			{% include 'Engagement/Other/engagement_wide_container.html' %}
 		</div>
 	</div>
 	{% comment %}

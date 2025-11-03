@@ -32,65 +32,33 @@
 
 <div class="justify-center flex flex-col w-full toObserve ttw-limiter">
 	<div class="max-w-4xl self-center flex flex-col ttw-content">
-		<div class="row in_middle">
-			<h1 class="ttw-title" >{% trans "О Тиме Вебмастере, или Дмитрие Чудуке" %}</h1>
-		</div>
-
-		<div class="flex gap-4 flex-wrap">
-			<div class="flex flex-col gap-4 grow shrink-0 basis-2xs">
-				<h2>{% trans "Кратко для гостей" %}</h2>
-				<div>
-					{% blocktrans %}
-					Очередной Блог/SAAS/сайт портфолио, где я пишу о чём хочу и о чём могу. Пытаюсь привнести нечто новое и интересное, разбираясь в уже давно не актуальных технологиях и темах - изобретаю свои колёса и велосипеды. Так же много пишу об истории программирования - люблю это дело.
-					{% endblocktrans %}
-				</div>
+		<div class="flex flex-row gap-2 basis-2xs flex-wrap-reverse items-center">
+			<div class="grow shrink-0 basis-2xs">
+				<h1 class="ttw-title text-right" >{% trans "Всё о Тиме Вебмастере (Дмитрие Чудуке)" %}</h1>
+				<div class="mb-12"><i>{% trans "Расскажу свой путь. Что было до сайта, что будет дальше и почему я этим занимаюсь. Я расскажу всё, поэтому это будет долго, и возможно не итересно. Ты предупреждён." %}</i></div>
 			</div>
-			<div class="flex flex-col gap-4 grow shrink-0 basis-2xs">
-				<h2>{% trans "Кратко для разработчиков" %}</h2>
-				<div class="ref">
-					{% blocktrans %}
-					Я самопровозглашённый full-стек разработчик. Разрабатываю сайты с использованием Python/Django, плюс один из этих frontend фреймворков: (React, HTMx, или JS/CSS(TailwindCSS)/HTML)
-					{% endblocktrans %}
-					{% blocktrans %}
-					Так же обожал, в недавнем времени, 	
-					{% endblocktrans %}
-					<a href="{% url 'articles-list' %}?page=1&tag={{more_about_me_tag}}">{% trans 'делать игры' %}</a> 
-					{% blocktrans %}
-					- забросил. Telegram боты, скрипты и парсеры, это то же про меня.
-					{% endblocktrans %}
+			<div class="flex basis-2xs grow">
+				<div class="flex items-center justify-center">
+					<img width="300px" height="100%" src="{% static '/Main/img/me1.jpg' %}" class="rounded-2xl">
 				</div>
 			</div>
 		</div>
-		<h2 class="paragraph">{% trans "Обо мне, чуть более развёрнуто" %}</h2>
-		<div class="flex gap-4 flex-wrap">
-			<div>	
-				<img width="300px" height="100%" src="{% static 'loading.svg' %}" data-src="{% static '/Main/img/me1.jpg' %}" class=" dynamic_image  rounded-2xl max-w-2xs ">
-				<div class="ttw-explain_under">
-					{% trans 'А это я.' %}
-				</div>
-			</div>
-			<div class="flex flex-col grow shrink-0 basis-2xs ttw-content">
-				<div>
-					{% blocktrans %}
-					Начну с того, что я родился в Барановичах, Беларусь. Барановичи - это город аккурат между Минском и Брестом, главной достопримечательностью которого является железнодорожный вокзал.
-					{% endblocktrans %}
-				</div>
-				<div class="text">
-					<img width="100%" class="dynamic_image grow shrink-0 basis-2xs rounded-2xl" src="{% static 'loading.svg' %}" data-src="{% static '/Main/img/baranovichi.webp' %}">
-				</div>
-				<div>
-					<div class="text">
-						{% blocktrans %}
-						Хоть родился я в Барановичах, жил я всё время в деревне. Уже сейчас мне трудно вспомнить о чём я думал, или к чему стремился, или кем хотел быть. Наверное, я об этом не думал вообще, а просто был тогда в моменте.
-						{% endblocktrans %}
-					</div>
-					<div class="text">
-						{% blocktrans %}
-						Изначально, я решил стать следователем, но что-то пошло не так и меня не взяли. Зато в армию взяли, где я и отслужил полтора года. Не могу сказать, что там всё было плохо. Стрелять и кататься на самоходных артиллерийских установках мне нравилось. Мне не нравилось всё что было до и после боевых выездов.
-						{% endblocktrans %}
-					</div>
-				</div>
-			</div>
+		<h2 class="paragraph">{% trans "Вступление" %}</h2>
+		<div>
+			{% blocktrans %}
+			Начну с того, что я родился в Барановичах, Беларусь. Барановичи - это город аккурат между Минском и Брестом, главной достопримечательностью которого является железнодорожный вокзал.
+			{% endblocktrans %}
+		</div>
+		<img width="100%" class="dynamic_image grow shrink-0 basis-2xs rounded-2xl border" src="{% static 'loading.svg' %}" data-src="{% static '/Main/img/baranovichi.webp' %}">
+		<div class="text">
+			{% blocktrans %}
+			Хоть родился я в Барановичах, жил я всё время в деревне. Уже сейчас мне трудно вспомнить о чём я думал, или к чему стремился, или кем хотел быть. Наверное, я об этом не думал вообще, а просто был тогда в моменте.
+			{% endblocktrans %}
+		</div>
+		<div class="text">
+			{% blocktrans %}
+			Изначально, я решил стать следователем, но что-то пошло не так и меня не взяли. Зато в армию взяли, где я и отслужил полтора года. Не могу сказать, что там всё было плохо. Стрелять и кататься на самоходных артиллерийских установках мне нравилось. Мне не нравилось всё что было до и после боевых выездов.
+			{% endblocktrans %}
 		</div>
 		<div class="text">
 			{% blocktrans %}
@@ -124,62 +92,7 @@
 			Что касается текущего момента, то сейчас я работаю в книжном магазине и готовлюсь к собеседованиям на python-разработчика.
 			{% endblocktrans %}
 		</div>
-
-		<h2 class="paragraph">{% trans "О сайте, его идея" %}</h2>
-		
-		<div class="text">
-			{% blocktrans %}Теперь, напишу о чём этот сайт и что тут можно найти. Создавая данный сайт или добавляя к нему новое приложение, я хочу показать другим людям, чо им не обязательно платить 130 Баксов в месяц за инструмент или расширение в котором 90% функционала им не потребуется. Вместо этого можно потратить немного своего времени и сделать такой интсрумент, который подходит именно тебе. Да ещё словить немного фана в процессе.{% endblocktrans %}
-		</div>
-		<div class="text ref">
-			{% blocktrans %}
-			Конкретной направленности в созданных инструментах нет. Просто появляется необходимость, например, 
-			{% endblocktrans %}
-			<a href="{% url "image_thief" %}">{% trans "спарсить все изображения с сайта" %}</a>
-			{% blocktrans %}
-			, бам ... И у меня уже готовый инструмент или <a href="https://search-result-parser.site">получить SERP результаты из google</a> бам и он готов. Думаю ты понял идею.
-			{% endblocktrans %}
-		</div>
-
-		<div>
-			{% blocktrans %}
-			Если тебя также интересуют такие вещи, то рад знакомству). Если нет, то всё равно рад встрече). Так же на сайте ты сможешь найти, такие штуки как: 
-			{% endblocktrans %}
-			<ul class="list">
-				{% blocktrans %}
-				<li>Статьи на <u>интересующие меня темы</u></li>
-				<li>Статьи личного характера</li>
-				<li>Инструменты и вебсервисы под различные нужды и потребности</li>
-				<li>Новости касающиеся меня лично, либо <u>интересных мне тем</u></li>
-				<li>Авторские изображения/карикатуры ( т.е. мои)</li>
-				<li>Архивы, скрипты, программы и прочие файлы для скачивания</li>
-				{% endblocktrans %}
-			</ul>
-		</div>
-		{% if more_about_me_tag %}
-		<div class="text ref">
-			{% blocktrans %}
-			Вот, собственно говоря, всё что я хотел сказать про себя и сайт. Если хочешь узнать больше обо мне и моём прошлом, милости прошу 
-			{% endblocktrans %}
-			{% blocktrans %}
-			Кстати, где-то здесь будет облако тегов всего моего сайта, каждое слово будет представлять из себя ссылку на соответствующую страницу пагинации. (Если его нет, то прости, ещё в процессе)
-			{% endblocktrans %}
-		</div>
-		{% else %}
-		<div class="text">
-			{% blocktrans %}
-			Вот, собственно говоря, всё что я хотел сказать про себя и сайт. Если хочешь узнать больше обо мне и моём прошлом, милости прошу почитать соответствующие статьи.
-			{% endblocktrans %}
-		</div>
-		{% endif %}
-		<div class="text">
-			{% blocktrans %}
-			На момент прочтения данной страницы тобой, мне 
-			{% endblocktrans %}
-			{{me_years}} 
-			{% blocktrans %}
-			года. И моему сайту 1 год.
-			{% endblocktrans %}
-		</div>
+		{% include 'Engagement/Other/engagement_wide_container.html'%}
 	</div>
 </div>
 {% endblock %}

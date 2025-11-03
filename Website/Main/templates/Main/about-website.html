@@ -1,0 +1,263 @@
+{% extends 'Main/base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block head %}
+	<title>{% trans "Всё о сайте TimTheWebmaster, политика куки, монетизации и используемые технологии, ассеты" %}</title>
+	<meta name="description" content="{% trans "Сайт TimTheWebmaster. О политике куки, как он монетизируется, на каких технологиях работает, и какие ассеты использует." %}">
+	<link rel="canonical" href="https://{{domain_name}}{%url 'about-website'%}" />
+{% endblock %}
+
+{% block content %}
+<div class="justify-center flex flex-col w-full toObserve ttw-limiter">
+	<div class="max-w-4xl self-center flex flex-col ttw-content w-full">
+		<div class="flex flex-row gap-2 basis-2xs flex-wrap-reverse items-center">
+			<div class="grow shrink-0 basis-2xs">
+				<h1 class="ttw-title text-right" >{% trans "Всё о сайте: на чём работает, какие ассеты использует, как используется " %}</h1>
+				<div class="mb-12"><i>{% trans "В полной мере описывается то, как и на чём работает данны кусок технологий, что использует в своём визуале и как его использую я и мои посетители" %}</i></div>
+			</div>
+			<div class="flex basis-2xs grow">
+				<div class="flex items-center justify-center">
+					<img src="{% get_media_prefix %}{{main_preview}}">
+				</div>
+			</div>
+		</div>
+		<h2 id="website-type-theme"><a href="#website-type-theme" class="ref_hidden-int_no-sign">{% trans "Небольшое вступление. Тип сайта и его тематика" %}</a></h2>
+		<div>
+			<div class="w-[130px] h-[130px] float-right">
+				<div class="p-2 h-full">
+					<div class="flex flex-col gap-2 p-1 items-center justify-center h-full border rounded-xl">
+						<div>{% trans "Возраст:" %}</div>
+						<b>
+						{{website_years}}
+						</b>
+						<div>{% trans "года" %}</div>
+					</div>
+				</div>
+			</div>
+			<div>
+				{% blocktrans %}
+					Этот сайт является обычным блогом со встроенными инструментами, владельца этого сайта. Данный сайт был создан в исключительно развлекательно-позновательном ключе. Он не несёт какой-либо специальной цели или миссии в пространстве интернета. Разве только общения и раскрытия интересных автору тем, которые, конечно же, могут и будут меняться со временем.
+				{% endblocktrans %}
+			</div>
+		</div>
+
+		<div class="text">{% trans 'Темы которые рассматриваются и изучаются на сайте:' %}</div>
+		<div class="relative border-2 rounded-xl">
+			<div id="carousel-buttons-1" class="absolute min-w-max flex gap-1 items-center justify-between w-full bottom-0 z-10">
+				<div class="ttw-button ttw-button_action">
+					<img class="ttw-button_squared bg-main slider-button prev" aria-label="no previous slide available" aria-disabled="true" src="{% static 'chevron_left.svg' %}" width="32" height="32" alt="{% trans "Предыдущая вкладка на табуляторе" %}">
+				</div>
+				<div class="ttw-button ttw-button_action">
+					<img class="ttw-button_squared bg-main slider-button next" aria-label="Next slide" src="{% static 'chevron.svg' %}" width="32" height="32" alt="{% trans "Предыдущая вкладка на табуляторе" %}">
+				</div>
+			</div>
+			<div class="carousel w-full overflow-y-auto grow shrink basis-2xs"  data-buttons-id="carousel-buttons-1">
+				<div class="slide" aria-label="slide one of three" aria-hidden="false">
+					{% blocktrans %}
+					<div><b>SEO (Search Engine Optimization) с акцентом на GEO и AIO</b>. Представляет собой комплекс мероприятий по улучшению видимости сайта в поисковых системах, учитывающий географическую локализацию (GEO) и всеобъемлющий подход к оптимизации контента и технических аспектов сайта (<i>AIO — All In One</i>). GEO-оптимизация направлена на адаптацию сайта под конкретные регионы и аудитории с помощью локальных ключевых слов, регионального контента и настроек, что повышает релевантность для поисковых запросов из определённых территорий. <b>AIO</b> включает в себя не только работу с ключевыми словами и контентом, но и оптимизацию структуры сайта, скорости загрузки, мобильной адаптивности, метатегов, а также обеспечение правильной индексации и устранение технических ошибок, что вместе усиляет позиции сайта в результатах поиска. Такой системный подход помогает привлекать целевой трафик, увеличивать конверсию и улучшать общий пользовательский опыт.</div>
+					{% endblocktrans %}
+				</div>
+				<div class="slide" aria-label="slide one of three" aria-hidden="true">
+					{% blocktrans %}
+					<div><b>Разработка и внедрение ИИ (искусственный интеллект)</b>. Включает в себя широкий спектр технологий и методов, направленных на создание систем, способных выполнять задачи, требующие человеческого интеллекта, такие как обработка естественного языка, распознавание образов, принятие решений и обучение на данных. Веб-разработка с использованием ИИ охватывает автоматизацию рутинных процессов, персонализацию контента, улучшение пользовательского опыта через чат-ботов и интеллектуальные рекомендации, а также анализ больших данных для оптимизации бизнес-процессов. Современные инструменты и библиотеки ИИ позволяют интегрировать машинное обучение, глубокое обучение и другие алгоритмы в веб-приложения, что открывает новые возможности для создания адаптивных, умных и эффективных сервисов.</div>
+					{% endblocktrans %}
+				</div>
+				<div class="slide" aria-label="slide one of three" aria-hidden="true">
+					{% blocktrans %}
+					<div><b>Разработка сайтов на Django</b> с использованием таких инструментов, как <b>TailwindCSS</b>, <b>HTMX</b> и <b>React</b>, позволяет создавать современные, удобные и адаптивные веб-приложения: TailwindCSS ускоряет стилизацию с помощью утилитарных классов, HTMX добавляет интерактивность через динамическую подгрузку контента без сложного JS, а React обеспечивает создание сложных клиентских интерфейсов с реактивным обновлением данных, при этом Django служит надежным серверным фреймворком для обработки логики и управления данными.</div>
+					{% endblocktrans %}
+				</div>
+				<div class="slide" aria-label="slide one of three" aria-hidden="true">
+					{% blocktrans %}
+					<div><b>Работа и настройка серверов и хостингов</b> включает установку и конфигурацию программного обеспечения для стабильной и безопасной работы сайтов, настройку веб-серверов, баз данных и безопасности, а также мониторинг и масштабирование ресурсов для высокой производительности и доступности.</div>
+					{% endblocktrans %}
+				</div>
+				<div class="slide" aria-label="slide one of three" aria-hidden="true">
+					{% blocktrans %}
+					<div><b>Разработка программ и утилит</b> включает создание разнообразных приложений — от простых терминальных интерфейсов для автоматизации задач и управления системами до сложных расширений для браузеров, которые добавляют новую функциональность или улучшают пользовательский опыт в вебе. Такие программы могут выполнять обработку данных, интеграцию с другими сервисами, оптимизацию рабочих процессов и предоставление удобных инструментов для пользователей. При этом важна гибкость в выборе технологий и подходов, чтобы удовлетворить конкретные потребности, будь то командная строка, графический интерфейс или взаимодействие с браузером.</div>
+					{% endblocktrans %}
+				</div>
+				<div class="slide" aria-label="slide one of three" aria-hidden="true">
+					{% blocktrans %}
+					<div><b>История программирования</b> охватывает развитие методов и языков для создания программного обеспечения, начиная с первых механических счетных устройств и машин Тьюринга до современных высокоуровневых языков и парадигм программирования. Она включает появление первых языков, таких как <b>Assembly</b> и <b>FORTRAN</b>, эволюцию структурного, объектно-ориентированного и функционального программирования, а также рост вычислительных мощностей, которые позволили создавать сложные приложения и системы. История программирования отражает прогресс в автоматизации, оптимизации и расширении возможностей компьютеров, влияя на развитие технологий и общества в целом.</div>
+					{% endblocktrans %}
+				</div>
+				<div class="slide" aria-label="slide one of three" aria-hidden="true">
+					{% blocktrans %}
+					<div><b>Монетизация и продвижение сайта</b> включают использование различных стратегий для привлечения целевой аудитории и получения дохода с вашего веб-ресурса. Это может быть оптимизация SEO для повышения позиций в поисковых системах, создание качественного и уникального контента, работа с социальными сетями и рекламными кампаниями, а также внедрение методов монетизации, таких как контекстная реклама, партнерские программы, продажа собственных товаров или услуг. Важно анализировать поведение посетителей и эффективность каналов продвижения, чтобы постоянно улучшать конверсию и увеличивать прибыль от сайта.</div>
+					{% endblocktrans %}
+				</div>
+			</div>
+		</div>
+
+		<h2 id="current-tech-stack"><a href="#current-tech-stack" class="ref_hidden-int_no-sign">{% trans "Текущий технологический стек" %}</a></h2>
+		<div>
+			<div class="w-[150px] h-[130px] float-right">
+				<div class="p-2 h-full">
+					<div class="flex flex-col gap-2 p-1 items-center justify-center h-full border rounded-xl">
+						<div class="flex flex-row gap-1">
+							<div>Django:</div>
+							<b>
+							{{django_version}}
+							</b>
+						</div>
+						<hr class="w-full">
+						<div class="flex flex-row gap-1">
+							<div>Python:</div>
+							<b>
+							{{python_version}}
+							</b>
+						</div>
+					</div>
+				</div>
+			</div>
+			{% blocktrans %}
+			<div>Сайт написан и работает на фреймворке Django. Фронтенд фреймворки не используются, и я вряд ли перейду на один из них, так как Django предоставляет полный набор инструментов для создания современных веб-приложений, включая мощный ORM, удобную административную панель и встроенную систему шаблонов, что облегчает разработку и поддержку. Такой подход упрощает архитектуру проекта, снижает зависимость от сторонних технологий и обеспечивает хорошую SEO-оптимизацию за счёт серверного рендеринга страниц. Кроме того, отказ от фронтенд-фреймворков позволяет сохранить код более легким и понятным, что важно для быстрого внесения изменений и поддержки в долгосрочной перспективе.</div>
+			{% endblocktrans %}
+		</div>
+		{% blocktrans %}
+		<div>В дополнение к Django/Python ещё используются такие надстройки(JS-библиотеки, Node-пакеты) над стандартными JS, CSS и HTML как:</div>
+		{% endblocktrans %}
+		<div class="relative border-2 rounded-xl">
+			<div id="carousel-buttons-2" class="absolute min-w-max flex gap-1 items-center justify-between w-full bottom-0 z-10">
+				<div class="ttw-button ttw-button_action">
+					<img class="ttw-button_squared bg-main slider-button prev" aria-label="no previous slide available" aria-disabled="true" src="{% static 'chevron_left.svg' %}" width="32" height="32" alt="{% trans "Предыдущая вкладка на табуляторе" %}">
+				</div>
+				<div class="ttw-button ttw-button_action">
+					<img class="ttw-button_squared bg-main slider-button next" aria-label="Next slide" src="{% static 'chevron.svg' %}" width="32" height="32" alt="{% trans "Предыдущая вкладка на табуляторе" %}">
+				</div>
+			</div>
+			<div class="carousel w-full overflow-y-auto grow shrink basis-2xs" data-buttons-id="carousel-buttons-2">
+				<div class="slide" aria-label="slide one of three" aria-hidden="false">
+					<div>
+					{% blocktrans %}
+						<b>HTMX</b> — это небольшая библиотека, которая расширяет стандартный HTML, добавляя к элементам новые атрибуты для отправки HTTP-запросов (например, hx-get, hx-post) напрямую из разметки без необходимости писать JavaScript. Это позволяет создавать интерактивные и динамические веб-интерфейсы, делая AJAX-запросы к серверу при разных действиях пользователя (клики, изменения форм и др.) и обновлять нужные части страницы с помощью возвращаемого HTML, а не JSON. HTMX упрощает обработку форм и событий, поддерживает различные HTTP-методы, позволяет выбирать элементы для замены контента, и обеспечивает двустороннюю привязку данных между клиентом и сервером. Благодаря этому HTMX помогает разработчикам быстро добавлять динамику и интерактивность на сайт, сохраняя код простым и чистым, работая с любым сервером и улучшая производительность за счёт частичных обновлений без полной перезагрузки страницы.
+					{% endblocktrans %}
+					</div>
+				</div>
+				<div class="slide" aria-label="slide two of three" aria-hidden="true">
+					{% blocktrans %}
+					<div><b>TailwindCSS</b> — это современный CSS-фреймворк, построенный на принципе utility-first, который позволяет стилизовать элементы HTML прямо в разметке с помощью множества готовых классов-утилит. Вместо написания отдельных CSS-правил, разработчик применяет классы с предопределёнными стилями, такими как цвета, отступы, размеры, шрифты и эффекты наведения, прямо в атрибуте class, что ускоряет процесс создания и поддержки интерфейса. Такой подход уменьшает объём кастомного CSS, делает стили более предсказуемыми и удобными для масштабирования, а встроенная конфигурация и инструменты удаления неиспользуемых стилей помогают оптимизировать итоговый размер CSS-файлов. TailwindCSS отлично интегрируется с разными фреймворками и подходит как для прототипирования, так и для создания полноценных продакшн-интерфейсов, позволяя легко управлять адаптивностью и динамическими изменениями стилей.</div>
+					{% endblocktrans %}
+				</div>
+			</div>
+		</div>
+		{% blocktrans %}
+		<div><b>NPM</b> используется для компиляции и минификации кода на JS и CSS, только в процессе разработки и тестирования, на боевом сервере NPM не устанавливается. </div>
+		{% endblocktrans %}
+		{% blocktrans %}
+		<div>На этом сайте есть так называемые "<i>внутренние инструменты</i>" они устанавливаются и работают как отдельные <b>Django-приложения</b> со своими стилями, шаблонами, статикой и моделями. Ну и конечно же с индивидуальными настройками NPM.</div>
+		{% endblocktrans %}
+		<div>{% trans 'А вот полная структура моего сайта по приложениям' %}</div>
+		<ul>
+			{% blocktrans %}
+			<li><b>Apps</b> -> Директория где храняться все внутренние приложения сайта</li>
+			<li class="indent-3"><b>PostEditor</b> -> Внутренний инструмент для редактирования и экспорта html-шаблонов, для дальнейшего использования при создании постов</li>
+			<li class="indent-3"><b>ImageThief</b> -> Внутренний инструмент для парсинга изображений с других сайтов</li>
+			<li class="indent-3"><b>LinkThief</b> -> Внутренний инструмент для парсинга ссылок с других сайтов</li>
+			<li class="indent-3"><b>TextThief</b> -> Внутренний инструмент для парсинга текста с других сайтов</li>
+			<li class="indent-3"><b>RSSAggregator</b> -> Внутренний инструмент для чтения RSS-фидов</li>
+			<li class="indent-3"><b>ShaderToy</b> -> Внутренний инструмент для создания и редактирования шейдеров, на языке GLSL</li>
+			<li><b>Auth</b> -> Регистрация и аутентификация новых пользователей</li>
+			<li><b>Breadcrumbs</b> -> Приложение интегрирующее хлебные крошки на сайт</li>
+			<li><b>Engagement</b> -> Приложение которое добавляет интеракции с пользователем (Комментарии, лайки, кнопка поделиться, форма обратной связи, закладки ...)</li>
+			<li><b>Main</b>(Тесты) -> Сердце сайта, утилиты, главные старницы, общие скрипты и стили, всё здесь.</li>
+			<li><b>Post</b>(Тесты) -> Управляет контентом, их отображение, разделение, сортировка, перелинковка</li>
+			<li><b>PagiScroll</b>(Тесты) -> Отображение постов на сайте, комбинаци таких веб интерфейс паттернов как: Пагинатор и Бесконечный фид</li>
+			{% endblocktrans %}
+		</ul>
+
+		<h2 id="others-assets"><a href="#others-assets" class="ref_hidden-int_no-sign">{% trans "Чужие ассеты" %}</a></h2>
+		<div>{% trans 'Мой сайт использует чужие ассеты и рессурсы. Дальше будет идти список из чужих ассетов, которые так или иначе используются на сайте:' %}</div>
+		<ul>
+		<li class="ref"><b>Google icons </b>- <a href="https://fonts.google.com/icons">https://fonts.google.com/icons </a>({% trans 'Иконки' %})</li>
+		<li class="ref"><b>SVGRepo </b>- <a href="https://www.svgrepo.com/">https://www.svgrepo.com/ </a>({% trans 'Иконки' %})</li>
+		<li class="ref"><b>Freepik.com </b>- <a href="https://freepik.com">https://freepik.com </a>({% trans 'Превьюшки для статей' %})</li>
+		<li class="ref"><b>Google Fonts </b>- <a href="https://fonts.google.com/icons">https://fonts.google.com/icons</a>({% trans 'Шрифты' %})</li>
+		</ul>
+		{% blocktrans %}
+		Если я забыл кого-то указать (конкретно), свяжитесь со мной, я обязательно исправлю.
+		{% endblocktrans %}
+		<h2 id="cookies-policy"><a href="#cookies-policy" class="ref_hidden-int_no-sign">{% trans "Политика обработки куки" %}</a></h2>
+		<div class="flex flex-col gap-4 text-justify p-2 overflow-auto">
+				<div>
+				{%    blocktrans %}
+				Все куки могут быть поделены на необходимые, без которых работа сайта невозможна, и на опциональные, которые не влияют на работу этого сайта. 
+				{% endblocktrans %}
+				</div>
+				<div>
+				{%    blocktrans %}
+				Вот все необходимые куки, которые использует мой сайт:
+				{% endblocktrans %}
+				</div>
+				<ul style="margin-top: 0;">
+				{%    blocktrans %}
+					<li><i>Аутентификационные</i> - позволяют зарегистрировать пользователя и опознать его при очередном вхождении в с-му</li>
+					<li><i>Сессионные куки</i> - Так, например, RSSReader знает, кому и что отдавать</li>
+					<li><i>Куки безопастности</i> - <b>CSRF токен</b> относится к нему</li>
+				{% endblocktrans %}
+				</ul>
+				<div>
+				{%    blocktrans %}
+					А вот все опциональные куки, которые использует мой сайт:
+				{% endblocktrans %}
+				</div>
+				<ul style="margin-top: 0;">
+				{%    blocktrans %}
+					<li>Куки аналитики (Яндекс Метрика, Google Analitycs)</li>
+				{% endblocktrans %}
+				</ul>
+				<div>
+				{%    blocktrans %}
+				Продолжая использовать мой сайт, Вы соглашаетесь на обработку файлов <b>куки</b>, которые были перечислены выше.
+				{% endblocktrans %}
+				</div>
+			</div>
+		<h2 id="monetization-policy"><a href="#monetization-policy" class="ref_hidden-int_no-sign">{% trans "Политика монетизации" %}</a></h2>
+		<div class="flex flex-col gap-4 text-justify p-2">
+				<div class="flex gap-3">
+					<img class="p-1 rounded-xl bg-main" width="32px" height="32px" src="{% static "ads.svg" %}">
+					<div>
+						{%    blocktrans %}
+						На моём сайте присутствует реклама, используется рекламная сеть Яндекс, пока в качестве эксперимента. 
+						Все рекламные блоки отмечены вот такой вот иконкой с лева.
+						{% endblocktrans %}
+					</div>
+				</div>
+				<div class="flex gap-3">
+					<img class="p-1 rounded-xl bg-main" width="32px" height="32px" src="{% static "affiliate.svg" %}">
+					<div>
+						{%    blocktrans %}
+						Так же на моём сайте располагаются партнёрские программы, от тех рекламодателей инструменты и сервисы 
+						которых я сам использую или опробовал, и хочу порекомендовать. Все партнёрские материалы отмечены вот такой вот иконкой с лева.
+						{% endblocktrans %}
+					</div>
+				</div>
+				<div class="ref">
+				{%    blocktrans %}
+					Я бы хотел сделать ставку на так называемую freeminimum модель монетизации. 
+					Где платят за пользование, в той или иной форме, программным обеспечением.
+					Более подробно <a href="/ru/articles/?page=1&tag=delat-dengi">о способах монетизации сайтов</a> в общем, и моих сайтов в частности.
+				{% endblocktrans %}
+				</div>
+			</div>
+		{% include 'Engagement/Other/engagement_wide_container.html' %}
+	</div>
+</div>
+{% endblock %}
+
+
+{% block footer_links %}
+	{% for ref in popular_posts %}
+		<li class="ref"><a href="{{ref.get_absolute_url}}">{{ref}}</a></li>
+	{% endfor %}
+{% endblock %}
+
+{% block styles %}
+    <link type="text/css" rel="stylesheet" href="{% static 'Main/css/index.about.min.css' %}"/>
+{% endblock %}
+
+{% block scripts %}
+    <script src="{% static 'Main/js/index.about.min.js' %}"></script>
+{% endblock %}
