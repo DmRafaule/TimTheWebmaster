@@ -34,16 +34,16 @@
 	<div class="max-w-4xl self-center flex flex-col ttw-content">
 		<div class="flex flex-row gap-2 basis-2xs flex-wrap-reverse items-center">
 			<div class="grow shrink-0 basis-2xs">
-				<h1 class="ttw-title text-right" >{% trans "Всё о Тиме Вебмастере (Дмитрие Чудуке)" %}</h1>
-				<div class="mb-12"><i>{% trans "Расскажу свой путь. Что было до сайта, что будет дальше и почему я этим занимаюсь. Я расскажу всё, поэтому это будет долго, и возможно не итересно. Ты предупреждён." %}</i></div>
+				<h1 class="ttw-title text-right" >{% trans "Всё о Тиме Вебмастере (Дмитрии Чудуке)" %}</h1>
+				<div class="mb-12"><i>{% trans "Расскажу свой путь. Что было до сайта, что будет дальше и почему я этим занимаюсь. Я расскажу всё, поэтому это будет долго, и возможно не интересно. Ты предупреждён." %}</i></div>
 			</div>
 			<div class="flex basis-2xs grow">
-				<div class="flex items-center justify-center">
-					<img width="300px" height="100%" src="{% static '/Main/img/me1.jpg' %}" class="rounded-2xl">
+				<div class="flex items-center justify-center w-full h-full">
+					<img src="{% static 'Main/img/human-standing.svg' %}" class="rounded-2xl w-full">
 				</div>
 			</div>
 		</div>
-		<h2 class="paragraph">{% trans "Вступление" %}</h2>
+		<h2 id="introduction"><a href="#introduction" class="ref_hidden-int_no-sign">{% trans "Вступление" %}</a></h2>
 		<div>
 			{% blocktrans %}
 			Начну с того, что я родился в Барановичах, Беларусь. Барановичи - это город аккурат между Минском и Брестом, главной достопримечательностью которого является железнодорожный вокзал.
@@ -60,7 +60,11 @@
 			Изначально, я решил стать следователем, но что-то пошло не так и меня не взяли. Зато в армию взяли, где я и отслужил полтора года. Не могу сказать, что там всё было плохо. Стрелять и кататься на самоходных артиллерийских установках мне нравилось. Мне не нравилось всё что было до и после боевых выездов.
 			{% endblocktrans %}
 		</div>
-		<div class="text">
+		<div class="ref">
+			<div class="float-right p-3">
+				<img width="150px" height="100%" src="{% static '/Main/img/me1.jpg' %}" class="rounded-2xl border">
+				<div class="ttw-explain_under">{% trans 'А это я' %}</div>
+			</div>
 			{% blocktrans %}
 			Итак, вот мне 20 лет, у меня среднеспециальное юридическое, ни опыта, ни каких-либо нормальных навыков. Я начал пробовать себя в различных сферах, начиная от официанта, заканчивая фрилансом. А в свободное время я не играл, нет, (всю охоту к играм я потерял ещё до армии) я программировал, делал игры. Не очень успешно. За два года я сделал кучу демок, но выпустил 
 			{% endblocktrans %}
@@ -68,28 +72,97 @@
 			{% blocktrans %} 
 			на Google Play и то не очень хорошую.
 			{% endblocktrans %}
+			<div class="pt-5">
+				{% blocktrans %}
+				В 2022 году поступил в университет на инженер-програмиста (это уже Минск), но очень скоро понял, что это не моё и забрал документы уже в 2023 году. Сказать, что мне тогда было плохо, ничего не сказать. Мне было очень херово тогда. Было такое чувство будто сердце заволокла, такая вязкая слизь из безысходности и горечи потери года подготовки к поступлению.
+				{% endblocktrans %}
+			</div>
 		</div>
-		<div class="text">
+		<h2 id="my-jobs"><a href="#my-jobs" class="ref_hidden-int_no-sign">{% trans "Работы на которых я - работал" %}</a></h2>
+		<div class="relative border-2 rounded-xl">
+			<div id="carousel-buttons-1" class="absolute min-w-max flex gap-1 items-center justify-between w-full bottom-0 z-10">
+				<div class="ttw-button ttw-button_action">
+					<img class="ttw-button_squared bg-main slider-button prev" aria-label="no previous slide available" aria-disabled="true" src="{% static 'chevron_left.svg' %}" width="32" height="32" alt="{% trans "Предыдущая вкладка на табуляторе" %}">
+				</div>
+				<div class="ttw-button ttw-button_action">
+					<img class="ttw-button_squared bg-main slider-button next" aria-label="Next slide" src="{% static 'chevron.svg' %}" width="32" height="32" alt="{% trans "Предыдущая вкладка на табуляторе" %}">
+				</div>
+			</div>
+			<div class="carousel w-full overflow-y-auto grow shrink basis-2xs"  data-buttons-id="carousel-buttons-1">
+				<div class="slide" aria-label="slide one of three" aria-hidden="false">
+					{% blocktrans %}
+					<div><b>Старший продавец в книжном</b> (<i>2024 - ...</i>) - в общем, продаю книги на Немиге.</div>
+					{% endblocktrans %}
+				</div>
+				<div class="slide" aria-label="slide one of three" aria-hidden="true">
+					{% blocktrans %}
+					<div><b>SEO Специалист</b> (<i>2024 год</i>) - занимался продвижением уже готовых, чужих сайтов. Проработал я там не долго, уж больно скучное это занятие и не благодарное. Считай никакого контроля над проектом у меня не было, а меняя мета-теги далеко не уйдёшь.</div>
+					{% endblocktrans %}
+				</div>
+				<div class="slide" aria-label="slide one of three" aria-hidden="true">
+					{% blocktrans %}
+					<div>
+						<b>Машинист сцены в Большом театре Беларуси</b> (<i>2023-2024</i>) - собирал, проводил и разбирал спектакли. Пару раз даже выезжал на гастроли в <b>Витебск</b>, <b>Гродно</b>, <b>Несвиж</b>. Моя самая любимая и самая интересная работа, на которой я когда-либо работал. Очень много интересных людей, с разным прошлым и разными взглядами на жизнь. Зря я от туда уволился :(
+					</div>
+					{% endblocktrans %}
+					<img width="100%" class="dynamic_image image-bordered grow shrink-0 basis-2xs rounded-2xl border" src="{% static 'loading.svg' %}" data-src="{% static '/Main/img/theatr.webp' %}">
+				</div>
+				<div class="slide" aria-label="slide one of three" aria-hidden="true">
+					{% blocktrans %}
+					<div>
+						<b>Слесарь сборщик телевизоров в МПВОТ</b> (<i>2023</i>) - просто собирал телевизоры на заводе, а ещё ноутбуки, проверял их на брак. Это был опять завод, но конвейерный, было тяжело поспевать особенно на участке сборки. Проще всего было на проверке брака(картинки, аудио)
+					</div>
+					{% endblocktrans %}
+				</div>
+				<div class="slide" aria-label="slide one of three" aria-hidden="true">
+					{% blocktrans %}
+					<div>
+						<b>Грузчик</b> (<i>2021-2022</i>) - ну что можно сказать про эту работу, грузчик так грузчик в одном из магазинов "низких цен". Я бы сказал это была тихая и спокойная работа, которая не требовала много усилий. До грузчика, я пытался устроиться консультантом в магазин электроники и официантом, но после недолгого обучения и первых проб, я понял, чрезмерное общение для меня вредно.
+					</div>
+					{% endblocktrans %}
+				</div>
+				<div class="slide" aria-label="slide one of three" aria-hidden="true">
+					{% blocktrans %}
+					<div>
+						<b>Слесарь сборщик мебели в Диприз</b>(<i>2020-2021</i>) - занимался тем, что собирал мебель или покраской составных частей. Работал в ночные смены, сказать что мне это "нравилось", ничего не сказать. Ходить постоянно сонным, работать в диком шуме, а ещё этот запах клея, древесины, солярки. Короче незабываемые ощущения. Моя первая официальная работа по трудовой.
+					</div>
+					{% endblocktrans %}
+				</div>
+				<div class="slide" aria-label="slide one of three" aria-hidden="true">
+					{% blocktrans %}
+					<div>
+						До первой официальной работы я так же занимался или пытался заниматься фрилансом, торговлей на валютных рынках. Ни чего у меня не получалось и заработал я тогда копейки. А учитывая, торговлю на форекс я ушёл в минус.
+					</div>
+					{% endblocktrans %}
+				</div>
+			</div>
+		</div>
+		<h2 id="why-this-website-exists"><a href="#why-this-website-exists" class="ref_hidden-int_no-sign">{% trans "Почему решил сделать сайт" %}</a></h2>
+		<div>
 			{% blocktrans %}
-			В 2022 году поступил в университет на инженер-программиста (это уже Минск), но очень скоро понял, что это не моё и забрал документы уже в 2023 году. Сказать, что мне тогда было плохо, ничего не сказать. Мне было очень херово тогда. Было такое чувство будто сердце заволокла, такая вязкая слизь из безысходности и горечи потери года подготовки к поступлению.
+			После того, как я забрал документы из ВУЗа(Где-то Март 2023 года), нужно было чем-то заняться. Вот я и решил, а давай я опубликую сайт. Черновик у меня валялся с 2022 года, когда я ещё увлекался хакатонами, devops и взломом. Изначально, я сделал этот сайт, чтобы отрабатывать и практиковать различные уязвимости в сайтах. И конечно же разобраться в том как сайты вообще работают. 
 			{% endblocktrans %}
 		</div>
-		<div class="text">
-			<img width="100%" class="dynamic_image image-bordered grow shrink-0 basis-2xs rounded-2xl" src="{% static 'loading.svg' %}" data-src="{% static '/Main/img/theatr.webp' %}">
-		</div>
-		<div class="text">
+		<div>
 			{% blocktrans %}
-			В том же 2023 году я устроился машинистом сцены в Большой театр Беларуси. Хочу сказать это была моя самая интересная, и одновременно с этим, простая работа, на которой я когда-либо работал. Одновременно с работой я учился тому, как строить сайты, приложения и как их продвигать в поиске. Результат этого вы видите перед собой. 
+			Сейчас я этим не особо увлекаюсь, я сосредоточился на созидании и проектировании. Ломать нее строить, как говорят. 
 			{% endblocktrans %}
 		</div>
-		<div class="text">
+		<div>
 			{% blocktrans %}
-			После театра устроился на работу SEO-специалистом, не понравилось, уволился. Это всё 2024 год.
+			А ещё я хотел просто писать о том, что меня интересовало и интересует по сей день. То есть разработка и проектирование приложений, сайтов. Когда я тогда начинал, я понимал что быстро это не будет и это, скорее всего, проект на всю жизнь. И по этому я решил писать сайт, на том языке который мне нравится - Python и верстать на чистом HTML, CSS, JS.
 			{% endblocktrans %}
 		</div>
-		<div class="text">
+		<fieldset data-type="interesting" data-imagepath="{% static '/Post/img/blockInteresting.svg' %}" >
+			<legend class="interesting"><img class="icon" width="16" height="16" src="{% static '/Post/img/blockInteresting.svg' %}"></legend>
 			{% blocktrans %}
-			Что касается текущего момента, то сейчас я работаю в книжном магазине и готовлюсь к собеседованиям на python-разработчика.
+			Если быть честным, Python не мой любимый язык программирования. Это скорее будет C или C++. Я люблю эти языки программирования, но делиться программами с широкой публикой на них, очень сложно. А я хочу именно делиться и показывать результаты своих трудов другим.
+			{% endblocktrans %}
+		</fieldset>
+		<h2 id="whats-next"><a href="#whats-next" class="ref_hidden-int_no-sign">{% trans "Что будет дальше" %}</a></h2>
+		<div>
+			{% blocktrans %}
+			Дальше, я надеюсь, будет рост посещаемости этого сайта. Я доведу свои рабочие процессы связанные с публикацией и продвижением статей до ума. Как итог, много общения, монетизация сайта и возможность заняться чем-нибудь новым и необычным.
 			{% endblocktrans %}
 		</div>
 		{% include 'Engagement/Other/engagement_wide_container.html'%}

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-09-01 07:27+0300\n"
+"POT-Creation-Date: 2025-11-03 17:52+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -175,6 +175,46 @@ msgstr "message"
 #: .\Engagement\templates\Engagement\Other\engagement_under_post_container.html:3
 msgid "Не забудь поделиться, лайкнуть и оставить комментарий)"
 msgstr "Do not forget to share, like and leave a comment :)"
+
+#: .\Engagement\templates\Engagement\Other\engagement_wide_container.html:6
+msgid "Обратная связь, контакты, прочее"
+msgstr "Feedback, contacts etc"
+
+#: .\Engagement\templates\Engagement\Other\engagement_wide_container.html:15
+msgid "Контакты"
+msgstr "Contacts"
+
+#: .\Engagement\templates\Engagement\Other\engagement_wide_container.html:21
+msgid "иконка"
+msgstr "icon"
+
+#: .\Engagement\templates\Engagement\Other\engagement_wide_container.html:32
+msgid "RSS каналы"
+msgstr "RSS Channels"
+
+#: .\Engagement\templates\Engagement\Other\engagement_wide_container.html:37
+#: .\Engagement\templates\Engagement\Other\engagement_wide_container.html:48
+#: .\Engagement\templates\Engagement\Other\engagement_wide_container.html:59
+msgid "Скопировал ссылку на RSS фид"
+msgstr "Copy a link to RSS feed"
+
+#: .\Engagement\templates\Engagement\Other\engagement_wide_container.html:41
+#: .\Engagement\templates\Engagement\Other\engagement_wide_container.html:52
+#: .\Engagement\templates\Engagement\Other\engagement_wide_container.html:63
+msgid "Значок rss-фида"
+msgstr "RSS feed icon"
+
+#: .\Engagement\templates\Engagement\Other\engagement_wide_container.html:42
+msgid "Подписаться на выход последних статей"
+msgstr "Subscribe to receive the latest articles."
+
+#: .\Engagement\templates\Engagement\Other\engagement_wide_container.html:53
+msgid "Подписаться на выход последних инструментов"
+msgstr "Subscribe to receive the latest tools."
+
+#: .\Engagement\templates\Engagement\Other\engagement_wide_container.html:64
+msgid "Подписаться на выход последних заметок"
+msgstr "Subscribe to receive the latest notes"
 
 #: .\Engagement\templates\Engagement\Other\interaction.html:8
 msgid "Глазик"
