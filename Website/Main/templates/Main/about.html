@@ -32,14 +32,34 @@
 
 <div class="justify-center flex flex-col w-full toObserve ttw-limiter">
 	<div class="max-w-4xl self-center flex flex-col ttw-content">
-		<div class="flex flex-row gap-2 basis-2xs flex-wrap-reverse items-center">
+		<div class="flex flex-row gap-2 flex-wrap items-baseline">
 			<div class="grow shrink-0 basis-2xs">
-				<h1 class="ttw-title text-right" >{% trans "Всё о Тиме Вебмастере (Дмитрии Чудуке)" %}</h1>
+				<h1 class="ttw-title text-right" >{% trans "Всё о Тиме Вебмастере (Дмитрие Чудуке)" %}</h1>
 				<div class="mb-12"><i>{% trans "Расскажу свой путь. Что было до сайта, что будет дальше и почему я этим занимаюсь. Я расскажу всё, поэтому это будет долго, и возможно не интересно. Ты предупреждён." %}</i></div>
 			</div>
-			<div class="flex basis-2xs grow">
-				<div class="flex items-center justify-center w-full h-full">
-					<img src="{% static 'Main/img/human-standing.svg' %}" class="rounded-2xl w-full">
+			<div class="flex basis-2xs grow h-full">
+				<div class="flex flex-col gap-2 flex-wrap ref_hidden_no-sign text-white uppercase w-full">
+					<a href="{% url 'articles-list' %}" class="grow basis-auto bg-main text-white rounded-[8px]">
+						<div class="ttw-button ttw-button_link h-full rounded-[8px]">
+							<div class="h-full flex justify-center items-center text-center rounded-[8px] pt-2 pb-2">
+								<div class="ml-5 mr-5">{% trans 'Посмотреть последние статьи' %}</div>
+							</div>
+						</div>
+					</a>
+					<a href="{% url 'tools-list' %}" class="grow basis-auto bg-main text-white rounded-[8px]">
+						<div class="ttw-button ttw-button_link h-full rounded-[8px]">
+							<div class="h-full flex justify-center items-center text-center rounded-[8px] pt-2 pb-2">
+								<div class="ml-5 mr-5">{% trans 'Опробовать инструменты' %}</div>
+							</div>
+						</div>
+					</a>
+					<a href="{% url 'home' %}" class="grow bg-main text-white rounded-[8px] min-h-[150px]">
+						<div class="ttw-button ttw-button_link h-full rounded-[8px]">
+							<div class="h-full flex justify-center items-center text-center rounded-[8px] pt-2 pb-2">
+								<div class="ml-5 mr-5">{% trans 'Или вернуться на главную' %}</div>
+							</div>
+						</div>
+					</a>
 				</div>
 			</div>
 		</div>
@@ -76,65 +96,6 @@
 				{% blocktrans %}
 				В 2022 году поступил в университет на инженер-програмиста (это уже Минск), но очень скоро понял, что это не моё и забрал документы уже в 2023 году. Сказать, что мне тогда было плохо, ничего не сказать. Мне было очень херово тогда. Было такое чувство будто сердце заволокла, такая вязкая слизь из безысходности и горечи потери года подготовки к поступлению.
 				{% endblocktrans %}
-			</div>
-		</div>
-		<h2 id="my-jobs"><a href="#my-jobs" class="ref_hidden-int_no-sign">{% trans "Работы на которых я - работал" %}</a></h2>
-		<div class="relative border-2 rounded-xl">
-			<div id="carousel-buttons-1" class="absolute min-w-max flex gap-1 items-center justify-between w-full bottom-0 z-10">
-				<div class="ttw-button ttw-button_action">
-					<img class="ttw-button_squared bg-main slider-button prev" aria-label="no previous slide available" aria-disabled="true" src="{% static 'chevron_left.svg' %}" width="32" height="32" alt="{% trans "Предыдущая вкладка на табуляторе" %}">
-				</div>
-				<div class="ttw-button ttw-button_action">
-					<img class="ttw-button_squared bg-main slider-button next" aria-label="Next slide" src="{% static 'chevron.svg' %}" width="32" height="32" alt="{% trans "Предыдущая вкладка на табуляторе" %}">
-				</div>
-			</div>
-			<div class="carousel w-full overflow-y-auto grow shrink basis-2xs"  data-buttons-id="carousel-buttons-1">
-				<div class="slide" aria-label="slide one of three" aria-hidden="false">
-					{% blocktrans %}
-					<div><b>Старший продавец в книжном</b> (<i>2024 - ...</i>) - в общем, продаю книги на Немиге.</div>
-					{% endblocktrans %}
-				</div>
-				<div class="slide" aria-label="slide one of three" aria-hidden="true">
-					{% blocktrans %}
-					<div><b>SEO Специалист</b> (<i>2024 год</i>) - занимался продвижением уже готовых, чужих сайтов. Проработал я там не долго, уж больно скучное это занятие и не благодарное. Считай никакого контроля над проектом у меня не было, а меняя мета-теги далеко не уйдёшь.</div>
-					{% endblocktrans %}
-				</div>
-				<div class="slide" aria-label="slide one of three" aria-hidden="true">
-					{% blocktrans %}
-					<div>
-						<b>Машинист сцены в Большом театре Беларуси</b> (<i>2023-2024</i>) - собирал, проводил и разбирал спектакли. Пару раз даже выезжал на гастроли в <b>Витебск</b>, <b>Гродно</b>, <b>Несвиж</b>. Моя самая любимая и самая интересная работа, на которой я когда-либо работал. Очень много интересных людей, с разным прошлым и разными взглядами на жизнь. Зря я от туда уволился :(
-					</div>
-					{% endblocktrans %}
-					<img width="100%" class="dynamic_image image-bordered grow shrink-0 basis-2xs rounded-2xl border" src="{% static 'loading.svg' %}" data-src="{% static '/Main/img/theatr.webp' %}">
-				</div>
-				<div class="slide" aria-label="slide one of three" aria-hidden="true">
-					{% blocktrans %}
-					<div>
-						<b>Слесарь сборщик телевизоров в МПВОТ</b> (<i>2023</i>) - просто собирал телевизоры на заводе, а ещё ноутбуки, проверял их на брак. Это был опять завод, но конвейерный, было тяжело поспевать особенно на участке сборки. Проще всего было на проверке брака(картинки, аудио)
-					</div>
-					{% endblocktrans %}
-				</div>
-				<div class="slide" aria-label="slide one of three" aria-hidden="true">
-					{% blocktrans %}
-					<div>
-						<b>Грузчик</b> (<i>2021-2022</i>) - ну что можно сказать про эту работу, грузчик так грузчик в одном из магазинов "низких цен". Я бы сказал это была тихая и спокойная работа, которая не требовала много усилий. До грузчика, я пытался устроиться консультантом в магазин электроники и официантом, но после недолгого обучения и первых проб, я понял, чрезмерное общение для меня вредно.
-					</div>
-					{% endblocktrans %}
-				</div>
-				<div class="slide" aria-label="slide one of three" aria-hidden="true">
-					{% blocktrans %}
-					<div>
-						<b>Слесарь сборщик мебели в Диприз</b>(<i>2020-2021</i>) - занимался тем, что собирал мебель или покраской составных частей. Работал в ночные смены, сказать что мне это "нравилось", ничего не сказать. Ходить постоянно сонным, работать в диком шуме, а ещё этот запах клея, древесины, солярки. Короче незабываемые ощущения. Моя первая официальная работа по трудовой.
-					</div>
-					{% endblocktrans %}
-				</div>
-				<div class="slide" aria-label="slide one of three" aria-hidden="true">
-					{% blocktrans %}
-					<div>
-						До первой официальной работы я так же занимался или пытался заниматься фрилансом, торговлей на валютных рынках. Ни чего у меня не получалось и заработал я тогда копейки. А учитывая, торговлю на форекс я ушёл в минус.
-					</div>
-					{% endblocktrans %}
-				</div>
 			</div>
 		</div>
 		<h2 id="why-this-website-exists"><a href="#why-this-website-exists" class="ref_hidden-int_no-sign">{% trans "Почему решил сделать сайт" %}</a></h2>

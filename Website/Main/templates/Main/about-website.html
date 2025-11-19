@@ -11,14 +11,34 @@
 {% block content %}
 <div class="justify-center flex flex-col w-full toObserve ttw-limiter">
 	<div class="max-w-4xl self-center flex flex-col ttw-content w-full">
-		<div class="flex flex-row gap-2 basis-2xs flex-wrap-reverse items-center">
+		<div class="flex flex-row gap-2 flex-wrap items-baseline">
 			<div class="grow shrink-0 basis-2xs">
 				<h1 class="ttw-title text-right" >{% trans "Всё о сайте: на чём работает, какие ассеты использует, как используется " %}</h1>
 				<div class="mb-12"><i>{% trans "В полной мере описывается то, как и на чём работает данный кусок технологий, что использует в своём визуале и как его использую я и мои посетители" %}</i></div>
 			</div>
-			<div class="flex basis-2xs grow">
-				<div class="flex items-center justify-center">
-					<img src="{% get_media_prefix %}{{main_preview}}">
+			<div class="flex basis-2xs grow h-full">
+				<div class="flex flex-col gap-2 flex-wrap ref_hidden_no-sign text-white uppercase w-full">
+					<a href="{% url 'articles-list' %}" class="grow basis-auto bg-main text-white rounded-[8px]">
+						<div class="ttw-button ttw-button_link h-full rounded-[8px]">
+							<div class="h-full flex justify-center items-center text-center rounded-[8px] pt-2 pb-2">
+								<div class="ml-5 mr-5">{% trans 'Посмотреть последние статьи' %}</div>
+							</div>
+						</div>
+					</a>
+					<a href="{% url 'tools-list' %}" class="grow basis-auto bg-main text-white rounded-[8px]">
+						<div class="ttw-button ttw-button_link h-full rounded-[8px]">
+							<div class="h-full flex justify-center items-center text-center rounded-[8px] pt-2 pb-2">
+								<div class="ml-5 mr-5">{% trans 'Опробовать инструменты' %}</div>
+							</div>
+						</div>
+					</a>
+					<a href="{% url 'home' %}" class="grow bg-main text-white rounded-[8px] min-h-[150px]">
+						<div class="ttw-button ttw-button_link h-full rounded-[8px]">
+							<div class="h-full flex justify-center items-center text-center rounded-[8px] pt-2 pb-2">
+								<div class="ml-5 mr-5">{% trans 'Или вернуться на главную' %}</div>
+							</div>
+						</div>
+					</a>
 				</div>
 			</div>
 		</div>
