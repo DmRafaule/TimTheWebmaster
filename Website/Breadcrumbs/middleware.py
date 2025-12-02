@@ -66,10 +66,10 @@ class BreadcrumbsMiddleware:
         if response.context_data:
             title_qs = Tool.objects.filter(slug=self.slug)
             if len(title_qs) > 0:
-                title = title_qs[0]
+                title = title_qs[0].name
             else:
                 title = self.slug
-            response.context_data.update({'post_title': title.name})
+            response.context_data.update({'post_title': title})
     
     def list_handler(self, request, response):
         pass

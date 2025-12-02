@@ -96,7 +96,7 @@ def _update_record_template(request, record, path_to_template):
         record.save()
 
 @user_passes_test(is_superuser_check)
-def tool_main(request):
+def editor(request):
     filename = request.GET.get('filename', None)
     context = U.initDefaults(request)
         
