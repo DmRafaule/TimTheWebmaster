@@ -14,36 +14,28 @@
 
 {% block content %}
 <div class="justify-center flex flex-col w-full toObserve ttw-limiter">
-	<div class="max-w-7xl self-center flex flex-col ttw-content w-full">
-		<div class="flex flex-row gap-2 flex-wrap items-baseline">
-			<div class="grow shrink-0 basis-2xs">
-				<h1 class="ttw-title text-right" >{% trans "Тим Вебмастер: Бесплатные инструменты, уроки и кейсы про Django, SEO, ИИ и разработку в целом" %}</h1>
-				<div class="mb-12">{% trans "Создаю собственные вебсервисы и инструменты, пишу статьи время от времени. Делюсь кодом, опытом, наработками, ошибками и разными историями пока работаю над своими задачами и проектами. " %}</div>
+	<div class="max-w-4xl self-center flex flex-col ttw-content w-full">
+		<div class="flex gap-3 flex-wrap mb-10">
+			<div class="flex flex-col gap-2 grow shrink basis-2xs" style="flex: 1 1 300px;">
+				<h1>{% trans "Тим Вебмастер: Бесплатные инструменты, уроки и кейсы про Django, SEO, ИИ и разработку в целом" %}</h1>
+				<div>{% trans "Создаю собственные вебсервисы и инструменты, пишу статьи время от времени. Делюсь кодом, опытом, наработками, ошибками и разными историями пока работаю над своими задачами и проектами. " %}</div>
 			</div>
-			<div class="flex basis-2xs grow h-full">
-				<div class="flex flex-col gap-2 flex-wrap ref_hidden_no-sign text-white uppercase w-full">
-					<a href="{% url 'articles-list' %}" class="grow basis-auto bg-main text-white rounded-[8px]">
-						<div class="ttw-button ttw-button_link h-full rounded-[8px]">
-							<div class="h-full flex justify-center items-center text-center rounded-[8px] pt-2 pb-2">
-								<div class="ml-5 mr-5">{% trans 'Посмотреть последние статьи' %}</div>
-							</div>
-						</div>
-					</a>
-					<a href="{% url 'tools-list' %}?page=1&tag={{internal_tool_tag}}" class="grow basis-auto bg-main text-white rounded-[8px]">
-						<div class="ttw-button ttw-button_link h-full rounded-[8px]">
-							<div class="h-full flex justify-center items-center text-center rounded-[8px] pt-2 pb-2">
-								<div class="ml-5 mr-5">{% trans 'Опробовать инструменты' %}</div>
-							</div>
-						</div>
-					</a>
-					<a href="{% url 'about-website' %}" class="grow bg-main text-white rounded-[8px] min-h-[150px]">
-						<div class="ttw-button ttw-button_link h-full rounded-[8px]">
-							<div class="h-full flex justify-center items-center text-center rounded-[8px] pt-2 pb-2">
-								<div class="ml-5 mr-5">{% trans 'Или ознакомиться с сайтом' %}</div>
-							</div>
-						</div>
-					</a>
-				</div>
+			<div class="flex flex-col justify-between gap-2 grow shrink-0 basis-auto uppercase">
+				<a href="{% url "articles-list" %}" class="basis-auto rounded-[8px] bg-main text-white">
+					<div class="ttw-button ttw-button_link rounded-[8px]">
+						<div class="flex justify-center items-center text-center rounded-[8px] pt-2 pb-2">{% trans "Посмотреть последние статьи" %}</div>
+					</div>
+				</a>
+				<a href="{% url "tools-list" %}?page=1&tag={{internal_tool_tag}}" class="basis-auto rounded-[8px] bg-main text-white">
+					<div class="ttw-button ttw-button_link rounded-[8px]">
+						<div class="flex justify-center items-center text-center rounded-[8px] pt-2 pb-2">{% trans "Опробовать инструменты" %}</div>
+					</div>
+				</a>
+				<a href="{% url "about-website" %}" class="grow basis-auto rounded-[8px] bg-main text-white">
+					<div class="ttw-button ttw-button_link rounded-[8px] h-full">
+						<div class="flex justify-center items-center text-center rounded-[8px] pt-2 pb-2 h-full">{% trans "Или ознакомиться с сайтом" %}</div>
+					</div>
+				</a>
 			</div>
 		</div>
 
@@ -314,7 +306,7 @@
 					</div>
 				</div>
 			</div>
-			{% include 'Engagement/Other/engagement_wide_container.html' %}
+			{% include 'Engagement/Other/engagement_wide_container.html' with only_send="True" %}
 		</div>
 	</div>
 	{% comment %}

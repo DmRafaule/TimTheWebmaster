@@ -63,6 +63,9 @@
 .link-input-ql-editor{
     border-top-left-radius: 12px;
     border-bottom-left-radius: 12px;
+    flex: 1 0 250px;
+    background-color: var(--bg_color);
+    color: var(--main_color);
 }
 
 .link-tooltip{

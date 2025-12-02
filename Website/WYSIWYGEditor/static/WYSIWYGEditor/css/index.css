@@ -1,0 +1,6 @@
+@import './main.css';
+@import '../../../../Main/static/Components/Forms/form.css';
+@import '../../../../Main/static/Components/Blocks/icon.css';
+
+@import "tailwindcss";
+@tailwind utilities;

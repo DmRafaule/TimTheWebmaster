@@ -1,0 +1,118 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-12-02 09:39+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: .\WYSIWYGEditor\static\WYSIWYGEditor\js\quill_abbr.js:23
+#: .\WYSIWYGEditor\static\WYSIWYGEditor\js\quill_codeblock.js:89
+#: .\WYSIWYGEditor\static\WYSIWYGEditor\js\quill_headers.js:23
+#: .\WYSIWYGEditor\static\WYSIWYGEditor\js\quill_images.js:32
+#: .\WYSIWYGEditor\static\WYSIWYGEditor\js\quill_links.js:21
+#: .\WYSIWYGEditor\static\WYSIWYGEditor\js\quill_videos.js:32
+msgid "Сохранить"
+msgstr "Save"
+
+#: .\WYSIWYGEditor\static\WYSIWYGEditor\js\quill_abbr.js:24
+#: .\WYSIWYGEditor\static\WYSIWYGEditor\js\quill_images.js:33
+#: .\WYSIWYGEditor\static\WYSIWYGEditor\js\quill_links.js:23
+#: .\WYSIWYGEditor\static\WYSIWYGEditor\js\quill_videos.js:33
+msgid "Удалить"
+msgstr "Remove"
+
+#: .\WYSIWYGEditor\static\WYSIWYGEditor\js\quill_codeblock.js:46
+msgid "Скопированно"
+msgstr "Copied"
+
+#: .\WYSIWYGEditor\static\WYSIWYGEditor\js\quill_codeblock.js:83
+msgid "Редактор кода"
+msgstr "Code editor"
+
+#: .\WYSIWYGEditor\static\WYSIWYGEditor\js\quill_codeblock.js:92
+msgid "Отмена"
+msgstr "Cancel"
+
+#: .\WYSIWYGEditor\static\WYSIWYGEditor\js\quill_headers.js:24
+#: .\WYSIWYGEditor\static\WYSIWYGEditor\js\quill_links.js:22
+msgid "Копировать"
+msgstr "Copy"
+
+#: .\WYSIWYGEditor\static\WYSIWYGEditor\js\quill_images.js:24
+#: .\WYSIWYGEditor\static\WYSIWYGEditor\js\quill_links.js:25
+#: .\WYSIWYGEditor\static\WYSIWYGEditor\js\quill_videos.js:24
+msgid "Загрузить"
+msgstr "Upload"
+
+#: .\WYSIWYGEditor\static\WYSIWYGEditor\js\quill_images.js:27
+#: .\WYSIWYGEditor\static\WYSIWYGEditor\js\quill_images.js:99
+#: .\WYSIWYGEditor\static\WYSIWYGEditor\js\quill_images.js:108
+#: .\WYSIWYGEditor\static\WYSIWYGEditor\js\quill_links.js:28
+#: .\WYSIWYGEditor\static\WYSIWYGEditor\js\quill_links.js:97
+#: .\WYSIWYGEditor\static\WYSIWYGEditor\js\quill_links.js:106
+#: .\WYSIWYGEditor\static\WYSIWYGEditor\js\quill_videos.js:27
+#: .\WYSIWYGEditor\static\WYSIWYGEditor\js\quill_videos.js:98
+#: .\WYSIWYGEditor\static\WYSIWYGEditor\js\quill_videos.js:107
+msgid "✓ | Заменить"
+msgstr "✓ | Replace"
+
+#: .\WYSIWYGEditor\static\WYSIWYGEditor\js\quill_images.js:184
+msgid "Изображение уже удалено"
+msgstr "An image already removed"
+
+#: .\WYSIWYGEditor\static\WYSIWYGEditor\js\quill_images.js:187
+msgid "У тебя нет достаточных прав удалять изображения"
+msgstr "You do not have enough permisions to remove images"
+
+#: .\WYSIWYGEditor\static\WYSIWYGEditor\js\quill_images.js:192
+msgid "Изображение успешно удалено"
+msgstr "An image successfully removed"
+
+#: .\WYSIWYGEditor\static\WYSIWYGEditor\js\quill_images.js:231
+msgid "Изображение успешно загружено на сервер и добавленно в статью"
+msgstr "An image successfully uploaded to server and added to article"
+
+#: .\WYSIWYGEditor\static\WYSIWYGEditor\js\quill_links.js:184
+msgid "Файл уже удалён"
+msgstr "File already removed"
+
+#: .\WYSIWYGEditor\static\WYSIWYGEditor\js\quill_links.js:187
+msgid "У тебя нет достаточных прав удалять файлы"
+msgstr "You do not have enough permisions to remove files"
+
+#: .\WYSIWYGEditor\static\WYSIWYGEditor\js\quill_links.js:192
+msgid "Файл успешно удален"
+msgstr "File successfully removed"
+
+#: .\WYSIWYGEditor\static\WYSIWYGEditor\js\quill_links.js:232
+msgid "Файл успешно загружен на сервер и добавленн в статью"
+msgstr "An file successfully uploaded to server and added to article"
+
+#: .\WYSIWYGEditor\static\WYSIWYGEditor\js\quill_videos.js:181
+msgid "Видео уже удалено"
+msgstr "Video already removed"
+
+#: .\WYSIWYGEditor\static\WYSIWYGEditor\js\quill_videos.js:184
+msgid "У тебя нет достаточных прав удалять видосики"
+msgstr "You do not have enough permisions to remove videos"
+
+#: .\WYSIWYGEditor\static\WYSIWYGEditor\js\quill_videos.js:189
+msgid "Видео успешно удалено"
+msgstr "Video successfully removed"
+
+#: .\WYSIWYGEditor\static\WYSIWYGEditor\js\quill_videos.js:228
+msgid "Видео успешно загружено на сервер и добавленно в статью"
+msgstr "An video successfully uploaded to server and added to article"

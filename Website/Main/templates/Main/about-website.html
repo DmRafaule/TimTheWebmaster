@@ -11,38 +11,31 @@
 {% block content %}
 <div class="justify-center flex flex-col w-full toObserve ttw-limiter">
 	<div class="max-w-4xl self-center flex flex-col ttw-content w-full">
-		<div class="flex flex-row gap-2 flex-wrap items-baseline">
-			<div class="grow shrink-0 basis-2xs">
-				<h1 class="ttw-title text-right" >{% trans "Всё о сайте: на чём работает, какие ассеты использует, как используется " %}</h1>
-				<div class="mb-12"><i>{% trans "В полной мере описывается то, как и на чём работает данный кусок технологий, что использует в своём визуале и как его использую я и мои посетители" %}</i></div>
+		<div class="flex gap-3 flex-wrap mb-10">
+			<div class="flex flex-col gap-2 grow shrink basis-2xs" style="flex: 1 1 300px;">
+				<h1>{% trans "Всё о сайте: на чём работает, какие ассеты использует, как используется " %}</h1>
+				<div>{% trans "В полной мере описывается то, как и на чём работает данный кусок технологий, что использует в своём визуале и как его использую я и мои посетители" %}</div>
 			</div>
-			<div class="flex basis-2xs grow h-full">
-				<div class="flex flex-col gap-2 flex-wrap ref_hidden_no-sign text-white uppercase w-full">
-					<a href="{% url 'articles-list' %}" class="grow basis-auto bg-main text-white rounded-[8px]">
-						<div class="ttw-button ttw-button_link h-full rounded-[8px]">
-							<div class="h-full flex justify-center items-center text-center rounded-[8px] pt-2 pb-2">
-								<div class="ml-5 mr-5">{% trans 'Посмотреть последние статьи' %}</div>
-							</div>
-						</div>
-					</a>
-					<a href="{% url 'tools-list' %}" class="grow basis-auto bg-main text-white rounded-[8px]">
-						<div class="ttw-button ttw-button_link h-full rounded-[8px]">
-							<div class="h-full flex justify-center items-center text-center rounded-[8px] pt-2 pb-2">
-								<div class="ml-5 mr-5">{% trans 'Опробовать инструменты' %}</div>
-							</div>
-						</div>
-					</a>
-					<a href="{% url 'home' %}" class="grow bg-main text-white rounded-[8px] min-h-[150px]">
-						<div class="ttw-button ttw-button_link h-full rounded-[8px]">
-							<div class="h-full flex justify-center items-center text-center rounded-[8px] pt-2 pb-2">
-								<div class="ml-5 mr-5">{% trans 'Или вернуться на главную' %}</div>
-							</div>
-						</div>
-					</a>
-				</div>
+			<div class="flex flex-col justify-between gap-2 grow shrink-0 basis-auto uppercase">
+				<a href="{% url "articles-list" %}" class="basis-auto rounded-[8px] bg-main text-white">
+					<div class="ttw-button ttw-button_link rounded-[8px]">
+						<div class="flex justify-center items-center text-center rounded-[8px] pt-2 pb-2">{% trans "Посмотреть последние статьи" %}</div>
+					</div>
+				</a>
+				<a href="{% url "tools-list" %}?page=1&tag={{internal_tool_tag}}" class="basis-auto rounded-[8px] bg-main text-white">
+					<div class="ttw-button ttw-button_link rounded-[8px]">
+						<div class="flex justify-center items-center text-center rounded-[8px] pt-2 pb-2">{% trans "Опробовать инструменты" %}</div>
+					</div>
+				</a>
+				<a href="{% url "home" %}" class="grow basis-auto rounded-[8px] bg-main text-white">
+					<div class="ttw-button ttw-button_link rounded-[8px] h-full">
+						<div class="flex justify-center items-center text-center rounded-[8px] pt-2 pb-2 h-full">{% trans "Или вернуться на главную" %}</div>
+					</div>
+				</a>
 			</div>
 		</div>
-		<h2 id="website-type-theme"><a href="#website-type-theme" class="ref_hidden-int_no-sign">{% trans "Небольшое вступление. Тип сайта и его тематика" %}</a></h2>
+		<h2 class="mt-10" id="website-type-theme"><a href="#website-type-theme" class="ref_hidden-int_no-sign">{% trans "Небольшое вступление. Тип сайта и его тематика" %}</a></h2>
+		<hr>
 		<div>
 			<div class="w-[130px] h-[130px] float-right">
 				<div class="p-2 h-full">
@@ -111,7 +104,8 @@
 			</div>
 		</div>
 
-		<h2 id="current-tech-stack"><a href="#current-tech-stack" class="ref_hidden-int_no-sign">{% trans "Текущий технологический стек" %}</a></h2>
+		<h2 class="mt-10" id="current-tech-stack"><a href="#current-tech-stack" class="ref_hidden-int_no-sign">{% trans "Текущий технологический стек" %}</a></h2>
+		<hr>
 		<div>
 			<div class="w-[150px] h-[130px] float-right">
 				<div class="p-2 h-full">
@@ -188,7 +182,8 @@
 			{% endblocktrans %}
 		</ul>
 
-		<h2 id="others-assets"><a href="#others-assets" class="ref_hidden-int_no-sign">{% trans "Чужие асеты" %}</a></h2>
+		<h2 class="mt-10" id="others-assets"><a href="#others-assets" class="ref_hidden-int_no-sign">{% trans "Чужие асеты" %}</a></h2>
+		<hr>
 		<div>{% trans 'Мой сайт использует чужие асеты и ресурсы. Дальше будет идти список из чужих ассетов, которые так или иначе используются на сайте:' %}</div>
 		<ul>
 		<li class="ref"><b>Google icons </b>- <a href="https://fonts.google.com/icons">https://fonts.google.com/icons </a>({% trans 'Иконки' %})</li>
@@ -199,7 +194,8 @@
 		{% blocktrans %}
 		Если я забыл кого-то указать (конкретно), свяжитесь со мной, я обязательно исправлю.
 		{% endblocktrans %}
-		<h2 id="cookies-policy"><a href="#cookies-policy" class="ref_hidden-int_no-sign">{% trans "Политика обработки куки" %}</a></h2>
+		<h2 class="mt-10" id="cookies-policy"><a href="#cookies-policy" class="ref_hidden-int_no-sign">{% trans "Политика обработки куки" %}</a></h2>
+		<hr>
 		<div class="flex flex-col gap-4 text-justify p-2 overflow-auto">
 				<div>
 				{%    blocktrans %}
@@ -234,7 +230,8 @@
 				{% endblocktrans %}
 				</div>
 			</div>
-		<h2 id="monetization-policy"><a href="#monetization-policy" class="ref_hidden-int_no-sign">{% trans "Политика монетизации" %}</a></h2>
+		<h2 class="mt-10" id="monetization-policy"><a href="#monetization-policy" class="ref_hidden-int_no-sign">{% trans "Политика монетизации" %}</a></h2>
+		<hr>
 		<div class="flex flex-col gap-4 text-justify p-2">
 				<div class="flex gap-3">
 					<img class="p-1 rounded-xl bg-main" width="32px" height="32px" src="{% static "ads.svg" %}">
@@ -262,7 +259,7 @@
 				{% endblocktrans %}
 				</div>
 			</div>
-		{% include 'Engagement/Other/engagement_wide_container.html' %}
+		{% include 'Engagement/Other/engagement_wide_container.html' with only_send="True" %}
 	</div>
 </div>
 {% endblock %}

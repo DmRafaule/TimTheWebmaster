@@ -57,8 +57,10 @@
             class="ttw-button ttw-button_action grow">
             <p class="ttw-button_squared bg-main border text-white p-2">{% trans "Отправить" %}</p>
         </div>
+        {% if not only_send %}
         <div class="ttw-button ttw-button_action grow" onclick="modal.close()">
             <p class="ttw-button_squared bg-main border text-white p-2">{% trans "Отмена" %}</p>
         </div>
+        {% endif%}
     </div>
 </div>

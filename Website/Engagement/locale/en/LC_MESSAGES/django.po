@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-03 17:52+0300\n"
+"POT-Creation-Date: 2025-12-02 09:35+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -101,8 +101,8 @@ msgstr "✗ There was an error submitting the form ＼（〇_ｏ）／"
 msgid "! Такая почта уже зарегистрированна"
 msgstr "! This email already submitted"
 
-#: .\Engagement\templates\Engagement\Other\engagement_email_subscription_form_container.html:63
-#: .\Engagement\templates\Engagement\Other\engagement_feedback_form_container.html:46
+#: .\Engagement\templates\Engagement\Other\engagement_email_subscription_form_container.html:64
+#: .\Engagement\templates\Engagement\Other\engagement_feedback_form_container.html:47
 msgid "Отмена"
 msgstr "Cancel"
 

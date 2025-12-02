@@ -1,0 +1,244 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-12-02 09:59+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: .\WYSIWYGEditor\forms.py:13
+msgid "Как сохранить результат"
+msgstr "How to save result"
+
+#: .\WYSIWYGEditor\forms.py:16
+msgid "Название файла"
+msgstr "Filename"
+
+#: .\WYSIWYGEditor\templates\WYSIWYGEditor\confirm_form.html:8
+msgid "Ты уверен в том, что хочешь удалить этот шаблон ?"
+msgstr "Are you sure, you want to delete this template ?"
+
+#: .\WYSIWYGEditor\templates\WYSIWYGEditor\confirm_form.html:14
+#: .\WYSIWYGEditor\templates\WYSIWYGEditor\confirm_form.html:15
+#: .\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:36
+#: .\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:45
+#: .\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:72
+msgid "Крестик"
+msgstr "Cross"
+
+#: .\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:6
+msgid "WYSIWYG Редактор"
+msgstr "WYSIWYG Editor"
+
+#: .\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:7
+msgid "Редактор контента (статей, инструментов) на сайте"
+msgstr "Content editor (articles, tools) on and for this website"
+
+#: .\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:20
+msgid "Работа с текущим файлом"
+msgstr "With current file"
+
+#: .\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:30
+#: .\WYSIWYGEditor\templates\WYSIWYGEditor\save_form_container.html:42
+msgid "Сохранить"
+msgstr "Save"
+
+#: .\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:31
+msgid "Сохранить файл"
+msgstr "Export to file"
+
+#: .\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:38
+msgid "Загрузить файл с диска"
+msgstr "Import from file"
+
+#: .\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:46
+msgid "Скачать файл"
+msgstr "Download file"
+
+#: .\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:57
+#: .\WYSIWYGEditor\templates\WYSIWYGEditor\list_form.html:34
+msgid "✔ Шаблон удалён"
+msgstr "✔ Templated removed"
+
+#: .\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:61
+#: .\WYSIWYGEditor\templates\WYSIWYGEditor\list_form.html:37
+msgid "✗ Запрашиваемый шаблон небыл обнаружен"
+msgstr "✗ The requested template wasn't found"
+
+#: .\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:65
+#: .\WYSIWYGEditor\templates\WYSIWYGEditor\list_form.html:40
+msgid "✗ Не получилось удалить шаблон"
+msgstr "✗ Couldn't remove a template"
+
+#: .\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:73
+msgid "Удалить файл"
+msgstr "Delete file"
+
+#: .\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:85
+msgid "✔ Статья успешно опубликованна"
+msgstr "✔ An post successfully published"
+
+#: .\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:92
+#: .\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:93
+msgid "Опубликовать"
+msgstr "Publish"
+
+#: .\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:100
+msgid "Статы файла"
+msgstr "File stats"
+
+#: .\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:103
+msgid "Размер файла:"
+msgstr "Filename size:"
+
+#: .\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:104
+msgid "байтов"
+msgstr "bytes"
+
+#: .\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:107
+msgid "Слов:"
+msgstr "Words:"
+
+#: .\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:111
+msgid "Время чтения:"
+msgstr "Time reading:"
+
+#: .\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:112
+msgid "минут"
+msgstr "minuts"
+
+#: .\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:122
+msgid "Файлы для редактирования"
+msgstr "Files for editing"
+
+#: .\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:191
+msgid "Жирный"
+msgstr "Bold"
+
+#: .\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:197
+msgid "Скошеный"
+msgstr "Italic"
+
+#: .\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:203
+msgid "Подчёркнутый"
+msgstr "Underline"
+
+#: .\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:209
+msgid "Перечёркнутый"
+msgstr "Crossed out"
+
+#: .\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:215
+msgid "Аббревиатура"
+msgstr "Abbreviation"
+
+#: .\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:244
+msgid "Цитата"
+msgstr "Quote"
+
+#: .\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:250
+msgid "Внимание"
+msgstr "Attention"
+
+#: .\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:256
+msgid "Опасно"
+msgstr "Danger"
+
+#: .\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:262
+msgid "Это интересно"
+msgstr "This is interesting"
+
+#: .\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:268
+msgid "Вопрос"
+msgstr "Question"
+
+#: .\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:274
+msgid "Определение"
+msgstr "Definition"
+
+#: .\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:280
+msgid "Блок кода"
+msgstr "A block of code"
+
+#: .\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:300
+msgid "Список нумерованный"
+msgstr "Numeric list"
+
+#: .\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:306
+msgid "Список ненумерованный"
+msgstr "Bullet list"
+
+#: .\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:312
+msgid "Список латиницей"
+msgstr "Latin list"
+
+#: .\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:318
+msgid "Таблица"
+msgstr "Table"
+
+#: .\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:324
+msgid "Горизонтальная линия"
+msgstr "Horizontal line"
+
+#: .\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:344
+msgid "Ссылка на внешний рессурс"
+msgstr "A link to outside a site"
+
+#: .\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:350
+msgid "Ссылка на часть статьи"
+msgstr "A link to a part of article"
+
+#: .\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:356
+msgid "Ссылка на скачиваеммый контент"
+msgstr "A link to downloadable content"
+
+#: .\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:376
+msgid "Видео"
+msgstr "Video"
+
+#: .\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:382
+msgid "Изображение"
+msgstr "Image"
+
+#: .\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:388
+msgid "Текст под изображением"
+msgstr "Text under image"
+
+#: .\WYSIWYGEditor\templates\WYSIWYGEditor\list_form_container.html:5
+msgid "Сохранённые шаблоны"
+msgstr "Saved templates"
+
+#: .\WYSIWYGEditor\templates\WYSIWYGEditor\save_form_container.html:5
+msgid "Имя для твоего файла"
+msgstr "A name for a file"
+
+#: .\WYSIWYGEditor\templates\WYSIWYGEditor\save_form_container.html:6
+msgid ""
+"*Что бы избежать получение одинаковых файлов я буду добалять к ним рандомно "
+"сгенерированный суффикс"
+msgstr ""
+"*To avoid getting identical files I will add a randomly generated suffix to "
+"them"
+
+#: .\WYSIWYGEditor\templates\WYSIWYGEditor\save_form_container.html:33
+msgid "✔ Шаблон успешно сохранён"
+msgstr "✔ A template has been saved successfully"
+
+#: .\WYSIWYGEditor\templates\WYSIWYGEditor\save_form_container.html:37
+msgid "✗ Возникла ошибка при отправке формы"
+msgstr "✗ An error occure while sending form"
+
+#: .\WYSIWYGEditor\templates\WYSIWYGEditor\save_form_container.html:45
+msgid "Отмена"
+msgstr "Cancel"

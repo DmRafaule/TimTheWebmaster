@@ -32,38 +32,31 @@
 
 <div class="justify-center flex flex-col w-full toObserve ttw-limiter">
 	<div class="max-w-4xl self-center flex flex-col ttw-content">
-		<div class="flex flex-row gap-2 flex-wrap items-baseline">
-			<div class="grow shrink-0 basis-2xs">
-				<h1 class="ttw-title text-right" >{% trans "Всё о Тиме Вебмастере (Дмитрие Чудуке)" %}</h1>
-				<div class="mb-12"><i>{% trans "Расскажу свой путь. Что было до сайта, что будет дальше и почему я этим занимаюсь. Я расскажу всё, поэтому это будет долго, и возможно не интересно. Ты предупреждён." %}</i></div>
+		<div class="flex gap-3 flex-wrap mb-10">
+			<div class="flex flex-col gap-2 grow shrink basis-2xs" style="flex: 1 1 300px;">
+				<h1>{% trans "Всё о Тиме Вебмастере (Дмитрие Чудуке)" %}</h1>
+				<div>{% trans "Расскажу свой путь. Что было до сайта, что будет дальше и почему я этим занимаюсь. Я расскажу всё, поэтому это будет долго, и возможно не интересно. Ты предупреждён." %}</div>
 			</div>
-			<div class="flex basis-2xs grow h-full">
-				<div class="flex flex-col gap-2 flex-wrap ref_hidden_no-sign text-white uppercase w-full">
-					<a href="{% url 'articles-list' %}" class="grow basis-auto bg-main text-white rounded-[8px]">
-						<div class="ttw-button ttw-button_link h-full rounded-[8px]">
-							<div class="h-full flex justify-center items-center text-center rounded-[8px] pt-2 pb-2">
-								<div class="ml-5 mr-5">{% trans 'Посмотреть последние статьи' %}</div>
-							</div>
-						</div>
-					</a>
-					<a href="{% url 'tools-list' %}" class="grow basis-auto bg-main text-white rounded-[8px]">
-						<div class="ttw-button ttw-button_link h-full rounded-[8px]">
-							<div class="h-full flex justify-center items-center text-center rounded-[8px] pt-2 pb-2">
-								<div class="ml-5 mr-5">{% trans 'Опробовать инструменты' %}</div>
-							</div>
-						</div>
-					</a>
-					<a href="{% url 'home' %}" class="grow bg-main text-white rounded-[8px] min-h-[150px]">
-						<div class="ttw-button ttw-button_link h-full rounded-[8px]">
-							<div class="h-full flex justify-center items-center text-center rounded-[8px] pt-2 pb-2">
-								<div class="ml-5 mr-5">{% trans 'Или вернуться на главную' %}</div>
-							</div>
-						</div>
-					</a>
-				</div>
+			<div class="flex flex-col justify-between gap-2 grow shrink-0 basis-auto uppercase">
+				<a href="{% url "articles-list" %}" class="basis-auto rounded-[8px] bg-main text-white">
+					<div class="ttw-button ttw-button_link rounded-[8px]">
+						<div class="flex justify-center items-center text-center rounded-[8px] pt-2 pb-2">{% trans "Посмотреть последние статьи" %}</div>
+					</div>
+				</a>
+				<a href="{% url "tools-list" %}?page=1&tag={{internal_tool_tag}}" class="basis-auto rounded-[8px] bg-main text-white">
+					<div class="ttw-button ttw-button_link rounded-[8px]">
+						<div class="flex justify-center items-center text-center rounded-[8px] pt-2 pb-2">{% trans "Опробовать инструменты" %}</div>
+					</div>
+				</a>
+				<a href="{% url "home" %}" class="grow basis-auto rounded-[8px] bg-main text-white">
+					<div class="ttw-button ttw-button_link rounded-[8px] h-full">
+						<div class="flex justify-center items-center text-center rounded-[8px] pt-2 pb-2 h-full">{% trans "Или вернуться на главную" %}</div>
+					</div>
+				</a>
 			</div>
 		</div>
-		<h2 id="introduction"><a href="#introduction" class="ref_hidden-int_no-sign">{% trans "Вступление" %}</a></h2>
+		<h2 class="mt-10" id="introduction"><a href="#introduction" class="ref_hidden-int_no-sign">{% trans "Вступление" %}</a></h2>
+		<hr>
 		<div>
 			{% blocktrans %}
 			Начну с того, что я родился в Барановичах, Беларусь. Барановичи - это город аккурат между Минском и Брестом, главной достопримечательностью которого является железнодорожный вокзал.
@@ -98,7 +91,8 @@
 				{% endblocktrans %}
 			</div>
 		</div>
-		<h2 id="why-this-website-exists"><a href="#why-this-website-exists" class="ref_hidden-int_no-sign">{% trans "Почему решил сделать сайт" %}</a></h2>
+		<h2 class="mt-10" id="why-this-website-exists"><a href="#why-this-website-exists" class="ref_hidden-int_no-sign">{% trans "Почему решил сделать сайт" %}</a></h2>
+		<hr>
 		<div>
 			{% blocktrans %}
 			После того, как я забрал документы из ВУЗа(Где-то Март 2023 года), нужно было чем-то заняться. Вот я и решил, а давай я опубликую сайт. Черновик у меня валялся с 2022 года, когда я ещё увлекался хакатонами, devops и взломом. Изначально, я сделал этот сайт, чтобы отрабатывать и практиковать различные уязвимости в сайтах. И конечно же разобраться в том как сайты вообще работают. 
@@ -120,13 +114,14 @@
 			Если быть честным, Python не мой любимый язык программирования. Это скорее будет C или C++. Я люблю эти языки программирования, но делиться программами с широкой публикой на них, очень сложно. А я хочу именно делиться и показывать результаты своих трудов другим.
 			{% endblocktrans %}
 		</fieldset>
-		<h2 id="whats-next"><a href="#whats-next" class="ref_hidden-int_no-sign">{% trans "Что будет дальше" %}</a></h2>
+		<h2 class="mt-10" id="whats-next"><a href="#whats-next" class="ref_hidden-int_no-sign">{% trans "Что будет дальше" %}</a></h2>
+		<hr>
 		<div>
 			{% blocktrans %}
 			Дальше, я надеюсь, будет рост посещаемости этого сайта. Я доведу свои рабочие процессы связанные с публикацией и продвижением статей до ума. Как итог, много общения, монетизация сайта и возможность заняться чем-нибудь новым и необычным.
 			{% endblocktrans %}
 		</div>
-		{% include 'Engagement/Other/engagement_wide_container.html'%}
+		{% include 'Engagement/Other/engagement_wide_container.html' with only_send="True" %}
 	</div>
 </div>
 {% endblock %}

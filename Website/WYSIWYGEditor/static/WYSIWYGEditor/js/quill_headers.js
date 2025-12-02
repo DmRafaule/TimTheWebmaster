@@ -1,5 +1,5 @@
 import Quill from './quill-engine.js'
-import { genHeaderId } from "../../../../../Main/static/Components/Containers/TableOfContent/table_of_content";
+import { genHeaderId } from "../../../../Main/static/Components/Containers/TableOfContent/table_of_content";
 
 export class HeaderTooltip{
     static create(value){

@@ -6,9 +6,8 @@
         <div class="flex gap-1 items-center">
             <div class="flex flex-nowrap gap-2 grow shrink-0 flex-auto">
                 <input name="templates" type="radio">
-                [{{template.option}}]
             </div>
-            <div class="max-w-[200px]" style="text-wrap: balance;">
+            <div class="max-w-[100px] text-nowrap overflow-auto">
                 {{template.filename}} 
             </div>
         </div>
@@ -18,25 +17,10 @@
                     <img class=" ttw-button_squared" width="16" height="16" src="{% static 'WYSIWYGEditor/img/download.svg' %}">
                 </a>
             </div>
-            <div 
-                hx-get="upload/?filename={{template.filename}}&user={{request.user}}" 
-                hx-target="#editor>.ql-editor"
-                hx-indicator="#context-loader-load_into_modal"
-                hx-on::after-request="
-                    switch(event.detail.xhr.status){
-                        case 200:
-                            toaster.notify('{% trans '✔ Шаблон получен' %}', 'success');
-                            break;
-                        case 404:
-                            toaster.notify('{% trans '✗ Не удалось найти шаблон' %}', 'error'); 
-                            break;
-                        case 500:
-                            toaster.notify('{% trans '✗ Что-то пошло не так с сервером' %}', 'error'); 
-                            break;
-                    }
-                "
-                class="ttw-button ttw-button_action ttw-button_squared bg-main">
-                <img class="ttw-button_squared" width="16" height="16" src="{% static 'WYSIWYGEditor/img/upload.svg' %}" data-ref="{{template.template}}">
+            <div class="ttw-button ttw-button_link ttw-button_squared bg-main">
+                <a class="ttw-button_squared" href="?filename={{template.filename}}">
+                    <img class="ttw-button_squared" width="16" height="16" src="{% static 'WYSIWYGEditor/img/upload.svg' %}" data-ref="{{template.template}}">
+                </a>
             </div>
             <div 
                 hx-post="delete/"

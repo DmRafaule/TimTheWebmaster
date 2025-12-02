@@ -23,14 +23,14 @@
 	border: 3px groove grey;
 	width: 100%;
 	background-color: white;
-/*
+
 	animation-timing-function: ease-in;
 	animation-iteration-count: 1;
-	animation-duration: 5s;
+	animation-duration: 6s;
 	animation-delay: 0s;
 	animation-fill-mode: forwards;
 	animation-name: notification_fadeout;
-	*/
+	
 }
 fieldset.toaster{
 	margin-top: 0;
@@ -40,7 +40,7 @@ fieldset.toaster{
 	right: 0;
 	top: 48px;
 	max-width: 300px;
-	z-index: 3;
+	z-index: 20;
 }
 
 @keyframes notification_fadeout {

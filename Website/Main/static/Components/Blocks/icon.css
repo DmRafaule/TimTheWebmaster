@@ -4,3 +4,8 @@
 .svg_icon_inverted_black{
 	filter: brightness(0) invert(0) ;
 }
+img.my-icon{
+	width: 24px;
+	height: 24px;
+	display: inline;
+}

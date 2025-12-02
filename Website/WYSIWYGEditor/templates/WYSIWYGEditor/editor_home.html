@@ -1,0 +1,443 @@
+{% extends 'Main/base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block head %}
+	<title>{% trans "WYSIWYG Редактор" %}</title>
+	<meta name="description" content="{% trans "Редактор контента (статей, инструментов) на сайте"%}">
+	<meta name="robots" content="noindex">
+{% endblock %}
+
+{% block hat %}
+{% endblock %}
+
+{% block hat_body %}
+{% endblock %}
+
+{% block aside_left %}
+<div class="w-full">
+	<fieldset>
+		<legend class="bg-main text-white rounded-xl p-3">{% trans "Работа с текущим файлом" %}</legend>
+		<div class="flex flex-col gap-3">
+			<div 
+				hx-get="get-save-form/?filename={{filename}}"
+				hx-target="#modal-content"
+				hx-indicator="#context-loader-load_into_modal"
+				hx-on::before-request="modal.open('');"
+				hx-on::after-request="event.detail.failed && modal.close();"
+				class="ttw-button ttw-button_action ttw-button_squared bg-main text-white flex gap-2 items-center">
+				<div class="ttw-button_squared flex gap-2 items-center w-full">
+					<img id='save_btn' width="32" height="32" class="ttw-button_squared" alt="{% trans 'Сохранить' %}" src="{% static 'WYSIWYGEditor/img/save.svg' %}">
+					<div>{% trans "Сохранить файл" %}</div>
+				</div>
+			</div>
+			<label class="ttw-button ttw-button_action ttw-button_squared bg-main text-white flex gap-2 items-center" for="uploaded_file">
+				<div class="ttw-button_squared flex gap-2 items-center w-full">
+					<img width="32" height="32" src="{% static 'WYSIWYGEditor/img/upload.svg' %}" alt="{% trans 'Крестик' %}">
+					<input type="file" id="uploaded_file" accept=".html*" hidden>
+					<div>{% trans "Загрузить файл с диска" %}</div>
+				</div>
+			</label>
+			{% if filename %}
+			<div class="ttw-button ttw-button_download ttw-button_squared bg-main text-white">
+				<div class="ttw-button_squared">
+					<a id='download_btn_raw' class="flex gap-2 items-center" href='{{filepath}}' download>
+						<img width="32" height="32" src="{% static 'WYSIWYGEditor/img/download.svg' %}" alt="{% trans 'Крестик' %}">
+						<div>{% trans "Скачать файл" %}</div>
+					</a>
+				</div>
+			</div>
+			<div 
+				hx-post="delete/"
+				hx-swap="none"
+				hx-vals="js:{csrfmiddlewaretoken: csrftoken, filename: '{{filename}}'}"
+				hx-on::after-request="
+					switch(event.detail.xhr.status){
+						case 200:
+							toaster.notify('{% trans '✔ Шаблон удалён' %}', 'success');
+							window.location.replace('{% url 'editor_home' %}');
+							break;
+						case 404:
+							toaster.notify('{% trans '✗ Запрашиваемый шаблон небыл обнаружен' %}', 'error'); 
+							window.location.replace('{% url 'editor_home' %}');
+							break;
+						case 500:
+							toaster.notify('{% trans '✗ Не получилось удалить шаблон' %}', 'error'); 
+							window.location.replace('{% url 'editor_home' %}');
+							break;
+					}
+				"
+				class="ttw-button ttw-button_link ttw-button_squared bg-main text-white">
+				<div class="ttw-button_squared flex gap-2 items-center">
+					<img width="32" height="32" src="{% static 'WYSIWYGEditor/img/delete.svg' %}" alt="{% trans 'Крестик' %}">
+					<div>{% trans "Удалить файл" %}</div>
+				</div>
+			</div>
+			{% endif %}
+			{% if request.user.is_superuser %}
+			<div 
+				hx-post="publish/"
+				hx-swap="none"
+				hx-vals="js:{csrfmiddlewaretoken: csrftoken, filename: '{{filename}}'}"
+				hx-on::after-request="
+					switch(event.detail.xhr.status){
+						case 200:
+							toaster.notify('{% trans '✔ Статья успешно опубликованна' %}', 'success');
+							window.location.replace('{% url 'editor_home' %}');
+							break;
+					}
+				"
+				class="ttw-button ttw-button_action ttw-button_squared bg-main text-white">
+				<div class="ttw-button_squared flex gap-2 items-center">
+					<img width="32" height="32" src="{% static 'WYSIWYGEditor/img/publish.svg' %}" alt="{% trans 'Опубликовать' %}">
+					<div>{% trans "Опубликовать" %}</div>
+				</div>
+			</div>
+			{% endif %}
+		</div>
+	</fieldset>
+	<fieldset>
+		<legend class="bg-main text-white rounded-xl p-3">{% trans "Статы файла" %}</legend>
+		<div class="flex flex-col gap-3">
+			<div class="flex flex-row gap-2 w-full">
+				<div>{% trans "Размер файла:" %}</div>
+				<div>{{file_size}} {% trans "байтов" %}</div>
+			</div>
+			<div class="flex flex-row gap-2 w-full">
+				<div>{% trans "Слов:" %}</div>
+				<div>{{words}}</div>
+			</div>
+			<div class="flex flex-row gap-2 w-full">
+				<div>{% trans "Время чтения:" %}</div>
+				<div>{{time_to_read}} {% trans "минут" %}</div>
+			</div>
+		</div>
+	</fieldset>
+</div>
+{% endblock %}
+
+{% block aside_right %}
+<div class="w-full">
+	<fieldset>
+		<legend class="bg-main text-white rounded-xl p-3">{% trans "Файлы для редактирования" %}</legend>
+		<div 
+			hx-get="list/"
+			hx-trigger="load"
+		class="max-h-[600px] overflow-auto">
+		</div>
+	</fieldset>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="justify-center flex flex-col w-full toObserve ttw-limiter">
+	<div class="self-center absolute max-w-4xl w-[95%] p-2">
+		<div id="editor-side-menu" class="limiter p-2 top-12 sticky flex flex-column z-10">
+			<div class="flex flex-row gap-2 items-start  flex-wrap">
+				<select class="ql-font">
+					<option value="open-sans" selected>Open Sans</option>
+					<option value="advent-pro">Advent Pro</option>
+					<option value="roboto-slab">Roboto Slab</option>
+				</select>
+				<select class="ql-size">
+					<option value="64px">64px</option>
+					<option value="54px">54px</option>
+					<option value="42px">42px</option>
+					<option value="32px">32px</option>
+					<option value="28px">28px</option>
+					<option value="24px">24px</option>
+					<option value="20px">20px</option>
+					<option value="18px">18px</option>
+					<option value="16px" selected>16px</option>
+					<option value="14px">14px</option>
+				</select>
+				<select class="ql-color">
+					<option value="#000000" selected>T #000000</option>
+					<option value="#ffffff">T #ffffff</option>
+					<option value="#a33939">T #a33939</option>
+					<option value="#39a344">T #39a344</option>
+					<option value="#2f3091">T #2f3091</option>
+					<option value="#39dbc3">T #39dbc3</option>
+					<option value="#8739db">T #8739db</option>
+					<option value="#c98036">T #c98036</option>
+					<option value="#bdbf34">T #bdbf34</option>
+				</select>
+				<select class="ql-background">
+					<option value="#000000" selected>B #000000</option>
+					<option value="#ffffff">B #ffffff</option>
+					<option value="#a33939">B #a33939</option>
+					<option value="#39a344">B #39a344</option>
+					<option value="#2f3091">B #2f3091</option>
+					<option value="#39dbc3">B #39dbc3</option>
+					<option value="#8739db">B #8739db</option>
+					<option value="#c98036">B #c98036</option>
+					<option value="#bdbf34">B #bdbf34</option>
+				</select>
+				<div class="flex flex-col gap-2">
+					<div class="ttw-button_swap">
+						<div class="ttw-button ttw-button_action bg-main ttw-button_squared ttw-button_swap_front ttw-button_dropdown" data-body="text_options_quill_editor">
+							<img width="32px" height="32px" class="ttw-button_squared" src="{% static "WYSIWYGEditor/img/common/text_options.svg" %}">
+						</div>
+						<div class="ttw-button ttw-button_action bg-main ttw-button_squared ttw-button_swap_back ttw-button_swap_not_active ttw-button_dropdown" data-body="text_options_quill_editor">
+							<img width="32px" height="32px" class="ttw-button_squared" src="{% static "close_white.svg" %}">
+						</div>
+					</div>
+					<div class="relative ">
+						<div id="text_options_quill_editor" class="flex flex-col gap-2 border ttw-button_squared absolute not_active_dropdown w-max p-2 bg-white">
+							<div class="flex gap-2 flex-nowrap items-center">
+								<button class="ql-bold ttw-button ttw-button_action bg-main ttw-button_squared bg-main">
+									<img width="16px" height="16px" class="ttw-button_squared" src="{% static "WYSIWYGEditor/img/bold.svg" %}">
+								</button>
+								<div>{% trans 'Жирный' %}</div>
+							</div>
+							<div class="flex gap-2 flex-nowrap items-center">
+								<button class="ql-italic ttw-button ttw-button_action bg-main ttw-button_squared bg-main">
+									<img width="16px" height="16px" class="ttw-button_squared" src="{% static "WYSIWYGEditor/img/italic.svg" %}">
+								</button>
+								<div>{% trans 'Скошеный' %}</div>
+							</div>
+							<div class="flex gap-2 flex-nowrap items-center">
+								<button class="ql-underline ttw-button ttw-button_action bg-main ttw-button_squared bg-main">
+									<img width="16px" height="16px" class="ttw-button_squared" src="{% static "WYSIWYGEditor/img/underline.svg" %}">
+								</button>
+								<div>{% trans 'Подчёркнутый' %}</div>
+							</div>
+							<div class="flex gap-2 flex-nowrap items-center">
+								<button class="ql-strike ttw-button ttw-button_action bg-main ttw-button_squared bg-main">
+									<img width="16px" height="16px" class="ttw-button_squared" src="{% static "WYSIWYGEditor/img/strikethrough.svg" %}">
+								</button>
+								<div>{% trans 'Перечёркнутый' %}</div>
+							</div>
+							<div class="flex gap-2 flex-nowrap items-center">
+								<button class="ql-abbr ttw-button ttw-button_action bg-main ttw-button_squared bg-main">
+									<img width="16px" height="16px" class="ttw-button_squared" src="{% static "WYSIWYGEditor/img/abbr.svg" %}">
+								</button>
+								<div>{% trans 'Аббревиатура' %}</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<select class="ql-header">
+					<option selected value="0">X</option>
+					<option value="1">H1</option>
+					<option value="2">H2</option>
+					<option value="3">H3</option>
+					<option value="4">H4</option>
+					<option value="5">H5</option>
+					<option value="6">H6</option>
+				</select>
+				<div class="flex flex-col gap-2">
+					<div class="ttw-button_swap">
+						<div class="ttw-button ttw-button_action bg-main ttw-button_squared ttw-button_swap_front ttw-button_dropdown" data-body="text_blocks_quill_editor">
+							<img width="32px" height="32px" class="ttw-button_squared" src="{% static "WYSIWYGEditor/img/common/blocks.svg" %}">
+						</div>
+						<div class="ttw-button ttw-button_action bg-main ttw-button_squared ttw-button_swap_back ttw-button_swap_not_active ttw-button_dropdown" data-body="text_blocks_quill_editor">
+							<img width="32px" height="32px" class="ttw-button_squared" src="{% static "close_white.svg" %}">
+						</div>
+					</div>
+					<div class="relative">
+						<div id="text_blocks_quill_editor" class="flex flex-col gap-2 border ttw-button_squared absolute not_active_dropdown w-max p-2 bg-white">
+							<div class="flex gap-2 flex-nowrap items-center">
+								<button class="ql-quote ttw-button ttw-button_action bg-main ttw-button_squared bg-main" value="{% static "Post/img/blockQuote.svg" %},quote">
+									<img width="16px" height="16px" class="ttw-button_squared " src="{% static "WYSIWYGEditor/img/blockQuote.svg" %}">
+								</button>
+								<div>{% trans 'Цитата' %}</div>
+							</div>
+							<div class="flex gap-2 flex-nowrap items-center">
+								<button class="ql-attention ttw-button ttw-button_action bg-main ttw-button_squared bg-main" value="{% static "Post/img/blockAttention.svg" %},attention">
+									<img width="16px" height="16px" class="ttw-button_squared " src="{% static "WYSIWYGEditor/img/blockAttention.svg" %}">
+								</button>
+								<div>{% trans 'Внимание' %}</div>
+							</div>
+							<div class="flex gap-2 flex-nowrap items-center">
+								<button class="ql-danger ttw-button ttw-button_action bg-main ttw-button_squared bg-main" value="{% static "Post/img/blockDangerouse.svg" %},danger">
+									<img width="16px" height="16px" class="ttw-button_squared " src="{% static "WYSIWYGEditor/img/blockDangerouse.svg" %}">
+								</button>
+								<div>{% trans 'Опасно' %}</div>
+							</div>
+							<div class="flex gap-2 flex-nowrap items-center">
+								<button class="ql-interesting ttw-button ttw-button_action bg-main ttw-button_squared bg-main" value="{% static "Post/img/blockInteresting.svg" %},interesting">
+									<img width="16px" height="16px" class="ttw-button_squared " src="{% static "WYSIWYGEditor/img/blockInteresting.svg" %}">
+								</button>
+								<div>{% trans 'Это интересно' %}</div>
+							</div>
+							<div class="flex gap-2 flex-nowrap items-center">
+								<button class="ql-question ttw-button ttw-button_action bg-main ttw-button_squared bg-main" value="{% static "Post/img/blockQuestion.svg" %},question">
+									<img width="16px" height="16px" class="ttw-button_squared" src="{% static "WYSIWYGEditor/img/blockQuestion.svg" %}">
+								</button>
+								<div>{% trans 'Вопрос' %}</div>
+							</div>
+							<div class="flex gap-2 flex-nowrap items-center">
+								<button class="ql-termin ttw-button ttw-button_action bg-main ttw-button_squared bg-main" value="{% static "Post/img/blockTermin.svg" %},termin">
+									<img width="16px" height="16px" class="ttw-button_squared" src="{% static "WYSIWYGEditor/img/blockTermin.svg" %}">
+								</button>
+								<div>{% trans 'Определение' %}</div>
+							</div>
+							<div class="flex gap-2 flex-nowrap items-center">
+								<button class="ql-code-block ttw-button ttw-button_action bg-main ttw-button_squared bg-main" value="{% static "Post/img/blockCode.svg" %},code-block">
+									<img width="16px" height="16px" class="ttw-button_squared" src="{% static "WYSIWYGEditor/img/blockCode.svg" %}">
+								</button>
+								<div>{% trans 'Блок кода' %}</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="flex flex-col gap-2">
+					<div class="ttw-button_swap">
+						<div class="ttw-button ttw-button_action bg-main ttw-button_squared ttw-button_swap_front ttw-button_dropdown" data-body="structurizers_quill_editor">
+							<img width="32px" height="32px" class="ttw-button_squared" src="{% static "WYSIWYGEditor/img/common/structurizers.svg" %}">
+						</div>
+						<div class="ttw-button ttw-button_action bg-main ttw-button_squared ttw-button_swap_back ttw-button_swap_not_active ttw-button_dropdown" data-body="structurizers_quill_editor">
+							<img width="32px" height="32px" class="ttw-button_squared" src="{% static "close_white.svg" %}">
+						</div>
+					</div>
+					<div class="relative">
+						<div id="structurizers_quill_editor" class="flex flex-col gap-2 border ttw-button_squared absolute not_active_dropdown w-max p-2 bg-white">
+							<div class="flex gap-2 flex-nowrap items-center">
+								<button class="ql-list ttw-button ttw-button_action bg-main ttw-button_squared bg-main" value="decimal">
+									<img width="16px" height="16px" class="ttw-button_squared" src="{% static "WYSIWYGEditor/img/list-decimal.svg" %}">
+								</button>
+								<div>{% trans 'Список нумерованный' %}</div>
+							</div>
+							<div class="flex gap-2 flex-nowrap items-center">
+								<button class="ql-list ttw-button ttw-button_action bg-main ttw-button_squared bg-main" value="disc">
+									<img width="16px" height="16px" class="ttw-button_squared" src="{% static "WYSIWYGEditor/img/list-disc.svg" %}">
+								</button>
+								<div>{% trans 'Список ненумерованный' %}</div>
+							</div>
+							<div class="flex gap-2 flex-nowrap items-center">
+								<button class="ql-list ttw-button ttw-button_action bg-main ttw-button_squared bg-main" value="lower-alpha">
+									<img width="16px" height="16px" class="ttw-button_squared" src="{% static "WYSIWYGEditor/img/list-alpha.svg" %}">
+								</button>
+								<div>{% trans 'Список латиницей' %}</div>
+							</div>
+							<div class="flex gap-2 flex-nowrap items-center">
+								<button class="ql-table ttw-button ttw-button_action bg-main ttw-button_squared bg-main">
+									<img width="16px" height="16px" class="ttw-button_squared" src="{% static "WYSIWYGEditor/img/table.svg" %}">
+								</button>
+								<div>{% trans 'Таблица' %}</div>
+							</div>
+							<div class="flex gap-2 flex-nowrap items-center">
+								<button class="ql-horizontal-line ttw-button ttw-button_action bg-main ttw-button_squared bg-main">
+									<img width="16px" height="16px" class="ttw-button_squared" src="{% static "WYSIWYGEditor/img/hr.svg" %}">
+								</button>
+								<div>{% trans 'Горизонтальная линия' %}</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="flex flex-col gap-2">
+					<div class="ttw-button_swap">
+						<div class="ttw-button ttw-button_action bg-main ttw-button_squared ttw-button_swap_front ttw-button_dropdown" data-body="links_quill_editor">
+							<img width="32px" height="32px" class="ttw-button_squared" src="{% static "WYSIWYGEditor/img/common/links.svg" %}">
+						</div>
+						<div class="ttw-button ttw-button_action bg-main ttw-button_squared ttw-button_swap_back ttw-button_swap_not_active ttw-button_dropdown" data-body="links_quill_editor">
+							<img width="32px" height="32px" class="ttw-button_squared" src="{% static "close_white.svg" %}">
+						</div>
+					</div>
+					<div class="relative">
+						<div id="links_quill_editor" class="flex flex-col gap-2 border ttw-button_squared absolute not_active_dropdown w-max p-2 bg-white">
+							<div class="flex gap-2 flex-nowrap items-center">
+								<button class="ql-external-link ttw-button ttw-button_action bg-main ttw-button_squared bg-main">
+									<img width="16px" height="16px" class="ttw-button_squared" src="{% static "WYSIWYGEditor/img/link.svg" %}">
+								</button>
+								<div>{% trans 'Ссылка на внешний рессурс'%}</div>
+							</div>
+							<div class="flex gap-2 flex-nowrap items-center">
+								<button class="ql-internal-link ttw-button ttw-button_action bg-main ttw-button_squared bg-main">
+									<img width="16px" height="16px" class="ttw-button_squared" src="{% static "WYSIWYGEditor/img/paragraph.svg" %}">
+								</button>
+								<div>{% trans 'Ссылка на часть статьи'%}</div>
+							</div>
+							<div class="flex gap-2 flex-nowrap items-center">
+								<button class="ql-downloadable-link ttw-button ttw-button_action bg-main ttw-button_squared bg-main">
+									<img width="16px" height="16px" class="ttw-button_squared" src="{% static "WYSIWYGEditor/img/download.svg" %}">
+								</button>
+								<div>{% trans 'Ссылка на скачиваеммый контент'%}</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="flex flex-col gap-2">
+					<div class="ttw-button_swap">
+						<div class="ttw-button ttw-button_action bg-main ttw-button_squared ttw-button_swap_front ttw-button_dropdown" data-body="media_quill_editor">
+							<img width="32px" height="32px" class="ttw-button_squared" src="{% static "WYSIWYGEditor/img/common/media.svg" %}">
+						</div>
+						<div class="ttw-button ttw-button_action bg-main ttw-button_squared ttw-button_swap_back ttw-button_swap_not_active ttw-button_dropdown" data-body="media_quill_editor">
+							<img width="32px" height="32px" class="ttw-button_squared" src="{% static "close_white.svg" %}">
+						</div>
+					</div>
+					<div class="relative">
+						<div id="media_quill_editor" class="flex flex-col gap-2 border ttw-button_squared absolute not_active_dropdown w-max p-2 bg-white">
+							<div class="flex gap-2 flex-nowrap items-center">
+								<button class="ql-my-video ttw-button ttw-button_action bg-main ttw-button_squared bg-main" type="button">
+									<img width="16px" height="16px" class="ttw-button_squared" src="{% static "WYSIWYGEditor/img/common/video.svg" %}">
+								</button>
+								<div>{% trans 'Видео'%}</div>
+							</div>
+							<div class="flex gap-2 flex-nowrap items-center">
+								<button class="ql-my-image ttw-button ttw-button_action bg-main ttw-button_squared bg-main" type="button">
+									<img width="16px" height="16px" class="ttw-button_squared" src="{% static "WYSIWYGEditor/img/common/img.svg" %}">
+								</button>
+								<div>{% trans 'Изображение'%}</div>
+							</div>
+							<div class="flex gap-2 flex-nowrap items-center">
+								<button class="ql-text-under-image ttw-button ttw-button_action bg-main ttw-button_squared bg-main" type="button">
+									<img width="16px" height="16px" class="ttw-button_squared" src="{% static "WYSIWYGEditor/img/text_under_img.svg" %}">
+								</button>
+								<div>{% trans 'Текст под изображением'%}</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<hr>
+		</div>
+
+		<div class="column limiter in_middle-self ">
+			<div 
+				{% if filename %}
+				hx-get="upload/?filename={{filename}}" 
+				hx-target="#editor>.ql-editor"
+				hx-indicator="#context-loader-load_into_modal"
+				hx-trigger="load"
+				{% endif %}
+				id="editor" class="w-full h-full">
+			</div>
+		</div>
+		
+		<div id="editor-side-menu-vertical-limiter" class="w-full"></div>
+	</div>
+
+	<div id="editor-height-setter" class="h-[1000px] w-full p-2"></div>
+</div>
+{% endblock %}
+
+{% block footer_links %}
+	{% for ref in popular_posts %}
+		<li class="ref"><a href="{{ref.get_absolute_url}}">{{ref}}</a></li>
+	{% endfor %}
+{% endblock %}
+
+
+{% block dock %}
+    <div class="flex flex-row flex-wrap items-end justify-end gap-2 p-2 border-b-2 border-solid border-gray-800 bottom_tool_background_effect">
+		<div id="context-loader-load_more" class="context-loader">
+			{% include 'Main/loader.html' %}
+		</div>
+		<div id="ql-custom-tooltip" class="ql-custom-tooltip flex gap-2 flex-wrap items-center p-1 grow shrink-0 basis-[min-content] w-full bg-main rounded-2xl hidden"></div>
+    </div>
+{% endblock %}
+
+{% block styles %}
+	<link type="text/css" rel="stylesheet" href="{% static 'Post/css/index.tool.min.css' %}"/>
+    <link type="text/css" rel="stylesheet" href="{% static 'WYSIWYGEditor/css/index.min.css' %}"/>
+{% endblock %}
+
+{% block scripts %}
+	<script>
+		var STATIC = "{% static '.' %}"
+	</script>
+	<script src="{% static 'Post/js/index.tool.min.js' %}"></script>
+    <script src="{% static 'WYSIWYGEditor/js/index.min.js' %}"></script>
+{% endblock %}

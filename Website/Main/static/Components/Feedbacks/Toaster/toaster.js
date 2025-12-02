@@ -8,13 +8,13 @@ class Toaster{
         this.notification.classList.remove('toaster-inactive')
     }
 
-    notify(msg, status, time){
+    notify(msg, status, time = 7){
         var notif = this.notification.cloneNode(true)
         notif.querySelector(".toaster_text").innerText = msg
-        // Not in use yet
-        if (time == null){
-            time = 15
-        }
+        notif.addEventListener('animationend', () => {
+            console.log('Animation ended!');
+            notif.remove()
+        });
         notif.style.animationDuration = time + 's'
         //
         notif.querySelector(".toaster_text").classList.add(`toaster_${status}`)

@@ -154,6 +154,7 @@ quill.on('selection-change', (range, oldRange, source) => {
                 AbbrTooltip.remove()
                 LinkTooltip.remove()
                 VideoTooltip.remove()
+                ImageTooltip.remove()
         }
     }
 });

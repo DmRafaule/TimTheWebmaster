@@ -128,12 +128,11 @@
 				{% if request.user.is_authenticated %}
 					{% if request.user.is_superuser %}
 						<li class="ttw-button ttw-button_link"><a class="" href="/admin/"><p><h3>{% trans "Админка" %}</h3></p></a></li>
+						<li class="ttw-button ttw-button_link"><a class="" href="{% url 'editor_home' %}"><p><h3>{% trans "Редактор" %}</h3></p></a></li>
 					{% endif %}
 					<li class="ttw-button ttw-button_link"><a class="" href="{% url 'profile'%}"><p><h3>{% trans "Профиль" %}</h3></p></a></li>
 				{% endif %}
 				<li class="ttw-button ttw-button_link"><a class="" href="{% url 'home'%}"><p><h3>{% trans "Домашняя" %}</h3></p></a></li>
-				<li class="ttw-button ttw-button_link"><a class="" href="{% url 'about'%}"><p><h3>{% trans "Об авторе" %}</h3></p></a></li>
-				<li class="ttw-button ttw-button_link"><a class="" href="{% url 'about-website'%}"><p><h3>{% trans "О сайте" %}</h3></p></a></li>
 				{% for cat_spec in categories_special %}
 				<li class="ttw-button ttw-button_link"><a class="" href="{{ cat_spec.get_absolute_url }}"><p><h3>{{cat_spec.name}}</h3></p></a></li>
 				{% endfor %}
@@ -263,6 +262,11 @@
 			{% endif %}
         {% endfor %}
         const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+		let is_authenticated = "{{request.user.is_authenticated|lower}}";
+		is_authenticated = JSON.parse(is_authenticated)
+		let is_superuser = "{{request.user.is_superuser|lower}}";
+		is_superuser = JSON.parse(is_superuser)
+		
     </script>
 	<script src="{% url 'javascript-catalog' %}"></script>
     <script src="{% static 'Main/js/index.min.js' %}"></script>

@@ -1,6 +1,8 @@
 import os, re
 import string
 
+from bs4 import BeautifulSoup
+
 from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.models import User
 from django.http import JsonResponse, HttpResponse
@@ -8,15 +10,17 @@ from django.views.decorators.http import require_GET, require_POST
 from django.template import loader
 from django.utils.translation import gettext as _
 from django.template.response import TemplateResponse
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, user_passes_test
 from django.utils.crypto import get_random_string
 
-import Main.utils as U
-from Website.settings import MEDIA_ROOT, MEDIA_URL, STATIC_URL
-from Post.models import Tag
 from .forms import PostTemplateForm
 from .models import PostTemplate
+from Website.settings import MEDIA_ROOT, MEDIA_URL, STATIC_URL
+from Post.models import Tag
+import Main.utils as U
 
+def is_superuser_check(user):
+    return user.is_superuser
 
 def _gen_uid():
     return f"-uid--{get_random_string(24, allowed_chars=string.ascii_uppercase + string.digits + string.ascii_lowercase)}"
@@ -91,6 +95,7 @@ def _update_record_template(request, record, path_to_template):
         record.template = path_to_file
         record.save()
 
+@user_passes_test(is_superuser_check)
 def tool_main(request):
     filename = request.GET.get('filename', None)
     context = U.initDefaults(request)
@@ -103,11 +108,16 @@ def tool_main(request):
             pass
         context.update({'filename': file.filename})
         context.update({'filepath': f"{MEDIA_URL}tools/{PostTemplate.ROOT_DIR}/{file.filename}"})
+        ## Определяем сколько времени необходимо для прочтения
+    
+        soup = BeautifulSoup(file.content, features="lxml")
+        text = soup.get_text()
+        words_in_text = len(text.split())
+        time_to_read = round(words_in_text/240)
+        context.update({'time_to_read': time_to_read})
+        context.update({'words': words_in_text})
+        context.update({'file_size': len(text)})
 
-    quilljs_tag = Tag.objects.get(slug_en='quilljs')
-    quilljs_module_tag = Tag.objects.get(slug_en='quill-module')
-    context.update({'quilljs_tag': quilljs_tag.slug})
-    context.update({'quilljs_module_tag': quilljs_module_tag.slug})
     return TemplateResponse(request, 'WYSIWYGEditor/editor_home.html', context)
     
 @require_POST
@@ -124,6 +134,14 @@ def upload_template(request):
     template = get_object_or_404(PostTemplate, filename=filename) 
     status = 200
     return HttpResponse(template.content, status=status)
+
+@require_GET
+def list_templates(request):
+    templates = PostTemplate.objects.all()
+    context = {
+        "templates": templates
+    }
+    return render(request, "WYSIWYGEditor/list_form.html", context=context)
 
 @require_POST
 def save_template(request):

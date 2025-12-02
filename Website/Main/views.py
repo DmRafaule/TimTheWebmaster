@@ -13,6 +13,14 @@ from Engagement.models import Comment
 def about(request):
     ''' Представление для страницы об авторе/сайте '''
     context = U.initDefaults(request)
+    # Получаем тег для внутренних инструментов, или создаём его если его нет 
+    internal_tool_tag, is_created = Tag.objects.get_or_create(slug_en='internal-tool')
+    if is_created:
+        internal_tool_tag.slug_ru = 'vnutrenij-instrument'
+        internal_tool_tag.name_ru = 'Внутренний инструмент'
+        internal_tool_tag.name_en = 'Internal tool'
+        internal_tool_tag.save()
+    context.update({'internal_tool_tag': internal_tool_tag.slug})
     # Вычисляем сколько мне лет
     context.update({'me_years': U.get_how_old_human_in_years('16/07/2000', "%d/%m/%Y")})
     # Специальный тег об моём игровом прошлом
@@ -82,6 +90,14 @@ def about_website(request):
     except:
         cap_notes = 3
     context = U.initDefaults(request)
+    # Получаем тег для внутренних инструментов, или создаём его если его нет 
+    internal_tool_tag, is_created = Tag.objects.get_or_create(slug_en='internal-tool')
+    if is_created:
+        internal_tool_tag.slug_ru = 'vnutrenij-instrument'
+        internal_tool_tag.name_ru = 'Внутренний инструмент'
+        internal_tool_tag.name_en = 'Internal tool'
+        internal_tool_tag.save()
+    context.update({'internal_tool_tag': internal_tool_tag.slug})
     context.update({'website_years': U.get_how_old_human_in_years('09/10/2023', "%d/%m/%Y")})
     context.update({'django_version': django.get_version()})
     context.update({'python_version': f"{sys.version_info.major}.{sys.version_info.minor}.{sys.version_info.micro}"})
