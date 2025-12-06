@@ -119,22 +119,33 @@ export class LinkTooltip{
         let value = tooltip.textbox.value;
         if (value.length > 0){
             let document_input = document.querySelector('#uploaded_document')
-            if (document_input.files.length > 0){
-                window.contextLoader.startLoad('load_more')
-                if (is_superuser && tooltip.boundsContainer.classList.contains('ref-downloadable')){
-                    var id = tooltip.boundsContainer.dataset.serverPk
-                    if (id){
-                        LinkTooltip.addToServer(true, tooltip.boundsContainer)
-                    } 
+            if (document_input){
+                if (document_input.files.length > 0){
+                    window.contextLoader.startLoad('load_more')
+                    if (is_superuser && tooltip.boundsContainer.classList.contains('ref-downloadable')){
+                        var id = tooltip.boundsContainer.dataset.serverPk
+                        if (id){
+                            LinkTooltip.addToServer(true, tooltip.boundsContainer)
+                        } 
+                        else{
+                            LinkTooltip.addToServer(false, tooltip.boundsContainer)
+                        }
+                    }
                     else{
-                        LinkTooltip.addToServer(false, tooltip.boundsContainer)
+                        tooltip.boundsContainer.parentElement.classList.add('ref')
+                        tooltip.boundsContainer.classList.add('do_not_updateDownloadablesForServer')
+                        tooltip.boundsContainer.setAttribute('href', value)
                     }
                 }
                 else{
+                    if(is_superuser && tooltip.boundsContainer.classList.contains('ref-downloadable')){
+                        LinkTooltip.removeFromServer(tooltip.boundsContainer)
+                    }
                     tooltip.boundsContainer.parentElement.classList.add('ref')
                     tooltip.boundsContainer.classList.add('do_not_updateDownloadablesForServer')
                     tooltip.boundsContainer.setAttribute('href', value)
-                }
+                    tooltip.boundsContainer.dataset.serverPk = ""
+                }    
             }
             else{
                 if(is_superuser && tooltip.boundsContainer.classList.contains('ref-downloadable')){
