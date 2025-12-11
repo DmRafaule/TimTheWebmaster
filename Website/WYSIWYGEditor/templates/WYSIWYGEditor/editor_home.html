@@ -26,23 +26,29 @@
 				hx-on::before-request="modal.open('');"
 				hx-on::after-request="event.detail.failed && modal.close();"
 				class="ttw-button ttw-button_action ttw-button_squared bg-main text-white flex gap-2 items-center">
-				<div class="ttw-button_squared flex gap-2 items-center w-full">
-					<img id='save_btn' width="32" height="32" class="ttw-button_squared" alt="{% trans 'Сохранить' %}" src="{% static 'WYSIWYGEditor/img/save.svg' %}">
+				<div class="ttw-button_squared flex gap-2 items-center w-full p-1">
+					<img id='save_btn' width="16" height="16" class="ttw-button_squared" alt="{% trans 'Сохранить' %}" src="{% static 'WYSIWYGEditor/img/save.svg' %}">
 					<div>{% trans "Сохранить файл" %}</div>
 				</div>
 			</div>
 			<label class="ttw-button ttw-button_action ttw-button_squared bg-main text-white flex gap-2 items-center" for="uploaded_file">
-				<div class="ttw-button_squared flex gap-2 items-center w-full">
-					<img width="32" height="32" src="{% static 'WYSIWYGEditor/img/upload.svg' %}" alt="{% trans 'Крестик' %}">
+				<div class="ttw-button_squared flex gap-2 items-center w-full p-1">
+					<img width="16" height="16" src="{% static 'WYSIWYGEditor/img/upload.svg' %}" alt="{% trans 'Крестик' %}">
 					<input type="file" id="uploaded_file" accept=".html*" hidden>
 					<div>{% trans "Загрузить файл с диска" %}</div>
 				</div>
 			</label>
 			{% if filename %}
+			<div id="translate-file"class="ttw-button ttw-button_action ttw-button_squared bg-main text-white flex gap-2 items-center">
+				<div class="ttw-button_squared flex gap-2 items-center w-full p-1">
+					<img id='save_btn' width="16" height="16" class="ttw-button_squared" alt="{% trans 'Перевести' %}" src="{% static 'WYSIWYGEditor/img/translate.svg' %}">
+					<div>{% trans "Перевести файл" %}</div>
+				</div>
+			</div>
 			<div class="ttw-button ttw-button_download ttw-button_squared bg-main text-white">
-				<div class="ttw-button_squared">
+				<div class="ttw-button_squared p-1">
 					<a id='download_btn_raw' class="flex gap-2 items-center" href='{{filepath}}' download>
-						<img width="32" height="32" src="{% static 'WYSIWYGEditor/img/download.svg' %}" alt="{% trans 'Крестик' %}">
+						<img width="16" height="16" src="{% static 'WYSIWYGEditor/img/download.svg' %}" alt="{% trans 'Крестик' %}">
 						<div>{% trans "Скачать файл" %}</div>
 					</a>
 				</div>
@@ -68,8 +74,8 @@
 					}
 				"
 				class="ttw-button ttw-button_link ttw-button_squared bg-main text-white">
-				<div class="ttw-button_squared flex gap-2 items-center">
-					<img width="32" height="32" src="{% static 'WYSIWYGEditor/img/delete.svg' %}" alt="{% trans 'Крестик' %}">
+				<div class="ttw-button_squared flex gap-2 items-center p-1">
+					<img width="16" height="16" src="{% static 'WYSIWYGEditor/img/delete.svg' %}" alt="{% trans 'Крестик' %}">
 					<div>{% trans "Удалить файл" %}</div>
 				</div>
 			</div>
@@ -88,8 +94,8 @@
 					}
 				"
 				class="ttw-button ttw-button_action ttw-button_squared bg-main text-white">
-				<div class="ttw-button_squared flex gap-2 items-center">
-					<img width="32" height="32" src="{% static 'WYSIWYGEditor/img/publish.svg' %}" alt="{% trans 'Опубликовать' %}">
+				<div class="ttw-button_squared flex gap-2 items-center p-1">
+					<img width="16" height="16" src="{% static 'WYSIWYGEditor/img/publish.svg' %}" alt="{% trans 'Опубликовать' %}">
 					<div>{% trans "Опубликовать" %}</div>
 				</div>
 			</div>

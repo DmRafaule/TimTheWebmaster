@@ -11,4 +11,5 @@ import './quill_links.js';
 import './quill_table.js';
 import './quill_headers.js'
 import './quill.js';
+import './on_page_translation.js';
 import 'htmx.org';

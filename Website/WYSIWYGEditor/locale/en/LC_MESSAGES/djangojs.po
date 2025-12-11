@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-12-02 09:39+0300\n"
+"POT-Creation-Date: 2025-12-11 15:30+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,6 +17,26 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: .\WYSIWYGEditor\static\WYSIWYGEditor\js\on_page_translation.js:75
+msgid "Нет текста для перевода"
+msgstr "There is no text to be translated"
+
+#: .\WYSIWYGEditor\static\WYSIWYGEditor\js\on_page_translation.js:86
+msgid "Перевод страницы завершён."
+msgstr "Page translation has been completed"
+
+#: .\WYSIWYGEditor\static\WYSIWYGEditor\js\on_page_translation.js:87
+msgid "Начинаю вставлять переведённый текст."
+msgstr "Begining inserting the translated text"
+
+#: .\WYSIWYGEditor\static\WYSIWYGEditor\js\on_page_translation.js:94
+msgid "Страница обновлена."
+msgstr "Page is updated"
+
+#: .\WYSIWYGEditor\static\WYSIWYGEditor\js\on_page_translation.js:98
+msgid "Один из блоков не удалось перевести"
+msgstr "There is one block could not be translated"
 
 #: .\WYSIWYGEditor\static\WYSIWYGEditor\js\quill_abbr.js:23
 #: .\WYSIWYGEditor\static\WYSIWYGEditor\js\quill_codeblock.js:89
@@ -85,19 +105,19 @@ msgstr "An image successfully removed"
 msgid "Изображение успешно загружено на сервер и добавленно в статью"
 msgstr "An image successfully uploaded to server and added to article"
 
-#: .\WYSIWYGEditor\static\WYSIWYGEditor\js\quill_links.js:184
+#: .\WYSIWYGEditor\static\WYSIWYGEditor\js\quill_links.js:195
 msgid "Файл уже удалён"
 msgstr "File already removed"
 
-#: .\WYSIWYGEditor\static\WYSIWYGEditor\js\quill_links.js:187
+#: .\WYSIWYGEditor\static\WYSIWYGEditor\js\quill_links.js:198
 msgid "У тебя нет достаточных прав удалять файлы"
 msgstr "You do not have enough permisions to remove files"
 
-#: .\WYSIWYGEditor\static\WYSIWYGEditor\js\quill_links.js:192
+#: .\WYSIWYGEditor\static\WYSIWYGEditor\js\quill_links.js:203
 msgid "Файл успешно удален"
 msgstr "File successfully removed"
 
-#: .\WYSIWYGEditor\static\WYSIWYGEditor\js\quill_links.js:232
+#: .\WYSIWYGEditor\static\WYSIWYGEditor\js\quill_links.js:243
 msgid "Файл успешно загружен на сервер и добавленн в статью"
 msgstr "An file successfully uploaded to server and added to article"
 

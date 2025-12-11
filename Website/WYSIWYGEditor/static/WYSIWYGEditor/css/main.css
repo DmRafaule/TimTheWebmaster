@@ -26,6 +26,7 @@
     height: 100%;
     padding: 4px;
     min-height: 90svh;
+    white-space: pre-wrap;
 }
 
 /* Tooltips */
@@ -201,6 +202,9 @@ footer{
     overflow: auto  !important;   
     min-width: 300px;
     max-height: 600px;
+}
+.quilljs-textarea{
+    min-height: 400px;
 }
 
 

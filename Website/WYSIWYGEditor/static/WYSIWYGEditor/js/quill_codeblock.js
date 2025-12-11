@@ -82,7 +82,7 @@ class CodeBlockFormat extends BlockEmbed {
         const modal_content = `
         <div><b>${gettext('Редактор кода')}</b></div>
         <hr>
-        <textarea>${node.querySelector('.microlight').textContent}</textarea>
+        <textarea class="quilljs-textarea">${node.querySelector('.microlight').textContent}</textarea>
         <hr>
         <div class="flex flex-row justify-between flex-wrap">
             <div id="save_code" class="ttw-button ttw-button_action">
