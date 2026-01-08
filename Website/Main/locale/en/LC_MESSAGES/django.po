@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-12-02 09:35+0300\n"
+"POT-Creation-Date: 2026-01-08 11:52+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -139,36 +139,35 @@ msgstr "years"
 #: .\Main\templates\Main\about-website.html:52
 msgid ""
 "\n"
-"\t\t\t\t\tЭтот сайт является обычным блогом со встроенными инструментами, "
-"владельца этого сайта. Данный сайт был создан в исключительно развлекательно-"
-"позновательном ключе. Он не несёт какой-либо специальной цели или миссии в "
-"пространстве интернета. Разве только общения и раскрытия интересных автору "
-"тем, которые, конечно же, могут и будут меняться со временем.\n"
+"\t\t\t\t\tЭтот сайт является лабораторией для публикации статей про "
+"проведённые эксперименты и исследования. На темы создания прикладных "
+"програм, анализа данных и общих тенденций.\n"
+"\t\t\t\t\tТак же данный сайт содержит некоторые внутренние инструменты, как "
+"результат или как необходимое средство для проведения исследования.\n"
 "\t\t\t\t"
 msgstr ""
 "\n"
-"This website is a regular blog with built-in tools, owned by the owner of "
-"this site. This site was created exclusively for entertainment and "
-"educational purposes. It does not have any special purpose or mission in the "
-"internet space. Except perhaps for communication and exploring topics that "
-"are interesting to the author, which, of course, may and will change over "
-"time.\n"
+"\t\t\t\t\tThis site is a engineering lab for publishing articles about "
+"conducted experiments and research. On the topics of creating applied "
+"programs, data analysis and general trends.\n"
+"\t\t\t\t\tThis site also contains some internal tools, such as "
+"a result or as a necessary means for conducting research.\n"
 "\t\t\t\t"
 
-#: .\Main\templates\Main\about-website.html:58
+#: .\Main\templates\Main\about-website.html:59
 msgid "Темы, которые рассматриваются и изучаются на сайте:"
 msgstr "The topics that are covered and studied on this website include:"
 
-#: .\Main\templates\Main\about-website.html:62
-#: .\Main\templates\Main\about-website.html:65
-#: .\Main\templates\Main\about-website.html:139
-#: .\Main\templates\Main\about-website.html:142
-#: .\Main\templates\Main\home.html:85 .\Main\templates\Main\home.html:181
-#: .\Main\templates\Main\home.html:263 .\Main\templates\Main\home.html:266
+#: .\Main\templates\Main\about-website.html:63
+#: .\Main\templates\Main\about-website.html:66
+#: .\Main\templates\Main\about-website.html:140
+#: .\Main\templates\Main\about-website.html:143
+#: .\Main\templates\Main\home.html:98 .\Main\templates\Main\home.html:194
+#: .\Main\templates\Main\home.html:276 .\Main\templates\Main\home.html:279
 msgid "Предыдущая вкладка на табуляторе"
 msgstr "Previous tab on the tab bar"
 
-#: .\Main\templates\Main\about-website.html:70
+#: .\Main\templates\Main\about-website.html:71
 msgid ""
 "\n"
 "\t\t\t\t\t<div><b>SEO (Search Engine Optimization) с акцентом на GEO и AIO</"
@@ -203,7 +202,7 @@ msgstr ""
 "increase conversion and improve the overall user experience.</div>\n"
 "\t\t\t\t\t"
 
-#: .\Main\templates\Main\about-website.html:75
+#: .\Main\templates\Main\about-website.html:76
 msgid ""
 "\n"
 "\t\t\t\t\t<div><b>Разработка и внедрение ИИ (искусственный интеллект)</b>. "
@@ -234,7 +233,7 @@ msgstr ""
 "adaptive, intelligent, and efficient services.</div>\n"
 "\t\t\t\t\t"
 
-#: .\Main\templates\Main\about-website.html:80
+#: .\Main\templates\Main\about-website.html:81
 msgid ""
 "\n"
 "\t\t\t\t\t<div><b>Разработка сайтов на Django</b> с использованием таких "
@@ -258,7 +257,7 @@ msgstr ""
 "div>\n"
 "\t\t\t\t\t"
 
-#: .\Main\templates\Main\about-website.html:85
+#: .\Main\templates\Main\about-website.html:86
 msgid ""
 "\n"
 "\t\t\t\t\t<div><b>Работа и настройка серверов и хостингов</b> включает "
@@ -275,7 +274,7 @@ msgstr ""
 "scaling resources for high performance and availability.</div>\n"
 "\t\t\t\t\t"
 
-#: .\Main\templates\Main\about-website.html:90
+#: .\Main\templates\Main\about-website.html:91
 msgid ""
 "\n"
 "\t\t\t\t\t<div><b>Разработка программ и утилит</b> включает создание "
@@ -301,7 +300,7 @@ msgstr ""
 "it's a command-line interface, a graphical interface, or interaction with a "
 "browser.</div>\t\t\t\t\t"
 
-#: .\Main\templates\Main\about-website.html:95
+#: .\Main\templates\Main\about-website.html:96
 msgid ""
 "\n"
 "\t\t\t\t\t<div><b>История программирования</b> охватывает развитие методов и "
@@ -328,7 +327,7 @@ msgstr ""
 "optimization, and expansion of the capabilities of computers, influencing "
 "the development of technologies and society as a whole.</div>\t\t\t\t\t"
 
-#: .\Main\templates\Main\about-website.html:100
+#: .\Main\templates\Main\about-website.html:101
 msgid ""
 "\n"
 "\t\t\t\t\t<div><b>Монетизация и продвижение сайта</b> включают использование "
@@ -354,11 +353,11 @@ msgstr ""
 "increase website profits.</div>\n"
 "\t\t\t\t\t"
 
-#: .\Main\templates\Main\about-website.html:107
+#: .\Main\templates\Main\about-website.html:108
 msgid "Текущий технологический стек"
 msgstr "Current tech stack"
 
-#: .\Main\templates\Main\about-website.html:129
+#: .\Main\templates\Main\about-website.html:130
 msgid ""
 "\n"
 "\t\t\t<div>Сайт написан и работает на фреймворке Django. Фронтенд фреймворки "
@@ -387,7 +386,7 @@ msgstr ""
 "it in the long term.</div>\n"
 "\t\t\t"
 
-#: .\Main\templates\Main\about-website.html:133
+#: .\Main\templates\Main\about-website.html:134
 msgid ""
 "\n"
 "\t\t<div>В дополнение к Django/Python ещё используются такие надстройки(JS-"
@@ -399,7 +398,7 @@ msgstr ""
 "packages) are also used on top of standard JS, CSS, and HTML:</div>\n"
 "\t\t"
 
-#: .\Main\templates\Main\about-website.html:148
+#: .\Main\templates\Main\about-website.html:149
 msgid ""
 "\n"
 "\t\t\t\t\t\t<b>HTMX</b> — это небольшая библиотека, которая расширяет "
@@ -432,7 +431,7 @@ msgstr ""
 "performance through partial updates without a full page reload.\n"
 "\t\t\t\t\t"
 
-#: .\Main\templates\Main\about-website.html:154
+#: .\Main\templates\Main\about-website.html:155
 msgid ""
 "\n"
 "\t\t\t\t\t<div><b>TailwindCSS</b> — это современный CSS-фреймворк, "
@@ -465,7 +464,7 @@ msgstr ""
 "you to easily manage responsiveness and dynamic style changes.</div>\n"
 "\t\t\t\t\t"
 
-#: .\Main\templates\Main\about-website.html:160
+#: .\Main\templates\Main\about-website.html:161
 msgid ""
 "\n"
 "\t\t<div><b>NPM</b> используется для компиляции и минификации кода на JS и "
@@ -479,7 +478,7 @@ msgstr ""
 "server.</div>\n"
 "\t\t"
 
-#: .\Main\templates\Main\about-website.html:163
+#: .\Main\templates\Main\about-website.html:164
 msgid ""
 "\n"
 "\t\t<div>На этом сайте есть так называемые \"<i>внутренние инструменты</i>\" "
@@ -495,11 +494,11 @@ msgstr ""
 "NPM settings.</div>\n"
 "\t\t"
 
-#: .\Main\templates\Main\about-website.html:166
+#: .\Main\templates\Main\about-website.html:167
 msgid "А вот полная структура моего сайта по приложениям"
 msgstr "Here is the complete structure of my website for applications."
 
-#: .\Main\templates\Main\about-website.html:168
+#: .\Main\templates\Main\about-website.html:169
 msgid ""
 "\n"
 "\t\t\t<li><b>Apps</b> -> Директория где хранятся все внутренние приложения "
@@ -561,11 +560,11 @@ msgstr ""
 "such web interface patterns as: Paginator and Infinite Feed</li>\n"
 "\t\t\t"
 
-#: .\Main\templates\Main\about-website.html:185
+#: .\Main\templates\Main\about-website.html:186
 msgid "Чужие асеты"
 msgstr "Third-party assets"
 
-#: .\Main\templates\Main\about-website.html:187
+#: .\Main\templates\Main\about-website.html:188
 msgid ""
 "Мой сайт использует чужие асеты и ресурсы. Дальше будет идти список из чужих "
 "ассетов, которые так или иначе используются на сайте:"
@@ -573,20 +572,20 @@ msgstr ""
 "My website uses third-party assets and resources. Below is a list of third-"
 "party assets that are used on the website in one way or another:"
 
-#: .\Main\templates\Main\about-website.html:189
 #: .\Main\templates\Main\about-website.html:190
+#: .\Main\templates\Main\about-website.html:191
 msgid "Иконки"
 msgstr "Icons"
 
-#: .\Main\templates\Main\about-website.html:191
+#: .\Main\templates\Main\about-website.html:192
 msgid "Превьюшки для статей"
 msgstr "Previews for an articles"
 
-#: .\Main\templates\Main\about-website.html:192
+#: .\Main\templates\Main\about-website.html:193
 msgid "Шрифты"
 msgstr "Fonts"
 
-#: .\Main\templates\Main\about-website.html:194
+#: .\Main\templates\Main\about-website.html:195
 msgid ""
 "\n"
 "\t\tЕсли я забыл кого-то указать (конкретно), свяжитесь со мной, я "
@@ -598,11 +597,11 @@ msgstr ""
 "definitely correct it.\n"
 "\t\t"
 
-#: .\Main\templates\Main\about-website.html:197
+#: .\Main\templates\Main\about-website.html:198
 msgid "Политика обработки куки"
 msgstr "Cookies policy"
 
-#: .\Main\templates\Main\about-website.html:201
+#: .\Main\templates\Main\about-website.html:202
 msgid ""
 "\n"
 "\t\t\t\tВсе куки могут быть поделены на необходимые, без которых работа "
@@ -616,7 +615,7 @@ msgstr ""
 "this website.\n"
 "\t\t\t\t"
 
-#: .\Main\templates\Main\about-website.html:206
+#: .\Main\templates\Main\about-website.html:207
 msgid ""
 "\n"
 "\t\t\t\tВот все необходимые куки, которые использует мой сайт:\n"
@@ -625,7 +624,7 @@ msgstr ""
 "\n"
 "Here are all the necessary cookies that my website uses:\t\t\t\t"
 
-#: .\Main\templates\Main\about-website.html:211
+#: .\Main\templates\Main\about-website.html:212
 msgid ""
 "\n"
 "\t\t\t\t\t<li><i>Аутентификационные</i> - позволяют зарегистрировать "
@@ -645,7 +644,7 @@ msgstr ""
 "</li>\n"
 "\t\t\t\t"
 
-#: .\Main\templates\Main\about-website.html:218
+#: .\Main\templates\Main\about-website.html:219
 msgid ""
 "\n"
 "\t\t\t\t\tА вот все опциональные куки, которые использует мой сайт:\n"
@@ -655,7 +654,7 @@ msgstr ""
 "These are all the optional cookies that my website uses:\n"
 "\t\t\t\t"
 
-#: .\Main\templates\Main\about-website.html:223
+#: .\Main\templates\Main\about-website.html:224
 msgid ""
 "\n"
 "\t\t\t\t\t<li>Куки аналитики (Яндекс Метрика, Google Analitycs)</li>\n"
@@ -665,7 +664,7 @@ msgstr ""
 "<li>Analytics cookies (Yandex Metrica, Google Analytics)</li>\n"
 "\t\t\t\t"
 
-#: .\Main\templates\Main\about-website.html:228
+#: .\Main\templates\Main\about-website.html:229
 msgid ""
 "\n"
 "\t\t\t\tПродолжая использовать мой сайт, Вы соглашаетесь на обработку файлов "
@@ -677,11 +676,11 @@ msgstr ""
 "<b>cookies</b> listed above.\n"
 "\t\t\t\t"
 
-#: .\Main\templates\Main\about-website.html:233
+#: .\Main\templates\Main\about-website.html:234
 msgid "Политика монетизации"
 msgstr "Monetization policy"
 
-#: .\Main\templates\Main\about-website.html:239
+#: .\Main\templates\Main\about-website.html:240
 msgid ""
 "\n"
 "\t\t\t\t\t\tНа моём сайте присутствует реклама, используется рекламная сеть "
@@ -695,7 +694,7 @@ msgstr ""
 "on the left.\n"
 "\t\t\t\t\t\t"
 
-#: .\Main\templates\Main\about-website.html:248
+#: .\Main\templates\Main\about-website.html:249
 msgid ""
 "\n"
 "\t\t\t\t\t\tТак же на моём сайте располагаются партнёрские программы, от тех "
@@ -710,7 +709,7 @@ msgstr ""
 "All affiliate materials are marked with this icon on the left.\n"
 "\t\t\t\t\t\t"
 
-#: .\Main\templates\Main\about-website.html:255
+#: .\Main\templates\Main\about-website.html:256
 msgid ""
 "\n"
 "\t\t\t\t\tЯ бы хотел сделать ставку на так называемую freeminimum модель "
@@ -729,151 +728,167 @@ msgstr ""
 "\t\t\t\t"
 
 #: .\Main\templates\Main\about.html:6
-msgid "Тим, Вебмастер. Всё об авторе и его деятельности."
-msgstr "Tim the Webmaster. All about him and his passion."
+msgid ""
+"Тим зе Вебмастер, Лаборатория открытого тестирования. Всё о проекте и "
+"направлениях деятельности этого проекта"
+msgstr ""
+"Tim the Webmaster, Open Engineering lab. All about the project and "
+"areas of activity of this project"
 
 #: .\Main\templates\Main\about.html:7
 msgid ""
-"О вебмастере Тиме Чудуке. Его истории, интересах и оказываемых услугах "
-"разработки сайтов, тг ботов, скриптов, парсеров и копирайта"
+"Всё о проекте, зачем он был создан, кто за ним стоит(Дима Чудук), основные "
+"направления деятельности (разработка программ, SEO, ИИ, история "
+"программировани, монетизация)"
 msgstr ""
-"About webmaster Tim Chuduk. His history, interests and services "
-"providedwebsite development, telegram bots, scripts, parsers and copywriting"
+"Everything about the project, why it was created, who is behind it (Dima Chuduk), the main ones"
+"areas of activity (software development, SEO, AI, history"
+"programming, monetization)"
 
 #: .\Main\templates\Main\about.html:17
 msgid "Тима Чудук"
 msgstr "Dima Chuduk"
 
 #: .\Main\templates\Main\about.html:37
-msgid "Всё о Тиме Вебмастере (Дмитрие Чудуке)"
-msgstr "Everything about Tim the Webmaster, or Dmitry Chuduk"
+msgid ""
+"Всё о лаборатории открытого тестирования и авторе проекта Тиме зе Вебмастере"
+msgstr ""
+"All about the Engineering lab and the author of the project, Tim the Webmaster"
 
 #: .\Main\templates\Main\about.html:38
 msgid ""
-"Расскажу свой путь. Что было до сайта, что будет дальше и почему я этим "
-"занимаюсь. Я расскажу всё, поэтому это будет долго, и возможно не интересно. "
-"Ты предупреждён."
+"Расскажу зачем была сделана данная лаборатория и чем она занимается. Так же "
+"немного об авторе данного проекта Тиме зе Вебмастере(он же Дима Чудук)"
 msgstr ""
-"I'll tell you about my journey. What happened before the website, what will "
-"happen next, and why I'm doing this.I'll tell you everything, so it will be "
-"long, and possibly not interesting.You've been warned."
+"I’ll tell you why this laboratory was created and what it does. Also "
+"a little about the author of this project, Tim the Webmaster (aka Dima Chuduk)"
 
 #: .\Main\templates\Main\about.html:58
-msgid "Вступление"
-msgstr "Introduction"
+msgid "Немного об авторе"
+msgstr "A little bit about author"
 
 #: .\Main\templates\Main\about.html:61
 msgid ""
 "\n"
-"\t\t\tНачну с того, что я родился в Барановичах, Беларусь. Барановичи - это "
-"город аккурат между Минском и Брестом, главной достопримечательностью "
-"которого является железнодорожный вокзал.\n"
+"\t\t\tЯ обычный программист, самоучка. Люблю посидеть часик-другой над "
+"проблемой, решать которую никто не хотел. \n"
+"\t\t\tИ сделать выводы, которые никто не просил. Но возможно, кому-нибудь да "
+"и будет интересно почитать про процесс решения проблемы и\n"
+"\t\t\tвозможно даже это будет ему полезно.\n"
 "\t\t\t"
 msgstr ""
 "\n"
-"\t\t\t\tI'll start with the fact that I was born in Baranovichi, Belarus. "
-"Baranovichi is a city right between Minsk and Brest, the main attraction of "
-"which is the railway station.\n"
-"\t\t\t\t"
+"\t\t\tI'm an ordinary programmer, self-taught. I like to sit for an hour or two on "
+"a problem that no one wanted to solve.\n"
+"\t\t\tAnd draw conclusions that no one asked. But perhaps someone will"
+"and it will be interesting to read about the process of solving the problem and\n"
+"\t\t\tmaybe even this will be useful to him.\n"
+"\t\t\t"
 
-#: .\Main\templates\Main\about.html:67
+#: .\Main\templates\Main\about.html:69
+msgid "Железнодорожный вокзал, вид с моста"
+msgstr "Railway station, view from the bridge"
+
+#: .\Main\templates\Main\about.html:73
+msgid "Парк, перед кинотеатром 'Звезда'"
+msgstr "Park, in front of the Zvezda cinema"
+
+#: .\Main\templates\Main\about.html:76
 msgid ""
 "\n"
-"\t\t\tХоть родился я в Барановичах, жил я всё время в деревне. Уже сейчас "
-"мне трудно вспомнить о чём я думал, или к чему стремился, или кем хотел "
-"быть. Наверное, я об этом не думал вообще, а просто был тогда в моменте.\n"
+"\t\t\tРодился я в Барановичах, Беларусь. Единственной достопримечательностью "
+"которого является ЖД вокзал. Не пойми не правильно, мне нравится этот "
+"город,\n"
+"\t\t\tпросто даже этот маленький город слишком люден для меня. Ибо большую "
+"часть жизни я прожил на болотах - полессье. В деревне. Привычка, так "
+"сказать.\n"
 "\t\t\t"
 msgstr ""
 "\n"
-"\t\t\t\tAlthough I was born in Baranovichi, I lived all my time in the "
-"village. Even now, it's hard for me to remember what I was thinking about, "
-"or what I was striving for, or who I wanted to be. I probably didn't think "
-"about it at all, I was just in the moment.\n"
-"\t\t\t\t"
-
-#: .\Main\templates\Main\about.html:72
-msgid ""
-"\n"
-"\t\t\tИзначально, я решил стать следователем, но что-то пошло не так и меня "
-"не взяли. Зато в армию взяли, где я и отслужил полтора года. Не могу "
-"сказать, что там всё было плохо. Стрелять и кататься на самоходных "
-"артиллерийских установках мне нравилось. Мне не нравилось всё что было до и "
-"после боевых выездов.\n"
+"\t\t\tI was born in Baranovichi, Belarus. The only attraction "
+"which is the railway station. Don't get me wrong, I like this "
+"city,\n"
+"\t\t\tit's just that even this small city is too crowded for me. Because it's big"
+"I lived part of my life in the swamps - Polesie. In the village. It's a habit, so to"
+"say.\n"
 "\t\t\t"
-msgstr ""
-"\n"
-"\t\t\t\tInitially, I decided to become an investigator, but something went "
-"wrong and they didn't take me. But they took me into the army, where I "
-"served for a year and a half. I can't say that everything was bad there. I "
-"liked shooting and riding self-propelled artillery units. I didn't like "
-"everything that was before and after combat missions.\n"
-"\t\t\t\t"
 
-#: .\Main\templates\Main\about.html:79
+#: .\Main\templates\Main\about.html:83
+msgid "Дорога через болото"
+msgstr "A road through swamps"
+
+#: .\Main\templates\Main\about.html:87
+msgid "Болото через поле"
+msgstr "A swamp after field"
+
+#: .\Main\templates\Main\about.html:91
+msgid "Болото рядом"
+msgstr "Swamp near by"
+
+#: .\Main\templates\Main\about.html:95
+msgid "Посёлок, спиной к болоту через поле :)"
+msgstr "Village, back to the swamp across the field :)"
+
+#: .\Main\templates\Main\about.html:100
 msgid "А это я"
 msgstr "It is me btw"
 
-#: .\Main\templates\Main\about.html:81
+#: .\Main\templates\Main\about.html:102
 msgid ""
 "\n"
-"\t\t\tИтак, вот мне 20 лет, у меня среднеспециальное юридическое, ни опыта, "
-"ни каких-либо нормальных навыков. Я начал пробовать себя в различных сферах, "
-"начиная от официанта, заканчивая фрилансом. А в свободное время я не играл, "
-"нет, (всю охоту к играм я потерял ещё до армии) я программировал, делал "
-"игры. Не очень успешно. За два года я сделал кучу демок, но выпустил \n"
+"\t\t\tИтак, вот мне 20 лет, а у меня ни опыта, ни каких-либо нормальных "
+"навыков. \n"
+"\t\t\tЯ начал пробовать себя в различных сферах разработки, от фронтенда до "
+"геймдева. Спойлер, разработчиком игр я не стал.\n"
+"\t\t\tЗа два года я сделал кучу демок, но выпустил \n"
 "\t\t\t"
 msgstr ""
 "\n"
-"\t\tSo, I'm 20 years old, I have a secondary specialized law degree, no "
-"experience, no normal skills. I started trying myself in various fields, "
-"starting from being a waiter to freelancing. And in my free time, I didn't "
-"play, no, (I lost all desire for games even before the army) I programmed, "
-"made games. Not very successfully. In two years, I made a bunch of demos, "
-"but released \n"
-"\t\t"
+"\t\t\tSo, here I am 20 years old, and I have neither experience nor any normal"
+"skills.\n"
+"\t\t\tI started trying myself in various areas of development, from front-end to "
+"game developer. Spoiler, I did not become a game developer.\n"
+"\t\t\tFor two years I made a bunch of demos, but I released them \n"
+"\t\t\t"
 
-#: .\Main\templates\Main\about.html:84
+#: .\Main\templates\Main\about.html:107
 msgid "только одну игру"
 msgstr "only a single one game."
 
-#: .\Main\templates\Main\about.html:85
+#: .\Main\templates\Main\about.html:108
 msgid ""
-" \n"
+"\n"
 "\t\t\tна Google Play и то не очень хорошую.\n"
 "\t\t\t"
 msgstr ""
-" \n"
-"\t\tAnd not very good ones on Google Play.\n"
+"\n"
+"\t\t For Google Play, and not very good one.\n"
 "\t\t"
 
-#: .\Main\templates\Main\about.html:89
+#: .\Main\templates\Main\about.html:112
 msgid ""
 "\n"
-"\t\t\t\tВ 2022 году поступил в университет на инженер-програмиста (это уже "
-"Минск), но очень скоро понял, что это не моё и забрал документы уже в 2023 "
-"году. Сказать, что мне тогда было плохо, ничего не сказать. Мне было очень "
-"херово тогда. Было такое чувство будто сердце заволокла, такая вязкая слизь "
-"из безысходности и горечи потери года подготовки к поступлению.\n"
+"\t\t\t\tИ фронтенд разработчиком я не стал. Слишком много фреймворков в "
+"которых нужно разбираться и шарить. Я предпочитаю более старый, \n"
+"\t\t\t\tтрадиционный подход с обычным HTML и JS на пару. Без фреймворков. "
+"Как известно работы для такого \"специалиста\" не очень много.\n"
 "\t\t\t\t"
 msgstr ""
 "\n"
-"\t\tIn 2022, I entered the university to become a software engineer (this is "
-"already Minsk), but I soon realized that this was not my thing and withdrew "
-"my documents in 2023. To say that I felt bad then is to say nothing. I felt "
-"very shitty then. It felt like my heart was covered with such a viscous "
-"mucus out of hopelessness and bitterness of losing a year of preparation for "
-"admission.\n"
-"\t\t"
+"\t\t\t\tAnd I didn't become a front-end developer. There are too many frameworks to wrap around your head"
+". I prefer the older one,\n"
+"\t\t\t\ttraditional approach with plain HTML and JS paired. Without frameworks."
+"As you know, there is not very much work for such a “specialist.”\n"
+"\t\t\t\t"
 
-#: .\Main\templates\Main\about.html:94
+#: .\Main\templates\Main\about.html:118
 msgid "Почему решил сделать сайт"
 msgstr "Why did I decide to make a website?"
 
-#: .\Main\templates\Main\about.html:97
+#: .\Main\templates\Main\about.html:121
 msgid ""
 "\n"
-"\t\t\tПосле того, как я забрал документы из ВУЗа(Где-то Март 2023 года), "
-"нужно было чем-то заняться. Вот я и решил, а давай я опубликую сайт. "
+"\t\t\tНужно было чем-то заняться. Вот я и решил, а давай я опубликую сайт. "
 "Черновик у меня валялся с 2022 года, когда я ещё увлекался хакатонами, "
 "devops и взломом. Изначально, я сделал этот сайт, чтобы отрабатывать и "
 "практиковать различные уязвимости в сайтах. И конечно же разобраться в том "
@@ -881,15 +896,14 @@ msgid ""
 "\t\t\t"
 msgstr ""
 "\n"
-"After I picked up my documents from the university (around March 2023),I "
-"needed something to do. So I decided, why not publish a website?I had a "
-"draft lying around since 2022, when I was still into hackathons,devops, and "
-"hacking. Initially, I created this website to practice andexperiment with "
-"various website vulnerabilities. And of course, to understandhow websites "
-"actually work.\n"
+"\t\t\tI had to do something. So I decided, let me publish a website."
+"I’ve had a draft lying around since 2022, when I was still interested in hackathons,"
+"devops and hacking. Initially, I made this site to work on and "
+"practice various vulnerabilities in sites. And of course, figure out "
+"how websites generally work.\n"
 "\t\t\t"
 
-#: .\Main\templates\Main\about.html:102
+#: .\Main\templates\Main\about.html:126
 msgid ""
 "\n"
 "\t\t\tСейчас я этим не особо увлекаюсь, я сосредоточился на созидании и "
@@ -900,7 +914,7 @@ msgstr ""
 "I'm not really into that anymore; I'm focused on creation and design. It's "
 "easier to destroy than to build, as they say.\t\t\t"
 
-#: .\Main\templates\Main\about.html:107
+#: .\Main\templates\Main\about.html:131
 msgid ""
 "\n"
 "\t\t\tА ещё я хотел просто писать о том, что меня интересовало и интересует "
@@ -918,7 +932,7 @@ msgstr ""
 "build the website using the language I like - Python - and to code it in "
 "pure HTML, CSS, and JS.\t\t\t"
 
-#: .\Main\templates\Main\about.html:113
+#: .\Main\templates\Main\about.html:137
 msgid ""
 "\n"
 "\t\t\tЕсли быть честным, Python не мой любимый язык программирования. Это "
@@ -934,24 +948,52 @@ msgstr ""
 "specifically want to share and show the results of my work to others.\n"
 "\t\t\t"
 
-#: .\Main\templates\Main\about.html:117
-msgid "Что будет дальше"
-msgstr "What will happen next?"
+#: .\Main\templates\Main\about.html:141
+msgid "О лаборатории открытого тестирования"
+msgstr "About an Open Engineering Lab"
 
-#: .\Main\templates\Main\about.html:120
+#: .\Main\templates\Main\about.html:144
 msgid ""
 "\n"
-"\t\t\tДальше, я надеюсь, будет рост посещаемости этого сайта. Я доведу свои "
-"рабочие процессы связанные с публикацией и продвижением статей до ума. Как "
-"итог, много общения, монетизация сайта и возможность заняться чем-нибудь "
-"новым и необычным.\n"
+"\t\t\tСуть данной лаборатории(сайта) заключается в том, что я, выбирая "
+"определённый топик по интересам, пытаюсь изучить его со сторон\n"
+"\t\t\tдо селе неизученных. Тестировать различные программные решения на этом "
+"и других моих сайтах. И что самое важное документировать всё это.\n"
+"\t\t\tВедь в этом и заключается смысл данного сайта, что бы посетитель нашёл "
+"нужное и полезное ему исследование, будь оно связано с\n"
+"\t\t\tизучением нового стека технологий, отдельных библиотек или сбором и "
+"последующим анализом данных.\n"
 "\t\t\t"
 msgstr ""
 "\n"
-"Further on, I hope to see an increase in website traffic. I will refine my "
-"workflows related to publishing and promoting articles. As a result, there "
-"will be more interaction, website monetization, and the opportunity to "
-"engage in something new and unusual.\n"
+"\t\t\tThe essence of this lab (site) is that I, choosing "
+"a certain topic of interest, I'm trying to study it from the outside\n"
+"\t\t\tuntil the village is unexplored. Test various software solutions on this"
+"and my other sites. And what is most important is to document all this.\n"
+"\t\t\tAfter all, this is the point of this site, so that the visitor would find"
+"necessary and useful research for him, be it related to\n"
+"\t\t\texploring a new technology stack, individual libraries or collecting and "
+"subsequent data analysis.\n"
+"\t\t\t"
+
+#: .\Main\templates\Main\about.html:152
+msgid ""
+"\n"
+"\t\t\tЧто за топики по интересам? Это довольно обширная категория, которая "
+"будет постоянно меняться, ибо она зависит только от одного человека\n"
+"\t\t\t- меня. В неё входят такие топики как: программирование сайтов, "
+"поисковая(а теперь ещё и ИИ) оптимизация, изучение и внедрение различных\n"
+"\t\t\tбиблиотек и фреймворков на сайт или в другие программы. История "
+"программирования, людей и компаний стоящих за той или иной технологией.\n"
+"\t\t\t"
+msgstr ""
+"\n"
+"\t\t\tWhat are the topics of interest? This is a fairly broad category that "
+"will constantly change, because it depends only on one person\n"
+"\t\t\t- me. It includes such topics as: website programming, "
+"search (and now also AI) optimization, study and implementation of various\n"
+"\t\t\tlibraries and frameworks to a website or other programs. History "
+"programming, people and companies behind this or that technology.\n"
 "\t\t\t"
 
 #: .\Main\templates\Main\base.html:72 .\Main\templates\Main\base.html:75
@@ -960,36 +1002,41 @@ msgstr ""
 #: .\Main\templates\Main\base.html:151
 #: .\Main\templates\Main\base_status_code.html:23
 #: .\Main\templates\Main\base_status_code.html:26
-#: .\Main\templates\Main\base_status_code.html:39
-#: .\Main\templates\Main\base_status_code.html:43
-#: .\Main\templates\Main\base_status_code.html:61
+#: .\Main\templates\Main\base_status_code.html:36
+#: .\Main\templates\Main\base_status_code.html:42
+#: .\Main\templates\Main\base_status_code.html:59
+#: .\Main\templates\Main\base_status_code.html:94
+#: .\Main\templates\Main\base_status_code.html:98
 msgid "3 горизонтальные линии, бургер"
 msgstr "3 horizontal lines, burger"
 
 #: .\Main\templates\Main\base.html:97
-#: .\Main\templates\Main\base_status_code.html:50
+#: .\Main\templates\Main\base_status_code.html:48
 msgid "Главная иконка сайта"
 msgstr "Main icon of the website"
 
 #: .\Main\templates\Main\base.html:112
-#: .\Main\templates\Main\base_status_code.html:65
+#: .\Main\templates\Main\base_status_code.html:63
 msgid "Удалить все"
 msgstr "Remove all"
 
 #: .\Main\templates\Main\base.html:130
+#: .\Main\templates\Main\base_status_code.html:77
 msgid "Админка"
 msgstr "Admin"
 
 #: .\Main\templates\Main\base.html:131
+#: .\Main\templates\Main\base_status_code.html:78
 msgid "Редактор"
 msgstr "Editor"
 
 #: .\Main\templates\Main\base.html:133
+#: .\Main\templates\Main\base_status_code.html:80
 msgid "Профиль"
 msgstr "Profile"
 
 #: .\Main\templates\Main\base.html:135
-#: .\Main\templates\Main\base_status_code.html:77
+#: .\Main\templates\Main\base_status_code.html:82
 msgid "Домашняя"
 msgstr "Home"
 
@@ -998,47 +1045,45 @@ msgid "Крестик"
 msgstr "Cross"
 
 #: .\Main\templates\Main\base.html:200
-#: .\Main\templates\Main\base_status_code.html:98
+#: .\Main\templates\Main\base_status_code.html:117
 msgid "Популярные ссылки"
 msgstr "Popular links"
 
 #: .\Main\templates\Main\base.html:211
-#: .\Main\templates\Main\base_status_code.html:109
+#: .\Main\templates\Main\base_status_code.html:128
 msgid "Другие ссылки"
 msgstr "Other links"
 
 #: .\Main\templates\Main\base.html:214
-#: .\Main\templates\Main\base_status_code.html:112
+#: .\Main\templates\Main\base_status_code.html:131
 msgid "Карта сайта"
 msgstr "Sitemap"
 
 #: .\Main\templates\Main\base.html:215
-#: .\Main\templates\Main\base_status_code.html:78
-#: .\Main\templates\Main\base_status_code.html:113
-msgid "Об авторе"
-msgstr "About author"
+msgid "О проекте"
+msgstr "About project"
 
 #: .\Main\templates\Main\base.html:216
 msgid "О сайте"
 msgstr "About website"
 
 #: .\Main\templates\Main\base.html:221
-#: .\Main\templates\Main\base_status_code.html:118
+#: .\Main\templates\Main\base_status_code.html:137
 msgid "Контакты"
 msgstr "Contacts"
 
 #: .\Main\templates\Main\base.html:227
-#: .\Main\templates\Main\base_status_code.html:124
+#: .\Main\templates\Main\base_status_code.html:143
 msgid "иконка"
 msgstr "icon"
 
 #: .\Main\templates\Main\base.html:236
-#: .\Main\templates\Main\base_status_code.html:133
+#: .\Main\templates\Main\base_status_code.html:152
 msgid "Кратко о сайте"
 msgstr "In short for guests"
 
 #: .\Main\templates\Main\base.html:239
-#: .\Main\templates\Main\base_status_code.html:136
+#: .\Main\templates\Main\base_status_code.html:155
 msgid ""
 "\n"
 "\t\t\t\t\t\tДанный сайт был создан в исключительно развлекательно-"
@@ -1054,142 +1099,172 @@ msgstr ""
 "author, which, of course, can and will change over time.\n"
 "\t\t\t\t\t\t"
 
+#: .\Main\templates\Main\base_status_code.html:132
+msgid "Об авторе"
+msgstr "About author"
+
 #: .\Main\templates\Main\home.html:7
-msgid "Тим, вебмастер"
-msgstr "Tim the Webmaster"
+msgid "Тим зе вебмастер, автоматизация, эксперименты и исcледования"
+msgstr "Tim the webmaster, automation, experiments and research"
 
 #: .\Main\templates\Main\home.html:8
 msgid ""
-"Вебмастер Тим, он занимается разработкой сайтов на django, написанием тг "
-"ботов, скриптов и парсеров, а также выполняет заказы по копирайту"
+"Тим зе вебмастер, автоматизация, эксперименты и исcледования в сфере "
+"разработки программ для нужд бизнеса и отдельных людей"
 msgstr ""
-"Webmaster Tim, he develops websites using django and writes tgbots, scripts "
-"and parsers, and also fulfills copyright orders"
+"Tim the webmaster, automation, experiments and research in the field of "
+"developing programs for the needs of businesses and individuals"
 
 #: .\Main\templates\Main\home.html:20
-msgid ""
-"Тим Вебмастер: Бесплатные инструменты, уроки и кейсы про Django, SEO, ИИ и "
-"разработку в целом"
-msgstr ""
-"Tim Webmaster: Free tools, tutorials and case studies on Django, SEO, AI and "
-"web development in general"
+msgid "Лаборатория открытого тестирования Тима Зе Вебмастера"
+msgstr "Tim The Webmaster's Open Engineering Laboratory"
 
 #: .\Main\templates\Main\home.html:21
 msgid ""
-"Создаю собственные вебсервисы и инструменты, пишу статьи время от времени. "
-"Делюсь кодом, опытом, наработками, ошибками и разными историями пока работаю "
-"над своими задачами и проектами. "
+"Где создаются собственные вебсервисы и инструменты для тестирования. Пишу "
+"статьи связанные с исследованием интересующих меня и других топиков. Делюсь "
+"кодом, опытом, наработками, ошибками и разными историями пока работаю над "
+"своими(и чужими) задачами и проектами. "
 msgstr ""
-"I create my own web services and tools, and write articles from time to time."
-"I share code, experience, developments, mistakes, and various stories while "
-"working on my tasks and projects."
+"Where they create their own web services and testing tools. I am writing "
+"articles related to the research of topics that interest me and other topics. I share "
+"code, experience, developments, errors and various stories while I'm working on "
+"my own (and other people's) tasks and projects."
 
 #: .\Main\templates\Main\home.html:36
 msgid "Или ознакомиться с сайтом"
 msgstr "Or intoduction with this website"
 
 #: .\Main\templates\Main\home.html:50
-msgid "Обо мне (В двух словах)"
-msgstr "About me (In short)"
+msgid "О деятельности данной лаборатории"
+msgstr "What this Lab is doing"
 
 #: .\Main\templates\Main\home.html:55
 msgid ""
 "\n"
-"\t\t\t\t\tПросто програмист-самоучка, который пишет время от времени статьи "
-"на различные темы. В <i>\"различные темы\"</i> входят, но не ограничиваются, "
-"<b>Разработка ПО</b>, <b>SEO</b>, <b>Анализ данных, тенденций, статистики</"
-"b> и <b>История программирования</b>. \n"
+"\t\t\t\t\tОбычный программист, который занимается тем, что реализуя свои "
+"проекты, пишет об этом. Делясь \n"
+"\t\t\t\t\tпо ходу дела, всеми деталями разработки этого проекта. Происходит "
+"это в двух форматах, в формате общедоступного \n"
+"\t\t\t\t\tинструмента или в формате статьи или серии статей, если проект "
+"достаточно сложный.\n"
 "\t\t\t\t\t"
 msgstr ""
 "\n"
-"Just a self-taught programmer who occasionally writes articles on various "
-"topics.  These <i>\"various topics\"</i> include, but are not limited to, "
-"<b>Software Development</b>, <b>SEO</b>, <b>Data Analysis, Trends, "
-"Statistics</b>, and <b>History of Programming</b>.\n"
+"\t\t\t\t\tAn ordinary programmer who is engaged in implementing his "
+"projects, writes about it. Sharing \n"
+"\t\t\t\t\tas things progress, all the details of the development of this project are happening."
+"this is in two formats, in the public format\n"
+"\t\t\t\t\ttool or in the format of an article or a series of articles, if the project "
+"quite complicated.\n"
 "\t\t\t\t\t"
 
-#: .\Main\templates\Main\home.html:60
+#: .\Main\templates\Main\home.html:62
+msgid ""
+"\n"
+"\t\t\t\t\tВ данную лабораторию попадают различные темы. Так, я подробно "
+"разбираю и публикую процесс разработки программ для конкретных нужд.\n"
+"\t\t\t\t\tИли занимаюсь анализом тех или иных источников данных для "
+"практического применения в сфере продвижения сайта в поисковых системах.\n"
+"\t\t\t\t\tЕщё пишу статьи связанные с историей разработки программного "
+"обеспечения, будь то языки программирования или люди стоящие за той или \n"
+"\t\t\t\t\tиной технологией. \n"
+"\t\t\t\t\t"
+msgstr ""
+"\n"
+"\t\t\t\t\tVarious topics fall into this laboratory. So, I will detail"
+"I analyze and publish the process of developing programs for specific needs.\n"
+"\t\t\t\t\tOr I am analyzing certain data sources for "
+"practical application in the field of website promotion in search engines.\n"
+"\t\t\t\t\tI also write articles related to the history of software development"
+"software, be it programming languages or the people behind it or \n"
+"\t\t\t\t\tother technology.\n"
+"\t\t\t\t\t"
+
+#: .\Main\templates\Main\home.html:70
 msgid ""
 " \n"
 "\t\t\t\t\tТак же если прям очень много времени разрабатываю и публикую свои "
-"инструменты и веб приложения. Мои инструменты самой разной направленности, "
-"от встроенных <b>веб приложений</b> на моём сайте до <b>терминальных утилит</"
-"b> и <b>PyPI пакетов</b> на <b>Python</b>. Так как инструменты самой разной "
-"направленности, то и стеки их, соответствующе, разные. Так для разработки "
-"веб приложений использую <b>Django</b> и <b>TailwindCSS</b>, а для телеграм "
-"ботов <b>AIOgram</b>.\n"
+"инструменты и веб приложения. \n"
+"\t\t\t\t\tМои инструменты самой разной направленности, от встроенных <b>веб "
+"приложений</b> на моём сайте до <b>терминальных утилит</b>\n"
+"\t\t\t\t\tи <b>PyPI пакетов</b> на <b>Python</b>. Так как инструменты самой "
+"разной направленности, то и стеки их, соответствующе, разные.\n"
+"\t\t\t\t\t Так для разработки веб приложений использую <b>Django</b> и "
+"<b>TailwindCSS</b>, а для телеграм ботов <b>AIOgram</b>.\n"
 "\t\t\t\t\t"
 msgstr ""
 " \n"
-"Also, if I have a lot of free time, I develop and publish my own tools and "
-"web applications. My tools are very diverse, from embedded <b>web "
-"applications</b> on my website to <b>terminal utilities</b> and <b>PyPI "
-"packages</b> in <b>Python</b>. Since the tools are very diverse, their "
-"technology stacks are also different. For example, I use <b>Django</b> and "
-"<b>TailwindCSS</b> for developing web applications, and <b>AIOgram</b> for "
-"Telegram bots.\n"
+"\t\t\t\t\tAlso if I spend a lot of time developing and publishing my own"
+"tools and web applications.\n"
+"\t\t\t\t\tMy tools are of various types, from built-in<b>web "
+"applications</b>on my website to <b>terminal utilities</b>\n"
+"\t\t\t\t\tand <b>PyPI packages</b> on <b>Python</b>. Since the tools itself "
+"If they have different directions, then their stacks are correspondingly different.\n"
+"\t\t\t\t\t So, to develop web applications I use <b>Django</b> and "
+"<b>TailwindCSS</b>, and for telegram bots <b>AIOgram</b>.\n"
 "\t\t\t\t\t"
 
-#: .\Main\templates\Main\home.html:66
-msgid "Или если ты захочешь узнать прям \"многое\" то вот моя полная история"
-msgstr "Or if you want to know \"a lot,\" here's my complete story."
+#: .\Main\templates\Main\home.html:79
+msgid "Или если ты захочешь узнать прям \"многое\" то вот ... всё"
+msgstr "Or if you want to know \"a lot,\" here's ... everything"
 
-#: .\Main\templates\Main\home.html:78
+#: .\Main\templates\Main\home.html:91
 msgid "Топ инструментов"
 msgstr "Top tools"
 
-#: .\Main\templates\Main\home.html:81
+#: .\Main\templates\Main\home.html:94
 msgid "Новые инструменты"
 msgstr "New tools"
 
-#: .\Main\templates\Main\home.html:88 .\Main\templates\Main\home.html:184
+#: .\Main\templates\Main\home.html:101 .\Main\templates\Main\home.html:197
 msgid "Следующая вкладка на табуляторе"
 msgstr "Next tab on the tab bar."
 
-#: .\Main\templates\Main\home.html:105 .\Main\templates\Main\home.html:121
-#: .\Main\templates\Main\home.html:154 .\Main\templates\Main\home.html:201
-#: .\Main\templates\Main\home.html:217 .\Main\templates\Main\home.html:250
-#: .\Main\templates\Main\home.html:303
+#: .\Main\templates\Main\home.html:118 .\Main\templates\Main\home.html:134
+#: .\Main\templates\Main\home.html:167 .\Main\templates\Main\home.html:214
+#: .\Main\templates\Main\home.html:230 .\Main\templates\Main\home.html:263
+#: .\Main\templates\Main\home.html:316
 msgid "Больше ..."
 msgstr "See more ..."
 
-#: .\Main\templates\Main\home.html:133
+#: .\Main\templates\Main\home.html:146
 msgid "Показать Отзывы"
 msgstr "Show reviews"
 
-#: .\Main\templates\Main\home.html:136
+#: .\Main\templates\Main\home.html:149
 msgid "Спрятать Отзывы"
 msgstr "hide reviews"
 
-#: .\Main\templates\Main\home.html:143
+#: .\Main\templates\Main\home.html:156
 msgid "Отзывы"
 msgstr "Reviews"
 
-#: .\Main\templates\Main\home.html:174
+#: .\Main\templates\Main\home.html:187
 msgid "Топ статей"
 msgstr "Top articles"
 
-#: .\Main\templates\Main\home.html:177
+#: .\Main\templates\Main\home.html:190
 msgid "Недавние статьи"
 msgstr "Latest articles"
 
-#: .\Main\templates\Main\home.html:229
+#: .\Main\templates\Main\home.html:242
 msgid "Показать Комментарии"
 msgstr "Show comments"
 
-#: .\Main\templates\Main\home.html:232
+#: .\Main\templates\Main\home.html:245
 msgid "Спрятать Комментарии"
 msgstr "Hide comments"
 
-#: .\Main\templates\Main\home.html:239
+#: .\Main\templates\Main\home.html:252
 msgid "Комментарии"
 msgstr "Comments"
 
-#: .\Main\templates\Main\home.html:260
+#: .\Main\templates\Main\home.html:273
 msgid "Заметки и записи"
 msgstr "Notes and records"
 
-#: .\Main\templates\Main\home.html:283 .\Main\templates\Main\home.html:288
+#: .\Main\templates\Main\home.html:296 .\Main\templates\Main\home.html:301
 msgid "Часы"
 msgstr ""
 
