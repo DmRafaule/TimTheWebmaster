@@ -1,0 +1,75 @@
+@import "../../../../../Main/static/Components/Buttons/Download/button_download.css";
+@import "../../../../../Main/static/Components/Blocks/text.css";
+@import '../../../../../Main/static/Components/Blocks/image.css'; 
+
+@import "tailwindcss";
+@tailwind utilities;
+
+
+.tab_button>img:not(.tab_button.tab_active>img){
+  filter: brightness(0) invert(0) ;
+}
+
+/* Тултип, следующий за курсором */
+#svg-tooltip {
+    position: fixed;
+    pointer-events: none; /* Чтобы не мешал кликам */
+    background: rgba(31, 41, 55, 0.9);
+    color: white;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-family: monospace;
+    z-index: 9999;
+    display: none;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    white-space: nowrap;
+}
+
+/* Выделение активного элемента в цепочке тегов */
+.tooltip-tag-active {
+    color: #60a5fa;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+/* Подсветка текущего выбранного уровня (Inkscape style) */
+.inkscape-selected {
+    outline: 2px solid #ef4444 !important; /* Красная рамка для выбора */
+    outline-offset: 2px;
+    transition: outline 0.1s ease-in-out;
+}
+
+/* Эффект при наведении, чтобы показать область клика */
+#image-previewer svg *:hover {
+    cursor: pointer;
+    background-color: rgba(59, 130, 246, 0.05);
+}
+
+/* Стили для подсветки элементов SVG */
+#image-previewer svg *:hover {
+    outline: 2px solid #3b82f6; /* Синяя рамка */
+    outline-offset: 1px;
+    cursor: crosshair;
+    transition: outline 0.1s ease;
+}
+
+/* Стили для всплывающего уведомления (опционально) */
+.copy-notification {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #10b981;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 8px;
+    z-index: 1000;
+    animation: fade-in-out 2s forwards;
+}
+
+@keyframes fade-in-out {
+    0% { opacity: 0; transform: translateY(10px); }
+    15% { opacity: 1; transform: translateY(0); }
+    85% { opacity: 1; }
+    100% { opacity: 0; }
+}

@@ -1,0 +1,168 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-01-09 15:46+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+#: .\Apps\SMIL_SVGAnimationEditor\templates\SMIL_SVGAnimationEditor\main.html:14
+msgid "Временное изображение"
+msgstr "Temporary image"
+
+#: .\Apps\SMIL_SVGAnimationEditor\templates\SMIL_SVGAnimationEditor\main.html:20
+msgid "Скачать получившуюся SVG картинку"
+msgstr "Download this resulting SVG image"
+
+#: .\Apps\SMIL_SVGAnimationEditor\templates\SMIL_SVGAnimationEditor\main.html:46
+msgid "Туториал"
+msgstr "Guide"
+
+#: .\Apps\SMIL_SVGAnimationEditor\templates\SMIL_SVGAnimationEditor\main.html:47
+msgid "Про инструмент"
+msgstr "About this tool"
+
+#: .\Apps\SMIL_SVGAnimationEditor\templates\SMIL_SVGAnimationEditor\main.html:49
+msgid ""
+"\n"
+"                Здесь я оставил небольшой туториал для ознакомления с этим "
+"инструментом.\n"
+"                Инструмент очень простой. По факту, редактор для анимаций "
+"просто копирует написанную\n"
+"                разметку и вставляет в страницу и та (в зависимости от того, "
+"правильно ли она написанна),\n"
+"                запускает анимацию.\n"
+msgstr ""
+"\n"
+" I've left a short tutorial here to get you started with this "
+"tool.\n"
+" The tool is very simple. Essentially, the animation editor "
+"simply copies the written markup and pastes it into the page, which (depending on whether it's "
+"written correctly)\n"
+" starts the animation.\n"
+
+#: .\Apps\SMIL_SVGAnimationEditor\templates\SMIL_SVGAnimationEditor\main.html:57
+msgid ""
+"\n"
+"                Другой редактор, только для ознакомления с исходным кодом "
+"самого изображения. Оба редактора \n"
+"                работают при помощи <a href=\"https://ace.c9.io/\" >внешней "
+"библиотеки ACE</a>. Прекрасная, быстрая и лёгкая библиотека для "
+"редактирование\n"
+"                кода в браузере.\n"
+msgstr ""
+"\n"
+" Another editor, only for viewing the source code of the "
+"image itself. Both editors \n"
+" use the <a href=\"https://ace.c9.io/\" >external "
+"ACE library</a>. A wonderful, fast, and lightweight library for "
+"editing\n"
+" code in the browser.\n"
+
+#: .\Apps\SMIL_SVGAnimationEditor\templates\SMIL_SVGAnimationEditor\main.html:64
+msgid ""
+"\n"
+"                Весь код анимаций записывается в конец редактируемого файла "
+"и оборачивается в отдельную группу с <b>id</b>=\"<i>smil_svg-animation-"
+"editor-layer</i>\"\n"
+msgstr ""
+"\n"
+" All animation code is written to the end of the edited file"
+"and wrapped in a separate group with <b>id</b>=\"<i>smil_svg-animation-"
+"editor-layer</i>\"\n"
+
+#: .\Apps\SMIL_SVGAnimationEditor\templates\SMIL_SVGAnimationEditor\main.html:68
+msgid "Как писать и применять анимации?"
+msgstr "How to make and apply an animations?"
+
+#: .\Apps\SMIL_SVGAnimationEditor\templates\SMIL_SVGAnimationEditor\main.html:70
+msgid ""
+"\n"
+"                Не нужно искать кнопки применить, редактор автоматически "
+"сохраняет и применяет написанные анимации. Так как редактор сохраняет\n"
+"                все анимации в конце каждого редактируемого изображения, "
+"подход к написанию анимаций тоже должен ему соответствовать.\n"
+"                То есть, анимации вложенные в элементы не поддерживаются, "
+"применить анимации можно будет только к тем элементам к которым будет \n"
+"                соответствующий <b>слектор</b> или <b>ID</b> прописанный в "
+"атрибуте <i>href</i>.\n"
+msgstr ""
+"\n"
+" No need to search for apply buttons; the editor automatically "
+"saves and applies written animations. Since the editor saves\n"
+" all animations at the end of each edited image, "
+"your approach to writing animations should also match it.\n"
+" That is, animations nested within elements are not supported. "
+"animations can only be applied to elements that have a corresponding <b>selector</b> or <b>ID</b> specified in the "
+"<i>href</i> attribute.\n"
+
+#: .\Apps\SMIL_SVGAnimationEditor\templates\SMIL_SVGAnimationEditor\main.html:77
+msgid "Как узнать, какой и у какого элемента, ID?"
+msgstr "How to find out which element has which ID?"
+
+#: .\Apps\SMIL_SVGAnimationEditor\templates\SMIL_SVGAnimationEditor\main.html:79
+msgid ""
+"\n"
+"                Для этого я написал небольшое расширение для данного "
+"инструмента, которое подсвечивает пути до \n"
+"                желанных для анимации элементов, плюс возможность "
+"копирование любого из них. Делается это следующим образом.\n"
+msgstr ""
+"\n"
+" For this purpose, I wrote a small extension for this "
+"tool, which highlights paths to the desired elements to animate, plus the ability to "
+"copy any of them. This is done as follows.\n"
+
+#: .\Apps\SMIL_SVGAnimationEditor\templates\SMIL_SVGAnimationEditor\main.html:86
+msgid ""
+"\n"
+"                В результате, выбранный элемент останется подсвеченным.\n"
+msgstr ""
+"\n"
+" As a result, the selected item will remain highlighted.\n"
+
+#: .\Apps\SMIL_SVGAnimationEditor\templates\SMIL_SVGAnimationEditor\main.html:92
+msgid ""
+"\n"
+"                Ты наводишься на нужный элемент и кликаешь до тех пор, пока "
+"не будет выбран необходимый. \n"
+"                После того, как будет выбран последний элемент, следующий "
+"клик сделает круг и выберет самый верхний элемент.\n"
+msgstr ""
+"\n"
+"You hover over the desired element and click until "
+"the desired element is selected.\n"
+"After the last element is selected, the next "
+"click will circle and select the topmost element.\n"
+
+#: .\Apps\SMIL_SVGAnimationEditor\templates\SMIL_SVGAnimationEditor\main.html:97
+msgid "Что делать дальше?"
+msgstr "What to do next?"
+
+#: .\Apps\SMIL_SVGAnimationEditor\templates\SMIL_SVGAnimationEditor\main.html:99
+msgid ""
+"\n"
+"                После того, как у тебя получилась требуемая анимация SVG "
+"изображения, просто нажми кнопку скачать под изображением.\n"
+"                Так же в последующем, если потребуется доработать анимации, "
+"можно просто импортировать данный файл обратно. Из-за того, \n"
+"                что все анимации хранятся в отдельном месте их легко "
+"воспроизвести в редакторе.\n"
+msgstr ""
+"\n"
+" Once you've created the desired SVG animation, "
+"image, simply click the download button below it.\n"
+"Also, if you need to refine the animations later, "
+"you can simply import this file back. Because all animations are stored in a separate location, they are easy to "
+"play in the editor.\n"

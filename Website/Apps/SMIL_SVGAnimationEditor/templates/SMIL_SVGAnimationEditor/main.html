@@ -1,0 +1,119 @@
+{% extends 'Post/base_tool.html' %}
+{% load static%}
+{% load i18n %}
+
+{% block hat_tool %}
+{% endblock%}
+
+{% get_current_language as LANGUAGE_CODE %}
+{% block content_tool %}
+<div class="limiter in_middle-self">
+    <div class="border rounded-2xl p-2">
+        <div class="flex">
+            <div id="image-previewer" class="grow">
+                <img class="image dynamic_image" src="{% static 'loading.svg' %}" data-src="{% static 'SMIL_SVGAnimationEditor/img/svg-placeholder.svg'%}" alt="{% trans 'Временное изображение' %}">
+            </div>
+        </div>
+        <div class="flex gap-3 items-center">
+            <input type="file" id="svginput" accept=".svg">
+            <div id="download-svg" class="ttw-button ttw-button_action hidden">
+                <img class="ttw-button_squared ttw-button_border" src="{% static 'SMIL_SVGAnimationEditor/img/download.svg' %}" alt="{% trans "Скачать получившуюся SVG картинку" %}">
+            </div>
+        </div>
+    </div>
+    <div class="mt-8"></div>
+    <div class="tabs w-full">
+        <div class="tab_button tab_active" data-bodyid="1">
+            <img width="16px" height="16px"class="" src="{% static 'SMIL_SVGAnimationEditor/img/edit.svg' %}">
+        </div>
+        <div class="tab_button" data-bodyid="2">
+            <img width="16px" height="16px" class="" src="{% static 'SMIL_SVGAnimationEditor/img/code.svg' %}">
+        </div>
+        <div class="tab_button" data-bodyid="3">
+            <img width="16px" height="16px" class="" src="{% static 'SMIL_SVGAnimationEditor/img/question_mark.svg' %}">
+        </div>
+    </div>
+    <div class="tab_body">
+        <div id="tab_body-1" class="tab_element tab_element__active">
+            <div id="svg-editor" class="w-full min-h-125">
+            </div>
+        </div>
+        <div id="tab_body-2" class="tab_element">
+            <div id="svg-viewer" class="w-full min-h-125">
+            </div>
+        </div>
+        <div id="tab_body-3" class="tab_element">
+            <h2 class="paragraph">{% trans "Туториал" %}</h2>
+            <h3 class="paragraph">{% trans "Про инструмент" %}</h3>
+            <div class="text">
+                {% blocktrans %}
+                Здесь я оставил небольшой туториал для ознакомления с этим инструментом.
+                Инструмент очень простой. По факту, редактор для анимаций просто копирует написанную
+                разметку и вставляет в страницу и та (в зависимости от того, правильно ли она написанна),
+                запускает анимацию.
+                {% endblocktrans %}
+            </div>
+            <div class="text ref">
+                {% blocktrans %}
+                Другой редактор, только для ознакомления с исходным кодом самого изображения. Оба редактора 
+                работают при помощи <a href="https://ace.c9.io/" >внешней библиотеки ACE</a>. Прекрасная, быстрая и лёгкая библиотека для редактирование
+                кода в браузере.
+                {% endblocktrans %}
+            </div>
+            <div class="text">
+                {% blocktrans %}
+                Весь код анимаций записывается в конец редактируемого файла и оборачивается в отдельную группу с <b>id</b>="<i>smil_svg-animation-editor-layer</i>"
+                {% endblocktrans %}
+            </div>
+            <h3 class="paragraph">{% trans "Как писать и применять анимации?" %}</h3>
+            <div class="text">
+                {% blocktrans %}
+                Не нужно искать кнопки применить, редактор автоматически сохраняет и применяет написанные анимации. Так как редактор сохраняет
+                все анимации в конце каждого редактируемого изображения, подход к написанию анимаций тоже должен ему соответствовать.
+                То есть, анимации вложенные в элементы не поддерживаются, применить анимации можно будет только к тем элементам к которым будет 
+                соответствующий <b>слектор</b> или <b>ID</b> прописанный в атрибуте <i>href</i>.
+                {% endblocktrans %}
+            </div>
+            <h3 class="paragraph">{% trans "Как узнать, какой и у какого элемента, ID?" %}</h3>
+            <div class="text">
+                {% blocktrans %}
+                Для этого я написал небольшое расширение для данного инструмента, которое подсвечивает пути до 
+                желанных для анимации элементов, плюс возможность копирование любого из них. Делается это следующим образом.
+                {% endblocktrans %}
+            </div>
+            <img class="image dynamic_image image-bordered" src="{% static 'loading.svg' %}" data-src="{% static "SMIL_SVGAnimationEditor/img/tutorial/1-" %}{{LANGUAGE_CODE}}-select-element.png">
+            <div class="text">
+                {% blocktrans %}
+                В результате, выбранный элемент останется подсвеченным.
+                {% endblocktrans %}
+            </div>
+            <img class="image dynamic_image image-bordered" src="{% static 'loading.svg' %}" data-src="{% static "SMIL_SVGAnimationEditor/img/tutorial/2-xx-select-element.png" %}">
+            <div class="text">
+                {% blocktrans %}
+                Ты наводишься на нужный элемент и кликаешь до тех пор, пока не будет выбран необходимый. 
+                После того, как будет выбран последний элемент, следующий клик сделает круг и выберет самый верхний элемент.
+                {% endblocktrans %}
+            </div>
+            <h3 class="paragraph">{% trans "Что делать дальше?" %}</h3>
+            <div class="text">
+                {% blocktrans %}
+                После того, как у тебя получилась требуемая анимация SVG изображения, просто нажми кнопку скачать под изображением.
+                Так же в последующем, если потребуется доработать анимации, можно просто импортировать данный файл обратно. Из-за того, 
+                что все анимации хранятся в отдельном месте их легко воспроизвести в редакторе.
+                {% endblocktrans %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block footer_tool %}
+{% endblock %}
+
+{% block scripts_tool %}
+    <script src="{% static 'SMIL_SVGAnimationEditor/js/index.min.js' %}"></script>
+{% endblock %}
+
+{% block styles_tool %}
+	<link type="text/css" rel="stylesheet" href="{% static 'SMIL_SVGAnimationEditor/css/index.min.css' %}"/>
+{% endblock %}

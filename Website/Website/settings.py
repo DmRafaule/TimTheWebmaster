@@ -81,6 +81,7 @@ MY_INSTALLED_APPS = [
     'Apps.ShaderToy.apps.ShadertoyConfig',
     'Apps.LinkThief.apps.LinkthiefConfig',
     'Apps.TextThief.apps.TextthiefConfig',
+    'Apps.SMIL_SVGAnimationEditor.apps.SmilSvganimationeditorConfig',
 ]
 
 INSTALLED_APPS += MY_INSTALLED_APPS

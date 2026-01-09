@@ -50,6 +50,7 @@ urlpatterns += i18n_patterns(
     path('tools/', include('Apps.TextThief.urls')),
     path('tools/', include('Apps.RSSAggregator.urls')),
     path('tools/', include('Apps.ShaderToy.urls')),
+    path('tools/', include('Apps.SMIL_SVGAnimationEditor.urls')),
     path('', include('Post.urls')),
     path('', include('PagiScroll.urls')),
 )
