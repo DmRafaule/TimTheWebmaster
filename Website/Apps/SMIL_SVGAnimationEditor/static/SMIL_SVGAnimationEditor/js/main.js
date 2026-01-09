@@ -27,7 +27,8 @@ function setEditor(initContent){
 }
 
 function wrapInEditorIdentifier(content){
-    var group = document.createElement('g')
+    const svgNS = "http://www.w3.org/2000/svg";
+    const group = document.createElementNS(svgNS, 'g');
     group.id = animation_layer_id
     group.innerHTML = content
     return group
