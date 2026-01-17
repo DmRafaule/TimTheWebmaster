@@ -4,8 +4,8 @@
 
 
 {% block head %}
-	<title>{% trans "Тим зе вебмастер, автоматизация, эксперименты и исcледования" %}</title>
-	<meta name="description" content="{% trans "Тим зе вебмастер, автоматизация, эксперименты и исcледования в сфере разработки программ для нужд бизнеса и отдельных людей"%}">
+	<title>{% trans "Тим зе вебмастер - написание скриптов, парсеров, ботов" %}</title>
+	<meta name="description" content="{% trans "Тим зе вебмастер, автоматизация рабочих и бизнес процессов используя парсеры, скрипты и телеграм ботов"%}">
 	<link rel="canonical" href="https://{{domain_name}}{%url 'home'%}" />
 	{% if isYandexAdManagerMiddlewareConnected %}
 		{% include 'YandexAdManager/admanager_header.html' %}
@@ -17,8 +17,8 @@
 	<div class="max-w-4xl self-center flex flex-col ttw-content w-full">
 		<div class="flex gap-3 flex-wrap mb-10">
 			<div class="flex flex-col gap-2 grow shrink basis-2xs" style="flex: 1 1 300px;">
-				<h1>{% trans "Лаборатория открытого тестирования Тима Зе Вебмастера" %}</h1>
-				<div>{% trans "Где создаются собственные вебсервисы и инструменты для тестирования. Пишу статьи связанные с исследованием интересующих меня и других топиков. Делюсь кодом, опытом, наработками, ошибками и разными историями пока работаю над своими(и чужими) задачами и проектами. " %}</div>
+				<h1>{% trans "Лаборатория разработки - Тима Зе Вебмастера" %}</h1>
+				<div>{% trans "Где создаются собственные вебсервисы и инструменты, скрипты автоматизации и телеграм боты, парсеры сайтов и django приложения. Пишу статьи связанные с исследованием интересующих меня и топиков. Делюсь кодом, опытом, наработками, ошибками и разными историями пока работаю над своими(и чужими) задачами и проектами." %}</div>
 			</div>
 			<div class="flex flex-col justify-between gap-2 grow shrink-0 basis-auto uppercase">
 				<a href="{% url "articles-list" %}" class="basis-auto rounded-[8px] bg-main text-white">

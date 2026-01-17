@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-01-08 11:52+0300\n"
+"POT-Creation-Date: 2026-01-17 16:45+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -150,8 +150,8 @@ msgstr ""
 "\t\t\t\t\tThis site is a engineering lab for publishing articles about "
 "conducted experiments and research. On the topics of creating applied "
 "programs, data analysis and general trends.\n"
-"\t\t\t\t\tThis site also contains some internal tools, such as "
-"a result or as a necessary means for conducting research.\n"
+"\t\t\t\t\tThis site also contains some internal tools, such as a result or "
+"as a necessary means for conducting research.\n"
 "\t\t\t\t"
 
 #: .\Main\templates\Main\about-website.html:59
@@ -729,11 +729,11 @@ msgstr ""
 
 #: .\Main\templates\Main\about.html:6
 msgid ""
-"Тим зе Вебмастер, Лаборатория открытого тестирования. Всё о проекте и "
-"направлениях деятельности этого проекта"
+"Тим зе Вебмастер - лаборатория разработки. Всё о проекте и направлениях "
+"деятельности этого проекта(автора)"
 msgstr ""
-"Tim the Webmaster, Open Engineering lab. All about the project and "
-"areas of activity of this project"
+"Tim the Webmaster, Development lab. All about the project and areas of "
+"activity of this project and author"
 
 #: .\Main\templates\Main\about.html:7
 msgid ""
@@ -741,27 +741,27 @@ msgid ""
 "направления деятельности (разработка программ, SEO, ИИ, история "
 "программировани, монетизация)"
 msgstr ""
-"Everything about the project, why it was created, who is behind it (Dima Chuduk), the main ones"
-"areas of activity (software development, SEO, AI, history"
-"programming, monetization)"
+"Everything about the project, why it was created, who is behind it (Dima "
+"Chuduk), the main onesareas of activity (software development, SEO, AI, "
+"historyprogramming, monetization)"
 
 #: .\Main\templates\Main\about.html:17
 msgid "Тима Чудук"
 msgstr "Dima Chuduk"
 
 #: .\Main\templates\Main\about.html:37
-msgid ""
-"Всё о лаборатории открытого тестирования и авторе проекта Тиме зе Вебмастере"
+msgid "Всё о лаборатории разработки и авторе проекта Тима зе Вебмастера"
 msgstr ""
-"All about the Engineering lab and the author of the project, Tim the Webmaster"
+"All about the Development lab and the author of the project, Tim the "
+"Webmaster"
 
 #: .\Main\templates\Main\about.html:38
 msgid ""
-"Расскажу зачем была сделана данная лаборатория и чем она занимается. Так же "
-"немного об авторе данного проекта Тиме зе Вебмастере(он же Дима Чудук)"
+"Расскажу зачем была сделана данная лаборатория и чем она(я) занимаюсь. Так "
+"же немного об авторе данного проекта Тиме зе Вебмастере(он же Дима Чудук)"
 msgstr ""
-"I’ll tell you why this laboratory was created and what it does. Also "
-"a little about the author of this project, Tim the Webmaster (aka Dima Chuduk)"
+"I’ll tell you why this laboratory was created and what it does. Also a "
+"little about the author of this project, Tim the Webmaster (aka Dima Chuduk)"
 
 #: .\Main\templates\Main\about.html:58
 msgid "Немного об авторе"
@@ -770,7 +770,7 @@ msgstr "A little bit about author"
 #: .\Main\templates\Main\about.html:61
 msgid ""
 "\n"
-"\t\t\tЯ обычный программист, самоучка. Люблю посидеть часик-другой над "
+"\t\t\tЯ обычный программист-самоучка. Люблю посидеть часик-другой над "
 "проблемой, решать которую никто не хотел. \n"
 "\t\t\tИ сделать выводы, которые никто не просил. Но возможно, кому-нибудь да "
 "и будет интересно почитать про процесс решения проблемы и\n"
@@ -778,22 +778,38 @@ msgid ""
 "\t\t\t"
 msgstr ""
 "\n"
-"\t\t\tI'm an ordinary programmer, self-taught. I like to sit for an hour or two on "
-"a problem that no one wanted to solve.\n"
-"\t\t\tAnd draw conclusions that no one asked. But perhaps someone will"
-"and it will be interesting to read about the process of solving the problem and\n"
+"\t\t\tI'm an ordinary programmer, self-taught. I like to sit for an hour or "
+"two on a problem that no one wanted to solve.\n"
+"\t\t\tAnd draw conclusions that no one asked. But perhaps someone willand it "
+"will be interesting to read about the process of solving the problem and\n"
 "\t\t\tmaybe even this will be useful to him.\n"
 "\t\t\t"
 
-#: .\Main\templates\Main\about.html:69
+#: .\Main\templates\Main\about.html:68
+msgid ""
+"\n"
+"\t\t\tЗанимаюсь тем, что разрабатываю телеграм ботов, парсеры сайтов, "
+"скрипты автоматизации на сервера и декстоп а так же создаю и \n"
+"\t\t\tдорабатываю сайты на django. Чиню и публикую уже готовые сайты(на "
+"любом стеке) на просторах сети.\n"
+"\t\t\t"
+msgstr ""
+"\n"
+"\t\t\tI develop Telegram bots, website parsers, "
+"server and desktop automation scripts, and I also create and\n"
+"\t\t\tmodify Django websites. I repair and publish ready-made websites (on "
+"any stack) online.\n"
+"\t\t\t"
+
+#: .\Main\templates\Main\about.html:75
 msgid "Железнодорожный вокзал, вид с моста"
 msgstr "Railway station, view from the bridge"
 
-#: .\Main\templates\Main\about.html:73
+#: .\Main\templates\Main\about.html:79
 msgid "Парк, перед кинотеатром 'Звезда'"
 msgstr "Park, in front of the Zvezda cinema"
 
-#: .\Main\templates\Main\about.html:76
+#: .\Main\templates\Main\about.html:82
 msgid ""
 "\n"
 "\t\t\tРодился я в Барановичах, Беларусь. Единственной достопримечательностью "
@@ -805,35 +821,34 @@ msgid ""
 "\t\t\t"
 msgstr ""
 "\n"
-"\t\t\tI was born in Baranovichi, Belarus. The only attraction "
-"which is the railway station. Don't get me wrong, I like this "
-"city,\n"
-"\t\t\tit's just that even this small city is too crowded for me. Because it's big"
-"I lived part of my life in the swamps - Polesie. In the village. It's a habit, so to"
-"say.\n"
+"\t\t\tI was born in Baranovichi, Belarus. The only attraction which is the "
+"railway station. Don't get me wrong, I like this city,\n"
+"\t\t\tit's just that even this small city is too crowded for me. Because "
+"it's bigI lived part of my life in the swamps - Polesie. In the village. "
+"It's a habit, so tosay.\n"
 "\t\t\t"
 
-#: .\Main\templates\Main\about.html:83
+#: .\Main\templates\Main\about.html:89
 msgid "Дорога через болото"
 msgstr "A road through swamps"
 
-#: .\Main\templates\Main\about.html:87
+#: .\Main\templates\Main\about.html:93
 msgid "Болото через поле"
 msgstr "A swamp after field"
 
-#: .\Main\templates\Main\about.html:91
+#: .\Main\templates\Main\about.html:97
 msgid "Болото рядом"
 msgstr "Swamp near by"
 
-#: .\Main\templates\Main\about.html:95
+#: .\Main\templates\Main\about.html:101
 msgid "Посёлок, спиной к болоту через поле :)"
 msgstr "Village, back to the swamp across the field :)"
 
-#: .\Main\templates\Main\about.html:100
+#: .\Main\templates\Main\about.html:106
 msgid "А это я"
 msgstr "It is me btw"
 
-#: .\Main\templates\Main\about.html:102
+#: .\Main\templates\Main\about.html:108
 msgid ""
 "\n"
 "\t\t\tИтак, вот мне 20 лет, а у меня ни опыта, ни каких-либо нормальных "
@@ -844,18 +859,18 @@ msgid ""
 "\t\t\t"
 msgstr ""
 "\n"
-"\t\t\tSo, here I am 20 years old, and I have neither experience nor any normal"
-"skills.\n"
-"\t\t\tI started trying myself in various areas of development, from front-end to "
-"game developer. Spoiler, I did not become a game developer.\n"
+"\t\t\tSo, here I am 20 years old, and I have neither experience nor any "
+"normalskills.\n"
+"\t\t\tI started trying myself in various areas of development, from front-"
+"end to game developer. Spoiler, I did not become a game developer.\n"
 "\t\t\tFor two years I made a bunch of demos, but I released them \n"
 "\t\t\t"
 
-#: .\Main\templates\Main\about.html:107
+#: .\Main\templates\Main\about.html:113
 msgid "только одну игру"
 msgstr "only a single one game."
 
-#: .\Main\templates\Main\about.html:108
+#: .\Main\templates\Main\about.html:114
 msgid ""
 "\n"
 "\t\t\tна Google Play и то не очень хорошую.\n"
@@ -865,27 +880,39 @@ msgstr ""
 "\t\t For Google Play, and not very good one.\n"
 "\t\t"
 
-#: .\Main\templates\Main\about.html:112
+#: .\Main\templates\Main\about.html:118
 msgid ""
 "\n"
 "\t\t\t\tИ фронтенд разработчиком я не стал. Слишком много фреймворков в "
 "которых нужно разбираться и шарить. Я предпочитаю более старый, \n"
 "\t\t\t\tтрадиционный подход с обычным HTML и JS на пару. Без фреймворков. "
-"Как известно работы для такого \"специалиста\" не очень много.\n"
+"Как известно, работы для такого \"специалиста\" не очень много.\n"
 "\t\t\t\t"
 msgstr ""
 "\n"
-"\t\t\t\tAnd I didn't become a front-end developer. There are too many frameworks to wrap around your head"
-". I prefer the older one,\n"
-"\t\t\t\ttraditional approach with plain HTML and JS paired. Without frameworks."
-"As you know, there is not very much work for such a “specialist.”\n"
+"\t\t\t\tAnd I didn't become a front-end developer. There are too many "
+"frameworks to wrap around your head. I prefer the older one,\n"
+"\t\t\t\ttraditional approach with plain HTML and JS paired. Without "
+"frameworks.As you know, there is not very much work for such a "
+"“specialist.”\n"
 "\t\t\t\t"
 
-#: .\Main\templates\Main\about.html:118
+#: .\Main\templates\Main\about.html:124
+msgid ""
+"\n"
+"\t\t\t\tЯ больше бэкенд разработчик. Если потребуется, просто закажу вёрстку "
+"для сайта и прикручу к нему бэкенд :)\n"
+"\t\t\t\t"
+msgstr ""
+"\n"
+"\t\t\t\tI'm more of a backend developer. If needed, I'll just order the frontend part for a website and add the backend later by myself :)\n"
+"\t\t\t\t"
+
+#: .\Main\templates\Main\about.html:129
 msgid "Почему решил сделать сайт"
 msgstr "Why did I decide to make a website?"
 
-#: .\Main\templates\Main\about.html:121
+#: .\Main\templates\Main\about.html:132
 msgid ""
 "\n"
 "\t\t\tНужно было чем-то заняться. Вот я и решил, а давай я опубликую сайт. "
@@ -896,14 +923,14 @@ msgid ""
 "\t\t\t"
 msgstr ""
 "\n"
-"\t\t\tI had to do something. So I decided, let me publish a website."
-"I’ve had a draft lying around since 2022, when I was still interested in hackathons,"
-"devops and hacking. Initially, I made this site to work on and "
-"practice various vulnerabilities in sites. And of course, figure out "
-"how websites generally work.\n"
+"\t\t\tI had to do something. So I decided, let me publish a website.I’ve had "
+"a draft lying around since 2022, when I was still interested in hackathons,"
+"devops and hacking. Initially, I made this site to work on and practice "
+"various vulnerabilities in sites. And of course, figure out how websites "
+"generally work.\n"
 "\t\t\t"
 
-#: .\Main\templates\Main\about.html:126
+#: .\Main\templates\Main\about.html:137
 msgid ""
 "\n"
 "\t\t\tСейчас я этим не особо увлекаюсь, я сосредоточился на созидании и "
@@ -914,7 +941,7 @@ msgstr ""
 "I'm not really into that anymore; I'm focused on creation and design. It's "
 "easier to destroy than to build, as they say.\t\t\t"
 
-#: .\Main\templates\Main\about.html:131
+#: .\Main\templates\Main\about.html:142
 msgid ""
 "\n"
 "\t\t\tА ещё я хотел просто писать о том, что меня интересовало и интересует "
@@ -932,7 +959,7 @@ msgstr ""
 "build the website using the language I like - Python - and to code it in "
 "pure HTML, CSS, and JS.\t\t\t"
 
-#: .\Main\templates\Main\about.html:137
+#: .\Main\templates\Main\about.html:148
 msgid ""
 "\n"
 "\t\t\tЕсли быть честным, Python не мой любимый язык программирования. Это "
@@ -946,54 +973,6 @@ msgstr ""
 "rather be C or C++. I love these programming languages, but sharing programs "
 "written in them with the general public is very difficult. And I "
 "specifically want to share and show the results of my work to others.\n"
-"\t\t\t"
-
-#: .\Main\templates\Main\about.html:141
-msgid "О лаборатории открытого тестирования"
-msgstr "About an Open Engineering Lab"
-
-#: .\Main\templates\Main\about.html:144
-msgid ""
-"\n"
-"\t\t\tСуть данной лаборатории(сайта) заключается в том, что я, выбирая "
-"определённый топик по интересам, пытаюсь изучить его со сторон\n"
-"\t\t\tдо селе неизученных. Тестировать различные программные решения на этом "
-"и других моих сайтах. И что самое важное документировать всё это.\n"
-"\t\t\tВедь в этом и заключается смысл данного сайта, что бы посетитель нашёл "
-"нужное и полезное ему исследование, будь оно связано с\n"
-"\t\t\tизучением нового стека технологий, отдельных библиотек или сбором и "
-"последующим анализом данных.\n"
-"\t\t\t"
-msgstr ""
-"\n"
-"\t\t\tThe essence of this lab (site) is that I, choosing "
-"a certain topic of interest, I'm trying to study it from the outside\n"
-"\t\t\tuntil the village is unexplored. Test various software solutions on this"
-"and my other sites. And what is most important is to document all this.\n"
-"\t\t\tAfter all, this is the point of this site, so that the visitor would find"
-"necessary and useful research for him, be it related to\n"
-"\t\t\texploring a new technology stack, individual libraries or collecting and "
-"subsequent data analysis.\n"
-"\t\t\t"
-
-#: .\Main\templates\Main\about.html:152
-msgid ""
-"\n"
-"\t\t\tЧто за топики по интересам? Это довольно обширная категория, которая "
-"будет постоянно меняться, ибо она зависит только от одного человека\n"
-"\t\t\t- меня. В неё входят такие топики как: программирование сайтов, "
-"поисковая(а теперь ещё и ИИ) оптимизация, изучение и внедрение различных\n"
-"\t\t\tбиблиотек и фреймворков на сайт или в другие программы. История "
-"программирования, людей и компаний стоящих за той или иной технологией.\n"
-"\t\t\t"
-msgstr ""
-"\n"
-"\t\t\tWhat are the topics of interest? This is a fairly broad category that "
-"will constantly change, because it depends only on one person\n"
-"\t\t\t- me. It includes such topics as: website programming, "
-"search (and now also AI) optimization, study and implementation of various\n"
-"\t\t\tlibraries and frameworks to a website or other programs. History "
-"programming, people and companies behind this or that technology.\n"
 "\t\t\t"
 
 #: .\Main\templates\Main\base.html:72 .\Main\templates\Main\base.html:75
@@ -1104,32 +1083,31 @@ msgid "Об авторе"
 msgstr "About author"
 
 #: .\Main\templates\Main\home.html:7
-msgid "Тим зе вебмастер, автоматизация, эксперименты и исcледования"
-msgstr "Tim the webmaster, automation, experiments and research"
+msgid "Тим зе вебмастер - написание скриптов, парсеров, ботов"
+msgstr "Tim the webmaster - scripts, scrapers and bots"
 
 #: .\Main\templates\Main\home.html:8
 msgid ""
-"Тим зе вебмастер, автоматизация, эксперименты и исcледования в сфере "
-"разработки программ для нужд бизнеса и отдельных людей"
-msgstr ""
-"Tim the webmaster, automation, experiments and research in the field of "
-"developing programs for the needs of businesses and individuals"
+"Тим зе вебмастер, автоматизация рабочих и бизнес процессов используя "
+"парсеры, скрипты и телеграм ботов"
+msgstr "Tim the webmaster, automation for business using scrapers, scripts and telegram bots"
 
 #: .\Main\templates\Main\home.html:20
-msgid "Лаборатория открытого тестирования Тима Зе Вебмастера"
-msgstr "Tim The Webmaster's Open Engineering Laboratory"
+msgid "Лаборатория разработки - Тима Зе Вебмастера"
+msgstr "Tim The Webmaster's Development Laboratory"
 
 #: .\Main\templates\Main\home.html:21
 msgid ""
-"Где создаются собственные вебсервисы и инструменты для тестирования. Пишу "
-"статьи связанные с исследованием интересующих меня и других топиков. Делюсь "
-"кодом, опытом, наработками, ошибками и разными историями пока работаю над "
-"своими(и чужими) задачами и проектами. "
+"Где создаются собственные вебсервисы и инструменты, скрипты автоматизации и "
+"телеграм боты, парсеры сайтов и django приложения. Пишу статьи связанные с "
+"исследованием интересующих меня и топиков. Делюсь кодом, опытом, "
+"наработками, ошибками и разными историями пока работаю над своими(и чужими) "
+"задачами и проектами."
 msgstr ""
-"Where they create their own web services and testing tools. I am writing "
-"articles related to the research of topics that interest me and other topics. I share "
-"code, experience, developments, errors and various stories while I'm working on "
-"my own (and other people's) tasks and projects."
+"Where I'm developing my own web services and online tools, automation scripts and telegram bots, scrapers of websites and django apps. I am writing "
+"articles related to the research of topics that interest me and other "
+"topics. I share code, experience, developments, errors and various stories "
+"while I'm working on my own (and other people's) tasks and projects."
 
 #: .\Main\templates\Main\home.html:36
 msgid "Или ознакомиться с сайтом"
@@ -1153,10 +1131,10 @@ msgstr ""
 "\n"
 "\t\t\t\t\tAn ordinary programmer who is engaged in implementing his "
 "projects, writes about it. Sharing \n"
-"\t\t\t\t\tas things progress, all the details of the development of this project are happening."
-"this is in two formats, in the public format\n"
-"\t\t\t\t\ttool or in the format of an article or a series of articles, if the project "
-"quite complicated.\n"
+"\t\t\t\t\tas things progress, all the details of the development of this "
+"project are happening.this is in two formats, in the public format\n"
+"\t\t\t\t\ttool or in the format of an article or a series of articles, if "
+"the project quite complicated.\n"
 "\t\t\t\t\t"
 
 #: .\Main\templates\Main\home.html:62
@@ -1172,12 +1150,13 @@ msgid ""
 "\t\t\t\t\t"
 msgstr ""
 "\n"
-"\t\t\t\t\tVarious topics fall into this laboratory. So, I will detail"
-"I analyze and publish the process of developing programs for specific needs.\n"
-"\t\t\t\t\tOr I am analyzing certain data sources for "
-"practical application in the field of website promotion in search engines.\n"
-"\t\t\t\t\tI also write articles related to the history of software development"
-"software, be it programming languages or the people behind it or \n"
+"\t\t\t\t\tVarious topics fall into this laboratory. So, I will detailI "
+"analyze and publish the process of developing programs for specific needs.\n"
+"\t\t\t\t\tOr I am analyzing certain data sources for practical application "
+"in the field of website promotion in search engines.\n"
+"\t\t\t\t\tI also write articles related to the history of software "
+"developmentsoftware, be it programming languages or the people behind it "
+"or \n"
 "\t\t\t\t\tother technology.\n"
 "\t\t\t\t\t"
 
@@ -1195,12 +1174,13 @@ msgid ""
 "\t\t\t\t\t"
 msgstr ""
 " \n"
-"\t\t\t\t\tAlso if I spend a lot of time developing and publishing my own"
-"tools and web applications.\n"
-"\t\t\t\t\tMy tools are of various types, from built-in<b>web "
-"applications</b>on my website to <b>terminal utilities</b>\n"
+"\t\t\t\t\tAlso if I spend a lot of time developing and publishing my "
+"owntools and web applications.\n"
+"\t\t\t\t\tMy tools are of various types, from built-in<b>web applications</"
+"b>on my website to <b>terminal utilities</b>\n"
 "\t\t\t\t\tand <b>PyPI packages</b> on <b>Python</b>. Since the tools itself "
-"If they have different directions, then their stacks are correspondingly different.\n"
+"If they have different directions, then their stacks are correspondingly "
+"different.\n"
 "\t\t\t\t\t So, to develop web applications I use <b>Django</b> and "
 "<b>TailwindCSS</b>, and for telegram bots <b>AIOgram</b>.\n"
 "\t\t\t\t\t"
