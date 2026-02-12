@@ -10,6 +10,7 @@
 @import "../../../../Main/static/Components/Blocks/attention.css";
 @import "../../../../Main/static/Components/Blocks/video.css";
 @import "../../../../Main/static/Components/Blocks/text.css";
+@import '../../../../Main/static/Components/Containers/Carousel/carousel.css'; 
 @import "tailwindcss";
 @tailwind utilities;
 

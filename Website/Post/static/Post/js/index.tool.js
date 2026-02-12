@@ -4,6 +4,7 @@ import '../../../../Main/static/Components/Base/ImagePreviewer/image_previewer.j
 import microlight from "../../../../Main/static/Components/Blocks/Codeblock/microlight.js";
 import "../../../../Main/static/Components/Containers/Tabs/tabs.js";
 import {mediaLoad} from '../../../../Main/static/Components/Base/media_loader.js'
+import "../../../../Main/static/Components/Containers/Carousel/carousel.js"
 
 if (document.readyState === "loading") {
     window.microlight = microlight

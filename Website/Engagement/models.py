@@ -2,7 +2,7 @@ from django.db import models
 from django.db.models.signals import post_delete, post_save
 from django.dispatch import receiver
 from Website.settings import LANGUAGES
-from Post.models import Post
+from Post.models import Post, Tool
 from django.utils.translation import gettext as _
 
 
@@ -68,35 +68,32 @@ def updateInteractionCommentsLength(url: str):
 #
 # There is a nice way out. Just make ForeingKey field in Post model. But it will destroy all
 # Independence of this app.
-@receiver(post_save, sender=Post)
+@receiver(post_save)
 def _post_save_interaction(sender, instance, **kwargs): 
-    isNewPostCreated = kwargs['created']
-    for lang_code in LANGUAGES:
-        code = lang_code[0]
-        category = instance.category.slug
-        slug = instance.slug
-        url = f"/{'/'.join([code,category,slug])}/"
-        if isNewPostCreated:
-            interaction = Interaction(url=url)
-            interaction.save()
-        else:
-            interaction, isCreated = Interaction.objects.get_or_create(url=url)
+    if isinstance(instance, Post):
+        isNewPostCreated = kwargs['created']
+        for lang_code in LANGUAGES:
+            code = lang_code[0]
+            category = instance.category.slug
+            slug = instance.slug
+            url = f"/{'/'.join([code,category,slug])}/"
+            if isNewPostCreated:
+                interaction = Interaction(url=url)
+                interaction.save()
+            else:
+                interaction, isCreated = Interaction.objects.get_or_create(url=url)
 
-@receiver(post_save, sender=Post)
+@receiver(post_delete)
 def _post_delete_interaction(sender, instance, **kwargs): 
-    for lang_code in LANGUAGES:
-        code = lang_code[0]
-        category = instance.category.slug
-        slug = instance.slug
-        url = f"/{'/'.join([code,category,slug])}/"
-        interaction_qs = Interaction.objects.filter(url=url)
-        if len(interaction_qs) > 0:
-            interaction_qs[0].delete()
-
-# connect all subclasses of base content item too
-for subclass in Post.__subclasses__():
-    post_save.connect(_post_save_interaction, subclass)
-    post_delete.connect(_post_delete_interaction, subclass)
+    if isinstance(instance, Post):
+        for lang_code in LANGUAGES:
+            code = lang_code[0]
+            category = instance.category.slug
+            slug = instance.slug
+            url = f"/{'/'.join([code,category,slug])}/"
+            interaction_qs = Interaction.objects.filter(url=url)
+            if len(interaction_qs) > 0:
+                interaction_qs[0].delete()
 
 @receiver(post_save, sender=Comment)
 def _post_save_comment(sender, instance, **kwargs): 

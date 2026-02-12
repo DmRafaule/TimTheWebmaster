@@ -2,7 +2,7 @@ from django.test import TestCase, RequestFactory, LiveServerTestCase
 from django.core.files.base import ContentFile
 
 from Main.models import Media
-from Post.models import Category, Tool, Tag, Platform, Note
+from Post.models import Category, Tool, Tag, Note
 from Post.views import tool
 from Post.middleware import ToolMiddleware
 
@@ -35,8 +35,6 @@ class MiddlewareTest(LiveServerTestCase):
         tag2.save()
         # Создаём платформу
         icon = ContentFile('TEXT', name=f"icon-{1}.png")
-        platform = Platform(name_ru="платформа", name_en="platform", icon=icon)
-        platform.save()
         # Создаём необходимые заметки
         note1 = Note()
         note1.save()
@@ -75,7 +73,6 @@ class MiddlewareTest(LiveServerTestCase):
         self.tool_not_empty.similar.add(tool2)
         self.tool_not_empty.tags.add(tag1)
         self.tool_not_empty.tags.add(tag2)
-        self.tool_not_empty.platforms.add(platform)
         self.tool_not_empty.save()
 
     def test_middleware_on_customized_tool(self):

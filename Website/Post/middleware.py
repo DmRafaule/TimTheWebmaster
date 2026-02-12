@@ -3,7 +3,7 @@ from django.template import loader
 
 from Main.models import Media
 from Main.utils import get_tool, getAllWithTags
-from Post.models import Tag, Note
+from Post.models import Tag, Note, TelegramBot, DjangoApp, Scraper, Script, WebTool
 
 class ToolMiddleware:
     ''' Промежуточный обработчик шаблонов для инструментов '''
@@ -63,6 +63,16 @@ class ToolMiddleware:
                 response.context_data.update({'videos': videos})
                 response.context_data.update({'pdfs': pdfs})
                 response.context_data.update({'audios': audios})
+                if isinstance(tool, WebTool):
+                    response.context_data.update({'isWebTool': True})
+                elif isinstance(tool, TelegramBot):
+                    response.context_data.update({'isTelegramBot': True})
+                elif isinstance(tool, Script):
+                    response.context_data.update({'isScript': True})
+                elif isinstance(tool, Scraper):
+                    response.context_data.update({'isScraper': True})
+                elif isinstance(tool, DjangoApp):
+                    response.context_data.update({'isDjangoApp': True})
                 # Пытаемся получить последние заметки по данному инструменту
                 tool_tags = Tag.objects.filter(slug_en=tool.slug)
                 if len(tool_tags) > 0:
@@ -79,5 +89,3 @@ class ToolMiddleware:
                     response.context_data.update({'posts': posts})
                     loaded_template = loader.get_template(f'Post/basic--post_preview-note.html')
                     response.context_data.update({'latest_notes': loaded_template.render(response.context_data, request), 'is_notes': is_notes})
-                # Получаем платформы, на которых данный инструмент может работать
-                response.context_data.update({'platforms': tool.platforms.all()})

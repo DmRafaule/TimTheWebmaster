@@ -71,16 +71,6 @@ def get_posts_by_letters(letters: str, queryset):
     else:
         return queryset
 
-def get_posts_by_platforms(platforms, queryset):
-    ''' Получает инструменты по наличию того или иного объекта Platform в ней '''
-    for platform in platforms:
-        queryset = queryset.filter(platforms=platform)
-
-    if len(queryset) == 0:
-        return []
-    else:
-        return queryset 
-
 def calculate_pages(total_items: int, items_per_page: int) -> int:
     ''' Вычисляет количество страниц необходимых для пагинации определённого к-ва элементов '''
     if total_items <= 0 or items_per_page <= 0:

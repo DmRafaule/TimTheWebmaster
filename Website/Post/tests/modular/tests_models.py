@@ -2,7 +2,7 @@ from django.test import TestCase
 from django.core.files.base import ContentFile
 from django.test import RequestFactory, LiveServerTestCase
 
-from Post.models import Article, Tool, Note, Category, Tag, Platform, Termin, Question 
+from Post.models import Article, Tool, Note, Category, Tag, Termin, Question 
 
 
 class ModelsTest(LiveServerTestCase):
@@ -27,8 +27,6 @@ class ModelsTest(LiveServerTestCase):
         self.tags = self.generate_tag_queryset(0,10)
         self.questions = self.generate_question_queryset(0,5)
         self.termins = self.generate_termin_queryset(0,5)
-        self.platform1 = self.create_platform(1)
-        self.platform2 = self.create_platform(2)
 
     def generate_article_queryset(self, start_indx, max_el_in):
         ''' Генерирует набор статей в заданом количестве 
@@ -66,13 +64,6 @@ class ModelsTest(LiveServerTestCase):
             tag.save()
         
         return Tag.objects.all()
-
-    def create_platform(self, indx):
-        ''' Создаёт платформы с указаным индексом '''
-        icon = ContentFile('TEXT', name=f"icon-{indx}.png")
-        platform = Platform(name_ru="платформа", name_en="platform", icon=icon)
-        platform.save()
-        return platform
     
     def generate_question_queryset(self, start_indx, max_el_in):
         ''' Генерирует набор вопросов в указанном диапазоне '''
@@ -127,7 +118,6 @@ class ModelsTest(LiveServerTestCase):
         for tool in self.tools:
             self.assertEqual(len(tool.similar.all()), 0)
             self.assertEqual(len(tool.tags.all()), 0)
-            self.assertEqual(len(tool.platforms.all()), 0)
 
         # Задаём новые значения
         # Связи с другими моделями
@@ -136,15 +126,12 @@ class ModelsTest(LiveServerTestCase):
         custom_tool.similar.add(self.tools[2])
         custom_tool.tags.add(self.tags[0])
         custom_tool.tags.add(self.tags[1])
-        custom_tool.platforms.add(self.platform1)
-        custom_tool.platforms.add(self.platform2)
         custom_tool.save()
 
         # Проверяем значения заданные после
         # Связи с другими моделями
         self.assertEqual(len(self.tools[0].similar.all()), 2)
         self.assertEqual(len(self.tools[0].tags.all()), 2)
-        self.assertEqual(len(self.tools[0].platforms.all()), 2)
     
     def test_Note_model(self):
         ''' Проверка модели Note '''

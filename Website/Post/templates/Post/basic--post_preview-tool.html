@@ -8,50 +8,43 @@
 {% for a in posts %}
 
 <div class="loader grow basis-1/3"  data-numpages="{{num_pages}}">
-	<div>
-		<div class="flex gap-5 items-center">
-			{% if a.icon %}
-				<div class="ttw-button ttw-button_link shrink-0">
-					<a class="ttw-button_circle" href="{{a.get_absolute_url}}">
-						<img width="32" height="32" src="{% get_media_prefix%}{{a.icon}}" alt="{% trans "Превью статьи" %}">
-					</a>
-				</div>
-			{% else %}
-				<div class="ttw-button ttw-button_link shrink-0">
-					<a href="{{a.get_absolute_url}}">
-						<img class="ttw-button_circle" width="32" height="32" src="{% static 'globe_placeholder.svg'%}" alt="{% trans "Превью статьи" %}">
-					</a>
-				</div>
-			{% endif %}
-			<h3 class="ref_hidden"><a href="{{ a.get_absolute_url }}">{{a.h1}}</a></h3>
-		</div>
-	</div>
-	<div class="flex gap-3 items-center">
-		<div class="flex gap-2 items-center">
-			<img width="16" height="16" src='{% static "Post/img/calendar.svg" %}' alt="{% trans "Часы" %}">
-			<div>{{a.timeCreated|date:"d.m.Y"}}</div>
-		</div>
-		/
-		<div class="flex gap-2 items-center">
-			<img width="16" height="16" src='{% static "Post/img/update.svg" %}' alt="{% trans "Часы" %}">
-			<div>{{a.timeUpdated|date:"d.m.Y"}}</div>
-		</div>
-		/
-		{% if a.platforms.all|length > 0 %}
-		<div class="flex gap-2">
-			{% for platform in a.platforms.all %}
-			<div>
-				<abbr title="{{platform.name}}">
-					<img width="16" height="16" src='{% get_media_prefix %}{{platform.icon}}' alt="{{platform.name}}">
-				</abbr>
+	<div class="flex gap-5 items-center">
+		{% if a.icon %}
+			<div class="ttw-button ttw-button_link shrink-0">
+				<a class="ttw-button_circle" href="{{a.get_absolute_url}}">
+					<img width="64" height="64" src="{% get_media_prefix%}{{a.icon}}" alt="{% trans "Превью статьи" %}">
+				</a>
 			</div>
-			{% endfor %}
-		</div>
+		{% else %}
+			<div class="ttw-button ttw-button_link shrink-0">
+				<a href="{{a.get_absolute_url}}">
+					<img class="ttw-button_circle" width="64" height="64" src="{% static 'globe_placeholder.svg'%}" alt="{% trans "Превью статьи" %}">
+				</a>
+			</div>
 		{% endif %}
+		<div>
+			<h3 class="ref_hidden"><a href="{{ a.get_absolute_url }}">{{a.h1}}</a></h3>
+			<div class="flex gap-3 items-center">
+				<div class="flex gap-2 items-center">
+					<img width="16" height="16" src='{% static "Post/img/calendar.svg" %}' alt="{% trans "Дата создания" %}">
+					<div>{{a.timeCreated|date:"d.m.Y"}}</div>
+				</div>
+				/
+				<div class="flex gap-2 items-center">
+					<img width="16" height="16" src='{% static "Post/img/update.svg" %}' alt="{% trans "Дата последнего обновления" %}">
+					<div>{{a.timeUpdated|date:"d.m.Y"}}</div>
+				</div>
+				/
+				<div class="flex gap-2 items-center">
+					<img width="16" height="16" src='{% static "/" %}{{a.common_icon_path}}' alt="{% trans "Иконка типа приложения" %}">
+					<div>{{a.common_name}}</div>
+				</div>
+			</div>
+			{% if isEngagementMiddlewareConnected %}
+				{% include 'Engagement/Other/interaction.html' with path=a.get_absolute_url%}
+			{% endif %}
+		</div>
 	</div>
-	{% if isEngagementMiddlewareConnected %}
-		{% include 'Engagement/Other/interaction.html' with path=a.get_absolute_url%}
-	{% endif %}
 	<div>
 		{{a.description}} 	
 	</div>

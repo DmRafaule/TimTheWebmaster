@@ -62,4 +62,4 @@ def tool(request, post_slug):
     if post.template:
         return TemplateResponse(request, post.template.path, context=context)
     else:
-        return TemplateResponse(request, post.default_template, context=context)
+        return TemplateResponse(request, "Post/tool.html", context=context)

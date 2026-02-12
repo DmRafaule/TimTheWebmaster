@@ -120,22 +120,45 @@
 
 {% block content %}
     <div class="flex flex-col gap-5 p-1 max-w-4xl justify-center self-center flex-nowrap text-wrap wrap-anywhere break-all ttw-limiter toObserve">
-        <h1 class="ttw-title">{{ post.h1 }}</h1>
-        <div class="marger_top_min marger_bottom_max"> 
-            <div class="flex flex-wrap items-center gap-3">
-                <div class="flex gap-3">
-                    <img width="16" height="16" src='{% static "Post/img/calendar.svg" %}' alt="{% trans "Часы" %}">
-                    <div>{{post.timeCreated|date:"d.m.Y"}}</div>
+        <div class="flex gap-5 items-center">
+            {% if post.icon %}
+                <div class="ttw-button ttw-button_link shrink-0">
+                    <a class="ttw-button_circle" href="{{post.get_absolute_url}}">
+                        <img width="64" height="64" src="{% get_media_prefix%}{{post.icon}}" alt="{% trans "Превью статьи" %}">
+                    </a>
                 </div>
-                /
-                <div class="flex flex-nowrap gap-3">
-                    <img width="16" height="16" src='{% static "Post/img/update.svg" %}' alt="{% trans "Часы" %}">
-                    <div>{{post.timeUpdated|date:"d.m.Y"}}</div>
+            {% else %}
+                <div class="ttw-button ttw-button_link shrink-0">
+                    <a href="{{post.get_absolute_url}}">
+                        <img class="ttw-button_circle" width="64" height="64" src="{% static 'globe_placeholder.svg'%}" alt="{% trans "Превью статьи" %}">
+                    </a>
                 </div>
-            </div>
-            {% if isEngagementMiddlewareConnected %}
-                {% include 'Engagement/Other/interaction.html' with path=post.get_absolute_url %}
             {% endif %}
+            <div class="border-l-2 border-solid pl-1">
+                <h1>{{ post.h1 }}</h1>
+                <div class="flex flex-wrap items-center gap-3">
+                    <div class="flex gap-3">
+                        <img width="16" height="16" src='{% static "Post/img/calendar.svg" %}' alt="{% trans "Часы" %}">
+                        <div>{{post.timeCreated|date:"d.m.Y"}}</div>
+                    </div>
+                    /
+                    <div class="flex flex-nowrap gap-3">
+                        <img width="16" height="16" src='{% static "Post/img/update.svg" %}' alt="{% trans "Часы" %}">
+                        <div>{{post.timeUpdated|date:"d.m.Y"}}</div>
+                    </div>
+                    /
+                    <div class="flex gap-2 items-center">
+                        <img width="16" height="16" src='{% static "/" %}{{post.common_icon_path}}' alt="{% trans "Иконка типа приложения" %}">
+                        <div>{{post.common_name}}</div>
+                    </div>
+                </div>
+                {% if isEngagementMiddlewareConnected %}
+                    {% include 'Engagement/Other/interaction.html' with path=post.get_absolute_url %}
+                {% endif %}
+            </div>
+        </div>
+        <hr>
+        <div class="marger_top_min marger_bottom_max"> 
             {% if isBreadcrumbsMiddlewareConnected %}
                 {% include 'Breadcrumbs/breadcrumbs.html' with path=request.META.HTTP_REFERER %}
             {% endif %}
@@ -148,17 +171,13 @@
                 {% endfor %}
             </div>
             {% endif %}
-
-            {% if platforms %}
-            <div class="flex gap-4 flex-wrap">
-                {% for platform in platforms %}
-                <div class="flex flex-row gap-2 flex-nowrap items-center">
-                    <img width="16" height="16" src='{% get_media_prefix %}{{platform.icon}}' alt="{{platform.name}}">
-                    <div>{{platform.name}}</div>
-                </div>
-                {% endfor %}
-            </div>
+            {% if isDjangoApp %}
+                <div class="flex gap-2"><b>{% trans "Тип Django приложения: " %}</b><div>{{post.get_app_type}}</div></div>
             {% endif %}
+            {% if isScript %}
+                <div class="flex gap-2"><b>{% trans "Тип скрипта: " %}</b><div>{{post.get_interface_type}}</div></div>
+            {% endif %}
+
             {% if isYandexAdManagerMiddlewareConnected %}
                 {% for adlocation in adlocations %}
                     {% if adlocation.adlocation_name == "TOOL_BEFORE_USE" %}
@@ -170,6 +189,64 @@
         <hr>
 
         <div id="content_post_article" class="post-content-root">
+            {% if isScript %}
+                <img class="image rounded-2xl image-bordered" src="{% get_media_prefix %}{{post.most_valuable_action}}" alt="">
+            {% elif isWebTool %}
+                {% if post.landscape_preview %}
+                    <img class="image rounded-2xl image-bordered" src="{% get_media_prefix %}{{post.landscape_preview}}" alt="">
+                {% endif %}
+            {% elif isTelegramBot %}
+                <div class="flex gap-2">
+                    <img class="max-w-36 rounded-2xl image-bordered" src="{% get_media_prefix %}{{post.bot_qr}}" alt="">
+                    <div class="flex flex-col gap-2 rounded-2xl p-2 grow shrink basis-1/2 items-start">
+                        <div>[<b>{{post.get_bot_type}}</b>]</div><a class="ref-ext" href="https://t.me/{{post.bot_name}}">@{{post.bot_name}}</a>
+                    </div>
+                </div>
+            {% elif isScraper %}
+                <div class="flex gap-2">
+                    <div class="border rounded-2xl p-2 grow shrink basis-2/5">
+                        <b>{% trans "Цель: " %}</b>
+                        <div>{{post.target}}</div>
+                    </div>
+                    <div class="border rounded-2xl p-2 grow shrink basis-1/2">
+                        <b>{% trans "Характеристики:" %}</b>
+                        <ul>
+                            <li><i>{% trans "Поточность: " %}</i>{{post.get_threading}}</li>
+                            <li><i>{% trans "Тип: " %}</i>{{post.get_what_type}}</li>
+                            <li><i>{% trans "Используемый язык: " %}</i>{{post.get_language_used}}</li>
+                            <li><i>{% trans "Прокси: " %}</i>{{post.get_with_proxies}}</li>
+                            <li><i>{% trans "Ротация: " %}</i>{{post.get_with_swapping}}</li>
+                        </ul>
+                    </div>
+                </div>
+            {% elif isDjangoApp %}
+                {% if post.use_cases.all|length > 2 %}
+                <div class="flex flex-row justify-between items-center">
+                    <h2 class="grow shrink-0 basis-auto">{% trans "Примеры" %}</h2>
+                    <div id="carousel-buttons-1" class="sticky right-1 min-w-max flex gap-1 items-center w-full justify-end">
+                        <div class="ttw-button ttw-button_action">
+                            <img class="ttw-button_squared bg-main slider-button prev" aria-label="no previous slide available" aria-disabled="true" src="{% static 'chevron_left.svg' %}" width="32" height="32" alt="{% trans "Предыдущая вкладка на табуляторе" %}">
+                        </div>
+                        <div class="ttw-button ttw-button_action">
+                            <img class="ttw-button_squared bg-main slider-button next" aria-label="Next slide" src="{% static 'chevron.svg' %}" width="32" height="32" alt="{% trans "Предыдущая вкладка на табуляторе" %}">
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel w-full overflow-y-auto grow shrink basis-3xs border rounded-2xl" data-buttons-id="carousel-buttons-1">
+                    {% for case in post.use_cases.all %}
+                    <div class="slide flex flex-col gap-2" style="padding:0;" aria-label="slide one of three" 
+                        {% if forloop.counter == 1 %}
+                        aria-hidden="false">
+                        {% else %}
+                        aria-hidden="true">
+                        {% endif %}
+                        <img class="w-full" src='{% get_media_prefix %}{{case.file}}' alt="{% trans "Изображение примера использования приложения" %}">
+                    </div>
+                    {% endfor %}
+                </div>
+                {% endif %}
+            {% endif %}
+
             {% block content_tool %}
             {% endblock %}
         </div>

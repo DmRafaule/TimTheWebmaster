@@ -93,7 +93,6 @@ def toDomainURL(url: str) -> str:
 
 if VERBOSE:
     def log(message: str, file: str = None):
-        print(message)
         if file is not None:
             with open(file, "a", encoding="utf-8") as F:
                 F.write(message)

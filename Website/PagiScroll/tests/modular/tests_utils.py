@@ -3,7 +3,7 @@ import time
 from django.test import TestCase
 from django.core.files.base import ContentFile
 
-from Post.models import Category, Article, Note, Tool, Platform, Post
+from Post.models import Category, Article, Note, Tool, Post
 from PagiScroll.utils import calculate_pages, in_alphabetic, in_order
 import PagiScroll.utils as P_utils 
 
@@ -105,36 +105,6 @@ class UtilsCommonTest(TestCase):
         queryset = in_order(queryset, 'true')
         expected_values = [5,4,3,2,1]
         self.assertQuerySetEqual(queryset.all(), expected_values, transform=lambda item: item.id)
-    
-    def test_get_posts_by_platforms(self):
-        ''' Проверка фильтрации инструментов по платформам для которых, те были созданны '''
-        queryset = Tool.objects.all()
-        # Создаём платформы
-        file = ContentFile('TEXT', name="index-1.png")
-        platform1 = Platform(icon=file, name_ru="платформа 1", name_en="platform 1")
-        platform1.save()
-        platform2 = Platform(icon=file, name_ru="платформа 2", name_en="platform 2")
-        platform2.save()
-        # Настраиваем инструменты
-        tool1 = queryset[0]
-        tool1.platforms.add(platform1)
-        tool1.save()
-        tool2 = queryset[1]
-        tool2.platforms.add(platform2)
-        tool2.save()
-        tool3 = queryset[2]
-        tool3.platforms.add(platform1)
-        tool3.platforms.add(platform2)
-        tool3.save()
-        # Проверяем
-        new_queryset = P_utils.get_posts_by_platforms([platform1], queryset)
-        self.assertIn(tool1, new_queryset)
-        self.assertIn(tool3, new_queryset)
-        new_queryset = P_utils.get_posts_by_platforms([platform2], queryset)
-        self.assertIn(tool2, new_queryset)
-        self.assertIn(tool3, new_queryset)
-        new_queryset = P_utils.get_posts_by_platforms([platform1,platform2], queryset)
-        self.assertIn(tool3, new_queryset)
     
     def test_posts_by_letters(self):
         # На данный момент этот тип сортирвки не актуален для сайта

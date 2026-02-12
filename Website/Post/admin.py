@@ -103,108 +103,21 @@ class ArticleAdmin(admin.ModelAdmin):
     )
 
 
-class QAAdmin(admin.ModelAdmin):
-    exclude = ('question', 'answer', 'description')
-    fieldsets = [
-        (
-            None,
-            {
-                'fields': [('question_ru', 'question_en'), ('description_ru', 'description_en'),('answer_ru', 'answer_en')]
-            }
-        ),
-    ]
-    list_display = (
-        'question_ru',
-        'question_en',
-        'answer_ru',
-        'answer_en',
-    )
-    list_display_links = (
-        'question_ru',
-    )
-    list_editable = (
-        'question_en',
-        'answer_ru',
-        'answer_en',
-    )
-    search_fields = (
-        'question_ru',
-        'question_en',
-    )
-
-
-class TDAdmin(admin.ModelAdmin):
-    exclude = ('termin', 'description', 'definition',)
-    fieldsets = [
-        (
-            None,
-            {
-                'fields': [('termin_ru', 'termin_en'), ('definition_ru', 'definition_en'), ('description_ru', 'description_en'),]
-            }
-        ),
-    ]
-    list_display = (
-        'termin_ru',
-        'termin_en',
-        'definition_ru',
-        'definition_en',
-    )
-    list_display_links = (
-        'termin_ru',
-    )
-    list_editable = (
-        'termin_en',
-        'definition_ru',
-        'definition_en',
-    )
-    search_fields = (
-        'termin_ru',
-        'termin_en',
-    )
-
-
-class PlatformAdmin(admin.ModelAdmin):
-    exclude = ('name',)
-    fieldsets = [
-        (
-            None,
-            {
-                'fields': ['icon', ('name_ru', 'name_en')]
-            }
-        ),
-    ]
-    list_display = (
-        'name_ru',
-        'name_en',
-        'icon'
-    )
-    list_display_links = (
-        'name_en',
-    )
-    list_editable = (
-        'name_ru',
-        'icon'
-    )
-    search_fields = (
-        'name_ru',
-        'name_en',
-    )
-
 class ToolAdmin(admin.ModelAdmin):
     exclude = ('category','name', 'description', 'template', 'h1', 'meta_keywords')
-    filter_horizontal = ('tags', 'platforms', 'media', 'similar')
+    filter_horizontal = ('tags', 'media', 'similar')
     ordering = ['-timeCreated']
     fieldsets = [
         (
             None,
             {
-                'fields': ['slug', 'isPublished', ('name_ru', 'name_en'), ('h1_ru', 'h1_en'), ('description_ru', 'description_en'), ('meta_keywords_ru', 'meta_keywords_en')]
+                'fields': ['slug', 'isPublished', ('name_ru', 'name_en'), ('h1_ru', 'h1_en'), ('description_ru', 'description_en'), ('meta_keywords_ru', 'meta_keywords_en'), 'timeCreated']
             }
         ),
         (
             'Advanced options',
             {
-                'fields': ['icon', 'price', 'type', 'media', ('template_ru', 'template_en'), 'timeCreated'],
+                'fields': ['icon', 'type', 'media', ('template_ru', 'template_en')],
                 'classes': ['collapse'],
                 'description': 'In this fieldset you can switch type of tool and configure other options.'
             }
@@ -212,7 +125,7 @@ class ToolAdmin(admin.ModelAdmin):
         (
             'Relations',
             {
-                'fields': ['tags', 'platforms', 'similar'],
+                'fields': ['tags', 'similar'],
                 'classes': ['collapse'],
                 'description': 'Fieldset for setting up relationship'
             }
@@ -253,7 +166,65 @@ class ToolAdmin(admin.ModelAdmin):
         'name_en',
         'tags'
     )
-    list_filter = ('isPublished', 'timeCreated', 'platforms', 'type')
+    list_filter = ('isPublished', 'timeCreated', 'type')
+
+class WebappAdmin(ToolAdmin):
+     fieldsets = [
+        *ToolAdmin.fieldsets,
+        (
+            'TooltypeSpecific',
+            {
+                'fields': ['landscape_preview',]
+            }
+        ),
+    ]
+
+class TelegramBotAdmin(ToolAdmin):
+     fieldsets = [
+        *ToolAdmin.fieldsets,
+        (
+            'TooltypeSpecific',
+            {
+                'fields': ['bot_name', 'bot_type', 'bot_qr']
+            }
+        ),
+    ]
+
+class ScraperAdmin(ToolAdmin):
+     exclude = ('target', *ToolAdmin.exclude)
+     fieldsets = [
+        *ToolAdmin.fieldsets,
+        (
+            'TooltypeSpecific',
+            {
+                'fields': [('target_en', 'target_ru'), 'how_many_threads', 'what_type', 'language_used', 'with_proxies', 'with_swapping']
+            }
+        ),
+    ]
+
+class ScriptAdmin(ToolAdmin):
+     fieldsets = [
+        *ToolAdmin.fieldsets,
+        (
+            'TooltypeSpecific',
+            {
+                'fields': ['most_valuable_action', 'interface_type']
+            }
+        ),
+    ]
+
+class DjangoAppAdmin(ToolAdmin):
+    filter_horizontal = ('use_cases', *ToolAdmin.filter_horizontal)
+    fieldsets = [
+        *ToolAdmin.fieldsets,
+        (
+            'TooltypeSpecific',
+            {
+                'fields': ['use_cases', 'app_type']
+            }
+        ),
+    ]
+
 
 class NoteAdmin(admin.ModelAdmin):
     exclude = ('category','title', 'description')
@@ -306,8 +277,9 @@ class NoteAdmin(admin.ModelAdmin):
 admin.site.register(M.Tag, TagAdmin)
 admin.site.register(M.Category, CategoryAdmin)
 admin.site.register(M.Article, ArticleAdmin)
-admin.site.register(M.Question, QAAdmin)
-admin.site.register(M.Termin, TDAdmin)
-admin.site.register(M.Tool, ToolAdmin)
-admin.site.register(M.Platform, PlatformAdmin)
+admin.site.register(M.WebTool, WebappAdmin)
+admin.site.register(M.TelegramBot, TelegramBotAdmin)
+admin.site.register(M.Scraper, ScraperAdmin)
+admin.site.register(M.Script, ScriptAdmin)
+admin.site.register(M.DjangoApp, DjangoAppAdmin)
 admin.site.register(M.Note, NoteAdmin)

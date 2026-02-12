@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-10-17 18:36+0300\n"
+"POT-Creation-Date: 2026-02-12 08:52+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,6 +17,98 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: .\Post\models.py:214
+msgid "Телеграм бот"
+msgstr "Telegram bot"
+
+#: .\Post\models.py:228
+msgid "Чат бот"
+msgstr "Chat bot"
+
+#: .\Post\models.py:230
+msgid "Инлайн бот"
+msgstr "Inline bot"
+
+#: .\Post\models.py:232
+msgid "Веб бот"
+msgstr "Webapp bot"
+
+#: .\Post\models.py:239
+msgid "Веб инструмент"
+msgstr "Web tool"
+
+#: .\Post\models.py:248
+msgid "Джанго приложение"
+msgstr "Django app"
+
+#: .\Post\models.py:261
+msgid "Приложение"
+msgstr "App"
+
+#: .\Post\models.py:263
+msgid "Мидлвари"
+msgstr "Middleware"
+
+#: .\Post\models.py:265
+msgid "API"
+msgstr "API"
+
+#: .\Post\models.py:272
+msgid "Парсер"
+msgstr "Scraper"
+
+#: .\Post\models.py:284
+msgid "Однопоточный"
+msgstr "Singlethreaded"
+
+#: .\Post\models.py:286
+msgid "Многопоточный"
+msgstr "Multithreaded"
+
+#: .\Post\models.py:297
+msgid "Статический"
+msgstr "Static"
+
+#: .\Post\models.py:299
+msgid "Динамический"
+msgstr "Dynamic"
+
+#: .\Post\models.py:301
+msgid "Через API"
+msgstr "Through API"
+
+#: .\Post\models.py:319
+msgid "С прокси"
+msgstr "With proxy"
+
+#: .\Post\models.py:321
+msgid "Без прокси"
+msgstr "Without proxy"
+
+#: .\Post\models.py:331
+msgid "С ротацией агентов"
+msgstr "With user-agent rotation"
+
+#: .\Post\models.py:333
+msgid "Без ротации агентов"
+msgstr "Without user-agent rotation"
+
+#: .\Post\models.py:340
+msgid "Скрипт"
+msgstr "Script"
+
+#: .\Post\models.py:353
+msgid "Однокоммандный"
+msgstr "Single run"
+
+#: .\Post\models.py:355
+msgid "Интерфейс коммандной строки"
+msgstr "Command line interface"
+
+#: .\Post\models.py:357
+msgid "Терминальный интерфейс"
+msgstr "Terminal user interface"
 
 #: .\Post\templates\Post\base_article.html:20
 #: .\Post\templates\Post\base_tool.html:28
@@ -35,14 +127,12 @@ msgstr "Content"
 #: .\Post\templates\Post\base_article.html:195
 #: .\Post\templates\Post\base_article.html:200
 #: .\Post\templates\Post\base_article.html:206
-#: .\Post\templates\Post\base_tool.html:127
-#: .\Post\templates\Post\base_tool.html:132
+#: .\Post\templates\Post\base_tool.html:141
+#: .\Post\templates\Post\base_tool.html:146
 #: .\Post\templates\Post\basic--post_preview-article.html:20
 #: .\Post\templates\Post\basic--post_preview-article.html:25
 #: .\Post\templates\Post\basic--post_preview-note.html:15
 #: .\Post\templates\Post\basic--post_preview-note.html:20
-#: .\Post\templates\Post\basic--post_preview-tool.html:31
-#: .\Post\templates\Post\basic--post_preview-tool.html:36
 msgid "Часы"
 msgstr "Clock"
 
@@ -59,7 +149,7 @@ msgid "минут"
 msgstr "minutes"
 
 #: .\Post\templates\Post\base_article.html:223
-#: .\Post\templates\Post\base_tool.html:145
+#: .\Post\templates\Post\base_tool.html:168
 msgid "Теги: "
 msgstr "Tags: "
 
@@ -111,26 +201,90 @@ msgstr "Previous article"
 msgid "Инструмент"
 msgstr "Tool"
 
+#: .\Post\templates\Post\base_tool.html:127
+#: .\Post\templates\Post\base_tool.html:133
+#: .\Post\templates\Post\basic--post_preview-tool.html:15
+#: .\Post\templates\Post\basic--post_preview-tool.html:21
+msgid "Превью статьи"
+msgstr "Article preview"
+
+#: .\Post\templates\Post\base_tool.html:151
+#: .\Post\templates\Post\basic--post_preview-tool.html:39
+msgid "Иконка типа приложения"
+msgstr "Icon of app type"
+
+#: .\Post\templates\Post\base_tool.html:175
+msgid "Тип Django приложения: "
+msgstr "Kind of Django app:"
+
 #: .\Post\templates\Post\base_tool.html:178
+msgid "Тип скрипта: "
+msgstr "Type of Script: "
+
+#: .\Post\templates\Post\base_tool.html:208
+msgid "Цель: "
+msgstr "Goal: "
+
+#: .\Post\templates\Post\base_tool.html:212
+msgid "Характеристики:"
+msgstr "Characteristics:"
+
+#: .\Post\templates\Post\base_tool.html:214
+msgid "Поточность: "
+msgstr "Threading: "
+
+#: .\Post\templates\Post\base_tool.html:215
+msgid "Тип: "
+msgstr "Type: "
+
+#: .\Post\templates\Post\base_tool.html:216
+msgid "Используемый язык: "
+msgstr "Used languages: "
+
+#: .\Post\templates\Post\base_tool.html:217
+msgid "Прокси: "
+msgstr "Proxy: "
+
+#: .\Post\templates\Post\base_tool.html:218
+msgid "Ротация: "
+msgstr "Rotation: "
+
+#: .\Post\templates\Post\base_tool.html:225
+msgid "Примеры"
+msgstr "Examples"
+
+#: .\Post\templates\Post\base_tool.html:228
+#: .\Post\templates\Post\base_tool.html:231
+msgid "Предыдущая вкладка на табуляторе"
+msgstr "Previous tab"
+
+#: .\Post\templates\Post\base_tool.html:243
+msgid "Изображение примера использования приложения"
+msgstr "An image of an example of app's usage"
+
+#: .\Post\templates\Post\base_tool.html:255
 msgid "Медиа файлы"
 msgstr "Media files"
 
-#: .\Post\templates\Post\base_tool.html:194
+#: .\Post\templates\Post\base_tool.html:271
 msgid "Рабочие заметки об инструменте"
 msgstr "A notes about this tool, devnotes"
 
-#: .\Post\templates\Post\base_tool.html:203
+#: .\Post\templates\Post\base_tool.html:280
 msgid "Больше ..."
 msgstr "More ..."
 
-#: .\Post\templates\Post\base_tool.html:213
+#: .\Post\templates\Post\base_tool.html:290
 msgid "Похожие инструменты"
 msgstr "Similar tools"
 
-#: .\Post\templates\Post\basic--post_preview-tool.html:16
-#: .\Post\templates\Post\basic--post_preview-tool.html:22
-msgid "Превью статьи"
-msgstr "Article preview"
+#: .\Post\templates\Post\basic--post_preview-tool.html:29
+msgid "Дата создания"
+msgstr "Creation date"
+
+#: .\Post\templates\Post\basic--post_preview-tool.html:34
+msgid "Дата последнего обновления"
+msgstr "Update date"
 
 #: .\Post\templates\Post\tool.html:10
 msgid "Описание"
@@ -175,6 +329,3 @@ msgstr "Contacts"
 #: .\Post\templatetags\urlToBreadcrumbs.py:78
 msgid "Страница "
 msgstr "Page "
-
-#~ msgid "То, что использую я"
-#~ msgstr "What, I'm using"
