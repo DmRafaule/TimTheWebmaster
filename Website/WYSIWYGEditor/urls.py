@@ -9,4 +9,5 @@ urlpatterns = [
     path('wysiwyg-editor/list/', V.list_templates),
     path('wysiwyg-editor/save/', V.save_template),
     path('wysiwyg-editor/get-save-form/', V.save_form),
+    path('wysiwyg-editor/get-delete-form/', V.delete_form),
 ]

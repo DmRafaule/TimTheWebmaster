@@ -13,3 +13,9 @@ class PostTemplate(models.Model):
     content = models.TextField(blank=True)
     used_styles = models.TextField(blank=True)
     used_scripts = models.TextField(blank=True)
+
+    class PostType(models.IntegerChoices):
+        Article = 1, "article_exmpl.html"
+        Tool    = 2, "tool_exmpl.html"
+        Note    = 3, "note_exmpl.html"
+    post_type = models.IntegerField(default=PostType.Article, choices=PostType.choices)

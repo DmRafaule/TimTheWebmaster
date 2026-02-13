@@ -1,11 +1,12 @@
 <form class="flex flex-col gap-2" action='' id="toSave"  method="post" enctype='multipart/form-data'>
     {% csrf_token %}
-    {% for field in form_save %}
-    <div>
-        {{ field }}
-    </div>
-    {% for error in field.errors %}
-    <p class="form_error">{{ error }}</p>
-    {% endfor %}	
+    {% for field in form_save.visible_fields %}
+        <b>{{field.label_tag}}</b>
+        <div class="textEditorWrapper">
+            {{ field }}
+        </div>
+        {% for error in field.errors %}
+        <p class="form_error">{{ error }}</p>
+        {% endfor %}	
     {% endfor %}
 </form>

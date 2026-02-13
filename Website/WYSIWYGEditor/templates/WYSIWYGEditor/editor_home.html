@@ -54,26 +54,12 @@
 				</div>
 			</div>
 			<div 
-				hx-post="delete/"
-				hx-swap="none"
-				hx-vals="js:{csrfmiddlewaretoken: csrftoken, filename: '{{filename}}'}"
-				hx-on::after-request="
-					switch(event.detail.xhr.status){
-						case 200:
-							toaster.notify('{% trans '✔ Шаблон удалён' %}', 'success');
-							window.location.replace('{% url 'editor_home' %}');
-							break;
-						case 404:
-							toaster.notify('{% trans '✗ Запрашиваемый шаблон небыл обнаружен' %}', 'error'); 
-							window.location.replace('{% url 'editor_home' %}');
-							break;
-						case 500:
-							toaster.notify('{% trans '✗ Не получилось удалить шаблон' %}', 'error'); 
-							window.location.replace('{% url 'editor_home' %}');
-							break;
-					}
-				"
-				class="ttw-button ttw-button_link ttw-button_squared bg-main text-white">
+                hx-get="get-delete-form/?template_id={{template_id}}&template_filename={{filename}}"
+				hx-target="#modal-content"
+				hx-indicator="#context-loader-load_into_modal"
+				hx-on::before-request="modal.open('');"
+				hx-on::after-request="event.detail.failed && modal.close();"
+                class="ttw-button ttw-button_action ttw-button_squared bg-main text-white">
 				<div class="ttw-button_squared flex gap-2 items-center p-1">
 					<img width="16" height="16" src="{% static 'WYSIWYGEditor/img/delete.svg' %}" alt="{% trans 'Крестик' %}">
 					<div>{% trans "Удалить файл" %}</div>

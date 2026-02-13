@@ -412,5 +412,15 @@ input.ql-image{
     width: 600px;
 }
 .tab_button>img:not(.tab_button.tab_active>img){
-  filter: brightness(0) invert(0) ;
+    filter: brightness(0) invert(0) ;
+}
+
+.textEditorWrapper > div > div > label {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: space-between;
+}
+.textEditorWrapper > div > div > label > input {
+    width: auto;
 }

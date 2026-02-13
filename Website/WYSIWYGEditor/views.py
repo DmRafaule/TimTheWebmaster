@@ -107,6 +107,7 @@ def editor(request):
         else:
             pass
         context.update({'filename': file.filename})
+        context.update({'template_id': file.id})
         context.update({'filepath': f"{MEDIA_URL}tools/{PostTemplate.ROOT_DIR}/{file.filename}"})
         ## Определяем сколько времени необходимо для прочтения
     
@@ -137,7 +138,7 @@ def upload_template(request):
 
 @require_GET
 def list_templates(request):
-    templates = PostTemplate.objects.all()
+    templates = PostTemplate.objects.all().order_by('-timeUpdated')
     context = {
         "templates": templates
     }
@@ -149,11 +150,13 @@ def save_template(request):
     status = 503
     is_valid = form.is_valid()
     if is_valid:
-        # Send back all entered text 
+        # Отправляем обратно весь текст
         record = form.save(commit=False)
         _update_record_filename(record, form)
         _update_record_raw(record)
-        _update_record_template(request, record, 'Post/article_exmpl.html')
+        # Получаем имя шаблона
+        template_name = PostTemplate.PostType.choices[record.post_type - 1][1]
+        _update_record_template(request, record, f'Post/{template_name}')
 
         status = 200
     else:
@@ -162,20 +165,34 @@ def save_template(request):
 
     return render(request, 'WYSIWYGEditor/save_form.html', context={
         'form_save': PostTemplateForm(initial={
-            'filename': record.filename
+            'filename': record.filename,
+            'post_type': record.post_type
         })
     }, status=status)
 
 @require_GET
 def save_form(request):
     filename = request.GET.get('filename')
+    post_type = request.GET.get('post_type')
     if filename:
         form = PostTemplateForm(initial={
-            'filename': filename
+            'filename': filename,
+            'post_type': post_type
         })
     else:
         form = PostTemplateForm()
     
     return render(request, 'WYSIWYGEditor/save_form_container.html', context={
         'form_save': form,
+    })
+
+
+@require_GET
+def delete_form(request):
+    filename = request.GET.get('template_filename')
+    id = request.GET.get('template_id')
+    
+    return render(request, 'WYSIWYGEditor/confirm_form.html', context={
+        'template_filename': filename,
+        'template_id': id
     })

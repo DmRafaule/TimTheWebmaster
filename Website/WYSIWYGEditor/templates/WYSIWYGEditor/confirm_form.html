@@ -7,11 +7,41 @@
             <div class="row mid_gap on_end_other">
             {% trans 'Ты уверен в том, что хочешь удалить этот шаблон ?' %}
             </div>
+            <div class="row mid_gap on_end_other">
+            {% trans 'Данное действие не обратимо.' %}
+            </div>
+            <hr>
+            <img class="image w-2xs h-auto" src="{% static 'WYSIWYGEditor/img/removal_proccess.svg' %}">
         </div>
     </div>
     <hr>
-    <div class="modal_actions">
-        <img id="delete_btn_submit" width="32" height="32" class="close_modal svg_icon_inverted bordered_button button" src="{% static 'ok.svg' %}" alt="{% trans 'Крестик' %}"  style='border-bottom-left-radius: var(--modal-radius)'>
-        <img id='close_btn' width="32" height="32" class="close_modal svg_icon_inverted bordered_button button" src="{% static 'close.svg' %}" alt="{% trans 'Крестик' %}" style='border-bottom-right-radius: var(--modal-radius)'>
-    </div>
+    <div class="flex flex-row justify-between flex-wrap">
+        <div 
+            hx-post="delete/"
+            hx-target="#template-n-{{template_id}}"
+            hx-swap="outerHTML"
+            hx-indicator="#context-loader-load_into_modal"
+            hx-vals="js:{csrfmiddlewaretoken: csrftoken, filename: '{{template_filename}}'}"
+            hx-on::after-request="
+                switch(event.detail.xhr.status){
+                    case 200:
+                        modal.close();
+                        toaster.notify('{% trans '✔ Шаблон удалён' %}', 'success');
+                        break;
+                    case 404:
+                        modal.close();
+                        toaster.notify('{% trans '✗ Запрашиваемый шаблон небыл обнаружен' %}', 'error'); 
+                        break;
+                    case 500:
+                        modal.close();
+                        toaster.notify('{% trans '✗ Не получилось удалить шаблон' %}', 'error'); 
+                        break;
+                }
+            "
+            class="ttw-button ttw-button_action">
+            <p class="rounded-lg bg-main border text-white p-2">{% trans "Удалить" %}</p>
+        </div>
+        <div class="ttw-button ttw-button_action" onclick="modal.close()">
+            <p class="rounded-lg bg-main border text-white p-2">{% trans "Отмена" %}</p>
+        </div>
 </div>
