@@ -9,116 +9,138 @@
 {% endblock %}
 
 {% block hat %}
+	<div class="grow-0 shrink ttw-button_swap" data-body="current_file_options">
+		<div class="ttw-button ttw-button_action ttw-button_swap_front ttw-sidebar_button_open" data-body="current_file_options">
+			<img class="ttw-button_squared" width="32" height="32" src="{% static 'options.svg' %}" alt="{% trans '3 горизонтальные линии, бургер' %}">
+		</div>
+		<div class="ttw-button ttw-button_action ttw-button_swap_back ttw-sidebar_button_close ttw-button_swap_not_active" data-body="current_file_options">
+			<img class="ttw-button_squared" width="32" height="32" src="{% static 'close_white.svg' %}" alt="{% trans '3 горизонтальные линии, бургер' %}">
+		</div>
+	</div>
+	<div class="grow-0 shrink ttw-button_swap" data-body="available_templates">
+		<div class="ttw-button ttw-button_action ttw-button_swap_front ttw-sidebar_button_open" data-body="available_templates">
+			<img class="ttw-button_squared" width="32" height="32" src="{% static 'clarify.svg' %}" alt="{% trans '3 горизонтальные линии, бургер' %}">
+		</div>
+		<div class="ttw-button ttw-button_action ttw-button_swap_back ttw-sidebar_button_close ttw-button_swap_not_active" data-body="available_templates">
+			<img class="ttw-button_squared" width="32" height="32" src="{% static 'close_white.svg' %}" alt="{% trans '3 горизонтальные линии, бургер' %}">
+		</div>
+	</div>
 {% endblock %}
 
 {% block hat_body %}
+<div id="current_file_options" class="ttw-sidebar_body ttw-sidebar_body_left ttw-sidebar_body_not_active p-1 justify-between flex flex-col text-center">
+	<div class="w-full">
+		<fieldset>
+			<legend class="bg-main text-white rounded-xl p-3">{% trans "Работа с текущим файлом" %}</legend>
+			<div class="flex flex-col gap-3">
+				<div 
+					hx-get="get-save-form/?filename={{filename}}"
+					hx-target="#modal-content"
+					hx-indicator="#context-loader-load_into_modal"
+					hx-on::before-request="modal.open('');"
+					hx-on::after-request="event.detail.failed && modal.close();"
+					class="ttw-button ttw-button_action ttw-button_squared bg-main text-white flex gap-2 items-center">
+					<div class="ttw-button_squared flex gap-2 items-center w-full p-1">
+						<img id='save_btn' width="16" height="16" class="ttw-button_squared" alt="{% trans 'Сохранить' %}" src="{% static 'WYSIWYGEditor/img/save.svg' %}">
+						<div>{% trans "Сохранить файл" %}</div>
+					</div>
+				</div>
+				<label class="ttw-button ttw-button_action ttw-button_squared bg-main text-white flex gap-2 items-center" for="uploaded_file">
+					<div class="ttw-button_squared flex gap-2 items-center w-full p-1">
+						<img width="16" height="16" src="{% static 'WYSIWYGEditor/img/upload.svg' %}" alt="{% trans 'Крестик' %}">
+						<input type="file" id="uploaded_file" accept=".html*" hidden>
+						<div>{% trans "Загрузить файл с диска" %}</div>
+					</div>
+				</label>
+				{% if filename %}
+				<div id="translate-file"class="ttw-button ttw-button_action ttw-button_squared bg-main text-white flex gap-2 items-center">
+					<div class="ttw-button_squared flex gap-2 items-center w-full p-1">
+						<img id='save_btn' width="16" height="16" class="ttw-button_squared" alt="{% trans 'Перевести' %}" src="{% static 'WYSIWYGEditor/img/translate.svg' %}">
+						<div>{% trans "Перевести файл" %}</div>
+					</div>
+				</div>
+				<div class="ttw-button ttw-button_download ttw-button_squared bg-main text-white">
+					<div class="ttw-button_squared p-1">
+						<a id='download_btn_raw' class="flex gap-2 items-center" href='{{filepath}}' download>
+							<img width="16" height="16" src="{% static 'WYSIWYGEditor/img/download.svg' %}" alt="{% trans 'Крестик' %}">
+							<div>{% trans "Скачать файл" %}</div>
+						</a>
+					</div>
+				</div>
+				<div 
+					hx-get="get-delete-form/?template_id={{template_id}}&template_filename={{filename}}"
+					hx-target="#modal-content"
+					hx-indicator="#context-loader-load_into_modal"
+					hx-on::before-request="modal.open('');"
+					hx-on::after-request="event.detail.failed && modal.close();"
+					class="ttw-button ttw-button_action ttw-button_squared bg-main text-white">
+					<div class="ttw-button_squared flex gap-2 items-center p-1">
+						<img width="16" height="16" src="{% static 'WYSIWYGEditor/img/delete.svg' %}" alt="{% trans 'Крестик' %}">
+						<div>{% trans "Удалить файл" %}</div>
+					</div>
+				</div>
+				{% endif %}
+				{% if request.user.is_superuser %}
+				<div 
+					hx-post="publish/"
+					hx-swap="none"
+					hx-vals="js:{csrfmiddlewaretoken: csrftoken, filename: '{{filename}}'}"
+					hx-on::after-request="
+						switch(event.detail.xhr.status){
+							case 200:
+								toaster.notify('{% trans '✔ Статья успешно опубликованна' %}', 'success');
+								window.location.replace('{% url 'editor_home' %}');
+								break;
+						}
+					"
+					class="ttw-button ttw-button_action ttw-button_squared bg-main text-white">
+					<div class="ttw-button_squared flex gap-2 items-center p-1">
+						<img width="16" height="16" src="{% static 'WYSIWYGEditor/img/publish.svg' %}" alt="{% trans 'Опубликовать' %}">
+						<div>{% trans "Опубликовать" %}</div>
+					</div>
+				</div>
+				{% endif %}
+			</div>
+		</fieldset>
+		<fieldset>
+			<legend class="bg-main text-white rounded-xl p-3">{% trans "Статы файла" %}</legend>
+			<div class="flex flex-col gap-3">
+				<div class="flex flex-row gap-2 w-full">
+					<div>{% trans "Размер файла:" %}</div>
+					<div>{{file_size}} {% trans "байтов" %}</div>
+				</div>
+				<div class="flex flex-row gap-2 w-full">
+					<div>{% trans "Слов:" %}</div>
+					<div>{{words}}</div>
+				</div>
+				<div class="flex flex-row gap-2 w-full">
+					<div>{% trans "Время чтения:" %}</div>
+					<div>{{time_to_read}} {% trans "минут" %}</div>
+				</div>
+			</div>
+		</fieldset>
+	</div>
+</div>
+<div id="available_templates" class="ttw-sidebar_body ttw-sidebar_body_left ttw-sidebar_body_not_active p-1 justify-between flex flex-col text-center">
+	<div class="w-full">
+		<fieldset>
+			<legend class="bg-main text-white rounded-xl p-3">{% trans "Файлы для редактирования" %}</legend>
+			<div 
+				hx-get="list/"
+				hx-trigger="load"
+			class="max-h-[600px] overflow-auto">
+			</div>
+		</fieldset>
+	</div>
+</div>
 {% endblock %}
 
 {% block aside_left %}
-<div class="w-full">
-	<fieldset>
-		<legend class="bg-main text-white rounded-xl p-3">{% trans "Работа с текущим файлом" %}</legend>
-		<div class="flex flex-col gap-3">
-			<div 
-				hx-get="get-save-form/?filename={{filename}}"
-				hx-target="#modal-content"
-				hx-indicator="#context-loader-load_into_modal"
-				hx-on::before-request="modal.open('');"
-				hx-on::after-request="event.detail.failed && modal.close();"
-				class="ttw-button ttw-button_action ttw-button_squared bg-main text-white flex gap-2 items-center">
-				<div class="ttw-button_squared flex gap-2 items-center w-full p-1">
-					<img id='save_btn' width="16" height="16" class="ttw-button_squared" alt="{% trans 'Сохранить' %}" src="{% static 'WYSIWYGEditor/img/save.svg' %}">
-					<div>{% trans "Сохранить файл" %}</div>
-				</div>
-			</div>
-			<label class="ttw-button ttw-button_action ttw-button_squared bg-main text-white flex gap-2 items-center" for="uploaded_file">
-				<div class="ttw-button_squared flex gap-2 items-center w-full p-1">
-					<img width="16" height="16" src="{% static 'WYSIWYGEditor/img/upload.svg' %}" alt="{% trans 'Крестик' %}">
-					<input type="file" id="uploaded_file" accept=".html*" hidden>
-					<div>{% trans "Загрузить файл с диска" %}</div>
-				</div>
-			</label>
-			{% if filename %}
-			<div id="translate-file"class="ttw-button ttw-button_action ttw-button_squared bg-main text-white flex gap-2 items-center">
-				<div class="ttw-button_squared flex gap-2 items-center w-full p-1">
-					<img id='save_btn' width="16" height="16" class="ttw-button_squared" alt="{% trans 'Перевести' %}" src="{% static 'WYSIWYGEditor/img/translate.svg' %}">
-					<div>{% trans "Перевести файл" %}</div>
-				</div>
-			</div>
-			<div class="ttw-button ttw-button_download ttw-button_squared bg-main text-white">
-				<div class="ttw-button_squared p-1">
-					<a id='download_btn_raw' class="flex gap-2 items-center" href='{{filepath}}' download>
-						<img width="16" height="16" src="{% static 'WYSIWYGEditor/img/download.svg' %}" alt="{% trans 'Крестик' %}">
-						<div>{% trans "Скачать файл" %}</div>
-					</a>
-				</div>
-			</div>
-			<div 
-                hx-get="get-delete-form/?template_id={{template_id}}&template_filename={{filename}}"
-				hx-target="#modal-content"
-				hx-indicator="#context-loader-load_into_modal"
-				hx-on::before-request="modal.open('');"
-				hx-on::after-request="event.detail.failed && modal.close();"
-                class="ttw-button ttw-button_action ttw-button_squared bg-main text-white">
-				<div class="ttw-button_squared flex gap-2 items-center p-1">
-					<img width="16" height="16" src="{% static 'WYSIWYGEditor/img/delete.svg' %}" alt="{% trans 'Крестик' %}">
-					<div>{% trans "Удалить файл" %}</div>
-				</div>
-			</div>
-			{% endif %}
-			{% if request.user.is_superuser %}
-			<div 
-				hx-post="publish/"
-				hx-swap="none"
-				hx-vals="js:{csrfmiddlewaretoken: csrftoken, filename: '{{filename}}'}"
-				hx-on::after-request="
-					switch(event.detail.xhr.status){
-						case 200:
-							toaster.notify('{% trans '✔ Статья успешно опубликованна' %}', 'success');
-							window.location.replace('{% url 'editor_home' %}');
-							break;
-					}
-				"
-				class="ttw-button ttw-button_action ttw-button_squared bg-main text-white">
-				<div class="ttw-button_squared flex gap-2 items-center p-1">
-					<img width="16" height="16" src="{% static 'WYSIWYGEditor/img/publish.svg' %}" alt="{% trans 'Опубликовать' %}">
-					<div>{% trans "Опубликовать" %}</div>
-				</div>
-			</div>
-			{% endif %}
-		</div>
-	</fieldset>
-	<fieldset>
-		<legend class="bg-main text-white rounded-xl p-3">{% trans "Статы файла" %}</legend>
-		<div class="flex flex-col gap-3">
-			<div class="flex flex-row gap-2 w-full">
-				<div>{% trans "Размер файла:" %}</div>
-				<div>{{file_size}} {% trans "байтов" %}</div>
-			</div>
-			<div class="flex flex-row gap-2 w-full">
-				<div>{% trans "Слов:" %}</div>
-				<div>{{words}}</div>
-			</div>
-			<div class="flex flex-row gap-2 w-full">
-				<div>{% trans "Время чтения:" %}</div>
-				<div>{{time_to_read}} {% trans "минут" %}</div>
-			</div>
-		</div>
-	</fieldset>
-</div>
+
 {% endblock %}
 
 {% block aside_right %}
-<div class="w-full">
-	<fieldset>
-		<legend class="bg-main text-white rounded-xl p-3">{% trans "Файлы для редактирования" %}</legend>
-		<div 
-			hx-get="list/"
-			hx-trigger="load"
-		class="max-h-[600px] overflow-auto">
-		</div>
-	</fieldset>
-</div>
+
 {% endblock %}
 
 {% block content %}
