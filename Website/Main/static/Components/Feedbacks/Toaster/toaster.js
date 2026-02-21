@@ -12,7 +12,6 @@ class Toaster{
         var notif = this.notification.cloneNode(true)
         notif.querySelector(".toaster_text").innerText = msg
         notif.addEventListener('animationend', () => {
-            console.log('Animation ended!');
             notif.remove()
         });
         notif.style.animationDuration = time + 's'

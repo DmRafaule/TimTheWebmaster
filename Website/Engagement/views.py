@@ -83,34 +83,6 @@ def email_form_get(request):
     email_form_doc = loaded_template.render(context, request)
     return HttpResponse(email_form_doc)
 
-@require_POST
-def feedback_post(request):
-    form = FeedbackForm(request.POST)
-    if form.is_valid():
-        subject = f'{form.cleaned_data.get("username")} | {form.cleaned_data.get("email")}'
-        message = f'{form.cleaned_data.get("message")}'
-        send_mail(subject=subject, message=message, from_email=DEFAULT_FROM_EMAIL, recipient_list=[DEFAULT_TO_EMAIL])
-        context = {'feedback_form': FeedbackForm()}
-        loaded_template = loader.get_template(f'Engagement/Other/engagement_feedback_form.html')
-        feedback_doc = loaded_template.render(context, request)
-        status = 200
-    else:
-        context = {'feedback_form': form}
-        loaded_template = loader.get_template(f'Engagement/Other/engagement_feedback_form.html')
-        feedback_doc = loaded_template.render(context, request)
-        status = 400
-
-    return HttpResponse(feedback_doc, status=status)
-
-@require_GET
-def feedback_form_get(request):
-    context = {'feedback_form': FeedbackForm()}
-    loaded_template = loader.get_template(f'Engagement/Other/engagement_feedback_form_container.html')
-    feedback_form_doc = loaded_template.render(context, request)
-    return HttpResponse(feedback_form_doc)
-
-
-
 def load_comments(request):
         
     if request.method == 'POST':

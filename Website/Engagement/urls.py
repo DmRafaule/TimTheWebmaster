@@ -6,8 +6,6 @@ urlpatterns = [
     path('share_post/', V.share_post),
     path('bookmark_post/', V.bookmark_post),
     
-    path('feedback_post/', V.feedback_post),
-    path('feedback_form/', V.feedback_form_get),
     path('email_subscription/', V.email_post),
     path('email_subscription_form/', V.email_form_get),
 

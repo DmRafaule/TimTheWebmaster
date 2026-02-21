@@ -97,17 +97,6 @@
         <img  class="ttw-button_squared border" width="32" height="32" src="{% static 'Engagement/img/bookmark.svg' %}" alt="{% trans "облачко" %}">
     </div>
 {% endif %}
-{% if is_feedbacks %}
-    <div 
-        hx-get="/{{LC}}/feedback_form/" 
-        hx-target="#modal-content"
-        hx-indicator="#context-loader-load_into_modal"
-        hx-on::before-request="modal.open('');"
-        hx-on::after-request="event.detail.failed && modal.close();"
-        class="ttw-button ttw-button_action">
-        <img  class="ttw-button_squared border" width="32" height="32" src="{% static 'Engagement/img/feedback.svg' %}" alt="{% trans "облачко" %}">
-    </div>
-{% endif %}
 {% if is_email %}
     <div 
         hx-get="/{{LC}}/email_subscription_form/" 
