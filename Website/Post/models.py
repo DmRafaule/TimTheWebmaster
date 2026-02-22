@@ -14,7 +14,7 @@ from polymorphic.managers import PolymorphicManager
 from modeltranslation.manager import MultilingualManager
 
 from Website import settings as S
-from Main.models import Media
+from Main.models import Media, LangManager, LanguageType
 
 
 def user_directory_path(instance, filename):
@@ -70,7 +70,7 @@ class Post(models.Model):
     timeUpdated = models.DateTimeField(auto_now=True)
     isPublished = models.BooleanField(default=True)
     tags = models.ManyToManyField(Tag, blank=True)
-    media = models.ManyToManyField(Media, blank=True, help_text="Will be procceed only First ones added video, pdf, audio files. On Tool model audio and pdf files has no effect.")
+    media = models.ManyToManyField(Media, blank=True, help_text="Obsolete for articles, do not use")
 
     def save(self, *args, **kwargs):
         self.timeUpdated = timezone.now()
@@ -414,3 +414,31 @@ def _post_save_category_note(sender, instance, **kwargs):
         category.categry_name = "Note"
         category.save()
     instance.category = category
+
+class ExternalVideo(models.Model):
+    related_post = models.ForeignKey(Post, on_delete=models.CASCADE)
+
+    video_id = models.CharField(max_length=128, null=True)
+
+    def __str__(self):
+        return f"{self.video_id}"
+
+class ExternalPodcast(models.Model):
+    objects = LangManager()
+    langs = models.ManyToManyField('self', blank=True)
+    lang_type = models.CharField(max_length=2, choices=LanguageType, null=True, default=LanguageType.LANG_TYPE_UNI)
+
+    podcast_id = models.IntegerField(help_text="An ID for podcast", unique=True, blank=False)
+
+    def __str__(self):
+        return f"({self.lang_type}) {self.podcast_id}"
+
+class ExternalPodcastEpisode(models.Model):
+    podcast = models.ForeignKey(ExternalPodcast, on_delete=models.CASCADE)
+    related_post = models.ForeignKey(Post, on_delete=models.CASCADE)
+
+    podcast_episode_id = models.IntegerField(help_text="Ad ID for podcast's episode", unique=True, blank=False)
+    podcast_url = models.URLField(help_text="Full source path to podcast episode", unique=True, blank=False)
+
+    def __str__(self):
+        return f"({self.podcast.lang_type}) {self.podcast_episode_id}"

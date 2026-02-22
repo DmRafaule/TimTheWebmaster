@@ -17,17 +17,21 @@ def article(request, post_slug):
     # Получаем соответствующую статью
     post = get_object_or_404(Post_M.Article, slug=post_slug)
     context.update({'post': post})
-    # Получаем медиа файлы относящиеся к этой статье
+    # Получаем медиа файлы относящиеся к этой статье / Для обратной совместимости
     downloadables = post.media.filter_by_lang().filter(type=Main_M.Media.RAW_FILE).order_by('timeCreated')
     images = post.media.filter_by_lang().filter(type=Main_M.Media.IMAGE).order_by('timeCreated')
     videos = post.media.filter_by_lang().filter(type=Main_M.Media.VIDEO).order_by('timeCreated')
-    pdfs = post.media.filter_by_lang().filter(type=Main_M.Media.PDF).order_by('timeCreated')
-    audios = post.media.filter_by_lang().filter(type=Main_M.Media.AUDIO).order_by('timeCreated')
     context.update({'downloadables': downloadables})
     context.update({'images': images})
     context.update({'videos': videos})
-    context.update({'pdfs': pdfs})
-    context.update({'audios': audios})
+    # Получаем относящийся подкаст и соответствующий эпизод
+    podcast = Post_M.ExternalPodcast.objects.filter_by_lang().first()
+    podcast_episode = Post_M.ExternalPodcastEpisode.objects.filter(related_post=post, podcast=podcast).first()
+    context.update({'podcast': podcast})
+    context.update({'podcast_episode': podcast_episode})
+    # Получаем относящееся видео
+    external_video = Post_M.ExternalVideo.objects.filter(related_post=post).first()
+    context.update({'external_video': external_video})
     ## Определяем сколько времени необходимо для прочтения
     with post.template.open('r') as file:
         soup = BeautifulSoup(file.read(), features="lxml")

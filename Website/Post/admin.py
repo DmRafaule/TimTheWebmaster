@@ -273,6 +273,33 @@ class NoteAdmin(admin.ModelAdmin):
         'tags'
     )
 
+class ExternalVideoAdmin(admin.ModelAdmin):
+    list_display = ('id', 'video_id')
+    list_display_links = ('id',)
+    list_editable = ('video_id',)
+
+class ExternalPodcastAdmin(admin.ModelAdmin):
+    filter_horizontal = (
+        'langs',
+    )
+    list_filter = ('lang_type',)
+    list_display = ('id', 'lang_type', 'podcast_id')
+    list_display_links = ('podcast_id',)
+    list_editable = ('lang_type',)
+    fieldsets = [
+        (
+            None,
+            {
+                'fields': ['lang_type', 'langs', 'podcast_id']
+            }
+        ),
+    ]
+
+class ExternalPodcastEpisodeAdmin(admin.ModelAdmin):
+    list_display = ('id', 'podcast_episode_id', 'podcast', 'podcast_url', 'related_post')
+    list_display_links = ('podcast_episode_id',)
+    list_editable = ('podcast_url',)
+
 
 admin.site.register(M.Tag, TagAdmin)
 admin.site.register(M.Category, CategoryAdmin)
@@ -283,3 +310,6 @@ admin.site.register(M.Scraper, ScraperAdmin)
 admin.site.register(M.Script, ScriptAdmin)
 admin.site.register(M.DjangoApp, DjangoAppAdmin)
 admin.site.register(M.Note, NoteAdmin)
+admin.site.register(M.ExternalPodcast, ExternalPodcastAdmin)
+admin.site.register(M.ExternalPodcastEpisode, ExternalPodcastEpisodeAdmin)
+admin.site.register(M.ExternalVideo, ExternalVideoAdmin)
