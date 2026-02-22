@@ -55,14 +55,10 @@ class ToolMiddleware:
                 downloadables = tool.media.filter_by_lang().filter(type=Media.RAW_FILE).order_by('timeCreated')
                 images = tool.media.filter_by_lang().filter(type=Media.IMAGE).order_by('timeCreated')
                 videos = tool.media.filter_by_lang().filter(type=Media.VIDEO).order_by('timeCreated')
-                pdfs = tool.media.filter_by_lang().filter(type=Media.PDF).order_by('timeCreated')
-                audios = tool.media.filter_by_lang().filter(type=Media.AUDIO).order_by('timeCreated')
                 response.context_data.update({'post': tool})
                 response.context_data.update({'downloadables': downloadables})
                 response.context_data.update({'images': images})
                 response.context_data.update({'videos': videos})
-                response.context_data.update({'pdfs': pdfs})
-                response.context_data.update({'audios': audios})
                 if isinstance(tool, WebTool):
                     response.context_data.update({'isWebTool': True})
                 elif isinstance(tool, TelegramBot):
