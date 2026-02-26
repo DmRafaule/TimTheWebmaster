@@ -126,9 +126,9 @@ export class VideoTooltip{
                     }
                 }
                 else{
-                    tooltip.boundsContainer.setAttribute('src', value)
-                    tooltip.boundsContainer.dataset.src = value
                     tooltip.boundsContainer.classList.add('do_not_updateDownloadablesForServer')
+                    tooltip.boundsContainer.src = value
+                    tooltip.boundsContainer.dataset.src = value
                 }
             }
             else{
@@ -136,9 +136,9 @@ export class VideoTooltip{
                     window.contextLoader.startLoad('load_more')
                     VideoTooltip.removeFromServer(tooltip.boundsContainer)
                 }
-                tooltip.boundsContainer.setAttribute('src', value)
-                tooltip.boundsContainer.dataset.src = value
                 tooltip.boundsContainer.classList.add('do_not_updateDownloadablesForServer')
+                tooltip.boundsContainer.src = value
+                tooltip.boundsContainer.dataset.src = value
                 tooltip.boundsContainer.dataset.serverPk = ""
             }
             //updateImagesForServer()
