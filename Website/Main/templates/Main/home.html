@@ -10,6 +10,62 @@
 	{% if isYandexAdManagerMiddlewareConnected %}
 		{% include 'YandexAdManager/admanager_header.html' %}
 	{% endif %}
+	<script type="application/ld+json">
+		{
+		"@context": "https://schema.org",
+		"@graph": [
+			{
+				"@type": "WebSite",
+				"@id": "https://{{domain_name}}{%url 'home'%}#website",
+				"url": "https://{{domain_name}}{%url 'home'%}",
+				"name": "{% trans 'Тим Зе Вебмастер' %}",
+				"alternateName": "{% trans 'Лаборатория разработки Тима Зе Вебмастера' %}",
+				"publisher": {
+					"@id": "https://{{domain_name}}{%url 'about'%}#person" 
+				}
+			},
+			{
+				"@type": "CollectionPage",
+				"@id": "https://{{domain_name}}{%url 'home'%}#homepage",
+				"url": "https://{{domain_name}}{%url 'home'%}",
+				"name": "{% trans 'Главная страница лаборатории Tim the Webmaster' %}",
+				"description": "{% trans 'Статьи о программировании на Python/Django, инструменты для SEO и парсинга, заметки о системном администрировании.' %}",
+				"about": {
+					"@id": "https://{{domain_name}}{%url 'about'%}#person"
+				},
+				"mainEntity": {
+					"@type": "ItemList",
+					"itemListElement": [
+						{
+							"@type": "ListItem",
+							"position": 1,
+							"name": "{% trans 'Внутренние инструменты' %}",
+							"url": "https://{{domain_name}}{% url 'tools-list' %}?page=1&tag={{internal_tool_tag}}"
+						},
+						{
+							"@type": "ListItem",
+							"position": 2,
+							"name": "{% trans 'Последние инструменты' %}",
+							"url": "https://{{domain_name}}{% url 'tools-list' %}?page=1"
+						},
+						{
+							"@type": "ListItem",
+							"position": 3,
+							"name": "{% trans 'Статьи' %}",
+							"url": "https://{{domain_name}}{% url 'articles-list' %}?page=1"
+						},
+						{
+							"@type": "ListItem",
+							"position": 4,
+							"name": "{% trans 'Заметки' %}",
+							"url": "https://{{domain_name}}{% url 'notes-list' %}?page=1"
+						}
+					]
+				}
+			}
+		]
+		}
+	</script>
 {% endblock %}
 
 {% block content %}

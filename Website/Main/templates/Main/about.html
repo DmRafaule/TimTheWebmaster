@@ -11,17 +11,40 @@
 		  "@context": "https://schema.org",
 		  "@type": "ProfilePage",
 		  "dateCreated": "2023-10-09T12:34:00-05:00",
-		  "dateModified": "2024-10-02T14:53:00-05:00",
+		  "dateModified": "2026-03-05T14:53:00-05:00",
 		  "mainEntity": {
 			"@type": "Person",
-			"name": "{% trans 'Тима Чудук' %}",
-			"description": "Defender of Truth",
-			"image": "{% static '/Main/img/me1.jpg' %}",
+			"@id": "https://{{domain_name}}{%url 'about'%}#person",
+			"birthDate": "2000-07-16",
+			"jobTitle": [
+				"{% trans 'Веб-разработчик' %}", 
+				"{% trans 'Системный администратор' %}"
+			],
+			"birthPlace": {
+				"@type": "Place",
+				"name": "Belarus"
+			},
+			"knowsAbout": [
+				"Python",
+				"Django",
+				"C",
+				"C++",
+				"GLSL Shaders",
+				"Web Scraping",
+				"Telegram Bot Development",
+				"System Administration",
+				"Linux Server Automation",
+				"Web Security"
+			],
+			"name": "{% trans 'Дмитрий Чудук' %}",
+			"alternateName": "{% trans 'Тим Зе Вебмастер' %}",
+			"description": "{% trans 'Программист самоучка, который занимается тем, что разрабатывает веб-приложения, сайты, скрипты и работает в качестве системного администратора.' %}",
+			"image": "{{ request.scheme }}://{{ request.get_host }}{% static '/Main/img/me1.jpg' %}",
 			"sameAs": [
-			  "https://vk.com/timachuduk",
-			  "https://x.com/TimaChedr",
 			  "https://www.reddit.com/user/DmRafaule/",
-			  "https://www.instagram.com/timachedr/"
+			  "https://www.instagram.com/timachedr/",
+			  "https://www.youtube.com/channel/UC7Ucv36mX3KpDipzB6rxuoQ",
+			  "https://github.com/DmRafaule"
 			]
 		  }
 		}

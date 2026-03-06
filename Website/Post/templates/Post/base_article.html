@@ -17,12 +17,16 @@
       "@type": "Article",
       "author": {
 		"@type": "Person",
-		"name": "{% trans 'Тима Чудук' %}"
+		"@id": "https://{{domain_name}}{%url 'about'%}#person",
+		"url": "https://{{domain_name}}{%url 'about'%}",
+		"name": "{% trans 'Дмитрий Чудук' %}"
 	   },
+	  "name": "{{ post.title }}",
+	  "headline": "{{ post.h1 }}",
 	  "abstract": "{{ post.description }}",
-	  "datePublished": "{{post.timeCreated}}",
-	  "dateModified": "{{post.timeUpdated}}",
-      "name": "{{ post.title }}"
+	  "image": "{{ request.scheme }}://{{ request.get_host }}{% get_media_prefix %}{{post.preview}}",
+	  "datePublished": "{{post.timeCreated}}+03:00",
+	  "dateModified": "{{post.timeUpdated}}+03:00"
     	{% if isEngagementMiddlewareConnected %}
       ,"interactionStatistic": [
 		{% with interaction=post.get_absolute_url|getInteraction %}
