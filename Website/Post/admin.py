@@ -52,7 +52,7 @@ class ArticleAdmin(admin.ModelAdmin):
         (
             'Advanced options',
             {
-                'fields': ['media', ('preview', 'timeCreated')],
+                'fields': ['media', 'dependencies', 'proficiencyLevel', ('preview', 'timeCreated')],
                 'classes': ['collapse'],
                 'description': 'In this fieldset you can switch type of tool and configure other options.'
             }
@@ -117,7 +117,7 @@ class ToolAdmin(admin.ModelAdmin):
         (
             'Advanced options',
             {
-                'fields': ['icon', 'type', 'media', ('template_ru', 'template_en')],
+                'fields': ['icon', 'type', 'operatingSystem', 'media', ('template_ru', 'template_en')],
                 'classes': ['collapse'],
                 'description': 'In this fieldset you can switch type of tool and configure other options.'
             }

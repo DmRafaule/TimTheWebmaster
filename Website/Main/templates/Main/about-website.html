@@ -6,7 +6,7 @@
 {% block head %}
 	<title>{% trans "Всё о сайте TimTheWebmaster, политика куки, монетизации и используемые технологии, ассеты" %}</title>
 	<meta name="description" content="{% trans "Сайт TimTheWebmaster. О политике куки, как он монетизируется, на каких технологиях работает, и какие ассеты использует." %}">
-	<link rel="canonical" href="https://{{domain_name}}{%url 'about-website'%}" />
+	<link rel="canonical" href="{{ request.scheme }}://{{ request.get_host }}{%url 'about-website'%}" />
 	<script type="application/ld+json">
 		{
 		"@context": "https://schema.org",
@@ -16,14 +16,16 @@
 			"@type": "WebSite",
 			"name": "{% trans 'Лаборатория разработки Тима зе Вебмастера' %}",
 			"alternateName": "TimTheWebmaster",
-			"url": "https://{{domain_name}}{%url 'home'%}",
+			"url": "{{ request.scheme }}://{{ request.get_host }}{%url 'home'%}",
 			"description": "{% trans 'Лаборатория разработки для публикации инструментов и статей, а так же проведение различных экспериментов. Темы: SEO, ИИ, Django-разработка и системное администрирование.' %}",
 			"inLanguage": "{{LANGUAGE_CODE}}",
 			"genre": "{% trans 'Программирование, Веб разработка, Лаборатория разработки, Бекенд разработка' %}",
 			"copyrightYear": "{% now 'Y' %}",
 			"author": {
 				"@type": "Person",
-				"@id": "https://{{domain_name}}{%url 'about'%}#person" 
+				"@id": "{{ request.scheme }}://{{ request.get_host }}{%url 'about'%}#person" 
+				"url": "{{ request.scheme }}://{{ request.get_host }}{%url 'about'%}",
+                "name": "{% trans 'Дмитрий Чудук' %}"
 			}
 		},
 		"mentions": [

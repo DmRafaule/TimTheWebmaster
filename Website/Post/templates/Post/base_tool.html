@@ -11,7 +11,7 @@
 {% block head %}
 
     <title>{{post.name}} | {% trans 'Инструмент' %}</title>
-    <link rel="canonical" href="https://{{domain_name}}{{post.get_absolute_url}}" />
+    <link rel="canonical" href="{{ request.scheme }}://{{ request.get_host }}{{post.get_absolute_url}}" />
     <meta name="description" content="{{post.description}}">
     <meta name="keywords" content="{{post.meta_keywords}}">
 
@@ -20,14 +20,25 @@
     <script type="application/ld+json">
         {
             "@context": "https://schema.org",
+            {% if isWebTool %}
+            "@type": "WebApplication",
+            {% else %}
             "@type": "SoftwareApplication",
+            {% endif %}
             "name": "{{ page_tool.name }}",
 	        "abstract": "{{ page_tool.description }}",
             "author": {
                 "@type": "Person",
-                "name": "{% trans 'Тима Чудук' %}"
+                "@id": "{{ request.scheme }}://{{ request.get_host }}{%url 'about'%}#person",
+		        "url": "{{ request.scheme }}://{{ request.get_host }}{%url 'about'%}",
+                "name": "{% trans 'Дмитрий Чудук' %}"
+            },
+            "publisher": {
+                "@type": "Organization",
+                "name": "TimTheWebmaster"
             },
             "applicationCategory": "{{page_tool.type}}",
+            "operatingSystem": "{{page_tool.operatingSystem}}",
             {% if comments_number > 0 %}
             "aggregateRating": {
                 "@type": "AggregateRating",

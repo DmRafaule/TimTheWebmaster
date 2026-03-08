@@ -120,6 +120,15 @@ class Article(Post):
     # Похожие по тематике другие посты
     similar = models.ManyToManyField('self', blank=True, help_text="Up to 3 choises", symmetrical=False)
 
+    dependencies = models.CharField(max_length=256, blank=True, default="")
+    class ProficiencyLevel(models.TextChoices):
+        Beginer      = "Beginer"
+        Intermediate = "Intermediate"
+        Expert       = "Expert"
+        NoNe         = "None"
+    proficiencyLevel  =  models.CharField(max_length=100, choices=ProficiencyLevel, default=ProficiencyLevel.NoNe)
+
+
     def save(self, *args, **kwargs):
         super(Article, self).save(*args, **kwargs)
 
@@ -157,6 +166,7 @@ class Tool(Post, PolymorphicModel):
     view_name = "tool"
     max_similar = 3
     objects = ToolManager()
+
     name = models.CharField(max_length=256, blank=False)
     h1 = models.CharField(max_length=256, blank=False, default='')
     description = models.TextField(blank=False)
@@ -192,10 +202,15 @@ class Tool(Post, PolymorphicModel):
         HomeApplication = "HomeApplication"
         UtilitiesApplication = "UtilitiesApplication"
         ReferenceApplication = "ReferenceApplication"
-        VideoGame = "VideoGame"
-        MobileApplication = "MobileApplication"
-        WebApplication = "WebApplication"
-    type = models.CharField(max_length=100, choices=ToolType, default=ToolType.WebApplication)
+    type = models.CharField(max_length=100, choices=ToolType, default=ToolType.UtilitiesApplication)
+    # Операционные системы 
+    class OSType(models.TextChoices):
+        Any = "Any"
+        Web = "Web"
+        Windows = "Windows"
+        Linux = "Linux"
+    operatingSystem = models.CharField(max_length=100, choices=OSType, default=OSType.Any)
+
 
     def save(self, *args, **kwargs):
         super(Tool, self).save(*args, **kwargs)

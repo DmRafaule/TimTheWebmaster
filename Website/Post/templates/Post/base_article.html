@@ -13,59 +13,73 @@
 	<!-- Article -->
 	<script type="application/ld+json">
     {
-      "@context": "https://schema.org",
-      "@type": "Article",
-      "author": {
-		"@type": "Person",
-		"@id": "https://{{domain_name}}{%url 'about'%}#person",
-		"url": "https://{{domain_name}}{%url 'about'%}",
-		"name": "{% trans 'Дмитрий Чудук' %}"
-	   },
-	  "name": "{{ post.title }}",
-	  "headline": "{{ post.h1 }}",
-	  "abstract": "{{ post.description }}",
-	  "image": "{{ request.scheme }}://{{ request.get_host }}{% get_media_prefix %}{{post.preview}}",
-	  "datePublished": "{{post.timeCreated}}+03:00",
-	  "dateModified": "{{post.timeUpdated}}+03:00"
-    	{% if isEngagementMiddlewareConnected %}
-      ,"interactionStatistic": [
-		{% with interaction=post.get_absolute_url|getInteraction %}
-			{
-			"@type": "InteractionCounter",
-			"interactionType": "https://schema.org/ViewAction",
-			"userInteractionCount": "{{interaction.views}}"
-			}
-			{% if is_likes %}
-				,{
+		"@context": "https://schema.org",
+		{% if post.proficiencyLevel != "None" or post.dependencies|length > 0 %}
+		"@type": "TechArticle",
+		{% else %}
+		"@type": "BlogPosting",
+		{% endif %}
+		"author": {
+			"@type": "Person",
+			"@id": "{{ request.scheme }}://{{ request.get_host }}{%url 'about'%}#person",
+			"url": "{{ request.scheme }}://{{ request.get_host }}{%url 'about'%}",
+			"name": "{% trans 'Дмитрий Чудук' %}"
+	   	},
+	   "publisher": {
+			"@type": "Organization",
+			"name": "TimTheWebmaster"
+		},
+		"name": "{{ post.title }}",
+		"headline": "{{ post.h1 }}",
+		"abstract": "{{ post.description }}",
+		{% if post.dependencies| length > 0 %}
+		"dependencies": "{{post.dependencies}}",
+		{% endif %}
+		{% if post.proficiencyLevel != "None" %}
+		"proficiencyLevel": "{{post.proficiencyLevel}}",
+		{% endif %}
+		"image": "{{ request.scheme }}://{{ request.get_host }}{% get_media_prefix %}{{post.preview}}",
+		"datePublished": "{{post.timeCreated}}+03:00",
+		"dateModified": "{{post.timeUpdated}}+03:00"
+			{% if isEngagementMiddlewareConnected %}
+		,"interactionStatistic": [
+			{% with interaction=post.get_absolute_url|getInteraction %}
+				{
 				"@type": "InteractionCounter",
-				"interactionType": "https://schema.org/LikeAction",
-				"userInteractionCount": "{{interaction.likes}}"
+				"interactionType": "https://schema.org/ViewAction",
+				"userInteractionCount": "{{interaction.views}}"
 				}
-			{% endif %}
-			{% if is_shares %}
-				,{
-				"@type": "InteractionCounter",
-				"interactionType": "https://schema.org/ShareAction",
-				"userInteractionCount": "{{interaction.shares}}"
-				}
-			{% endif %}
-			{% if is_comments %}
-				,{
-				"@type": "InteractionCounter",
-				"interactionType": "https://schema.org/CommentAction",
-				"userInteractionCount": "{{interaction.comments}}"
-				}
-			{% endif %}
-			{% if is_bookmarks %}
-				,{
-				"@type": "InteractionCounter",
-				"interactionType": "https://schema.org/BookmarkAction",
-				"userInteractionCount": "{{interaction.bookmarks}}"
-				}
-			{% endif %}
-		{% endwith %}
-      ]
-	  {% endif %}
+				{% if is_likes %}
+					,{
+					"@type": "InteractionCounter",
+					"interactionType": "https://schema.org/LikeAction",
+					"userInteractionCount": "{{interaction.likes}}"
+					}
+				{% endif %}
+				{% if is_shares %}
+					,{
+					"@type": "InteractionCounter",
+					"interactionType": "https://schema.org/ShareAction",
+					"userInteractionCount": "{{interaction.shares}}"
+					}
+				{% endif %}
+				{% if is_comments %}
+					,{
+					"@type": "InteractionCounter",
+					"interactionType": "https://schema.org/CommentAction",
+					"userInteractionCount": "{{interaction.comments}}"
+					}
+				{% endif %}
+				{% if is_bookmarks %}
+					,{
+					"@type": "InteractionCounter",
+					"interactionType": "https://schema.org/BookmarkAction",
+					"userInteractionCount": "{{interaction.bookmarks}}"
+					}
+				{% endif %}
+			{% endwith %}
+		]
+		{% endif %}
     }
     </script>
 	<!-- /Article -->
