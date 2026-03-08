@@ -32,7 +32,7 @@
 		"name": "{{ post.title }}",
 		"headline": "{{ post.h1 }}",
 		"abstract": "{{ post.description }}",
-		{% if post.dependencies| length > 0 %}
+		{% if post.dependencies|length > 0 %}
 		"dependencies": "{{post.dependencies}}",
 		{% endif %}
 		{% if post.proficiencyLevel != "None" %}

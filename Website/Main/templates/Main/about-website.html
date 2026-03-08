@@ -23,7 +23,7 @@
 			"copyrightYear": "{% now 'Y' %}",
 			"author": {
 				"@type": "Person",
-				"@id": "{{ request.scheme }}://{{ request.get_host }}{%url 'about'%}#person" 
+				"@id": "{{ request.scheme }}://{{ request.get_host }}{%url 'about'%}#person" ,
 				"url": "{{ request.scheme }}://{{ request.get_host }}{%url 'about'%}",
                 "name": "{% trans 'Дмитрий Чудук' %}"
 			}
