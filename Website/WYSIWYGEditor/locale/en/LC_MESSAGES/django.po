@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-02-13 11:33+0300\n"
+"POT-Creation-Date: 2026-03-08 17:21+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -65,171 +65,178 @@ msgstr "WYSIWYG Editor"
 msgid "Редактор контента (статей, инструментов) на сайте"
 msgstr "Content editor (articles, tools) on and for this website"
 
-#: .\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:20
+#: .\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:14
+#: .\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:17
+#: .\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:22
+#: .\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:25
+msgid "3 горизонтальные линии, бургер"
+msgstr "Horizontal line"
+
+#: .\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:34
 msgid "Работа с текущим файлом"
 msgstr "With current file"
 
-#: .\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:30
+#: .\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:44
 #: .\WYSIWYGEditor\templates\WYSIWYGEditor\save_form_container.html:43
 msgid "Сохранить"
 msgstr "Save"
 
-#: .\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:31
+#: .\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:45
 msgid "Сохранить файл"
 msgstr "Save"
 
-#: .\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:36
-#: .\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:51
-#: .\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:64
+#: .\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:50
+#: .\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:65
+#: .\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:78
 msgid "Крестик"
 msgstr "Cross"
 
-#: .\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:38
+#: .\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:52
 msgid "Загрузить файл с диска"
 msgstr "Import from file"
 
-#: .\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:44
+#: .\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:58
 msgid "Перевести"
 msgstr "Translate"
 
-#: .\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:45
+#: .\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:59
 msgid "Перевести файл"
 msgstr "Translate file"
 
-#: .\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:52
+#: .\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:66
 msgid "Скачать файл"
 msgstr "Download file"
 
-#: .\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:65
+#: .\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:79
 msgid "Удалить файл"
 msgstr "Delete file"
 
-#: .\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:77
+#: .\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:91
 msgid "✔ Статья успешно опубликованна"
 msgstr "✔ An post successfully published"
 
-#: .\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:84
-#: .\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:85
+#: .\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:98
+#: .\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:99
 msgid "Опубликовать"
 msgstr "Publish"
 
-#: .\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:92
+#: .\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:106
 msgid "Статы файла"
 msgstr "File stats"
 
-#: .\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:95
+#: .\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:109
 msgid "Размер файла:"
 msgstr "Filename size:"
 
-#: .\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:96
+#: .\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:110
 msgid "байтов"
 msgstr "bytes"
 
-#: .\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:99
+#: .\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:113
 msgid "Слов:"
 msgstr "Words:"
 
-#: .\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:103
+#: .\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:117
 msgid "Время чтения:"
 msgstr "Time reading:"
 
-#: .\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:104
+#: .\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:118
 msgid "минут"
 msgstr "minuts"
 
-#: .\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:114
+#: .\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:127
 msgid "Файлы для редактирования"
 msgstr "Files for editing"
 
-#: .\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:183
+#: .\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:205
 msgid "Жирный"
 msgstr "Bold"
 
-#: .\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:189
+#: .\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:211
 msgid "Скошеный"
 msgstr "Italic"
 
-#: .\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:195
+#: .\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:217
 msgid "Подчёркнутый"
 msgstr "Underline"
 
-#: .\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:201
+#: .\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:223
 msgid "Перечёркнутый"
 msgstr "Crossed out"
 
-#: .\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:207
+#: .\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:229
 msgid "Аббревиатура"
 msgstr "Abbreviation"
 
-#: .\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:236
+#: .\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:258
 msgid "Цитата"
 msgstr "Quote"
 
-#: .\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:242
+#: .\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:264
 msgid "Внимание"
 msgstr "Attention"
 
-#: .\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:248
+#: .\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:270
 msgid "Опасно"
 msgstr "Danger"
 
-#: .\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:254
+#: .\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:276
 msgid "Это интересно"
 msgstr "This is interesting"
 
-#: .\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:260
+#: .\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:282
 msgid "Вопрос"
 msgstr "Question"
 
-#: .\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:266
+#: .\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:288
 msgid "Определение"
 msgstr "Definition"
 
-#: .\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:272
+#: .\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:294
 msgid "Блок кода"
 msgstr "A block of code"
 
-#: .\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:292
+#: .\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:314
 msgid "Список нумерованный"
 msgstr "Numeric list"
 
-#: .\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:298
+#: .\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:320
 msgid "Список ненумерованный"
 msgstr "Bullet list"
 
-#: .\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:304
+#: .\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:326
 msgid "Список латиницей"
 msgstr "Latin list"
 
-#: .\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:310
+#: .\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:332
 msgid "Таблица"
 msgstr "Table"
 
-#: .\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:316
+#: .\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:338
 msgid "Горизонтальная линия"
 msgstr "Horizontal line"
 
-#: .\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:336
+#: .\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:358
 msgid "Ссылка на внешний рессурс"
 msgstr "A link to outside a site"
 
-#: .\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:342
+#: .\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:364
 msgid "Ссылка на часть статьи"
 msgstr "A link to a part of article"
 
-#: .\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:348
+#: .\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:370
 msgid "Ссылка на скачиваеммый контент"
 msgstr "A link to downloadable content"
 
-#: .\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:368
+#: .\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:390
 msgid "Видео"
 msgstr "Video"
 
-#: .\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:374
+#: .\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:396
 msgid "Изображение"
 msgstr "Image"
 
-#: .\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:380
+#: .\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:402
 msgid "Текст под изображением"
 msgstr "Text under image"
 
