@@ -2,13 +2,10 @@
 	font-size: 10px;
 	border: 1px solid black;
 	padding: 5px;
-	border-radius: 16px;
 	word-wrap: break-word;
 }
 .table_of_content_text{
-	color: var(--link-internal_color);
 	transition: padding 0.3s;
-	border-bottom: 1px solid var(--link-internal_color);
 	cursor: pointer;
 }
 .table_of_content_text:hover {
@@ -17,6 +14,12 @@
 .table_of_content_element_selected{
 	color: var(--link-hover-internal_color);
 	font-weight: bold;
+}
+.table_of_content_list{
+	padding-left: 0;
+}
+.table_of_content_list>li{
+	margin-left: 0;
 }
 
 .table_of_content-minified{
