@@ -96,6 +96,7 @@ class QuestionBlock extends SomeBlock{
 QuestionBlock.blotName = 'question'
 QuestionBlock.tagName  = 'fieldset'
 Quill.register({'formats/question': QuestionBlock})
+
 // Termin block
 class TerminBlock extends SomeBlock{
     static create(value){
@@ -106,3 +107,14 @@ class TerminBlock extends SomeBlock{
 TerminBlock.blotName = 'termin'
 TerminBlock.tagName  = 'fieldset'
 Quill.register({'formats/termin': TerminBlock})
+
+// Tip block
+class TipBlock extends SomeBlock{
+    static create(value){
+        let node = super.create(value);
+        return node
+    }
+}
+TipBlock.blotName = 'tip'
+TipBlock.tagName  = 'fieldset'
+Quill.register({'formats/tip': TipBlock})

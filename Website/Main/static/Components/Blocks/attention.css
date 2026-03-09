@@ -43,6 +43,13 @@
 	padding: var(--attention_block-padding);
 }
 
+.tip{
+	background: #d4f3a3;
+	border: 2px solid black;
+	border-radius: 4px;
+	padding: var(--attention_block-padding);
+}
+
 .termin{
 	background: #ddecf3;
 	border: 2px solid black;

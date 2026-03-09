@@ -115,6 +115,7 @@ const quill = new Quill('#editor', {
                 'question': SomeBlockHandler,
                 'termin': SomeBlockHandler,
                 'quote': SomeBlockHandler,
+                'tip': SomeBlockHandler,
                 'code-block': CodeBlockHandler,
                 'table': CustomTable.handler,
             }
