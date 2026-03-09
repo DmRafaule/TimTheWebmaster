@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-08 17:21+0300\n"
+"POT-Creation-Date: 2026-03-09 13:18+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -193,50 +193,54 @@ msgid "Определение"
 msgstr "Definition"
 
 #: .\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:294
+msgid "Совет"
+msgstr "Tip"
+
+#: .\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:300
 msgid "Блок кода"
 msgstr "A block of code"
 
-#: .\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:314
+#: .\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:320
 msgid "Список нумерованный"
 msgstr "Numeric list"
 
-#: .\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:320
+#: .\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:326
 msgid "Список ненумерованный"
 msgstr "Bullet list"
 
-#: .\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:326
+#: .\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:332
 msgid "Список латиницей"
 msgstr "Latin list"
 
-#: .\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:332
+#: .\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:338
 msgid "Таблица"
 msgstr "Table"
 
-#: .\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:338
+#: .\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:344
 msgid "Горизонтальная линия"
 msgstr "Horizontal line"
 
-#: .\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:358
+#: .\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:364
 msgid "Ссылка на внешний рессурс"
 msgstr "A link to outside a site"
 
-#: .\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:364
+#: .\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:370
 msgid "Ссылка на часть статьи"
 msgstr "A link to a part of article"
 
-#: .\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:370
+#: .\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:376
 msgid "Ссылка на скачиваеммый контент"
 msgstr "A link to downloadable content"
 
-#: .\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:390
+#: .\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:396
 msgid "Видео"
 msgstr "Video"
 
-#: .\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:396
+#: .\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:402
 msgid "Изображение"
 msgstr "Image"
 
-#: .\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:402
+#: .\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:408
 msgid "Текст под изображением"
 msgstr "Text under image"
 
