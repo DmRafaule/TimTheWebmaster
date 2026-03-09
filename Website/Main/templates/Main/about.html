@@ -29,12 +29,10 @@
 	{% endif %}
 	<meta property="og:site_name" content="TimTheWebmaster" />
 	<meta property="og:url" content="{{ request.scheme }}://{{ request.get_host }}{%url 'about' %}" />
-	<meta property="og:logo" content="{{ request.scheme }}://{{ request.get_host }}/favicon.svg' %}" />
-	<meta property="og:logo:type" content="image/svg+xml" />
 	<meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{% static 'Main/img/TTW-background-1.webp' %}" />
 	<meta property="og:image:type" content="image/webp" />
 	<meta property="og:image:width" content="629" />
-	<meta property="og:image:heigh" content="1200" />
+	<meta property="og:image:height" content="1200" />
 	<meta property="og:image:alt" content="{% trans 'Человек(мужчина) в костюме, улыбается' %}" />
     <!-- /OpenGraph -->
 	<!-- Scheme.ORG -->
