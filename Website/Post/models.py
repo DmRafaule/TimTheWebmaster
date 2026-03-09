@@ -109,8 +109,13 @@ class Article(Post):
     title = models.CharField(max_length=256, blank=False, default='')
     h1 = models.CharField(max_length=256, blank=False, default='')
     description = models.TextField(max_length=256, blank=True)
-    meta_keywords = models.CharField(max_length=256, blank=True, default='')
     preview = models.FileField(max_length=300, upload_to=user_directory_path, blank=True)
+    meta_keywords = models.CharField(max_length=256, blank=True, default='')
+    # Используется в OpenGraph и Schema
+    meta_preview = models.ImageField(max_length=256, upload_to=user_directory_path, blank=True, help_text="If provided, then this preview is used in OG and Schema")
+    # Используется в alt метатеге
+    meta_preview_description = models.CharField(max_length=125, blank=True, default="")
+    
     # Шаблон для отрисовки пользователю
     template = models.FileField(max_length=300, upload_to=user_directory_path, blank=False)  # page to display
     # Относящиеся по смыслу вопросы
@@ -171,6 +176,8 @@ class Tool(Post, PolymorphicModel):
     h1 = models.CharField(max_length=256, blank=False, default='')
     description = models.TextField(blank=False)
     meta_keywords = models.CharField(max_length=256, blank=True, default='')
+    meta_preview  = models.ImageField(max_length=300, upload_to=user_directory_path, blank=True, help_text="If provided, then this preview is used in OG and Schema")
+    meta_preview_description = models.CharField(max_length=256, blank=True, default='', help_text="If provided, then this preview description is used in OG and Schema")
     icon = models.FileField(max_length=300, upload_to=user_directory_path, blank=True)
     # Шаблон который будет отрисовываться вместо шаблона по умолчанию
     template = models.FileField(max_length=300, upload_to=user_directory_path, blank=True, help_text="If provided, default template not in use. Use only if it is Internal default type")

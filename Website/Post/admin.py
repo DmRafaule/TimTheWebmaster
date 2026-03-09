@@ -31,15 +31,8 @@ class CategoryAdmin(admin.ModelAdmin):
 
 
 class ArticleAdmin(admin.ModelAdmin):
-
-    #def formfield_for_manytomany(self, db_field, request, **kwargs):     
-    #    if db_field.name == "similar":
-    #        id = int(request.resolver_match.kwargs['object_id'])
-    #        category_id = db_field.model.objects.get(id=id).category.id
-    #        kwargs["queryset"] = M.Article.objects.filter(category=category_id)
-    #    return super(ArticleAdmin, self).formfield_for_manytomany(db_field, request, **kwargs)
         
-    exclude = ('category', 'template', 'description', 'title', 'h1', 'meta_keywords')
+    exclude = ('category', 'template', 'description', 'title', 'h1', 'meta_keywords', 'meta_preview_description')
     filter_horizontal = ('tags', 'termins', 'questions', 'similar', 'media' )
     ordering = ['-timeCreated']
     fieldsets = [
@@ -52,7 +45,7 @@ class ArticleAdmin(admin.ModelAdmin):
         (
             'Advanced options',
             {
-                'fields': ['media', 'dependencies', 'proficiencyLevel', ('preview', 'timeCreated')],
+                'fields': ['media', 'dependencies', 'proficiencyLevel', ('preview', 'meta_preview'), ('meta_preview_description_ru', 'meta_preview_description_en'),'timeCreated'],
                 'classes': ['collapse'],
                 'description': 'In this fieldset you can switch type of tool and configure other options.'
             }
@@ -104,7 +97,7 @@ class ArticleAdmin(admin.ModelAdmin):
 
 
 class ToolAdmin(admin.ModelAdmin):
-    exclude = ('category','name', 'description', 'template', 'h1', 'meta_keywords')
+    exclude = ('category','name', 'description', 'template', 'h1', 'meta_keywords', 'meta_preview_description')
     filter_horizontal = ('tags', 'media', 'similar')
     ordering = ['-timeCreated']
     fieldsets = [
@@ -117,7 +110,7 @@ class ToolAdmin(admin.ModelAdmin):
         (
             'Advanced options',
             {
-                'fields': ['icon', 'type', 'operatingSystem', 'media', ('template_ru', 'template_en')],
+                'fields': ['icon', 'type', 'operatingSystem', 'media', 'meta_preview', ('meta_preview_description_ru', 'meta_preview_description_en'), ('template_ru', 'template_en')],
                 'classes': ['collapse'],
                 'description': 'In this fieldset you can switch type of tool and configure other options.'
             }

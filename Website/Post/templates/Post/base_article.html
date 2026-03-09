@@ -10,137 +10,157 @@
 	<title>{{ post.title }}</title>
 	<meta name="description" content="{{ post.description }}">
 	<meta name="keywords" content="{{ post.meta_keywords }}" />
+	<meta name="robots" content="max-image-preview:large">
+	
 	<!-- OpenGraph -->
-	<meta property="og:title" content="{{post.h1}}" />
-	<meta property="og:description" content="{{post.description}}" />
-	<meta property="og:type" content="article" />
-	<meta property="og:article:published_time" content="{{post.timeCreated}}+03:00" />
-	<meta property="og:article:modified_time" content="{{post.timeUpdated}}+03:00" />
-	<meta property="og:article:author" content="{{ request.scheme }}://{{ request.get_host }}{% url 'about' %}" />
-	<meta property="og:article:section" content="{{post.category}}" />
-	{% for tag in post.tags.all %}
-	<meta property="og:article:tag" content="{{tag}}" />
-	{% endfor %}
-	{% comment %}
-	Здесь, чтобы можно было пройтись по нужным языкам, нужно ещё где-то хранить локации, пока в ручную
-	{% endcomment %}
-	{% if LANGUAGE_CODE == "ru" %}
-		<meta property="og:locale" content="{{LANGUAGE_CODE}}_{{LANGUAGE_CODE|upper}}" />
-	{% else %}
-		<meta property="og:locale" content="{{LANGUAGE_CODE}}_US" />
-	{% endif %}
-	{% if LANGUAGE_CODE == "ru" %}
-		<meta property="og:locale:alternate" content="en_US" />
-	{% else %}
-		<meta property="og:locale:alternate" content="ru_RU" />
-	{% endif %}
-	<meta property="og:site_name" content="TimTheWebmaster" />
-	<meta property="og:url" content="{{ request.scheme }}://{{ request.get_host }}{{ post.get_absolute_url }}" />
-	<meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{% get_media_prefix %}{{post.preview}}" />
-	<meta property="og:image:secure_url" content="{{ request.scheme }}://{{ request.get_host }}{% get_media_prefix %}{{post.preview}}" />
-	<meta property="og:image:type" content="image/svg+xml" />
-	<meta property="og:image:width" content="1200" />
-	<meta property="og:image:height" content="675" />
-	<meta property="og:image:alt" content="{% trans 'Превью к статье: ' %}{{post.title}}" />
-	{% if podcast_episode or external_video %}
-		{% if podcast_episode %}
+		<meta property="og:title" content="{{post.h1}}" />
+		<meta property="og:description" content="{{post.description}}" />
+		<meta property="og:type" content="article" />
+		<meta property="og:article:published_time" content="{{post.timeCreated}}+03:00" />
+		<meta property="og:article:modified_time" content="{{post.timeUpdated}}+03:00" />
+		<meta property="og:article:author" content="{{ request.scheme }}://{{ request.get_host }}{% url 'about' %}" />
+		<meta property="og:article:section" content="{{post.category}}" />
+		{% for tag in post.tags.all %}
+		<meta property="og:article:tag" content="{{tag}}" />
+		{% endfor %}
+		{% comment %}
+		Здесь, чтобы можно было пройтись по нужным языкам, нужно ещё где-то хранить локации, пока в ручную
+		{% endcomment %}
+		{% if LANGUAGE_CODE == "ru" %}
+			<meta property="og:locale" content="{{LANGUAGE_CODE}}_{{LANGUAGE_CODE|upper}}" />
+		{% else %}
+			<meta property="og:locale" content="{{LANGUAGE_CODE}}_US" />
 		{% endif %}
-		{% if external_video %}
+		{% if LANGUAGE_CODE == "ru" %}
+			<meta property="og:locale:alternate" content="en_US" />
+		{% else %}
+			<meta property="og:locale:alternate" content="ru_RU" />
 		{% endif %}
-	{% endif %}
+		<meta property="og:site_name" content="TimTheWebmaster" />
+		<meta property="og:url" content="{{ request.scheme }}://{{ request.get_host }}{{ post.get_absolute_url }}" />
+		<meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{% get_media_prefix %}{{post.meta_preview}}" />
+		<meta property="og:image:secure_url" content="{{ request.scheme }}://{{ request.get_host }}{% get_media_prefix %}{{post.meta_preview}}" />
+		<meta property="og:image:alt" content="{{post.meta_preview_description}}" />
+		<meta property="og:image:type" content="image/webp" />
+		<meta property="og:image:width" content="1200" />
+		<meta property="og:image:height" content="675" />
+		{% if podcast_episode or external_video %}
+			{% if podcast_episode %}
+			{% endif %}
+			{% if external_video %}
+			{% endif %}
+		{% endif %}
     <!-- /OpenGraph -->
+	
 	<!-- Article -->
-	<script type="application/ld+json">
-		{
-			"@context": "https://schema.org",
-			{% if post.proficiencyLevel != "None" or post.dependencies|length > 0 %}
-			"@type": "TechArticle",
-			{% else %}
-			"@type": "BlogPosting",
-			{% endif %}
-			"mainEntityOfPage": "{{ request.scheme }}://{{ request.get_host }}{{post.get_absolute_url}}",
-			"author": {
-				"@type": "Person",
-				"@id": "{{ request.scheme }}://{{ request.get_host }}{%url 'about'%}#person",
-				"url": "{{ request.scheme }}://{{ request.get_host }}{%url 'about'%}",
-				"name": "{% trans 'Дмитрий Чудук' %}"
-			},
-		"publisher": {
-				"@type": "Organization",
-				"name": "TimTheWebmaster"
-			},
-			"name": "{{ post.title }}",
-			"headline": "{{ post.h1 }}",
-			"abstract": "{{ post.description }}",
-			{% if post.dependencies|length > 0 %}
-			"dependencies": "{{post.dependencies}}",
-			{% endif %}
-			{% if post.proficiencyLevel != "None" %}
-			"proficiencyLevel": "{{post.proficiencyLevel}}",
-			{% endif %}
-			"image": "{{ request.scheme }}://{{ request.get_host }}{% get_media_prefix %}{{post.preview}}",
-			"datePublished": "{{post.timeCreated}}+03:00",
-			"dateModified": "{{post.timeUpdated}}+03:00"
-				{% if isEngagementMiddlewareConnected %}
-			,"interactionStatistic": [
-				{% with interaction=post.get_absolute_url|getInteraction %}
-					{
-					"@type": "InteractionCounter",
-					"interactionType": "https://schema.org/ViewAction",
-					"userInteractionCount": "{{interaction.views}}"
-					}
-					{% if is_likes %}
-						,{
+		<script type="application/ld+json">
+			{
+				"@context": "https://schema.org",
+				{% if post.proficiencyLevel != "None" or post.dependencies|length > 0 %}
+				"@type": "TechArticle",
+				{% else %}
+				"@type": "BlogPosting",
+				{% endif %}
+				"mainEntityOfPage": "{{ request.scheme }}://{{ request.get_host }}{{post.get_absolute_url}}",
+				"author": {
+					"@type": "Person",
+					"@id": "{{ request.scheme }}://{{ request.get_host }}{%url 'about'%}#person",
+					"url": "{{ request.scheme }}://{{ request.get_host }}{%url 'about'%}",
+					"name": "{% trans 'Дмитрий Чудук' %}"
+				},
+			"publisher": {
+					"@type": "Organization",
+					"name": "TimTheWebmaster"
+				},
+				"name": "{{ post.title }}",
+				"headline": "{{ post.h1 }}",
+				"abstract": "{{ post.description }}",
+				{% if post.dependencies|length > 0 %}
+				"dependencies": "{{post.dependencies}}",
+				{% endif %}
+				{% if post.proficiencyLevel != "None" %}
+				"proficiencyLevel": "{{post.proficiencyLevel}}",
+				{% endif %}
+				"image": {
+					"@type": "ImageObject",
+					"url": "{{ request.scheme }}://{{ request.get_host }}{% get_media_prefix %}{{post.meta_preview}}",
+					"caption": "{{post.meta_preview_description}}",
+					"width": "1200",
+					"height": "675"
+				},
+				"datePublished": "{{post.timeCreated}}+03:00",
+				"dateModified": "{{post.timeUpdated}}+03:00"
+					{% if isEngagementMiddlewareConnected %}
+				,"interactionStatistic": [
+					{% with interaction=post.get_absolute_url|getInteraction %}
+						{
 						"@type": "InteractionCounter",
-						"interactionType": "https://schema.org/LikeAction",
-						"userInteractionCount": "{{interaction.likes}}"
+						"interactionType": "https://schema.org/ViewAction",
+						"userInteractionCount": "{{interaction.views}}"
 						}
-					{% endif %}
-					{% if is_shares %}
-						,{
-						"@type": "InteractionCounter",
-						"interactionType": "https://schema.org/ShareAction",
-						"userInteractionCount": "{{interaction.shares}}"
-						}
-					{% endif %}
-					{% if is_comments %}
-						,{
-						"@type": "InteractionCounter",
-						"interactionType": "https://schema.org/CommentAction",
-						"userInteractionCount": "{{interaction.comments}}"
-						}
-					{% endif %}
-					{% if is_bookmarks %}
-						,{
-						"@type": "InteractionCounter",
-						"interactionType": "https://schema.org/BookmarkAction",
-						"userInteractionCount": "{{interaction.bookmarks}}"
-						}
-					{% endif %}
-				{% endwith %}
-			]
-			{% endif %}
-		}
-    </script>
+						{% if is_likes %}
+							,{
+							"@type": "InteractionCounter",
+							"interactionType": "https://schema.org/LikeAction",
+							"userInteractionCount": "{{interaction.likes}}"
+							}
+						{% endif %}
+						{% if is_shares %}
+							,{
+							"@type": "InteractionCounter",
+							"interactionType": "https://schema.org/ShareAction",
+							"userInteractionCount": "{{interaction.shares}}"
+							}
+						{% endif %}
+						{% if is_comments %}
+							,{
+							"@type": "InteractionCounter",
+							"interactionType": "https://schema.org/CommentAction",
+							"userInteractionCount": "{{interaction.comments}}"
+							}
+						{% endif %}
+						{% if is_bookmarks %}
+							,{
+							"@type": "InteractionCounter",
+							"interactionType": "https://schema.org/BookmarkAction",
+							"userInteractionCount": "{{interaction.bookmarks}}"
+							}
+						{% endif %}
+					{% endwith %}
+				]
+				{% endif %}
+			}
+		</script>
 	<!-- /Article -->
-	{% if post.termins.all|length != 0 or post.questions.all|length != 0 %}
+	
 	<!-- FAQPage -->
-	<script type="application/ld+json">
-		{
-			"@context": "https://schema.org",
-			"@type": "FAQPage",
-			"mainEntity": [
-				{% for td in post.termins.all %}
-					{% if forloop.counter == post.termins.all|length %}
-						{% if post.questions.all|length > 0 %}
-							{
-								"@type": "Question",
-								"name": "{{td.termin}}",
-								"acceptedAnswer": {
-									"@type": "Answer",
-									"text": "{{td.definition}}"
+		{% if post.termins.all|length != 0 or post.questions.all|length != 0 %}
+		<script type="application/ld+json">
+			{
+				"@context": "https://schema.org",
+				"@type": "FAQPage",
+				"mainEntity": [
+					{% for td in post.termins.all %}
+						{% if forloop.counter == post.termins.all|length %}
+							{% if post.questions.all|length > 0 %}
+								{
+									"@type": "Question",
+									"name": "{{td.termin}}",
+									"acceptedAnswer": {
+										"@type": "Answer",
+										"text": "{{td.definition}}"
+									}
+								}, 
+							{% else %}
+								{
+									"@type": "Question",
+									"name": "{{td.termin}}",
+									"acceptedAnswer": {
+										"@type": "Answer",
+										"text": "{{td.definition}}"
+									}
 								}
-							}, 
+							{% endif %}
 						{% else %}
 							{
 								"@type": "Question",
@@ -149,22 +169,31 @@
 									"@type": "Answer",
 									"text": "{{td.definition}}"
 								}
-							}
+							}, 
 						{% endif %}
-					{% else %}
-						{
-							"@type": "Question",
-							"name": "{{td.termin}}",
-							"acceptedAnswer": {
-								"@type": "Answer",
-								"text": "{{td.definition}}"
-							}
-						}, 
-					{% endif %}
-				{% endfor %}
-				{% for qa in post.questions.all %}
-					{% if forloop.counter == post.questions.all|length %}
-						{% if qas|length > 0 %}
+					{% endfor %}
+					{% for qa in post.questions.all %}
+						{% if forloop.counter == post.questions.all|length %}
+							{% if qas|length > 0 %}
+								{
+									"@type": "Question",
+									"name": "{{qa.question}}",
+									"acceptedAnswer": {
+										"@type": "Answer",
+										"text": "{{qa.answer}}"
+									}
+								}, 
+							{% else %}	
+								{
+									"@type": "Question",
+									"name": "{{qa.question}}",
+									"acceptedAnswer": {
+										"@type": "Answer",
+										"text": "{{qa.answer}}"
+									}
+								}
+							{% endif %}
+						{% else %}
 							{
 								"@type": "Question",
 								"name": "{{qa.question}}",
@@ -173,33 +202,13 @@
 									"text": "{{qa.answer}}"
 								}
 							}, 
-						{% else %}	
-							{
-								"@type": "Question",
-								"name": "{{qa.question}}",
-								"acceptedAnswer": {
-									"@type": "Answer",
-									"text": "{{qa.answer}}"
-								}
-							}
 						{% endif %}
-					{% else %}
-						{
-							"@type": "Question",
-							"name": "{{qa.question}}",
-							"acceptedAnswer": {
-								"@type": "Answer",
-								"text": "{{qa.answer}}"
-							}
-						}, 
-					{% endif %}
-				{% endfor %}
-			]
-		}
-	</script>
+					{% endfor %}
+				]
+			}
+		</script>
+		{% endif %}
 	<!-- /FAQPage -->
-	{% endif %}
-
 	
 {% endblock %}
 

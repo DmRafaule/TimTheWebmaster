@@ -14,119 +14,128 @@
     <link rel="canonical" href="{{ request.scheme }}://{{ request.get_host }}{{post.get_absolute_url}}" />
     <meta name="description" content="{{post.description}}">
     <meta name="keywords" content="{{post.meta_keywords}}">
-    	<!-- OpenGraph -->
-	<meta property="og:title" content="{{post.h1}}" />
-	<meta property="og:description" content="{{post.description}}" />
-	<meta property="og:type" content="website" />
-	{% comment %}
-	Здесь, чтобы можно было пройтись по нужным языкам, нужно ещё где-то хранить локации, пока в ручную
-	{% endcomment %}
-	{% if LANGUAGE_CODE == "ru" %}
-		<meta property="og:locale" content="{{LANGUAGE_CODE}}_{{LANGUAGE_CODE|upper}}" />
-	{% else %}
-		<meta property="og:locale" content="{{LANGUAGE_CODE}}_US" />
-	{% endif %}
-	{% if LANGUAGE_CODE == "ru" %}
-		<meta property="og:locale:alternate" content="en_US" />
-	{% else %}
-		<meta property="og:locale:alternate" content="ru_RU" />
-	{% endif %}
-	<meta property="og:site_name" content="TimTheWebmaster" />
-	<meta property="og:url" content="{{ request.scheme }}://{{ request.get_host }}{{ post.get_absolute_url }}" />
-	<meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{% static 'Main/img/TTW-background-1.webp' %}" />
-	<meta property="og:image:secure_url" content="{{ request.scheme }}://{{ request.get_host }}{% static 'Main/img/TTW-background-1.webp' %}" />
-	<meta property="og:image:type" content="image/svg+xml" />
-	<meta property="og:image:width" content="1200" />
-	<meta property="og:image:height" content="675" />
-	<meta property="og:image:alt" content="{% trans 'Превью к инструменту: ' %}{{post.name}}" />
-	{% if podcast_episode or external_video %}
-		{% if podcast_episode %}
-		{% endif %}
-		{% if external_video %}
-		{% endif %}
-	{% endif %}
+    
+    <!-- OpenGraph -->
+        <meta property="og:title" content="{{post.h1}}" />
+        <meta property="og:description" content="{{post.description}}" />
+        <meta property="og:type" content="website" />
+        {% comment %}
+        Здесь, чтобы можно было пройтись по нужным языкам, нужно ещё где-то хранить локации, пока в ручную
+        {% endcomment %}
+        {% if LANGUAGE_CODE == "ru" %}
+            <meta property="og:locale" content="{{LANGUAGE_CODE}}_{{LANGUAGE_CODE|upper}}" />
+        {% else %}
+            <meta property="og:locale" content="{{LANGUAGE_CODE}}_US" />
+        {% endif %}
+        {% if LANGUAGE_CODE == "ru" %}
+            <meta property="og:locale:alternate" content="en_US" />
+        {% else %}
+            <meta property="og:locale:alternate" content="ru_RU" />
+        {% endif %}
+        <meta property="og:site_name" content="TimTheWebmaster" />
+        <meta property="og:url" content="{{ request.scheme }}://{{ request.get_host }}{{ post.get_absolute_url }}" />
+        <meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{% get_media_prefix %}{{post.meta_preview}}" />
+        <meta property="og:image:secure_url" content="{{ request.scheme }}://{{ request.get_host }}{% get_media_prefix %}{{post.meta_preview}}" />
+        <meta property="og:image:alt" content="{{post.meta_preview_description}}" />
+        <meta property="og:image:type" content="image/webp" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="675" />
+        {% if podcast_episode or external_video %}
+            {% if podcast_episode %}
+            {% endif %}
+            {% if external_video %}
+            {% endif %}
+        {% endif %}
     <!-- /OpenGraph -->
+    
     <!-- Tool -->
-    {% if isEngagementMiddlewareConnected %}
-    <script type="application/ld+json">
-        {
-            "@context": "https://schema.org",
-            {% if isWebTool %}
-            "@type": "WebApplication",
-            {% else %}
-            "@type": "SoftwareApplication",
-            {% endif %}
-            "name": "{{ page_tool.name }}",
-	        "abstract": "{{ page_tool.description }}",
-            "mainEntityOfPage": "{{ request.scheme }}://{{ request.get_host }}{{post.get_absolute_url}}",
-            "author": {
-                "@type": "Person",
-                "@id": "{{ request.scheme }}://{{ request.get_host }}{%url 'about'%}#person",
-		        "url": "{{ request.scheme }}://{{ request.get_host }}{%url 'about'%}",
-                "name": "{% trans 'Дмитрий Чудук' %}"
-            },
-            "publisher": {
-                "@type": "Organization",
-                "name": "TimTheWebmaster"
-            },
-            "applicationCategory": "{{page_tool.type}}",
-            "operatingSystem": "{{page_tool.operatingSystem}}",
-            {% if comments_number > 0 %}
-            "aggregateRating": {
-                "@type": "AggregateRating",
-                "ratingValue": {{comments_score}},
-                "reviewCount": {{comments_number}},
-                "bestRating": 5,
-                "worstRating": 1
-            },
-            {% endif %}
-            "offers": {
-                "@type": "Offer",
-                "price": "0",
-                "priceCurrency": "USD"
+        {% if isEngagementMiddlewareConnected %}
+        <script type="application/ld+json">
+            {
+                "@context": "https://schema.org",
+                {% if isWebTool %}
+                "@type": "WebApplication",
+                {% else %}
+                "@type": "SoftwareApplication",
+                {% endif %}
+                "name": "{{ page_tool.name }}",
+                "abstract": "{{ page_tool.description }}",
+                "mainEntityOfPage": "{{ request.scheme }}://{{ request.get_host }}{{post.get_absolute_url}}",
+                "author": {
+                    "@type": "Person",
+                    "@id": "{{ request.scheme }}://{{ request.get_host }}{%url 'about'%}#person",
+                    "url": "{{ request.scheme }}://{{ request.get_host }}{%url 'about'%}",
+                    "name": "{% trans 'Дмитрий Чудук' %}"
+                },
+                "publisher": {
+                    "@type": "Organization",
+                    "name": "TimTheWebmaster"
+                },
+                "image": {
+					"@type": "ImageObject",
+					"url": "{{ request.scheme }}://{{ request.get_host }}{% get_media_prefix %}{{post.meta_preview}}",
+					"caption": "{{post.meta_preview_description}}",
+					"width": "1200",
+					"height": "675"
+				},
+                "applicationCategory": "{{page_tool.type}}",
+                "operatingSystem": "{{page_tool.operatingSystem}}",
+                {% if comments_number > 0 %}
+                "aggregateRating": {
+                    "@type": "AggregateRating",
+                    "ratingValue": {{comments_score}},
+                    "reviewCount": {{comments_number}},
+                    "bestRating": 5,
+                    "worstRating": 1
+                },
+                {% endif %}
+                "offers": {
+                    "@type": "Offer",
+                    "price": "0",
+                    "priceCurrency": "USD"
+                }
+                {% if isEngagementMiddlewareConnected %}
+                ,"interactionStatistic": [
+                    {% with interaction=post.get_absolute_url|getInteraction %}
+                        {
+                        "@type": "InteractionCounter",
+                        "interactionType": "https://schema.org/ViewAction",
+                        "userInteractionCount": "{{interaction.views}}"
+                        }
+                        {% if is_likes %}
+                            ,{
+                            "@type": "InteractionCounter",
+                            "interactionType": "https://schema.org/LikeAction",
+                            "userInteractionCount": "{{interaction.likes}}"
+                            }
+                        {% endif %}
+                        {% if is_shares %}
+                            ,{
+                            "@type": "InteractionCounter",
+                            "interactionType": "https://schema.org/ShareAction",
+                            "userInteractionCount": "{{interaction.shares}}"
+                            }
+                        {% endif %}
+                        {% if is_comments %}
+                            ,{
+                            "@type": "InteractionCounter",
+                            "interactionType": "https://schema.org/CommentAction",
+                            "userInteractionCount": "{{interaction.comments}}"
+                            }
+                        {% endif %}
+                        {% if is_bookmarks %}
+                            ,{
+                            "@type": "InteractionCounter",
+                            "interactionType": "https://schema.org/BookmarkAction",
+                            "userInteractionCount": "{{interaction.bookmarks}}"
+                            }
+                        {% endif %}
+                    {% endwith %}
+                ]
+                {% endif %}
             }
-            {% if isEngagementMiddlewareConnected %}
-            ,"interactionStatistic": [
-                {% with interaction=post.get_absolute_url|getInteraction %}
-                    {
-                    "@type": "InteractionCounter",
-                    "interactionType": "https://schema.org/ViewAction",
-                    "userInteractionCount": "{{interaction.views}}"
-                    }
-                    {% if is_likes %}
-                        ,{
-                        "@type": "InteractionCounter",
-                        "interactionType": "https://schema.org/LikeAction",
-                        "userInteractionCount": "{{interaction.likes}}"
-                        }
-                    {% endif %}
-                    {% if is_shares %}
-                        ,{
-                        "@type": "InteractionCounter",
-                        "interactionType": "https://schema.org/ShareAction",
-                        "userInteractionCount": "{{interaction.shares}}"
-                        }
-                    {% endif %}
-                    {% if is_comments %}
-                        ,{
-                        "@type": "InteractionCounter",
-                        "interactionType": "https://schema.org/CommentAction",
-                        "userInteractionCount": "{{interaction.comments}}"
-                        }
-                    {% endif %}
-                    {% if is_bookmarks %}
-                        ,{
-                        "@type": "InteractionCounter",
-                        "interactionType": "https://schema.org/BookmarkAction",
-                        "userInteractionCount": "{{interaction.bookmarks}}"
-                        }
-                    {% endif %}
-                {% endwith %}
-            ]
-            {% endif %}
-        }
-    </script>
-    {% endif %}
+        </script>
+        {% endif %}
     <!-- /Tool -->
 
 	{% if isYandexAdManagerMiddlewareConnected %}

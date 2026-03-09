@@ -11,7 +11,7 @@ class ContactTranslationOptions(TranslationOptions):
 
 
 class ArticleTranslationOptions(TranslationOptions):
-    fields = ('title', 'h1', 'description', 'meta_keywords', 'template')
+    fields = ('title', 'h1', 'description', 'meta_keywords', 'template', 'meta_preview_description')
 
 
 class TagTranslationOptions(TranslationOptions):
@@ -35,7 +35,7 @@ class NoteTranslationOptions(TranslationOptions):
     fields = ('title', 'description',)
 
 class ToolTranslationOptions(TranslationOptions):
-    fields = ('name', 'h1', 'description', 'meta_keywords', 'template')
+    fields = ('name', 'h1', 'description', 'meta_keywords', 'template', 'meta_preview_description')
     
 class ScraperTranslationOptions(TranslationOptions):
     fields = ('name', 'h1', 'description', 'meta_keywords', 'template', 'target')
