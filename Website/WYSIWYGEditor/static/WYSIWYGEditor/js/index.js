@@ -10,6 +10,17 @@ import './quill_abbr.js';
 import './quill_links.js';
 import './quill_table.js';
 import './quill_headers.js'
+import { regenerateAllHeaderIDs } from './quill_headers.js';
 import './quill.js';
 import './on_page_translation.js';
 import 'htmx.org';
+
+// Из-за того, что при отправке запроса через htmx контент копируется с самого начала, делаю 
+// это на чистом JS, но не на HTMX
+function getContent(){
+    regenerateAllHeaderIDs()
+    var content = document.querySelector('.ql-editor').innerHTML;
+    return content;
+}
+
+window.getContent = getContent

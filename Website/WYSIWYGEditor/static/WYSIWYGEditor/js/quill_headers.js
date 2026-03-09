@@ -85,6 +85,16 @@ export class HeaderTooltip{
     }
 }
 
+export function regenerateAllHeaderIDs(){
+    var headers = document.querySelector('#editor').querySelectorAll('h2,h3,h4,h5,h6')
+    headers.forEach( (header) => {
+        if (!header.classList.contains("do_not_updateHeaderId")){
+            header.setAttribute('id', genHeaderId(header))
+            console.log(genHeaderId(header))
+        }
+    })
+}
+
 let Header = Quill.import('formats/header')
 class CustomHeader extends Header{
     static create(value){
@@ -102,9 +112,6 @@ class CustomHeader extends Header{
     constructor(scroll, domNode){
         super(scroll, domNode);
         domNode.addEventListener('click', (ev) => { 
-            if (!domNode.classList.contains("do_not_updateHeaderId")){
-                domNode.setAttribute('id', genHeaderId(domNode))
-            }
             let tooltip = new HeaderTooltip(this.domNode, '#ID_SOME')
             tooltip.show()
         })

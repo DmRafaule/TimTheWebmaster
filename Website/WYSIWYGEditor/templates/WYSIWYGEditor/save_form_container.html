@@ -24,7 +24,7 @@
             hx-post="save/"
             hx-include="#toSave" 
             hx-indicator="#context-loader-load_into_modal"
-            hx-vals="js:{csrfmiddlewaretoken: csrftoken, content: document.querySelector('.ql-editor').innerHTML}"
+            hx-vals="js:{csrfmiddlewaretoken: csrftoken, content: getContent()}"
             hx-target="#modal-form"
             hx-on::after-request="
                 switch(event.detail.xhr.status){

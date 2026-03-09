@@ -53,48 +53,50 @@ function collectTranslationPromises(element, translator) {
 }
 
 const translateBtn = document.querySelector('#translate-file')
-translateBtn.addEventListener('click', async (event) => {
-    try {
-        const translator = await fetchTranslator();
-        let editor = document.querySelector('.ql-editor');
-        
-        let allTranslationTasks = [];
-        window.modalLoader.startLoad();
-        // 1. СБОР ПРОМИСОВ (ЗАПУСК ПАРАЛЛЕЛЬНОГО ПЕРЕВОДА)
-        // Проходим по верхнеуровневым элементам и собираем все задачи
-        for (let i = 0; i < editor.children.length; i++) {
-            const currentElement = editor.children[i];
+if (translateBtn){
+    translateBtn.addEventListener('click', async (event) => {
+        try {
+            const translator = await fetchTranslator();
+            let editor = document.querySelector('.ql-editor');
             
-            const elementTasks = collectTranslationPromises(currentElement, translator);
-            // Добавляем задачи текущего элемента в общий массив
-            allTranslationTasks.push(...elementTasks); 
+            let allTranslationTasks = [];
+            window.modalLoader.startLoad();
+            // 1. СБОР ПРОМИСОВ (ЗАПУСК ПАРАЛЛЕЛЬНОГО ПЕРЕВОДА)
+            // Проходим по верхнеуровневым элементам и собираем все задачи
+            for (let i = 0; i < editor.children.length; i++) {
+                const currentElement = editor.children[i];
+                
+                const elementTasks = collectTranslationPromises(currentElement, translator);
+                // Добавляем задачи текущего элемента в общий массив
+                allTranslationTasks.push(...elementTasks); 
+            }
+
+            // Если нет текста для перевода, выходим
+            if (allTranslationTasks.length === 0) {
+                window.toaster.notify(gettext('Нет текста для перевода'), 'info');
+                return;
+            }
+
+            // Отделяем массив промисов от массива узлов
+            const nodesToUpdate = allTranslationTasks.map(task => task.node);
+            const promises = allTranslationTasks.map(task => task.promise);
+            
+            // 2. ОЖИДАНИЕ ВСЕХ РЕЗУЛЬТАТОВ
+            // Promise.all ждет, пока ВСЕ промисы в массиве будут выполнены
+            const translatedTexts = await Promise.all(promises);
+            window.toaster.notify(gettext('Перевод страницы завершён.'), 'info', 14);
+            window.toaster.notify(gettext('Начинаю вставлять переведённый текст.'), 'warning', 14);
+            // 3. ОБНОВЛЕНИЕ DOM (Единая пакетная операция)
+            // Обновляем все текстовые узлы сразу, как только все переводы готовы
+            translatedTexts.forEach((text, index) => {
+                nodesToUpdate[index].nodeValue = text;
+            });
+            window.modalLoader.stopLoad();
+            window.toaster.notify(gettext('Страница обновлена.'), 'success', 14);
+
+        } catch (error) {
+            // Если хотя бы один промис в Promise.all отклонится, он немедленно перейдет сюда
+            window.toaster.notify(gettext('Один из блоков не удалось перевести'), 'warning');
         }
-
-        // Если нет текста для перевода, выходим
-        if (allTranslationTasks.length === 0) {
-            window.toaster.notify(gettext('Нет текста для перевода'), 'info');
-            return;
-        }
-
-        // Отделяем массив промисов от массива узлов
-        const nodesToUpdate = allTranslationTasks.map(task => task.node);
-        const promises = allTranslationTasks.map(task => task.promise);
-        
-        // 2. ОЖИДАНИЕ ВСЕХ РЕЗУЛЬТАТОВ
-        // Promise.all ждет, пока ВСЕ промисы в массиве будут выполнены
-        const translatedTexts = await Promise.all(promises);
-        window.toaster.notify(gettext('Перевод страницы завершён.'), 'info', 14);
-        window.toaster.notify(gettext('Начинаю вставлять переведённый текст.'), 'warning', 14);
-        // 3. ОБНОВЛЕНИЕ DOM (Единая пакетная операция)
-        // Обновляем все текстовые узлы сразу, как только все переводы готовы
-        translatedTexts.forEach((text, index) => {
-            nodesToUpdate[index].nodeValue = text;
-        });
-        window.modalLoader.stopLoad();
-        window.toaster.notify(gettext('Страница обновлена.'), 'success', 14);
-
-    } catch (error) {
-        // Если хотя бы один промис в Promise.all отклонится, он немедленно перейдет сюда
-        window.toaster.notify(gettext('Один из блоков не удалось перевести'), 'warning');
-    }
-});
+    });
+}
