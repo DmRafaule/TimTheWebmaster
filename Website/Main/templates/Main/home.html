@@ -26,6 +26,8 @@
 	{% endif %}
 	<meta property="og:site_name" content="TimTheWebmaster" />
 	<meta property="og:url" content="{{ request.scheme }}://{{ request.get_host }}{%url 'home' %}" />
+	<meta property="og:logo" content="{{ request.scheme }}://{{ request.get_host }}/favicon.svg' %}" />
+	<meta property="og:logo:type" content="image/svg+xml" />
 	<meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{% static 'Main/img/TTW-background-1.webp' %}" />
 	<meta property="og:image:type" content="image/webp" />
 	<meta property="og:image:width" content="1200" />
