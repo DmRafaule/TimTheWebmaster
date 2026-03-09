@@ -5,7 +5,37 @@
 {% block head %}
 	<title>{% trans "Тим зе Вебмастер - лаборатория разработки. Всё о проекте и направлениях деятельности этого проекта(автора)" %}</title>
 	<meta name="description" content="{% trans "Всё о проекте, зачем он был создан, кто за ним стоит(Дима Чудук), основные направления деятельности (разработка программ, SEO, ИИ, история программировани, монетизация)" %}">
-	<link rel="canonical" href="https://{{domain_name}}{%url 'about'%}" />
+	<link rel="canonical" href="{{ request.scheme }}://{{ request.get_host }}{%url 'about'%}" />
+	<!-- OpenGraph -->
+	<meta property="og:title" content="{% trans "Тим зе Вебмастер - лаборатория разработки. Всё о проекте и направлениях деятельности этого проекта(автора)" %}" />
+	<meta property="og:description" content="{% trans "Всё о проекте, зачем он был создан, кто за ним стоит(Дима Чудук), основные направления деятельности (разработка программ, SEO, ИИ, история программировани, монетизация)" %}" />
+	<meta property="og:type" content="profile" />
+	<meta property="og:profile:first_name" content="{% trans 'Дмитрий' %}" />
+	<meta property="og:profile:last_name" content="{% trans 'Чудук' %}" />
+	<meta property="og:profile:username" content="TimTheWebmaster" />
+	<meta property="og:profile:gender" content="male" />
+	{% comment %}
+	Здесь, чтобы можно было пройтись по нужным языкам, нужно ещё где-то хранить локации, пока в ручную
+	{% endcomment %}
+	{% if LANGUAGE_CODE == "ru" %}
+		<meta property="og:locale" content="{{LANGUAGE_CODE}}_{{LANGUAGE_CODE|upper}}" />
+	{% else %}
+		<meta property="og:locale" content="{{LANGUAGE_CODE}}_US" />
+	{% endif %}
+	{% if LANGUAGE_CODE == "ru" %}
+		<meta property="og:locale:alternate" content="en_US" />
+	{% else %}
+		<meta property="og:locale:alternate" content="ru_RU" />
+	{% endif %}
+	<meta property="og:site_name" content="TimTheWebmaster" />
+	<meta property="og:url" content="{{ request.scheme }}://{{ request.get_host }}{%url 'about' %}" />
+	<meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{% static 'Main/img/dzmitry-chuduk.webp' %}" />
+	<meta property="og:image:type" content="image/webp" />
+	<meta property="og:image:width" content="629" />
+	<meta property="og:image:heigh" content="1200" />
+	<meta property="og:image:alt" content="{% trans 'Человек(мужчина) в костюме, улыбается' %}" />
+    <!-- /OpenGraph -->
+	<!-- Scheme.ORG -->
 	<script type="application/ld+json">
 		{
 		  "@context": "https://schema.org",
@@ -48,7 +78,8 @@
 			]
 		  }
 		}
-	</script>	
+	</script>
+	<!-- /Scheme.ORG -->	
 {% endblock %}
 
 {% block content %}

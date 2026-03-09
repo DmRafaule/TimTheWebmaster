@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-08 17:21+0300\n"
+"POT-Creation-Date: 2026-03-09 15:41+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -110,25 +110,25 @@ msgstr "Command line interface"
 msgid "Терминальный интерфейс"
 msgstr "Terminal user interface"
 
-#: .\Post\templates\Post\base_article.html:26
-#: .\Post\templates\Post\base_tool.html:34
+#: .\Post\templates\Post\base_article.html:30
+#: .\Post\templates\Post\base_tool.html:36
 msgid "Дмитрий Чудук"
 msgstr "Dzmitry Chuduk"
 
-#: .\Post\templates\Post\base_article.html:169
-#: .\Post\templates\Post\base_article.html:172
+#: .\Post\templates\Post\base_article.html:173
+#: .\Post\templates\Post\base_article.html:176
 msgid "3 горизонтальные линии, бургер"
 msgstr ""
 
-#: .\Post\templates\Post\base_article.html:182
+#: .\Post\templates\Post\base_article.html:186
 msgid "Содержание"
 msgstr "Content"
 
-#: .\Post\templates\Post\base_article.html:213
-#: .\Post\templates\Post\base_article.html:218
-#: .\Post\templates\Post\base_article.html:224
-#: .\Post\templates\Post\base_tool.html:152
-#: .\Post\templates\Post\base_tool.html:157
+#: .\Post\templates\Post\base_article.html:217
+#: .\Post\templates\Post\base_article.html:222
+#: .\Post\templates\Post\base_article.html:228
+#: .\Post\templates\Post\base_tool.html:154
+#: .\Post\templates\Post\base_tool.html:159
 #: .\Post\templates\Post\basic--post_preview-article.html:20
 #: .\Post\templates\Post\basic--post_preview-article.html:25
 #: .\Post\templates\Post\basic--post_preview-note.html:15
@@ -136,44 +136,44 @@ msgstr "Content"
 msgid "Часы"
 msgstr "Clock"
 
-#: .\Post\templates\Post\base_article.html:226
+#: .\Post\templates\Post\base_article.html:230
 msgid "минуту"
 msgstr "minute"
 
-#: .\Post\templates\Post\base_article.html:228
+#: .\Post\templates\Post\base_article.html:232
 msgid "минуты"
 msgstr "minutes"
 
-#: .\Post\templates\Post\base_article.html:230
+#: .\Post\templates\Post\base_article.html:234
 msgid "минут"
 msgstr "minutes"
 
-#: .\Post\templates\Post\base_article.html:241
-#: .\Post\templates\Post\base_tool.html:179
+#: .\Post\templates\Post\base_article.html:245
+#: .\Post\templates\Post\base_tool.html:181
 msgid "Теги: "
 msgstr "Tags: "
 
-#: .\Post\templates\Post\base_article.html:255
+#: .\Post\templates\Post\base_article.html:259
 msgid "Так же доступно в следующих форматах:"
 msgstr "Also available as:"
 
-#: .\Post\templates\Post\base_article.html:285
+#: .\Post\templates\Post\base_article.html:289
 msgid "Внешние ссылки"
 msgstr "External links"
 
-#: .\Post\templates\Post\base_article.html:293
+#: .\Post\templates\Post\base_article.html:297
 msgid "Другое"
 msgstr "Other"
 
-#: .\Post\templates\Post\base_article.html:296
+#: .\Post\templates\Post\base_article.html:300
 msgid "Похожие статьи"
 msgstr "Similar articles"
 
-#: .\Post\templates\Post\base_article.html:302
+#: .\Post\templates\Post\base_article.html:306
 msgid "Использованные термины"
 msgstr "Used termins"
 
-#: .\Post\templates\Post\base_article.html:313
+#: .\Post\templates\Post\base_article.html:317
 msgid "Релевантные вопросы"
 msgstr "Related questions"
 
@@ -189,80 +189,80 @@ msgstr "Previous article"
 msgid "Инструмент"
 msgstr "Tool"
 
-#: .\Post\templates\Post\base_tool.html:138
-#: .\Post\templates\Post\base_tool.html:144
+#: .\Post\templates\Post\base_tool.html:140
+#: .\Post\templates\Post\base_tool.html:146
 #: .\Post\templates\Post\basic--post_preview-tool.html:15
 #: .\Post\templates\Post\basic--post_preview-tool.html:21
 msgid "Превью статьи"
 msgstr "Article preview"
 
-#: .\Post\templates\Post\base_tool.html:162
+#: .\Post\templates\Post\base_tool.html:164
 #: .\Post\templates\Post\basic--post_preview-tool.html:39
 msgid "Иконка типа приложения"
 msgstr "Icon of app type"
 
-#: .\Post\templates\Post\base_tool.html:186
+#: .\Post\templates\Post\base_tool.html:188
 msgid "Тип Django приложения: "
 msgstr "Kind of Django app:"
 
-#: .\Post\templates\Post\base_tool.html:189
+#: .\Post\templates\Post\base_tool.html:191
 msgid "Тип скрипта: "
 msgstr "Type of Script: "
 
-#: .\Post\templates\Post\base_tool.html:219
+#: .\Post\templates\Post\base_tool.html:221
 msgid "Цель: "
 msgstr "Goal: "
 
-#: .\Post\templates\Post\base_tool.html:223
+#: .\Post\templates\Post\base_tool.html:225
 msgid "Характеристики:"
 msgstr "Characteristics:"
 
-#: .\Post\templates\Post\base_tool.html:225
+#: .\Post\templates\Post\base_tool.html:227
 msgid "Поточность: "
 msgstr "Threading: "
 
-#: .\Post\templates\Post\base_tool.html:226
+#: .\Post\templates\Post\base_tool.html:228
 msgid "Тип: "
 msgstr "Type: "
 
-#: .\Post\templates\Post\base_tool.html:227
+#: .\Post\templates\Post\base_tool.html:229
 msgid "Используемый язык: "
 msgstr "Used languages: "
 
-#: .\Post\templates\Post\base_tool.html:228
+#: .\Post\templates\Post\base_tool.html:230
 msgid "Прокси: "
 msgstr "Proxy: "
 
-#: .\Post\templates\Post\base_tool.html:229
+#: .\Post\templates\Post\base_tool.html:231
 msgid "Ротация: "
 msgstr "Rotation: "
 
-#: .\Post\templates\Post\base_tool.html:236
+#: .\Post\templates\Post\base_tool.html:238
 msgid "Примеры"
 msgstr "Examples"
 
-#: .\Post\templates\Post\base_tool.html:239
-#: .\Post\templates\Post\base_tool.html:242
+#: .\Post\templates\Post\base_tool.html:241
+#: .\Post\templates\Post\base_tool.html:244
 msgid "Предыдущая вкладка на табуляторе"
 msgstr "Previous tab"
 
-#: .\Post\templates\Post\base_tool.html:254
+#: .\Post\templates\Post\base_tool.html:256
 msgid "Изображение примера использования приложения"
 msgstr "An image of an example of app's usage"
 
-#: .\Post\templates\Post\base_tool.html:266
+#: .\Post\templates\Post\base_tool.html:268
 msgid "Медиа файлы"
 msgstr "Media files"
 
-#: .\Post\templates\Post\base_tool.html:282
+#: .\Post\templates\Post\base_tool.html:284
 msgid "Рабочие заметки об инструменте"
 msgstr "A notes about this tool, devnotes"
 
-#: .\Post\templates\Post\base_tool.html:291
+#: .\Post\templates\Post\base_tool.html:293
 msgid "Больше ..."
 msgstr "More ..."
 
-#: .\Post\templates\Post\base_tool.html:301
+#: .\Post\templates\Post\base_tool.html:303
 msgid "Похожие инструменты"
 msgstr "Similar tools"
 

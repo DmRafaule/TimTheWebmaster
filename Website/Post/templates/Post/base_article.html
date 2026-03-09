@@ -10,6 +10,9 @@
 	<title>{{ post.title }}</title>
 	<meta name="description" content="{{ post.description }}">
 	<meta name="keywords" content="{{ post.meta_keywords }}" />
+	<!-- OpenGraph -->
+	 
+    <!-- /OpenGraph -->
 	<!-- Article -->
 	<script type="application/ld+json">
     {
@@ -19,6 +22,7 @@
 		{% else %}
 		"@type": "BlogPosting",
 		{% endif %}
+		"mainEntityOfPage": "{{ request.scheme }}://{{ request.get_host }}{{post.get_absolute_url}}",
 		"author": {
 			"@type": "Person",
 			"@id": "{{ request.scheme }}://{{ request.get_host }}{%url 'about'%}#person",

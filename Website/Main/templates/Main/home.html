@@ -2,11 +2,36 @@
 {% load i18n %}
 {% load static%}
 
-
+{% get_current_language as LANGUAGE_CODE %}
 {% block head %}
-	<title>{% trans "Тим зе вебмастер - написание скриптов, парсеров, ботов" %}</title>
-	<meta name="description" content="{% trans "Тим зе вебмастер, автоматизация рабочих и бизнес процессов используя парсеры, скрипты и телеграм ботов"%}">
-	<link rel="canonical" href="https://{{domain_name}}{%url 'home'%}" />
+	<title>{% trans "Тим зе вебмастер - онлайн инструменты, скрипты, парсеры, боты" %}</title>
+	<meta name="description" content="{% trans "Тим зе вебмастер, автоматизация рабочих и бизнес процессов используя онлайн инструменты, парсеры, скрипты и телеграм ботов"%}">
+	<link rel="canonical" href="{{ request.scheme }}://{{ request.get_host }}{%url 'home'%}" />
+	<!-- OpenGraph -->
+	<meta property="og:title" content="{% trans "Тим зе вебмастер - онлайн инструменты, скрипты, парсеры, боты" %}" />
+	<meta property="og:description" content="{% trans "Тим зе вебмастер, автоматизация рабочих и бизнес процессов используя онлайн инструменты, парсеры, скрипты и телеграм ботов"%}" />
+	<meta property="og:type" content="website" />
+	{% comment %}
+	Здесь, чтобы можно было пройтись по нужным языкам, нужно ещё где-то хранить локации, пока в ручную
+	{% endcomment %}
+	{% if LANGUAGE_CODE == "ru" %}
+		<meta property="og:locale" content="{{LANGUAGE_CODE}}_{{LANGUAGE_CODE|upper}}" />
+	{% else %}
+		<meta property="og:locale" content="{{LANGUAGE_CODE}}_US" />
+	{% endif %}
+	{% if LANGUAGE_CODE == "ru" %}
+		<meta property="og:locale:alternate" content="en_US" />
+	{% else %}
+		<meta property="og:locale:alternate" content="ru_RU" />
+	{% endif %}
+	<meta property="og:site_name" content="TimTheWebmaster" />
+	<meta property="og:url" content="{{ request.scheme }}://{{ request.get_host }}{%url 'home' %}" />
+	<meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{% static 'Main/img/TTW-background-1.webp' %}" />
+	<meta property="og:image:type" content="image/webp" />
+	<meta property="og:image:width" content="1200" />
+	<meta property="og:image:heigh" content="750" />
+	<meta property="og:image:alt" content="{% trans 'Оранжевые волны, огибающие белый фон' %}" />
+    <!-- /OpenGraph -->
 	{% if isYandexAdManagerMiddlewareConnected %}
 		{% include 'YandexAdManager/admanager_header.html' %}
 	{% endif %}
