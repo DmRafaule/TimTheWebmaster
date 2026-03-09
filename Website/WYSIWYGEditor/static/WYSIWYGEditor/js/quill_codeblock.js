@@ -16,10 +16,6 @@ class CodeBlockFormat extends BlockEmbed {
         node.addEventListener('dblclick', () => {
             CodeBlockFormat.openModal(node);
         });
-
-        if (window.microlight) {
-            microlight.reset && microlight.reset();
-        }
     }
 
     static setHeight(node, code){
