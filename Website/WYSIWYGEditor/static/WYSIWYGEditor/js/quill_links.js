@@ -1,4 +1,6 @@
 import Quill from './quill-engine.js'
+import { regenerateAllHeaderIDs } from './quill_headers.js';
+
 export class LinkTooltip{
     static create(value){
         let prev = document.querySelector('#ql-custom-tooltip')
@@ -17,6 +19,11 @@ export class LinkTooltip{
         this.boundsContainer = node
         this.root = document.querySelector('#ql-custom-tooltip')
         this.root.innerText = ""
+        this.iterac = document.createElement('div')
+        this.iterac.setAttribute('id', "ql-custom-tooltip-iterac")
+        this.iterac.classList.add("flex", "gap-2", "flex-wrap", "items-center", "p-1", "grow", "shrink-0", "basis-[min-content]", "w-full", "bg-main", "rounded-2xl")
+        this.root.insertAdjacentElement('afterbegin', this.iterac)
+
         this.insertTextInput(placeholder)
         this.insertBtn(this.save, gettext("Сохранить"))
         this.insertBtn(this.copy, gettext("Копировать"))
@@ -29,6 +36,9 @@ export class LinkTooltip{
                 callback = this.onFileChange
             }
             this.insertUploadBtn(callback, name)
+        }
+        if (this.boundsContainer.classList.contains('ref-int')){
+            this.insertDropDown()
         }
     }
 
@@ -54,7 +64,7 @@ export class LinkTooltip{
               event.preventDefault();
             }
         });
-        this.root.insertAdjacentElement('beforeend', this.textbox)
+        this.iterac.insertAdjacentElement('beforeend', this.textbox)
     }
     insertBtn(callback, text){
         let add = document.createElement('div')
@@ -67,7 +77,7 @@ export class LinkTooltip{
         add_text_cont.classList.add('p-2')
         add_text_cont.innerText = text 
         add.insertAdjacentElement('afterbegin',add_text_cont)
-        this.root.insertAdjacentElement('beforeend', add)
+        this.iterac.insertAdjacentElement('beforeend', add)
     }
     insertUploadBtn(callback, text){
         let label = document.createElement('label')
@@ -88,7 +98,37 @@ export class LinkTooltip{
         hidden_input.hidden = true
         add.insertAdjacentElement('beforeend', hidden_input)
         label.insertAdjacentElement('beforeend', add)
-        this.root.insertAdjacentElement('beforeend', label)
+        this.iterac.insertAdjacentElement('beforeend', label)
+    }
+    insertDropDown(){
+        var dropac = document.createElement('div')
+        dropac.classList.add("bg-main", "rounded-xl", "w-full", "max-h-[250px]", "p-1", "overflow-auto")
+        regenerateAllHeaderIDs()
+
+        var list = document.createElement('ul')
+        list.classList.add("list_without_sign")
+        var anchors = document.querySelector('#editor').querySelectorAll('h2,h3,h4,h5,h6,.ref-anchor')
+        anchors.forEach( (anchor) => {
+            var id = anchor.id
+            var list_element = document.createElement('li')
+            list_element.classList.add("cursor-pointer")
+            if (list_element.classList.contains('.ref-anchor')){
+                list_element.innerText = `[ANCHOR] : #${id}`
+            }
+            else{
+                list_element.innerText = `[${anchor.tagName}] : #${id}`
+            }
+            list_element.addEventListener('click', (event) => {
+                this.textbox.value = `#${id}`
+                this.save(this)
+                this.hide();
+                event.preventDefault();
+            })
+            list.insertAdjacentElement('beforeend', list_element)
+        })
+        
+        dropac.insertAdjacentElement('afterbegin', list)
+        this.root.insertAdjacentElement('afterbegin', dropac)
     }
 
     onFileSelect(event){
@@ -297,6 +337,7 @@ Quill.register({'formats/downloadable-link': DownloadableLink})
 class ExternalLink extends Quill.import('blots/inline'){
     constructor(scroll, domNode){
         super(scroll, domNode);
+        regenerateAllHeaderIDs()
         domNode.setAttribute('target', '_blank')
         domNode.setAttribute('ref', 'noreferrer nofollow external')
         domNode.addEventListener('click', (ev) => { 

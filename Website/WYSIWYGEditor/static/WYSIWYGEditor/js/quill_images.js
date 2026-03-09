@@ -19,6 +19,10 @@ export class ImageTooltip{
         this.boundsContainer = node
         this.root = document.querySelector('#ql-custom-tooltip')
         this.root.innerText = ""
+        this.iterac = document.createElement('div')
+        this.iterac.setAttribute('id', "ql-custom-tooltip-iterac")
+        this.iterac.classList.add("flex", "gap-2", "flex-wrap", "items-center", "p-1", "grow", "shrink-0", "basis-[min-content]", "w-full", "bg-main", "rounded-2xl")
+        this.root.insertAdjacentElement('afterbegin', this.iterac)
         this.insertTextInput(placeholder)
         if (is_superuser){
             var name = gettext("Загрузить")
@@ -55,7 +59,7 @@ export class ImageTooltip{
               event.preventDefault();
             }
         });
-        this.root.insertAdjacentElement('beforeend', this.textbox)
+        this.iterac.insertAdjacentElement('beforeend', this.textbox)
     }
     insertBtn(callback, text){
         let add = document.createElement('div')
@@ -68,7 +72,7 @@ export class ImageTooltip{
         add_text_cont.classList.add('p-2')
         add_text_cont.innerText = text 
         add.insertAdjacentElement('afterbegin',add_text_cont)
-        this.root.insertAdjacentElement('beforeend', add)
+        this.iterac.insertAdjacentElement('beforeend', add)
     }
     insertUploadBtn(callback, text){
         let label = document.createElement('label')
@@ -90,7 +94,7 @@ export class ImageTooltip{
         hidden_input.hidden = true
         add.insertAdjacentElement('beforeend', hidden_input)
         label.insertAdjacentElement('beforeend', add)
-        this.root.insertAdjacentElement('beforeend', label)
+        this.iterac.insertAdjacentElement('beforeend', label)
     }
 
     onFileSelect(event){

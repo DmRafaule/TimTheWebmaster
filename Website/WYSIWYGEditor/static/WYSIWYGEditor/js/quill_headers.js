@@ -19,6 +19,10 @@ export class HeaderTooltip{
         this.boundsContainer = node
         this.root = document.querySelector('#ql-custom-tooltip')
         this.root.innerText = ""
+        this.iterac = document.createElement('div')
+        this.iterac.setAttribute('id', "ql-custom-tooltip-iterac")
+        this.iterac.classList.add("flex", "gap-2", "flex-wrap", "items-center", "p-1", "grow", "shrink-0", "basis-[min-content]", "w-full", "bg-main", "rounded-2xl")
+        this.root.insertAdjacentElement('afterbegin', this.iterac)
         this.insertTextInput(placeholder)
         this.insertBtn(this.save, gettext("Сохранить"))
         this.insertBtn(this.copy, gettext("Копировать"))
@@ -45,7 +49,7 @@ export class HeaderTooltip{
               event.preventDefault();
             }
         });
-        this.root.insertAdjacentElement('beforeend', this.textbox)
+        this.iterac.insertAdjacentElement('beforeend', this.textbox)
     }
     insertBtn(callback, text){
         let add = document.createElement('div')
@@ -58,7 +62,7 @@ export class HeaderTooltip{
         add_text_cont.classList.add('p-2')
         add_text_cont.innerText = text 
         add.insertAdjacentElement('afterbegin',add_text_cont)
-        this.root.insertAdjacentElement('beforeend', add)
+        this.iterac.insertAdjacentElement('beforeend', add)
     }
     copy(tooltip){
         var id = tooltip.boundsContainer.getAttribute('id')
@@ -90,7 +94,6 @@ export function regenerateAllHeaderIDs(){
     headers.forEach( (header) => {
         if (!header.classList.contains("do_not_updateHeaderId")){
             header.setAttribute('id', genHeaderId(header))
-            console.log(genHeaderId(header))
         }
     })
 }

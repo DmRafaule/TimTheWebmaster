@@ -20,6 +20,11 @@ export class TableTooltip{
         this.boundsContainer = domNode
         this.root = document.querySelector('#ql-custom-tooltip')
         this.root.innerText = ""
+        this.iterac = document.createElement('div')
+        this.iterac.setAttribute('id', "ql-custom-tooltip-iterac")
+        this.iterac.classList.add("flex", "gap-2", "flex-wrap", "items-center", "p-1", "grow", "shrink-0", "basis-[min-content]", "w-full", "bg-main", "rounded-2xl")
+        this.root.insertAdjacentElement('afterbegin', this.iterac)
+
         this.insertBtn(`${PATH}WYSIWYGEditor/img/table-insert-row-above.svg`, '', this.insertRowAbove)
         this.insertBtn(`${PATH}WYSIWYGEditor/img/table-insert-row-after.svg`, '', this.insertRowBelow)
         this.insertBtn(`${PATH}WYSIWYGEditor/img/table-insert-column-after.svg`, '', this.insertColumnAfter)
@@ -35,7 +40,7 @@ export class TableTooltip{
     insertSep(){
         let container = document.createElement('div')
         container.classList.add('grow')
-        this.root.insertAdjacentElement('beforeend', container)
+        this.iterac.insertAdjacentElement('beforeend', container)
     }
     insertBtn(iconPath, popupText, callback){
         let icon = document.createElement('img')
@@ -50,7 +55,7 @@ export class TableTooltip{
         container.classList.add('ttw-button_squared')
         container.addEventListener('click', callback)
         container.insertAdjacentElement('beforeend', icon)
-        this.root.insertAdjacentElement('beforeend', container)
+        this.iterac.insertAdjacentElement('beforeend', container)
     }
     insertRowAbove(event){
         const table = quill.getModule('table');
