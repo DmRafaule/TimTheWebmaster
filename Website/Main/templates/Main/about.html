@@ -1,6 +1,7 @@
 {% extends 'Main/base.html' %}
 {% load static %}
 {% load i18n %}
+{% load checkLocation %}
 
 {% block head %}
 	<title>{% trans "Тим зе Вебмастер - лаборатория разработки. Всё о проекте и направлениях деятельности этого проекта(автора)" %}</title>
@@ -102,11 +103,36 @@
 						<div class="flex justify-center items-center text-center rounded-[8px] pt-2 pb-2">{% trans "Опробовать инструменты" %}</div>
 					</div>
 				</a>
-				<a href="{% url "home" %}" class="grow basis-auto rounded-[8px] bg-main text-white">
-					<div class="ttw-button ttw-button_link rounded-[8px] h-full">
-						<div class="flex justify-center items-center text-center rounded-[8px] pt-2 pb-2 h-full">{% trans "Или вернуться на главную" %}</div>
-					</div>
-				</a>
+				{% if isBTCPayDonationMiddlewareConnected %}
+					{% with location=donation_link_locations|checkLocation:"MAIN-ABOVE-THE-FOLD" %}
+						{% if location %}
+							<a href="{{location.link}}" class="grow basis-auto rounded-[8px] bg-main text-white"  target="_blank" rel="noopener noreferrer nofollow">
+								<div class="ttw-button ttw-button_donation rounded-[8px] h-full">
+									<div class="flex justify-center items-center text-center rounded-[8px] pt-2 pb-2 h-full ref-donat_no-sign">
+										<img src="{% static 'bitcoin-colored.svg' %}" >
+										{% trans "Или поддержать проект" %}
+									</div>
+								</div>
+							</a>
+						{% else %}
+							<a href="{% url 'home' %}" class="grow basis-auto rounded-[8px] bg-main text-white">
+								<div class="ttw-button ttw-button_link rounded-[8px] h-full">
+									<div class="flex justify-center items-center text-center rounded-[8px] pt-2 pb-2 h-full">
+										{% trans "Или вернуться на главную" %}
+									</div>
+								</div>
+							</a>
+						{% endif %}
+					{% endwith %}
+				{% else %}
+					<a href="{% url 'home' %}" class="grow basis-auto rounded-[8px] bg-main text-white">
+						<div class="ttw-button ttw-button_link rounded-[8px] h-full">
+							<div class="flex justify-center items-center text-center rounded-[8px] pt-2 pb-2 h-full">
+								{% trans "Или вернуться на главную" %}
+							</div>
+						</div>
+					</a>
+				{% endif %}
 			</div>
 		</div>
 		<h2 class="mt-10" id="introduction"><a href="#introduction" class="ref_hidden-int_no-sign">{% trans "Немного об авторе" %}</a></h2>

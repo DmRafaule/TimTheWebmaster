@@ -212,7 +212,7 @@
 						</div>
 						<ul class="list_without_sign">
 							<li class="ref"><a href="/sitemap.xml">{% trans "Карта сайта" %}</a></li>
-							<li class="ref"><a href="{% url 'about' %}">{% trans "О проекте" %}</a></li>
+							<li class="ref"><a href="{% url 'about' %}">{% trans "О проекте и авторе" %}</a></li>
 							<li class="ref"><a href="{% url 'about-website' %}">{% trans "О сайте" %}</a></li>
 						</ul>
 					</div>
@@ -243,7 +243,7 @@
 					{% if isBTCPayDonationMiddlewareConnected %}
 						{% for location in donation_link_locations %}
 							{% if location.linklocation_name == "FOOTER" %}
-							<a href="{{location.link}}">
+							<a href="{{location.link}}" target="_blank" rel="noopener noreferrer nofollow">
 								<div class="ttw-button ttw-button_donation ttw-button_squared w-full">
 									<div class="ref-donat_no-sign ttw-button_squared flex gap-4 items-center justify-start p-1" style="border:1px solid var(--link-donat_color);">
 										<p>₿</p>

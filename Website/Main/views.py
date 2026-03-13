@@ -30,7 +30,7 @@ def about(request):
     else:
         more_about_me_tag = None
     context.update({'more_about_me_tag': more_about_me_tag})
-    return render(request, 'Main/about.html', context=context)
+    return TemplateResponse(request, 'Main/about.html', context=context)
 
 def home(request):
     # Из базы данных нужно взять текущие настройки сайта
@@ -101,7 +101,7 @@ def about_website(request):
     context.update({'website_years': U.get_how_old_human_in_years('09/10/2023', "%d/%m/%Y")})
     context.update({'django_version': django.get_version()})
     context.update({'python_version': f"{sys.version_info.major}.{sys.version_info.minor}.{sys.version_info.micro}"})
-    return render(request, 'Main/about-website.html', context=context)
+    return TemplateResponse(request, 'Main/about-website.html', context=context)
 
 
 def bad_request(request, exception):

@@ -1,6 +1,7 @@
 {% extends 'Main/base.html' %}
 {% load i18n %}
 {% load static%}
+{% load checkLocation %}
 
 {% get_current_language as LANGUAGE_CODE %}
 {% block head %}
@@ -112,11 +113,36 @@
 						<div class="flex justify-center items-center text-center rounded-[8px] pt-2 pb-2">{% trans "Опробовать инструменты" %}</div>
 					</div>
 				</a>
-				<a href="{% url "about-website" %}" class="grow basis-auto rounded-[8px] bg-main text-white">
-					<div class="ttw-button ttw-button_link rounded-[8px] h-full">
-						<div class="flex justify-center items-center text-center rounded-[8px] pt-2 pb-2 h-full">{% trans "Или ознакомиться с сайтом" %}</div>
-					</div>
-				</a>
+				{% if isBTCPayDonationMiddlewareConnected %}
+					{% with location=donation_link_locations|checkLocation:"MAIN-ABOVE-THE-FOLD" %}
+						{% if location %}
+							<a href="{{location.link}}" class="grow basis-auto rounded-[8px] bg-main text-white" target="_blank" rel="noopener noreferrer nofollow">
+								<div class="ttw-button ttw-button_donation rounded-[8px] h-full">
+									<div class="flex justify-center items-center text-center rounded-[8px] pt-2 pb-2 h-full ref-donat_no-sign">
+										<img src="{% static 'bitcoin-colored.svg' %}" >
+										{% trans "Или поддержать проект" %}
+									</div>
+								</div>
+							</a>
+						{% else %}
+							<a href="{% url 'home' %}" class="grow basis-auto rounded-[8px] bg-main text-white">
+								<div class="ttw-button ttw-button_link rounded-[8px] h-full">
+									<div class="flex justify-center items-center text-center rounded-[8px] pt-2 pb-2 h-full">
+										{% trans "Или вернуться на главную" %}
+									</div>
+								</div>
+							</a>
+						{% endif %}
+					{% endwith %}
+				{% else %}
+					<a href="{% url 'home' %}" class="grow basis-auto rounded-[8px] bg-main text-white">
+						<div class="ttw-button ttw-button_link rounded-[8px] h-full">
+							<div class="flex justify-center items-center text-center rounded-[8px] pt-2 pb-2 h-full">
+								{% trans "Или вернуться на главную" %}
+							</div>
+						</div>
+					</a>
+				{% endif %}
 			</div>
 		</div>
 

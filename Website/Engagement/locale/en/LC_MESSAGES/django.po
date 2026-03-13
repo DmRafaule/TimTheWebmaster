@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-08 17:21+0300\n"
+"POT-Creation-Date: 2026-03-13 21:10+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -74,8 +74,8 @@ msgid "Отзывы"
 msgstr "Reviews"
 
 #: .\Engagement\templates\Engagement\Other\engagement_dock_container.html:13
-#: .\Engagement\templates\Engagement\Other\engagement_options.html:80
-#: .\Engagement\templates\Engagement\Other\engagement_options.html:98
+#: .\Engagement\templates\Engagement\Other\engagement_options.html:54
+#: .\Engagement\templates\Engagement\Other\engagement_options.html:72
 msgid "облачко"
 msgstr "cloud"
 
@@ -134,28 +134,15 @@ msgstr "heart"
 msgid "Спасибо что поделился （￣︶￣）↗　"
 msgstr "Thanks for share, \\(￣︶￣*\\))"
 
-#: .\Engagement\templates\Engagement\Other\engagement_options.html:49
-msgid "vk иконка"
-msgstr "vk icon"
-
-#: .\Engagement\templates\Engagement\Other\engagement_options.html:55
-msgid "reddit иконка"
-msgstr "reddit icon"
-
-#: .\Engagement\templates\Engagement\Other\engagement_options.html:61
-msgid "twitter иконка"
-msgstr "twitter icon"
-
-#: .\Engagement\templates\Engagement\Other\engagement_options.html:67
-#: .\Engagement\templates\Engagement\Other\engagement_options.html:75
-msgid "telegram иконка"
-msgstr "telegram icon"
-
-#: .\Engagement\templates\Engagement\Other\engagement_options.html:72
+#: .\Engagement\templates\Engagement\Other\engagement_options.html:46
 msgid "Ссылка успешно скопированна"
 msgstr "Link copied"
 
-#: .\Engagement\templates\Engagement\Other\engagement_options.html:90
+#: .\Engagement\templates\Engagement\Other\engagement_options.html:49
+msgid "telegram иконка"
+msgstr "telegram icon"
+
+#: .\Engagement\templates\Engagement\Other\engagement_options.html:64
 msgid ""
 "=[。。]= Извини, JS не позволяет создавать собственные кнопки создания "
 "закладок и по этому, чтобы создать закладку нажми ctrl+d"
@@ -163,11 +150,11 @@ msgstr ""
 "≡[。。]≡ Sorry, JS doesn't allow you to create your own bookmark buttons, so "
 "to create a bookmark, press ctrl+d"
 
-#: .\Engagement\templates\Engagement\Other\engagement_options.html:93
+#: .\Engagement\templates\Engagement\Other\engagement_options.html:67
 msgid "Произошла ошибка при попытке создать закладку ("
 msgstr "An error has occurred, while creating a bookmark :("
 
-#: .\Engagement\templates\Engagement\Other\engagement_options.html:109
+#: .\Engagement\templates\Engagement\Other\engagement_options.html:83
 msgid "письмо"
 msgstr "message"
 

@@ -40,32 +40,6 @@
         hx-vals="js:{csrfmiddlewaretoken: csrftoken, url: '{{request.get_full_path}}'}"
         class="hidden"
     ></div>
-    <div 
-        hx-on:click="document.getElementById('onShare').dispatchEvent(new Event('share_click'))"
-        class="ttw-button ttw-button_link">
-        <a target="_blank" href="http://vk.com/share.php?url={{ url_to_share }}&title={{ title_to_share }}&description={{ description_to_share }}">
-            <img 
-                class="ttw-button_squared" width="32" height="32" src="{% static 'vk.svg' %}" alt="{% trans "vk иконка" %}">
-        </a>
-    </div>
-    <div
-        hx-on:click="document.getElementById('onShare').dispatchEvent(new Event('share_click'))" class="ttw-button ttw-button_link htmx-share_button">
-        <a target="_blank"  href="https://www.reddit.com/submit?url={{ url_to_share }}&title={{ title_to_share }}">
-            <img class="ttw-button_squared" width="32" height="32" src="{% static 'reddit.svg' %}" alt="{% trans "reddit иконка" %}">
-        </a>
-    </div>
-    <div
-        hx-on:click="document.getElementById('onShare').dispatchEvent(new Event('share_click'))" class="ttw-button ttw-button_link htmx-share_button">
-        <a target="_blank"  href="https://twitter.com/intent/tweet?url={{ url_to_share }}&text={{ description_to_share }}">
-            <img class="ttw-button_squared" width="32" height="32" src="{% static 'twitter.svg' %}" alt="{% trans "twitter иконка" %}">
-        </a>
-    </div>
-    <div
-        hx-on:click="document.getElementById('onShare').dispatchEvent(new Event('share_click'))" class="ttw-button ttw-button_link htmx-share_button">
-        <a target="_blank"  href="https://telegram.me/share/url?url={{ url_to_share }}&text={{ description_to_share }}">
-            <img class="ttw-button_squared" width="32" height="32" src="{% static 'telegram.svg' %}" alt="{% trans "telegram иконка" %}">
-        </a>
-    </div>
     <div class="ttw-button ttw-button_action" id="onShareCopyLink" onclick='
         navigator.clipboard.writeText("{{ url_to_share }}"); 
         toaster.notify("{% trans "Ссылка успешно скопированна" %}", "info"); 
@@ -105,6 +79,17 @@
         hx-on::before-request="modal.open('');"
         hx-on::after-request="event.detail.failed && modal.close();"
         class="ttw-button ttw-button_action">
-        <img  class="ttw-button_squared border" width="32" height="32" src="{% static 'Engagement/img/email.svg' %}" alt="{% trans "письмо" %}">
+        <img class="ttw-button_squared border" width="32" height="32" src="{% static 'Engagement/img/email.svg' %}" alt="{% trans "письмо" %}">
     </div>
+{% endif %}
+{% if isBTCPayDonationMiddlewareConnected %}
+    {% for location in donation_link_locations %}
+        {% if location.linklocation_name == "ENGAGEMENT" %}
+            <div class="ttw-button ttw-button_donation">
+                <a href="{{location.link}}" target="_blank" rel="noopener noreferrer nofollow">
+                    <img class="ttw-button_squared border" width="32" height="32" src="{% static 'bitcoin-colored.svg' %}" >
+                </a>
+            </div>
+        {% endif %}
+    {% endfor %}
 {% endif %}

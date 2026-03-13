@@ -1,6 +1,7 @@
 {% extends 'Main/base.html' %}
 {% load static %}
 {% load i18n %}
+{% load checkLocation %}
 
 {% get_current_language as LANGUAGE_CODE %}
 {% block head %}
@@ -74,11 +75,36 @@
 						<div class="flex justify-center items-center text-center rounded-[8px] pt-2 pb-2">{% trans "Опробовать инструменты" %}</div>
 					</div>
 				</a>
-				<a href="{% url "home" %}" class="grow basis-auto rounded-[8px] bg-main text-white">
-					<div class="ttw-button ttw-button_link rounded-[8px] h-full">
-						<div class="flex justify-center items-center text-center rounded-[8px] pt-2 pb-2 h-full">{% trans "Или вернуться на главную" %}</div>
-					</div>
-				</a>
+				{% if isBTCPayDonationMiddlewareConnected %}
+					{% with location=donation_link_locations|checkLocation:"MAIN-ABOVE-THE-FOLD" %}
+						{% if location %}
+							<a href="{{location.link}}" class="grow basis-auto rounded-[8px] bg-main text-white" target="_blank" rel="noopener noreferrer nofollow">
+								<div class="ttw-button ttw-button_donation rounded-[8px] h-full">
+									<div class="flex justify-center items-center text-center rounded-[8px] pt-2 pb-2 h-full ref-donat_no-sign">
+										<img src="{% static 'bitcoin-colored.svg' %}" >
+										{% trans "Или поддержать проект" %}
+									</div>
+								</div>
+							</a>
+						{% else %}
+							<a href="{% url 'home' %}" class="grow basis-auto rounded-[8px] bg-main text-white">
+								<div class="ttw-button ttw-button_link rounded-[8px] h-full">
+									<div class="flex justify-center items-center text-center rounded-[8px] pt-2 pb-2 h-full">
+										{% trans "Или вернуться на главную" %}
+									</div>
+								</div>
+							</a>
+						{% endif %}
+					{% endwith %}
+				{% else %}
+					<a href="{% url 'home' %}" class="grow basis-auto rounded-[8px] bg-main text-white">
+						<div class="ttw-button ttw-button_link rounded-[8px] h-full">
+							<div class="flex justify-center items-center text-center rounded-[8px] pt-2 pb-2 h-full">
+								{% trans "Или вернуться на главную" %}
+							</div>
+						</div>
+					</a>
+				{% endif %}
 			</div>
 		</div>
 		<h2 class="mt-10" id="website-type-theme"><a href="#website-type-theme" class="ref_hidden-int_no-sign">{% trans "Небольшое вступление. Тип сайта и его тематика" %}</a></h2>
@@ -299,12 +325,13 @@
 						{% endblocktrans %}
 					</div>
 				</div>
-				<div class="ref">
-				{%    blocktrans %}
-					Я бы хотел сделать ставку на так называемую freeminimum модель монетизации. 
-					Где платят за пользование, в той или иной форме, программным обеспечением.
-					Более подробно <a href="/ru/articles/?page=1&tag=delat-dengi">о способах монетизации сайтов</a> в общем, и моих сайтов в частности.
-				{% endblocktrans %}
+				<div class="flex gap-3">
+					<img class="p-1 rounded-xl bg-main" width="32px" height="32px" src="{% static "bitcoin.svg" %}">
+					<div>
+						{%    blocktrans %}
+						Мой сайт использует криптовалюты в качестве средства принятия платежей онлайн. В виде донатов, подписок, краудфаундинга и прямых покупок.
+						{% endblocktrans %}
+					</div>
 				</div>
 			</div>
 		{% include 'Engagement/Other/engagement_wide_container.html' with only_send="True" %}
