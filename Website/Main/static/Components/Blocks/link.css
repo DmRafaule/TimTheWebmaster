@@ -31,6 +31,23 @@
 	color: var(--link-hover_color) !important;	
 }
 
+a.ref-donat{
+	color: var(--link-donat_color) !important;	
+	transition: 0.3s;
+	border-bottom: 1px solid var(--link-donat_color); 
+	cursor: pointer;
+	word-wrap: anywhere;
+}
+
+a.ref-donat:after{
+	content: var(--link-donat_sign);
+	font-size: 120%;	
+}
+
+a.ref-donat:hover{
+	color: var(--link-donat-hover_color) !important;	
+}
+
 .ref_hidden > a, a.ref_hidden-ext, .ref_hidden_no-sign > a{
 	color: inherit;
 	transition: 0.3s;

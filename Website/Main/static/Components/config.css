@@ -29,6 +29,9 @@
 	--link_sign: "➚";
 	--link-downloadable_sign: "⇣";
 	--link-internal_sign: "§";
+	--link-donat_color: #ffdf2d;
+	--link-donat-hover_color: #ffe96c;
+	--link-donat_sign: "₿";
 	/*Fonts*/
 	--family-main_font: 'Open Sans', sans-serif;
 	--family-acent_font: 'Advent Pro', sans-serif;

@@ -351,3 +351,16 @@ ExternalLink.tagName  = 'a'
 ExternalLink.className  = 'ref-ext'
 ExternalLink.blotName = 'external-link'
 Quill.register({'formats/external-link': ExternalLink})
+
+class DonationLink extends Quill.import('blots/inline'){
+    constructor(scroll, domNode){
+        super(scroll, domNode);
+        domNode.setAttribute('target', '_blank')
+        domNode.setAttribute('ref', 'noreferrer nofollow external')
+    }
+    
+}
+DonationLink.tagName  = 'a'
+DonationLink.className  = 'ref-donat'
+DonationLink.blotName = 'donation-link'
+Quill.register({'formats/donation-link': DonationLink})
