@@ -7,3 +7,12 @@
 	outline: var(--button_width_active) solid var(--button_link_active);
 	cursor: pointer;
 }
+
+.ttw-button_donation:hover > a > img, .ttw-button_donation:hover > a > p, .ttw-button_donation:hover > div{
+	outline: var(--button_width_hover) solid var(--link-donat_color);
+	cursor: pointer;
+}
+.ttw-button_donation:active > a > img, .ttw-button_donation:active > a > p, .ttw-button_donation:active > div{
+	outline: var(--button_width_active) solid var(--link-donat-hover_color);
+	cursor: pointer;
+}

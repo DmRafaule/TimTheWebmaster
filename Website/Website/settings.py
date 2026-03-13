@@ -59,6 +59,8 @@ INSTALLED_APPS = [
     'django_filters',
     # Yandex ad support
     'django_yandex_ad_manager.apps.YandexadmanagerConfig',
+    # BTCPay Donation capability
+    'django_btcpay_donation.apps.BtcpaydonationConfig',
     # BY ALLAUTH
     'allauth',
     'allauth.account',
@@ -92,6 +94,7 @@ MIDDLEWARE = [
     'Breadcrumbs.middleware.BreadcrumbsMiddleware',
     'Post.middleware.ToolMiddleware',
     'django_yandex_ad_manager.middleware.AdManagerMiddleware',
+    'django_btcpay_donation.middleware.BTCPayDonationMiddleware',
     'Main.middleware.FrameAncestorsMiddleware',
     # END Custom Middlewares
     'django.middleware.security.SecurityMiddleware',
@@ -232,5 +235,10 @@ if not DEBUG:
         ],
     }
     
+# Yandex Ad manager settings
 YANDEX_AD_MANAGER__ALLOWED_VIEWS = ('home', 'article', 'tool', 'tool_main')
 YANDEX_AD_MANAGER__ALLOWED_TEMPLATES = ('PagiScroll/base_post_list.html', 'Post/basic--post_preview-article.html', 'Post/basic--post_preview-note.html', 'Post/basic--post_preview-tool.html' )
+
+# BTCPay server settings
+BTCPAY_DOMAIN = settings['BTCPAY_DOMAIN']
+BTCPAY_STORE_ID = settings['BTCPAY_STORE_ID']

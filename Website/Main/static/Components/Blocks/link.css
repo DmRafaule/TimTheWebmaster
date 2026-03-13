@@ -31,7 +31,7 @@
 	color: var(--link-hover_color) !important;	
 }
 
-a.ref-donat{
+a.ref-donat, .ref-donat, .ref-donat_no-sign{
 	color: var(--link-donat_color) !important;	
 	transition: 0.3s;
 	border-bottom: 1px solid var(--link-donat_color); 
@@ -39,12 +39,12 @@ a.ref-donat{
 	word-wrap: anywhere;
 }
 
-a.ref-donat:after{
+a.ref-donat:after, .ref-donat:after{
 	content: var(--link-donat_sign);
 	font-size: 120%;	
 }
 
-a.ref-donat:hover{
+a.ref-donat:hover, .ref-donat:hover, .ref-donat_no-sign{
 	color: var(--link-donat-hover_color) !important;	
 }
 

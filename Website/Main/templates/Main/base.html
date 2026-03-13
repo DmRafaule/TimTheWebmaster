@@ -240,6 +240,20 @@
 						Данный сайт был создан в исключительно развлекательно-позновательном ключе. Он не несёт какой-либо специальной цели или миссии в пространстве интернета. Разве только общения и раскрытия интересных автору тем, которые, конечно же, могут и будут меняться со временем.
 						{% endblocktrans %}
 					</div>
+					{% if isBTCPayDonationMiddlewareConnected %}
+						{% for location in donation_link_locations %}
+							{% if location.linklocation_name == "FOOTER" %}
+							<a href="{{location.link}}">
+								<div class="ttw-button ttw-button_donation ttw-button_squared w-full">
+									<div class="ref-donat_no-sign ttw-button_squared flex gap-4 items-center justify-start p-1" style="border:1px solid var(--link-donat_color);">
+										<p>₿</p>
+										<p>{% trans 'Поддержать' %}</p>
+									</div>
+								</div>
+							</a>
+							{% endif %}
+						{% endfor %}
+					{% endif %}
 				</div>
 			</div>
 		</div>
