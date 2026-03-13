@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-01-09 15:47+0300\n"
+"POT-Creation-Date: 2026-03-13 18:46+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -34,10 +34,10 @@ msgstr ""
 msgid "Django irc channel"
 msgstr ""
 
-#: .\Website\settings.py:213
+#: .\Website\settings.py:216
 msgid "Русский"
 msgstr "Russian"
 
-#: .\Website\settings.py:214
+#: .\Website\settings.py:217
 msgid "Английский"
 msgstr "English"

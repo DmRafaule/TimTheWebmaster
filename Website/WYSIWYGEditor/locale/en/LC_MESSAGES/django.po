@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-09 13:18+0300\n"
+"POT-Creation-Date: 2026-03-13 18:46+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -232,15 +232,19 @@ msgstr "A link to a part of article"
 msgid "Ссылка на скачиваеммый контент"
 msgstr "A link to downloadable content"
 
-#: .\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:396
+#: .\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:382
+msgid "Донатная ссылка"
+msgstr "Donation link"
+
+#: .\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:402
 msgid "Видео"
 msgstr "Video"
 
-#: .\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:402
+#: .\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:408
 msgid "Изображение"
 msgstr "Image"
 
-#: .\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:408
+#: .\WYSIWYGEditor\templates\WYSIWYGEditor\editor_home.html:414
 msgid "Текст под изображением"
 msgstr "Text under image"
 

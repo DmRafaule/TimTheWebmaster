@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-09 15:41+0300\n"
+"POT-Creation-Date: 2026-03-13 18:46+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1132,6 +1132,10 @@ msgstr ""
 "author, which, of course, can and will change over time.\n"
 "\t\t\t\t\t\t"
 
+#: .\Main\templates\Main\base.html:250
+msgid "Поддержать"
+msgstr "Donate"
+
 #: .\Main\templates\Main\base_status_code.html:132
 msgid "Об авторе"
 msgstr "About author"
@@ -1145,8 +1149,8 @@ msgid ""
 "Тим зе вебмастер, автоматизация рабочих и бизнес процессов используя онлайн "
 "инструменты, парсеры, скрипты и телеграм ботов"
 msgstr ""
-"Tim the webmaster, automation for business using online tools, scrapers, scripts and "
-"telegram bots"
+"Tim the webmaster, automation for business using online tools, scrapers, "
+"scripts and telegram bots"
 
 #: .\Main\templates\Main\home.html:34
 msgid "Оранжевые волны, огибающие белый фон"
