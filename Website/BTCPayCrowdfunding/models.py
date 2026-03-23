@@ -17,7 +17,7 @@ class BTCPayCrowdfundApp(models.Model):
 class BTCPayCrowdfundDonation(models.Model):
     email = models.ForeignKey(to=settings.BTCPAY_CROWDFUND_EMAIL_MODEL_TO_BIND, on_delete=models.CASCADE)
     app = models.ForeignKey(to=BTCPayCrowdfundApp, on_delete=models.CASCADE)
-    invoice_id = models.CharField(help_text="An invoice's ID to bind to this email")
+    invoice_id = models.CharField(max_length=256, help_text="An invoice's ID to bind to this email")
     
     class DonationStatus(models.IntegerChoices):
         NEW         = 0
