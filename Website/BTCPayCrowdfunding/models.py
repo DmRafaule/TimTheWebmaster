@@ -3,7 +3,7 @@ from django.conf import settings
 
 
 class BTCPayCrowdfundApp(models.Model):
-    app_id = models.CharField(max_length=256, unique=True)
+    app_id = models.CharField(max_length=256, unique=True, null=True)
     project = models.ForeignKey(to=settings.BTCPAY_CROWDFUND_MODEL_TO_BIND, on_delete=models.CASCADE)
     language_code = models.CharField(
         max_length=2,
