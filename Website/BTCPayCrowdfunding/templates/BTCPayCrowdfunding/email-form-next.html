@@ -1,0 +1,39 @@
+{% load i18n %}
+
+<div
+    hx-post="{% url 'request_invoice' %}"
+    hx-trigger="load"
+    hx-vals='js:{
+        "amount": "{{BTCPayCrowdfundAMOUNT}}",
+        "currency": "{{BTCPayCrowdfundCURRENCY}}",
+        "csrfmiddlewaretoken": csrftoken,
+        "app_id": "{{BTCPayCrowdfundAPP_ID}}",
+        "email": "{{BTCPayCrowdfundEMAIL}}"
+    }'
+    hx-target="#modal-form"
+    hx-indicator="#context-loader-load_into_modal"
+    hx-on::after-request="
+        switch(event.detail.xhr.status){
+            case 204:
+                modal.close();
+                toaster.notify('{% trans '✔ Инвойс успешно создан (＠＾０＾)' %}', 'success'); 
+                break;
+            case 400:
+                modal.close();
+                toaster.notify('{% trans '✗ Плохой запрос.' %}', 'error'); 
+                break;
+            case 404:
+                modal.close();
+                toaster.notify('{% trans '✗ Не смог найти то, что ты запросил' %}', 'error'); 
+                break;
+            case 500:
+                toaster.notify('{% trans '✗ Возникла ошибка на стороне сервера, при запросе инвойса ＼（〇_ｏ）／' %}', 'error'); 
+                break;
+        }
+    "
+></div>
+<div style="max-width:300px;">
+    {% blocktrans %}
+    Почта успешно отправленна. Ожидай, скоро появится инвойс
+    {% endblocktrans %}
+</div>

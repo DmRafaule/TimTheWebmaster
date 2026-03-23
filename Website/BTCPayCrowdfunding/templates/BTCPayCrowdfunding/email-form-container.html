@@ -1,0 +1,74 @@
+{% load i18n %}
+{% load static %}
+{% get_current_language as LC %}
+
+<div class="flex flex-col gap-2 w-full">
+    <h3>{% trans 'Оплата' %}</h3>
+    <hr>
+    {% comment %}
+        Событие beforeSwap должно быть расположено на том элементе
+        где производиться свап
+    {% endcomment %}
+    <div 
+        hx-on::before-swap="
+            switch(event.detail.xhr.status){
+                case 400:
+                    event.detail.shouldSwap = true
+                    event.detail.isError = false
+                    break;
+                case 404:
+                    event.detail.shouldSwap = true
+                    event.detail.isError = false
+                    break;
+                case 503:
+                    event.detail.shouldSwap = true
+                    event.detail.isError = false
+                    break;
+            }
+        "
+        id="modal-form">
+        {% include 'BTCPayCrowdfunding/email-form.html' with email_form_crowdfund=email_form_crowdfund %}
+    </div>
+    <hr>
+    <div class="flex flex-row justify-between flex-wrap">
+        {% comment %}
+            Чтобы события after* смогли быть выполнены
+            я должен делать свап другого элемента, без кнопок по отправке 
+            данного запроса. 
+
+            Иначе событи просто будет заменено и не будет выполненно.
+        {% endcomment %}
+        <button 
+            hx-post="{% url 'submit_email' %}"
+            hx-vals='js:{
+                "csrfmiddlewaretoken": csrftoken
+            }'
+            hx-target="#modal-form"
+            hx-indicator="#context-loader-load_into_modal"
+            hx-include="#toSendEmail"
+            hx-on::after-request="
+                switch(event.detail.xhr.status){
+                    case 200:
+                        toaster.notify('{% trans '✔ Вы успешно отправили почту (＠＾０＾)' %}', 'success'); 
+                        break;
+                    case 201:
+                        toaster.notify('{% trans '✔ Такая почта уже есть, рад твоему возвращению ヾ(￣▽￣)' %}', 'success'); 
+                        break;
+                    case 400:
+                        toaster.notify('{% trans '✗ Возникла ошибка при отправке формы ＼（〇_ｏ）／' %}', 'error'); 
+                        break;
+                }
+            "
+            class="ttw-button ttw-button_donation ttw-button_squared w-full grow shrink basis-[fit-content]">
+            <div class="ref-donat_no-sign  bg-main ttw-button_squared flex gap-4 items-center justify-start p-2" style="border:1px solid var(--link-donat_color);">
+                <p>₿</p>
+                <p>{% trans 'Перейти к оплате' %}</p>
+            </div>
+        </button>
+        {% if not only_send %}
+            <div class="ttw-button ttw-button_action grow" onclick="modal.close()">
+                <p class="ttw-button_squared bg-main border text-white p-2">{% trans "Отмена" %}</p>
+            </div>
+        {% endif%}
+    </div>
+</div>

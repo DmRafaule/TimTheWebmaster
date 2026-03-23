@@ -18,6 +18,9 @@ class Interaction(models.Model):
 class Email(models.Model):
     email = models.EmailField()
 
+    def __str__(self):
+        return self.email
+
 class Comment(models.Model):
     class Rating(models.IntegerChoices):
         ONE = 1

@@ -4,9 +4,7 @@
 {% if isEngagementMiddlewareConnected %}
 	{% load getInteraction %}
 {% endif %}
-{% comment %}
- Used by tools created via CMS
-{% endcomment %}
+{% load isConnectedToTool %}
 
 {% block head %}
 
@@ -145,7 +143,43 @@
 {% endblock %}
 
 {% block hat %}
+    {% isBTCPayCrowdfundingConnected page_tool.slug as isConnected %}
+    {% if isConnected %}
+        <div class="grow-0 shrink ttw-button_swap" data-body="btcpaycrowdfund_groups_container">
+            <div class="ttw-button ttw-button_donation ttw-button_swap_front ttw-sidebar_button_open" data-body="btcpaycrowdfund_groups_container">
+                <div class="ttw-button_squared">
+                    <img class="ttw-button_squared" width="32" height="32" src="{% static 'savings.svg' %}" alt="{% trans '3 горизонтальные линии, бургер' %}">
+                </div>
+            </div>
+            <div class="ttw-button ttw-button_action ttw-button_swap_back ttw-sidebar_button_close ttw-button_swap_not_active" data-body="btcpaycrowdfund_groups_container">
+                <img class="ttw-button_squared" width="32" height="32" src="{% static 'close_white.svg' %}" alt="{% trans '3 горизонтальные линии, бургер' %}">
+            </div>
+        </div>
+    {% endif %}
+
 	{% block hat_tool %}
+	{% endblock%}
+{% endblock %}
+
+{% block hat_body %}
+    {% isBTCPayCrowdfundingConnected page_tool.slug as isConnected %}
+    {% if isConnected %}
+        <div id="btcpaycrowdfund_groups_container" class="ttw-sidebar_body ttw-sidebar_body_left ttw-sidebar_body_not_active p-1 justify-between flex flex-col">
+            <div>
+                <h2>{% trans "Краудфандинг" %}</h2>
+                <hr>
+            </div>
+            <div class="overflow-y-scroll">
+                {% include 'BTCPayCrowdfunding/crowdfunding-description-container.html' with tool=page_tool.slug %}
+            </div>
+            <div>
+                <hr>
+                <div class="min-h-[50px]"></div>
+            </div>
+        </div>
+    {% endif %}
+
+    {% block hat_tool_body %}
 	{% endblock%}
 {% endblock %}
 
@@ -216,16 +250,46 @@
             {% endif %}
 
             {% if post.tags.all|length > 0 %}
-            <div class="flex gap-3 ref_no-sign flex-wrap">
-                <b>{% trans "Теги: " %}</b>
-                {% for tag in post.tags.all %}
-                <a href="{{post.category.get_absolute_url}}?page=1&tag={{tag.slug}}&is_recent=true"><div class="tag">{{tag.name}}</div></a>
-                {% endfor %}
-            </div>
+                <div class="flex gap-3 ref_no-sign flex-wrap">
+                    <b>{% trans "Теги: " %}</b>
+                    {% for tag in post.tags.all %}
+                    <a href="{{post.category.get_absolute_url}}?page=1&tag={{tag.slug}}&is_recent=true"><div class="tag">{{tag.name}}</div></a>
+                    {% endfor %}
+                </div>
             {% endif %}
+
+            {% isBTCPayCrowdfundingConnected page_tool.slug as isConnected %}
+            {% if isConnected %}
+                <div class="flex flex-col gap-1">
+                    <div class="flex flex-row gap-2 items-center flex-wrap">
+                        <div ><b>{% trans "Финансирование:" %}</b></div>
+                        {% include 'BTCPayCrowdfunding/crowdfunding-status-container.html' with tool=page_tool.slug%}
+                        <div 
+                            hx-get="{% url 'get_email_form_container' page_tool.slug %}"
+                            hx-target="#modal-content"
+                            hx-indicator="#context-loader-load_into_modal"
+                            hx-on::before-request="modal.open('');"
+                            hx-on::after-request="event.detail.failed && modal.close();"
+                            class="ttw-button ttw-button_donation ttw-button_squared w-full grow shrink basis-[fit-content]">
+                            <div class="ref-donat_no-sign ttw-button_squared flex gap-4 items-center justify-start p-1" style="border:1px solid var(--link-donat_color);">
+                                <p>₿</p>
+                                <p>{% trans 'Через криптовалюту' %}</p>
+                            </div>
+                        </div>
+                        <div class="ttw-button_disabled ttw-button_border ttw-button_squared w-full grow shrink basis-[fit-content]">
+                            <div class="ttw-button_squared flex gap-4 items-center justify-start p-1">
+                                <p>💳</p>
+                                <p>{% trans 'Через карту (пока недоступно)' %}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+
             {% if isDjangoApp %}
                 <div class="flex gap-2"><b>{% trans "Тип Django приложения: " %}</b><div>{{post.get_app_type}}</div></div>
             {% endif %}
+
             {% if isScript %}
                 <div class="flex gap-2"><b>{% trans "Тип скрипта: " %}</b><div>{{post.get_interface_type}}</div></div>
             {% endif %}

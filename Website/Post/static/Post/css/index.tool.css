@@ -17,3 +17,13 @@
 .post-content-root{
   width: 100%;
 }
+
+.textEditorWrapper > div > div > label {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: space-between;
+}
+.textEditorWrapper > div > div > label > input {
+    width: auto;
+}

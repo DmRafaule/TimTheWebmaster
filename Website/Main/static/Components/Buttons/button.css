@@ -15,3 +15,8 @@
 .ttw-button_border{
     border: 2px solid black;
 }
+
+.ttw-button_disabled{
+    border-color: var(--button_disabled);
+    color: var(--button_disabled);
+}

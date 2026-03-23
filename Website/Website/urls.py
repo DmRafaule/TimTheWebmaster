@@ -35,6 +35,8 @@ urlpatterns = [
     ## Common API
     path("api/v1/admin/", include(get_dynamic_api_urls(api_type='admin'))),
     path("api/v1/public/", include(get_dynamic_api_urls(api_type='public'))),
+    ## BTCPay Crowdfunding
+    path('', include('BTCPayCrowdfunding.url_webhooks')),
 ]
 
 
@@ -45,6 +47,7 @@ urlpatterns += i18n_patterns(
     path('', include('Engagement.urls')),
     path('', include('Breadcrumbs.urls')),
     path('', include('WYSIWYGEditor.urls')),
+    path('', include('BTCPayCrowdfunding.urls')),
     path('tools/', include('Apps.ImageThief.urls')),
     path('tools/', include('Apps.LinkThief.urls')),
     path('tools/', include('Apps.TextThief.urls')),

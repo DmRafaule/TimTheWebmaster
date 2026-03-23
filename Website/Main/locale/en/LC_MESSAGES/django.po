@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-13 21:10+0300\n"
+"POT-Creation-Date: 2026-03-23 11:51+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1339,3 +1339,25 @@ msgstr "Clock"
 #: .\Main\templates\Main\loader.html:10
 msgid "ЗАГРУЗКА ..."
 msgstr "LOADING ..."
+
+#: .\Main\templates\Main\thanks-page.html:7
+msgid "Благодарность пользователю, который оплатил"
+msgstr ""
+
+#: .\Main\templates\Main\thanks-page.html:8
+#, fuzzy
+#| msgid "Отправлен плохой запрос. Тим вебмастер"
+msgid "Успешная оплата | Тим зе вебмастер"
+msgstr "Bad request. Tim the webmaster"
+
+#: .\Main\templates\Main\thanks-page.html:17
+msgid "Спасибо за оплату"
+msgstr ""
+
+#: .\Main\templates\Main\thanks-page.html:21
+msgid "Инвойс ИД: "
+msgstr ""
+
+#: .\Main\templates\Main\thanks-page.html:22
+msgid "Твоя почта: "
+msgstr ""

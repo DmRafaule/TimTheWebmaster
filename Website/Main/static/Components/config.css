@@ -18,6 +18,7 @@
 	--button_download_hover: #6d9454;
 	--button_internal_active: #d4755f;
 	--button_internal_hover: #d4755f;
+	--button_disabled: rgb(184, 184, 184);
 	/*Links*/
 	--link_color: #84a8e3;
 	--link-hover_color: #b7ccee;

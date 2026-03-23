@@ -61,6 +61,7 @@ INSTALLED_APPS = [
     'django_yandex_ad_manager.apps.YandexadmanagerConfig',
     # BTCPay Donation capability
     'django_btcpay_donation.apps.BtcpaydonationConfig',
+    'BTCPayCrowdfunding.apps.BtcpaycrowdfundingConfig',
     # BY ALLAUTH
     'allauth',
     'allauth.account',
@@ -95,6 +96,7 @@ MIDDLEWARE = [
     'Post.middleware.ToolMiddleware',
     'django_yandex_ad_manager.middleware.AdManagerMiddleware',
     'django_btcpay_donation.middleware.BTCPayDonationMiddleware',
+    'BTCPayCrowdfunding.middleware.BTCPayCrowdfundingMiddleware',
     'Main.middleware.FrameAncestorsMiddleware',
     # END Custom Middlewares
     'django.middleware.security.SecurityMiddleware',
@@ -239,6 +241,22 @@ if not DEBUG:
 YANDEX_AD_MANAGER__ALLOWED_VIEWS = ('home', 'article', 'tool', 'tool_main')
 YANDEX_AD_MANAGER__ALLOWED_TEMPLATES = ('PagiScroll/base_post_list.html', 'Post/basic--post_preview-article.html', 'Post/basic--post_preview-note.html', 'Post/basic--post_preview-tool.html' )
 
-# BTCPay server settings
+# BTCPay donation server settings
 BTCPAY_DOMAIN = settings['BTCPAY_DOMAIN']
 BTCPAY_STORE_ID = settings['BTCPAY_STORE_ID']
+# BTCPay crowdfund server settings
+## Required
+BTCPAY_AUTHORIZATION_TOKEN = settings['BTCPAY_AUTHORIZATION_TOKEN']
+BTCPAY_CROWDFUND_MODEL_TO_BIND = "Post.tool"
+BTCPAY_CROWDFUND_EMAIL_MODEL_TO_BIND = "Engagement.Email"
+BTCPAY_CROWDFUND_EMAIL_MODEL_FIELD = "email"
+## Optional
+BTCPAY_CROWDFUND_APP_LOOKUP_FIELD = 'project__slug'
+BTCPAY_CROWDFUND_DONATION_CHOICES = ((1, 1), (5, 5), (10, 10))
+BTCPAY_CROWDFUND_CURRENCY_CHOICES = (('USD', 'US Dollar'), ('EUR', 'Euro'),)
+BTCPAY_THANKS_PAGE_URL = 'thanks/'
+BTCPAY_THANKS_PAGE = 'Main/thanks-page.html'
+BTCPAY_CROWDFUND_THANKS_CONTEXT_CALLBACK = 'Main.utils.thanks_context_data'
+#BTCPAY_CROWDFUND_STATUS_PAGE = 'Main/crowdfunding-status.html'
+#BTCPAY_CROWDFUND_DESCRIPTION_PAGE = 'Main/crowdfunding-description.html'
+BTCPAY_WEBHOOK_SECRET = settings['BTCPAY_WEBHOOK_SECRET']
