@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-23 11:51+0300\n"
+"POT-Creation-Date: 2026-03-24 17:32+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,6 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
 #: .\BTCPayCrowdfunding\forms.py:27
 msgid "Валюта"
 msgstr "Currency"
@@ -79,10 +80,19 @@ msgstr ""
 "Mail sent successfully. Please wait, your invoice will arrive soon.\n"
 " "
 
-#: .\BTCPayCrowdfunding\views.py:65
+#: .\BTCPayCrowdfunding\utils.py:62
+msgid "Слишком много попыток, повтори в следующий раз"
+msgstr "Too many attempts, try again next time"
+
+#: .\BTCPayCrowdfunding\utils.py:72
+#, python-brace-format
+msgid "Чек оплаты проекта {project_id}"
+msgstr "Project payment receipt {project_id}"
+
+#: .\BTCPayCrowdfunding\views.py:67
 msgid "Недопустимое значение суммы ￣へ￣"
 msgstr "Invalid value for sum ￣へ￣"
 
-#: .\BTCPayCrowdfunding\views.py:68
+#: .\BTCPayCrowdfunding\views.py:70
 msgid "Приложения с таким ID не существует. ┗|｀O′|┛"
 msgstr "There is no app with this ID. ┗|｀O′|┛"

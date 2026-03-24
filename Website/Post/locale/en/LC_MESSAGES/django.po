@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-23 11:51+0300\n"
+"POT-Creation-Date: 2026-03-24 17:32+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -179,11 +179,11 @@ msgstr "Used termins"
 msgid "Релевантные вопросы"
 msgstr "Related questions"
 
-#: .\Post\templates\Post\base_post.html:85
+#: .\Post\templates\Post\base_post.html:89
 msgid "Следующая статья"
 msgstr "Next article"
 
-#: .\Post\templates\Post\base_post.html:96
+#: .\Post\templates\Post\base_post.html:100
 msgid "Предыдущая статья"
 msgstr "Previous article"
 

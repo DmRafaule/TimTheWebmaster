@@ -1,6 +1,7 @@
 import json
 import requests
 import hmac
+import secrets
 import hashlib
 
 from django.apps import apps
@@ -11,11 +12,12 @@ from django.http import HttpResponse
 from django.utils.translation import gettext_lazy as _
 from django.utils.module_loading import import_string
 from django.template.response import TemplateResponse
-from django.views.decorators.http import require_GET, require_POST
+from django.views.decorators.http import require_POST
 from django.views.decorators.csrf import csrf_exempt
 
 from .forms import get_email_form
 from .models import BTCPayCrowdfundApp, BTCPayCrowdfundDonation
+from .utils import get_hash, send_email, get_app_id
 
 
 @require_POST
@@ -67,8 +69,8 @@ def request_invoice(request):
     if not BTCPayCrowdfundApp.objects.filter(app_id=app_id).exists():
         return HttpResponse(_("Приложения с таким ID не существует. ┗|｀O′|┛"), status=404)
     
-    redirect_url = BTCPayCrowdfundApp.objects.filter(app_id=app_id).first().project.get_absolute_url()
-    #redirect_url = request.build_absolute_uri(reverse('thanks-page'))
+    #redirect_url = BTCPayCrowdfundApp.objects.filter(app_id=app_id).first().project.get_absolute_url()
+    redirect_url = request.build_absolute_uri(reverse('thanks-page'))
 
     headers = {
         "Authorization": f"token {settings.BTCPAY_AUTHORIZATION_TOKEN}",
@@ -128,17 +130,6 @@ def thanks(request):
         
     template = getattr(settings, 'BTCPAY_THANKS_PAGE', 'BTCPayCrowdfunding/thanks-page.html')
     return render(request, template, context)
-
-def get_app_id(project_id, code):
-    current_language = code
-    lookup_field = getattr(settings, 'BTCPAY_CROWDFUND_APP_LOOKUP_FIELD', 'project__slug')
-    filter_kwargs = {lookup_field: project_id}
-    apps = BTCPayCrowdfundApp.objects.filter(**filter_kwargs)
-    if len(apps) > 0:
-        app = apps.filter(language_code=current_language).first()
-        return app.app_id
-    else:
-        return None
 
 def get_email_form_container(request, project_id):
     BindedEmailForm = get_email_form()
@@ -244,7 +235,7 @@ def update_invoice(request):
     invoice_id = data.get('invoiceId')
     new_status_str = data.get('type')
 
-    # 2. Маппинг статусов BTCPay к вашей модели
+    # 2. Маппинг статусов BTCPay
     status_mapping = {
         'InvoiceCreated': BTCPayCrowdfundDonation.DonationStatus.NEW,
         'InvoiceProcessing': BTCPayCrowdfundDonation.DonationStatus.PROCESSING,
@@ -258,6 +249,14 @@ def update_invoice(request):
         donation = BTCPayCrowdfundDonation.objects.get(invoice_id=invoice_id)
         
         if new_status_str in status_mapping:
+            # Отправляю чек на почту
+            if new_status_str == "InvoiceSettled" and not donation.receipt_id:
+            #if new_status_str == "InvoiceSettled":
+                raw_token = secrets.token_urlsafe(24)
+                donation.receipt_id = get_hash(raw_token, donation.email.email)
+                donation.save()
+                send_email(request, donation.email.email, raw_token, donation.app.project)           
+
             donation.status = status_mapping[new_status_str]
             donation.save()
             return HttpResponse(status=200)

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-23 11:51+0300\n"
+"POT-Creation-Date: 2026-03-24 17:39+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -77,6 +77,95 @@ msgstr "Tim the Webmaster. Server error"
 #: .\Main\templates\Main\500.html:14
 msgid "Ошибка сервера"
 msgstr "Server error"
+
+#: .\Main\templates\Main\BTCPayCrowdfunding\receipt-email.html:53
+msgid "Спасибо за поддержку проекта - "
+msgstr "Thank you for supporting the project -"
+
+#: .\Main\templates\Main\BTCPayCrowdfunding\receipt-email.html:53
+msgid "Вы успешно перевели указанные средства через BTCPay сервер."
+msgstr "You have successfully transferred the specified funds via the BTCPay server."
+
+#: .\Main\templates\Main\BTCPayCrowdfunding\receipt-email.html:57
+msgid ""
+"В дальнейшем, чтобы получить доступ к платным возможностям этого инструмента "
+"сохрани данный код:"
+msgstr ""
+"To access the paid features of this tool in the future, save this code:"
+
+#: .\Main\templates\Main\BTCPayCrowdfunding\receipt-email.html:60
+msgid "Как его использовать:"
+msgstr "How to use it:"
+
+#: .\Main\templates\Main\BTCPayCrowdfunding\receipt-email.html:62
+msgid ""
+"\n"
+"                                <li>Вернись на страницу инструмента</li>\n"
+"                                <li>Вставь свой код в поле подтверждения</"
+"li>\n"
+"                                <li>Нажми \"Подтвердить\", что бы получить "
+"доступ к платным возможностям инструмента</li>\n"
+"                                "
+msgstr ""
+"\n"
+" <li>Return to the tool page</li>\n"
+" <li>Paste your code in the confirmation field</"
+"li>\n"
+" <li>Click \"Confirm\" to gain "
+"access to the tool's paid features</li>\n"
+" "
+
+#: .\Main\templates\Main\BTCPayCrowdfunding\receipt-email.html:68
+msgid "Но если нет поле подтверждения:"
+msgstr "But if there is no confirmation field:"
+
+#: .\Main\templates\Main\BTCPayCrowdfunding\receipt-email.html:69
+msgid ""
+"Это значит, я ещё не разработал никаких платных фишек для данного "
+"инструмента, но в скором времени они появятся, поэтому просто сохрани данных "
+"код, чтобы воспользоваться им в дальнейшем."
+msgstr ""
+"This means I haven't developed any paid features for this "
+"tool yet, but they will be coming soon, so just save this "
+"code for future use."
+
+#: .\Main\templates\Main\BTCPayCrowdfunding\receipt-email.html:86
+msgid "Кратко о сайте:"
+msgstr "In short about the website"
+
+#: .\Main\templates\Main\BTCPayCrowdfunding\receipt-email.html:87
+msgid "Онлайн лаборатория по разработке инструментов и решений для бизнеса."
+msgstr "An online laboratory for developing business tools and solutions."
+
+#: .\Main\templates\Main\BTCPayCrowdfunding\receipt-email.html:95
+#: .\Main\templates\Main\base.html:214
+#: .\Main\templates\Main\base_status_code.html:131
+msgid "Карта сайта"
+msgstr "Sitemap"
+
+#: .\Main\templates\Main\BTCPayCrowdfunding\receipt-email.html:96
+msgid "Об авторе"
+msgstr "About author"
+
+#: .\Main\templates\Main\BTCPayCrowdfunding\thanks-page.html:7
+msgid "Благодарность пользователю, который оплатил"
+msgstr "Thanks to the user who paid"
+
+#: .\Main\templates\Main\BTCPayCrowdfunding\thanks-page.html:8
+msgid "Успешная оплата | Тим зе вебмастер"
+msgstr "Successful payment | Tim the webmaster"
+
+#: .\Main\templates\Main\BTCPayCrowdfunding\thanks-page.html:17
+msgid "Спасибо за оплату"
+msgstr "Thank you for your payment"
+
+#: .\Main\templates\Main\BTCPayCrowdfunding\thanks-page.html:21
+msgid "Инвойс ИД: "
+msgstr "Invoice ID: "
+
+#: .\Main\templates\Main\BTCPayCrowdfunding\thanks-page.html:22
+msgid "Твоя почта: "
+msgstr "Your mail: "
 
 #: .\Main\templates\Main\about-website.html:8
 msgid ""
@@ -1084,11 +1173,6 @@ msgstr "Popular links"
 msgid "Другие ссылки"
 msgstr "Other links"
 
-#: .\Main\templates\Main\base.html:214
-#: .\Main\templates\Main\base_status_code.html:131
-msgid "Карта сайта"
-msgstr "Sitemap"
-
 #: .\Main\templates\Main\base.html:215
 #: .\Main\templates\Main\base_status_code.html:132
 msgid "О проекте и авторе"
@@ -1339,25 +1423,3 @@ msgstr "Clock"
 #: .\Main\templates\Main\loader.html:10
 msgid "ЗАГРУЗКА ..."
 msgstr "LOADING ..."
-
-#: .\Main\templates\Main\thanks-page.html:7
-msgid "Благодарность пользователю, который оплатил"
-msgstr ""
-
-#: .\Main\templates\Main\thanks-page.html:8
-#, fuzzy
-#| msgid "Отправлен плохой запрос. Тим вебмастер"
-msgid "Успешная оплата | Тим зе вебмастер"
-msgstr "Bad request. Tim the webmaster"
-
-#: .\Main\templates\Main\thanks-page.html:17
-msgid "Спасибо за оплату"
-msgstr ""
-
-#: .\Main\templates\Main\thanks-page.html:21
-msgid "Инвойс ИД: "
-msgstr ""
-
-#: .\Main\templates\Main\thanks-page.html:22
-msgid "Твоя почта: "
-msgstr ""

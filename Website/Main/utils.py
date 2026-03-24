@@ -220,3 +220,7 @@ def thanks_context_data(request):
         'user_provided_email': request.GET.get('email')
     })
     return context
+
+def receipt_context_data(request):
+    context = initDefaults(request)
+    return context
