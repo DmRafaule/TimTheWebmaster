@@ -3,6 +3,10 @@
 {% load static %}
 
 {% block head %}
+	{% if not post.isPublished %}
+		<meta name="robots" content="noindex, nofollow">
+	{% endif %}
+
 	<link rel="canonical" href="https://{{domain_name}}{{ post.get_absolute_url }}" />
 
 	{% if isYandexAdManagerMiddlewareConnected %}
