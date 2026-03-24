@@ -32,7 +32,7 @@ class TDTranslationOptions(TranslationOptions):
     )
 
 class NoteTranslationOptions(TranslationOptions):
-    fields = ('title', 'description',)
+    fields = ('title', 'description','template')
 
 class ToolTranslationOptions(TranslationOptions):
     fields = ('name', 'h1', 'description', 'meta_keywords', 'template', 'meta_preview_description')

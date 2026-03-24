@@ -2,13 +2,15 @@ import os
 
 from django.db import models
 from django.urls import reverse
+from django.template.loader import render_to_string
 from django.utils import timezone
 from django.dispatch import receiver
 from django.utils.translation import get_language
 from django.utils.translation import gettext as _
 from django.utils.translation import gettext_lazy as __
-from django.db.models.signals import m2m_changed, pre_save
+from django.db.models.signals import m2m_changed, pre_save, post_delete
 from django.core.exceptions import ValidationError
+from django.core.cache import cache
 from polymorphic.models import PolymorphicModel
 from polymorphic.managers import PolymorphicManager
 from modeltranslation.manager import MultilingualManager
@@ -30,6 +32,9 @@ def user_directory_path(instance, filename):
         Путь типа str до файла
     '''
     return "{0}/{1}/{2}".format(instance.category.slug, instance.slug, filename)
+
+def notes_path(instance, filename):
+    return "{0}/{1}".format(instance.category.slug, filename)
 
 def service_path(instance, filename):
     return "{0}/{1}".format(instance.category.slug, filename)
@@ -414,8 +419,32 @@ class Note(models.Model):
     timeUpdated = models.DateTimeField(auto_now=True)
     isPublished = models.BooleanField(default=True)
     tags = models.ManyToManyField(Tag, blank=True)
+    template = models.FileField(max_length=300, upload_to=notes_path, blank=True, null=True, default=None)
+
+    @property
+    def template_content(self):
+        """Возвращает кэшированное содержимое файла шаблона"""
+        if not self.template:
+            return ""
+
+        print(self.template)
+        # Создаем уникальный ключ для кэша на основе ID заметки
+        cache_key = f"note_template_content_{get_language()}_{self.pk}"
+        content = cache.get(cache_key)
+        if content is None:
+            try:
+                content = render_to_string(self.template.name)
+                # Кэшируем на 72 часа (или любое другое время в секундах)
+                cache.set(cache_key, content, 60 * 60 * 72)
+            except (FileNotFoundError, IOError):
+                content = _("Файл шаблона не найден")
+        
+        return content
 
     def save(self, *args, **kwargs):
+        # При сохранении удаляем старый кэш, чтобы данные обновились
+        if self.pk:
+            cache.delete(f"note_template_content_{self.pk}")
         self.timeUpdated = timezone.now()
         if not self.timeCreated:
             self.timeCreated = timezone.now()
@@ -423,6 +452,33 @@ class Note(models.Model):
 
     def __str__(self):
         return self.title
+
+@receiver(post_delete, sender=Note)
+def auto_delete_file_on_delete(sender, instance, **kwargs):
+    """
+    Удаляет файл с диска при удалении записи Note.
+    """
+    if instance.template:
+        if os.path.isfile(instance.template.path):
+            os.remove(instance.template.path)
+
+@receiver(pre_save, sender=Note)
+def auto_delete_file_on_change(sender, instance, **kwargs):
+    """
+    Удаляет старый файл с диска при обновлении поля template на новый файл.
+    """
+    if not instance.pk:
+        return False
+
+    try:
+        old_file = Note.objects.get(pk=instance.pk).template
+    except Note.DoesNotExist:
+        return False
+
+    new_file = instance.template
+    if not old_file == new_file:
+        if old_file and os.path.isfile(old_file.path):
+            os.remove(old_file.path)
 
 @receiver(pre_save, sender=Note)
 def _post_save_category_note(sender, instance, **kwargs): 

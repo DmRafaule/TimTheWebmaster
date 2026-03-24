@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-24 17:32+0300\n"
+"POT-Creation-Date: 2026-03-24 21:06+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,97 +18,101 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: .\Post\models.py:236
+#: .\Post\models.py:241
 msgid "Телеграм бот"
 msgstr "Telegram bot"
 
-#: .\Post\models.py:250
+#: .\Post\models.py:255
 msgid "Чат бот"
 msgstr "Chat bot"
 
-#: .\Post\models.py:252
+#: .\Post\models.py:257
 msgid "Инлайн бот"
 msgstr "Inline bot"
 
-#: .\Post\models.py:254
+#: .\Post\models.py:259
 msgid "Веб бот"
 msgstr "Webapp bot"
 
-#: .\Post\models.py:261
+#: .\Post\models.py:266
 msgid "Веб инструмент"
 msgstr "Web tool"
 
-#: .\Post\models.py:270
+#: .\Post\models.py:275
 msgid "Джанго приложение"
 msgstr "Django app"
 
-#: .\Post\models.py:283
+#: .\Post\models.py:288
 msgid "Приложение"
 msgstr "App"
 
-#: .\Post\models.py:285
+#: .\Post\models.py:290
 msgid "Мидлвари"
 msgstr "Middleware"
 
-#: .\Post\models.py:287
+#: .\Post\models.py:292
 msgid "API"
 msgstr "API"
 
-#: .\Post\models.py:294
+#: .\Post\models.py:299
 msgid "Парсер"
 msgstr "Scraper"
 
-#: .\Post\models.py:306
+#: .\Post\models.py:311
 msgid "Однопоточный"
 msgstr "Singlethreaded"
 
-#: .\Post\models.py:308
+#: .\Post\models.py:313
 msgid "Многопоточный"
 msgstr "Multithreaded"
 
-#: .\Post\models.py:319
+#: .\Post\models.py:324
 msgid "Статический"
 msgstr "Static"
 
-#: .\Post\models.py:321
+#: .\Post\models.py:326
 msgid "Динамический"
 msgstr "Dynamic"
 
-#: .\Post\models.py:323
+#: .\Post\models.py:328
 msgid "Через API"
 msgstr "Through API"
 
-#: .\Post\models.py:341
+#: .\Post\models.py:346
 msgid "С прокси"
 msgstr "With proxy"
 
-#: .\Post\models.py:343
+#: .\Post\models.py:348
 msgid "Без прокси"
 msgstr "Without proxy"
 
-#: .\Post\models.py:353
+#: .\Post\models.py:358
 msgid "С ротацией агентов"
 msgstr "With user-agent rotation"
 
-#: .\Post\models.py:355
+#: .\Post\models.py:360
 msgid "Без ротации агентов"
 msgstr "Without user-agent rotation"
 
-#: .\Post\models.py:362
+#: .\Post\models.py:367
 msgid "Скрипт"
 msgstr "Script"
 
-#: .\Post\models.py:375
+#: .\Post\models.py:380
 msgid "Однокоммандный"
 msgstr "Single run"
 
-#: .\Post\models.py:377
+#: .\Post\models.py:382
 msgid "Интерфейс коммандной строки"
 msgstr "Command line interface"
 
-#: .\Post\models.py:379
+#: .\Post\models.py:384
 msgid "Терминальный интерфейс"
 msgstr "Terminal user interface"
+
+#: .\Post\models.py:440
+msgid "Файл шаблона не найден"
+msgstr "Could not find template's file"
 
 #: .\Post\templates\Post\base_article.html:70
 #: .\Post\templates\Post\base_tool.html:67

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-24 17:39+0300\n"
+"POT-Creation-Date: 2026-03-24 21:06+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -84,7 +84,8 @@ msgstr "Thank you for supporting the project -"
 
 #: .\Main\templates\Main\BTCPayCrowdfunding\receipt-email.html:53
 msgid "Вы успешно перевели указанные средства через BTCPay сервер."
-msgstr "You have successfully transferred the specified funds via the BTCPay server."
+msgstr ""
+"You have successfully transferred the specified funds via the BTCPay server."
 
 #: .\Main\templates\Main\BTCPayCrowdfunding\receipt-email.html:57
 msgid ""
@@ -109,10 +110,8 @@ msgid ""
 msgstr ""
 "\n"
 " <li>Return to the tool page</li>\n"
-" <li>Paste your code in the confirmation field</"
-"li>\n"
-" <li>Click \"Confirm\" to gain "
-"access to the tool's paid features</li>\n"
+" <li>Paste your code in the confirmation field</li>\n"
+" <li>Click \"Confirm\" to gain access to the tool's paid features</li>\n"
 " "
 
 #: .\Main\templates\Main\BTCPayCrowdfunding\receipt-email.html:68
@@ -125,9 +124,8 @@ msgid ""
 "инструмента, но в скором времени они появятся, поэтому просто сохрани данных "
 "код, чтобы воспользоваться им в дальнейшем."
 msgstr ""
-"This means I haven't developed any paid features for this "
-"tool yet, but they will be coming soon, so just save this "
-"code for future use."
+"This means I haven't developed any paid features for this tool yet, but they "
+"will be coming soon, so just save this code for future use."
 
 #: .\Main\templates\Main\BTCPayCrowdfunding\receipt-email.html:86
 msgid "Кратко о сайте:"
@@ -1376,7 +1374,7 @@ msgstr "Next tab on the tab bar."
 #: .\Main\templates\Main\home.html:226 .\Main\templates\Main\home.html:242
 #: .\Main\templates\Main\home.html:275 .\Main\templates\Main\home.html:322
 #: .\Main\templates\Main\home.html:338 .\Main\templates\Main\home.html:371
-#: .\Main\templates\Main\home.html:424
+#: .\Main\templates\Main\home.html:428
 msgid "Больше ..."
 msgstr "See more ..."
 

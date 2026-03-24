@@ -220,31 +220,34 @@ class DjangoAppAdmin(ToolAdmin):
 
 
 class NoteAdmin(admin.ModelAdmin):
-    exclude = ('category','title', 'description')
+    exclude = ('category','title', 'description', 'template')
     filter_horizontal = ('tags',)
     ordering = ['-timeCreated']
     fieldsets = [
         (
             None,
             {
-                'fields': [('title_ru', 'title_en'), ('description_ru', 'description_en'), 'isPublished']
+                'fields': [('title_ru', 'title_en'), 'isPublished', 'timeCreated']
             }
         ),
         (
-            'Advanced options',
+            'Standart',
             {
-                'fields': ['tags', 'timeCreated'],
-                'classes': ['collapse'],
+                'fields': [('description_ru', 'description_en'),]
             }
-        )
+        ),
+        (
+            'Extended',
+            {
+                'fields': [('template_ru', 'template_en'),'tags']
+            }
+        ),
     ]
     list_display = (
         'id',
         'isPublished',
         'title_ru',
         'title_en',
-        'description_ru',
-        'description_en',
         'timeCreated',
     )
     list_display_links = (
@@ -254,15 +257,11 @@ class NoteAdmin(admin.ModelAdmin):
         'isPublished',
         'title_ru',
         'title_en',
-        'description_ru',
-        'description_en',
         'timeCreated',
     )
     search_fields = (
         'title_ru',
         'title_en',
-        'description_ru',
-        'description_en',
         'tags'
     )
 

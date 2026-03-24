@@ -410,7 +410,11 @@
 								</div>
 							</div>
 							<div>
-							{{note.description}}
+							{% if note.template %}
+								{{ note.template_content|safe }}
+							{% else %} 	
+								{{note.description}}
+							{% endif %}
 							</div>
 						</div>
 						{% endfor %}
