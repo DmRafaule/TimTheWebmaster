@@ -70,7 +70,7 @@ def ratelimit_check(seconds=60, max_attempts=3):
 
 def send_email(request, user_email, receipt_id, project_id):
     subject = _(f'Чек оплаты проекта {project_id}')
-    from_email = settings.DEFAULT_FROM_EMAIL
+    from_email = settings.EMAIL_HOST_USER
 
     context = {
         'subject': subject,
