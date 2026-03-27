@@ -250,8 +250,7 @@ def update_invoice(request):
         
         if new_status_str in status_mapping:
             # Отправляю чек на почту
-            if new_status_str == "InvoiceSettled" and not donation.receipt_id:
-            #if new_status_str == "InvoiceSettled":
+            if new_status_str == "InvoiceSettled":
                 raw_token = secrets.token_urlsafe(24)
                 donation.receipt_id = get_hash(raw_token, donation.email.email)
                 donation.save()
