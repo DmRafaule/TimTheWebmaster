@@ -6,7 +6,7 @@ from django.core.paginator import Paginator
 from django.views.decorators.http import require_GET , require_POST
 
 from Main.forms import FeedbackForm
-from Website.settings import DEFAULT_FROM_EMAIL, DEFAULT_TO_EMAIL
+from Website.settings import EMAIL_HOST_USER, DEFAULT_TO_EMAIL
 from .models import Comment, Interaction, Email
 from .forms import CommentForm, ReviewForm, EmailForm
 from .utils import get_root_comments
@@ -198,3 +198,29 @@ def send_comment(request):
         status = 503
 
     return JsonResponse(data, status=status)
+
+@require_POST
+def feedback_post(request):
+    form = FeedbackForm(request.POST)
+    if form.is_valid():
+        subject = f'{form.cleaned_data.get("username")} | {form.cleaned_data.get("email")}'
+        message = f'{form.cleaned_data.get("message")}'
+        send_mail(subject=subject, message=message, from_email=EMAIL_HOST_USER, recipient_list=[DEFAULT_TO_EMAIL])
+        context = {'feedback_form': FeedbackForm()}
+        loaded_template = loader.get_template(f'Engagement/Other/engagement_feedback_form.html')
+        feedback_doc = loaded_template.render(context, request)
+        status = 200
+    else:
+        context = {'feedback_form': form}
+        loaded_template = loader.get_template(f'Engagement/Other/engagement_feedback_form.html')
+        feedback_doc = loaded_template.render(context, request)
+        status = 400
+
+    return HttpResponse(feedback_doc, status=status)
+
+@require_GET
+def feedback_form_get(request):
+    context = {'feedback_form': FeedbackForm()}
+    loaded_template = loader.get_template(f'Engagement/Other/engagement_feedback_form_container.html')
+    feedback_form_doc = loaded_template.render(context, request)
+    return HttpResponse(feedback_form_doc)

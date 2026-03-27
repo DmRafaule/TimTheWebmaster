@@ -26,7 +26,7 @@
 				"@type": "Person",
 				"@id": "{{ request.scheme }}://{{ request.get_host }}{%url 'about'%}#person" ,
 				"url": "{{ request.scheme }}://{{ request.get_host }}{%url 'about'%}",
-                "name": "{% trans 'Дмитрий Чудук' %}"
+                "name": "{% trans 'Тима Чудук' %}"
 			}
 		},
 		"mentions": [
@@ -334,7 +334,6 @@
 					</div>
 				</div>
 			</div>
-		{% include 'Engagement/Other/engagement_wide_container.html' with only_send="True" %}
 	</div>
 </div>
 {% endblock %}

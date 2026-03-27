@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-24 21:06+0300\n"
+"POT-Creation-Date: 2026-03-27 09:03+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -116,8 +116,8 @@ msgstr "Could not find template's file"
 
 #: .\Post\templates\Post\base_article.html:70
 #: .\Post\templates\Post\base_tool.html:67
-msgid "Дмитрий Чудук"
-msgstr "Dzmitry Chuduk"
+msgid "Тима Чудук"
+msgstr "Tima Chuduk"
 
 #: .\Post\templates\Post\base_article.html:219
 #: .\Post\templates\Post\base_article.html:222

@@ -5,13 +5,13 @@
 
 {% block head %}
 	<title>{% trans "Тим зе Вебмастер - лаборатория разработки. Всё о проекте и направлениях деятельности этого проекта(автора)" %}</title>
-	<meta name="description" content="{% trans "Всё о проекте, зачем он был создан, кто за ним стоит(Дима Чудук), основные направления деятельности (разработка программ, SEO, ИИ, история программировани, монетизация)" %}">
+	<meta name="description" content="{% trans "Всё о проекте, зачем он был создан, кто за ним стоит(Тима Чудук), основные направления деятельности (разработка программ, SEO, ИИ, история программировани, монетизация)" %}">
 	<link rel="canonical" href="{{ request.scheme }}://{{ request.get_host }}{%url 'about'%}" />
 	<!-- OpenGraph -->
 	<meta property="og:title" content="{% trans "Тим зе Вебмастер - лаборатория разработки. Всё о проекте и направлениях деятельности этого проекта(автора)" %}" />
-	<meta property="og:description" content="{% trans "Всё о проекте, зачем он был создан, кто за ним стоит(Дима Чудук), основные направления деятельности (разработка программ, SEO, ИИ, история программировани, монетизация)" %}" />
+	<meta property="og:description" content="{% trans "Всё о проекте, зачем он был создан, кто за ним стоит(Тима Чудук), основные направления деятельности (разработка программ, SEO, ИИ, история программировани, монетизация)" %}" />
 	<meta property="og:type" content="profile" />
-	<meta property="og:profile:first_name" content="{% trans 'Дмитрий' %}" />
+	<meta property="og:profile:first_name" content="{% trans 'Тима' %}" />
 	<meta property="og:profile:last_name" content="{% trans 'Чудук' %}" />
 	<meta property="og:profile:username" content="TimTheWebmaster" />
 	<meta property="og:profile:gender" content="male" />
@@ -67,7 +67,7 @@
 				"Linux Server Automation",
 				"Web Security"
 			],
-			"name": "{% trans 'Дмитрий Чудук' %}",
+			"name": "{% trans 'Тима Чудук' %}",
 			"alternateName": "{% trans 'Тим Зе Вебмастер' %}",
 			"description": "{% trans 'Программист самоучка, который занимается тем, что разрабатывает веб-приложения, сайты, скрипты и работает в качестве системного администратора.' %}",
 			"image": "{{ request.scheme }}://{{ request.get_host }}{% static '/Main/img/me1.jpg' %}",
@@ -90,7 +90,7 @@
 		<div class="flex gap-3 flex-wrap mb-10">
 			<div class="flex flex-col gap-2 grow shrink basis-2xs" style="flex: 1 1 300px;">
 				<h1>{% trans "Всё о лаборатории разработки и авторе проекта Тима зе Вебмастера" %}</h1>
-				<div>{% trans "Расскажу зачем была сделана данная лаборатория и чем она(я) занимаюсь. Так же немного об авторе данного проекта Тиме зе Вебмастере(он же Дима Чудук)" %}</div>
+				<div>{% trans "Расскажу зачем была сделана данная лаборатория и чем она(я) занимаюсь. Так же немного об авторе данного проекта Тиме зе Вебмастере(он же Тима Чудук)" %}</div>
 			</div>
 			<div class="flex flex-col justify-between gap-2 grow shrink-0 basis-auto uppercase">
 				<a href="{% url "articles-list" %}" class="basis-auto rounded-[8px] bg-main text-white">
@@ -230,7 +230,6 @@
 			{% endblocktrans %}
 		</fieldset>
 		<div class="mt-10"></div>
-		{% include 'Engagement/Other/engagement_wide_container.html' with only_send="True" %}
 	</div>
 </div>
 {% endblock %}
