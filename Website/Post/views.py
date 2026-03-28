@@ -24,11 +24,14 @@ def article(request, post_slug):
     context.update({'downloadables': downloadables})
     context.update({'images': images})
     context.update({'videos': videos})
-    # Получаем относящийся подкаст и соответствующий эпизод
-    podcast = Post_M.ExternalPodcast.objects.filter_by_lang().first()
-    podcast_episode = Post_M.ExternalPodcastEpisode.objects.filter(related_post=post, podcast=podcast).first()
-    context.update({'podcast': podcast})
-    context.update({'podcast_episode': podcast_episode})
+    # Получаем относящийся подкаст и соответствующий эпизод # Для Buzzsproud
+    #podcast = Post_M.ExternalPodcast.objects.filter_by_lang().first()
+    #podcast_episode = Post_M.ExternalPodcastEpisode.objects.filter(related_post=post, podcast=podcast).first()
+    #context.update({'podcast': podcast})
+    #context.update({'podcast_episode': podcast_episode})
+    # Получаем относящийся подкаст и соответствующий эпизод # Для серверных файлов
+    podcast = Post_M.InternalPodcast.objects.filter_by_lang().filter(related_post=post).first()
+    context.update({'podcast_episode': podcast})
     # Получаем относящееся видео
     external_video = Post_M.ExternalVideo.objects.filter(related_post=post).first()
     context.update({'external_video': external_video})

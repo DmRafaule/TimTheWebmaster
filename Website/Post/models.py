@@ -39,6 +39,9 @@ def notes_path(instance, filename):
 def service_path(instance, filename):
     return "{0}/{1}".format(instance.category.slug, filename)
 
+def podcast_path(instance, filename):
+    return "{0}/{1}".format("podcasts", filename)
+
 
 class Tag(models.Model):
     ''' Модель тегов, для фильтрации других моделей у которых есть соответствующие отношения с этой моделью '''
@@ -501,6 +504,20 @@ class ExternalVideo(models.Model):
     def __str__(self):
         return f"{self.video_id}"
 
+# Для использования внутреннего хранилища хостинга
+class InternalPodcast(models.Model):
+    objects = LangManager()
+    langs = models.ManyToManyField('self', blank=True)
+    lang_type = models.CharField(max_length=2, choices=LanguageType, null=True, default=LanguageType.LANG_TYPE_UNI)
+    # К какой статье относится
+    related_post = models.ForeignKey(Post, on_delete=models.CASCADE)
+    # Медиа файл
+    podcast = models.FileField(max_length=300, upload_to=podcast_path, blank=False)
+
+    def __str__(self):
+        return f"({self.lang_type}) {self.podcast}"
+
+# Для использования через Buzzsprout
 class ExternalPodcast(models.Model):
     objects = LangManager()
     langs = models.ManyToManyField('self', blank=True)
@@ -511,6 +528,7 @@ class ExternalPodcast(models.Model):
     def __str__(self):
         return f"({self.lang_type}) {self.podcast_id}"
 
+# Для использования через Buzzsprout
 class ExternalPodcastEpisode(models.Model):
     podcast = models.ForeignKey(ExternalPodcast, on_delete=models.CASCADE)
     related_post = models.ForeignKey(Post, on_delete=models.CASCADE)

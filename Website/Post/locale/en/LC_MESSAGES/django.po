@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-27 09:03+0300\n"
+"POT-Creation-Date: 2026-03-28 21:37+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,121 +18,129 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: .\Post\models.py:241
+#: .\Post\models.py:244
 msgid "Телеграм бот"
 msgstr "Telegram bot"
 
-#: .\Post\models.py:255
+#: .\Post\models.py:258
 msgid "Чат бот"
 msgstr "Chat bot"
 
-#: .\Post\models.py:257
+#: .\Post\models.py:260
 msgid "Инлайн бот"
 msgstr "Inline bot"
 
-#: .\Post\models.py:259
+#: .\Post\models.py:262
 msgid "Веб бот"
 msgstr "Webapp bot"
 
-#: .\Post\models.py:266
+#: .\Post\models.py:269
 msgid "Веб инструмент"
 msgstr "Web tool"
 
-#: .\Post\models.py:275
+#: .\Post\models.py:278
 msgid "Джанго приложение"
 msgstr "Django app"
 
-#: .\Post\models.py:288
+#: .\Post\models.py:291
 msgid "Приложение"
 msgstr "App"
 
-#: .\Post\models.py:290
+#: .\Post\models.py:293
 msgid "Мидлвари"
 msgstr "Middleware"
 
-#: .\Post\models.py:292
+#: .\Post\models.py:295
 msgid "API"
 msgstr "API"
 
-#: .\Post\models.py:299
+#: .\Post\models.py:302
 msgid "Парсер"
 msgstr "Scraper"
 
-#: .\Post\models.py:311
+#: .\Post\models.py:314
 msgid "Однопоточный"
 msgstr "Singlethreaded"
 
-#: .\Post\models.py:313
+#: .\Post\models.py:316
 msgid "Многопоточный"
 msgstr "Multithreaded"
 
-#: .\Post\models.py:324
+#: .\Post\models.py:327
 msgid "Статический"
 msgstr "Static"
 
-#: .\Post\models.py:326
+#: .\Post\models.py:329
 msgid "Динамический"
 msgstr "Dynamic"
 
-#: .\Post\models.py:328
+#: .\Post\models.py:331
 msgid "Через API"
 msgstr "Through API"
 
-#: .\Post\models.py:346
+#: .\Post\models.py:349
 msgid "С прокси"
 msgstr "With proxy"
 
-#: .\Post\models.py:348
+#: .\Post\models.py:351
 msgid "Без прокси"
 msgstr "Without proxy"
 
-#: .\Post\models.py:358
+#: .\Post\models.py:361
 msgid "С ротацией агентов"
 msgstr "With user-agent rotation"
 
-#: .\Post\models.py:360
+#: .\Post\models.py:363
 msgid "Без ротации агентов"
 msgstr "Without user-agent rotation"
 
-#: .\Post\models.py:367
+#: .\Post\models.py:370
 msgid "Скрипт"
 msgstr "Script"
 
-#: .\Post\models.py:380
+#: .\Post\models.py:383
 msgid "Однокоммандный"
 msgstr "Single run"
 
-#: .\Post\models.py:382
+#: .\Post\models.py:385
 msgid "Интерфейс коммандной строки"
 msgstr "Command line interface"
 
-#: .\Post\models.py:384
+#: .\Post\models.py:387
 msgid "Терминальный интерфейс"
 msgstr "Terminal user interface"
 
-#: .\Post\models.py:440
+#: .\Post\models.py:443
 msgid "Файл шаблона не найден"
 msgstr "Could not find template's file"
 
-#: .\Post\templates\Post\base_article.html:70
+#: .\Post\templates\Post\base_article.html:77
 #: .\Post\templates\Post\base_tool.html:67
 msgid "Тима Чудук"
 msgstr "Tima Chuduk"
 
-#: .\Post\templates\Post\base_article.html:219
-#: .\Post\templates\Post\base_article.html:222
+#: .\Post\templates\Post\base_article.html:163
+msgid "Аудио версия:"
+msgstr "Audio version:"
+
+#: .\Post\templates\Post\base_article.html:164
+msgid "Слушай аудио версию:"
+msgstr "Listen an audio version:"
+
+#: .\Post\templates\Post\base_article.html:255
+#: .\Post\templates\Post\base_article.html:258
 #: .\Post\templates\Post\base_tool.html:152
 #: .\Post\templates\Post\base_tool.html:156
 msgid "3 горизонтальные линии, бургер"
 msgstr ""
 
-#: .\Post\templates\Post\base_article.html:232
+#: .\Post\templates\Post\base_article.html:268
 msgid "Содержание"
 msgstr "Content"
 
-#: .\Post\templates\Post\base_article.html:263
-#: .\Post\templates\Post\base_article.html:268
-#: .\Post\templates\Post\base_article.html:274
+#: .\Post\templates\Post\base_article.html:299
+#: .\Post\templates\Post\base_article.html:304
+#: .\Post\templates\Post\base_article.html:310
 #: .\Post\templates\Post\base_tool.html:228
 #: .\Post\templates\Post\base_tool.html:233
 #: .\Post\templates\Post\basic--post_preview-article.html:20
@@ -142,44 +150,56 @@ msgstr "Content"
 msgid "Часы"
 msgstr "Clock"
 
-#: .\Post\templates\Post\base_article.html:276
+#: .\Post\templates\Post\base_article.html:312
 msgid "минуту"
 msgstr "minute"
 
-#: .\Post\templates\Post\base_article.html:278
+#: .\Post\templates\Post\base_article.html:314
 msgid "минуты"
 msgstr "minutes"
 
-#: .\Post\templates\Post\base_article.html:280
+#: .\Post\templates\Post\base_article.html:316
 msgid "минут"
 msgstr "minutes"
 
-#: .\Post\templates\Post\base_article.html:291
+#: .\Post\templates\Post\base_article.html:327
 #: .\Post\templates\Post\base_tool.html:255
 msgid "Теги: "
 msgstr "Tags: "
 
-#: .\Post\templates\Post\base_article.html:305
+#: .\Post\templates\Post\base_article.html:342
 msgid "Так же доступно в следующих форматах:"
 msgstr "Also available as:"
 
-#: .\Post\templates\Post\base_article.html:335
+#: .\Post\templates\Post\base_article.html:351
+msgid "ПОДКАСТ"
+msgstr "PODCAST"
+
+#: .\Post\templates\Post\base_article.html:353
+msgid "Извини, но твой браузер не поддерживает воспроизведение аудио"
+msgstr "Sorry, but your browser not support audio content"
+
+#: .\Post\templates\Post\base_article.html:360
+msgid "ВИДЕО"
+msgstr "VIDEO"
+
+#: .\Post\templates\Post\base_article.html:386
 msgid "Внешние ссылки"
 msgstr "External links"
 
-#: .\Post\templates\Post\base_article.html:343
+#: .\Post\templates\Post\base_article.html:394
 msgid "Другое"
 msgstr "Other"
 
-#: .\Post\templates\Post\base_article.html:346
+#: .\Post\templates\Post\base_article.html:397
 msgid "Похожие статьи"
 msgstr "Similar articles"
 
-#: .\Post\templates\Post\base_article.html:352
+#: .\Post\templates\Post\base_article.html:403
 msgid "Использованные термины"
 msgstr "Used termins"
 
-#: .\Post\templates\Post\base_article.html:363
+#: .\Post\templates\Post\base_article.html:414
 msgid "Релевантные вопросы"
 msgstr "Related questions"
 

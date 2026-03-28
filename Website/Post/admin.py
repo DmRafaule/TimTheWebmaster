@@ -293,6 +293,7 @@ class ExternalPodcastEpisodeAdmin(admin.ModelAdmin):
     list_editable = ('podcast_url',)
 
 
+
 admin.site.register(M.Tag, TagAdmin)
 admin.site.register(M.Category, CategoryAdmin)
 admin.site.register(M.Article, ArticleAdmin)
@@ -302,6 +303,7 @@ admin.site.register(M.Scraper, ScraperAdmin)
 admin.site.register(M.Script, ScriptAdmin)
 admin.site.register(M.DjangoApp, DjangoAppAdmin)
 admin.site.register(M.Note, NoteAdmin)
-admin.site.register(M.ExternalPodcast, ExternalPodcastAdmin)
-admin.site.register(M.ExternalPodcastEpisode, ExternalPodcastEpisodeAdmin)
+#admin.site.register(M.ExternalPodcast, ExternalPodcastAdmin)
+#admin.site.register(M.ExternalPodcastEpisode, ExternalPodcastEpisodeAdmin)
+admin.site.register(M.InternalPodcast, admin.ModelAdmin)
 admin.site.register(M.ExternalVideo, ExternalVideoAdmin)
