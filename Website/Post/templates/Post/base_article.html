@@ -99,18 +99,18 @@
 				"video": {
 					"@type": "VideoObject",
 					"name": "{{ post.title }}",
-					"contentUrl": "https://www.youtube.com/watch?v={{external_video.video_id}}"
+					"description": "{{ post.description }}",
 					"thumbnailUrl": [
 						"https://img.youtube.com/vi/{{external_video.video_id}}/maxresdefault.jpg"
 					],
-					"uploadDate": "{{post.timeCreated}}+03:00",
+					"uploadDate": "{{post.timeCreated|date:'c'}}",
 					"duration": "PT{{time_to_read}}M01S",
 					"contentUrl": "https://www.youtube.com/watch?v={{external_video.video_id}}",
 					"embedUrl": "https://www.youtube.com/embed/{{external_video.video_id}}"
 				},
 				{% endif %}
-				"datePublished": "{{post.timeCreated}}+03:00",
-				"dateModified": "{{post.timeUpdated}}+03:00"
+				"datePublished": "{{post.timeCreated|date:'c'}}",
+				"dateModified": "{{post.timeUpdated|date:'c'}}"
 					{% if isEngagementMiddlewareConnected %}
 				,"interactionStatistic": [
 					{% with interaction=post.get_absolute_url|getInteraction %}
@@ -164,7 +164,7 @@
 				"associatedMedia": {
 					"@type": "MediaObject",
 					"contentUrl": "{{ request.scheme }}://{{ request.get_host }}{% get_media_prefix %}{{podcast_episode.podcast}}"
-				},
+				}
 			}
 		</script>
 		{% endif %}
