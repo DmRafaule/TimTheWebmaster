@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-28 21:37+0300\n"
+"POT-Creation-Date: 2026-04-04 15:10+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -115,7 +115,7 @@ msgid "Файл шаблона не найден"
 msgstr "Could not find template's file"
 
 #: .\Post\templates\Post\base_article.html:77
-#: .\Post\templates\Post\base_tool.html:67
+#: .\Post\templates\Post\base_tool.html:60
 msgid "Тима Чудук"
 msgstr "Tima Chuduk"
 
@@ -129,8 +129,6 @@ msgstr "Listen an audio version:"
 
 #: .\Post\templates\Post\base_article.html:255
 #: .\Post\templates\Post\base_article.html:258
-#: .\Post\templates\Post\base_tool.html:152
-#: .\Post\templates\Post\base_tool.html:156
 msgid "3 горизонтальные линии, бургер"
 msgstr ""
 
@@ -141,8 +139,8 @@ msgstr "Content"
 #: .\Post\templates\Post\base_article.html:299
 #: .\Post\templates\Post\base_article.html:304
 #: .\Post\templates\Post\base_article.html:310
-#: .\Post\templates\Post\base_tool.html:228
-#: .\Post\templates\Post\base_tool.html:233
+#: .\Post\templates\Post\base_tool.html:191
+#: .\Post\templates\Post\base_tool.html:196
 #: .\Post\templates\Post\basic--post_preview-article.html:20
 #: .\Post\templates\Post\basic--post_preview-article.html:25
 #: .\Post\templates\Post\basic--post_preview-note.html:15
@@ -163,7 +161,7 @@ msgid "минут"
 msgstr "minutes"
 
 #: .\Post\templates\Post\base_article.html:327
-#: .\Post\templates\Post\base_tool.html:255
+#: .\Post\templates\Post\base_tool.html:218
 msgid "Теги: "
 msgstr "Tags: "
 
@@ -211,100 +209,84 @@ msgstr "Next article"
 msgid "Предыдущая статья"
 msgstr "Previous article"
 
-#: .\Post\templates\Post\base_tool.html:11
+#: .\Post\templates\Post\base_tool.html:10
 msgid "Инструмент"
 msgstr "Tool"
 
-#: .\Post\templates\Post\base_tool.html:170
-msgid "Краудфандинг"
-msgstr "Crowdfunding"
-
-#: .\Post\templates\Post\base_tool.html:214
-#: .\Post\templates\Post\base_tool.html:220
+#: .\Post\templates\Post\base_tool.html:177
+#: .\Post\templates\Post\base_tool.html:183
 #: .\Post\templates\Post\basic--post_preview-tool.html:15
 #: .\Post\templates\Post\basic--post_preview-tool.html:21
 msgid "Превью статьи"
 msgstr "Article preview"
 
-#: .\Post\templates\Post\base_tool.html:238
+#: .\Post\templates\Post\base_tool.html:201
 #: .\Post\templates\Post\basic--post_preview-tool.html:39
 msgid "Иконка типа приложения"
 msgstr "Icon of app type"
 
-#: .\Post\templates\Post\base_tool.html:266
-msgid "Финансирование:"
-msgstr "Financing:"
-
-#: .\Post\templates\Post\base_tool.html:277
-msgid "Через криптовалюту"
-msgstr "Via cryptocurrency"
-
-#: .\Post\templates\Post\base_tool.html:283
-msgid "Через карту (пока недоступно)"
-msgstr "Via card (not available yet)"
-
-#: .\Post\templates\Post\base_tool.html:291
+#: .\Post\templates\Post\base_tool.html:226
 msgid "Тип Django приложения: "
 msgstr "Kind of Django app:"
 
-#: .\Post\templates\Post\base_tool.html:295
+#: .\Post\templates\Post\base_tool.html:230
 msgid "Тип скрипта: "
 msgstr "Type of Script: "
 
-#: .\Post\templates\Post\base_tool.html:325
+#: .\Post\templates\Post\base_tool.html:260
 msgid "Цель: "
 msgstr "Goal: "
 
-#: .\Post\templates\Post\base_tool.html:329
+#: .\Post\templates\Post\base_tool.html:264
 msgid "Характеристики:"
 msgstr "Characteristics:"
 
-#: .\Post\templates\Post\base_tool.html:331
+#: .\Post\templates\Post\base_tool.html:266
 msgid "Поточность: "
 msgstr "Threading: "
 
-#: .\Post\templates\Post\base_tool.html:332
+#: .\Post\templates\Post\base_tool.html:267
 msgid "Тип: "
 msgstr "Type: "
 
-#: .\Post\templates\Post\base_tool.html:333
+#: .\Post\templates\Post\base_tool.html:268
 msgid "Используемый язык: "
 msgstr "Used languages: "
 
-#: .\Post\templates\Post\base_tool.html:334
+#: .\Post\templates\Post\base_tool.html:269
 msgid "Прокси: "
 msgstr "Proxy: "
 
-#: .\Post\templates\Post\base_tool.html:335
+#: .\Post\templates\Post\base_tool.html:270
 msgid "Ротация: "
 msgstr "Rotation: "
 
-#: .\Post\templates\Post\base_tool.html:342
+#: .\Post\templates\Post\base_tool.html:277
 msgid "Примеры"
 msgstr "Examples"
 
-#: .\Post\templates\Post\base_tool.html:345
-#: .\Post\templates\Post\base_tool.html:348
+#: .\Post\templates\Post\base_tool.html:280
+#: .\Post\templates\Post\base_tool.html:283
 msgid "Предыдущая вкладка на табуляторе"
 msgstr "Previous tab"
 
-#: .\Post\templates\Post\base_tool.html:360
+#: .\Post\templates\Post\base_tool.html:295
 msgid "Изображение примера использования приложения"
 msgstr "An image of an example of app's usage"
 
-#: .\Post\templates\Post\base_tool.html:372
+#: .\Post\templates\Post\base_tool.html:307
 msgid "Медиа файлы"
 msgstr "Media files"
 
-#: .\Post\templates\Post\base_tool.html:388
+#: .\Post\templates\Post\base_tool.html:323
 msgid "Рабочие заметки об инструменте"
 msgstr "A notes about this tool, devnotes"
 
-#: .\Post\templates\Post\base_tool.html:397
+#: .\Post\templates\Post\base_tool.html:332
 msgid "Больше ..."
 msgstr "More ..."
 
-#: .\Post\templates\Post\base_tool.html:407
+#: .\Post\templates\Post\base_tool.html:342
 msgid "Похожие инструменты"
 msgstr "Similar tools"
 

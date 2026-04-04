@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-27 11:19+0300\n"
+"POT-Creation-Date: 2026-04-04 15:10+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -77,93 +77,6 @@ msgstr "Tim the Webmaster. Server error"
 #: .\Main\templates\Main\500.html:14
 msgid "Ошибка сервера"
 msgstr "Server error"
-
-#: .\Main\templates\Main\BTCPayCrowdfunding\receipt-email.html:54
-msgid "Спасибо за поддержку проекта - "
-msgstr "Thank you for supporting the project -"
-
-#: .\Main\templates\Main\BTCPayCrowdfunding\receipt-email.html:54
-msgid "Вы успешно перевели указанные средства через BTCPay сервер."
-msgstr ""
-"You have successfully transferred the specified funds via the BTCPay server."
-
-#: .\Main\templates\Main\BTCPayCrowdfunding\receipt-email.html:58
-msgid ""
-"В дальнейшем, чтобы получить доступ к платным возможностям этого инструмента "
-"сохрани данный код:"
-msgstr ""
-"To access the paid features of this tool in the future, save this code:"
-
-#: .\Main\templates\Main\BTCPayCrowdfunding\receipt-email.html:61
-msgid "Как его использовать:"
-msgstr "How to use it:"
-
-#: .\Main\templates\Main\BTCPayCrowdfunding\receipt-email.html:63
-msgid ""
-"\n"
-"                                <li>Вернись на страницу инструмента</li>\n"
-"                                <li>Вставь свой код в поле подтверждения</"
-"li>\n"
-"                                <li>Нажми \"Подтвердить\", что бы получить "
-"доступ к платным возможностям инструмента</li>\n"
-"                                "
-msgstr ""
-"\n"
-" <li>Return to the tool page</li>\n"
-" <li>Paste your code in the confirmation field</li>\n"
-" <li>Click \"Confirm\" to gain access to the tool's paid features</li>\n"
-" "
-
-#: .\Main\templates\Main\BTCPayCrowdfunding\receipt-email.html:69
-msgid "Но если нет поле подтверждения:"
-msgstr "But if there is no confirmation field:"
-
-#: .\Main\templates\Main\BTCPayCrowdfunding\receipt-email.html:70
-msgid ""
-"Это значит, я ещё не разработал никаких платных фишек для данного "
-"инструмента, но в скором времени они появятся, поэтому просто сохрани данных "
-"код, чтобы воспользоваться им в дальнейшем."
-msgstr ""
-"This means I haven't developed any paid features for this tool yet, but they "
-"will be coming soon, so just save this code for future use."
-
-#: .\Main\templates\Main\BTCPayCrowdfunding\receipt-email.html:87
-msgid "Кратко о сайте:"
-msgstr "In short about the website"
-
-#: .\Main\templates\Main\BTCPayCrowdfunding\receipt-email.html:88
-msgid "Онлайн лаборатория по разработке инструментов и решений для бизнеса."
-msgstr "An online laboratory for developing business tools and solutions."
-
-#: .\Main\templates\Main\BTCPayCrowdfunding\receipt-email.html:96
-#: .\Main\templates\Main\base.html:213
-#: .\Main\templates\Main\base_status_code.html:131
-msgid "Карта сайта"
-msgstr "Sitemap"
-
-#: .\Main\templates\Main\BTCPayCrowdfunding\receipt-email.html:97
-msgid "Об авторе"
-msgstr "About author"
-
-#: .\Main\templates\Main\BTCPayCrowdfunding\thanks-page.html:7
-msgid "Благодарность пользователю, который оплатил"
-msgstr "Thanks to the user who paid"
-
-#: .\Main\templates\Main\BTCPayCrowdfunding\thanks-page.html:8
-msgid "Успешная оплата | Тим зе вебмастер"
-msgstr "Successful payment | Tim the webmaster"
-
-#: .\Main\templates\Main\BTCPayCrowdfunding\thanks-page.html:17
-msgid "Спасибо за оплату"
-msgstr "Thank you for your payment"
-
-#: .\Main\templates\Main\BTCPayCrowdfunding\thanks-page.html:21
-msgid "Инвойс ИД: "
-msgstr "Invoice ID: "
-
-#: .\Main\templates\Main\BTCPayCrowdfunding\thanks-page.html:22
-msgid "Твоя почта: "
-msgstr "Your mail: "
 
 #: .\Main\templates\Main\about-website.html:8
 msgid ""
@@ -1117,43 +1030,43 @@ msgstr ""
 #: .\Main\templates\Main\base.html:85 .\Main\templates\Main\base.html:91
 #: .\Main\templates\Main\base.html:108 .\Main\templates\Main\base.html:147
 #: .\Main\templates\Main\base.html:151
-#: .\Main\templates\Main\base_status_code.html:23
-#: .\Main\templates\Main\base_status_code.html:26
-#: .\Main\templates\Main\base_status_code.html:36
-#: .\Main\templates\Main\base_status_code.html:42
-#: .\Main\templates\Main\base_status_code.html:59
-#: .\Main\templates\Main\base_status_code.html:94
-#: .\Main\templates\Main\base_status_code.html:98
+#: .\Main\templates\Main\base_minimal.html:23
+#: .\Main\templates\Main\base_minimal.html:26
+#: .\Main\templates\Main\base_minimal.html:36
+#: .\Main\templates\Main\base_minimal.html:42
+#: .\Main\templates\Main\base_minimal.html:59
+#: .\Main\templates\Main\base_minimal.html:94
+#: .\Main\templates\Main\base_minimal.html:98
 msgid "3 горизонтальные линии, бургер"
 msgstr "3 horizontal lines, burger"
 
 #: .\Main\templates\Main\base.html:97
-#: .\Main\templates\Main\base_status_code.html:48
+#: .\Main\templates\Main\base_minimal.html:48
 msgid "Главная иконка сайта"
 msgstr "Main icon of the website"
 
 #: .\Main\templates\Main\base.html:112
-#: .\Main\templates\Main\base_status_code.html:63
+#: .\Main\templates\Main\base_minimal.html:63
 msgid "Удалить все"
 msgstr "Remove all"
 
 #: .\Main\templates\Main\base.html:130
-#: .\Main\templates\Main\base_status_code.html:77
+#: .\Main\templates\Main\base_minimal.html:77
 msgid "Админка"
 msgstr "Admin"
 
 #: .\Main\templates\Main\base.html:131
-#: .\Main\templates\Main\base_status_code.html:78
+#: .\Main\templates\Main\base_minimal.html:78
 msgid "Редактор"
 msgstr "Editor"
 
 #: .\Main\templates\Main\base.html:133
-#: .\Main\templates\Main\base_status_code.html:80
+#: .\Main\templates\Main\base_minimal.html:80
 msgid "Профиль"
 msgstr "Profile"
 
 #: .\Main\templates\Main\base.html:135
-#: .\Main\templates\Main\base_status_code.html:82
+#: .\Main\templates\Main\base_minimal.html:82
 msgid "Домашняя"
 msgstr "Home"
 
@@ -1162,32 +1075,30 @@ msgid "Крестик"
 msgstr "Cross"
 
 #: .\Main\templates\Main\base.html:201
-#: .\Main\templates\Main\base_status_code.html:117
 msgid "Популярные ссылки"
 msgstr "Popular links"
 
 #: .\Main\templates\Main\base.html:210
-#: .\Main\templates\Main\base_status_code.html:128
 msgid "Другие ссылки"
 msgstr "Other links"
 
+#: .\Main\templates\Main\base.html:213
+msgid "Карта сайта"
+msgstr "Sitemap"
+
 #: .\Main\templates\Main\base.html:214
-#: .\Main\templates\Main\base_status_code.html:132
 msgid "О проекте и авторе"
 msgstr "About the project and the author"
 
 #: .\Main\templates\Main\base.html:215
-#: .\Main\templates\Main\base_status_code.html:133
 msgid "О сайте"
 msgstr "About website"
 
 #: .\Main\templates\Main\base.html:220
-#: .\Main\templates\Main\base_status_code.html:138
 msgid "Контакты"
 msgstr "Contacts"
 
 #: .\Main\templates\Main\base.html:225
-#: .\Main\templates\Main\base_status_code.html:144
 msgid "иконка"
 msgstr "icon"
 
@@ -1240,26 +1151,6 @@ msgstr "Subscribe to the latest notes"
 #: .\Main\templates\Main\base.html:308
 msgid "Поддержать"
 msgstr "Support"
-
-#: .\Main\templates\Main\base_status_code.html:153
-msgid "Кратко о сайте"
-msgstr "In short for guests"
-
-#: .\Main\templates\Main\base_status_code.html:156
-msgid ""
-"\n"
-"\t\t\t\t\t\tДанный сайт был создан в исключительно развлекательно-"
-"позновательном ключе. Он не несёт какой-либо специальной цели или миссии в "
-"пространстве интернета. Разве только общения и раскрытия интересных автору "
-"тем, которые, конечно же, могут и будут меняться со временем.\n"
-"\t\t\t\t\t\t"
-msgstr ""
-"\n"
-"\t\t\t\t\t\tThis site was created for purely entertaining andeducational "
-"purposes. It does not have any special purpose or mission in the Internet "
-"space. Except for communication and disclosure of topics of interest to the "
-"author, which, of course, can and will change over time.\n"
-"\t\t\t\t\t\t"
 
 #: .\Main\templates\Main\home.html:8 .\Main\templates\Main\home.html:12
 msgid "Тим зе вебмастер - онлайн инструменты, скрипты, парсеры, боты"
