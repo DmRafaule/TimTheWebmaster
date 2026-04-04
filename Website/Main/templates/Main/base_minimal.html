@@ -109,57 +109,6 @@
 	</main>
 
 	<footer class="p-2.5 flex flex-col items-center gap-5 z-20">
-		{% block footer %}
-		{% endblock %}
-		<div class="max-w-7xl flex flex-row gap-7 justify-around w-full flex-wrap">
-			<div class="flex flex-col">
-				<div>
-					<b>{% trans "Популярные ссылки" %}</b>
-				</div>
-				<ul class="list_without_sign">
-				{% block footer_links %}
-				{% endblock %}
-				</ul>
-			</div>
-			<div class="flex flex-col gap-7 grow shrink-0 basis-72">
-				<div class="flex flex-row grow shrink-0 flex-auto justify-between">
-					<div class="flex flex-col">
-						<div>
-							<b>{% trans "Другие ссылки" %}</b>
-						</div>
-						<ul class="list_without_sign">
-							<li class="ref"><a href="/sitemap.xml">{% trans "Карта сайта" %}</a></li>
-							<li class="ref"><a href="{% url 'about' %}">{% trans "О проекте и авторе" %}</a></li>
-							<li class="ref"><a href="{% url 'about-website' %}">{% trans "О сайте" %}</a></li>
-						</ul>
-					</div>
-					<div class="flex flex-col gap-7">
-						<div>
-							<b>{% trans "Контакты" %}</b>
-						</div>
-						<div class="flex flex-row flex-wrap gap-1">
-							{% for contact in contacts %}
-							<div class="ttw-button ttw-button_link">
-								<a target="_blank" rel="contact" rev="{{contact.description}}" href="{{contact.url}}" >
-									<img class="ttw-button_squared" width="32" height="32" src="{% get_media_prefix %}{{contact.icon}}" alt="{{ contact.name }} {% trans 'иконка' %}">
-								</a>
-							</div>
-							{% endfor %}
-						</div>
-					</div>
-				</div>
-				<div class="flex flex-col gap-3">
-					<div>
-						<b>{% trans "Кратко о сайте" %}</b>
-					</div>
-					<div>
-						{% blocktrans %}
-						Данный сайт был создан в исключительно развлекательно-позновательном ключе. Он не несёт какой-либо специальной цели или миссии в пространстве интернета. Разве только общения и раскрытия интересных автору тем, которые, конечно же, могут и будут меняться со временем.
-						{% endblocktrans %}
-					</div>
-				</div>
-			</div>
-		</div>
 		<div>
 			Copywrite @ {% now "Y"%} Tim the Webmaster
 		</div>

@@ -212,15 +212,3 @@ def get_apps_root_dirs():
             apps_root_dirs.append(CWD)
         
         return apps_root_dirs
-
-def thanks_context_data(request):
-    context = initDefaults(request)
-    context.update({
-        'invoice_id': request.GET.get('invoiceId'),
-        'user_provided_email': request.GET.get('email')
-    })
-    return context
-
-def receipt_context_data(request):
-    context = initDefaults(request)
-    return context

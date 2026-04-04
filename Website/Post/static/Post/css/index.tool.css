@@ -27,3 +27,18 @@
 .textEditorWrapper > div > div > label > input {
     width: auto;
 }
+.btcpay-crowdfund-radioselect-options{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px
+}
+.btcpay-crowdfund-radioselect-options>div>label{
+    display: flex;
+    flex-direction: row;
+}
+.btcpay-crowdfund-radioselect-options>div>label>input{
+    width: auto;
+}
+.input-wrapper{
+    max-width: 300px;   
+}
