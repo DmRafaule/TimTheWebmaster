@@ -1,4 +1,5 @@
 import './htmx.js';
+//import './monetag-main-script.js';
 import '../../../../Main/static/Components/Containers/Dropdown/dropdown.js';
 import '../../../../Main/static/Components/Base/ImagePreviewer/image_previewer.js';
 import microlight from "../../../../Main/static/Components/Blocks/Codeblock/microlight.js";

@@ -211,6 +211,51 @@
 {% block scripts_tool %}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="{% static 'ImageThief/js/index.min.js' %}"></script>
+	{% if LANGUAGE_CODE == 'en' %}
+		{% comment %}
+			Monetag Vignette AD Срабатывает после выполнения работы инструмента
+		{% endcomment %}
+		<script>
+			(function() {
+				// Целевой элемент, за которым следим
+				const targetNode = document.getElementById('container_imagethief-results');
+				
+				// Флаг, чтобы реклама не загружалась повторно, если класс изменится еще раз
+				let adLoaded = false;
+
+				// Функция загрузки вашего 1-го скрипта
+				function loadVignette() {
+					if (adLoaded) return;
+					adLoaded = true;
+
+					(function(s){
+						s.dataset.zone='10833810';
+						s.src='https://n6wxm.com/vignette.min.js';
+						[document.documentElement, document.body].filter(Boolean).pop().appendChild(s);
+					})(document.createElement('script'));
+				}
+
+				// Настройка наблюдателя
+				const observer = new MutationObserver((mutationsList) => {
+					for (let mutation of mutationsList) {
+						if (mutation.type === 'attributes' && mutation.attributeName === 'style') {
+							const display = window.getComputedStyle(targetNode).display;
+							
+							if (display !== 'none' && !adLoaded) {
+								loadVignette();
+								observer.disconnect(); // Перестаем следить после активации
+							}
+						}
+					}
+				});
+
+				// Начинаем наблюдение за изменениями атрибутов
+				if (targetNode) {
+					observer.observe(targetNode, { attributes: true });
+				}
+			})();
+		</script>
+	{% endif %}
 {% endblock %}
 
 {% block styles_tool %}
