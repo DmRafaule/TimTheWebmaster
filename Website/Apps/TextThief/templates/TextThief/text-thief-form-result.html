@@ -1,5 +1,6 @@
 {% load i18n %}
 {% load static %}
+{% get_current_language as LANGUAGE_CODE %}
 
 <form id="text-thief-form">
     {% csrf_token %}
@@ -12,7 +13,7 @@
 
 <div id="text-thief-results">
     {% if data %}
-        {% if isYandexAdManagerMiddlewareConnected %}
+        {% if isYandexAdManagerMiddlewareConnected and LANGUAGE_CODE == 'ru' %}
             {% for adlocation in adlocations %}
                 {% if adlocation.adlocation_name == "TOOL_AFTER_USE" %}
                     {% include 'YandexAdManager/admanager_element.html' with adblock=adlocation.adblock unificator="tool-after-use" %}

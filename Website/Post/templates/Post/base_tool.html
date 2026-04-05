@@ -4,6 +4,7 @@
 {% if isEngagementMiddlewareConnected %}
 	{% load getInteraction %}
 {% endif %}
+{% get_current_language as LANGUAGE_CODE %}
 
 {% block head %}
 
@@ -130,7 +131,7 @@
     <!-- /Tool -->
     
 
-	{% if isYandexAdManagerMiddlewareConnected %}
+	{% if isYandexAdManagerMiddlewareConnected and LANGUAGE_CODE == 'ru' %}
 		{% include 'YandexAdManager/admanager_header.html' %}
 	{% endif %}
 
@@ -147,7 +148,7 @@
 {% endblock %}
 
 {% block aside_left %}
-    {% if isYandexAdManagerMiddlewareConnected %}
+    {% if isYandexAdManagerMiddlewareConnected and LANGUAGE_CODE == 'ru' %}
         {% for adlocation in adlocations %}
             {% if adlocation.adlocation_name == "LEFT_STICKY_COLUMN_TOOL" %}
                 {% include 'YandexAdManager/admanager_element.html' with adblock=adlocation.adblock unificator="left-sticky-column-tool" %}
@@ -157,7 +158,7 @@
 {% endblock %}
 
 {% block aside_right %}
-	{% if isYandexAdManagerMiddlewareConnected %}
+	{% if isYandexAdManagerMiddlewareConnected and LANGUAGE_CODE == 'ru' %}
 		{% for adlocation in adlocations %}
 			{% if adlocation.adlocation_name == "RIGHT_STICKY_COLUMN_TOOL" %}
 				{% include 'YandexAdManager/admanager_element.html' with adblock=adlocation.adblock unificator="right-sticky-column-tool" %}
@@ -229,7 +230,7 @@
                 <div class="flex gap-2"><b>{% trans "Тип скрипта: " %}</b><div>{{post.get_interface_type}}</div></div>
             {% endif %}
 
-            {% if isYandexAdManagerMiddlewareConnected %}
+            {% if isYandexAdManagerMiddlewareConnected and LANGUAGE_CODE == 'ru' %}
                 {% for adlocation in adlocations %}
                     {% if adlocation.adlocation_name == "TOOL_BEFORE_USE" %}
                         {% include 'YandexAdManager/admanager_element.html' with adblock=adlocation.adblock unificator="tool-before-use" %}
@@ -345,7 +346,7 @@
         </div>
         {% endif %}
         
-        {% if isYandexAdManagerMiddlewareConnected %}
+        {% if isYandexAdManagerMiddlewareConnected and LANGUAGE_CODE == 'ru' %}
             {% for adlocation in adlocations %}
                 {% if adlocation.adlocation_name == "ON_TOOL_BOTTOM" %}
                     {% include 'YandexAdManager/admanager_element.html' with adblock=adlocation.adblock unificator="on_tool_bottom" %}
@@ -403,7 +404,7 @@
 		{% include 'Breadcrumbs/breadcrumbs_styles.html' %}
 	{% endif %}
 
-	{% if isYandexAdManagerMiddlewareConnected %}
+	{% if isYandexAdManagerMiddlewareConnected and LANGUAGE_CODE == 'ru' %}
 		{% include 'YandexAdManager/admanager_styles.html' %}
 	{% endif %}
 	
@@ -421,7 +422,7 @@
 		{% include 'Breadcrumbs/breadcrumbs_scripts.html' %}
 	{% endif %}
 
-	{% if isYandexAdManagerMiddlewareConnected %}
+	{% if isYandexAdManagerMiddlewareConnected and LANGUAGE_CODE == 'ru' %}
 		{% include 'YandexAdManager/admanager_scripts.html' %}
 	{% endif %}
 

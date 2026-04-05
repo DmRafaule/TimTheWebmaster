@@ -5,6 +5,7 @@
 {% block hat_tool %}
 {% endblock%}
 
+{% get_current_language as LANGUAGE_CODE %}
 {% block content_tool %}
 	<div class="limiter in_middle in_middle-self no_wrap padder">
 		<div id="common-error" class="hint-container hint-required hint-common_error"></div>
@@ -56,7 +57,7 @@
 								<a id="imagethief-results-images" href="#">{% trans "Картинки" %}</a>
 							</div>
 						</div>
-						{% if isYandexAdManagerMiddlewareConnected %}
+						{% if isYandexAdManagerMiddlewareConnected and LANGUAGE_CODE == 'ru' %}
 							{% for adlocation in adlocations %}
 								{% if adlocation.adlocation_name == "TOOL_AFTER_USE" %}
 									{% include 'YandexAdManager/admanager_element.html' with adblock=adlocation.adblock unificator="tool-after-use" %}

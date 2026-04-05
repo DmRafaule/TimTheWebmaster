@@ -1,6 +1,7 @@
 {% extends 'Main/base.html' %}
 {% load i18n %}
 {% load static %}
+{% get_current_language as LANGUAGE_CODE %}
 
 {% block head %}
 	{% if not post.isPublished %}
@@ -9,7 +10,7 @@
 
 	<link rel="canonical" href="https://{{domain_name}}{{ post.get_absolute_url }}" />
 
-	{% if isYandexAdManagerMiddlewareConnected %}
+	{% if isYandexAdManagerMiddlewareConnected and LANGUAGE_CODE == 'ru' %}
 		{% include 'YandexAdManager/admanager_header.html' %}
 	{% endif %}
 
@@ -28,7 +29,7 @@
 {% endblock %}
 
 {% block aside_left %}
-    {% if isYandexAdManagerMiddlewareConnected %}
+    {% if isYandexAdManagerMiddlewareConnected and LANGUAGE_CODE == 'ru' %}
         {% for adlocation in adlocations %}
             {% if adlocation.adlocation_name == "LEFT_STICKY_COLUMN_ARTICLE" %}
                 {% include 'YandexAdManager/admanager_element.html' with adblock=adlocation.adblock unificator="left-sticky-column-article" %}
@@ -38,7 +39,7 @@
 {% endblock %}
 
 {% block aside_right %}
-	{% if isYandexAdManagerMiddlewareConnected %}
+	{% if isYandexAdManagerMiddlewareConnected and LANGUAGE_CODE == 'ru' %}
 		{% for adlocation in adlocations %}
 			{% if adlocation.adlocation_name == "RIGHT_STICKY_COLUMN_ARTICLE" %}
 				{% include 'YandexAdManager/admanager_element.html' with adblock=adlocation.adblock unificator="right-sticky-column-article" %}
@@ -53,7 +54,7 @@
 	{% block content_post-before %}
 	{% endblock %}
 
-	{% if isYandexAdManagerMiddlewareConnected %}
+	{% if isYandexAdManagerMiddlewareConnected and LANGUAGE_CODE == 'ru' %}
 		{% for adlocation in adlocations %}
 			{% if adlocation.adlocation_name == "ON_ARTICLE_TOP" %}
 				{% include 'YandexAdManager/admanager_element.html' with adblock=adlocation.adblock unificator="on_article_top" %}
@@ -66,7 +67,7 @@
 	{% block content_post %}
 	{% endblock %}
 
-	{% if isYandexAdManagerMiddlewareConnected %}
+	{% if isYandexAdManagerMiddlewareConnected and LANGUAGE_CODE == 'ru' %}
 		{% for adlocation in adlocations %}
 			{% if adlocation.adlocation_name == "ON_ARTICLE_BOTTOM" %}
 				{% include 'YandexAdManager/admanager_element.html' with adblock=adlocation.adblock unificator="on_article_bottom" %}
@@ -144,7 +145,7 @@
 		{% include 'Breadcrumbs/breadcrumbs_styles.html' %}
 	{% endif %}
 
-	{% if isYandexAdManagerMiddlewareConnected %}
+	{% if isYandexAdManagerMiddlewareConnected and LANGUAGE_CODE == 'ru' %}
 		{% include 'YandexAdManager/admanager_styles.html' %}
 	{% endif %}
 
@@ -165,7 +166,7 @@
 		{% include 'Breadcrumbs/breadcrumbs_scripts.html' %}
 	{% endif %}
 
-	{% if isYandexAdManagerMiddlewareConnected %}
+	{% if isYandexAdManagerMiddlewareConnected and LANGUAGE_CODE == 'ru' %}
 		{% include 'YandexAdManager/admanager_scripts.html' %}
 	{% endif %}
 	

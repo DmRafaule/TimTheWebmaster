@@ -3,6 +3,7 @@
 {% load addToListInURL %}
 {% load removeFromListInURL %}
 {% load hasInList %}
+{% get_current_language as LANGUAGE_CODE %}
 
 {% for note in posts %}
 
@@ -36,7 +37,7 @@
 </div>
 {% endfor %}
 
-{% if isYandexAdManagerMiddlewareConnected %}
+{% if isYandexAdManagerMiddlewareConnected and LANGUAGE_CODE == 'ru' %}
 	{% for adlocation in adlocations %}
 		{% if adlocation.adlocation_name == "ON_PAGISCROLL_NOTES_BETWEEN_PAGES" %}
 			{% include 'YandexAdManager/admanager_element_in_pagination.html' with page=page  adblock=adlocation.adblock %}

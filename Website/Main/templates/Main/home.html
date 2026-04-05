@@ -33,7 +33,7 @@
 	<meta property="og:image:height" content="750" />
 	<meta property="og:image:alt" content="{% trans 'Оранжевые волны, огибающие белый фон' %}" />
     <!-- /OpenGraph -->
-	{% if isYandexAdManagerMiddlewareConnected %}
+	{% if isYandexAdManagerMiddlewareConnected and LANGUAGE_CODE == 'ru' %}
 		{% include 'YandexAdManager/admanager_header.html' %}
 	{% endif %}
 	<script type="application/ld+json">
@@ -146,7 +146,7 @@
 			</div>
 		</div>
 
-		{% if isYandexAdManagerMiddlewareConnected %}
+		{% if isYandexAdManagerMiddlewareConnected and LANGUAGE_CODE == 'ru' %}
 			{% for adlocation in adlocations %}
 				{% if adlocation.adlocation_name == "HOME_FIRST_VISIBLE" %}
 					{% include 'YandexAdManager/admanager_element.html' with adblock=adlocation.adblock unificator="home_first_visible" %}
@@ -278,7 +278,7 @@
 					</div>
 				</div>
 			</div>
-			{% if isYandexAdManagerMiddlewareConnected %}
+			{% if isYandexAdManagerMiddlewareConnected and LANGUAGE_CODE == 'ru' %}
 				{% for adlocation in adlocations %}
 					{% if adlocation.adlocation_name == "HOME_SECOND_VISIBLE" %}
 						{% include 'YandexAdManager/admanager_element.html' with adblock=adlocation.adblock unificator="home-second-visible" %}
@@ -447,7 +447,7 @@
 
 {% block styles %}
     <link type="text/css" rel="stylesheet" href="{% static 'Main/css/index.main.min.css' %}"/>
-	{% if isYandexAdManagerMiddlewareConnected %}
+	{% if isYandexAdManagerMiddlewareConnected and LANGUAGE_CODE == 'ru' %}
 		{% include 'YandexAdManager/admanager_styles.html' %}
 	{% endif %}
 {% endblock %}
@@ -457,7 +457,7 @@
 		var STATIC = "{% static '.' %}"
 	</script>
     <script src="{% static 'Main/js/index.main.min.js' %}"></script>
-	{% if isYandexAdManagerMiddlewareConnected %}
+	{% if isYandexAdManagerMiddlewareConnected and LANGUAGE_CODE == 'ru' %}
 		{% include 'YandexAdManager/admanager_scripts.html' %}
 	{% endif %}
 {% endblock %}
