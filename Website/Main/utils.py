@@ -7,12 +7,12 @@ from django.db.models import Q
 from django.db.models import Case, When
 from django.utils.translation import get_language
 
-from Website.settings import  ALLOWED_HOSTS, MY_INSTALLED_APPS, BASE_DIR
 import Post.models as Post_M
 from Engagement.models import Interaction
+from Engagement.forms import EmailForm
 from .models import Website, Contact
 from .forms import FeedbackForm
-from Engagement.forms import EmailForm
+from Website.settings import  ALLOWED_HOSTS, MY_INSTALLED_APPS, BASE_DIR, DEBUG
 
     
 def get_how_old_human_in_years(birth_date: str, birth_date_str_frm: str) -> int:
@@ -194,7 +194,8 @@ def initDefaults(request):
         'popular_posts': popular_posts,
         'default_post_preview': default_post_preview,
         'feedback_form': form,
-        'email_subscription_form': email_form
+        'email_subscription_form': email_form,
+        'is_debug': DEBUG
     }
     return context
 
