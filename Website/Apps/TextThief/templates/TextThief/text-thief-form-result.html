@@ -20,7 +20,7 @@
                 {% endif %}
             {% endfor %}
         {% endif %}
-        {% if LANGUAGE_CODE == 'en' %}
+        {% if LANGUAGE_CODE == 'en' and not is_debug %}
             {% comment %}
                 Monetag Vignette AD Срабатывает после выполнения работы инструмента
             {% endcomment %}

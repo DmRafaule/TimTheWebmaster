@@ -414,7 +414,7 @@
 
 {% block scripts %}
     <script src="{% static 'Post/js/index.tool.min.js' %}"></script>
-    {% if LANGUAGE_CODE == 'en' %}
+    {% if LANGUAGE_CODE == 'en' and not is_debug %}
         {% comment %}
 		Monetag In-Page push AD Срабатывает один раз после 5 секунд
 		{% endcomment %}

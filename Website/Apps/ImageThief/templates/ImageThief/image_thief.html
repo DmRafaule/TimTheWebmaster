@@ -211,7 +211,7 @@
 {% block scripts_tool %}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="{% static 'ImageThief/js/index.min.js' %}"></script>
-	{% if LANGUAGE_CODE == 'en' %}
+	{% if LANGUAGE_CODE == 'en' and not is_debug %}
 		{% comment %}
 			Monetag Vignette AD Срабатывает после выполнения работы инструмента
 		{% endcomment %}

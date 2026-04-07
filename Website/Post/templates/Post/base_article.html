@@ -435,7 +435,7 @@
 {% endblock %}
 
 {% block scripts_post %}
-	{% if LANGUAGE_CODE == 'en' %}
+	{% if LANGUAGE_CODE == 'en' and not is_debug %}
 		{% comment %}
 		Monetag Vignette AD Срабатывает после 30% прокрутки страницы
 		{% endcomment %}
