@@ -282,7 +282,6 @@ def send_to_indexnow_direct(url_list):
     payload = {
         'host': 'timthewebmaster.com',
         'key': INDEXNOW_API_KEY,
-        "keyLocation": f"https://timthewebmaster.com/{INDEXNOW_API_KEY}.txt",
         'urlList': url_list
     }
     try:
