@@ -1,3 +1,11 @@
+import os
+import json
+import requests
+
+from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
+from django.views.decorators.http import require_http_methods
+
 from django.db import models
 from django.apps import apps
 from django.db.models.base import ModelBase
@@ -10,11 +18,13 @@ from rest_framework.routers import DefaultRouter
 from rest_framework.filters import OrderingFilter, SearchFilter
 from rest_framework.pagination import PageNumberPagination
 from rest_framework.renderers import JSONRenderer, BrowsableAPIRenderer
-from rest_framework.permissions import IsAdminUser, AllowAny, BasePermission # Import BasePermission for type hinting
+from rest_framework.permissions import IsAdminUser, AllowAny, BasePermission
+
+from .settings import INDEXNOW_API_KEY
 
 
 # ====================================================================
-# CONFIGURATION CLASSES
+# PAGINATION
 # ====================================================================
 
 class CustomModelPagination(PageNumberPagination):
@@ -52,7 +62,7 @@ def create_model_serializer(model_class):
     return DynamicModelSerializer
 
 # ====================================================================
-# DYNAMIC FILTERING COMPONENTS (Remains the same)
+# DYNAMIC FILTERING COMPONENTS
 # ====================================================================
 
 def create_model_filterset(model_class):
@@ -104,7 +114,7 @@ def create_model_filterset(model_class):
     return DynamicFilterSet
 
 # ====================================================================
-# CONSOLIDATED DYNAMIC VIEWSET GENERATOR (No Duplication!)
+# CONSOLIDATED DYNAMIC VIEWSET GENERATOR
 # ====================================================================
 
 def create_generic_viewset(_model_class, _serializer_class, _base_viewset_class, _permission_classes):
@@ -212,7 +222,7 @@ def create_generic_viewset(_model_class, _serializer_class, _base_viewset_class,
     return DynamicModelViewSet
 
 # ====================================================================
-# CONSOLIDATED ROUTER REGISTRATION (No Duplication!)
+# CONSOLIDATED ROUTER REGISTRATION 
 # ====================================================================
 
 def get_dynamic_api_urls(api_type='admin', exclude_apps=None):
@@ -267,3 +277,61 @@ def get_dynamic_api_urls(api_type='admin', exclude_apps=None):
             router.register(r'{}'.format(base_name), viewset_class, basename=f'{basename_prefix}{base_name}')
 
     return router.urls
+
+@csrf_exempt
+@require_http_methods(["POST"])
+def submit_indexnow(request):
+    try:
+        data = json.loads(request.body)
+        urls = data.get('urls', [])
+
+        if not urls or not isinstance(urls, list):
+            return JsonResponse({
+                'success': False,
+                'error': 'Invalid request body. Expected urls array'
+            }, status=400)
+
+        api_key = INDEXNOW_API_KEY
+        if not api_key:
+            return JsonResponse({
+                'success': False,
+                'error': 'INDEXNOW_API_KEY not configured'
+            }, status=500)
+
+        host = request.get_host()
+
+        payload = {
+            'host': host,
+            'key': api_key,
+            'urlList': urls
+        }
+
+        response = requests.post(
+            'https://api.indexnow.org/indexnow',
+            json=payload,
+            headers={'Content-Type': 'application/json; charset=utf-8'}
+        )
+
+        if response.status_code in [200, 202]:
+            return JsonResponse({
+                'success': True,
+                'statusCode': response.status_code,
+                'message': f'Successfully submitted {len(urls)} URL(s) to IndexNow'
+            })
+
+        return JsonResponse({
+            'success': False,
+            'statusCode': response.status_code,
+            'error': 'IndexNow submission failed'
+        }, status=500)
+
+    except json.JSONDecodeError:
+        return JsonResponse({
+            'success': False,
+            'error': 'Invalid JSON'
+        }, status=400)
+    except Exception as e:
+        return JsonResponse({
+            'success': False,
+            'error': str(e)
+        }, status=500)

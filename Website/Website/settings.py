@@ -247,3 +247,6 @@ if not DEBUG:
 # Yandex Ad manager settings
 YANDEX_AD_MANAGER__ALLOWED_VIEWS = ('home', 'article', 'tool', 'tool_main')
 YANDEX_AD_MANAGER__ALLOWED_TEMPLATES = ('PagiScroll/base_post_list.html', 'Post/basic--post_preview-article.html', 'Post/basic--post_preview-note.html', 'Post/basic--post_preview-tool.html' )
+
+# IndexNow 
+INDEXNOW_API_KEY = settings['INDEXNOW_API_KEY']

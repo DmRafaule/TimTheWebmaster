@@ -1,4 +1,6 @@
 import os
+import json
+import requests
 
 from django.db import models
 from django.urls import reverse
@@ -84,6 +86,16 @@ class Post(models.Model):
         self.timeUpdated = timezone.now()
         if not self.timeCreated:
             self.timeCreated = timezone.now()
+        # Публикуем статьи в поисковые машины через IndexNow
+        urls = []
+        urls.append(self.get_absolute_url())
+        payload = {
+            "urls": urls,
+        }
+        url_to_indexnow = f"https://timthewebmaster.com{reverse('index_now')}"
+        response = requests.post(url_to_indexnow, data=json.dumps(payload), timeout=10)
+        print(response)
+        print(response.status_code)
         super(Post, self).save(*args, **kwargs)
 
     def get_absolute_url(self):
