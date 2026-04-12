@@ -278,8 +278,6 @@ def get_dynamic_api_urls(api_type='admin', exclude_apps=None):
 
     return router.urls
 
-@csrf_exempt
-@require_http_methods(["POST"])
 def send_to_indexnow_direct(url_list):
     payload = {
         'host': 'timthewebmaster.com',
