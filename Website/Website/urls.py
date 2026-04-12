@@ -9,7 +9,7 @@ from django.contrib.sitemaps.views import sitemap
 from Main.sitemaps import StaticSitemap
 from Post.sitemaps import PostSitemap
 
-from Website.api import get_dynamic_api_urls, submit_indexnow
+from Website.api import get_dynamic_api_urls
 
 
 sitemaps = {
@@ -35,8 +35,6 @@ urlpatterns = [
     ## Common API
     path("api/v1/admin/", include(get_dynamic_api_urls(api_type='admin'))),
     path("api/v1/public/", include(get_dynamic_api_urls(api_type='public'))),
-    ## IndexNow protocol
-    path("api/indexnow/", submit_indexnow, name="index_now")
 ]
 
 

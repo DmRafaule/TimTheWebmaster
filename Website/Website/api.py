@@ -280,58 +280,14 @@ def get_dynamic_api_urls(api_type='admin', exclude_apps=None):
 
 @csrf_exempt
 @require_http_methods(["POST"])
-def submit_indexnow(request):
+def send_to_indexnow_direct(url_list):
+    payload = {
+        'host': 'timthewebmaster.com',
+        'key': INDEXNOW_API_KEY,
+        "keyLocation": f"https://timthewebmaster.com/{INDEXNOW_API_KEY}.txt",
+        'urlList': url_list
+    }
     try:
-        data = json.loads(request.body)
-        urls = data.get('urls', [])
-
-        if not urls or not isinstance(urls, list):
-            return JsonResponse({
-                'success': False,
-                'error': 'Invalid request body. Expected urls array'
-            }, status=400)
-
-        api_key = INDEXNOW_API_KEY
-        if not api_key:
-            return JsonResponse({
-                'success': False,
-                'error': 'INDEXNOW_API_KEY not configured'
-            }, status=500)
-
-        host = request.get_host()
-
-        payload = {
-            'host': host,
-            'key': api_key,
-            'urlList': urls
-        }
-
-        response = requests.post(
-            'https://api.indexnow.org/indexnow',
-            json=payload,
-            headers={'Content-Type': 'application/json; charset=utf-8'}
-        )
-
-        if response.status_code in [200, 202]:
-            return JsonResponse({
-                'success': True,
-                'statusCode': response.status_code,
-                'message': f'Successfully submitted {len(urls)} URL(s) to IndexNow'
-            })
-
-        return JsonResponse({
-            'success': False,
-            'statusCode': response.status_code,
-            'error': 'IndexNow submission failed'
-        }, status=500)
-
-    except json.JSONDecodeError:
-        return JsonResponse({
-            'success': False,
-            'error': 'Invalid JSON'
-        }, status=400)
+        requests.post('https://api.indexnow.org/indexnow', headers={'Content-Type': 'application/json; charset=utf-8'}, json=payload, timeout=5)
     except Exception as e:
-        return JsonResponse({
-            'success': False,
-            'error': str(e)
-        }, status=500)
+        print(f"IndexNow Error: {e}")
