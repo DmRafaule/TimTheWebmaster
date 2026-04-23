@@ -52,7 +52,7 @@
 {% endblock %}
 
 {% block content %}
-	<div class="flex flex-col max-w-4xl justify-center self-center p-2 gap-3">
+	<div class="flex flex-col max-w-5xl justify-center self-center p-2 gap-3">
 
 		{% if current_tag|length == 0 %}
 			{% if current_page == 1%}
@@ -101,7 +101,7 @@
 
 	<div id="paginator_container" class="paginator_container flex flex-row flex-wrap-reverse w-full justify-center p-2 items-end">
 		<div class="grow shrink-0 w-fit"></div>
-		<div id="paginator" class="w-full max-w-4xl flex flex-nowrap justify-center gap-3 items-center pt-2">
+		<div id="paginator" class="w-full max-w-5xl flex flex-nowrap justify-center gap-3 items-center pt-2">
 			<div id="paginator_first_page_example" data-page="" class="example_pagin_button pagin_button first_pagin_button  ttw-button_border ttw-button_action ttw-button_squared"></div>
 			<div id="paginator_dots_example" data-page=""  class="example_pagin_button pagin_dots">...</div>
 			<div id="paginator_default_page_example" data-page=""  class="example_pagin_button pagin_button  ttw-button_action ttw-button_squared ttw-button_border"></div>

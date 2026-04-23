@@ -435,60 +435,6 @@
 {% endblock %}
 
 {% block scripts_post %}
-	{% if LANGUAGE_CODE == 'en' and not is_debug %}
-		{% comment %}
-		Monetag Vignette AD Срабатывает после 30% прокрутки страницы
-		{% endcomment %}
-		<script>
-		(function() {
-			let scriptExecuted = false;
-
-			window.addEventListener('scroll', function() {
-				// Если скрипт уже запущен, ничего не делаем
-				if (scriptExecuted) return;
-
-				// Высчитываем текущую позицию скролла
-				const scrollTop = window.scrollY || document.documentElement.scrollTop;
-				const windowHeight = window.innerHeight;
-				const fullHeight = document.documentElement.scrollHeight;
-
-				// Проверяем, пролистал ли пользователь 50%
-				// (ScrollTop + Высота окна) >= (Полная высота документа * 0.3)
-				if ((scrollTop + windowHeight) >= (fullHeight * 0.3)) {
-					scriptExecuted = true; // Помечаем, что скрипт сработал
-
-					// Ваш оригинальный код инициализации рекламы
-					(function(s) {
-						s.dataset.zone = '10833810';
-						s.src = 'https://n6wxm.com/vignette.min.js';
-						[document.documentElement, document.body].filter(Boolean).pop().appendChild(s);
-					})(document.createElement('script'));
-				}
-			});
-		})();
-		</script>
-		{% comment %}
-		Monetag In-Page push AD Срабатывает один раз после 20 секунд
-		{% endcomment %}
-		<script>
-			(function() {
-				// Выносим создание скрипта в отдельную функцию
-				function loadAdScript() {
-					const s = document.createElement('script');
-					s.dataset.zone = '10830991';
-					s.src = 'https://nap5k.com/tag.min.js';
-					
-					// Находим, куда вставить (body или html) и добавляем
-					const target = [document.documentElement, document.body].filter(Boolean).pop();
-					if (target) {
-						target.appendChild(s);
-					}
-				}
-
-				setTimeout(loadAdScript, 20000);
-			})();
-		</script>
-	{% endif %}
 	{% block scripts_post_article %}
 	{% endblock %}
 {% endblock %}
