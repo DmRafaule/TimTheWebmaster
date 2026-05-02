@@ -241,8 +241,8 @@
 						hx-on::before-request="modal.open('');"
 						hx-on::after-request="event.detail.failed && modal.close();"
 						class="ttw-button ttw-button_action ttw-button_squared flex gap-2 w-full">
-						<div class="ttw-button_squared flex gap-4 items-center justify-start p-1 w-full" style="border:1px solid black;">
-							<img width="32" height="32" src="{% static 'Engagement/img/email.svg' %}" alt="{% trans "письмо" %}">
+						<div class="ttw-button_squared flex gap-4 items-center justify-start p-1 w-full" style="border:1px solid white;">
+							<img  class="svg_icon_inverted" width="16" height="16" src="{% static 'Engagement/img/email.svg' %}" alt="{% trans "письмо" %}">
 							<div>{% trans 'Подписаться на почтовую рассылку' %}</div>
 						</div>
 					</div>
@@ -253,8 +253,8 @@
 						hx-on::before-request="modal.open('');"
 						hx-on::after-request="event.detail.failed && modal.close();"
 						class="ttw-button ttw-button_action ttw-button_squared p-1 flex gap-2 w-full">
-						<div class="ttw-button_squared flex gap-4 items-center justify-start p-1  w-full" style="border:1px solid black;">
-							<img width="32" height="32" src="{% static 'Engagement/img/feedback.svg' %}" alt="{% trans "облачко" %}">
+						<div class="ttw-button_squared flex gap-4 items-center justify-start p-1  w-full" style="border:1px solid white;">
+							<img class="svg_icon_inverted" width="16" height="16" src="{% static 'Engagement/img/feedback.svg' %}" alt="{% trans "облачко" %}">
 							<div>{% trans 'Форма обратной связи' %}</div>
 						</div>
 					</div>
@@ -270,8 +270,8 @@
 							toaster.notify('{% trans 'Скопировал ссылку на RSS фид' %}','info');
 							yaCounter95199635.reachGoal('onRSS');
 						"  data-rss="{{request.scheme}}://{{request.get_host}}{% url 'articles-rss' %}">
-							<div class="ttw-button_squared flex gap-4 items-center justify-start p-1" style="border:1px solid black;">
-								<img width="16" height="16" src="{% static 'rss.svg' %}" alt="{% trans 'Значок rss-фида' %}">
+							<div class="ttw-button_squared flex gap-4 items-center justify-start p-1" style="border:1px solid white;">
+								<img class="svg_icon_inverted" width="16" height="16" src="{% static 'rss.svg' %}" alt="{% trans 'Значок rss-фида' %}">
 								<p>{% trans "Подписаться на выход последних статей" %}</p>
 							</div>
 						</div>
@@ -281,8 +281,8 @@
 							toaster.notify('{% trans 'Скопировал ссылку на RSS фид' %}','info');
 							yaCounter95199635.reachGoal('onRSS');
 						"  data-rss="{{request.scheme}}://{{request.get_host}}{% url 'tools-rss' %}">
-							<div class="ttw-button_squared flex gap-4 items-center justify-start p-1" style="border:1px solid black;">
-								<img width="16" height="16" src="{% static 'rss.svg' %}" alt="{% trans 'Значок rss-фида' %}">
+							<div class="ttw-button_squared flex gap-4 items-center justify-start p-1" style="border:1px solid white;">
+								<img class="svg_icon_inverted" width="16" height="16" src="{% static 'rss.svg' %}" alt="{% trans 'Значок rss-фида' %}">
 								<p>{% trans "Подписаться на выход последних инструментов" %}</p>
 							</div>
 						</div>
@@ -292,8 +292,8 @@
 							toaster.notify('{% trans 'Скопировал ссылку на RSS фид' %}','info');
 							yaCounter95199635.reachGoal('onRSS');
 						"  data-rss="{{request.scheme}}://{{request.get_host}}{% url 'notes-rss' %}">
-							<div class="ttw-button_squared flex gap-4 items-center justify-start p-1" style="border:1px solid black;">
-								<img width="16" height="16" src="{% static 'rss.svg' %}" alt="{% trans 'Значок rss-фида' %}">
+							<div class="ttw-button_squared flex gap-4 items-center justify-start p-1" style="border:1px solid white;">
+								<img class="svg_icon_inverted" width="16" height="16" src="{% static 'rss.svg' %}" alt="{% trans 'Значок rss-фида' %}">
 								<p>{% trans "Подписаться на выход последних заметок" %}</p>
 							</div>
 						</div>
