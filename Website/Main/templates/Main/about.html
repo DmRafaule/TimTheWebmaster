@@ -135,100 +135,105 @@
 				{% endif %}
 			</div>
 		</div>
-		<h2 class="mt-10" id="introduction"><a href="#introduction" class="ref_hidden-int_no-sign">{% trans "Немного об авторе" %}</a></h2>
+		<h2 class="mt-10" id="author"><a href="#author" class="ref_hidden-int_no-sign">{% trans "Немного об авторе" %}</a></h2>
 		<hr>
-		<div>
-			{% blocktrans %}
-			Я обычный программист-самоучка. Люблю посидеть часик-другой над проблемой, решать которую никто не хотел. 
-			И сделать выводы, которые никто не просил. Но возможно, кому-нибудь да и будет интересно почитать про процесс решения проблемы и
-			возможно даже это будет ему полезно.
-			{% endblocktrans %}
-		</div>
-		<div>
-			{% blocktrans %}
-			Занимаюсь тем, что разрабатываю телеграм ботов, парсеры сайтов, скрипты автоматизации на сервера и декстоп а так же создаю и 
-			дорабатываю сайты на django. Чиню и публикую уже готовые сайты(на любом стеке) на просторах сети.
-			{% endblocktrans %}
-		</div>
-		<div>
-			<img width="100%" class="dynamic_image grow shrink-0 basis-2xs rounded-2xl border" src="{% static 'loading.svg' %}" data-src="{% static '/Main/img/baranovichi.webp' %}">
-			<div class="ttw-explain_under">{% trans "Железнодорожный вокзал, вид с моста" %}</div>
-		</div>
-		<div>
-			<img width="100%" class="dynamic_image grow shrink-0 basis-2xs rounded-2xl border" src="{% static 'loading.svg' %}" data-src="{% static '/Main/img/baranovichi-2.webp' %}">
-			<div class="ttw-explain_under">{% trans "Парк, перед кинотеатром 'Звезда'" %}</div>
-		</div>
-		<div class="text">
-			{% blocktrans %}
-			Родился я в Барановичах, Беларусь. Единственной достопримечательностью которого является ЖД вокзал. Не пойми не правильно, мне нравится этот город,
-			просто даже этот маленький город слишком люден для меня. Ибо большую часть жизни я прожил на болотах - полессье. В деревне. Привычка, так сказать.
-			{% endblocktrans %}
-		</div>
-		<div>
-			<img width="100%" class="dynamic_image grow shrink-0 basis-2xs rounded-2xl border" src="{% static 'loading.svg' %}" data-src="{% static '/Main/img/home-1.webp' %}">
-			<div class="ttw-explain_under">{% trans "Дорога через болото" %}</div>
-		</div>
-		<div>
-			<img width="100%" class="dynamic_image grow shrink-0 basis-2xs rounded-2xl border" src="{% static 'loading.svg' %}" data-src="{% static '/Main/img/home-2.webp' %}">
-			<div class="ttw-explain_under">{% trans "Болото через поле" %}</div>
-		</div>
-		<div>
-			<img width="100%" class="dynamic_image grow shrink-0 basis-2xs rounded-2xl border" src="{% static 'loading.svg' %}" data-src="{% static '/Main/img/home-3.webp' %}">
-			<div class="ttw-explain_under">{% trans "Болото рядом" %}</div>
-		</div>
-		<div>
-			<img width="100%" class="dynamic_image grow shrink-0 basis-2xs rounded-2xl border" src="{% static 'loading.svg' %}" data-src="{% static '/Main/img/home-4.webp' %}">
-			<div class="ttw-explain_under">{% trans "Посёлок, спиной к болоту через поле :)" %}</div>
-		</div>
-		<div class="ref">
-			<div class="float-right p-3">
+		<div class="flex gap-2 flex-wrap">
+			<div class="grow shrink-0 basis-2xs">
+				<div class="flex mt-4">
+					{% blocktrans %}
+					Занимаюсь тем, что разрабатываю телеграм ботов, парсеры сайтов, скрипты автоматизации на сервера и декстоп а так же создаю и 
+					дорабатываю сайты на django. Чиню и публикую уже готовые сайты(на любом стеке) на просторах сети. 
+					Я специализируюсь на бэкенд стороне проектов. Их архитектуре и зависимостях.
+					{% endblocktrans %}
+				</div>
+				<div class="flex mt-4">
+					{% blocktrans %}
+					Родился я в Барановичах, Беларусь. Единственной достопримечательностью которого является ЖД вокзал. Не пойми не правильно, мне нравится этот город,
+					просто даже этот маленький город слишком люден для меня.
+					{% endblocktrans %}
+				</div>
+				<div class="flex mt-4">
+					{% blocktrans %}
+					В свободное время, либо катаюсь по городам на поездах и автостопом, либо занимаюсь программированием встроенных систем(то есть микроконтроллеров).
+					{% endblocktrans %}
+				</div>
+			</div>
+			<div class="flex flex-col p-3 basis-auto grow shrink-0 justify-center items-center">
 				<img width="150px" height="100%" src="{% static '/Main/img/me1.jpg' %}" class="rounded-2xl border">
-				<div class="ttw-explain_under">{% trans 'А это я' %}</div>
-			</div>
-			{% blocktrans %}
-			Итак, вот мне 20 лет, а у меня ни опыта, ни каких-либо нормальных навыков. 
-			Я начал пробовать себя в различных сферах разработки, от фронтенда до геймдева. Спойлер, разработчиком игр я не стал.
-			За два года я сделал кучу демок, но выпустил 
-			{% endblocktrans %}
-			<a href="https://timthewebmaster.com/en/tools/life-of-loader-game-apk/">{% trans 'только одну игру' %}</a>
-			{% blocktrans %}
-			на Google Play и то не очень хорошую.
-			{% endblocktrans %}
-			<div class="flex mt-4">
-				{% blocktrans %}
-				И фронтенд разработчиком я не стал. Слишком много фреймворков в которых нужно разбираться и шарить. Я предпочитаю более старый, 
-				традиционный подход с обычным HTML и JS на пару. Без фреймворков. Как известно, работы для такого "специалиста" не очень много.
-				{% endblocktrans %}
-			</div>
-			<div class="flex mt-4">
-				{% blocktrans %}
-				Я больше бэкенд разработчик. Если потребуется, просто закажу вёрстку для сайта и прикручу к нему бэкенд :)
-				{% endblocktrans %}
+				<div>{% trans 'А это я' %}</div>
 			</div>
 		</div>
-		<h2 class="mt-10" id="why-this-website-exists"><a href="#why-this-website-exists" class="ref_hidden-int_no-sign">{% trans "Почему решил сделать сайт" %}</a></h2>
+		<h2 class="mt-10" id="project"><a href="#project" class="ref_hidden-int_no-sign">{% trans "Немного о проекте" %}</a></h2>
 		<hr>
 		<div>
 			{% blocktrans %}
-			Нужно было чем-то заняться. Вот я и решил, а давай я опубликую сайт. Черновик у меня валялся с 2022 года, когда я ещё увлекался хакатонами, devops и взломом. Изначально, я сделал этот сайт, чтобы отрабатывать и практиковать различные уязвимости в сайтах. И конечно же разобраться в том как сайты вообще работают. 
+			Этот проект, Лаборатория разработки, существует с той лишь целью, чтобы иметь мою личную платформу на которой я мог бы публиковать
+			свои инструменты и программы. И рассаказывать об этом, в своих статьях.
 			{% endblocktrans %}
 		</div>
 		<div>
 			{% blocktrans %}
-			Сейчас я этим не особо увлекаюсь, я сосредоточился на созидании и проектировании. Ломать нее строить, как говорят. 
+			Меня интересует достаточно много топиков и тем:
 			{% endblocktrans %}
+		</div>
+		<div class="relative border-2 rounded-xl">
+			<div id="carousel-buttons-2" class="absolute min-w-max flex gap-1 items-center justify-between w-full bottom-0 z-10">
+				<div class="ttw-button ttw-button_action">
+					<img class="ttw-button_squared bg-main slider-button prev" aria-label="no previous slide available" aria-disabled="true" src="{% static 'chevron_left.svg' %}" width="32" height="32" alt="{% trans "Предыдущая вкладка на табуляторе" %}">
+				</div>
+				<div class="ttw-button ttw-button_action">
+					<img class="ttw-button_squared bg-main slider-button next" aria-label="Next slide" src="{% static 'chevron.svg' %}" width="32" height="32" alt="{% trans "Предыдущая вкладка на табуляторе" %}">
+				</div>
+			</div>
+			<div class="carousel w-full overflow-y-auto grow shrink" style="min-height: 100px !important;" data-buttons-id="carousel-buttons-2">
+				<div class="slide" aria-label="slide two of three" aria-hidden="false">
+					{% blocktrans %}
+					<div><b>Администрирование серверов</b> — управления и поддержание в рабочем состоянии серверной инфраструктуры, запуск сайтов, приложений,
+					настройка почты, DNS.
+					</div>
+					{% endblocktrans %}
+				</div>
+				<div class="slide" aria-label="slide one of three" aria-hidden="true">
+					<div>
+					{% blocktrans %}
+						<b>Реклама и монетизация</b> — как использовать рекламу на сайте и как ещё можно монетизировать онлайн проекты.
+					{% endblocktrans %}
+					</div>
+				</div>
+				<div class="slide" aria-label="slide two of three" aria-hidden="true">
+					{% blocktrans %}
+					<div><b>Django разработка</b> — разработка сайтов и веб-приложений на открытом фреймворке, на python.</div>
+					{% endblocktrans %}
+				</div>
+				<div class="slide" aria-label="slide two of three" aria-hidden="true">
+					{% blocktrans %}
+					<div><b>Telegram разработка</b> — разработка телеграм ботов и приложений под них.</div>
+					{% endblocktrans %}
+				</div>
+				<div class="slide" aria-label="slide two of three" aria-hidden="true">
+					{% blocktrans %}
+					<div><b>SEO(Поисковая оптимизация)</b> — оптимизация сайтов под поисковый системы (Google/Yandex).</div>
+					{% endblocktrans %}
+				</div>
+				<div class="slide" aria-label="slide two of three" aria-hidden="true">
+					{% blocktrans %}
+					<div><b>Криптовалюты/блокчейн технологии</b> — считай независимые финансы, анонимность, в сети интернет.
+					</div>
+					{% endblocktrans %}
+				</div>
+				<div class="slide" aria-label="slide two of three" aria-hidden="true">
+					{% blocktrans %}
+					<div><b>История программирования</b> — изучения причин и следствий развития технологий в их нынешнем виде и состоянии.
+					</div>
+					{% endblocktrans %}
+				</div>
+			</div>
 		</div>
 		<div>
 			{% blocktrans %}
-			А ещё я хотел просто писать о том, что меня интересовало и интересует по сей день. То есть разработка и проектирование приложений, сайтов. Когда я тогда начинал, я понимал что быстро это не будет и это, скорее всего, проект на всю жизнь. И по этому я решил писать сайт, на том языке который мне нравится - Python и верстать на чистом HTML, CSS, JS.
+			Это конечно же не значит, что я ограничусь именно этими топиками. В будущем появятся новые, обязательно.
 			{% endblocktrans %}
 		</div>
-		<fieldset data-type="interesting" data-imagepath="{% static '/Post/img/blockInteresting.svg' %}" >
-			<legend class="interesting"><img class="icon" width="16" height="16" src="{% static '/Post/img/blockInteresting.svg' %}"></legend>
-			{% blocktrans %}
-			Если быть честным, Python не мой любимый язык программирования. Это скорее будет C или C++. Я люблю эти языки программирования, но делиться программами с широкой публикой на них, очень сложно. А я хочу именно делиться и показывать результаты своих трудов другим.
-			{% endblocktrans %}
-		</fieldset>
 		<div class="mt-10"></div>
 	</div>
 </div>

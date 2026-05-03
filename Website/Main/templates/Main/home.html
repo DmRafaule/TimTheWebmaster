@@ -100,7 +100,7 @@
 		<div class="flex gap-3 flex-wrap mb-10">
 			<div class="flex flex-col gap-2 grow shrink basis-2xs" style="flex: 1 1 300px;">
 				<h1>{% trans "Лаборатория разработки - Тима Зе Вебмастера" %}</h1>
-				<div>{% trans "Где создаются собственные веб сервисы и инструменты, скрипты автоматизации и телеграм боты, парсеры сайтов и django приложения. Пишу статьи связанные с исследованием интересующих меня топиков. Делюсь кодом, опытом, наработками, ошибками и разными историями пока работаю над своими(и чужими) задачами и проектами." %}</div>
+				<div>{% trans "Где создаются собственные веб сервисы и инструменты, скрипты автоматизации и телеграм боты, парсеры сайтов и django приложения. А так же предоставляю целый спектр услуг." %}</div>
 			</div>
 			<div class="flex flex-col justify-between gap-2 grow shrink-0 basis-auto uppercase">
 				<a href="{% url "articles-list" %}" class="basis-auto rounded-[8px] bg-main text-white">
@@ -154,40 +154,6 @@
 			{% endfor %}
 		{% endif %}
 
-		<h2 id="about-this-lab"><a class="ref_hidden-int_no-sign" href="#about-this-lab">{% trans "О деятельности данной лаборатории" %}</a></h2>
-		<hr>
-		<div class="flex gap-2 flex-wrap items-center">
-			<div class="flex flex-col gap-2 grow shrink basis-2xs">
-				<div>
-					{% blocktrans %}
-					Обычный программист, который занимается тем, что реализуя свои проекты, пишет об этом. Делясь 
-					по ходу дела, всеми деталями разработки этого проекта. Происходит это в двух форматах, в формате общедоступного 
-					инструмента или в формате статьи или серии статей, если проект достаточно сложный.
-					{% endblocktrans %}
-				</div>
-				<div>
-					{% blocktrans %}
-					В данную лабораторию попадают различные темы. Так, я подробно разбираю и публикую процесс разработки программ для конкретных нужд.
-					Или занимаюсь анализом тех или иных источников данных для практического применения в сфере продвижения сайта в поисковых системах.
-					Ещё пишу статьи связанные с историей разработки программного обеспечения, будь то языки программирования или люди стоящие за той или 
-					иной технологией. 
-					{% endblocktrans %}
-				</div>
-				<div>
-					{% blocktrans %} 
-					Так же если прям очень много времени разрабатываю и публикую свои инструменты и веб приложения. 
-					Мои инструменты самой разной направленности, от встроенных <b>веб приложений</b> на моём сайте до <b>терминальных утилит</b>
-					и <b>PyPI пакетов</b> на <b>Python</b>. Так как инструменты самой разной направленности, то и стеки их, соответствующе, разные.
-					 Так для разработки веб приложений использую <b>Django</b> и <b>TailwindCSS</b>, а для телеграм ботов <b>AIOgram</b>.
-					{% endblocktrans %}
-				</div>
-				<div>
-					<div><i><a  class="ref-ext" href="{% url 'about' %}">
-						{% trans 'Или если ты захочешь узнать прям "многое" то вот ... всё' %}
-					</a></i></div>
-				</div>
-			</div>
-		</div>
 		<div class="flex flex-col gap-5">
 			<div class="flex">
 				<div class="flex flex-col justify-between gap-5 grow-[7] shrink basis-2xs overflow-hidden">
@@ -374,6 +340,81 @@
 					</div>
 				</div>
 			</div>
+
+			{% if recent_services %}
+			<div class="flex flex-col gap-3 border-r-2 border-solid">
+				<div class="flex flex-row justify-between items-center">
+					<h2 id="some-services" class="grow shrink-0 basis-auto"><a class="ref_hidden-int_no-sign" href="#some-services">{% trans "Услуги" %}</a></h2>
+					<div id="carousel-buttons-service-1" class="sticky right-1 min-w-max flex gap-1 items-center w-full justify-end">
+						<div class="ttw-button ttw-button_action">
+							<img class="ttw-button_squared bg-main slider-button prev" aria-label="no previous slide available" aria-disabled="true" src="{% static 'chevron_left.svg' %}" width="32" height="32" alt="{% trans "Предыдущая вкладка на табуляторе" %}">
+						</div>
+						<div class="ttw-button ttw-button_action">
+							<img class="ttw-button_squared bg-main slider-button next" aria-label="Next slide" src="{% static 'chevron.svg' %}" width="32" height="32" alt="{% trans "Предыдущая вкладка на табуляторе" %}">
+						</div>
+					</div>
+				</div>
+				<hr>
+				<div class="flex gap-2 flex-wrap items-center">
+					<div class="carousel w-full overflow-y-auto grow shrink basis-3xs" data-buttons-id="carousel-buttons-service-1">
+						{% for service in recent_services %}
+						<div class="slide flex flex-col gap-2" aria-label="slide one of three" 
+							{% if forloop.counter == 1 %}
+							aria-hidden="false">
+							{% else %}
+							aria-hidden="true">
+							{% endif %}
+							<h4>{{service.title}}</h4>
+							<div class="flex gap-3 flex-wrap">
+								<div class="flex gap-3">
+									<img width="16" height="16" src='{% static "Post/img/calendar.svg" %}' alt="{% trans "Часы" %}">
+									<div>{{service.timeCreated|date:"d.m.Y"}}</div>
+								</div>
+								/
+								<div class="flex gap-3 flex-nowrap">
+									<img width="16" height="16" src='{% static "Post/img/update.svg" %}' alt="{% trans "Часы" %}">
+									<div>{{service.timeUpdated|date:"d.m.Y"}}</div>
+								</div>
+								/
+								<div class="flex gap-3 flex-nowrap">
+									<img width="16" height="16" src='{% static "Post/img/price.svg" %}' alt="{% trans "Часы" %}">
+									{% for p in service.price.all %}
+										<div>{{p}}</div>
+										{% if forloop.counter != service.price.all|length %}
+											{% trans 'или' %}
+										{% endif%}
+									{% endfor %}
+								</div>
+								{% if service.duration %}
+								/
+								<div class="flex gap-3 flex-nowrap">
+									<img width="16" height="16" src='{% static "Post/img/timer.svg" %}' alt="{% trans "Часы" %}">
+									<div>{{service.duration}}</div>
+								</div>
+								{% endif %}
+							</div>
+							<div>
+							{% if service.template %}
+								{{ service.template_content|safe }}
+							{% else %} 	
+								{{service.description}}
+							{% endif %}
+							</div>
+						</div>
+						{% endfor %}
+					</div>
+				</div>
+				<div class="flex justify-end">
+					<div class="ttw-button ttw-button_link bg-main text-white rounded-tl-xl ref_hidden_no-sign">
+						<a href="{% url 'services-list' %}?page=1">
+							<p class="rounded-tl-xl p-2">
+							{% trans 'Больше ...' %}
+							</p>
+						</a>
+					</div>
+				</div>
+			</div>
+			{% endif %}
 
 			<div class="flex flex-col gap-3 border-r-2 border-solid">
 				<div class="flex flex-row justify-between items-center">

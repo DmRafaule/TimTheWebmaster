@@ -6,7 +6,7 @@ from django.views.decorators.http import require_POST
 
 import Main.utils as U
 from Main.models import Website
-from Post.models import Tool, Article, Tag, Note
+from Post.models import Tool, Article, Tag, Note, Service
 from Engagement.models import Comment
 
 
@@ -58,6 +58,9 @@ def home(request):
         internal_tool_tag.name_en = 'Internal tool'
         internal_tool_tag.save()
     context.update({'internal_tool_tag': internal_tool_tag.slug})
+
+    # Получаем и сохраняем внутренние инструменты, которые выбираются в общей конфигурации сайта
+    context.update({'recent_services': Service.objects.all()})
 
     # Получаем и сохраняем внутренние инструменты, которые выбираются в общей конфигурации сайта
     context.update({'popular_tools': U.get_posts_by_popularity(3, Tool)})

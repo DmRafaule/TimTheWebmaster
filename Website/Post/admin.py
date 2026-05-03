@@ -292,6 +292,53 @@ class ExternalPodcastEpisodeAdmin(admin.ModelAdmin):
     list_display_links = ('podcast_episode_id',)
     list_editable = ('podcast_url',)
 
+class ServiceAdmin(admin.ModelAdmin):
+    exclude = ('category','title', 'description')
+    filter_horizontal = ('tags',)
+    ordering = ['-timeCreated']
+    fieldsets = [
+        (
+            None,
+            {
+                'fields': [('title_ru', 'title_en'), ('description_ru', 'description_en'), 'isPublished', 'timeCreated', 'duration', 'price']
+            }
+        ),
+        (
+            'Advanced options',
+            {
+                'fields': ['tags', 'preview', ('template_ru', 'template_en')],
+                'classes': ['collapse'],
+            }
+        )
+    ]
+    list_display = (
+        'id',
+        'isPublished',
+        'title_ru',
+        'title_en',
+        'description_ru',
+        'description_en',
+        'timeCreated',
+    )
+    list_display_links = (
+        'id',
+    )
+    list_editable = (
+        'isPublished',
+        'title_ru',
+        'title_en',
+        'description_ru',
+        'description_en',
+        'timeCreated',
+    )
+    search_fields = (
+        'title_ru',
+        'title_en',
+        'description_ru',
+        'description_en',
+        'tags'
+    )
+
 
 
 admin.site.register(M.Tag, TagAdmin)
@@ -303,6 +350,8 @@ admin.site.register(M.Scraper, ScraperAdmin)
 admin.site.register(M.Script, ScriptAdmin)
 admin.site.register(M.DjangoApp, DjangoAppAdmin)
 admin.site.register(M.Note, NoteAdmin)
+admin.site.register(M.Price, admin.ModelAdmin)
+admin.site.register(M.Service, ServiceAdmin)
 #admin.site.register(M.ExternalPodcast, ExternalPodcastAdmin)
 #admin.site.register(M.ExternalPodcastEpisode, ExternalPodcastEpisodeAdmin)
 admin.site.register(M.InternalPodcast, admin.ModelAdmin)

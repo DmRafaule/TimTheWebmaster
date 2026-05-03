@@ -441,7 +441,6 @@ class Note(models.Model):
         if not self.template:
             return ""
 
-        print(self.template)
         # Создаем уникальный ключ для кэша на основе ID заметки
         cache_key = f"note_template_content_{get_language()}_{self.pk}"
         content = cache.get(cache_key)
@@ -549,3 +548,120 @@ class ExternalPodcastEpisode(models.Model):
 
     def __str__(self):
         return f"({self.podcast.lang_type}) {self.podcast_episode_id}"
+
+class Price(models.Model):
+    class PriceType(models.TextChoices):
+        FixPrice = "FixPrice"
+        RangePrice = "RangePrice"
+        BarterPrice = "BarterPrice"
+        FreePrice = "Free"
+    
+    class CurrencyType(models.TextChoices):
+        USD = "$"
+        RUB = "₽"
+        EUR = "€"
+        BTC = "₿"
+
+    type = models.CharField(max_length=100, choices=PriceType, default=PriceType.FixPrice)
+    currency = models.CharField(max_length=100, choices=CurrencyType, default=CurrencyType.USD)
+    start_price = models.FloatField(default=1.0)
+    end_price = models.FloatField(default=0.0)
+    barter_price = models.CharField(max_length=100, default=_("Что-нибудь взамен"))
+
+    def __str__(self):
+        match (self.type):
+            case Price.PriceType.FixPrice:
+                return f"{self.start_price}{self.currency}"
+            case Price.PriceType.RangePrice:
+                return f"{self.start_price}{self.currency}--{self.end_price}{self.currency}"
+            case Price.PriceType.BarterPrice:
+                return f"{self.barter_price}"
+            case Price.PriceType.FreePrice:
+                return _("Бесплатно")
+
+class Service(models.Model):
+    ''' Модель для хранения доступных услуг '''
+    view_name = "service"
+    title = models.CharField(max_length=256, blank=False, default='')
+    description = models.TextField(max_length=512, blank=False, default='')
+    preview = models.FileField(upload_to=service_path, blank=True)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, blank=False)
+    timeCreated = models.DateTimeField()
+    timeUpdated = models.DateTimeField(auto_now=True)
+    isPublished = models.BooleanField(default=True)
+    price = models.ManyToManyField(Price, blank=False)
+    duration = models.DurationField()
+    tags = models.ManyToManyField(Tag, blank=True)
+    template = models.FileField(max_length=300, upload_to=service_path, blank=True, null=True, default=None)
+
+    @property
+    def template_content(self):
+        """Возвращает кэшированное содержимое файла шаблона"""
+        if not self.template:
+            return ""
+
+        # Создаем уникальный ключ для кэша на основе ID заметки
+        cache_key = f"note_template_content_{get_language()}_{self.pk}"
+        content = cache.get(cache_key)
+        if content is None:
+            try:
+                content = render_to_string(self.template.name)
+                # Кэшируем на 72 часа (или любое другое время в секундах)
+                cache.set(cache_key, content, 60 * 60 * 72)
+            except (FileNotFoundError, IOError):
+                content = _("Файл шаблона не найден")
+        
+        return content
+
+
+    def save(self, *args, **kwargs):
+        # При сохранении удаляем старый кэш, чтобы данные обновились
+        if self.pk:
+            cache.delete(f"note_template_content_{self.pk}")
+        self.timeUpdated = timezone.now()
+        category = Category.objects.get(slug="services")
+        self.category = category
+        if not self.timeCreated:
+            self.timeCreated = timezone.now()
+        super(Service, self).save(*args, **kwargs)
+
+    def __str__(self):
+        return self.title
+    
+
+@receiver(post_delete, sender=Service)
+def _dfdsfkiewfie(sender, instance, **kwargs):
+    """
+    Удаляет файл с диска при удалении записи Service.
+    """
+    if instance.template:
+        if os.path.isfile(instance.template.path):
+            os.remove(instance.template.path)
+
+@receiver(pre_save, sender=Service)
+def _djfksjflkdfj(sender, instance, **kwargs):
+    """
+    Удаляет старый файл с диска при обновлении поля template на новый файл.
+    """
+    if not instance.pk:
+        return False
+    
+    category, is_created = Category.objects.get_or_create(slug="services")
+    if is_created:
+        category.name_ru = "Услуги"
+        category.name_en = "Services"
+        category.description_ru = "Описание услуг"
+        category.description_en = "Services\' description"
+        category.categry_name = "Service"
+        category.save()
+    instance.category = category
+
+    try:
+        old_file = Service.objects.get(pk=instance.pk).template
+    except Service.DoesNotExist:
+        return False
+
+    new_file = instance.template
+    if not old_file == new_file:
+        if old_file and os.path.isfile(old_file.path):
+            os.remove(old_file.path)
