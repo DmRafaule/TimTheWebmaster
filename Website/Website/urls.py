@@ -53,6 +53,7 @@ urlpatterns += i18n_patterns(
     path('tools/', include('Apps.SMIL_SVGAnimationEditor.urls')),
     path('', include('Post.urls')),
     path('', include('PagiScroll.urls')),
+    path('', include('PagiScrollEditor.urls')),
 )
 
 handler400 = "Main.views.bad_request"

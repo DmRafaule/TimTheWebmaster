@@ -75,6 +75,7 @@ MY_INSTALLED_APPS = [
     'Main.apps.MainConfig',
     'Post.apps.PostConfig',
     'PagiScroll.apps.PagiscrollConfig',
+    'PagiScrollEditor.apps.PagiscrolleditorConfig',
     'Engagement.apps.EngagementConfig',
     'Breadcrumbs.apps.BreadcrumbsConfig',
     'WYSIWYGEditor.apps.WYSIWYGEditorConfig',
@@ -96,6 +97,7 @@ MIDDLEWARE = [
     'django_yandex_ad_manager.middleware.AdManagerMiddleware',
     'django_btcpay_donation.middleware.BTCPayDonationMiddleware',
     'Main.middleware.FrameAncestorsMiddleware',
+    'PagiScrollEditor.middleware.PagiScrollEditorMiddleware',
     # END Custom Middlewares
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
