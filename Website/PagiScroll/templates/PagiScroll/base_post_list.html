@@ -41,9 +41,10 @@
 			{% endif %}
 
 		{% endif %}
-		<meta name="robots" content="noindex, follow">
 	{% endif %}
-		<meta name="keywords" content="{{current_tag_names|join:', '}}">
+	
+	<meta name="robots" content="noindex, follow">
+	<meta name="keywords" content="{{current_tag_names|join:', '}}">
 
 	{% if isYandexAdManagerMiddlewareConnected and LANGUAGE_CODE == 'ru' %}
 		{% include 'YandexAdManager/admanager_header.html' %}
