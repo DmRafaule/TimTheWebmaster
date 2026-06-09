@@ -397,6 +397,33 @@ class Script(Tool):
             case Script.ScriptInterface.TerminalUserInterface:
                 return _("Терминальный интерфейс")
 
+class Extention(Tool):
+    common_icon_path = "Post/img/browser-extension.svg"
+
+    @property
+    def common_name(self):
+        return _("Расширение для браузера")
+    
+    
+    class BrowserEngine(models.TextChoices):
+        Blink = "Blink"
+        Gecko = "Gecko"
+        Webkit = "Webkit"
+    engine_used = models.CharField(max_length=100, choices=BrowserEngine, default=BrowserEngine.Blink)
+    @property
+    def get_engine_used(self):
+        return self.engine_used
+
+    minimal_version_required = models.IntegerField()
+    @property
+    def get_minimal_support_version(self):
+        return self.minimal_version_required
+    
+    shop_url = models.URLField(help_text="Full source path to extension on a shop website", unique=True, blank=False)
+    @property
+    def get_shop_url(self):
+        return self.shop_url
+
 
 @receiver(pre_save)
 def _post_save_category_tool(sender, instance, **kwargs): 

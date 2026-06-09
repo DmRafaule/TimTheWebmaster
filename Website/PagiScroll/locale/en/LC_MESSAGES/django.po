@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-05-03 18:28+0300\n"
+"POT-Creation-Date: 2026-06-09 20:54+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,43 +18,43 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: .\PagiScroll\templates\PagiScroll\base_post_list.html:12
+#: .\PagiScroll\templates\PagiScroll\base_post_list.html:17
 msgid "страница "
 msgstr "page "
 
-#: .\PagiScroll\templates\PagiScroll\base_post_list.html:26
+#: .\PagiScroll\templates\PagiScroll\base_post_list.html:31
 msgid "с тегами:"
 msgstr "with tags: "
 
-#: .\PagiScroll\templates\PagiScroll\base_post_list.html:26
-#: .\PagiScroll\templates\PagiScroll\base_post_list.html:68
+#: .\PagiScroll\templates\PagiScroll\base_post_list.html:31
+#: .\PagiScroll\templates\PagiScroll\base_post_list.html:80
 msgid "Страница "
 msgstr "Page "
 
-#: .\PagiScroll\templates\PagiScroll\base_post_list.html:28
-#: .\PagiScroll\templates\PagiScroll\base_post_list.html:70
+#: .\PagiScroll\templates\PagiScroll\base_post_list.html:33
+#: .\PagiScroll\templates\PagiScroll\base_post_list.html:82
 msgid " Они были связаны и сгруппированы по следующим тегам: "
 msgstr " They were linked and grouped under the following tags: "
 
-#: .\PagiScroll\templates\PagiScroll\base_post_list.html:28
-#: .\PagiScroll\templates\PagiScroll\base_post_list.html:70
+#: .\PagiScroll\templates\PagiScroll\base_post_list.html:33
+#: .\PagiScroll\templates\PagiScroll\base_post_list.html:82
 msgid " Страница "
 msgstr " Page "
 
-#: .\PagiScroll\templates\PagiScroll\base_post_list.html:61
+#: .\PagiScroll\templates\PagiScroll\base_post_list.html:73
 msgid " начиная с "
 msgstr " staring with "
 
-#: .\PagiScroll\templates\PagiScroll\base_post_list.html:61
+#: .\PagiScroll\templates\PagiScroll\base_post_list.html:73
 msgid " страницы"
 msgstr " page"
 
-#: .\PagiScroll\templates\PagiScroll\base_post_list.html:68
+#: .\PagiScroll\templates\PagiScroll\base_post_list.html:80
 msgid "связанные со следующими тегами: "
 msgstr "related to the following tags: "
 
-#: .\PagiScroll\templates\PagiScroll\base_post_list.html:110
-#: .\PagiScroll\templates\PagiScroll\base_post_list.html:116
+#: .\PagiScroll\templates\PagiScroll\base_post_list.html:127
+#: .\PagiScroll\templates\PagiScroll\base_post_list.html:133
 msgid "Шеврон"
 msgstr "Chevron"
 

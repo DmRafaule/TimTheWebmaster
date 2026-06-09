@@ -104,7 +104,7 @@ class ToolAdmin(admin.ModelAdmin):
         (
             None,
             {
-                'fields': ['slug', 'isPublished', ('name_ru', 'name_en'), ('h1_ru', 'h1_en'), ('description_ru', 'description_en'), ('meta_keywords_ru', 'meta_keywords_en'), 'timeCreated']
+                'fields': ['slug', 'isPublished', ('name_ru', 'name_en'), ('h1_ru', 'h1_en'), ('description_ru', 'description_en'), ('meta_preview_description_ru', 'meta_preview_description_en'), ('meta_keywords_ru', 'meta_keywords_en'), 'timeCreated']
             }
         ),
         (
@@ -218,6 +218,16 @@ class DjangoAppAdmin(ToolAdmin):
         ),
     ]
 
+class BrowserExtentionAdmin(ToolAdmin):
+     fieldsets = [
+        *ToolAdmin.fieldsets,
+        (
+            'TooltypeSpecific',
+            {
+                'fields': ['engine_used', 'minimal_version_required', 'shop_url']
+            }
+        ),
+    ]
 
 class NoteAdmin(admin.ModelAdmin):
     exclude = ('category','title', 'description', 'template')
@@ -349,6 +359,7 @@ admin.site.register(M.TelegramBot, TelegramBotAdmin)
 admin.site.register(M.Scraper, ScraperAdmin)
 admin.site.register(M.Script, ScriptAdmin)
 admin.site.register(M.DjangoApp, DjangoAppAdmin)
+admin.site.register(M.Extention, BrowserExtentionAdmin)
 admin.site.register(M.Note, NoteAdmin)
 admin.site.register(M.Price, admin.ModelAdmin)
 admin.site.register(M.Service, ServiceAdmin)

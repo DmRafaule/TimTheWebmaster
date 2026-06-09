@@ -3,7 +3,7 @@ from django.template import loader
 
 from Main.models import Media
 from Main.utils import get_tool, getAllWithTags
-from Post.models import Tag, Note, TelegramBot, DjangoApp, Scraper, Script, WebTool
+from Post.models import Tag, Note, TelegramBot, DjangoApp, Scraper, Script, WebTool, Extention
 
 class ToolMiddleware:
     ''' Промежуточный обработчик шаблонов для инструментов '''
@@ -69,6 +69,8 @@ class ToolMiddleware:
                     response.context_data.update({'isScraper': True})
                 elif isinstance(tool, DjangoApp):
                     response.context_data.update({'isDjangoApp': True})
+                elif isinstance(tool, Extention):
+                    response.context_data.update({'isExtension': True})
                 # Пытаемся получить последние заметки по данному инструменту
                 tool_tags = Tag.objects.filter(slug_en=tool.slug)
                 if len(tool_tags) > 0:

@@ -38,7 +38,10 @@ class ToolTranslationOptions(TranslationOptions):
     fields = ('name', 'h1', 'description', 'meta_keywords', 'template', 'meta_preview_description')
     
 class ScraperTranslationOptions(TranslationOptions):
-    fields = ('name', 'h1', 'description', 'meta_keywords', 'template', 'target')
+    fields = ('name', 'h1', 'description', 'meta_keywords', 'template', 'meta_preview_description', 'target')
+
+class ExtentionTranslationOptions(TranslationOptions):
+    fields = ('name', 'h1', 'description', 'meta_keywords', 'template', 'meta_preview_description')
 
 class ServiceTranslationOptions(TranslationOptions):
     fields = ('title', 'description', 'template')
@@ -59,6 +62,7 @@ translator.register(Post_M.Tool, TranslationOptions)
 translator.register(Post_M.WebTool, ToolTranslationOptions)
 translator.register(Post_M.TelegramBot, ToolTranslationOptions)
 translator.register(Post_M.DjangoApp, ToolTranslationOptions)
+translator.register(Post_M.Extention, ExtentionTranslationOptions)
 translator.register(Post_M.Scraper, ScraperTranslationOptions)
 translator.register(Post_M.Script, ToolTranslationOptions)
 

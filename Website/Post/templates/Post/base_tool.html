@@ -45,7 +45,7 @@
         <script type="application/ld+json">
             {
                 "@context": "https://schema.org",
-                {% if isWebTool %}
+                {% if isWebTool or isExtention %}
                 "@type": "WebApplication",
                 {% else %}
                 "@type": "SoftwareApplication",
@@ -224,6 +224,23 @@
 
             {% if isDjangoApp %}
                 <div class="flex gap-2"><b>{% trans "Тип Django приложения: " %}</b><div>{{post.get_app_type}}</div></div>
+            {% endif %}
+
+            {% if isExtension %}
+                <div class="flex gap-2"><b>{% trans "Расширение для: " %}</b>
+                    {% if post.get_engine_used == "Blink" %}
+                        <img width="16" height="16" src='{% static "Post/img/browser-extension-chrome.svg" %}' alt="{% trans "Иконка браузера Chrome" %}">
+                        <div>{% trans 'Производные от Хрома' %}[{{post.get_engine_used}}-{% trans 'движок' %}]</div>
+                    {% elif post.get_engine_used == "Gecko"%}
+                        <img width="16" height="16" src='{% static "Post/img/browser-extension-firefox.svg" %}' alt="{% trans "Иконка браузера Firefox" %}">
+                        <div>{% trans 'Производные от Firefox' %}[{{post.get_engine_used}}-{% trans 'движок' %}]</div>
+                    {% else %}
+                        <img width="16" height="16" src='{% static "Post/img/browser-extension-safari.svg" %}' alt="{% trans "Иконка браузера Safari" %}">
+                        <div>{% trans 'Производные от Safari' %}[{{post.get_engine_used}}-{% trans 'движок' %}]</div>
+                    {% endif %}
+                </div>
+                <div class="flex gap-2"><b>{% trans "Минимально поддерживаемая версия: " %}</b><div>+{{post.get_minimal_support_version}}</div></div>
+                <div class="flex gap-2"><b>{% trans "Ссылка на расширение: " %}</b><div><a class="ref-ext" href="{{post.get_shop_url}}">{{post.get_shop_url}}</a></div></div>
             {% endif %}
 
             {% if isScript %}
