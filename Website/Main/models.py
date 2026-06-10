@@ -163,7 +163,7 @@ class Media(models.Model):
         return f"({also_in})[{Media.FILE_TYPE[self.type].capitalize()}]{self.lang_type} -> {self.file}"
 
 class CommonNotification(models.Model):
-    regex_slug = models.CharField(max_length=2048, blank=False, unique=True, help_text="A regex expression, which represents urls")
+    regex_slug = models.CharField(max_length=512, blank=False, unique=True, help_text="A regex expression, which represents urls")
     message = models.TextField(max_length=256, blank=False, help_text="You can also use an HTML tags.")
 
     def __str__(self):
