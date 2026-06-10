@@ -340,134 +340,109 @@
 					</div>
 				</div>
 			</div>
-
-			{% if recent_services %}
-			<div class="flex flex-col gap-3 border-r-2 border-solid">
-				<div class="flex flex-row justify-between items-center">
-					<h2 id="some-services" class="grow shrink-0 basis-auto"><a class="ref_hidden-int_no-sign" href="#some-services">{% trans "Услуги" %}</a></h2>
-					<div id="carousel-buttons-service-1" class="sticky right-1 min-w-max flex gap-1 items-center w-full justify-end">
-						<div class="ttw-button ttw-button_action">
-							<img class="ttw-button_squared bg-main slider-button prev" aria-label="no previous slide available" aria-disabled="true" src="{% static 'chevron_left.svg' %}" width="32" height="32" alt="{% trans "Предыдущая вкладка на табуляторе" %}">
-						</div>
-						<div class="ttw-button ttw-button_action">
-							<img class="ttw-button_squared bg-main slider-button next" aria-label="Next slide" src="{% static 'chevron.svg' %}" width="32" height="32" alt="{% trans "Предыдущая вкладка на табуляторе" %}">
-						</div>
+			<div class="flex gap-3 flex-wrap basis-2xs">
+				{% if recent_services %}
+				<div class="flex flex-col gap-3 border-r-2 border-solid grow shrink-0 basis-2xs">
+					<div class="flex flex-row justify-between items-center">
+						<h2 id="some-services" class="grow shrink-0 basis-auto"><a class="ref_hidden-int_no-sign" href="#some-services">{% trans "Услуги" %}</a></h2>
 					</div>
-				</div>
-				<hr>
-				<div class="flex gap-2 flex-wrap items-center">
-					<div class="carousel w-full overflow-y-auto grow shrink basis-3xs" data-buttons-id="carousel-buttons-service-1">
-						{% for service in recent_services %}
-						<div class="slide flex flex-col gap-2" aria-label="slide one of three" 
-							{% if forloop.counter == 1 %}
-							aria-hidden="false">
-							{% else %}
-							aria-hidden="true">
-							{% endif %}
-							<h4>{{service.title}}</h4>
-							<div class="flex gap-3 flex-wrap">
-								<div class="flex gap-3">
-									<img width="16" height="16" src='{% static "Post/img/calendar.svg" %}' alt="{% trans "Часы" %}">
-									<div>{{service.timeCreated|date:"d.m.Y"}}</div>
+					<hr>
+					<div class="flex gap-2 flex-wrap items-start grow shrink-0 basis-auto">
+						<div class="w-full overflow-y-auto grow shrink basis-3xs">
+							{% for service in recent_services %}
+							<div class="flex flex-col gap-2">
+								<h4>{{service.title}}</h4>
+								<div class="flex gap-3 flex-wrap">
+									<div class="flex gap-3">
+										<img width="16" height="16" src='{% static "Post/img/calendar.svg" %}' alt="{% trans "Часы" %}">
+										<div>{{service.timeCreated|date:"d.m.Y"}}</div>
+									</div>
+									/
+									<div class="flex gap-3 flex-nowrap">
+										<img width="16" height="16" src='{% static "Post/img/update.svg" %}' alt="{% trans "Часы" %}">
+										<div>{{service.timeUpdated|date:"d.m.Y"}}</div>
+									</div>
+									/
+									<div class="flex gap-3 flex-nowrap">
+										<img width="16" height="16" src='{% static "Post/img/price.svg" %}' alt="{% trans "Часы" %}">
+										{% for p in service.price.all %}
+											<div>{{p}}</div>
+											{% if forloop.counter != service.price.all|length %}
+												{% trans 'или' %}
+											{% endif%}
+										{% endfor %}
+									</div>
+									{% if service.duration %}
+									/
+									<div class="flex gap-3 flex-nowrap">
+										<img width="16" height="16" src='{% static "Post/img/timer.svg" %}' alt="{% trans "Часы" %}">
+										<div>{{service.duration}}</div>
+									</div>
+									{% endif %}
 								</div>
-								/
-								<div class="flex gap-3 flex-nowrap">
-									<img width="16" height="16" src='{% static "Post/img/update.svg" %}' alt="{% trans "Часы" %}">
-									<div>{{service.timeUpdated|date:"d.m.Y"}}</div>
-								</div>
-								/
-								<div class="flex gap-3 flex-nowrap">
-									<img width="16" height="16" src='{% static "Post/img/price.svg" %}' alt="{% trans "Часы" %}">
-									{% for p in service.price.all %}
-										<div>{{p}}</div>
-										{% if forloop.counter != service.price.all|length %}
-											{% trans 'или' %}
-										{% endif%}
-									{% endfor %}
-								</div>
-								{% if service.duration %}
-								/
-								<div class="flex gap-3 flex-nowrap">
-									<img width="16" height="16" src='{% static "Post/img/timer.svg" %}' alt="{% trans "Часы" %}">
-									<div>{{service.duration}}</div>
-								</div>
+								<div>
+								{% if service.template %}
+									{{ service.template_content|safe }}
+								{% else %} 	
+									{{service.description}}
 								{% endif %}
+								</div>
 							</div>
-							<div>
-							{% if service.template %}
-								{{ service.template_content|safe }}
-							{% else %} 	
-								{{service.description}}
-							{% endif %}
-							</div>
+							{% endfor %}
 						</div>
-						{% endfor %}
+					</div>
+					<div class="flex justify-end">
+						<div class="ttw-button ttw-button_link bg-main text-white rounded-tl-xl ref_hidden_no-sign">
+							<a href="{% url 'services-list' %}?page=1">
+								<p class="rounded-tl-xl p-2">
+								{% trans 'Больше ...' %}
+								</p>
+							</a>
+						</div>
 					</div>
 				</div>
-				<div class="flex justify-end">
-					<div class="ttw-button ttw-button_link bg-main text-white rounded-tl-xl ref_hidden_no-sign">
-						<a href="{% url 'services-list' %}?page=1">
-							<p class="rounded-tl-xl p-2">
-							{% trans 'Больше ...' %}
-							</p>
-						</a>
-					</div>
-				</div>
-			</div>
-			{% endif %}
+				{% endif %}
 
-			<div class="flex flex-col gap-3 border-r-2 border-solid">
-				<div class="flex flex-row justify-between items-center">
-					<h2 id="some-notes" class="grow shrink-0 basis-auto"><a class="ref_hidden-int_no-sign" href="#some-notes">{% trans "Заметки и записи" %}</a></h2>
-					<div id="carousel-buttons-1" class="sticky right-1 min-w-max flex gap-1 items-center w-full justify-end">
-						<div class="ttw-button ttw-button_action">
-							<img class="ttw-button_squared bg-main slider-button prev" aria-label="no previous slide available" aria-disabled="true" src="{% static 'chevron_left.svg' %}" width="32" height="32" alt="{% trans "Предыдущая вкладка на табуляторе" %}">
-						</div>
-						<div class="ttw-button ttw-button_action">
-							<img class="ttw-button_squared bg-main slider-button next" aria-label="Next slide" src="{% static 'chevron.svg' %}" width="32" height="32" alt="{% trans "Предыдущая вкладка на табуляторе" %}">
-						</div>
+				<div class="flex flex-col gap-3 border-r-2 border-solid grow shrink-0 basis-2xs">
+					<div class="flex flex-row justify-between items-center">
+						<h2 id="some-notes" class="grow shrink-0 basis-auto"><a class="ref_hidden-int_no-sign" href="#some-notes">{% trans "Заметки и записи" %}</a></h2>
 					</div>
-				</div>
-				<hr>
-				<div class="flex gap-2 flex-wrap items-center">
-					<div class="carousel w-full overflow-y-auto grow shrink basis-3xs" data-buttons-id="carousel-buttons-1">
-						{% for note in recent_notes %}
-						<div class="slide flex flex-col gap-2" aria-label="slide one of three" 
-							{% if forloop.counter == 1 %}
-							aria-hidden="false">
-							{% else %}
-							aria-hidden="true">
-							{% endif %}
-							<h4>{{note.title}}</h4>
-							<div class="flex gap-3 flex-wrap">
-								<div class="flex gap-3">
-									<img width="16" height="16" src='{% static "Post/img/calendar.svg" %}' alt="{% trans "Часы" %}">
-									<div>{{note.timeCreated|date:"d.m.Y"}}</div>
+					<hr>
+					<div class="flex gap-2 flex-wrap items-center">
+						<div class="w-full overflow-y-auto grow shrink basis-3xs">
+							{% for note in recent_notes %}
+							<div class="flex flex-col gap-2">
+								<h4>{{note.title}}</h4>
+								<div class="flex gap-3 flex-wrap">
+									<div class="flex gap-3">
+										<img width="16" height="16" src='{% static "Post/img/calendar.svg" %}' alt="{% trans "Часы" %}">
+										<div>{{note.timeCreated|date:"d.m.Y"}}</div>
+									</div>
+									/
+									<div class="flex gap-3 flex-nowrap">
+										<img width="16" height="16" src='{% static "Post/img/update.svg" %}' alt="{% trans "Часы" %}">
+										<div>{{note.timeUpdated|date:"d.m.Y"}}</div>
+									</div>
 								</div>
-								/
-								<div class="flex gap-3 flex-nowrap">
-									<img width="16" height="16" src='{% static "Post/img/update.svg" %}' alt="{% trans "Часы" %}">
-									<div>{{note.timeUpdated|date:"d.m.Y"}}</div>
+								<div>
+								{% if note.template %}
+									{{ note.template_content|safe }}
+								{% else %} 	
+									{{note.description}}
+								{% endif %}
 								</div>
 							</div>
-							<div>
-							{% if note.template %}
-								{{ note.template_content|safe }}
-							{% else %} 	
-								{{note.description}}
-							{% endif %}
-							</div>
+							{% endfor %}
 						</div>
-						{% endfor %}
 					</div>
-				</div>
-				<div class="flex justify-end">
-					<div class="ttw-button ttw-button_link bg-main text-white rounded-tl-xl ref_hidden_no-sign">
-						<a href="{% url 'notes-list' %}?page=1">
-							<p class="rounded-tl-xl p-2">
-							{% trans 'Больше ...' %}
-							</p>
-						</a>
+					<div class="flex justify-end">
+						<div class="ttw-button ttw-button_link bg-main text-white rounded-tl-xl ref_hidden_no-sign">
+							<a href="{% url 'notes-list' %}?page=1">
+								<p class="rounded-tl-xl p-2">
+								{% trans 'Больше ...' %}
+								</p>
+							</a>
+						</div>
 					</div>
 				</div>
 			</div>
