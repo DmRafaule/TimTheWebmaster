@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Website, Contact, Media#, Image, Downloadable
+from .models import Website, Contact, Media, CommonNotification
 
 
 class ContactAdmin(admin.ModelAdmin):
@@ -133,3 +133,4 @@ class MediaAdmin(admin.ModelAdmin):
 admin.site.register(Website, WebsiteAdmin)
 admin.site.register(Contact, ContactAdmin)
 admin.site.register(Media, MediaAdmin)
+admin.site.register(CommonNotification, admin.ModelAdmin)

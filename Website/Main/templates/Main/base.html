@@ -344,5 +344,12 @@
     <script src="{% static 'Main/js/index.min.js' %}"></script>
 	{% block scripts %}
 	{% endblock %}
+	{% if isCommonNotification %}
+		<script>
+			{% for notification in common_notifications %}
+				toaster.notify("{{notification.message}}", 'info', 60);
+			{% endfor %}
+		</script>
+	{% endif %}
 </body>
 </html>

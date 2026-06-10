@@ -97,6 +97,7 @@ MIDDLEWARE = [
     'django_yandex_ad_manager.middleware.AdManagerMiddleware',
     'django_btcpay_donation.middleware.BTCPayDonationMiddleware',
     'Main.middleware.FrameAncestorsMiddleware',
+    'Main.middleware.CommonNotificationMiddleware',
     'PagiScrollEditor.middleware.PagiScrollEditorMiddleware',
     # END Custom Middlewares
     'django.middleware.security.SecurityMiddleware',
