@@ -348,7 +348,7 @@
 					</div>
 					<hr>
 					<div class="flex gap-2 flex-wrap items-start grow shrink-0 basis-auto">
-						<div class="w-full overflow-y-auto grow shrink basis-3xs">
+						<div class="w-full overflow-y-auto grow shrink basis-3xs gap-4 flex-col">
 							{% for service in recent_services %}
 							<div class="flex flex-col gap-2">
 								<h4>{{service.title}}</h4>
@@ -409,7 +409,7 @@
 					</div>
 					<hr>
 					<div class="flex gap-2 flex-wrap items-center">
-						<div class="w-full overflow-y-auto grow shrink basis-3xs">
+						<div class="w-full overflow-y-auto grow shrink basis-3xs gap-4 flex-col">
 							{% for note in recent_notes %}
 							<div class="flex flex-col gap-2">
 								<h4>{{note.title}}</h4>
