@@ -46,7 +46,7 @@
 	<meta name="robots" content="noindex, follow">
 	<meta name="keywords" content="{{current_tag_names|join:', '}}">
 
-	{% if isYandexAdManagerMiddlewareConnected and LANGUAGE_CODE == 'ru' %}
+	{% if isYandexAdManagerMiddlewareConnected  %}
 		{% include 'YandexAdManager/admanager_header.html' %}
 	{% endif %}
 
@@ -88,7 +88,7 @@
 			{% include 'Breadcrumbs/breadcrumbs_list.html' with path=request.get_full_path %}
 		{% endif %}
 		
-		{% if isYandexAdManagerMiddlewareConnected and LANGUAGE_CODE == 'ru' %}
+		{% if isYandexAdManagerMiddlewareConnected  %}
 			{% for adlocation in adlocations %}
 				{% if adlocation.adlocation_name == "ON_PAGISCROLL_TOP" %}
 					{% include 'YandexAdManager/admanager_element.html' with adblock=adlocation.adblock unificator="on_pagiscroll_top" %}
@@ -159,7 +159,7 @@
 		{% include 'Breadcrumbs/breadcrumbs_styles.html' %}
 	{% endif %}
 
-	{% if isYandexAdManagerMiddlewareConnected and LANGUAGE_CODE == 'ru' %}
+	{% if isYandexAdManagerMiddlewareConnected  %}
 		{% include 'YandexAdManager/admanager_styles.html' %}
 	{% endif %}
 
@@ -181,7 +181,7 @@
 		{% include 'Breadcrumbs/breadcrumbs_scripts.html' %}
 	{% endif %}
 
-	{% if isYandexAdManagerMiddlewareConnected and LANGUAGE_CODE == 'ru' %}
+	{% if isYandexAdManagerMiddlewareConnected  %}
 		{% include 'YandexAdManager/admanager_scripts.html' %}
 	{% endif %}
 

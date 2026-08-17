@@ -56,7 +56,7 @@
 
 {% endfor %}
 
-{% if isYandexAdManagerMiddlewareConnected and LANGUAGE_CODE == 'ru' %}
+{% if isYandexAdManagerMiddlewareConnected  %}
 	{% for adlocation in adlocations %}
 		{% if adlocation.adlocation_name == "ON_PAGISCROLL_TOOLS_BETWEEN_PAGES" %}
 			{% include 'YandexAdManager/admanager_element_in_pagination.html' with page=page  adblock=adlocation.adblock %}

@@ -13,7 +13,7 @@
 
 <div id="link-thief-results">
     {% if links %}
-        {% if isYandexAdManagerMiddlewareConnected and LANGUAGE_CODE == 'ru' %}
+        {% if isYandexAdManagerMiddlewareConnected  %}
             {% for adlocation in adlocations %}
                 {% if adlocation.adlocation_name == "TOOL_AFTER_USE" %}
                     {% include 'YandexAdManager/admanager_element.html' with adblock=adlocation.adblock unificator="tool-after-use" %}
