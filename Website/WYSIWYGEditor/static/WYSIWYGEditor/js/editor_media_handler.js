@@ -21,7 +21,7 @@ export function updateDownloadablesForServer(){
         }
         else{
             down.dataset.src = `{% get_media_prefix %}{{downloadables.${indx}.file}}`
-            down.dataset.text = `{{downloadables.${indx}.text}}`
+            //down.dataset.text = `{{downloadables.${indx}.text}}`
         }
 	})
 }
