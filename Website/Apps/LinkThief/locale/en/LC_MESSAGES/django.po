@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-05-03 18:28+0300\n"
+"POT-Creation-Date: 2026-09-03 10:55+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,151 +18,151 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: .\Apps\LinkThief\forms.py:6
+#: Apps/LinkThief/forms.py:6
 msgid "Один УРЛ"
 msgstr "A single URL"
 
-#: .\Apps\LinkThief\forms.py:6
+#: Apps/LinkThief/forms.py:6
 msgid "Список УРЛов"
 msgstr "A list of URLs"
 
-#: .\Apps\LinkThief\forms.py:6
+#: Apps/LinkThief/forms.py:6
 msgid "Целый сайт"
 msgstr "Whole website"
 
-#: .\Apps\LinkThief\forms.py:7
+#: Apps/LinkThief/forms.py:7
 msgid "Все ссылки"
 msgstr "All links"
 
-#: .\Apps\LinkThief\forms.py:7
+#: Apps/LinkThief/forms.py:7
 msgid "Только внутренние ссылки"
 msgstr "Only internal links"
 
-#: .\Apps\LinkThief\forms.py:7
+#: Apps/LinkThief/forms.py:7
 msgid "Только внешние ссылки"
 msgstr "Only external links"
 
-#: .\Apps\LinkThief\forms.py:7
+#: Apps/LinkThief/forms.py:7
 msgid "Только ссылки с анкорами"
 msgstr "Links with anchor text"
 
-#: .\Apps\LinkThief\forms.py:7
+#: Apps/LinkThief/forms.py:7
 msgid "Только ссылки без анкоров"
 msgstr "Links without anchor text"
 
-#: .\Apps\LinkThief\forms.py:7
+#: Apps/LinkThief/forms.py:7
 msgid "Только те, которые можно пройти"
 msgstr "The crawlable links"
 
-#: .\Apps\LinkThief\forms.py:7
+#: Apps/LinkThief/forms.py:7
 msgid "Только те, которые не поддаются обходу"
 msgstr "Not so crawlable links"
 
-#: .\Apps\LinkThief\forms.py:9
+#: Apps/LinkThief/forms.py:9
 msgid "Показать таблицу на этой странице"
 msgstr "Show an on-page table"
 
-#: .\Apps\LinkThief\forms.py:10
+#: Apps/LinkThief/forms.py:10
 msgid "Способ обхода"
 msgstr "How to crawl a website"
 
-#: .\Apps\LinkThief\forms.py:11
+#: Apps/LinkThief/forms.py:11
 msgid "Как сохранить результат"
 msgstr "How to save the result"
 
-#: .\Apps\LinkThief\templates\LinkThief\link-thief-form-result.html:24
+#: Apps/LinkThief/templates/LinkThief/link-thief-form-result.html:24
 msgid "Результаты"
 msgstr "Results"
 
-#: .\Apps\LinkThief\templates\LinkThief\link-thief-form-result.html:27
+#: Apps/LinkThief/templates/LinkThief/link-thief-form-result.html:27
 msgid "Общее"
 msgstr "Common"
 
-#: .\Apps\LinkThief\templates\LinkThief\link-thief-form-result.html:33
+#: Apps/LinkThief/templates/LinkThief/link-thief-form-result.html:33
 msgid "Всего ссылок:"
 msgstr "Total links:"
 
-#: .\Apps\LinkThief\templates\LinkThief\link-thief-form-result.html:38
+#: Apps/LinkThief/templates/LinkThief/link-thief-form-result.html:38
 msgid "Всего внутренних ссылок:"
 msgstr "The total of internal links:"
 
-#: .\Apps\LinkThief\templates\LinkThief\link-thief-form-result.html:43
+#: Apps/LinkThief/templates/LinkThief/link-thief-form-result.html:43
 msgid "Всего внешних ссылок:"
 msgstr "The total of external links:"
 
-#: .\Apps\LinkThief\templates\LinkThief\link-thief-form-result.html:48
+#: Apps/LinkThief/templates/LinkThief/link-thief-form-result.html:48
 msgid "Всего проходимых краулером ссылок:"
 msgstr "The total of crawlable links"
 
-#: .\Apps\LinkThief\templates\LinkThief\link-thief-form-result.html:53
+#: Apps/LinkThief/templates/LinkThief/link-thief-form-result.html:53
 msgid "Всего непроходимых краулером ссылок:"
 msgstr "The total of not so crawlable links"
 
-#: .\Apps\LinkThief\templates\LinkThief\link-thief-form-result.html:58
+#: Apps/LinkThief/templates/LinkThief/link-thief-form-result.html:58
 msgid "Всего ссылок с анкором:"
 msgstr "The total of links with an anchor text"
 
-#: .\Apps\LinkThief\templates\LinkThief\link-thief-form-result.html:63
+#: Apps/LinkThief/templates/LinkThief/link-thief-form-result.html:63
 msgid "Всего ссылок без анкора:"
 msgstr "The total of links without an anchor text"
 
-#: .\Apps\LinkThief\templates\LinkThief\link-thief-form-result.html:74
+#: Apps/LinkThief/templates/LinkThief/link-thief-form-result.html:74
 msgid "Ссылки"
 msgstr "Links"
 
-#: .\Apps\LinkThief\templates\LinkThief\link-thief-form-result.html:78
+#: Apps/LinkThief/templates/LinkThief/link-thief-form-result.html:78
 msgid "Ссылка"
 msgstr "Link"
 
-#: .\Apps\LinkThief\templates\LinkThief\link-thief-form-result.html:79
+#: Apps/LinkThief/templates/LinkThief/link-thief-form-result.html:79
 msgid "Анкор"
 msgstr "Anchor"
 
-#: .\Apps\LinkThief\templates\LinkThief\link-thief-form-result.html:80
+#: Apps/LinkThief/templates/LinkThief/link-thief-form-result.html:80
 msgid "Тип ссылки"
 msgstr "Type of link"
 
-#: .\Apps\LinkThief\templates\LinkThief\link-thief-form-result.html:81
+#: Apps/LinkThief/templates/LinkThief/link-thief-form-result.html:81
 msgid "Проходима краулером"
 msgstr "Crawlable"
 
-#: .\Apps\LinkThief\templates\LinkThief\link-thief-form-result.html:90
+#: Apps/LinkThief/templates/LinkThief/link-thief-form-result.html:90
 msgid "Внутренняя ссылка"
 msgstr "Internal link"
 
-#: .\Apps\LinkThief\templates\LinkThief\link-thief-form-result.html:92
+#: Apps/LinkThief/templates/LinkThief/link-thief-form-result.html:92
 msgid "Внешняя ссылка"
 msgstr "External link"
 
-#: .\Apps\LinkThief\templates\LinkThief\link-thief-form-result.html:95
+#: Apps/LinkThief/templates/LinkThief/link-thief-form-result.html:95
 msgid "Да"
 msgstr "Yes"
 
-#: .\Apps\LinkThief\templates\LinkThief\link-thief-form-result.html:97
+#: Apps/LinkThief/templates/LinkThief/link-thief-form-result.html:97
 msgid "Нет"
 msgstr "No"
 
-#: .\Apps\LinkThief\templates\LinkThief\link-thief-form.html:6
+#: Apps/LinkThief/templates/LinkThief/link-thief-form.html:6
 msgid "ВорСсылок"
 msgstr "LinkThief"
 
-#: .\Apps\LinkThief\templates\LinkThief\link-thief-form.html:18
+#: Apps/LinkThief/templates/LinkThief/link-thief-form.html:18
 msgid "Начать"
 msgstr "Start"
 
-#: .\Apps\LinkThief\templates\LinkThief\link-thief-form.html:38
+#: Apps/LinkThief/templates/LinkThief/link-thief-form.html:38
 msgid "Правила"
 msgstr "Rules"
 
-#: .\Apps\LinkThief\templates\LinkThief\link-thief-form.html:41
+#: Apps/LinkThief/templates/LinkThief/link-thief-form.html:41
 msgid "Указывать список УРЛов через обычный пробел"
 msgstr "Separate URLs using space"
 
-#: .\Apps\LinkThief\templates\LinkThief\link-thief-form.html:42
+#: Apps/LinkThief/templates/LinkThief/link-thief-form.html:42
 msgid "Максимальное количество УРЛов для обхода по списку - 100"
 msgstr "The top limit of URLs to use while crawling via List of URLs is 100"
 
-#: .\Apps\LinkThief\templates\LinkThief\link-thief-form.html:43
+#: Apps/LinkThief/templates/LinkThief/link-thief-form.html:43
 msgid ""
 "Результаты парсинга будут храниться только до 0 часов следующих суток, после "
 "успешного парсинга."
@@ -170,11 +170,11 @@ msgstr ""
 "Parsing results will be stored only until 00:00 the following day, after "
 "successful parsing."
 
-#: .\Apps\LinkThief\templates\LinkThief\links-scraper-main.html:13
+#: Apps/LinkThief/templates/LinkThief/links-scraper-main.html:13
 msgid "О парсере ссылок"
 msgstr "About the links scraper"
 
-#: .\Apps\LinkThief\templates\LinkThief\links-scraper-main.html:18
+#: Apps/LinkThief/templates/LinkThief/links-scraper-main.html:18
 msgid ""
 "\n"
 "        Данный инструмент работает в 3-х режимах. В режиме парсинга с одной "
@@ -190,7 +190,7 @@ msgstr ""
 "crawling. Because there are many methods of hiding pages from the crawler.\n"
 " "
 
-#: .\Apps\LinkThief\templates\LinkThief\links-scraper-main.html:23
+#: Apps/LinkThief/templates/LinkThief/links-scraper-main.html:23
 msgid ""
 "\n"
 "        Ещё этот парсер ссылок с веб страниц, представляет из себя веб-"
@@ -210,22 +210,22 @@ msgstr ""
 "installation via PiPI, or via my site.\n"
 " "
 
-#: .\Apps\LinkThief\views.py:92
+#: Apps/LinkThief/views.py:92
 msgid "Некоректный адрес"
 msgstr "Wrong URL"
 
-#: .\Apps\LinkThief\views.py:97
+#: Apps/LinkThief/views.py:97
 msgid "Слишком много адресов"
 msgstr "Too many URLs provided"
 
-#: .\Apps\LinkThief\views.py:100
+#: Apps/LinkThief/views.py:100
 msgid "Пожалуйста, укажи только один адресс"
 msgstr "Please, only one URL"
 
-#: .\Apps\LinkThief\views.py:153
+#: Apps/LinkThief/views.py:153
 msgid "✔ Вы успешно спарсили ссылки"
 msgstr "✔ You have successfully parsed the links"
 
-#: .\Apps\LinkThief\views.py:159
+#: Apps/LinkThief/views.py:159
 msgid "✗ Возникла ошибка при отправке формы"
 msgstr "✗ There was an error submitting the form"

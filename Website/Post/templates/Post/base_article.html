@@ -285,13 +285,15 @@
 {% block content_post-before %}
 
 	<div class="flex flex-row flex-wrap gap-2">
+		{% if post.preview %}
 		<img width="50%" class="image-bordered grow shrink-0 basis-2xs" src="{% get_media_prefix %}{{post.preview}}">
+		{% else %}
+		<img width="50%" class="image-bordered grow shrink-0 basis-2xs" src="{% static "image-not-found.svg" %}">
+		{% endif %}
 		<div class="flex flex-col grow shrink-0 basis-2xs justify-between">
 			<h1>{{post.h1}}</h1>
 			<div>
-				{% if isBreadcrumbsMiddlewareConnected %}
-					{% include 'Breadcrumbs/breadcrumbs.html' with path=request.META.HTTP_REFERER %}
-				{% endif %}
+				
 				<div class="flex flex-wrap items-center gap-3">
 					<div class="flex flex-wrap items-center gap-3">
 						<div class="flex gap-3">
@@ -320,7 +322,9 @@
 				{% if isEngagementMiddlewareConnected %}
 					{% include 'Engagement/Other/interaction.html' with path=post.get_absolute_url%}
 				{% endif %}
-
+				{% if isBreadcrumbsMiddlewareConnected %}
+					{% include 'Breadcrumbs/breadcrumbs.html' with path=request.META.HTTP_REFERER %}
+				{% endif %}
 				{% if post.tags.all|length > 0 %}
 				<div class="flex gap-2 ref_no-sign flex-wrap">
 					<b>{% trans "Теги: " %}</b>

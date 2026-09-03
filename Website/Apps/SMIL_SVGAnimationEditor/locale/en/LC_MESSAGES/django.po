@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-01-09 16:09+0300\n"
+"POT-Creation-Date: 2026-09-03 10:55+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,23 +18,23 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: .\Apps\SMIL_SVGAnimationEditor\templates\SMIL_SVGAnimationEditor\main.html:14
+#: Apps/SMIL_SVGAnimationEditor/templates/SMIL_SVGAnimationEditor/main.html:14
 msgid "Временное изображение"
 msgstr "Temporary image"
 
-#: .\Apps\SMIL_SVGAnimationEditor\templates\SMIL_SVGAnimationEditor\main.html:20
+#: Apps/SMIL_SVGAnimationEditor/templates/SMIL_SVGAnimationEditor/main.html:20
 msgid "Скачать получившуюся SVG картинку"
 msgstr "Download this resulting SVG image"
 
-#: .\Apps\SMIL_SVGAnimationEditor\templates\SMIL_SVGAnimationEditor\main.html:46
+#: Apps/SMIL_SVGAnimationEditor/templates/SMIL_SVGAnimationEditor/main.html:46
 msgid "Туториал"
 msgstr "Guide"
 
-#: .\Apps\SMIL_SVGAnimationEditor\templates\SMIL_SVGAnimationEditor\main.html:47
+#: Apps/SMIL_SVGAnimationEditor/templates/SMIL_SVGAnimationEditor/main.html:47
 msgid "Про инструмент"
 msgstr "About this tool"
 
-#: .\Apps\SMIL_SVGAnimationEditor\templates\SMIL_SVGAnimationEditor\main.html:49
+#: Apps/SMIL_SVGAnimationEditor/templates/SMIL_SVGAnimationEditor/main.html:49
 msgid ""
 "\n"
 "                Здесь я оставил небольшой туториал для ознакомления с этим "
@@ -54,7 +54,7 @@ msgstr ""
 " starts the animation.\n"
 "                "
 
-#: .\Apps\SMIL_SVGAnimationEditor\templates\SMIL_SVGAnimationEditor\main.html:57
+#: Apps/SMIL_SVGAnimationEditor/templates/SMIL_SVGAnimationEditor/main.html:57
 msgid ""
 "\n"
 "                Другой редактор, только для ознакомления с исходным кодом "
@@ -73,7 +73,7 @@ msgstr ""
 " code in the browser.\n"
 "                "
 
-#: .\Apps\SMIL_SVGAnimationEditor\templates\SMIL_SVGAnimationEditor\main.html:64
+#: Apps/SMIL_SVGAnimationEditor/templates/SMIL_SVGAnimationEditor/main.html:64
 msgid ""
 "\n"
 "                Весь код анимаций записывается в конец редактируемого файла "
@@ -86,11 +86,11 @@ msgstr ""
 "separate group with <b>id</b>=\"<i>smil_svg-animation-editor-layer</i>\"\n"
 "                "
 
-#: .\Apps\SMIL_SVGAnimationEditor\templates\SMIL_SVGAnimationEditor\main.html:68
+#: Apps/SMIL_SVGAnimationEditor/templates/SMIL_SVGAnimationEditor/main.html:68
 msgid "Как писать и применять анимации?"
 msgstr "How to make and apply an animations?"
 
-#: .\Apps\SMIL_SVGAnimationEditor\templates\SMIL_SVGAnimationEditor\main.html:70
+#: Apps/SMIL_SVGAnimationEditor/templates/SMIL_SVGAnimationEditor/main.html:70
 msgid ""
 "\n"
 "                Не нужно искать кнопки применить, редактор автоматически "
@@ -113,11 +113,11 @@ msgstr ""
 "<b>ID</b> specified in the <i>href</i> attribute.\n"
 "                "
 
-#: .\Apps\SMIL_SVGAnimationEditor\templates\SMIL_SVGAnimationEditor\main.html:77
+#: Apps/SMIL_SVGAnimationEditor/templates/SMIL_SVGAnimationEditor/main.html:77
 msgid "Как узнать, какой и у какого элемента, ID?"
 msgstr "How to find out which element has which ID?"
 
-#: .\Apps\SMIL_SVGAnimationEditor\templates\SMIL_SVGAnimationEditor\main.html:79
+#: Apps/SMIL_SVGAnimationEditor/templates/SMIL_SVGAnimationEditor/main.html:79
 msgid ""
 "\n"
 "                Для этого я написал небольшое расширение для данного "
@@ -132,7 +132,7 @@ msgstr ""
 "them. This is done as follows.\n"
 "                "
 
-#: .\Apps\SMIL_SVGAnimationEditor\templates\SMIL_SVGAnimationEditor\main.html:86
+#: Apps/SMIL_SVGAnimationEditor/templates/SMIL_SVGAnimationEditor/main.html:86
 msgid ""
 "\n"
 "                В результате, выбранный элемент останется подсвеченным.\n"
@@ -142,7 +142,7 @@ msgstr ""
 " As a result, the selected item will remain highlighted.\n"
 "                "
 
-#: .\Apps\SMIL_SVGAnimationEditor\templates\SMIL_SVGAnimationEditor\main.html:92
+#: Apps/SMIL_SVGAnimationEditor/templates/SMIL_SVGAnimationEditor/main.html:92
 msgid ""
 "\n"
 "                Ты наводишься на нужный элемент и кликаешь до тех пор, пока "
@@ -158,11 +158,11 @@ msgstr ""
 "the topmost element.\n"
 "                "
 
-#: .\Apps\SMIL_SVGAnimationEditor\templates\SMIL_SVGAnimationEditor\main.html:97
+#: Apps/SMIL_SVGAnimationEditor/templates/SMIL_SVGAnimationEditor/main.html:97
 msgid "Что делать дальше?"
 msgstr "What to do next?"
 
-#: .\Apps\SMIL_SVGAnimationEditor\templates\SMIL_SVGAnimationEditor\main.html:99
+#: Apps/SMIL_SVGAnimationEditor/templates/SMIL_SVGAnimationEditor/main.html:99
 msgid ""
 "\n"
 "                После того, как у тебя получилась требуемая анимация SVG "

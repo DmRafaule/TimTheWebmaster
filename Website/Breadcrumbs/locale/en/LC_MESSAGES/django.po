@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-03 10:55+0000\n"
+"POT-Creation-Date: 2026-09-03 11:54+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,27 +17,6 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-
-#: Website/dashboard.py:15
-msgid "Support"
-msgstr ""
-
-#: Website/dashboard.py:18
-msgid "Django documentation"
-msgstr ""
-
-#: Website/dashboard.py:23
-msgid "Django \"django-users\" mailing list"
-msgstr ""
-
-#: Website/dashboard.py:28
-msgid "Django irc channel"
-msgstr ""
-
-#: Website/settings.py:226
-msgid "Русский"
-msgstr "Russian"
-
-#: Website/settings.py:227
-msgid "Английский"
-msgstr "English"
+#: Breadcrumbs/templates/Breadcrumbs/breadcrumbs.html:9
+msgid "Путь:"
+msgstr "Path:"

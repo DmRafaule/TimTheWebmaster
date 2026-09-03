@@ -22,12 +22,7 @@ class WebsiteAdmin(admin.ModelAdmin):
     list_display = ('is_current', 'name')
     list_display_links = ('name',)
     filter_horizontal = (
-        'choosen_tools',
         'categories_to_display_on_side_menu', 
-        'popular_articles_on_footer', 
-        'popular_tools_on_footer',
-        'my_resources_choosen_tags_on_home', 
-        'other_articles_choosen_tags_on_home',
         'contacts_for_orders',
     )
     search_fields = (
@@ -41,26 +36,10 @@ class WebsiteAdmin(admin.ModelAdmin):
             }
         ),
         (
-            'Post options',
-            {
-                'fields': [
-                    'threshold_similar_articles', 
-                    'threshold_related_termins', 
-                    'threshold_related_questions',
-                    'max_displayed_similar_articles',
-                    'max_displayed_termins',
-                    'max_displayed_questions'],
-                'classes': ['collapsed'],
-                'description': 'In this section you could change and edit options related to every Post object on website(Tool, Article, Category, Termin, Question)'
-            }
-        ),
-        (
             'Post list options',
             {
                 'fields': [
                     'paginator_per_page_posts',
-                    'paginator_per_page_gallery',
-                    'paginator_per_page_gallery_columns',
                     'articles_post_preview',
                     'tools_post_preview',
                     'notes_post_preview',
@@ -73,18 +52,7 @@ class WebsiteAdmin(admin.ModelAdmin):
             'Home page',
             {
                 'fields': [
-                    'choosen_tools',
-                    'my_resources_choosen_tags_on_home',
-                    'min_displayed_my_resources',
-                    'other_articles_choosen_tags_on_home',
-                    'min_displayed_other_articles',
                     (
-                        'max_displayed_news_on_home',
-                        'max_displayed_postSeries_on_home',
-                        'max_displayed_images_on_home',
-                        'max_displayed_inner_tools_on_home',
-                        'max_displayed_td_on_home',
-                        'max_displayed_qa_on_home',
                         'max_displayed_notes_on_home',
                     )
                 ],
@@ -97,8 +65,6 @@ class WebsiteAdmin(admin.ModelAdmin):
             {
                 'fields': [
                     'categories_to_display_on_side_menu',
-                    'popular_articles_on_footer',
-                    'popular_tools_on_footer',
                     'contacts_for_orders',
                     'default_image_preview',
                 ],
