@@ -704,7 +704,7 @@ msgstr "It is me btw"
 
 #: Main/templates/Main/about.html:166
 msgid "Сферы интересов, как разработчика"
-msgstr ""
+msgstr "Areas of interest as a developer"
 
 #: Main/templates/Main/about.html:169
 msgid ""
