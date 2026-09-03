@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-03 11:54+0000\n"
+"POT-Creation-Date: 2026-09-03 14:09+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -95,17 +95,17 @@ msgstr ""
 "monetized, what technologies it uses, and what assets it employs."
 
 #: Main/templates/Main/about-website.html:18
-msgid "Лаборатория разработки Тима зе Вебмастера"
-msgstr "Tim The Webmaster's Development Laboratory"
+msgid "Тим зе Вебмастера"
+msgstr "Tim The Webmaster"
 
 #: Main/templates/Main/about-website.html:21
 msgid ""
-"Лаборатория разработки для публикации инструментов и статей, а так же "
-"проведение различных экспериментов. Темы: SEO, ИИ, Django-разработка и "
-"системное администрирование."
+"Сайт для публикации инструментов и статей, а так же проведение различных "
+"экспериментов/исследований. Темы: SEO, ИИ, Django-разработка и системное "
+"администрирование."
 msgstr ""
-"A development lab for publishing tools and articles, as well as conducting "
-"various experiments. Topics: SEO, AI, Django development, and system "
+"A website for publishing tools and articles, as well as conducting various "
+"experiments/research. Topics: SEO, AI, Django development, and system "
 "administration."
 
 #: Main/templates/Main/about-website.html:23
@@ -133,24 +133,24 @@ msgstr ""
 "It fully describes how and on what this piece of technology works,what it "
 "uses in its visuals, and how I and my visitors use it."
 
-#: Main/templates/Main/about-website.html:70 Main/templates/Main/about.html:99
+#: Main/templates/Main/about-website.html:70 Main/templates/Main/about.html:98
 #: Main/templates/Main/home.html:109
 msgid "Посмотреть последние статьи"
 msgstr "Check out latest articles"
 
-#: Main/templates/Main/about-website.html:75 Main/templates/Main/about.html:104
+#: Main/templates/Main/about-website.html:75 Main/templates/Main/about.html:103
 #: Main/templates/Main/home.html:114
 msgid "Опробовать инструменты"
 msgstr "Check out internal tools"
 
-#: Main/templates/Main/about-website.html:85 Main/templates/Main/about.html:114
+#: Main/templates/Main/about-website.html:85 Main/templates/Main/about.html:113
 #: Main/templates/Main/home.html:124
 msgid "Или поддержать проект"
 msgstr "Or to support the project"
 
 #: Main/templates/Main/about-website.html:93
 #: Main/templates/Main/about-website.html:103
-#: Main/templates/Main/about.html:122 Main/templates/Main/about.html:132
+#: Main/templates/Main/about.html:121 Main/templates/Main/about.html:131
 #: Main/templates/Main/home.html:132 Main/templates/Main/home.html:142
 msgid "Или вернуться на главную"
 msgstr "Or back to home"
@@ -191,9 +191,9 @@ msgstr "The topics that are covered and studied on this website include:"
 
 #: Main/templates/Main/about-website.html:136
 #: Main/templates/Main/about-website.html:139
-#: Main/templates/Main/about-website.html:213
-#: Main/templates/Main/about-website.html:216
-#: Main/templates/Main/about.html:183 Main/templates/Main/about.html:186
+#: Main/templates/Main/about-website.html:193
+#: Main/templates/Main/about-website.html:196
+#: Main/templates/Main/about.html:176 Main/templates/Main/about.html:179
 #: Main/templates/Main/home.html:172 Main/templates/Main/home.html:268
 msgid "Предыдущая вкладка на табуляторе"
 msgstr "Previous tab on the tab bar"
@@ -201,70 +201,20 @@ msgstr "Previous tab on the tab bar"
 #: Main/templates/Main/about-website.html:144
 msgid ""
 "\n"
-"\t\t\t\t\t<div><b>SEO (Search Engine Optimization) с акцентом на GEO и AIO</"
-"b>. Представляет собой комплекс мероприятий по улучшению видимости сайта в "
-"поисковых системах, учитывающий географическую локализацию (GEO) и "
-"всеобъемлющий подход к оптимизации контента и технических аспектов сайта "
-"(<i>AIO — All In One</i>). GEO-оптимизация направлена на адаптацию сайта под "
-"конкретные регионы и аудитории с помощью локальных ключевых слов, "
-"регионального контента и настроек, что повышает релевантность для поисковых "
-"запросов из определённых территорий. <b>AIO</b> включает в себя не только "
-"работу с ключевыми словами и контентом, но и оптимизацию структуры сайта, "
-"скорости загрузки, мобильной адаптивности, метатегов, а также обеспечение "
-"правильной индексации и устранение технических ошибок, что вместе усиляет "
-"позиции сайта в результатах поиска. Такой системный подход помогает "
-"привлекать целевой трафик, увеличивать конверсию и улучшать общий "
-"пользовательский опыт.</div>\n"
+"\t\t\t\t\t<div><b>SEO (Search Engine Optimization)</b>. Представляет собой "
+"комплекс мероприятий по улучшению видимости сайта в поисковых системах, "
+"учитывающий географическую локализацию (GEO) и всеобъемлющий подход к "
+"оптимизации контента и технических аспектов сайта.</div>\n"
 "\t\t\t\t\t"
 msgstr ""
 "\n"
-"<div><b>SEO (Search Engine Optimization) with an emphasis on GEO and AIO</"
-"b>. This is a complex set of measures to improve the visibility of a website "
-"in search engines, taking into account geographical localization (GEO) and a "
-"comprehensive approach to optimizing content and technical aspects of the "
-"site (<i>AIO — All In One</i>). GEO-optimization is aimed at adapting the "
-"site to specific regions and audiences using local keywords, regional "
-"content and settings, which increases relevance for search queries from "
-"certain territories. <b>AIO</b> includes not only working with keywords and "
-"content, but also optimizing the site structure, loading speed, mobile "
-"adaptability, meta tags, as well as ensuring correct indexing and "
-"eliminating technical errors, which together strengthens the site's position "
-"in search results. This systemic approach helps attract targeted traffic, "
-"increase conversion and improve the overall user experience.</div>\n"
-"\t\t\t\t\t"
+"\t\t\t\t\t<div><b>SEO (Search Engine Optimization)</b>. It is a set of "
+"measures to improve a website's visibility in search engines, taking into "
+"account geographic location (GEO) and a comprehensive approach to optimizing "
+"the content and technical aspects of a website.</div>\n"
+"\t\t\t\t"
 
 #: Main/templates/Main/about-website.html:149
-msgid ""
-"\n"
-"\t\t\t\t\t<div><b>Разработка и внедрение ИИ (искусственный интеллект)</b>. "
-"Включает в себя широкий спектр технологий и методов, направленных на "
-"создание систем, способных выполнять задачи, требующие человеческого "
-"интеллекта, такие как обработка естественного языка, распознавание образов, "
-"принятие решений и обучение на данных. Веб-разработка с использованием ИИ "
-"охватывает автоматизацию рутинных процессов, персонализацию контента, "
-"улучшение пользовательского опыта через чат-ботов и интеллектуальные "
-"рекомендации, а также анализ больших данных для оптимизации бизнес-"
-"процессов. Современные инструменты и библиотеки ИИ позволяют интегрировать "
-"машинное обучение, глубокое обучение и другие алгоритмы в веб-приложения, "
-"что открывает новые возможности для создания адаптивных, умных и эффективных "
-"сервисов.</div>\n"
-"\t\t\t\t\t"
-msgstr ""
-"\n"
-"<div><b>Development and implementation of AI (artificial intelligence)</b>. "
-"It includes a wide range of technologies and methods aimed at creating "
-"systems capable of  erforming tasks requiring human intelligence, such as "
-"natural language processing, pattern recognition, decision-making, and "
-"learning from data. Web development  sing AI encompasses the automation of "
-"routine processes, content personalization, improving the user experience "
-"through chatbots and intelligent recommendations, as  well as big data "
-"analysis to optimize business processes. Modern AI tools and libraries allow "
-"the integration of machine learning, deep learning, and other algorithms "
-"into web applications, which opens up new opportunities for creating "
-"adaptive, intelligent, and efficient services.</div>\n"
-"\t\t\t\t\t"
-
-#: Main/templates/Main/about-website.html:154
 msgid ""
 "\n"
 "\t\t\t\t\t<div><b>Разработка сайтов на Django</b> с использованием таких "
@@ -288,7 +238,7 @@ msgstr ""
 "div>\n"
 "\t\t\t\t\t"
 
-#: Main/templates/Main/about-website.html:159
+#: Main/templates/Main/about-website.html:154
 msgid ""
 "\n"
 "\t\t\t\t\t<div><b>Работа и настройка серверов и хостингов</b> включает "
@@ -305,7 +255,7 @@ msgstr ""
 "scaling resources for high performance and availability.</div>\n"
 "\t\t\t\t\t"
 
-#: Main/templates/Main/about-website.html:164
+#: Main/templates/Main/about-website.html:159
 msgid ""
 "\n"
 "\t\t\t\t\t<div><b>Разработка программ и утилит</b> включает создание "
@@ -331,7 +281,7 @@ msgstr ""
 "it's a command-line interface, a graphical interface, or interaction with a "
 "browser.</div>\t\t\t\t\t"
 
-#: Main/templates/Main/about-website.html:169
+#: Main/templates/Main/about-website.html:164
 msgid ""
 "\n"
 "\t\t\t\t\t<div><b>История программирования</b> охватывает развитие методов и "
@@ -358,7 +308,7 @@ msgstr ""
 "optimization, and expansion of the capabilities of computers, influencing "
 "the development of technologies and society as a whole.</div>\t\t\t\t\t"
 
-#: Main/templates/Main/about-website.html:174
+#: Main/templates/Main/about-website.html:169
 msgid ""
 "\n"
 "\t\t\t\t\t<div><b>Монетизация и продвижение сайта</b> включают использование "
@@ -384,124 +334,79 @@ msgstr ""
 "increase website profits.</div>\n"
 "\t\t\t\t\t"
 
-#: Main/templates/Main/about-website.html:181
+#: Main/templates/Main/about-website.html:176
 msgid "Текущий технологический стек"
 msgstr "Current tech stack"
 
-#: Main/templates/Main/about-website.html:203
+#: Main/templates/Main/about-website.html:179
+#, python-format
 msgid ""
 "\n"
-"\t\t\t<div>Сайт написан и работает на фреймворке Django. Фронтенд фреймворки "
-"не используются, и я вряд ли перейду на один из них, так как Django "
-"предоставляет полный набор инструментов для создания современных веб-"
-"приложений, включая мощный ORM, удобную административную панель и встроенную "
-"систему шаблонов, что облегчает разработку и поддержку. Такой подход "
-"упрощает архитектуру проекта, снижает зависимость от сторонних технологий и "
-"обеспечивает хорошую SEO-оптимизацию за счёт серверного рендеринга страниц. "
-"Кроме того, отказ от фронтенд-фреймворков позволяет сохранить код более "
-"легким и понятным, что важно для быстрого внесения изменений и поддержки в "
-"долгосрочной перспективе.</div>\n"
-"\t\t\t"
+"\t\tСайт написан и работает на фреймворке <b>Django</b>(%(django_version)s) "
+"на %(python_version)s версии <b>Python</b>. \n"
+"\t\tФронтенд фреймворки не используются, и я вряд ли перейду на один из них. "
+"Но активно используются такие библиотеки как <b>TailwindCSS</b>(4.0.15) и "
+"<b>HTMX</b>(2.0.4)\n"
+"\t\tВся информация хранится в базе данных <b>%(db_version)s</b>.\n"
+"\t\t"
 msgstr ""
 "\n"
-"<div>The website is written and runs on the Django framework. Frontend "
-"frameworks are not used, and I am unlikely to switch to one of them, as "
-"Django provides a complete set of tools for creating modern web "
-"applications, including a powerful ORM, a convenient administrative panel, "
-"and a built-in templating system, which simplifies development and "
-"maintenance. This approach simplifies the project architecture, reduces "
-"dependence on third-party technologies, and ensures good SEO optimization "
-"through server-side rendering of pages. In addition, the rejection of "
-"frontend frameworks allows the code to remain more lightweight and "
-"understandable, which is important for quickly making changes and supporting "
-"it in the long term.</div>\n"
-"\t\t\t"
+"\t\tThe site is written and runs on the <b>Django</b> framework "
+"(%(django_version)s) on %(python_version)s of <b>Python</b>. \n"
+"\t\tI don't use front-end frameworks, and I'm unlikely to switch to one. "
+"However, libraries such as <b>TailwindCSS</b> (4.0.15) and <b>HTMX</b> "
+"(2.0.4) are used.\n"
+"\t\tAll information is stored in the <b>%(db_version)s</b> database.\n"
+"\t\t"
 
-#: Main/templates/Main/about-website.html:207
+#: Main/templates/Main/about-website.html:186
 msgid ""
 "\n"
-"\t\t<div>В дополнение к Django/Python ещё используются такие надстройки(JS-"
-"библиотеки, Node-пакеты) над стандартными JS, CSS и HTML как:</div>\n"
-"\t\t"
+"\t\t\tВ дополнение к Django/Python ещё используются такие надстройки(JS-"
+"библиотеки, Node-пакеты) над стандартными JS, CSS и HTML как:\n"
+"\t\t\t"
 msgstr ""
 "\n"
 "<div>In addition to Django/Python, the following add-ons (JS libraries, Node "
 "packages) are also used on top of standard JS, CSS, and HTML:</div>\n"
 "\t\t"
 
-#: Main/templates/Main/about-website.html:222
+#: Main/templates/Main/about-website.html:202
 msgid ""
 "\n"
 "\t\t\t\t\t\t<b>HTMX</b> — это небольшая библиотека, которая расширяет "
 "стандартный HTML, добавляя к элементам новые атрибуты для отправки HTTP-"
-"запросов (например, hx-get, hx-post) напрямую из разметки без необходимости "
-"писать JavaScript. Это позволяет создавать интерактивные и динамические веб-"
-"интерфейсы, делая AJAX-запросы к серверу при разных действиях пользователя "
-"(клики, изменения форм и др.) и обновлять нужные части страницы с помощью "
-"возвращаемого HTML, а не JSON. HTMX упрощает обработку форм и событий, "
-"поддерживает различные HTTP-методы, позволяет выбирать элементы для замены "
-"контента, и обеспечивает двустороннюю привязку данных между клиентом и "
-"сервером. Благодаря этому HTMX помогает разработчикам быстро добавлять "
-"динамику и интерактивность на сайт, сохраняя код простым и чистым, работая с "
-"любым сервером и улучшая производительность за счёт частичных обновлений без "
-"полной перезагрузки страницы.\n"
+"запросов напрямую из разметки без необходимости писать JavaScript.\n"
 "\t\t\t\t\t"
 msgstr ""
 "\n"
-"<b>HTMX</b> is a small library that extends standard HTML by adding new "
-"attributes to elements for sending HTTP requests (e.g., hx-get, hx-post) "
-"directly from the markup without the need to write JavaScript. This allows "
-"you to create interactive and dynamic web interfaces, making AJAX requests "
-"to the server for various user actions (clicks, form changes, etc.) and "
-"updating the necessary parts of the page using the returned HTML, rather "
-"than JSON. HTMX simplifies form and event handling, supports various HTTP "
-"methods, allows you to select elements for content replacement, and provides "
-"two-way data binding between the client and the server. Thanks to this, HTMX "
-"helps developers quickly add dynamism and interactivity to a website, "
-"keeping the code simple and clean, working with any server, and improving "
-"performance through partial updates without a full page reload.\n"
-"\t\t\t\t\t"
+"\t\t\t\t\t<b>HTMX</b> is a small library that extends standard HTML by "
+"adding new attributes to elements for sending HTTPrequests directly from "
+"markup without the need for JavaScript.\n"
+"\t\t\t\t"
 
-#: Main/templates/Main/about-website.html:228
+#: Main/templates/Main/about-website.html:208
 msgid ""
 "\n"
 "\t\t\t\t\t<div><b>TailwindCSS</b> — это современный CSS-фреймворк, "
 "построенный на принципе utility-first, который позволяет стилизовать "
-"элементы HTML прямо в разметке с помощью множества готовых классов-утилит. "
-"Вместо написания отдельных CSS-правил, разработчик применяет классы с "
-"предопределёнными стилями, такими как цвета, отступы, размеры, шрифты и "
-"эффекты наведения, прямо в атрибуте class, что ускоряет процесс создания и "
-"поддержки интерфейса. Такой подход уменьшает объём кастомного CSS, делает "
-"стили более предсказуемыми и удобными для масштабирования, а встроенная "
-"конфигурация и инструменты удаления неиспользуемых стилей помогают "
-"оптимизировать итоговый размер CSS-файлов. TailwindCSS отлично интегрируется "
-"с разными фреймворками и подходит как для прототипирования, так и для "
-"создания полноценных продакшн-интерфейсов, позволяя легко управлять "
-"адаптивностью и динамическими изменениями стилей.</div>\n"
+"элементы HTML прямо в разметке с помощью множества готовых классов-утилит.</"
+"div>\n"
 "\t\t\t\t\t"
 msgstr ""
 "\n"
-"<div><b>TailwindCSS</b> is a modern CSS framework built on the utility-first "
-"principle, which allows you to style HTML elements directly in the markup "
-"using a multitude of ready-made utility classes. Instead of writing separate "
-"CSS rules, the developer applies classes with predefined styles, such as "
-"colors, margins, sizes, fonts, and hover effects, directly in the class "
-"attribute, which speeds up the process of creating and maintaining the "
-"interface. This approach reduces the amount of custom CSS, makes styles more "
-"predictable and easier to scale, and the built-in configuration and tools "
-"for removing unused styles help optimize the final size of CSS files. "
-"TailwindCSS integrates perfectly with various frameworks and is suitable for "
-"both prototyping and creating full-fledged production interfaces, allowing "
-"you to easily manage responsiveness and dynamic style changes.</div>\n"
+"\t\t\t\t\t<div><b>TailwindCSS</b> is a modern CSS framework, built on the "
+"utility-first principle, that allows you to style HTML elements directly in "
+"your markup using a variety of ready-made utility classes.</div>\n"
 "\t\t\t\t\t"
 
-#: Main/templates/Main/about-website.html:234
+#: Main/templates/Main/about-website.html:213
 msgid ""
 "\n"
-"\t\t<div><b>NPM</b> используется для компиляции и минификации кода на JS и "
-"CSS, только в процессе разработки и тестирования, на боевом сервере NPM не "
-"устанавливается. </div>\n"
-"\t\t"
+"\t\t\t\t\t<div><b>NPM</b> используется для компиляции и минификации кода на "
+"JS и CSS, только в процессе разработки и тестирования, на боевом сервере NPM "
+"не устанавливается. </div>\n"
+"\t\t\t\t\t"
 msgstr ""
 "\n"
 "<div><b>NPM</b> is used for compiling and minifying JS and CSS code, only "
@@ -509,7 +414,7 @@ msgstr ""
 "server.</div>\n"
 "\t\t"
 
-#: Main/templates/Main/about-website.html:237
+#: Main/templates/Main/about-website.html:220
 msgid ""
 "\n"
 "\t\t<div>На этом сайте есть так называемые \"<i>внутренние инструменты</i>\" "
@@ -525,77 +430,11 @@ msgstr ""
 "NPM settings.</div>\n"
 "\t\t"
 
-#: Main/templates/Main/about-website.html:240
-msgid "А вот полная структура моего сайта по приложениям"
-msgstr "Here is the complete structure of my website for applications."
-
-#: Main/templates/Main/about-website.html:242
-msgid ""
-"\n"
-"\t\t\t<li><b>Apps</b> -> Директория где хранятся все внутренние приложения "
-"сайта</li>\n"
-"\t\t\t<li class=\"indent-3\"><b>PostEditor</b> -> Внутренний инструмент для "
-"редактирования и экспорта html-шаблонов, для дальнейшего использования при "
-"создании постов</li>\n"
-"\t\t\t<li class=\"indent-3\"><b>ImageThief</b> -> Внутренний инструмент для "
-"парсинга изображений с других сайтов</li>\n"
-"\t\t\t<li class=\"indent-3\"><b>LinkThief</b> -> Внутренний инструмент для "
-"парсинга ссылок с других сайтов</li>\n"
-"\t\t\t<li class=\"indent-3\"><b>TextThief</b> -> Внутренний инструмент для "
-"парсинга текста с других сайтов</li>\n"
-"\t\t\t<li class=\"indent-3\"><b>RSSAggregator</b> -> Внутренний инструмент "
-"для чтения RSS-фидов</li>\n"
-"\t\t\t<li class=\"indent-3\"><b>ShaderToy</b> -> Внутренний инструмент для "
-"создания и редактирования шейдеров, на языке GLSL</li>\n"
-"\t\t\t<li><b>Auth</b> -> Регистрация и аутентификация новых пользователей</"
-"li>\n"
-"\t\t\t<li><b>Breadcrumbs</b> -> Приложение интегрирующее хлебные крошки на "
-"сайт</li>\n"
-"\t\t\t<li><b>Engagement</b> -> Приложение, которое добавляет интеракции с "
-"пользователем (Комментарии, лайки, кнопка поделиться, форма обратной связи, "
-"закладки ...)</li>\n"
-"\t\t\t<li><b>Main</b>(Тесты) -> Сердце сайта, утилиты, главные старницы, "
-"общие скрипты и стили, всё здесь.</li>\n"
-"\t\t\t<li><b>Post</b>(Тесты) -> Управляет контентом, их отображение, "
-"разделение, сортировка, перелинковка</li>\n"
-"\t\t\t<li><b>PagiScroll</b>(Тесты) -> Отображение постов на сайте, "
-"комбинации таких веб интерфейс паттернов как: Пагинатор и Бесконечный фид</"
-"li>\n"
-"\t\t\t"
-msgstr ""
-"\n"
-"\t\t\t<li><b>Apps</b> -> Directory where all internal applications of the "
-"site are stored</li>\n"
-"\t\t\t<li class=\"indent-3\"><b>PostEditor</b> -> Internal tool for editing "
-"and exporting html templates for further use when creating posts</li>\n"
-"\t\t\t<li class=\"indent-3\"><b>ImageThief</b> -> Internal tool for parsing "
-"images from other sites</li>\n"
-"\t\t\t<li class=\"indent-3\"><b>LinkThief</b> -> Internal tool for parsing "
-"links from other sites</li>\n"
-"\t\t\t<li class=\"indent-3\"><b>TextThief</b> -> Internal tool for parsing "
-"text from other sites</li>\n"
-"\t\t\t<li class=\"indent-3\"><b>RSSAggregator</b> -> Internal tool for "
-"reading RSS feeds</li>\n"
-"\t\t\t<li class=\"indent-3\"><b>ShaderToy</b> -> Internal tool for creating "
-"and editing shaders in the GLSL language</li>\n"
-"\t\t\t<li><b>Auth</b> -> Registration and authentication of new users</li>\n"
-"\t\t\t<li><b>Breadcrumbs</b> -> Application that integrates breadcrumbs into "
-"the site</li>\n"
-"\t\t\t<li><b>Engagement</b> -> Application that adds user interactions "
-"(Comments, likes, share button, feedback form, bookmarks...)</li>\n"
-"\t\t\t<li><b>Main</b>(Tests) -> The heart of the site, utilities, main "
-"pages, general scripts and styles, everything here.</li>\n"
-"\t\t\t<li><b>Post</b> (Tests) -> Manages content, its display, separation, "
-"sorting, and interlinking</li>\n"
-"\t\t\t<li><b>PagiScroll</b> (Tests) -> Displays posts on the site, combining "
-"such web interface patterns as: Paginator and Infinite Feed</li>\n"
-"\t\t\t"
-
-#: Main/templates/Main/about-website.html:259
+#: Main/templates/Main/about-website.html:224
 msgid "Чужие асеты"
 msgstr "Third-party assets"
 
-#: Main/templates/Main/about-website.html:261
+#: Main/templates/Main/about-website.html:226
 msgid ""
 "Мой сайт использует чужие асеты и ресурсы. Дальше будет идти список из чужих "
 "ассетов, которые так или иначе используются на сайте:"
@@ -603,20 +442,20 @@ msgstr ""
 "My website uses third-party assets and resources. Below is a list of third-"
 "party assets that are used on the website in one way or another:"
 
-#: Main/templates/Main/about-website.html:263
-#: Main/templates/Main/about-website.html:264
+#: Main/templates/Main/about-website.html:228
+#: Main/templates/Main/about-website.html:229
 msgid "Иконки"
 msgstr "Icons"
 
-#: Main/templates/Main/about-website.html:265
+#: Main/templates/Main/about-website.html:230
 msgid "Превьюшки для статей"
 msgstr "Previews for an articles"
 
-#: Main/templates/Main/about-website.html:266
+#: Main/templates/Main/about-website.html:231
 msgid "Шрифты"
 msgstr "Fonts"
 
-#: Main/templates/Main/about-website.html:268
+#: Main/templates/Main/about-website.html:233
 msgid ""
 "\n"
 "\t\tЕсли я забыл кого-то указать (конкретно), свяжитесь со мной, я "
@@ -628,11 +467,11 @@ msgstr ""
 "definitely correct it.\n"
 "\t\t"
 
-#: Main/templates/Main/about-website.html:271
+#: Main/templates/Main/about-website.html:236
 msgid "Политика обработки куки"
 msgstr "Cookies policy"
 
-#: Main/templates/Main/about-website.html:275
+#: Main/templates/Main/about-website.html:240
 msgid ""
 "\n"
 "\t\t\t\tВсе куки могут быть поделены на необходимые, без которых работа "
@@ -646,7 +485,7 @@ msgstr ""
 "this website.\n"
 "\t\t\t\t"
 
-#: Main/templates/Main/about-website.html:280
+#: Main/templates/Main/about-website.html:245
 msgid ""
 "\n"
 "\t\t\t\tВот все необходимые куки, которые использует мой сайт:\n"
@@ -655,7 +494,7 @@ msgstr ""
 "\n"
 "Here are all the necessary cookies that my website uses:\t\t\t\t"
 
-#: Main/templates/Main/about-website.html:285
+#: Main/templates/Main/about-website.html:250
 msgid ""
 "\n"
 "\t\t\t\t\t<li><i>Аутентификационные</i> - позволяют зарегистрировать "
@@ -675,7 +514,7 @@ msgstr ""
 "</li>\n"
 "\t\t\t\t"
 
-#: Main/templates/Main/about-website.html:292
+#: Main/templates/Main/about-website.html:257
 msgid ""
 "\n"
 "\t\t\t\t\tА вот все опциональные куки, которые использует мой сайт:\n"
@@ -685,7 +524,7 @@ msgstr ""
 "These are all the optional cookies that my website uses:\n"
 "\t\t\t\t"
 
-#: Main/templates/Main/about-website.html:297
+#: Main/templates/Main/about-website.html:262
 msgid ""
 "\n"
 "\t\t\t\t\t<li>Куки аналитики (Яндекс Метрика, Google Analitycs)</li>\n"
@@ -695,7 +534,7 @@ msgstr ""
 "<li>Analytics cookies (Yandex Metrica, Google Analytics)</li>\n"
 "\t\t\t\t"
 
-#: Main/templates/Main/about-website.html:302
+#: Main/templates/Main/about-website.html:267
 msgid ""
 "\n"
 "\t\t\t\tПродолжая использовать мой сайт, Вы соглашаетесь на обработку файлов "
@@ -707,25 +546,24 @@ msgstr ""
 "<b>cookies</b> listed above.\n"
 "\t\t\t\t"
 
-#: Main/templates/Main/about-website.html:307
+#: Main/templates/Main/about-website.html:272
 msgid "Политика монетизации"
 msgstr "Monetization policy"
 
-#: Main/templates/Main/about-website.html:313
+#: Main/templates/Main/about-website.html:278
 msgid ""
 "\n"
 "\t\t\t\t\t\tНа моём сайте присутствует реклама, используется рекламная сеть "
-"Яндекс, пока в качестве эксперимента. \n"
+"Яндекс. \n"
 "\t\t\t\t\t\tВсе рекламные блоки отмечены вот такой вот иконкой с лева.\n"
 "\t\t\t\t\t\t"
 msgstr ""
 "\n"
-"My website contains advertising, using the Yandex advertising network, "
-"currently as an experiment. All advertising blocks are marked with this icon "
-"on the left.\n"
+"My website contains advertising, using the Yandex advertising network. All "
+"advertising blocks are marked with this icon on the left.\n"
 "\t\t\t\t\t\t"
 
-#: Main/templates/Main/about-website.html:322
+#: Main/templates/Main/about-website.html:287
 msgid ""
 "\n"
 "\t\t\t\t\t\tТак же на моём сайте располагаются партнёрские программы, от тех "
@@ -740,31 +578,30 @@ msgstr ""
 "All affiliate materials are marked with this icon on the left.\n"
 "\t\t\t\t\t\t"
 
-#: Main/templates/Main/about-website.html:331
+#: Main/templates/Main/about-website.html:296
 msgid ""
 "\n"
 "\t\t\t\t\t\tМой сайт использует криптовалюты в качестве средства принятия "
 "платежей онлайн. В виде донатов, подписок, краудфаундинга и прямых покупок.\n"
 "\t\t\t\t\t\t"
 msgstr ""
+"\n"
+"\t\t\t\t\t\tMy website uses cryptocurrency as a means of accepting online "
+"payments. This includes donations, subscriptions, crowdfunding, and direct "
+"purchases.\n"
+"\t\t\t\t\t"
 
 #: Main/templates/Main/about.html:7 Main/templates/Main/about.html:11
-msgid ""
-"Тим зе Вебмастер - лаборатория разработки. Всё о проекте и направлениях "
-"деятельности этого проекта(автора)"
-msgstr ""
-"Tim the Webmaster, Development lab. All about the project and areas of "
-"activity of this project and author"
+msgid "Об авторе | Тим зе Вебмастер"
+msgstr "About author | Tim The Webmaster"
 
 #: Main/templates/Main/about.html:8 Main/templates/Main/about.html:12
 msgid ""
-"Всё о проекте, зачем он был создан, кто за ним стоит(Тима Чудук), основные "
-"направления деятельности (разработка программ, SEO, ИИ, история "
-"программировани, монетизация)"
+"Об авторе сайта Тим зе Вебмастер (Тима Чудук). Чем он занимается, чем "
+"увлекается что из себя представляет, к чему стремитья"
 msgstr ""
-"Everything about the project, why it was created, who is behind it (Tima "
-"Chuduk), the main onesareas of activity (software development, SEO, AI, "
-"historyprogramming, monetization)"
+"About the author of the website: Tim the Webmaster (Tima Chuduk). What does "
+"he do, what are his hobbies, what is he like, and what are his aspirations?"
 
 #: Main/templates/Main/about.html:14
 msgid "Тима"
@@ -798,31 +635,29 @@ msgstr ""
 "A self-taught programmer who develops web applications, websites, scripts, "
 "and works as a system administrator."
 
+#: Main/templates/Main/about.html:92
+msgid "Всё об авторе сайта Тим зе Вебмастер"
+msgstr "Everything about Tim The Webmaster's website"
+
 #: Main/templates/Main/about.html:93
-msgid "Всё о лаборатории разработки и авторе проекта Тима зе Вебмастера"
-msgstr ""
-"All about the Development lab and the author of the project, Tim the "
-"Webmaster"
-
-#: Main/templates/Main/about.html:94
 msgid ""
-"Расскажу зачем была сделана данная лаборатория и чем она(я) занимаюсь. Так "
-"же немного об авторе данного проекта Тиме зе Вебмастере(он же Тима Чудук)"
+"Расскажу вкратце кто я, чем занимаюсь как разработчик, что делаю в свободное "
+"время, к чему стремлюсь."
 msgstr ""
-"I’ll tell you why this laboratory was created and what it does. Also a "
-"little about the author of this project, Tim the Webmaster (aka Tima Chuduk)"
+"I'll tell you briefly who I am, what I do as a developer, what I do in my "
+"free time, and what I strive for."
 
-#: Main/templates/Main/about.html:139
+#: Main/templates/Main/about.html:138
 msgid "Немного об авторе"
 msgstr "A little bit about author"
 
-#: Main/templates/Main/about.html:144
+#: Main/templates/Main/about.html:143
 msgid ""
 "\n"
 "\t\t\t\t\tЗанимаюсь тем, что разрабатываю телеграм ботов, парсеры сайтов, "
 "скрипты автоматизации на сервера и декстоп а так же создаю и \n"
-"\t\t\t\t\tдорабатываю сайты на django. Чиню и публикую уже готовые сайты(на "
-"любом стеке) на просторах сети. \n"
+"\t\t\t\t\tдорабатываю сайты на django. Чиню и публикую уже готовые сайты на "
+"просторах сети. \n"
 "\t\t\t\t\tЯ специализируюсь на бэкенд стороне проектов. Их архитектуре и "
 "зависимостях.\n"
 "\t\t\t\t\t"
@@ -831,12 +666,12 @@ msgstr ""
 "\t\t\t\t\tI develop Telegram bots, website scrapers, server and desktop "
 "automation scripts, and I also create and\n"
 "\t\t\t\t\tmodify Django websites. I repair and publish ready-made websites "
-"(on any stack) online.\n"
+"online.\n"
 "\t\t\t\t\tI specialize in the backend side of projects. Their architecture "
 "and dependencies.\n"
 "\t\t\t\t\t"
 
-#: Main/templates/Main/about.html:151
+#: Main/templates/Main/about.html:150
 msgid ""
 "\n"
 "\t\t\t\t\tРодился я в Барановичах, Беларусь. Единственной "
@@ -851,43 +686,27 @@ msgstr ""
 "\t\t\t\t\tit's just that even this small town is too crowded for me.\n"
 "\t\t\t\t\t"
 
-#: Main/templates/Main/about.html:157
+#: Main/templates/Main/about.html:156
 msgid ""
 "\n"
 "\t\t\t\t\tВ свободное время, либо катаюсь по городам на поездах и "
-"автостопом, либо занимаюсь программированием встроенных систем(то есть "
-"микроконтроллеров).\n"
+"автостопом, либо программирую.\n"
 "\t\t\t\t\t"
 msgstr ""
 "\n"
 "\t\t\t\t\tIn my free time, I either travel around cities by train and "
-"hitchhike, or I program embedded systems (that is, microcontrollers).\n"
+"hitchhike, or I'm  programming.\n"
 "\t\t\t\t\t"
 
-#: Main/templates/Main/about.html:164
+#: Main/templates/Main/about.html:163
 msgid "А это я"
 msgstr "It is me btw"
 
-#: Main/templates/Main/about.html:167
-msgid "Немного о проекте"
-msgstr "A little bit about the project"
-
-#: Main/templates/Main/about.html:170
-msgid ""
-"\n"
-"\t\t\tЭтот проект, Лаборатория разработки, существует с той лишь целью, "
-"чтобы иметь мою личную платформу на которой я мог бы публиковать\n"
-"\t\t\tсвои инструменты и программы. И рассаказывать об этом, в своих "
-"статьях.\n"
-"\t\t\t"
+#: Main/templates/Main/about.html:166
+msgid "Сферы интересов, как разработчика"
 msgstr ""
-"\n"
-"\t\t\tThis project, the Development Lab, exists for the sole purpose of "
-"having a personal platform on which I can publish\n"
-"\t\t\tmy tools and programs. And talk about them in my articles.\n"
-"\t\t\t"
 
-#: Main/templates/Main/about.html:176
+#: Main/templates/Main/about.html:169
 msgid ""
 "\n"
 "\t\t\tМеня интересует достаточно много топиков и тем:\n"
@@ -897,7 +716,7 @@ msgstr ""
 "\t\t\tI'm interested in quite a few topics and themes:\n"
 "\t\t\t"
 
-#: Main/templates/Main/about.html:191
+#: Main/templates/Main/about.html:184
 msgid ""
 "\n"
 "\t\t\t\t\t<div><b>Администрирование серверов</b> — управления и поддержание "
@@ -914,7 +733,7 @@ msgstr ""
 "\t\t\t\t\t</div>\n"
 "\t\t\t\t\t"
 
-#: Main/templates/Main/about.html:199
+#: Main/templates/Main/about.html:192
 msgid ""
 "\n"
 "\t\t\t\t\t\t<b>Реклама и монетизация</b> — как использовать рекламу на сайте "
@@ -925,7 +744,7 @@ msgstr ""
 "\t\t\t\t\t<b>Advertising and Monetization</b> — How to Use Website "
 "Advertising and How Else to Monetize Online Projects."
 
-#: Main/templates/Main/about.html:205
+#: Main/templates/Main/about.html:198
 msgid ""
 "\n"
 "\t\t\t\t\t<div><b>Django разработка</b> — разработка сайтов и веб-приложений "
@@ -937,7 +756,7 @@ msgstr ""
 "development on an open-source framework, in Python.</div>\n"
 "\t\t\t\t\t"
 
-#: Main/templates/Main/about.html:210
+#: Main/templates/Main/about.html:203
 msgid ""
 "\n"
 "\t\t\t\t\t<div><b>Telegram разработка</b> — разработка телеграм ботов и "
@@ -949,7 +768,7 @@ msgstr ""
 "and applications for them.</div>\n"
 "\t\t\t\t\t"
 
-#: Main/templates/Main/about.html:215
+#: Main/templates/Main/about.html:208
 msgid ""
 "\n"
 "\t\t\t\t\t<div><b>SEO(Поисковая оптимизация)</b> — оптимизация сайтов под "
@@ -961,7 +780,7 @@ msgstr ""
 "optimization for search engines (Google/Yandex).</div>\n"
 "\t\t\t\t\t"
 
-#: Main/templates/Main/about.html:220
+#: Main/templates/Main/about.html:213
 msgid ""
 "\n"
 "\t\t\t\t\t<div><b>Криптовалюты/блокчейн технологии</b> — считай независимые "
@@ -975,7 +794,7 @@ msgstr ""
 "\t\t\t\t\t</div>\n"
 "\t\t\t\t\t"
 
-#: Main/templates/Main/about.html:226
+#: Main/templates/Main/about.html:219
 msgid ""
 "\n"
 "\t\t\t\t\t<div><b>История программирования</b> — изучения причин и следствий "
@@ -990,16 +809,30 @@ msgstr ""
 "\t\t\t\t\t</div>\n"
 "\t\t\t\t\t"
 
-#: Main/templates/Main/about.html:234
+#: Main/templates/Main/about.html:227
 msgid ""
 "\n"
 "\t\t\tЭто конечно же не значит, что я ограничусь именно этими топиками. В "
-"будущем появятся новые, обязательно.\n"
+"будущем могут появиться новые, а старые исчезнуть.\n"
 "\t\t\t"
 msgstr ""
 "\n"
 "\t\t\tThis, of course, doesn't mean I'll limit myself to these topics. New "
-"ones will definitely appear in the future.\n"
+"ones will definitely appear in the future, the old ones will be forgotten.\n"
+"\t\t\t"
+
+#: Main/templates/Main/about.html:232
+msgid ""
+"\n"
+"\t\t\tЯ просто пишу программы для себя и под себя, если получается сделать "
+"для других я это сделаю. Ни к чему конкретному не стремлюсь,\n"
+"\t\t\t просто хорошо провожу время в сети.\n"
+"\t\t\t"
+msgstr ""
+"\n"
+"\t\t\tI just write programs for myself, and if I can, I'll do it for others. "
+"I'm not aiming for anything specific,\n"
+"\t\t\tI'm just having a good time online.\n"
 "\t\t\t"
 
 #: Main/templates/Main/base.html:72 Main/templates/Main/base.html:75
@@ -1052,8 +885,8 @@ msgid "Карта сайта"
 msgstr "Sitemap"
 
 #: Main/templates/Main/base.html:205
-msgid "О проекте и авторе"
-msgstr "About the project and the author"
+msgid "Об авторе"
+msgstr "About author"
 
 #: Main/templates/Main/base.html:206
 msgid "О сайте"
@@ -1174,8 +1007,8 @@ msgid ""
 "Где создаются собственные веб сервисы и инструменты, скрипты автоматизации и "
 "телеграм боты, парсеры сайтов и django приложения."
 msgstr ""
-"The place where I'm creating my own web services and tools, automation scripts and "
-"Telegram bots, website parsers and Django applications. "
+"The place where I'm creating my own web services and tools, automation "
+"scripts and Telegram bots, website parsers and Django applications. "
 
 #: Main/templates/Main/home.html:165
 msgid "Топ инструментов"
@@ -1249,3 +1082,6 @@ msgstr "Notes and records"
 #: Main/templates/Main/loader.html:10
 msgid "ЗАГРУЗКА ..."
 msgstr "LOADING ..."
+
+#~ msgid "О проекте и авторе"
+#~ msgstr "About the project and the author"

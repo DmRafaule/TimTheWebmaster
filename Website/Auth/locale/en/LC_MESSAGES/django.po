@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-03 10:55+0000\n"
+"POT-Creation-Date: 2026-09-03 13:54+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -380,5 +380,6 @@ msgstr ""
 "ignore it. To reset your password, click the link below."
 
 #: Auth/templates/account/email/password_reset_key_message.html:12
+#, python-format
 msgid "Если вы забыли, ваше имя пользователя %(username)s."
 msgstr "If you forgot, your username is %(username)s."

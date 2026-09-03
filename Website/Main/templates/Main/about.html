@@ -4,12 +4,12 @@
 {% load checkLocation %}
 
 {% block head %}
-	<title>{% trans "Тим зе Вебмастер - лаборатория разработки. Всё о проекте и направлениях деятельности этого проекта(автора)" %}</title>
-	<meta name="description" content="{% trans "Всё о проекте, зачем он был создан, кто за ним стоит(Тима Чудук), основные направления деятельности (разработка программ, SEO, ИИ, история программировани, монетизация)" %}">
-	<link rel="canonical" href="{{ request.scheme }}://{{ request.get_host }}{%url 'about'%}" />
+	<title>{% trans "Об авторе | Тим зе Вебмастер" %}</title>
+	<meta name="description" content="{% trans "Об авторе сайта Тим зе Вебмастер (Тима Чудук). Чем он занимается, чем увлекается что из себя представляет, к чему стремитья" %}">
+	<link rel="canonical" href="{{ request.scheme }}://{{ request.get_host }}{% url 'about'%}" />
 	<!-- OpenGraph -->
-	<meta property="og:title" content="{% trans "Тим зе Вебмастер - лаборатория разработки. Всё о проекте и направлениях деятельности этого проекта(автора)" %}" />
-	<meta property="og:description" content="{% trans "Всё о проекте, зачем он был создан, кто за ним стоит(Тима Чудук), основные направления деятельности (разработка программ, SEO, ИИ, история программировани, монетизация)" %}" />
+	<meta property="og:title" content="{% trans "Об авторе | Тим зе Вебмастер" %}" />
+	<meta property="og:description" content="{% trans "Об авторе сайта Тим зе Вебмастер (Тима Чудук). Чем он занимается, чем увлекается что из себя представляет, к чему стремитья" %}" />
 	<meta property="og:type" content="profile" />
 	<meta property="og:profile:first_name" content="{% trans 'Тима' %}" />
 	<meta property="og:profile:last_name" content="{% trans 'Чудук' %}" />
@@ -42,7 +42,7 @@
 		  "@context": "https://schema.org",
 		  "@type": "ProfilePage",
 		  "dateCreated": "2023-10-09T12:34:00-05:00",
-		  "dateModified": "2026-03-05T14:53:00-05:00",
+		  "dateModified": "2026-09-03T16:20:00-01:00",
 		  "mainEntity": {
 			"@type": "Person",
 			"@id": "https://{{domain_name}}{%url 'about'%}#person",
@@ -72,10 +72,9 @@
 			"description": "{% trans 'Программист самоучка, который занимается тем, что разрабатывает веб-приложения, сайты, скрипты и работает в качестве системного администратора.' %}",
 			"image": "{{ request.scheme }}://{{ request.get_host }}{% static '/Main/img/me1.jpg' %}",
 			"sameAs": [
-			  "https://www.reddit.com/user/DmRafaule/",
-			  "https://www.instagram.com/timachedr/",
-			  "https://www.youtube.com/channel/UC7Ucv36mX3KpDipzB6rxuoQ",
-			  "https://github.com/DmRafaule"
+				{% for contact in contacts %}
+					"{{contact.url}}" {% if not forloop.last %},{% endif %}
+				{% endfor %}
 			]
 		  }
 		}
@@ -89,8 +88,8 @@
 	<div class="max-w-5xl self-center flex flex-col ttw-content">
 		<div class="flex gap-3 flex-wrap mb-10">
 			<div class="flex flex-col gap-2 grow shrink basis-2xs" style="flex: 1 1 300px;">
-				<h1>{% trans "Всё о лаборатории разработки и авторе проекта Тима зе Вебмастера" %}</h1>
-				<div>{% trans "Расскажу зачем была сделана данная лаборатория и чем она(я) занимаюсь. Так же немного об авторе данного проекта Тиме зе Вебмастере(он же Тима Чудук)" %}</div>
+				<h1>{% trans "Всё об авторе сайта Тим зе Вебмастер" %}</h1>
+				<div>{% trans "Расскажу вкратце кто я, чем занимаюсь как разработчик, что делаю в свободное время, к чему стремлюсь." %}</div>
 			</div>
 			<div class="flex flex-col justify-between gap-2 grow shrink-0 basis-auto uppercase">
 				<a href="{% url "articles-list" %}" class="basis-auto rounded-[8px] bg-main text-white">
@@ -142,7 +141,7 @@
 				<div class="flex mt-4">
 					{% blocktrans %}
 					Занимаюсь тем, что разрабатываю телеграм ботов, парсеры сайтов, скрипты автоматизации на сервера и декстоп а так же создаю и 
-					дорабатываю сайты на django. Чиню и публикую уже готовые сайты(на любом стеке) на просторах сети. 
+					дорабатываю сайты на django. Чиню и публикую уже готовые сайты на просторах сети. 
 					Я специализируюсь на бэкенд стороне проектов. Их архитектуре и зависимостях.
 					{% endblocktrans %}
 				</div>
@@ -154,7 +153,7 @@
 				</div>
 				<div class="flex mt-4">
 					{% blocktrans %}
-					В свободное время, либо катаюсь по городам на поездах и автостопом, либо занимаюсь программированием встроенных систем(то есть микроконтроллеров).
+					В свободное время, либо катаюсь по городам на поездах и автостопом, либо программирую.
 					{% endblocktrans %}
 				</div>
 			</div>
@@ -163,14 +162,8 @@
 				<div>{% trans 'А это я' %}</div>
 			</div>
 		</div>
-		<h2 class="mt-10" id="project"><a href="#project" class="ref_hidden-int_no-sign">{% trans "Немного о проекте" %}</a></h2>
+		<h2 class="mt-10" id="project"><a href="#project" class="ref_hidden-int_no-sign">{% trans "Сферы интересов, как разработчика" %}</a></h2>
 		<hr>
-		<div>
-			{% blocktrans %}
-			Этот проект, Лаборатория разработки, существует с той лишь целью, чтобы иметь мою личную платформу на которой я мог бы публиковать
-			свои инструменты и программы. И рассаказывать об этом, в своих статьях.
-			{% endblocktrans %}
-		</div>
 		<div>
 			{% blocktrans %}
 			Меня интересует достаточно много топиков и тем:
@@ -231,10 +224,16 @@
 		</div>
 		<div>
 			{% blocktrans %}
-			Это конечно же не значит, что я ограничусь именно этими топиками. В будущем появятся новые, обязательно.
+			Это конечно же не значит, что я ограничусь именно этими топиками. В будущем могут появиться новые, а старые исчезнуть.
 			{% endblocktrans %}
 		</div>
-		<div class="mt-10"></div>
+		<div>
+			{% blocktrans %}
+			Я просто пишу программы для себя и под себя, если получается сделать для других я это сделаю. Ни к чему конкретному не стремлюсь,
+			 просто хорошо провожу время в сети.
+			{% endblocktrans %}
+		</div>
+		
 	</div>
 </div>
 {% endblock %}
