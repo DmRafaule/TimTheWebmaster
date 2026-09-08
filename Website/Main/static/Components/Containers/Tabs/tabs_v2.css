@@ -41,7 +41,7 @@ tabs{
   scroll-snap-align: start;
 
   overflow-y: auto;
-  overscroll-behavior-y: contain;
+  /*overscroll-behavior-y: contain;*/
 }
 
 
