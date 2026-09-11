@@ -20,6 +20,7 @@ sitemaps = {
 urlpatterns = [
     path(r'jet/', include('jet.urls', 'jet')),  # Django JET URLS
     path(r'jet/dashboard/', include('jet.dashboard.urls', 'jet-dashboard')), # Django JET dashboard URLS
+    path('i18n/', include('django.conf.urls.i18n')),
     path('admin/', admin.site.urls),
     path('captcha/', include('captcha.urls')),
     path(
@@ -51,9 +52,9 @@ urlpatterns += i18n_patterns(
     path('tools/', include('Apps.RSSAggregator.urls')),
     path('tools/', include('Apps.ShaderToy.urls')),
     path('tools/', include('Apps.SMIL_SVGAnimationEditor.urls')),
-    path('', include('Post.urls')),
-    path('', include('PagiScroll.urls')),
     path('', include('PagiScrollEditor.urls')),
+    path('', include('PagiScroll.urls')),
+    path('', include('Post.urls')),
 )
 
 handler400 = "Main.views.bad_request"

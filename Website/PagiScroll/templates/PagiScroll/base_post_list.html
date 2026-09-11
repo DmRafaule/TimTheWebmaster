@@ -8,7 +8,6 @@
 	{% if custom_fp %}
 		<title>{{cfp_title}}</title>
 		<meta name="description" content="{{cfp_description}}">
-		<link rel='canonical' href="https://{{domain_name}}{{ category.get_absolute_url }}?page=1{{current_tag|listToURL}}&is_recent=true">
 	{% else %}
 		{% if current_tag|length == 0 %}
 			{% if current_page == 1 %}
@@ -20,11 +19,11 @@
 			<meta name="description" content="{{category.description}}">
 
 			{% if current_page != num_pages %}
-				<link rel='next' href="https://{{domain_name}}{{ category.get_absolute_url }}?page={{current_page|add:'1'}}&is_recent=true">
+				<link rel='next' href="{{ request.scheme }}://{{ request.get_host }}{{ request.path }}?page={{current_page|add:'1'}}&is_recent=true">
 			{% endif %}
 
 			{% if current_page != 1%}
-				<link rel='prev' href="https://{{domain_name}}{{ category.get_absolute_url }}?page={{current_page|add:'-1'}}&is_recent=true">
+				<link rel='prev' href="{{ request.scheme }}://{{ request.get_host }}{{ request.path }}?page={{current_page|add:'-1'}}&is_recent=true">
 			{% endif %}
 
 		{% else %}
@@ -33,18 +32,25 @@
 			<meta name="description" content="{{category.description}} {% trans ' Они были связаны и сгруппированы по следующим тегам: ' %}{{current_tag_names|join:', '}}.{% trans ' Страница '%}{{current_page}}">
 
 			{% if current_page != num_pages %}
-			<link rel='next' href="https://{{domain_name}}{{ category.get_absolute_url }}?page={{current_page|add:'1'}}{{current_tag|listToURL}}&is_recent=true">
+			<link rel='next' href="{{ request.scheme }}://{{ request.get_host }}{{ request.path }}?page={{current_page|add:'1'}}{{current_tag|listToURL}}&is_recent=true">
 			{% endif %}
 
 			{% if current_page != 1%}
-			<link rel='prev' href="https://{{domain_name}}{{ category.get_absolute_url }}?page={{current_page|add:'-1'}}{{current_tag|listToURL}}&is_recent=true">
+			<link rel='prev' href="{{ request.scheme }}://{{ request.get_host }}{{ request.path }}?page={{current_page|add:'-1'}}{{current_tag|listToURL}}&is_recent=true">
 			{% endif %}
 
 		{% endif %}
 	{% endif %}
+
+	{% if not subcategory %}
+		<meta name="robots" content="noindex, follow">
+	{% else %}
+		<link rel='canonical' href="{{ request.scheme }}://{{ request.get_host }}{{ request.path }}">
+	{% endif %}
 	
-	<meta name="robots" content="noindex, follow">
-	<meta name="keywords" content="{{current_tag_names|join:', '}}">
+	{% if current_tag_names %}
+		<meta name="keywords" content="{{current_tag_names|join:', '}}">
+	{% endif %}
 
 	{% if isYandexAdManagerMiddlewareConnected  %}
 		{% include 'YandexAdManager/admanager_header.html' %}
@@ -98,7 +104,7 @@
 
 		{% include 'PagiScroll/post_filter.html' %}
 
-		<div id="meta-data" data-sort="{{is_recent}}" data-tags="{{tags_json}}" data-view="basic" data-who="{{category.slug}}" data-numpages={{num_pages}} data-currentpage="{{current_page}}" data-url="{{category.get_absolute_url}}"></div>
+		<div id="meta-data" data-sort="{{is_recent}}" data-tags="{{tags_json}}" data-view="basic" data-who="{{category.slug}}" data-numpages={{num_pages}} data-currentpage="{{current_page}}" data-url="{{request.path}}"></div>
 		<div id="page" class="flex flex-col gap-4 toObserve">
 			{% include post_preview_template %}
 		</div>

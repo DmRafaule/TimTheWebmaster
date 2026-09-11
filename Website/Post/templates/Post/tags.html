@@ -1,3 +1,4 @@
+{% load static %}
 {% load hasInList %}
 {% load removeFromListInURL %}
 {% load addToListInURL %}
@@ -5,9 +6,21 @@
 <div class="flex gap-2 ref_no-sign flex-wrap">
     {% for tag in post.tags.all %}
         {% if tag.slug|hasInList:current_tag %}
-            <a rel="tag" href="{{ category.get_absolute_url }}?page=1{{tag.slug|removeFromListInURL:current_tag}}&is_recent=true"><div class="tag_selected tag_remove">{{tag}}</div></a>
+            <a rel="tag" href="{{ request.scheme }}://{{ request.get_host }}{{request.path }}?page=1{{tag.slug|removeFromListInURL:current_tag}}&is_recent=true"><div class="tag_selected tag_remove">{{tag}}</div></a>
         {% else %}
-            <a rel="tag" href="{{ category.get_absolute_url }}?page=1{{tag.slug|addToListInURL:current_tag}}&is_recent=true"><div class="tag tag_add">{{tag}}</div></a>
+            <a rel="tag" href="{{ request.scheme }}://{{ request.get_host }}{{request.path }}?page=1{{tag.slug|addToListInURL:current_tag}}&is_recent=true"><div class="tag tag_add">{{tag}}</div></a>
         {% endif %}
     {% endfor %}
 </div>
+{% if post.subcategory %}
+    <div class="" >
+        <a 
+            href="{{ category.get_absolute_url }}{{ post.subcategory.slug }}/" 
+            class="ttw-button_link ref_no-sign w-fit">
+            <div class="ttw-button flex gap-2  items-center w-fit ttw-button_squared ttw-button_border">
+                <img width="16px" src="{% static 'Post/img/category.svg' %}">
+                <div class="p-1">{{ post.subcategory }}</div>
+            </div>
+        </a>
+    </div>
+{% endif %}

@@ -53,10 +53,6 @@ class Tag(models.Model):
 
     def __str__(self):
         return self.name
-    
-    #TODO: Эта функция ошибочна, исправь
-    def get_absolute_url(self, *args, **kwargs):
-        return reverse(f'articles-list')
 
 class Category(models.Model):
     ''' Модель для определения и кастомизации категорий-деревиативов от Post модели (Например Article, Tool, Note) '''
@@ -76,6 +72,7 @@ class Post(models.Model):
     ''' Базовая модель для создания деревиативов, которые будут доступны пользователям '''
     view_name = "post"
     category = models.ForeignKey(Category, on_delete=models.CASCADE, blank=False)
+    subcategory = models.ForeignKey(Tag, on_delete=models.DO_NOTHING, null=True, blank=True, related_name="subcategory")
     slug = models.SlugField(max_length=256, unique=True)
     timeCreated = models.DateTimeField()
     timeUpdated = models.DateTimeField(auto_now=True)
@@ -98,7 +95,18 @@ class Post(models.Model):
                 pass
 
     def get_absolute_url(self):
-        return reverse(self.view_name, kwargs={"post_slug": self.slug})
+        kwargs = {}
+        view_name = ""
+        if self.subcategory:
+            view_name = f"{self.view_name}-with-category"
+            kwargs = {
+                "subcategory_slug": self.subcategory.slug,
+                "post_slug": self.slug
+            }
+        else:
+            view_name = self.view_name
+            kwargs = {"post_slug": self.slug}
+        return reverse(view_name, kwargs=kwargs)
 
     def __str__(self):
         return self.slug
@@ -242,9 +250,6 @@ class Tool(Post, PolymorphicModel):
 
     def __str__(self):
         return self.name
-
-    def get_absolute_url(self):
-        return f'/{get_language()}/tools/{self.slug}/'
     
 class TelegramBot(Tool):
     common_icon_path = "Post/img/telegram.svg"

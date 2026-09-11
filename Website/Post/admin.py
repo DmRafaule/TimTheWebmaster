@@ -53,7 +53,7 @@ class ArticleAdmin(admin.ModelAdmin):
         (
             'Relations',
             {
-                'fields': ['tags', 'similar', 'termins', 'questions'],
+                'fields': ['subcategory', 'tags', 'similar', 'termins', 'questions'],
                 'classes': ['collapse'],
                 'description': 'In this fieldset you can link this article to others post models (Termin, Question, Tags)'
             }
@@ -110,7 +110,7 @@ class ToolAdmin(admin.ModelAdmin):
         (
             'Advanced options',
             {
-                'fields': ['icon', 'type', 'operatingSystem', 'media', 'meta_preview', ('template_ru', 'template_en')],
+                'fields': ['type', 'operatingSystem', 'media', 'meta_preview', ('template_ru', 'template_en')],
                 'classes': ['collapse'],
                 'description': 'In this fieldset you can switch type of tool and configure other options.'
             }
@@ -118,7 +118,7 @@ class ToolAdmin(admin.ModelAdmin):
         (
             'Relations',
             {
-                'fields': ['tags', 'similar'],
+                'fields': ['subcategory', 'tags', 'similar'],
                 'classes': ['collapse'],
                 'description': 'Fieldset for setting up relationship'
             }

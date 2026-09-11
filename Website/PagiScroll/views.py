@@ -1,14 +1,16 @@
 import json
+
+from django.urls import reverse
+from django.shortcuts import render, redirect
 from django.http import Http404, HttpResponseBadRequest
 from django.db.models import Q
-from django.shortcuts import render
 from django.utils.translation import gettext as _
 from django.template.response import TemplateResponse
 from django.views.generic.list import ListView
 from django.contrib.syndication.views import Feed
 from django.utils.translation import get_language
-from django.urls import reverse
 
+from Post.views import article, tool
 import Post.models as Post_M
 import Main.models as Main_M
 import Main.utils as U
@@ -40,11 +42,14 @@ class PostListView(ListView):
     context = {}
     # Какой шаблон используется для отрисовки блоко постов
     post_preview_template = ''
+    # Подкатегория
+    subcategory = None
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         # Update context data
         context['category'] = Post_M.Category.objects.get(slug=self.category)
+        context['subcategory'] = self.subcategory
         context['displayTags'] = True
         context['num_pages'] = self.pages
         context['current_page'] = self.page
@@ -58,14 +63,46 @@ class PostListView(ListView):
 
         return context
 
-    def get(self, request):
+    def dispatch(self, request, *args, **kwargs):
+        ''' Диспетчер: определяет, является ли slug подкатегорией или отдельным постом '''
+        slug = kwargs.get('post_slug') or kwargs.get('subcategory_slug')
+
+        if slug:
+            # 1. Проверяем, существует ли Подкатегория (Tag) с таким slug
+            tag = Post_M.Tag.objects.filter(
+                Q(slug_en=slug) | Q(slug_ru=slug)
+            ).first()
+            if tag:
+                if slug != tag.slug:
+                    return redirect(
+                        f'{self.category}-list-by-category',
+                        subcategory_slug=tag.slug,
+                        permanent=True,
+                    )
+                self.subcategory = tag
+                return super().dispatch(request, *args, **kwargs)
+
+            # 2. Если это не подкатегория, ищем отдельный пост (Article или Tool)
+            post = self.model.objects.filter(slug=slug).first()
+            if post:
+                if self.model == Post_M.Article:
+                    return article(request, post_slug=slug, subcategory_slug=post.subcategory)
+                elif self.model == Post_M.Tool:
+                    return tool(request, post_slug=slug, subcategory_slug=post.subcategory)
+
+            # 3. Если slug не найден ни среди тегов/подкатегорий, ни среди постов
+            raise Http404()
+
+        return super().dispatch(request, *args, **kwargs)
+
+    def get(self, request, subcategory_slug=None):
         error_response = self.fetch(request)
         if error_response is None:
             return TemplateResponse(request, 'PagiScroll/base_post_list.html', self.context)
         else:
             return error_response
 
-    def post(self, request):
+    def post(self, request, subcategory_slug=None):
         error_response = self.fetch(request)
         if  error_response is None:
             return TemplateResponse(request, self.post_preview_template, self.context)
@@ -93,6 +130,9 @@ class PostListView(ListView):
         self.object_list =  self.model.objects.filter(isPublished=True)
         # Фильтруем по порядку создания
         self.object_list = PagiScroll_utils.in_order(self.object_list, self.is_recent)
+        # Фильтруем по подкатегориям
+        if self.subcategory:
+            self.object_list = self.model.objects.filter(subcategory=self.subcategory)
 
         # Получаем теги из запроса
         self.tags_names = []

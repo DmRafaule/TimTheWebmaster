@@ -2,6 +2,7 @@
 {% load i18n %}
 {% load urlToBreadcrumbs %}
 {% load urlToList %}
+{% load switchLang %}
 
 <!DOCTYPE html>
 {% get_current_language as LANGUAGE_CODE %}
@@ -11,18 +12,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	{% block head %}
 	{% endblock %}
-	<link rel="icon" href="https://{{domain_name}}/favicon.svg" type="image/svg+xml">
-	<link rel="icon" href="https://{{domain_name}}/favicon.ico" sizes="32x32" type="image/x-icon">
+	<link rel="icon" href="{{ request.scheme }}://{{ request.get_host }}/favicon.svg" type="image/svg+xml">
+	<link rel="icon" href="{{ request.scheme }}://{{ request.get_host }}/favicon.ico" sizes="32x32" type="image/x-icon">
+
 	{% get_available_languages as LANGUAGES %}
 	{% get_language_info_list for LANGUAGES as languages %}
 	{% with LC_WITH_SLASHES_ON_EDGES="/"|add:LANGUAGE_CODE|add:"/" %}
 		{% with new_url=request.get_full_path|cut:LC_WITH_SLASHES_ON_EDGES %}
 			{% for language in languages %}
-				<link rel="alternate" href="https://{{domain_name}}/{{language.code}}/{{new_url}}"  hreflang="{{language.code}}" >
+				<link rel="alternate" href="{{ request.scheme }}://{{ request.get_host }}{{request.get_full_path|switchLang:language.code }}"  hreflang="{{language.code}}" >
 			{% endfor %}
-			<link rel="alternate" href="https://{{domain_name}}/ru/{{new_url}}"  hreflang="x-default" >
+			<link rel="alternate" href="{{ request.scheme }}://{{ request.get_host }}{{request.get_full_path|switchLang:"ru" }}"  hreflang="x-default" >
 		{% endwith %}
 	{% endwith %}
+
 	<!-- Schema.org Breadcrumbs -->
 	<script type="application/ld+json">
 		{
@@ -35,14 +38,14 @@
 					"@type": "ListItem",
 					"position": {{item.level}},
 					"name": "{{item.name}}",
-					"item": "https://{{domain_name}}{{item.url|safe}}"
+					"item": "{{ request.scheme }}://{{ request.get_host }}{{item.url|safe}}"
 				}
 				{% else %}
 				{
 					"@type": "ListItem",
 					"position": {{item.level}},
 					"name": "{{item.name}}",
-					"item": "https://{{domain_name}}{{item.url|safe}}"
+					"item": "{{ request.scheme }}://{{ request.get_host }}{{item.url|safe}}"
 				},
 				{% endif %}
 				{% endfor %}
@@ -141,14 +144,15 @@
 				<div class="grow-0 shrink ttw-button_swap ttw-button_swap_not_close_on_outsite p-2">
 					{% get_available_languages as LANGUAGES %}
 					{% get_language_info_list for LANGUAGES as languages %}
+					
 					{% for language in languages %}
 						{% if language.code == LANGUAGE_CODE %}
 							<div class="ttw-button ttw-button_link ttw-button_swap_back ttw-button_swap_not_active">
-								<a href="/{{language.code}}{{ request.get_full_path|cut:"ru/"|cut:"en/" }}"><img class="ttw-button_squared border-2 border-solid border-white" width="32" height="32" src="{% static '' %}{{language.code}}.svg" alt="{% trans '3 горизонтальные линии, бургер' %}"></a>
+								<a href="{{ request.get_full_path|switchLang:language.code }}"><img class="ttw-button_squared border-2 border-solid border-white" width="32" height="32" src="{% static '' %}{{language.code}}.svg" alt="{% trans '3 горизонтальные линии, бургер' %}"></a>
 							</div>
 						{% else %}
 							<div class="ttw-button ttw-button_link ttw-button_swap_front">
-								<a href="/{{language.code}}{{ request.get_full_path|cut:"ru/"|cut:"en/" }}"><img class="ttw-button_squared border-2 border-solid border-white" width="32" height="32" src="{% static '' %}{{language.code}}.svg" alt="{% trans '3 горизонтальные линии, бургер' %}"></a>
+								<a href="{{ request.get_full_path|switchLang:language.code }}"><img class="ttw-button_squared border-2 border-solid border-white" width="32" height="32" src="{% static '' %}{{language.code}}.svg" alt="{% trans '3 горизонтальные линии, бургер' %}"></a>
 							</div>
 						{% endif %}
 					{% endfor %}

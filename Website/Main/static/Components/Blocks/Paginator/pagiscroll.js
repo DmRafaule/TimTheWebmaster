@@ -33,6 +33,7 @@ function buildURLList(list, list_el_name){
 }
 // Return a UTR with all possible parameters
 function buildURL(page, tags, is_recent){
+	console.log(url)
 	var new_url = `${url}?page=${page}${buildURLList(tags, 'tag')}${buildURLList([is_recent],'is_recent')}`
 	return new_url
 }

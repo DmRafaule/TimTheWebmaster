@@ -19,7 +19,7 @@
             navigator.clipboard.writeText(`${text}`); 
             toaster.notify('{% trans 'Скопировал ссылку на RSS фид' %}','info');
             yaCounter95199635.reachGoal('onRSS');
-        " data-rss="https://{{domain_name}}{% url rss_feed_path %}?{{current_tag|listToURL}}">
+        " data-rss="{{ request.scheme }}://{{ request.get_host }}{% url rss_feed_path %}?{{current_tag|listToURL}}">
             <div class="ttw-button_squared">
                 <img width="32" height="32" style="padding: 4px"  class="ttw-button_squared" src="{% static 'rss.svg' %}" alt="{% trans 'Значок сортировки' %}">
             </div>

@@ -9,8 +9,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	{% block head %}
 	{% endblock %}
-	<link rel="icon" href="https://{{domain_name}}/favicon.svg" type="image/svg+xml">
-	<link rel="icon" href="https://{{domain_name}}/favicon.ico" sizes="32x32" type="image/x-icon">
+	<link rel="icon" href="{{ request.scheme }}://{{ request.get_host }}/favicon.svg" type="image/svg+xml">
+	<link rel="icon" href="{{ request.scheme }}://{{ request.get_host }}/favicon.ico" sizes="32x32" type="image/x-icon">
     <link type="text/css" rel="stylesheet" href="{% static 'Main/css/index.min.css' %}"/>
 	{% block styles %}
 	{% endblock %}

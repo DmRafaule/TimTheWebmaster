@@ -1,21 +1,54 @@
 from bs4 import BeautifulSoup
 
-from django.shortcuts import get_object_or_404
-from django.template.loader import render_to_string
+from django.http import (
+    Http404,
+    HttpResponse,
+    HttpResponsePermanentRedirect,
+    HttpResponseRedirect,
+)
+from django.shortcuts import get_object_or_404, redirect
 from django.utils.translation import gettext as _
 from django.template.response import TemplateResponse
+from django.db.models import Q
 
 import Post.models as Post_M
 import Main.models as Main_M
 import Main.utils as U
 
 
-def article(request, post_slug):
+def article(request, post_slug, subcategory_slug=None):
     ''' Представление для отображения отдельных записей модели Article '''
     # Инициализируем контекстные переменные по умолчанию
     context = U.initDefaults(request)
     # Получаем соответствующую статью
     post = get_object_or_404(Post_M.Article, slug=post_slug)
+    # Проверяем наличие подкатегории и перенаправляем на соответствующую страницу
+    subcategory = None
+    if subcategory_slug:
+        subcategory = Post_M.Tag.objects.filter(
+            Q(slug_en=subcategory_slug) | Q(slug_ru=subcategory_slug)
+        ).first()
+        if not post.subcategory or not subcategory:
+            raise Http404()
+        if post.subcategory.slug != subcategory.slug:
+            raise Http404()
+        if post.subcategory.slug != subcategory_slug:
+            return redirect(
+                to = 'article-with-category', 
+                permanent = True, 
+                subcategory_slug = post.subcategory.slug,
+                post_slug = post.slug
+            )
+    # Делаем редирект если у статьи есть подкатегория и при этом в УРЛ не используется подкатегория
+    else:
+        if post.subcategory:
+            return redirect(
+                to = 'article-with-category', 
+                permanent = True, 
+                subcategory_slug = post.subcategory.slug,
+                post_slug = post.slug
+            )
+    
     context.update({'post': post})
     # Получаем медиа файлы относящиеся к этой статье / Для обратной совместимости
     downloadables = post.media.filter_by_lang().filter(type=Main_M.Media.RAW_FILE).order_by('timeCreated')
@@ -24,6 +57,7 @@ def article(request, post_slug):
     context.update({'downloadables': downloadables})
     context.update({'images': images})
     context.update({'videos': videos})
+
     # Получаем относящийся подкаст и соответствующий эпизод # Для Buzzsproud
     #podcast = Post_M.ExternalPodcast.objects.filter_by_lang().first()
     #podcast_episode = Post_M.ExternalPodcastEpisode.objects.filter(related_post=post, podcast=podcast).first()
@@ -35,13 +69,15 @@ def article(request, post_slug):
     # Получаем относящееся видео
     external_video = Post_M.ExternalVideo.objects.filter(related_post=post).first()
     context.update({'external_video': external_video})
-    ## Определяем сколько времени необходимо для прочтения
+
+    # Определяем сколько времени необходимо для прочтения
     with post.template.open('r') as file:
         soup = BeautifulSoup(file.read(), features="lxml")
         text = soup.get_text()
         words_in_text = len(text.split())
         time_to_read = round(words_in_text/240)
     context.update({'time_to_read': time_to_read})
+
     # Получаем предыдущую статью
     previous_id=Post_M.Article.objects.filter(
          id__lt=post.id,
@@ -62,9 +98,36 @@ def article(request, post_slug):
     # Возвращаем TemplateRespose, чтобы моим мидлвари было легче взаимодействовать и модифицировать шаблон
     return TemplateResponse(request, post.template.path, context)
 
-def tool(request, post_slug):
+def tool(request, post_slug, subcategory_slug=None):
     ''' Представление для отображения отдельных записей модели Tool '''
     post = get_object_or_404(Post_M.Tool, slug=post_slug)
+    # Проверяем наличие подкатегории и перенаправляем на соответствующую страницу
+    subcategory = None
+    if subcategory_slug:
+        subcategory = Post_M.Tag.objects.filter(
+            Q(slug_en=subcategory_slug) | Q(slug_ru=subcategory_slug)
+        ).first()
+        if not post.subcategory or not subcategory:
+            raise Http404()
+        if post.subcategory.slug != subcategory.slug:
+            raise Http404()
+        if post.subcategory.slug != subcategory_slug:
+            return redirect(
+                to = 'tool-with-category', 
+                permanent = True, 
+                subcategory_slug = post.subcategory.slug,
+                post_slug = post.slug
+            )
+    # Делаем редирект если у статьи есть подкатегория и при этом в УРЛ не используется подкатегория
+    else:
+        if post.subcategory:
+            return redirect(
+                to = 'tool-with-category', 
+                permanent = True, 
+                subcategory_slug = post.subcategory.slug,
+                post_slug = post.slug
+            )
+
     context = U.initDefaults(request)
     if post.template:
         return TemplateResponse(request, post.template.path, context=context)

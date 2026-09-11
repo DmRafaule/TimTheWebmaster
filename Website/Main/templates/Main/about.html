@@ -45,7 +45,7 @@
 		  "dateModified": "2026-09-03T16:20:00-01:00",
 		  "mainEntity": {
 			"@type": "Person",
-			"@id": "https://{{domain_name}}{%url 'about'%}#person",
+			"@id": "{{ request.scheme }}://{{ request.get_host }}{%url 'about'%}#person",
 			"birthDate": "2000-07-16",
 			"jobTitle": [
 				"{% trans 'Веб-разработчик' %}", 
