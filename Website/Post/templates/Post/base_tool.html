@@ -193,7 +193,7 @@
                     {% include 'Engagement/Other/interaction.html' with path=post.get_absolute_url %}
                 {% endif %}
                 {% if isBreadcrumbsMiddlewareConnected %}
-                    {% include 'Breadcrumbs/breadcrumbs.html' with path=request.META.HTTP_REFERER %}
+                    {% include 'Breadcrumbs/breadcrumbs.html' with path=request.get_full_path %}
                 {% endif %}
 
                 {% if post.tags.all|length > 0 %}

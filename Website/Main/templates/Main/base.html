@@ -33,7 +33,7 @@
 			"@type": "BreadcrumbList",
 			"itemListElement": [
 				{% for item in request.get_full_path|urlToBreadcrumbs %}
-				{% if forloop.counter == request.get_full_path|urlToList|length%}
+				{% if forloop.counter == request.get_full_path|urlToList|length %}
 				{
 					"@type": "ListItem",
 					"position": {{item.level}},
