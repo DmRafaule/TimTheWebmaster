@@ -95,7 +95,7 @@ def _post_save_interaction(sender, instance, **kwargs):
 
             # Ищем Interaction по новому URL, старому URL или по совпадению slug в конце пути
             interaction = Interaction.objects.filter(
-                Q(url=new_url) | Q(url=old_url) | Q(url__endswith=f"/{instance.slug}/")
+                Q(url=new_url) | Q(url=old_url)
             ).first()
 
             if interaction:
