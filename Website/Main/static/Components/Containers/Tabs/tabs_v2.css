@@ -38,10 +38,10 @@ tabs{
     background: var(--main_color);
 }
 .ttw-tabs-body-element {
-  scroll-snap-align: start;
+  /*scroll-snap-align: start;
 
   overflow-y: auto;
-  /*overscroll-behavior-y: contain;*/
+  overscroll-behavior-y: contain;*/
 }
 
 
