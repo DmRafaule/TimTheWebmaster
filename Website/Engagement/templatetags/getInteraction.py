@@ -1,12 +1,13 @@
 from django import template
 from Engagement.models import Interaction
+from Engagement.utils import convert_old_urls
 
 register = template.Library()
 
 
 @register.filter(name='getInteraction')
 def getInteraction(url):
-    interaction_qs = Interaction.objects.filter(url=url)
+    interaction_qs = Interaction.objects.filter(url=convert_old_urls(url))
     if len(interaction_qs) > 0:
         return interaction_qs[0]
     else:

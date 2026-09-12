@@ -1,5 +1,6 @@
 from django.db import models
 from django.db.models.signals import post_delete, post_save
+from django.db.models import Q
 from django.dispatch import receiver
 from Website.settings import LANGUAGES
 from Post.models import Post, Tool
@@ -74,17 +75,32 @@ def updateInteractionCommentsLength(url: str):
 @receiver(post_save)
 def _post_save_interaction(sender, instance, **kwargs): 
     if isinstance(instance, Post):
-        isNewPostCreated = kwargs['created']
         for lang_code in LANGUAGES:
             code = lang_code[0]
             category = instance.category.slug
-            slug = instance.slug
-            url = f"/{'/'.join([code,category,slug])}/"
-            if isNewPostCreated:
-                interaction = Interaction(url=url)
-                interaction.save()
+            field_name = f"slug_{code}"
+            
+            if instance.subcategory:
+                subcategory_slug = getattr(instance.subcategory, field_name, instance.subcategory.slug)
+                new_url = f"/{code}/{category}/{subcategory_slug}/{instance.slug}/"
             else:
-                interaction, isCreated = Interaction.objects.get_or_create(url=url)
+                new_url = f"/{code}/{category}/{instance.slug}/"
+
+            old_url = f"/{code}/{category}/{instance.slug}/"
+
+            # Ищем Interaction по новому URL, старому URL или по совпадению slug в конце пути
+            interaction = Interaction.objects.filter(
+                Q(url=new_url) | Q(url=old_url) | Q(url__endswith=f"/{instance.slug}/")
+            ).first()
+
+            if interaction:
+                if interaction.url != new_url:
+                    # Перевязываем комментарии на новый URL
+                    Comment.objects.filter(url=interaction.url).update(url=new_url)
+                    interaction.url = new_url
+                    interaction.save()
+            else:
+                Interaction.objects.create(url=new_url)
 
 @receiver(post_delete)
 def _post_delete_interaction(sender, instance, **kwargs): 

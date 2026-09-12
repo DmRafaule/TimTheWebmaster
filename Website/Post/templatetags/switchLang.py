@@ -62,8 +62,11 @@ def switchLang(path, locale):
                     # Это Пост
                     else:
                         new_path = '/'.join([new_path, url])
-            # Пост в подкатегории
+            # Пост в подкатегории, Пагинация
             case 4:
-                new_path = '/'.join([new_path, url])
+                if url.startswith('page='):
+                    new_path = '/'.join([new_path, f"?{url}"])
+                else:
+                    new_path = '/'.join([new_path, url])
     new_path += '/'
     return new_path

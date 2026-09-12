@@ -1,11 +1,12 @@
 from django.template.response import TemplateResponse
-from Main.forms import FeedbackForm
-from Main.models import Media
-from Main.utils import get_tool
 from django.template import loader
+
+from Main.forms import FeedbackForm
+from Main.utils import get_tool
+
 from .models import Comment, Interaction
 from .forms import CommentForm, ReviewForm, EmailForm
-from .utils import get_root_comments
+from .utils import convert_old_urls
 
 class EngagementMiddleware:
     def __init__(self, get_response):
@@ -65,11 +66,10 @@ class EngagementMiddleware:
         return response
     
     def _update_views_counter(self, url):
-        interaction_qs = Interaction.objects.filter(url=url)
-        if len(interaction_qs) > 0:
-            interaction = interaction_qs[0]
-            interaction.views += 1
-            interaction.save()
+        canonical_url = convert_old_urls(url)
+        interaction, _ = Interaction.objects.get_or_create(url=canonical_url)
+        interaction.views += 1
+        interaction.save()
     
     def _set_comments(self, request, response, isComments, template=None, form=CommentForm()):
         if isComments:
