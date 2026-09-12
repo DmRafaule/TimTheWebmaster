@@ -2,9 +2,10 @@ from django.db import models
 from django.db.models.signals import post_delete, post_save
 from django.db.models import Q
 from django.dispatch import receiver
-from Website.settings import LANGUAGES
-from Post.models import Post, Tool
 from django.utils.translation import gettext as _
+
+from Website.settings import LANGUAGES
+from Post.models import Post
 
 
 class Interaction(models.Model):
@@ -15,6 +16,10 @@ class Interaction(models.Model):
     comments = models.IntegerField(default=0)
     bookmarks = models.IntegerField(default=0)
     time_updated = models.DateTimeField(auto_now=True, auto_created=True)
+
+    def __str__(self):
+        return self.url
+    
 
 class Email(models.Model):
     email = models.EmailField()
