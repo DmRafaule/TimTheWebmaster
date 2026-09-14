@@ -37,7 +37,12 @@ def switchLang(path, locale):
             # Категория или статические страницы
             case 2:
                 category = Category.objects.filter(slug=url).first()
-                new_list.append(category.slug)
+                # Категории
+                if category:
+                    new_list.append(category.slug)
+                # Статические страницы
+                else:
+                    new_list.append(url)
             # Пагинация, Подкатегория пагинации или Пост
             case 3:
                 # Это Пагинация 
