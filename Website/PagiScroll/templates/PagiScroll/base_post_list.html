@@ -45,7 +45,11 @@
 	{% if not subcategory %}
 		<meta name="robots" content="noindex, follow">
 	{% else %}
-		<link rel='canonical' href="{{ request.scheme }}://{{ request.get_host }}{{ request.path }}">
+		{% if current_tag|length == 0 %}
+			<link rel='canonical' href="{{ request.scheme }}://{{ request.get_host }}{{ request.path }}">
+		{% else %}
+			<meta name="robots" content="noindex, follow">
+		{% endif %}
 	{% endif %}
 	
 	{% if current_tag_names %}
