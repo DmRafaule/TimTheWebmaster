@@ -67,6 +67,7 @@ def home(request):
     # Получаем и сохраняем внутренние инструменты, которые выбираются в общей конфигурации сайта
     context.update({'popular_tools': U.get_posts_by_popularity(3, Tool)})
     context.update({'recent_tools': U.get_latest_post(3, Tool.objects.all())})
+    context.update({'tool_subcategories': U.get_subcategories(Tool.objects.all())})
     # Получаем и сохраняем комментарии про статьи на текущем языке 
     comments_in_tools = Comment.objects.filter(url__startswith=f"/{get_language()}/tools/").order_by('-time_published')[:10]
     context.update({'comments_in_tools': comments_in_tools})
@@ -74,6 +75,7 @@ def home(request):
     # Получаем самые последние статьи
     context.update({'popular_articles': U.get_posts_by_popularity(3, Article)})
     context.update({'recent_articles': U.get_latest_post(3, Article.objects.all())})
+    context.update({'article_subcategories': U.get_subcategories(Article.objects.all())})
     # Получаем и сохраняем комментарии про статьи на текущем языке 
     comments_in_articles = Comment.objects.filter(url__startswith=f"/{get_language()}/articles/").order_by('-time_published')[:10]
     context.update({'comments_in_articles': comments_in_articles})

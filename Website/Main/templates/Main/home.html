@@ -156,62 +156,70 @@
 
 		<div class="flex flex-col gap-5">
 			<div class="flex">
-				<div class="flex flex-col justify-between gap-5 grow-[7] shrink basis-2xs overflow-hidden">
-						<tabs>
-							<div class="ttw-tabs-headers scroll-snap-x items-start">
-								<div class="ttw-tabs-navigation gap-2 p-2 w-full">
-									<a class="ttw-tabs-navigation-tab ttw-tab_active ref-int_no-sign" href="#most-popular-tools">
-										<h2>{% trans "Топ инструментов" %}</h2>
-									</a>
-									<a class="ttw-tabs-navigation-tab" href="#most-recent-tools">
-										<h2>{% trans "Новые инструменты" %}</h2>
-									</a>
-									<div class="ttw-tabs-navigation-buttons sticky right-1 min-w-max flex gap-1 items-center w-full justify-end">
-										<div class="ttw-button ttw-button_action ttw-tabs-prev-tab">
-											<img class="ttw-button_squared bg-main" src="{% static 'chevron_left.svg' %}" width="32" height="32" alt="{% trans "Предыдущая вкладка на табуляторе" %}">
-										</div>
-										<div class="ttw-button ttw-button_action ttw-tabs-next-tab">
-											<img class="ttw-button_squared bg-main" src="{% static 'chevron.svg' %}" width="32" height="32" alt="{% trans "Следующая вкладка на табуляторе" %}">
-										</div>
+				<div class="flex flex-col justify-between grow-[7] shrink basis-2xs overflow-hidden">
+					<tabs>
+						<div class="ttw-tabs-headers scroll-snap-x items-start">
+							<div class="ttw-tabs-navigation gap-2 p-2 w-full">
+								<a class="ttw-tabs-navigation-tab ttw-tab_active ref-int_no-sign" href="#most-popular-tools">
+									<h2>{% trans "Топ инструментов" %}</h2>
+								</a>
+								<a class="ttw-tabs-navigation-tab" href="#most-recent-tools">
+									<h2>{% trans "Новые инструменты" %}</h2>
+								</a>
+								<div class="ttw-tabs-navigation-buttons sticky right-1 min-w-max flex gap-1 items-center w-full justify-end">
+									<div class="ttw-button ttw-button_action ttw-tabs-prev-tab">
+										<img class="ttw-button_squared bg-main" src="{% static 'chevron_left.svg' %}" width="32" height="32" alt="{% trans "Предыдущая вкладка на табуляторе" %}">
+									</div>
+									<div class="ttw-button ttw-button_action ttw-tabs-next-tab">
+										<img class="ttw-button_squared bg-main" src="{% static 'chevron.svg' %}" width="32" height="32" alt="{% trans "Следующая вкладка на табуляторе" %}">
 									</div>
 								</div>
 							</div>
-							<hr>
-							<section class="ttw-tabs-body scroll-snap-x">
-								<article class="ttw-tabs-body-element flex flex-col justify-between" id="most-popular-tools">
-									<div id="tool_block_ref" class="flex flex-row items-start flex-wrap gap-5 p-2">
-										<div class="flex flex-row flex-wrap gap-5 grow basis-2xl p-2">
-											{% include 'Post/basic--post_preview-tool.html' with posts=popular_tools %}
-										</div>
+						</div>
+						<hr>
+						<section class="ttw-tabs-body scroll-snap-x">
+							<article class="ttw-tabs-body-element flex flex-col justify-between" id="most-popular-tools">
+								<div id="tool_block_ref" class="flex flex-row items-start flex-wrap gap-5 p-2">
+									<div class="flex flex-row flex-wrap gap-5 grow basis-2xl p-2">
+										{% include 'Post/basic--post_preview-tool.html' with posts=popular_tools %}
 									</div>
-									<div class="flex justify-end">
-										<div class="ttw-button ttw-button_link bg-main text-white rounded-tl-xl ref_hidden_no-sign">
-											<a href="{% url 'tools-list' %}?page=1">
-												<p class="rounded-tl-xl p-2">
-												{% trans 'Больше ...' %}
-												</p>
-											</a>
-										</div>
+								</div>
+								<div class="flex justify-end">
+									<div class="ttw-button ttw-button_link bg-main text-white rounded-tl-xl ref_hidden_no-sign">
+										<a href="{% url 'tools-list' %}?page=1">
+											<p class="rounded-tl-xl p-2">
+											{% trans 'Больше ...' %}
+											</p>
+										</a>
 									</div>
-								</article>
-								<article class="ttw-tabs-body-element flex flex-col justify-between" id="most-recent-tools">
-									<div class="flex flex-row items-start flex-wrap gap-5 p-2">
-										<div class="flex flex-row p-2 flex-wrap gap-5 grow basis-2xl">
-											{% include 'Post/basic--post_preview-tool.html' with posts=recent_tools %}
-										</div>
+								</div>
+							</article>
+							<article class="ttw-tabs-body-element flex flex-col justify-between" id="most-recent-tools">
+								<div class="flex flex-row items-start flex-wrap gap-5 p-2">
+									<div class="flex flex-row p-2 flex-wrap gap-5 grow basis-2xl">
+										{% include 'Post/basic--post_preview-tool.html' with posts=recent_tools %}
 									</div>
-									<div class="flex justify-end">
-										<div class="ttw-button ttw-button_link bg-main text-white rounded-tl-xl ref_hidden_no-sign">
-											<a href="{% url 'tools-list' %}?page=1">
-												<p class="rounded-tl-xl p-2">
-												{% trans 'Больше ...' %}
-												</p>
-											</a>
-										</div>
+								</div>
+								<div class="flex justify-end">
+									<div class="ttw-button ttw-button_link bg-main text-white rounded-tl-xl ref_hidden_no-sign">
+										<a href="{% url 'tools-list' %}?page=1">
+											<p class="rounded-tl-xl p-2">
+											{% trans 'Больше ...' %}
+											</p>
+										</a>
 									</div>
-								</article>
-							</section>
-						</tabs>
+								</div>
+							</article>
+						</section>
+					</tabs>
+					<div class="flex justify-around flex-wrap gap-1 bg-main text-white">
+						<div class="flex items-center p-1"><b>{% trans "Подкатегории:" %}</b></div>
+						{% for subc in tool_subcategories %}
+							<div class="ttw-button ttw-button_link text-white rounded-tl-xl ref_hidden_no-sign grow shrink basis-auto" >
+								<a href="{% url 'tools-list-by-category' subc.slug %}"><p class="p-1">{{subc}}</p></a>
+							</div>
+						{% endfor %}
+					</div>
 				</div>
 				<div style="writing-mode: vertical-rl;text-orientation: mixed;background-color: var(--main_color);color: var(--color-white);padding: 5px;text-transform: uppercase;display: flex;gap: 20px;">
 					<div class="ttw-button_swap resize-block" data-body="responses-tools-main" data-ref-element-id="tool_block_ref" data-ref-selector-id="tool_block">
@@ -244,6 +252,8 @@
 					</div>
 				</div>
 			</div>
+			
+
 			{% if isYandexAdManagerMiddlewareConnected  %}
 				{% for adlocation in adlocations %}
 					{% if adlocation.adlocation_name == "HOME_SECOND_VISIBLE" %}
@@ -253,7 +263,7 @@
 			{% endif %}
 
 			<div class="flex">
-				<div class="flex flex-col justify-between gap-5 grow-[7] shrink basis-2xs overflow-hidden">
+				<div class="flex flex-col justify-between grow-[7] shrink basis-2xs overflow-hidden">
 					<tabs>
 						<div class="ttw-tabs-headers scroll-snap-x items-start">
 							<div class="ttw-tabs-navigation gap-2 p-2 w-full">
@@ -309,6 +319,14 @@
 							</article>
 						</section>
 					</tabs>
+					<div class="flex justify-around flex-wrap gap-1 bg-main text-white">
+						<div class="flex items-center p-1"><b>{% trans "Подкатегории:" %}</b></div>
+					{% for subc in article_subcategories %}
+						<div class="ttw-button ttw-button_link text-white rounded-tl-xl ref_hidden_no-sign grow shrink basis-auto" >
+							<a href="{% url 'articles-list-by-category' subc.slug %}"><p class="p-1">{{subc}}</p></a>
+						</div>
+					{% endfor %}
+					</div>
 				</div>
 				<div style="writing-mode: vertical-rl;text-orientation: mixed;background-color: var(--main_color);color: var(--color-white);padding: 5px;text-transform: uppercase;display: flex;gap: 20px;">
 					<div class="ttw-button_swap resize-block" data-body="responses-articles-main" data-ref-element-id="article_block_ref" data-ref-selector-id="article_block">
@@ -341,6 +359,7 @@
 					</div>
 				</div>
 			</div>
+			
 			{% comment %}
 			<div class="flex gap-3 flex-wrap basis-2xs">
 				{% if recent_services %}

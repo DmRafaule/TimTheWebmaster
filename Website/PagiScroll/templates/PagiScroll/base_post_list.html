@@ -11,6 +11,7 @@
 	{% else %}
 		{% if current_tag|length == 0 %}
 			{% if current_page == 1 %}
+			
 				<title>{{category.name}}</title>
 			{% else %}
 				<title>{{category.name}} - {% trans 'страница '%}{{current_page}}</title>

@@ -154,6 +154,13 @@ def getSpecialTopLevelCategories(categories):
 
     return categories_on_side
 
+def get_subcategories(queryset):
+    subcategories = set()
+    for obj in queryset:
+        if obj.subcategory:
+            subcategories.add(obj.subcategory)
+    return subcategories
+
 def initDefaults(request):
     ''' Инициализирует общие для всех контекстные переменные '''
     # Пытаемся получить текущие настройки сайта
