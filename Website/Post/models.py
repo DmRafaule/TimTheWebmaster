@@ -244,6 +244,8 @@ class Tool(Post, PolymorphicModel):
         Linux = "Linux"
     operatingSystem = models.CharField(max_length=100, choices=OSType, default=OSType.Any)
 
+    source = models.URLField(max_length=2048, blank=True, null=True)
+
 
     def save(self, *args, **kwargs):
         super(Tool, self).save(*args, **kwargs)

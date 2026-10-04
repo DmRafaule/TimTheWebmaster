@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-03 14:09+0000\n"
+"POT-Creation-Date: 2026-10-04 07:57+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -194,7 +194,7 @@ msgstr "The topics that are covered and studied on this website include:"
 #: Main/templates/Main/about-website.html:193
 #: Main/templates/Main/about-website.html:196
 #: Main/templates/Main/about.html:176 Main/templates/Main/about.html:179
-#: Main/templates/Main/home.html:172 Main/templates/Main/home.html:268
+#: Main/templates/Main/home.html:172 Main/templates/Main/home.html:279
 msgid "Предыдущая вкладка на табуляторе"
 msgstr "Previous tab on the tab bar"
 
@@ -835,10 +835,10 @@ msgstr ""
 "\t\t\tI'm just having a good time online.\n"
 "\t\t\t"
 
-#: Main/templates/Main/base.html:72 Main/templates/Main/base.html:75
-#: Main/templates/Main/base.html:85 Main/templates/Main/base.html:91
-#: Main/templates/Main/base.html:108 Main/templates/Main/base.html:147
-#: Main/templates/Main/base.html:151 Main/templates/Main/base_minimal.html:23
+#: Main/templates/Main/base.html:69 Main/templates/Main/base.html:72
+#: Main/templates/Main/base.html:82 Main/templates/Main/base.html:88
+#: Main/templates/Main/base.html:105 Main/templates/Main/base.html:145
+#: Main/templates/Main/base.html:149 Main/templates/Main/base_minimal.html:23
 #: Main/templates/Main/base_minimal.html:26
 #: Main/templates/Main/base_minimal.html:36
 #: Main/templates/Main/base_minimal.html:42
@@ -848,105 +848,105 @@ msgstr ""
 msgid "3 горизонтальные линии, бургер"
 msgstr "3 horizontal lines, burger"
 
-#: Main/templates/Main/base.html:97 Main/templates/Main/base_minimal.html:48
+#: Main/templates/Main/base.html:94 Main/templates/Main/base_minimal.html:48
 msgid "Главная иконка сайта"
 msgstr "Main icon of the website"
 
-#: Main/templates/Main/base.html:112 Main/templates/Main/base_minimal.html:63
+#: Main/templates/Main/base.html:109 Main/templates/Main/base_minimal.html:63
 msgid "Удалить все"
 msgstr "Remove all"
 
-#: Main/templates/Main/base.html:130 Main/templates/Main/base_minimal.html:77
+#: Main/templates/Main/base.html:127 Main/templates/Main/base_minimal.html:77
 msgid "Админка"
 msgstr "Admin"
 
-#: Main/templates/Main/base.html:131 Main/templates/Main/base_minimal.html:78
+#: Main/templates/Main/base.html:128 Main/templates/Main/base_minimal.html:78
 msgid "Редактор"
 msgstr "Editor"
 
-#: Main/templates/Main/base.html:133 Main/templates/Main/base_minimal.html:80
+#: Main/templates/Main/base.html:130 Main/templates/Main/base_minimal.html:80
 msgid "Профиль"
 msgstr "Profile"
 
-#: Main/templates/Main/base.html:135 Main/templates/Main/base_minimal.html:82
+#: Main/templates/Main/base.html:132 Main/templates/Main/base_minimal.html:82
 msgid "Домашняя"
 msgstr "Home"
 
-#: Main/templates/Main/base.html:181
+#: Main/templates/Main/base.html:179
 msgid "Крестик"
 msgstr "Cross"
 
-#: Main/templates/Main/base.html:201
+#: Main/templates/Main/base.html:199
 msgid "Другие ссылки"
 msgstr "Other links"
 
-#: Main/templates/Main/base.html:204
+#: Main/templates/Main/base.html:202
 msgid "Карта сайта"
 msgstr "Sitemap"
 
-#: Main/templates/Main/base.html:205
+#: Main/templates/Main/base.html:203
 msgid "Об авторе"
 msgstr "About author"
 
-#: Main/templates/Main/base.html:206
+#: Main/templates/Main/base.html:204
 msgid "О сайте"
 msgstr "About website"
 
-#: Main/templates/Main/base.html:211
+#: Main/templates/Main/base.html:209
 msgid "Контакты"
 msgstr "Contacts"
 
-#: Main/templates/Main/base.html:216
+#: Main/templates/Main/base.html:214
 msgid "иконка"
 msgstr "icon"
 
-#: Main/templates/Main/base.html:225
+#: Main/templates/Main/base.html:223
 msgid "Формы"
 msgstr "Forms"
 
-#: Main/templates/Main/base.html:236
+#: Main/templates/Main/base.html:234
 msgid "письмо"
 msgstr "message"
 
-#: Main/templates/Main/base.html:237
+#: Main/templates/Main/base.html:235
 msgid "Подписаться на почтовую рассылку"
 msgstr "Subscribe to news letters"
 
-#: Main/templates/Main/base.html:248
+#: Main/templates/Main/base.html:246
 msgid "облачко"
 msgstr "cloud"
 
-#: Main/templates/Main/base.html:249
+#: Main/templates/Main/base.html:247
 msgid "Форма обратной связи"
 msgstr "Feedback form"
 
-#: Main/templates/Main/base.html:256
+#: Main/templates/Main/base.html:254
 msgid "RSS каналы"
 msgstr "RSS channels"
 
-#: Main/templates/Main/base.html:261 Main/templates/Main/base.html:272
-#: Main/templates/Main/base.html:283
+#: Main/templates/Main/base.html:259 Main/templates/Main/base.html:270
+#: Main/templates/Main/base.html:281
 msgid "Скопировал ссылку на RSS фид"
 msgstr "Copied a link to RSS feed"
 
-#: Main/templates/Main/base.html:265 Main/templates/Main/base.html:276
-#: Main/templates/Main/base.html:287
+#: Main/templates/Main/base.html:263 Main/templates/Main/base.html:274
+#: Main/templates/Main/base.html:285
 msgid "Значок rss-фида"
 msgstr "RSS-feed sign"
 
-#: Main/templates/Main/base.html:266
+#: Main/templates/Main/base.html:264
 msgid "Подписаться на выход последних статей"
 msgstr "Subscribe to the latest articles"
 
-#: Main/templates/Main/base.html:277
+#: Main/templates/Main/base.html:275
 msgid "Подписаться на выход последних инструментов"
 msgstr "Subscribe to the latest tools"
 
-#: Main/templates/Main/base.html:288
+#: Main/templates/Main/base.html:286
 msgid "Подписаться на выход последних заметок"
 msgstr "Subscribe to the latest notes"
 
-#: Main/templates/Main/base.html:299
+#: Main/templates/Main/base.html:297
 msgid "Поддержать"
 msgstr "Support"
 
@@ -1018,70 +1018,52 @@ msgstr "Top tools"
 msgid "Новые инструменты"
 msgstr "New tools"
 
-#: Main/templates/Main/home.html:175 Main/templates/Main/home.html:271
+#: Main/templates/Main/home.html:175 Main/templates/Main/home.html:282
 msgid "Следующая вкладка на табуляторе"
 msgstr "Next tab on the tab bar."
 
 #: Main/templates/Main/home.html:192 Main/templates/Main/home.html:208
-#: Main/templates/Main/home.html:241 Main/templates/Main/home.html:288
-#: Main/templates/Main/home.html:304 Main/templates/Main/home.html:337
-#: Main/templates/Main/home.html:399 Main/templates/Main/home.html:443
+#: Main/templates/Main/home.html:249 Main/templates/Main/home.html:299
+#: Main/templates/Main/home.html:315 Main/templates/Main/home.html:356
 msgid "Больше ..."
 msgstr "See more ..."
 
-#: Main/templates/Main/home.html:220
+#: Main/templates/Main/home.html:217 Main/templates/Main/home.html:324
+msgid "Подкатегории:"
+msgstr "Subcategories:"
+
+#: Main/templates/Main/home.html:228
 msgid "Показать Отзывы"
 msgstr "Show reviews"
 
-#: Main/templates/Main/home.html:223
+#: Main/templates/Main/home.html:231
 msgid "Спрятать Отзывы"
 msgstr "hide reviews"
 
-#: Main/templates/Main/home.html:230
+#: Main/templates/Main/home.html:238
 msgid "Отзывы"
 msgstr "Reviews"
 
-#: Main/templates/Main/home.html:261
+#: Main/templates/Main/home.html:272
 msgid "Топ статей"
 msgstr "Top articles"
 
-#: Main/templates/Main/home.html:264
+#: Main/templates/Main/home.html:275
 msgid "Недавние статьи"
 msgstr "Latest articles"
 
-#: Main/templates/Main/home.html:316
+#: Main/templates/Main/home.html:335
 msgid "Показать Комментарии"
 msgstr "Show comments"
 
-#: Main/templates/Main/home.html:319
+#: Main/templates/Main/home.html:338
 msgid "Спрятать Комментарии"
 msgstr "Hide comments"
 
-#: Main/templates/Main/home.html:326
+#: Main/templates/Main/home.html:345
 msgid "Комментарии"
 msgstr "Comments"
-
-#: Main/templates/Main/home.html:348
-msgid "Услуги"
-msgstr "Services"
-
-#: Main/templates/Main/home.html:358 Main/templates/Main/home.html:363
-#: Main/templates/Main/home.html:368 Main/templates/Main/home.html:379
-#: Main/templates/Main/home.html:419 Main/templates/Main/home.html:424
-msgid "Часы"
-msgstr "Clock"
-
-#: Main/templates/Main/home.html:372
-msgid "или"
-msgstr "or"
-
-#: Main/templates/Main/home.html:409
-msgid "Заметки и записи"
-msgstr "Notes and records"
 
 #: Main/templates/Main/loader.html:10
 msgid "ЗАГРУЗКА ..."
 msgstr "LOADING ..."
-
-#~ msgid "О проекте и авторе"
-#~ msgstr "About the project and the author"

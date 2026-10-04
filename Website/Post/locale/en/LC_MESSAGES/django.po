@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-03 11:54+0000\n"
+"POT-Creation-Date: 2026-10-04 07:57+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,111 +18,111 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: Post/models.py:254
+#: Post/models.py:261
 msgid "Телеграм бот"
 msgstr "Telegram bot"
 
-#: Post/models.py:268
+#: Post/models.py:275
 msgid "Чат бот"
 msgstr "Chat bot"
 
-#: Post/models.py:270
+#: Post/models.py:277
 msgid "Инлайн бот"
 msgstr "Inline bot"
 
-#: Post/models.py:272
+#: Post/models.py:279
 msgid "Веб бот"
 msgstr "Webapp bot"
 
-#: Post/models.py:279
+#: Post/models.py:286
 msgid "Веб инструмент"
 msgstr "Web tool"
 
-#: Post/models.py:288
+#: Post/models.py:295
 msgid "Джанго приложение"
 msgstr "Django app"
 
-#: Post/models.py:301
+#: Post/models.py:308
 msgid "Приложение"
 msgstr "App"
 
-#: Post/models.py:303
+#: Post/models.py:310
 msgid "Мидлвари"
 msgstr "Middleware"
 
-#: Post/models.py:305
+#: Post/models.py:312
 msgid "API"
 msgstr "API"
 
-#: Post/models.py:312
+#: Post/models.py:319
 msgid "Парсер"
 msgstr "Scraper"
 
-#: Post/models.py:324
+#: Post/models.py:331
 msgid "Однопоточный"
 msgstr "Singlethreaded"
 
-#: Post/models.py:326
+#: Post/models.py:333
 msgid "Многопоточный"
 msgstr "Multithreaded"
 
-#: Post/models.py:337
+#: Post/models.py:344
 msgid "Статический"
 msgstr "Static"
 
-#: Post/models.py:339
+#: Post/models.py:346
 msgid "Динамический"
 msgstr "Dynamic"
 
-#: Post/models.py:341
+#: Post/models.py:348
 msgid "Через API"
 msgstr "Through API"
 
-#: Post/models.py:359
+#: Post/models.py:366
 msgid "С прокси"
 msgstr "With proxy"
 
-#: Post/models.py:361
+#: Post/models.py:368
 msgid "Без прокси"
 msgstr "Without proxy"
 
-#: Post/models.py:371
+#: Post/models.py:378
 msgid "С ротацией агентов"
 msgstr "With user-agent rotation"
 
-#: Post/models.py:373
+#: Post/models.py:380
 msgid "Без ротации агентов"
 msgstr "Without user-agent rotation"
 
-#: Post/models.py:380
+#: Post/models.py:387
 msgid "Скрипт"
 msgstr "Script"
 
-#: Post/models.py:393
+#: Post/models.py:400
 msgid "Однокоммандный"
 msgstr "Single run"
 
-#: Post/models.py:395
+#: Post/models.py:402
 msgid "Интерфейс коммандной строки"
 msgstr "Command line interface"
 
-#: Post/models.py:397
+#: Post/models.py:404
 msgid "Терминальный интерфейс"
 msgstr "Terminal user interface"
 
-#: Post/models.py:404
+#: Post/models.py:411
 msgid "Расширение для браузера"
 msgstr "Browser extension"
 
-#: Post/models.py:479 Post/models.py:638
+#: Post/models.py:486 Post/models.py:645
 msgid "Файл шаблона не найден"
 msgstr "Could not find template's file"
 
-#: Post/models.py:595
+#: Post/models.py:602
 msgid "Что-нибудь взамен"
 msgstr "Barter"
 
-#: Post/models.py:606
+#: Post/models.py:613
 msgid "Бесплатно"
 msgstr "Free"
 
@@ -238,106 +238,116 @@ msgstr "Icon of app type"
 msgid "Тип Django приложения: "
 msgstr "Kind of Django app:"
 
-#: Post/templates/Post/base_tool.html:218
+#: Post/templates/Post/base_tool.html:217
+#: Post/templates/Post/base_tool.html:240
+#: Post/templates/Post/base_tool.html:250
+msgid "Исходный код: "
+msgstr "Source code: "
+
+#: Post/templates/Post/base_tool.html:224
 msgid "Расширение для: "
 msgstr "Extension for: "
 
-#: Post/templates/Post/base_tool.html:220
+#: Post/templates/Post/base_tool.html:226
 msgid "Иконка браузера Chrome"
 msgstr "Chrome icon"
 
-#: Post/templates/Post/base_tool.html:221
+#: Post/templates/Post/base_tool.html:227
 msgid "Производные от Хрома"
 msgstr "Similar to Chrome-based browsers"
 
-#: Post/templates/Post/base_tool.html:221
-#: Post/templates/Post/base_tool.html:224
 #: Post/templates/Post/base_tool.html:227
+#: Post/templates/Post/base_tool.html:230
+#: Post/templates/Post/base_tool.html:233
 msgid "движок"
 msgstr "engine"
 
-#: Post/templates/Post/base_tool.html:223
+#: Post/templates/Post/base_tool.html:229
 msgid "Иконка браузера Firefox"
 msgstr "Firefox icon"
 
-#: Post/templates/Post/base_tool.html:224
+#: Post/templates/Post/base_tool.html:230
 msgid "Производные от Firefox"
 msgstr "Similar to Firefox-based browsers"
 
-#: Post/templates/Post/base_tool.html:226
+#: Post/templates/Post/base_tool.html:232
 msgid "Иконка браузера Safari"
 msgstr "Safari icon"
 
-#: Post/templates/Post/base_tool.html:227
+#: Post/templates/Post/base_tool.html:233
 msgid "Производные от Safari"
 msgstr "Similar to Safari-based browsers"
 
-#: Post/templates/Post/base_tool.html:230
+#: Post/templates/Post/base_tool.html:236
 msgid "Минимально поддерживаемая версия: "
 msgstr "Minimal supported version: "
 
-#: Post/templates/Post/base_tool.html:231
+#: Post/templates/Post/base_tool.html:237
 msgid "Ссылка на расширение: "
 msgstr "Extension in the shop:"
 
-#: Post/templates/Post/base_tool.html:235
+#: Post/templates/Post/base_tool.html:247
 msgid "Тип скрипта: "
 msgstr "Type of Script: "
 
-#: Post/templates/Post/base_tool.html:265
+#: Post/templates/Post/base_tool.html:297
 msgid "Цель: "
 msgstr "Goal: "
 
-#: Post/templates/Post/base_tool.html:269
+#: Post/templates/Post/base_tool.html:301
 msgid "Характеристики:"
 msgstr "Characteristics:"
 
-#: Post/templates/Post/base_tool.html:271
+#: Post/templates/Post/base_tool.html:303
 msgid "Поточность: "
 msgstr "Threading: "
 
-#: Post/templates/Post/base_tool.html:272
+#: Post/templates/Post/base_tool.html:304
 msgid "Тип: "
 msgstr "Type: "
 
-#: Post/templates/Post/base_tool.html:273
+#: Post/templates/Post/base_tool.html:305
 msgid "Используемый язык: "
 msgstr "Used languages: "
 
-#: Post/templates/Post/base_tool.html:274
+#: Post/templates/Post/base_tool.html:306
 msgid "Прокси: "
 msgstr "Proxy: "
 
-#: Post/templates/Post/base_tool.html:275
+#: Post/templates/Post/base_tool.html:307
 msgid "Ротация: "
 msgstr "Rotation: "
 
-#: Post/templates/Post/base_tool.html:282
+#: Post/templates/Post/base_tool.html:312
+msgid "Исходный код:"
+msgstr "Source code:"
+
+#: Post/templates/Post/base_tool.html:320
 msgid "Примеры"
 msgstr "Examples"
 
-#: Post/templates/Post/base_tool.html:285
-#: Post/templates/Post/base_tool.html:288
+#: Post/templates/Post/base_tool.html:323
+#: Post/templates/Post/base_tool.html:326
 msgid "Предыдущая вкладка на табуляторе"
 msgstr "Previous tab"
 
-#: Post/templates/Post/base_tool.html:300
+#: Post/templates/Post/base_tool.html:338
 msgid "Изображение примера использования приложения"
 msgstr "An image of an example of app's usage"
 
-#: Post/templates/Post/base_tool.html:312
+#: Post/templates/Post/base_tool.html:350
 msgid "Медиа файлы"
 msgstr "Media files"
 
-#: Post/templates/Post/base_tool.html:328
+#: Post/templates/Post/base_tool.html:366
 msgid "Рабочие заметки об инструменте"
 msgstr "A notes about this tool, devnotes"
 
-#: Post/templates/Post/base_tool.html:337
+#: Post/templates/Post/base_tool.html:375
 msgid "Больше ..."
 msgstr "More ..."
 
-#: Post/templates/Post/base_tool.html:347
+#: Post/templates/Post/base_tool.html:385
 msgid "Похожие инструменты"
 msgstr "Similar tools"
 
@@ -377,22 +387,22 @@ msgstr "{minutes}M"
 msgid "{seconds}С"
 msgstr "{seconds}S"
 
-#: Post/templatetags/urlToBreadcrumbs.py:36
+#: Post/templatetags/urlToBreadcrumbs.py:38
 msgid "На русском"
 msgstr "In russian"
 
-#: Post/templatetags/urlToBreadcrumbs.py:38
+#: Post/templatetags/urlToBreadcrumbs.py:40
 msgid "На английском"
 msgstr "In english"
 
-#: Post/templatetags/urlToBreadcrumbs.py:52
+#: Post/templatetags/urlToBreadcrumbs.py:56
 msgid "Об авторе"
 msgstr "About author"
 
-#: Post/templatetags/urlToBreadcrumbs.py:54
+#: Post/templatetags/urlToBreadcrumbs.py:58
 msgid "Контакты"
 msgstr "Contacts"
 
-#: Post/templatetags/urlToBreadcrumbs.py:78
+#: Post/templatetags/urlToBreadcrumbs.py:83
 msgid "Страница "
 msgstr "Page "

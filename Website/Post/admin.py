@@ -110,7 +110,7 @@ class ToolAdmin(admin.ModelAdmin):
         (
             'Advanced options',
             {
-                'fields': ['type', 'operatingSystem', 'media', 'meta_preview', ('template_ru', 'template_en')],
+                'fields': ['source', 'type', 'operatingSystem', 'media', 'meta_preview', ('template_ru', 'template_en')],
                 'classes': ['collapse'],
                 'description': 'In this fieldset you can switch type of tool and configure other options.'
             }
