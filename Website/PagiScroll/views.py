@@ -128,11 +128,11 @@ class PostListView(ListView):
 
         # Фильтруем по опубликованности
         self.object_list =  self.model.objects.filter(isPublished=True)
-        # Фильтруем по порядку создания
-        self.object_list = PagiScroll_utils.in_order(self.object_list, self.is_recent)
         # Фильтруем по подкатегориям
         if self.subcategory:
-            self.object_list = self.model.objects.filter(subcategory=self.subcategory)
+            self.object_list = self.model.objects.filter(subcategory=self.subcategory, isPublished=True)
+        # Фильтруем по порядку создания
+        self.object_list = PagiScroll_utils.in_order(self.object_list, self.is_recent)
 
         # Получаем теги из запроса
         self.tags_names = []
