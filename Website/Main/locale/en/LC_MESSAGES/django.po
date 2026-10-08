@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-04 07:57+0000\n"
+"POT-Creation-Date: 2026-10-08 13:49+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -194,7 +194,7 @@ msgstr "The topics that are covered and studied on this website include:"
 #: Main/templates/Main/about-website.html:193
 #: Main/templates/Main/about-website.html:196
 #: Main/templates/Main/about.html:176 Main/templates/Main/about.html:179
-#: Main/templates/Main/home.html:172 Main/templates/Main/home.html:279
+#: Main/templates/Main/home.html:172 Main/templates/Main/home.html:296
 msgid "Предыдущая вкладка на табуляторе"
 msgstr "Previous tab on the tab bar"
 
@@ -1018,51 +1018,63 @@ msgstr "Top tools"
 msgid "Новые инструменты"
 msgstr "New tools"
 
-#: Main/templates/Main/home.html:175 Main/templates/Main/home.html:282
+#: Main/templates/Main/home.html:175 Main/templates/Main/home.html:299
 msgid "Следующая вкладка на табуляторе"
 msgstr "Next tab on the tab bar."
 
 #: Main/templates/Main/home.html:192 Main/templates/Main/home.html:208
-#: Main/templates/Main/home.html:249 Main/templates/Main/home.html:299
-#: Main/templates/Main/home.html:315 Main/templates/Main/home.html:356
+#: Main/templates/Main/home.html:241 Main/templates/Main/home.html:316
+#: Main/templates/Main/home.html:332 Main/templates/Main/home.html:365
 msgid "Больше ..."
 msgstr "See more ..."
 
-#: Main/templates/Main/home.html:217 Main/templates/Main/home.html:324
-msgid "Подкатегории:"
-msgstr "Subcategories:"
-
-#: Main/templates/Main/home.html:228
+#: Main/templates/Main/home.html:220
 msgid "Показать Отзывы"
 msgstr "Show reviews"
 
-#: Main/templates/Main/home.html:231
+#: Main/templates/Main/home.html:223
 msgid "Спрятать Отзывы"
 msgstr "hide reviews"
 
-#: Main/templates/Main/home.html:238
+#: Main/templates/Main/home.html:230
 msgid "Отзывы"
 msgstr "Reviews"
 
-#: Main/templates/Main/home.html:272
+#: Main/templates/Main/home.html:250 Main/templates/Main/home.html:374
+msgid "Показать подкатегории"
+msgstr "Show subcategories"
+
+#: Main/templates/Main/home.html:253 Main/templates/Main/home.html:377
+msgid "Спрятать подкатегории"
+msgstr "Hide subcategories"
+
+#: Main/templates/Main/home.html:260
+msgid "Инструменты по подкатегориям"
+msgstr "Tools by subcategories"
+
+#: Main/templates/Main/home.html:289
 msgid "Топ статей"
 msgstr "Top articles"
 
-#: Main/templates/Main/home.html:275
+#: Main/templates/Main/home.html:292
 msgid "Недавние статьи"
 msgstr "Latest articles"
 
-#: Main/templates/Main/home.html:335
+#: Main/templates/Main/home.html:344
 msgid "Показать Комментарии"
 msgstr "Show comments"
 
-#: Main/templates/Main/home.html:338
+#: Main/templates/Main/home.html:347
 msgid "Спрятать Комментарии"
 msgstr "Hide comments"
 
-#: Main/templates/Main/home.html:345
+#: Main/templates/Main/home.html:354
 msgid "Комментарии"
 msgstr "Comments"
+
+#: Main/templates/Main/home.html:384
+msgid "Статьи по подкатегориям"
+msgstr "Articles by subcategory"
 
 #: Main/templates/Main/loader.html:10
 msgid "ЗАГРУЗКА ..."
