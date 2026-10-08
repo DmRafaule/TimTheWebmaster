@@ -23,14 +23,11 @@ def article(request, post_slug, subcategory_slug=None):
     # Получаем соответствующую статью
     post = get_object_or_404(Post_M.Article, slug=post_slug)
     subcategory = None
-    print(f"subcategory_slug={subcategory_slug}")
-    print(f"post_slug={post_slug}")
     # Проверяем наличие подкатегории и перенаправляем на соответствующую страницу
     if subcategory_slug and isinstance(subcategory_slug, str):
         subcategory = Post_M.Tag.objects.filter(
             Q(slug_en=subcategory_slug) | Q(slug_ru=subcategory_slug)
         ).first()
-        print(f"subcategory={subcategory}")
         if not post.subcategory or not subcategory:
             raise Http404()
         if post.subcategory.slug != subcategory.slug:

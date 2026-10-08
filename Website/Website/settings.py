@@ -85,6 +85,7 @@ MY_INSTALLED_APPS = [
     'Apps.LinkThief.apps.LinkthiefConfig',
     'Apps.TextThief.apps.TextthiefConfig',
     'Apps.SMIL_SVGAnimationEditor.apps.SmilSvganimationeditorConfig',
+    'Apps.NumberConverter.apps.NumberconverterConfig',
 ]
 
 INSTALLED_APPS += MY_INSTALLED_APPS
@@ -166,8 +167,6 @@ HEADLESS_FRONTEND_URLS = {
 ACCOUNT_RATE_LIMITS = {
     "confirm_email": "10/m/key",  # up to 10 confirmation emails per minute per key
 }
-# Customizeable Admin
-JET_INDEX_DASHBOARD = 'Website.dashboard.CustomIndexDashboard'
 
 WSGI_APPLICATION = 'Website.wsgi.application'
 

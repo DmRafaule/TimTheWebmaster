@@ -105,5 +105,4 @@ def switchLang(path, locale):
             # Пост в подкатегории
             else:
                 new_path += '/'
-    print(new_path)
     return new_path
