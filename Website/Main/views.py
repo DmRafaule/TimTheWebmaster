@@ -111,6 +111,9 @@ def about_website(request):
     context.update({'db_version': connection.display_name})
     return TemplateResponse(request, 'Main/about-website.html', context=context)
 
+def ui_website(request):
+    context = U.initDefaults(request)
+    return TemplateResponse(request, 'Main/ui.html', context=context)
 
 def bad_request(request, exception):
     ''' Специальный хендлер для 400 ответов '''

@@ -126,6 +126,7 @@
 					{% if request.user.is_superuser %}
 						<li class="ttw-button ttw-button_link"><a class="" href="/admin/"><p><h3>{% trans "Админка" %}</h3></p></a></li>
 						<li class="ttw-button ttw-button_link"><a class="" href="{% url 'editor_home' %}"><p><h3>{% trans "Редактор" %}</h3></p></a></li>
+						<li class="ttw-button ttw-button_link"><a class="" href="{% url 'ui-website' %}"><p><h3>{% trans "Элементы" %}</h3></p></a></li>
 					{% endif %}
 					<li class="ttw-button ttw-button_link"><a class="" href="{% url 'profile'%}"><p><h3>{% trans "Профиль" %}</h3></p></a></li>
 				{% endif %}
