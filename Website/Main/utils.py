@@ -130,10 +130,15 @@ def get_tool(_url):
         urlList.remove('') 
     # Проверяем есть ли такой инструмент
     slug = urlList[-1]
+    
     tool = Post_M.Tool.objects.filter(slug=slug).first()
     if tool:
         return tool
     else:
+        slug = urlList[-2]    
+        tool = Post_M.Tool.objects.filter(slug=slug).first()
+        if tool:
+            return tool
         return None
 
 def getNotEmptyCategories(categories):

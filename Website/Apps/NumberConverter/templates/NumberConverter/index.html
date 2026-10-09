@@ -1,11 +1,367 @@
 {% extends 'Post/base_tool.html' %}
 {% load static%}
 {% load i18n %}
+{% if isEngagementMiddlewareConnected %}
+	{% load getInteraction %}
+{% endif %}
+{% get_current_language as LANGUAGE_CODE %}
 
-{% block hat_tool %}
-{% endblock%}
+
+{% block head %}
+    {% if not is_home_page %}
+        <title>{% trans 'Калькулятор систем счисления ' %}{{from_name}}{% trans ' в ' %}{{to_name}}</title>
+        <link rel="canonical" href="{{ request.scheme }}://{{ request.get_host }}{% url 'number-converter-specified' from_base=from_base to_base=to_base %}" />
+        <meta name="description" content="{% trans 'Перевод числа или нескольких чисел из ' %}{{from_name}}{% trans ' системы счисления в ' %}{{to_name}}. {{post.description}}">
+        <meta name="keywords" content="{{post.meta_keywords}}, {{from_name}}, {{to_name}}">
+        
+        <!-- OpenGraph -->
+            <meta property="og:title" content="{{post.h1}}" />
+            <meta property="og:description" content="{% trans 'Перевод числа или нескольких чисел из ' %}{{from_name}}{% trans ' системы счисления в ' %}{{to_name}}. {{post.description}}" />
+            <meta property="og:type" content="website" />
+            {% comment %}
+            Здесь, чтобы можно было пройтись по нужным языкам, нужно ещё где-то хранить локации, пока в ручную
+            {% endcomment %}
+            {% if LANGUAGE_CODE == "ru" %}
+                <meta property="og:locale" content="{{LANGUAGE_CODE}}_{{LANGUAGE_CODE|upper}}" />
+            {% else %}
+                <meta property="og:locale" content="{{LANGUAGE_CODE}}_US" />
+            {% endif %}
+            {% if LANGUAGE_CODE == "ru" %}
+                <meta property="og:locale:alternate" content="en_US" />
+            {% else %}
+                <meta property="og:locale:alternate" content="ru_RU" />
+            {% endif %}
+            <meta property="og:site_name" content="TimTheWebmaster" />
+            <meta property="og:url" content="{{ request.scheme }}://{{ request.get_host }}{% url 'number-converter-specified' from_base=from_base to_base=to_base %}" />
+            <meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{% get_media_prefix %}{{post.meta_preview}}" />
+            <meta property="og:image:secure_url" content="{{ request.scheme }}://{{ request.get_host }}{% get_media_prefix %}{{post.meta_preview}}" />
+            <meta property="og:image:alt" content="{{post.meta_preview_description}}" />
+            <meta property="og:image:type" content="image/webp" />
+            <meta property="og:image:width" content="1200" />
+            <meta property="og:image:height" content="675" />
+        <!-- /OpenGraph -->
+        
+        <!-- Tool -->
+            {% if isEngagementMiddlewareConnected %}
+            <script type="application/ld+json">
+                {
+                    "@context": "https://schema.org",
+                    {% if isWebTool or isExtention %}
+                    "@type": "WebApplication",
+                    {% else %}
+                    "@type": "SoftwareApplication",
+                    {% endif %}
+                    "name": "{% trans 'Калькулятор систем счисления ' %}{{from_name}}{% trans ' в ' %}{{to_name}}",
+                    "abstract": "{% trans 'Перевод числа или нескольких чисел из ' %}{{from_name}}{% trans ' системы счисления в ' %}{{to_name}}. {{ page_tool.description }}",
+                    "mainEntityOfPage": "{{ request.scheme }}://{{ request.get_host }}{% url 'number-converter-specified' from_base=from_base to_base=to_base %}",
+                    "author": {
+                        "@type": "Person",
+                        "@id": "{{ request.scheme }}://{{ request.get_host }}{%url 'about'%}#person",
+                        "url": "{{ request.scheme }}://{{ request.get_host }}{%url 'about'%}",
+                        "name": "{% trans 'Тима Чудук' %}"
+                    },
+                    "publisher": {
+                        "@type": "Organization",
+                        "name": "TimTheWebmaster"
+                    },
+                    "image": {
+                        "@type": "ImageObject",
+                        "url": "{{ request.scheme }}://{{ request.get_host }}{% get_media_prefix %}{{post.meta_preview}}",
+                        "caption": "{{post.meta_preview_description}}",
+                        "width": "1200",
+                        "height": "675"
+                    },
+                    "applicationCategory": "{{page_tool.type}}",
+                    "operatingSystem": "{{page_tool.operatingSystem}}",
+                    {% if comments_number > 0 %}
+                    "aggregateRating": {
+                        "@type": "AggregateRating",
+                        "ratingValue": {{comments_score}},
+                        "reviewCount": {{comments_number}},
+                        "bestRating": 5,
+                        "worstRating": 1
+                    },
+                    {% endif %}
+                    "offers": {
+                        "@type": "Offer",
+                        "price": "0",
+                        "priceCurrency": "USD"
+                    }
+                    {% if isEngagementMiddlewareConnected %}
+                    ,"interactionStatistic": [
+                        {% with interaction=post.get_absolute_url|getInteraction %}
+                            {
+                            "@type": "InteractionCounter",
+                            "interactionType": "https://schema.org/ViewAction",
+                            "userInteractionCount": "{{interaction.views}}"
+                            }
+                            {% if is_likes %}
+                                ,{
+                                "@type": "InteractionCounter",
+                                "interactionType": "https://schema.org/LikeAction",
+                                "userInteractionCount": "{{interaction.likes}}"
+                                }
+                            {% endif %}
+                            {% if is_shares %}
+                                ,{
+                                "@type": "InteractionCounter",
+                                "interactionType": "https://schema.org/ShareAction",
+                                "userInteractionCount": "{{interaction.shares}}"
+                                }
+                            {% endif %}
+                            {% if is_comments %}
+                                ,{
+                                "@type": "InteractionCounter",
+                                "interactionType": "https://schema.org/CommentAction",
+                                "userInteractionCount": "{{interaction.comments}}"
+                                }
+                            {% endif %}
+                            {% if is_bookmarks %}
+                                ,{
+                                "@type": "InteractionCounter",
+                                "interactionType": "https://schema.org/BookmarkAction",
+                                "userInteractionCount": "{{interaction.bookmarks}}"
+                                }
+                            {% endif %}
+                        {% endwith %}
+                    ]
+                    {% endif %}
+                }
+            </script>
+            {% endif %}
+        <!-- /Tool -->
+    {% else %}
+
+        <title>{{post.name}} | {% trans 'Инструмент' %}</title>
+        <link rel="canonical" href="{{ request.scheme }}://{{ request.get_host }}{{post.get_absolute_url}}" />
+        <meta name="description" content="{{post.description}}">
+        <meta name="keywords" content="{{post.meta_keywords}}">
+        
+        <!-- OpenGraph -->
+            <meta property="og:title" content="{{post.h1}}" />
+            <meta property="og:description" content="{{post.description}}" />
+            <meta property="og:type" content="website" />
+            {% comment %}
+            Здесь, чтобы можно было пройтись по нужным языкам, нужно ещё где-то хранить локации, пока в ручную
+            {% endcomment %}
+            {% if LANGUAGE_CODE == "ru" %}
+                <meta property="og:locale" content="{{LANGUAGE_CODE}}_{{LANGUAGE_CODE|upper}}" />
+            {% else %}
+                <meta property="og:locale" content="{{LANGUAGE_CODE}}_US" />
+            {% endif %}
+            {% if LANGUAGE_CODE == "ru" %}
+                <meta property="og:locale:alternate" content="en_US" />
+            {% else %}
+                <meta property="og:locale:alternate" content="ru_RU" />
+            {% endif %}
+            <meta property="og:site_name" content="TimTheWebmaster" />
+            <meta property="og:url" content="{{ request.scheme }}://{{ request.get_host }}{{ post.get_absolute_url }}" />
+            <meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{% get_media_prefix %}{{post.meta_preview}}" />
+            <meta property="og:image:secure_url" content="{{ request.scheme }}://{{ request.get_host }}{% get_media_prefix %}{{post.meta_preview}}" />
+            <meta property="og:image:alt" content="{{post.meta_preview_description}}" />
+            <meta property="og:image:type" content="image/webp" />
+            <meta property="og:image:width" content="1200" />
+            <meta property="og:image:height" content="675" />
+        <!-- /OpenGraph -->
+        
+        <!-- Tool -->
+            {% if isEngagementMiddlewareConnected %}
+            <script type="application/ld+json">
+                {
+                    "@context": "https://schema.org",
+                    {% if isWebTool or isExtention %}
+                    "@type": "WebApplication",
+                    {% else %}
+                    "@type": "SoftwareApplication",
+                    {% endif %}
+                    "name": "{{ page_tool.name }}",
+                    "abstract": "{{ page_tool.description }}",
+                    "mainEntityOfPage": "{{ request.scheme }}://{{ request.get_host }}{{post.get_absolute_url}}",
+                    "author": {
+                        "@type": "Person",
+                        "@id": "{{ request.scheme }}://{{ request.get_host }}{%url 'about'%}#person",
+                        "url": "{{ request.scheme }}://{{ request.get_host }}{%url 'about'%}",
+                        "name": "{% trans 'Тима Чудук' %}"
+                    },
+                    "publisher": {
+                        "@type": "Organization",
+                        "name": "TimTheWebmaster"
+                    },
+                    "image": {
+                        "@type": "ImageObject",
+                        "url": "{{ request.scheme }}://{{ request.get_host }}{% get_media_prefix %}{{post.meta_preview}}",
+                        "caption": "{{post.meta_preview_description}}",
+                        "width": "1200",
+                        "height": "675"
+                    },
+                    "applicationCategory": "{{page_tool.type}}",
+                    "operatingSystem": "{{page_tool.operatingSystem}}",
+                    {% if comments_number > 0 %}
+                    "aggregateRating": {
+                        "@type": "AggregateRating",
+                        "ratingValue": {{comments_score}},
+                        "reviewCount": {{comments_number}},
+                        "bestRating": 5,
+                        "worstRating": 1
+                    },
+                    {% endif %}
+                    "offers": {
+                        "@type": "Offer",
+                        "price": "0",
+                        "priceCurrency": "USD"
+                    }
+                    {% if isEngagementMiddlewareConnected %}
+                    ,"interactionStatistic": [
+                        {% with interaction=post.get_absolute_url|getInteraction %}
+                            {
+                            "@type": "InteractionCounter",
+                            "interactionType": "https://schema.org/ViewAction",
+                            "userInteractionCount": "{{interaction.views}}"
+                            }
+                            {% if is_likes %}
+                                ,{
+                                "@type": "InteractionCounter",
+                                "interactionType": "https://schema.org/LikeAction",
+                                "userInteractionCount": "{{interaction.likes}}"
+                                }
+                            {% endif %}
+                            {% if is_shares %}
+                                ,{
+                                "@type": "InteractionCounter",
+                                "interactionType": "https://schema.org/ShareAction",
+                                "userInteractionCount": "{{interaction.shares}}"
+                                }
+                            {% endif %}
+                            {% if is_comments %}
+                                ,{
+                                "@type": "InteractionCounter",
+                                "interactionType": "https://schema.org/CommentAction",
+                                "userInteractionCount": "{{interaction.comments}}"
+                                }
+                            {% endif %}
+                            {% if is_bookmarks %}
+                                ,{
+                                "@type": "InteractionCounter",
+                                "interactionType": "https://schema.org/BookmarkAction",
+                                "userInteractionCount": "{{interaction.bookmarks}}"
+                                }
+                            {% endif %}
+                        {% endwith %}
+                    ]
+                    {% endif %}
+                }
+            </script>
+            {% endif %}
+        <!-- /Tool -->
+
+    {% endif %}
+
+
+    {% if isYandexAdManagerMiddlewareConnected  %}
+        {% include 'YandexAdManager/admanager_header.html' %}
+    {% endif %}
+{% endblock %}
+
 
 {% block content_tool %}
+<form   
+    hx-post="" 
+    hx-target="#result-container" 
+    hx-vals="js:{csrfmiddlewaretoken: csrftoken}"
+    hx-swap="innerHTML"
+    hx-push-url="true">
+    <div class="flex flex-col gap-3">
+        <div class="flex gap-2 flex-wrap items-center">
+            <b>{% trans 'Конвертировать' %} </b>
+            <input class="base-input-number-converter" min="2" max="32" type="number" name="from" value="{{from_code}}">
+            <div>{% trans '-ричную систему счисления ' %}</div>
+
+            <b>{% trans 'в ' %}</b>
+            <input class="base-input-number-converter" min="2" max="32" type="number" name="to" value="{{to_code}}">
+            <div>{% trans '-ричную систему счисления ' %}</div>.
+        </div>
+        <div class="flex gap-2 flex-wrap">
+            <input class="grow shrink-0 basis-2xs" type="text" name="query" value="{{query_text}}" placeholder="{% trans 'Введи своё число, или числа через запятую или пробел' %}">
+            <div class="flex grow text-nowrap ttw-button ttw-button_action ttw-button_squared" >
+                <div class="flex gap-1 grow shrink-0 basis-auto items-center justify-center p-1 border ttw-button_squared">
+                    <button class="flex gap-2 items-center w-full h-full justify-center" type="submit" >
+                        <div>{% trans 'Отправить' %}</div>
+                        <img class="ttw-button_squared " width="32" height="32" src="{% static 'NumberConverter/img/send.svg' %}" alt="{% trans 'конвертировать числа' %}">
+                    </button>
+                </div>
+            </div>
+        </div>
+        <b>{% trans 'Результат:' %}</b>
+        <div class="flex gap-2 flex-wrap-reverse">
+            <div class="flex flex-col gap-2 text-nowrap">
+                <div class="flex ttw-button ttw-button_action ttw-button_squared" onclick="
+                    navigator.clipboard.writeText(document.getElementById('result-container').value);
+                    toaster.notify('{% trans 'Контент скопирован' %}', 'info');
+                    " >
+                    <div class="flex gap-1 grow shrink-0 basis-auto items-center p-1 border ttw-button_squared justify-between">
+                        <div>{% trans 'Копировать' %}</div>
+                        <img class="ttw-button_squared p-1" width="32" height="32" src="{% static 'NumberConverter/img/copy.svg' %}" alt="{% trans 'копировать результат конвертирования чисел' %}">
+                    </div>
+                </div>
+                <div class="flex ttw-button ttw-button_link ttw-button_squared" >
+                    <div class="grow shrink-0 basis-auto p-1 border ttw-button_squared">
+                        <a class="flex gap-1 justify-between w-full items-center" href="{% url 'number-converter' %}">
+                            <div>{% trans 'Очистить' %}</div>
+                            <img class="ttw-button_squared p-1" width="32" height="32" src="{% static 'NumberConverter/img/clean.svg' %}" alt="{% trans 'очистить форму конвертирования чисел' %}">
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <textarea id="result-container" class="grow shrink-0 basis-2xs" placeholder="{% trans 'Здесь появиться результат конвертации' %}">
+
+            </textarea>
+        </div>
+        <div>
+            <div>{% trans 'Так же возможно использовать данный инструмент в качестве <b>API</b>' %}</div>
+            <div class="flex gap-2 flex-wrap justify-center">
+                <div class="flex gap-2 items-center">
+                    <div>{% trans 'С выводом результата в виде: ' %}</div>
+                    <div onclick="
+                    navigator.clipboard.writeText(document.querySelector('#json-type-result').getAttribute('href'));
+                    toaster.notify('{% trans 'Успешно скопировано' %}', 'info');
+                    " class="grow-0 shrink ttw-button ttw-button_action">
+                        <a download="" id="json-type-result" href="{{ request.scheme }}://{{ request.get_host }}{% url 'number-converter-specified' from_base=from_base to_base=to_base %}?query={{query_text}}&type=json">
+                        <img class="ttw-button_squared border p-1" width="32" height="32" src="{% static 'NumberConverter/img/json-result.svg' %}" alt="{% trans 'форма ответа результата в виде JSON' %}">
+                        </a>
+                    </div>
+                </div>
+                <div class="flex gap-2 items-center">
+                    <div>{% trans 'С выводом результата в виде: ' %}</div>
+                    <div onclick="
+                    navigator.clipboard.writeText(document.querySelector('#html-type-result').getAttribute('href'));
+                    toaster.notify('{% trans 'Успешно скопировано' %}', 'info');
+                    " class="grow-0 shrink ttw-button ttw-button_link">
+                        <a download="" id="html-type-result" href="{{ request.scheme }}://{{ request.get_host }}{% url 'number-converter-specified' from_base=from_base to_base=to_base %}?query={{query_text}}&type=html">
+                        <img class="ttw-button_squared border p-1" width="32" height="32" src="{% static 'NumberConverter/img/html-result.svg' %}" alt="{% trans 'форма ответа результата в виде HTML' %}">
+                        </a>
+                    </div>
+                </div>
+                <div class="flex gap-2 items-center">
+                    <div>{% trans 'С выводом просто результата: ' %}</div>
+                    <div onclick="
+                    navigator.clipboard.writeText(document.querySelector('#raw-type-result').getAttribute('href'));
+                    toaster.notify('{% trans 'Успешно скопировано' %}', 'info');
+                    " class="grow-0 shrink ttw-button ttw-button_link">
+                        <a download="" id="raw-type-result" href="{{ request.scheme }}://{{ request.get_host }}{% url 'number-converter-specified' from_base=from_base to_base=to_base %}?query={{query_text}}&type=raw">
+                        <img class="ttw-button_squared border p-1" width="32" height="32" src="{% static 'NumberConverter/img/raw-result.svg' %}" alt="{% trans 'форма ответа результата в виде просто чисел' %}">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+{% if main_posts|length > 0 %}
+<h2>{% trans 'Относящиеся статьи' %}</h2>
+<article>
+    {% include 'Post/basic--post_preview-article.html' with posts=main_posts %}
+</article>
+{% endif %}
 {% endblock%}
 
 {% block footer_tool %}

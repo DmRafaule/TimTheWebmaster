@@ -1,0 +1,8 @@
+@import "tailwindcss";
+@tailwind utilities;
+
+.base-input-number-converter{
+    width: unset;
+    padding: 4px;
+    border-radius: 8px;
+}
