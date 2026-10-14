@@ -8,7 +8,6 @@ from .views import BASE_MAP
 
 
 class NumberConverterSitemap(Sitemap):
-    i18n = True
 
     def items(self):
         items = []
@@ -16,6 +15,8 @@ class NumberConverterSitemap(Sitemap):
             with override(lang[0]):
                 for key1, value1 in BASE_MAP.items():
                     for key2, value2 in BASE_MAP.items():
+                        if key1 == key2:
+                            continue
                         items.append(reverse('number-converter-specified', kwargs={'from_base': value1.get('short'), 'to_base': value2.get('short')}))
 
         return items
