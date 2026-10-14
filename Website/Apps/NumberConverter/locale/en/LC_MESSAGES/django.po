@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-14 14:31+0000\n"
+"POT-Creation-Date: 2026-10-14 15:13+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,6 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
 #: Apps/NumberConverter/templates/NumberConverter/index.html:12
 #: Apps/NumberConverter/templates/NumberConverter/index.html:55
 msgid "Калькулятор систем счисления "
@@ -62,8 +63,8 @@ msgid "в "
 msgstr "to "
 
 #: Apps/NumberConverter/templates/NumberConverter/index.html:286
-msgid "Введи своё число, или числа через запятую или пробел"
-msgstr "Enter your number, or numbers separated by commas or spaces."
+msgid "Введи своё число, или числа через пробел"
+msgstr "Enter your number, or numbers separated by spaces"
 
 #: Apps/NumberConverter/templates/NumberConverter/index.html:290
 msgid "Отправить"

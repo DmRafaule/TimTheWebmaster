@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-14 14:31+0000\n"
+"POT-Creation-Date: 2026-10-14 15:13+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -837,8 +837,8 @@ msgstr ""
 
 #: Main/templates/Main/base.html:69 Main/templates/Main/base.html:72
 #: Main/templates/Main/base.html:82 Main/templates/Main/base.html:88
-#: Main/templates/Main/base.html:105 Main/templates/Main/base.html:146
-#: Main/templates/Main/base.html:150 Main/templates/Main/base_minimal.html:23
+#: Main/templates/Main/base.html:105 Main/templates/Main/base.html:145
+#: Main/templates/Main/base.html:149 Main/templates/Main/base_minimal.html:23
 #: Main/templates/Main/base_minimal.html:26
 #: Main/templates/Main/base_minimal.html:36
 #: Main/templates/Main/base_minimal.html:42
@@ -864,93 +864,89 @@ msgstr "Admin"
 msgid "Редактор"
 msgstr "Editor"
 
-#: Main/templates/Main/base.html:129
-msgid "Элементы"
-msgstr "Elements"
-
-#: Main/templates/Main/base.html:131 Main/templates/Main/base_minimal.html:80
+#: Main/templates/Main/base.html:130 Main/templates/Main/base_minimal.html:80
 msgid "Профиль"
 msgstr "Profile"
 
-#: Main/templates/Main/base.html:133 Main/templates/Main/base_minimal.html:82
+#: Main/templates/Main/base.html:132 Main/templates/Main/base_minimal.html:82
 msgid "Домашняя"
 msgstr "Home"
 
-#: Main/templates/Main/base.html:180
+#: Main/templates/Main/base.html:179
 msgid "Крестик"
 msgstr "Cross"
 
-#: Main/templates/Main/base.html:200
+#: Main/templates/Main/base.html:199
 msgid "Другие ссылки"
 msgstr "Other links"
 
-#: Main/templates/Main/base.html:203
+#: Main/templates/Main/base.html:202
 msgid "Карта сайта"
 msgstr "Sitemap"
 
-#: Main/templates/Main/base.html:204
+#: Main/templates/Main/base.html:203
 msgid "Об авторе"
 msgstr "About author"
 
-#: Main/templates/Main/base.html:205
+#: Main/templates/Main/base.html:204
 msgid "О сайте"
 msgstr "About website"
 
-#: Main/templates/Main/base.html:210
+#: Main/templates/Main/base.html:209
 msgid "Контакты"
 msgstr "Contacts"
 
-#: Main/templates/Main/base.html:215
+#: Main/templates/Main/base.html:214
 msgid "иконка"
 msgstr "icon"
 
-#: Main/templates/Main/base.html:224
+#: Main/templates/Main/base.html:223
 msgid "Формы"
 msgstr "Forms"
 
-#: Main/templates/Main/base.html:235
+#: Main/templates/Main/base.html:234
 msgid "письмо"
 msgstr "message"
 
-#: Main/templates/Main/base.html:236
+#: Main/templates/Main/base.html:235
 msgid "Подписаться на почтовую рассылку"
 msgstr "Subscribe to news letters"
 
-#: Main/templates/Main/base.html:247
+#: Main/templates/Main/base.html:246
 msgid "облачко"
 msgstr "cloud"
 
-#: Main/templates/Main/base.html:248
+#: Main/templates/Main/base.html:247
 msgid "Форма обратной связи"
 msgstr "Feedback form"
 
-#: Main/templates/Main/base.html:255
+#: Main/templates/Main/base.html:254
 msgid "RSS каналы"
 msgstr "RSS channels"
 
-#: Main/templates/Main/base.html:260 Main/templates/Main/base.html:271
-#: Main/templates/Main/base.html:282
+#: Main/templates/Main/base.html:259 Main/templates/Main/base.html:270
+#: Main/templates/Main/base.html:281
 msgid "Скопировал ссылку на RSS фид"
 msgstr "Copied a link to RSS feed"
 
-#: Main/templates/Main/base.html:264 Main/templates/Main/base.html:275
-#: Main/templates/Main/base.html:286
+#: Main/templates/Main/base.html:263 Main/templates/Main/base.html:274
+#: Main/templates/Main/base.html:285
 msgid "Значок rss-фида"
 msgstr "RSS-feed sign"
 
-#: Main/templates/Main/base.html:265
+#: Main/templates/Main/base.html:264
 msgid "Подписаться на выход последних статей"
 msgstr "Subscribe to the latest articles"
 
-#: Main/templates/Main/base.html:276
+#: Main/templates/Main/base.html:275
 msgid "Подписаться на выход последних инструментов"
 msgstr "Subscribe to the latest tools"
 
-#: Main/templates/Main/base.html:287
+#: Main/templates/Main/base.html:286
 msgid "Подписаться на выход последних заметок"
 msgstr "Subscribe to the latest notes"
 
-#: Main/templates/Main/base.html:298
+#: Main/templates/Main/base.html:297
 msgid "Поддержать"
 msgstr "Support"
 

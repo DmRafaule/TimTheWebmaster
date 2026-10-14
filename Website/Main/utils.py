@@ -134,11 +134,14 @@ def get_tool(_url):
     if tool:
         return tool
     else:
-        slug = urlList[-2]    
-        tool = Post_M.Tool.objects.filter(slug=slug).first()
-        if tool:
-            return tool
-        return None
+        try:
+            slug = urlList[-2]    
+            tool = Post_M.Tool.objects.filter(slug=slug).first()
+            if tool:
+                return tool
+            return None
+        except:
+            return None
 
 def getNotEmptyCategories(categories):
     ''' Отфильтровывает все категории, которые не имеют постов '''
