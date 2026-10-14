@@ -5,16 +5,21 @@ from django.conf.urls.static import static
 from django.conf.urls.i18n import i18n_patterns
 from django.views.i18n import JavaScriptCatalog
 # For sitemap
-from django.contrib.sitemaps.views import sitemap
+from django.contrib.sitemaps import views
 from Main.sitemaps import StaticSitemap
-from Post.sitemaps import PostSitemap
+from Post.sitemaps import ArticleSitemap, ToolSitemap
+from PagiScroll.sitemaps import SubcategorySitemap
+from Apps.NumberConverter.sitemaps import NumberConverterSitemap
 
 from Website.api import get_dynamic_api_urls
 
 
 sitemaps = {
-    "articles": PostSitemap,
-    "static": StaticSitemap,
+    "main": StaticSitemap,
+    "articles": ArticleSitemap,
+    "tools": ToolSitemap,
+    "categories": SubcategorySitemap,
+    "number-converter": NumberConverterSitemap
 }
 
 urlpatterns = [
@@ -25,7 +30,13 @@ urlpatterns = [
     path('captcha/', include('captcha.urls')),
     path(
         "sitemap.xml",
-        sitemap,
+        views.index,
+        {"sitemaps": sitemaps},
+        name="django.contrib.sitemaps.views.index",
+    ),
+    path(
+        "sitemap-<section>.xml",
+        views.sitemap,
         {"sitemaps": sitemaps},
         name="django.contrib.sitemaps.views.sitemap",
     ),

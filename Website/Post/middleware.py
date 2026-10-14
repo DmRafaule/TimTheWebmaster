@@ -87,3 +87,4 @@ class ToolMiddleware:
                     response.context_data.update({'posts': posts})
                     loaded_template = loader.get_template(f'Post/basic--post_preview-note.html')
                     response.context_data.update({'latest_notes': loaded_template.render(response.context_data, request), 'is_notes': is_notes})
+        self.handler = None

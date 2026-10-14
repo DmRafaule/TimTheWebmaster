@@ -1,4 +1,6 @@
-from django.http import HttpResponse
+import re
+
+from django.http import HttpResponse, JsonResponse
 from django.urls import reverse
 from django.shortcuts import render, redirect
 from django.utils.translation import gettext as _
@@ -6,6 +8,9 @@ from django.template.response import TemplateResponse
 
 from Main.utils import initDefaults
 from Post.models import Article
+
+from base_to_base_number.main import BaseNumber
+from base_to_base_number.main import get_base_regex
 
 
 BASE_MAP = {
@@ -40,16 +45,36 @@ BASE_MAP = {
     '30': {'short': 'tri', 'name': _('Тридцатеричная')},
     '31': {'short': 'untri', 'name': _('Тридцатиодноричная')},
     '32': {'short': 'duotri', 'name': _('Тридцатидвухричная')},
+    '33': {'short': 'tritri', 'name': _('Тридцатитрехричная')},
+    '34': {'short': 'tetratri', 'name': _('Тридцатичетырехричная')},
+    '35': {'short': 'pentatri', 'name': _('Тридцатипятиричная')},
+    '36': {'short': 'hexatri', 'name': _('Тридцатишестиричная')},
 }
 
 # Lookup map from short code back to base number
 REVERSE_BASE_MAP = {data['short']: k for k, data in BASE_MAP.items()}
 
+
+def convert_number(query_number: str, from_base_code: int, to_base_code: int):
+    str_number = None
+    regx = get_base_regex(from_base_code) # TODO: Проверка на отправку не кода но строчки 
+    # It is a number
+    if re.match(regx, query_number):
+        base_number = BaseNumber(query_number, from_base_code)
+        fraction = base_number.get_fraction_raw()
+        precision = 2
+        if fraction:
+            precision = len(fraction)
+        str_number = base_number.convert_to(int(to_base_code), precision)
+    return str_number
+
+
 def tool_main(request, from_base=None, to_base=None):
     context = initDefaults(request)
     is_home_page = False
+    # Posts to insert into page
     first_post = Article.objects.filter(slug="why-to-build-number-base-convertor").first()
-    second_post = Article.objects.filter(slug="how-to-convert-a-number-base-to-base").first()
+    second_post = Article.objects.filter(slug="how-to-convert-number-from-one-base-to-another").first()
     main_posts = []
     if first_post:
         main_posts.append(first_post)
@@ -86,12 +111,31 @@ def tool_main(request, from_base=None, to_base=None):
     from_code = REVERSE_BASE_MAP.get(from_base, '10')
     to_code = REVERSE_BASE_MAP.get(to_base, '16')
     query_text = request.GET.get('query', '')
-    result_type = request.GET.get('type', 'raw')
+    result_type = request.GET.get('type', None)
 
-    result = ""
+    result_str = ""
     if query_text:
-        # Perform your conversion logic here based on 3-letter codes
-        result = f"Converted '{query_text}' from {from_code} to {to_code}"
+        query_numbers = str(query_text).split()
+        str_numbers = []
+        # Check if it is muliple numbers
+        if len(query_numbers) > 1:
+            for query_number in query_numbers:
+                query_number = query_number.strip()
+                str_number = convert_number(query_number, int(from_code), int(to_code))
+                if str_number:
+                    str_numbers.append(str_number)
+                else:
+                    pass
+
+            result_str = " ".join(str_numbers)
+            result_numbers = str_numbers
+
+        # Otherwise, single number
+        else:
+            query_number = query_numbers[0].strip()
+            result_str = convert_number(query_number, int(from_code), int(to_code))
+            result_numbers = [result_str]
+            
 
     if not from_base:
         from_base = 'dec'
@@ -111,7 +155,17 @@ def tool_main(request, from_base=None, to_base=None):
         'query_text': query_text,
         'is_home_page': is_home_page,
         'main_posts': main_posts,
-        'result': result,
+        'result': result_str,
     })
+
+    match result_type:
+        case 'json':
+            return JsonResponse({
+                "from_base": from_code,
+                "to_base": to_code,
+                "numbers": result_numbers
+            })
+        case 'raw':
+            return HttpResponse(result_str)
     
     return TemplateResponse(request, 'NumberConverter/index.html', context=context)

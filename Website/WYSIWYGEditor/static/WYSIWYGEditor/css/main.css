@@ -172,7 +172,6 @@
 }
 .ql-container {
     font-family: var(--family-main_font) !important;
-    font-size: var(--size-main_font) !important;
 }
 .ql-snow .ql-fill, .ql-snow .ql-stroke.ql-fill {
     fill: var(--ui_text_color) !important;

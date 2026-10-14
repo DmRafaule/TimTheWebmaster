@@ -20,7 +20,6 @@ class Interaction(models.Model):
     def __str__(self):
         return self.url
     
-
 class Email(models.Model):
     email = models.EmailField()
 

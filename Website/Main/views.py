@@ -2,7 +2,6 @@ from django.shortcuts import render
 from django.utils.translation import gettext as _
 from django.utils.translation import get_language
 from django.template.response import TemplateResponse 
-from django.views.decorators.http import require_POST
 
 import Main.utils as U
 from Main.models import Website
@@ -111,9 +110,6 @@ def about_website(request):
     context.update({'db_version': connection.display_name})
     return TemplateResponse(request, 'Main/about-website.html', context=context)
 
-def ui_website(request):
-    context = U.initDefaults(request)
-    return TemplateResponse(request, 'Main/ui.html', context=context)
 
 def bad_request(request, exception):
     ''' Специальный хендлер для 400 ответов '''

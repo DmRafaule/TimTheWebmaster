@@ -1,0 +1,347 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-10-14 14:31+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+#: Apps/NumberConverter/templates/NumberConverter/index.html:12
+#: Apps/NumberConverter/templates/NumberConverter/index.html:55
+msgid "Калькулятор систем счисления "
+msgstr "Base to base converter "
+
+#: Apps/NumberConverter/templates/NumberConverter/index.html:12
+#: Apps/NumberConverter/templates/NumberConverter/index.html:55
+msgid " в "
+msgstr " in "
+
+#: Apps/NumberConverter/templates/NumberConverter/index.html:14
+#: Apps/NumberConverter/templates/NumberConverter/index.html:19
+#: Apps/NumberConverter/templates/NumberConverter/index.html:56
+msgid "Перевод числа или нескольких чисел из "
+msgstr "Coverting a number or numbers from "
+
+#: Apps/NumberConverter/templates/NumberConverter/index.html:14
+#: Apps/NumberConverter/templates/NumberConverter/index.html:19
+#: Apps/NumberConverter/templates/NumberConverter/index.html:56
+msgid " системы счисления в "
+msgstr " numeral systems to "
+
+#: Apps/NumberConverter/templates/NumberConverter/index.html:62
+#: Apps/NumberConverter/templates/NumberConverter/index.html:186
+msgid "Тима Чудук"
+msgstr "Tima Chuduk"
+
+#: Apps/NumberConverter/templates/NumberConverter/index.html:136
+msgid "Инструмент"
+msgstr "Tool"
+
+#: Apps/NumberConverter/templates/NumberConverter/index.html:277
+msgid "Конвертировать"
+msgstr "Convert"
+
+#: Apps/NumberConverter/templates/NumberConverter/index.html:279
+#: Apps/NumberConverter/templates/NumberConverter/index.html:283
+msgid "-ричную систему счисления "
+msgstr "-decimal numeral system "
+
+#: Apps/NumberConverter/templates/NumberConverter/index.html:281
+msgid "в "
+msgstr "to "
+
+#: Apps/NumberConverter/templates/NumberConverter/index.html:286
+msgid "Введи своё число, или числа через запятую или пробел"
+msgstr "Enter your number, or numbers separated by commas or spaces."
+
+#: Apps/NumberConverter/templates/NumberConverter/index.html:290
+msgid "Отправить"
+msgstr "Send"
+
+#: Apps/NumberConverter/templates/NumberConverter/index.html:291
+msgid "конвертировать числа"
+msgstr "convert numbers"
+
+#: Apps/NumberConverter/templates/NumberConverter/index.html:297
+msgid "Результат:"
+msgstr "Result:"
+
+#: Apps/NumberConverter/templates/NumberConverter/index.html:302
+msgid "Поменять"
+msgstr "Swap"
+
+#: Apps/NumberConverter/templates/NumberConverter/index.html:303
+msgid "поменять результат введённые числа"
+msgstr "change the result based on the entered numbers"
+
+#: Apps/NumberConverter/templates/NumberConverter/index.html:313
+msgid "Контент скопирован"
+msgstr "Text copied"
+
+#: Apps/NumberConverter/templates/NumberConverter/index.html:316
+msgid "Копировать"
+msgstr "Copy"
+
+#: Apps/NumberConverter/templates/NumberConverter/index.html:317
+msgid "копировать результат конвертирования чисел"
+msgstr "copy the number conversion result"
+
+#: Apps/NumberConverter/templates/NumberConverter/index.html:323
+msgid "Очистить"
+msgstr "Clean"
+
+#: Apps/NumberConverter/templates/NumberConverter/index.html:324
+msgid "очистить форму конвертирования чисел"
+msgstr "clear the number conversion form"
+
+#: Apps/NumberConverter/templates/NumberConverter/index.html:329
+msgid "Здесь появиться результат конвертации"
+msgstr "The conversion result will appear here."
+
+#: Apps/NumberConverter/templates/NumberConverter/index.html:335
+msgid "Другие возможности"
+msgstr "Other functional"
+
+#: Apps/NumberConverter/templates/NumberConverter/index.html:338
+msgid "Популярные конфигурации"
+msgstr "Popular configurations"
+
+#: Apps/NumberConverter/templates/NumberConverter/index.html:341
+msgid ""
+"\n"
+"                Перевод двоичной системы счисления в десятичную\n"
+"                "
+msgstr ""
+"\n"
+"                Converting from binary to decimal\n"
+"                "
+
+#: Apps/NumberConverter/templates/NumberConverter/index.html:346
+msgid ""
+"\n"
+"                Перевод десятчной системы счисления в двоичную\n"
+"                "
+msgstr ""
+"\n"
+"                Converting from decimal to binary\n"
+"                "
+
+#: Apps/NumberConverter/templates/NumberConverter/index.html:352
+msgid ""
+"\n"
+"                Перевод восьмиричной системы счисления в десятичную\n"
+"                "
+msgstr ""
+"\n"
+"                Converting from octal to decimal\n"
+"                "
+
+#: Apps/NumberConverter/templates/NumberConverter/index.html:357
+msgid ""
+"\n"
+"                Перевод десятичной системы счисления в восьмиричную\n"
+"                "
+msgstr ""
+"\n"
+"                Converting from decimal to octal\n"
+"                "
+
+#: Apps/NumberConverter/templates/NumberConverter/index.html:363
+msgid ""
+"\n"
+"                Перевод шестнадцатеричной системы счисления в десятичную\n"
+"                "
+msgstr ""
+"\n"
+"                Converting from hexadecimal to decimal\n"
+"                "
+
+#: Apps/NumberConverter/templates/NumberConverter/index.html:368
+msgid ""
+"\n"
+"                Перевод десятичной системы счисления в шестнадцатеричную\n"
+"                "
+msgstr ""
+"\n"
+"                Converting from decimal to hexadecimal\n"
+"                "
+
+#: Apps/NumberConverter/templates/NumberConverter/index.html:375
+msgid "Так же, возможно использовать данный инструмент в качестве <b>API</b>"
+msgstr "This tool can also be used as an <b>API</b>"
+
+#: Apps/NumberConverter/templates/NumberConverter/index.html:378
+msgid "С выводом результата в виде JSON: "
+msgstr "With the result output as JSON: "
+
+#: Apps/NumberConverter/templates/NumberConverter/index.html:381
+#: Apps/NumberConverter/templates/NumberConverter/index.html:392
+msgid "Ссылка на API успешно скопирована"
+msgstr "API link successfully copied."
+
+#: Apps/NumberConverter/templates/NumberConverter/index.html:384
+msgid "форма ответа результата в виде JSON ответа"
+msgstr "result response format as a JSON response"
+
+#: Apps/NumberConverter/templates/NumberConverter/index.html:389
+msgid "С выводом просто результата: "
+msgstr "With the result output as RAW text: "
+
+#: Apps/NumberConverter/templates/NumberConverter/index.html:395
+msgid "форма ответа результата в виде просто чисел"
+msgstr "result output format as simple numbers"
+
+#: Apps/NumberConverter/templates/NumberConverter/index.html:404
+msgid "Относящиеся статьи"
+msgstr "Related articles"
+
+#: Apps/NumberConverter/views.py:17
+msgid "Двоичная"
+msgstr "Binary"
+
+#: Apps/NumberConverter/views.py:18
+msgid "Троичная"
+msgstr "Ternary"
+
+#: Apps/NumberConverter/views.py:19
+msgid "Четверичная"
+msgstr "Quaternary"
+
+#: Apps/NumberConverter/views.py:20
+msgid "Пятеричная"
+msgstr "Quinary"
+
+#: Apps/NumberConverter/views.py:21
+msgid "Шестеричная"
+msgstr "Senary"
+
+#: Apps/NumberConverter/views.py:22
+msgid "Семеричная"
+msgstr "Septenary"
+
+#: Apps/NumberConverter/views.py:23
+msgid "Восьмеричная"
+msgstr "Octal"
+
+#: Apps/NumberConverter/views.py:24
+msgid "Девятеричная"
+msgstr "Nonary"
+
+#: Apps/NumberConverter/views.py:25 Apps/NumberConverter/views.py:153
+msgid "Десятичная"
+msgstr "Decimal"
+
+#: Apps/NumberConverter/views.py:26
+msgid "Одиннадцатеричная"
+msgstr "Undecimal"
+
+#: Apps/NumberConverter/views.py:27
+msgid "Двенадцатеричная"
+msgstr "Duodecimal"
+
+#: Apps/NumberConverter/views.py:28
+msgid "Тринадцатеричная"
+msgstr "Tridecimal"
+
+#: Apps/NumberConverter/views.py:29
+msgid "Четырнадцатеричная"
+msgstr "Tetradecimal"
+
+#: Apps/NumberConverter/views.py:30
+msgid "Пятнадцатеричная"
+msgstr "Pentadecimal"
+
+#: Apps/NumberConverter/views.py:31 Apps/NumberConverter/views.py:154
+msgid "Шестнадцатеричная"
+msgstr "Hexadecimal"
+
+#: Apps/NumberConverter/views.py:32
+msgid "Семнадцатеричная"
+msgstr "Heptadecimal"
+
+#: Apps/NumberConverter/views.py:33
+msgid "Восемнадцатеричная"
+msgstr "Octodecimal"
+
+#: Apps/NumberConverter/views.py:34
+msgid "Девятнадцатеричная"
+msgstr "Enneadecimal"
+
+#: Apps/NumberConverter/views.py:35
+msgid "Двадцатеричная"
+msgstr "Vigesimal"
+
+#: Apps/NumberConverter/views.py:36
+msgid "Двадцатиодноричная"
+msgstr "Base-21"
+
+#: Apps/NumberConverter/views.py:37
+msgid "Двадцатидвухричная"
+msgstr "Base-22"
+
+#: Apps/NumberConverter/views.py:38
+msgid "Двадцатитрехричная"
+msgstr "Base-23"
+
+#: Apps/NumberConverter/views.py:39
+msgid "Двадцатичетырехричная"
+msgstr "Base-24"
+
+#: Apps/NumberConverter/views.py:40
+msgid "Двадцатипятиричная"
+msgstr "Base-25"
+
+#: Apps/NumberConverter/views.py:41
+msgid "Двадцатишестеричная"
+msgstr "Base-26"
+
+#: Apps/NumberConverter/views.py:42
+msgid "Двадцатисемеричная"
+msgstr "Base-27"
+
+#: Apps/NumberConverter/views.py:43
+msgid "Двадцативосьмеричная"
+msgstr "Base-28"
+
+#: Apps/NumberConverter/views.py:44
+msgid "Двадцатидевятеричная"
+msgstr "Base-29"
+
+#: Apps/NumberConverter/views.py:45
+msgid "Тридцатеричная"
+msgstr "Base-30"
+
+#: Apps/NumberConverter/views.py:46
+msgid "Тридцатиодноричная"
+msgstr "Base-31"
+
+#: Apps/NumberConverter/views.py:47
+msgid "Тридцатидвухричная"
+msgstr "Base-32"
+
+#: Apps/NumberConverter/views.py:48
+msgid "Тридцатитрехричная"
+msgstr "Base-33"
+
+#: Apps/NumberConverter/views.py:49
+msgid "Тридцатичетырехричная"
+msgstr "Base-34"
+
+#: Apps/NumberConverter/views.py:50
+msgid "Тридцатипятиричная"
+msgstr "Base-35"
+
+#: Apps/NumberConverter/views.py:51
+msgid "Тридцатишестиричная"
+msgstr "Base-36"

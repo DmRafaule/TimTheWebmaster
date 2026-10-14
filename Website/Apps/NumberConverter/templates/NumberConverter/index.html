@@ -273,12 +273,12 @@
     <div class="flex flex-col gap-3">
         <div class="flex gap-2 flex-wrap items-center">
             <b>{% trans 'Конвертировать' %} </b>
-            <input class="base-input-number-converter" min="2" max="32" type="number" name="from" value="{{from_code}}">
+            <input class="base-input-number-converter" min="2" max="36" type="number" name="from" value="{{from_code}}">
             <div>{% trans '-ричную систему счисления ' %}</div>
 
             <b>{% trans 'в ' %}</b>
-            <input class="base-input-number-converter" min="2" max="32" type="number" name="to" value="{{to_code}}">
-            <div>{% trans '-ричную систему счисления ' %}</div>.
+            <input class="base-input-number-converter" min="2" max="36" type="number" name="to" value="{{to_code}}">
+            <div>{% trans '-ричную систему счисления ' %}</div>
         </div>
         <div class="flex gap-2 flex-wrap">
             <input class="grow shrink-0 basis-2xs" type="text" name="query" value="{{query_text}}" placeholder="{% trans 'Введи своё число, или числа через запятую или пробел' %}">
@@ -291,7 +291,19 @@
                 </div>
             </div>
         </div>
-        <b>{% trans 'Результат:' %}</b>
+        <div class="flex items-center">
+            <b>{% trans 'Результат:' %}</b>
+            <div class="flex grow shrink-0 basis-auto justify-center">
+                <div class="flex ttw-button ttw-button_link ttw-button_squared" >
+                    <div class="grow shrink-0 basis-auto p-1 border ttw-button_squared">
+                    <a class="flex gap-1 justify-between w-full items-center" href="{% url 'number-converter-specified' from_base=to_base to_base=from_base %}{% if request.META.QUERY_STRING %}?query={{result}}{% endif %}">
+                        <div>{% trans 'Поменять' %}</div>
+                        <img class="rotate-90 ttw-button_squared p-1" width="32" height="32" src="{% static 'NumberConverter/img/swap.svg' %}" alt="{% trans 'поменять результат введённые числа' %}">
+                    </a>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="flex gap-2 flex-wrap-reverse">
             <div class="flex flex-col gap-2 text-nowrap">
                 <div class="flex ttw-button ttw-button_action ttw-button_squared" onclick="
@@ -312,56 +324,87 @@
                     </div>
                 </div>
             </div>
-            <textarea id="result-container" class="grow shrink-0 basis-2xs" placeholder="{% trans 'Здесь появиться результат конвертации' %}">
-
-            </textarea>
+            <textarea id="result-container" class="grow shrink-0 basis-2xs" placeholder="{% trans 'Здесь появиться результат конвертации' %}">{{result}}</textarea>
         </div>
-        <div>
-            <div>{% trans 'Так же возможно использовать данный инструмент в качестве <b>API</b>' %}</div>
-            <div class="flex gap-2 flex-wrap justify-center">
-                <div class="flex gap-2 items-center">
-                    <div>{% trans 'С выводом результата в виде: ' %}</div>
-                    <div onclick="
-                    navigator.clipboard.writeText(document.querySelector('#json-type-result').getAttribute('href'));
-                    toaster.notify('{% trans 'Успешно скопировано' %}', 'info');
-                    " class="grow-0 shrink ttw-button ttw-button_action">
-                        <a download="" id="json-type-result" href="{{ request.scheme }}://{{ request.get_host }}{% url 'number-converter-specified' from_base=from_base to_base=to_base %}?query={{query_text}}&type=json">
-                        <img class="ttw-button_squared border p-1" width="32" height="32" src="{% static 'NumberConverter/img/json-result.svg' %}" alt="{% trans 'форма ответа результата в виде JSON' %}">
-                        </a>
-                    </div>
-                </div>
-                <div class="flex gap-2 items-center">
-                    <div>{% trans 'С выводом результата в виде: ' %}</div>
-                    <div onclick="
-                    navigator.clipboard.writeText(document.querySelector('#html-type-result').getAttribute('href'));
-                    toaster.notify('{% trans 'Успешно скопировано' %}', 'info');
-                    " class="grow-0 shrink ttw-button ttw-button_link">
-                        <a download="" id="html-type-result" href="{{ request.scheme }}://{{ request.get_host }}{% url 'number-converter-specified' from_base=from_base to_base=to_base %}?query={{query_text}}&type=html">
-                        <img class="ttw-button_squared border p-1" width="32" height="32" src="{% static 'NumberConverter/img/html-result.svg' %}" alt="{% trans 'форма ответа результата в виде HTML' %}">
-                        </a>
-                    </div>
-                </div>
-                <div class="flex gap-2 items-center">
-                    <div>{% trans 'С выводом просто результата: ' %}</div>
-                    <div onclick="
-                    navigator.clipboard.writeText(document.querySelector('#raw-type-result').getAttribute('href'));
-                    toaster.notify('{% trans 'Успешно скопировано' %}', 'info');
-                    " class="grow-0 shrink ttw-button ttw-button_link">
-                        <a download="" id="raw-type-result" href="{{ request.scheme }}://{{ request.get_host }}{% url 'number-converter-specified' from_base=from_base to_base=to_base %}?query={{query_text}}&type=raw">
-                        <img class="ttw-button_squared border p-1" width="32" height="32" src="{% static 'NumberConverter/img/raw-result.svg' %}" alt="{% trans 'форма ответа результата в виде просто чисел' %}">
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
+        
     </div>
 </form>
+
+<h2 class="paragraph">{% trans 'Другие возможности' %}</h2>
+<div class="flex flex-row gap-2 justify-between flex-wrap">
+    <div class="grow shrink-0 basis-xs">
+        <h3>{% trans 'Популярные конфигурации' %}</h3>
+        <ul>
+            <li class="ref"><a href="{{ request.scheme }}://{{ request.get_host }}{% url 'number-converter-specified' from_base='bin' to_base='dec' %}">
+                {% blocktrans %}
+                Перевод двоичной системы счисления в десятичную
+                {% endblocktrans %}
+            </a></li>
+            <li class="ref"><a href="{{ request.scheme }}://{{ request.get_host }}{% url 'number-converter-specified' from_base='dec' to_base='bin' %}">
+                {% blocktrans %}
+                Перевод десятчной системы счисления в двоичную
+                {% endblocktrans %}
+            </a></li>
+
+            <li class="ref"><a href="{{ request.scheme }}://{{ request.get_host }}{% url 'number-converter-specified' from_base='oct' to_base='dec' %}">
+                {% blocktrans %}
+                Перевод восьмиричной системы счисления в десятичную
+                {% endblocktrans %}
+            </a></li>
+            <li class="ref"><a href="{{ request.scheme }}://{{ request.get_host }}{% url 'number-converter-specified' from_base='dec' to_base='oct' %}">
+                {% blocktrans %}
+                Перевод десятичной системы счисления в восьмиричную
+                {% endblocktrans %}
+            </a></li>
+            
+            <li class="ref"><a href="{{ request.scheme }}://{{ request.get_host }}{% url 'number-converter-specified' from_base='hex' to_base='dec' %}">
+                {% blocktrans %}
+                Перевод шестнадцатеричной системы счисления в десятичную
+                {% endblocktrans %}
+            </a></li>
+            <li class="ref"><a href="{{ request.scheme }}://{{ request.get_host }}{% url 'number-converter-specified' from_base='dec' to_base='hex' %}">
+                {% blocktrans %}
+                Перевод десятичной системы счисления в шестнадцатеричную
+                {% endblocktrans %}
+            </a></li>
+        </ul>
+    </div>
+    <div class="grow shrink-0 basis-2xs">
+        <h3>{% trans 'Так же, возможно использовать данный инструмент в качестве <b>API</b>' %}</h3>
+        <ul>
+            <li class="flex gap-2 items-center">
+                <div>{% trans 'С выводом результата в виде JSON: ' %}</div>
+                <div onclick="
+                navigator.clipboard.writeText(document.querySelector('#json-type-result').getAttribute('href'));
+                toaster.notify('{% trans 'Ссылка на API успешно скопирована' %}', 'info');
+                " class="grow-0 shrink ttw-button ttw-button_link">
+                    <a target="_blank" id="json-type-result" href="{{ request.scheme }}://{{ request.get_host }}{% url 'number-converter-specified' from_base=from_base to_base=to_base %}?query={{query_text}}&type=json">
+                    <img class="ttw-button_squared border p-1" width="32" height="32" src="{% static 'NumberConverter/img/json-result.svg' %}" alt="{% trans 'форма ответа результата в виде JSON ответа' %}">
+                    </a>
+                </div>
+            </li>
+            <li class="flex gap-2 items-center">
+                <div>{% trans 'С выводом просто результата: ' %}</div>
+                <div onclick="
+                navigator.clipboard.writeText(document.querySelector('#raw-type-result').getAttribute('href'));
+                toaster.notify('{% trans 'Ссылка на API успешно скопирована' %}', 'info');
+                " class="grow-0 shrink ttw-button ttw-button_link">
+                    <a target="_blank" id="raw-type-result" href="{{ request.scheme }}://{{ request.get_host }}{% url 'number-converter-specified' from_base=from_base to_base=to_base %}?query={{query_text}}&type=raw">
+                    <img class="ttw-button_squared border p-1" width="32" height="32" src="{% static 'NumberConverter/img/raw-result.svg' %}" alt="{% trans 'форма ответа результата в виде просто чисел' %}">
+                    </a>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+
 {% if main_posts|length > 0 %}
 <h2>{% trans 'Относящиеся статьи' %}</h2>
 <article>
     {% include 'Post/basic--post_preview-article.html' with posts=main_posts %}
 </article>
 {% endif %}
+
 {% endblock%}
 
 {% block footer_tool %}
