@@ -3,7 +3,7 @@ import re
 from django.http import HttpResponse, JsonResponse
 from django.urls import reverse
 from django.shortcuts import render, redirect
-from django.utils.translation import gettext as _
+from django.utils.translation import gettext_lazy as _
 from django.template.response import TemplateResponse
 
 from Main.utils import initDefaults

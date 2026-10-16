@@ -13,6 +13,7 @@
         <link rel="canonical" href="{{ request.scheme }}://{{ request.get_host }}{% url 'number-converter-specified' from_base=from_base to_base=to_base %}" />
         <meta name="description" content="{% trans 'Перевод числа или нескольких чисел из ' %}{{from_name}}{% trans ' системы счисления в ' %}{{to_name}}. {{post.description}}">
         <meta name="keywords" content="{{post.meta_keywords}}, {{from_name}}, {{to_name}}">
+        <meta name="robots" content="all">
         
         <!-- OpenGraph -->
             <meta property="og:title" content="{{post.h1}}" />

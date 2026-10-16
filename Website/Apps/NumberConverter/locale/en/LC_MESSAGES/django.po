@@ -26,7 +26,7 @@ msgstr "Base to base converter "
 #: Apps/NumberConverter/templates/NumberConverter/index.html:12
 #: Apps/NumberConverter/templates/NumberConverter/index.html:55
 msgid " в "
-msgstr " in "
+msgstr " to "
 
 #: Apps/NumberConverter/templates/NumberConverter/index.html:14
 #: Apps/NumberConverter/templates/NumberConverter/index.html:19
